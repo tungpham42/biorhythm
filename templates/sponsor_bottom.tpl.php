@@ -1,0 +1,2 @@
+<a class="bottom sponsor button" href="/sponsor"><span class="translate" data-lang-ja="<?php echo $button_interfaces['sponsor']['ja']; ?>" data-lang-zh="<?php echo $button_interfaces['sponsor']['zh']; ?>" data-lang-es="<?php echo $button_interfaces['sponsor']['es']; ?>" data-lang-ru="<?php echo $button_interfaces['sponsor']['ru']; ?>" data-lang-en="<?php echo $button_interfaces['sponsor']['en']; ?>" data-lang-vi="<?php echo $button_interfaces['sponsor']['vi']; ?>"><?php echo $button_interfaces['sponsor'][$lang_code]; ?></span></a>
+<div class="clear"></div>

@@ -1,0 +1,179 @@
+input[type="submit"],input[type="reset"],input[type="button"],input.button,button,a.button {
+	display: inline-block;
+	padding: 6px 12px;
+	margin: 2px;
+	line-height: 30px;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-o-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-width: 1px;
+	border-style: solid;
+	text-decoration: none;
+	font-family: 'Open Sans',sans-serif;
+	font-size: 12px;
+	color: #000;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.09);
+	text-decoration: none !important;
+	cursor: pointer;
+	outline: none;
+}
+.button {float: left}
+
+.lang_toggle.button, .lang_toggle.button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover {
+	background-color: #4488ee;
+	border-color: #4488ee;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #4488ee),
+		color-stop(0.5, #5590ee),
+		color-stop(0.5, #77a2ff),
+		color-stop(1, #88aaff)
+		);
+	background-image: -webkit-linear-gradient(
+		center top,
+		#4488ee 0%,
+		#5590ee 50%,
+		#77a2ff 50%,
+		#88aaff 100%
+		);
+	background-image: -moz-linear-gradient(
+		center top,
+		#4488ee 0%,
+		#5590ee 50%,
+		#77a2ff 50%,
+		#88aaff 100%
+		);
+	background-image: -o-linear-gradient(
+		center top,
+		#4488ee 0%,
+		#5590ee 50%,
+		#77a2ff 50%,
+		#88aaff 100%
+		);
+	background-image: -ms-linear-gradient(
+		center top,
+		#4488ee 0%,
+		#5590ee 50%,
+		#77a2ff 50%,
+		#88aaff 100%
+		);
+	background-image: linear-gradient(
+		to top,
+		#4488ee 0%,
+		#5590ee 50%,
+		#77a2ff 50%,
+		#88aaff 100%
+		);
+	color: #FFF;
+}
+.lang_toggle.button:active, input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active, input.button:active, button:active, a.button:active, .lang_toggle.button.clicked, input[type="submit"].clicked, input[type="reset"].clicked, input[type="button"].clicked, input.button.clicked, button.clicked, a.button.clicked, .lang_toggle.button.clicked:hover, input[type="submit"].clicked:hover, input[type="reset"].clicked:hover, input[type="button"].clicked:hover, input.button.clicked:hover, button.clicked:hover, a.button.clicked:hover {
+	background-color: #4488ee;
+	border-color: #4488ee;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #4488ee),
+		color-stop(0.5, #5590ee),
+		color-stop(0.5, #77a2ff),
+		color-stop(1, #88aaff)
+		);
+	background-image: -webkit-linear-gradient(
+		center bottom,
+		#4488ee 0%,
+		#5590ee 50%,
+		#77a2ff 50%,
+		#88aaff 100%
+		);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		#4488ee 0%,
+		#5590ee 50%,
+		#77a2ff 50%,
+		#88aaff 100%
+		);
+	background-image: -o-linear-gradient(
+		center bottom,
+		#4488ee 0%,
+		#5590ee 50%,
+		#77a2ff 50%,
+		#88aaff 100%
+		);
+	background-image: -ms-linear-gradient(
+		center bottom,
+		#4488ee 0%,
+		#5590ee 50%,
+		#77a2ff 50%,
+		#88aaff 100%
+		);
+	background-image: linear-gradient(
+		to bottom,
+		#4488ee 0%,
+		#5590ee 50%,
+		#77a2ff 50%,
+		#88aaff 100%
+		);
+	color: #FFF;
+}
+
+
+input[type="submit"],input[type="reset"],input[type="button"],input.button,button,a.button {
+	background-color: #D2D2D2;
+	border-color: #D2D2D2;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #D2D2D2),
+		color-stop(0.5, #E4E4E4),
+		color-stop(0.5, #EDEDED),
+		color-stop(1, #FFFFFF)
+	);
+	background-image: -webkit-linear-gradient(
+		center top,
+		#D2D2D2 0%,
+		#E4E4E4 50%,
+		#EDEDED 50%,
+		#FFFFFF 100%
+	);
+	background-image: -moz-linear-gradient(
+		center top,
+		#D2D2D2 0%,
+		#E4E4E4 50%,
+		#EDEDED 50%,
+		#FFFFFF 100%
+	);
+	background-image: -o-linear-gradient(
+		center top,
+		#D2D2D2 0%,
+		#E4E4E4 50%,
+		#EDEDED 50%,
+		#FFFFFF 100%
+	);
+	background-image: -ms-linear-gradient(
+		center top,
+		#D2D2D2 0%,
+		#E4E4E4 50%,
+		#EDEDED 50%,
+		#FFFFFF 100%
+	);
+	background-image: linear-gradient(
+		to top,
+		#D2D2D2 0%,
+		#E4E4E4 50%,
+		#EDEDED 50%,
+		#FFFFFF 100%
+	);	
+}
+
+input[disabled=disabled],input.button.disabled,a.button.disabled,input[disabled=disabled]:hover,input.button.disabled:hover,a.button.disabled:hover,input[disabled=disabled]:active,input.button.disabled:active,a.button.disabled:active {
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=69)";
+	filter: alpha(opacity=69);
+	-moz-opacity:0.69;
+	-khtml-opacity: 0.69;
+	opacity: 0.69;
+	cursor: not-allowed;
+}

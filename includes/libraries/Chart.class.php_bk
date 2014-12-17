@@ -1,0 +1,596 @@
+<?php
+class Chart {
+	protected $_dob;
+	protected $_x;
+	protected $_y;
+	protected $_is_secondary;
+	protected $_dt_change;
+	protected $_rhythms = array();
+	protected $_days = array();
+	protected $_dates = array();
+	protected $_lang;
+	
+	function __construct($dob,$x,$y,$is_secondary,$dt_change,$lang_code) {
+		$this->_dob = $dob;
+		$this->_x = $x;
+		$this->_y = $y;
+		$this->_is_secondary = $is_secondary;
+		$this->_lang_code = $lang_code;
+		$this->_dt_change = (isset($dt_change)) ? $dt_change: date('Y-m-d',time()+86400*($x+$y));
+		$this->_rhythms = ($is_secondary == 0) ? array_filter(array_load_all('nsh_rhythms'), array(new filter($is_secondary), 'filter_secondary')) : array_load_all('nsh_rhythms');
+		sort($this->_rhythms);
+		for ($i = -16; $i <= 16; $i++) {
+			$j = $i + 16;
+			$day = time()+86400*($i+$x+$y);
+			$this->_days[$j] = date('d',$day);
+			$this->_dates[$j] = date('Y-m-d',$day);
+		}
+	}
+	function render_meta_description() {
+		$meta_description = (date('Y') - date('Y', strtotime($this->_dob))).' tuổi. ';
+		$meta_description .= 'Ngày: '.date('Y-m-d',time()+86400*($this->_x+$this->_y));
+		foreach ($this->_rhythms as $rhythm) {
+			$meta_description .= ' '.$rhythm['name'].': '.percent_bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_x+$this->_y)),$rhythm['scale']).' ';
+		}
+		return $meta_description;
+	}
+	// Render info
+	function render_info() {
+		echo '
+<section id="info">
+	<p><strong><span class="translate" data-lang-ja="黄道帯の印:" data-lang-zh="星宮名稱:" data-lang-es="Signo del Zodíaco:" data-lang-ru="Знак зодиака:" data-lang-en="Zodiac sign:" data-lang-vi="Cung hoàng đạo:">Cung hoàng đạo:</span></strong> <span class="translate" data-lang-ja="'.get_zodiac_from_dob($this->_dob,'ja').'" data-lang-zh="'.get_zodiac_from_dob($this->_dob,'zh').'" data-lang-es="'.get_zodiac_from_dob($this->_dob,'es').'" data-lang-ru="'.get_zodiac_from_dob($this->_dob,'ru').'" data-lang-en="'.get_zodiac_from_dob($this->_dob,'en').'" data-lang-vi="'.get_zodiac_from_dob($this->_dob).'">'.get_zodiac_from_dob($this->_dob).'</span></p>
+	<p><strong><span class="translate" data-lang-ja="歳:" data-lang-zh="岁老:" data-lang-es="Años:" data-lang-ru="Лет:" data-lang-en="Years old:" data-lang-vi="Số năm tuổi:">Số năm tuổi:</span></strong> '.(date("Y", time()+86400*($this->_x+$this->_y)) - date("Y", strtotime($this->_dob))).' <span class="translate" data-lang-ja="年々" data-lang-zh="岁" data-lang-es="año" data-lang-ru="лет" data-lang-en="'.pluralize(date("Y", time()+86400*($this->_x+$this->_y)) - date("Y", strtotime($this->_dob)),'year').'" data-lang-vi="năm">năm</span></p>
+	<p><strong><span class="translate" data-lang-ja="日古:" data-lang-zh="日老:" data-lang-es="Días:" data-lang-ru="Дней:" data-lang-en="Days old:" data-lang-vi="Số ngày tuổi:">Số ngày tuổi:</span></strong> '.dateDiff($this->_dob, $this->_dt_change).' <span class="translate" data-lang-ja="日" data-lang-zh="日" data-lang-es="'.pluralize(dateDiff($this->_dob, $this->_dt_change),'día').'" data-lang-ru="дней" data-lang-en="'.pluralize(dateDiff($this->_dob, $this->_dt_change),'day').'" data-lang-vi="ngày">ngày</span></p>
+	<p><strong><span class="translate" data-lang-ja="誕生日カウントダウン:" data-lang-zh="生日倒计时:" data-lang-es="Cuenta atrás cumpleaños:" data-lang-ru="День рождения отсчет:" data-lang-en="Birthday countdown:" data-lang-vi="Đếm ngược sinh nhật:">Đếm ngược sinh nhật:</span></strong> '.countdown_birthday($this->_dob, $this->_dt_change).' <span class="translate" data-lang-ja="日" data-lang-zh="日" data-lang-es="'.pluralize(countdown_birthday($this->_dob, $this->_dt_change),'día').'" data-lang-ru="дней" data-lang-en="'.pluralize(countdown_birthday($this->_dob, $this->_dt_change),'day').'" data-lang-vi="ngày">ngày</span></p>
+	<p><strong><span class="translate" data-lang-ja="ライフパス番号:" data-lang-zh="人生道路数量:" data-lang-es="Vida número de camino:" data-lang-ru="Число Жизненный путь:" data-lang-en="Life path number:" data-lang-vi="Con số cuộc đời:">Con số cuộc đời:</span></strong> '.calculate_life_path($this->_dob).'</p>
+</section>
+		';
+	}
+	// Render controls
+	function render_controls() {
+		$h5 = '';
+		echo '
+<section id="controls">';
+		if (date('m-d',time()+86400*($this->_x+$this->_y)) == date('m-d',strtotime($this->_dob))) {
+			$h5 = '<span class="translate" data-lang-ja="バースデー" data-lang-zh="生辰" data-lang-es="Cumpleaños" data-lang-ru="День рождения" data-lang-en="Birthday" data-lang-vi="Sinh nhật">Sinh nhật</span>';
+		} elseif (($this->_x+$this->_y) == 0) {
+			$h5 = '<span class="translate" data-lang-ja="今日" data-lang-zh="今天" data-lang-es="Hoy" data-lang-ru="Сегодня" data-lang-en="Today" data-lang-vi="Hôm nay">Hôm nay</span>';
+		} elseif (($this->_x+$this->_y) == 1) {
+			$h5 = '<span class="translate" data-lang-ja="あくる日" data-lang-zh="明天" data-lang-es="Mañana" data-lang-ru="Завтра" data-lang-en="Tomorrow" data-lang-vi="Ngày mai">Ngày mai</span>';
+		} elseif (($this->_x+$this->_y) == -1) {
+			$h5 = '<span class="translate" data-lang-ja="昨日" data-lang-zh="昨天" data-lang-es="Ayer" data-lang-ru="Вчерашний день" data-lang-en="Yesterday" data-lang-vi="Hôm qua">Hôm qua</span>';
+		} else {
+			$h5 = '<span class="translate" data-lang-ja="ナツメヤシ:" data-lang-zh="上:" data-lang-es="Fecha:" data-lang-ru="Дата:" data-lang-en="Date:" data-lang-vi="Ngày:">Ngày:</span> '.date('Y-m-d',time()+86400*($this->_x+$this->_y));
+		}
+		echo '
+	<h5>'.$h5.'</h5>
+	<ul>
+		<li class="rhythm"><i class="icon-white icon-arrow-'.((average_count($this->_dob,date('Y-m-d',time()+86400*($this->_x+$this->_y-1)),$this->_rhythms) < average_count($this->_dob,date('Y-m-d',time()+86400*($this->_x+$this->_y)),$this->_rhythms)) ? 'up': 'down').'"></i><span class="translate" data-lang-ja="平均する:" data-lang-zh="平均:" data-lang-es="Promedio:" data-lang-ru="Средний:" data-lang-en="Average:" data-lang-vi="Trung bình:">Trung bình:</span> '.average_count($this->_dob,date('Y-m-d',time()+86400*($this->_x+$this->_y)),$this->_rhythms).'%</li>';
+		foreach ($this->_rhythms as $rhythm){
+			echo '<li class="rhythm'.(($rhythm['is_secondary'] == 1) ? ' secondary': '').'"><i class="icon-white icon-arrow-'.((bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_x+$this->_y-1)),$rhythm['scale']) < bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_x+$this->_y)),$rhythm['scale'])) ? 'up': 'down').'"></i><span class="translate" data-lang-ja="'.$rhythm['description_ja'].'" data-lang-zh="'.$rhythm['description_zh'].'" data-lang-es="'.$rhythm['description_es'].'" data-lang-ru="'.$rhythm['description_ru'].'" data-lang-en="'.$rhythm['description_en'].'" data-lang-vi="'.$rhythm['name'].'">'.$rhythm['name'].'</span>: '.percent_bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_x+$this->_y)),$rhythm['scale']).'</li>';
+		}
+		echo '
+	</ul>
+	<input type="hidden" id="dt_curr" value="'.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'" />
+	<label class="m-checkbox m-wrap" for="is_secondary">
+		<span class="translate" data-lang-ja="セカンダリ・リズム表示" data-lang-zh="示第二性韵律" data-lang-es="Mostrar secundario ritmos" data-lang-ru="Показать вторичные ритмы" data-lang-en="Show secondary rhythms" data-lang-vi="Hiện nhịp sinh học phụ">Hiện nhịp sinh học phụ</span>
+		<input class="m-wrap" type="checkbox" name="is_secondary" id="is_secondary" value="1" '.(($this->_is_secondary == 1) ? 'checked': '').' />
+	</label>
+	<div class="m-input-prepend">
+		<span data-lang-ja="日付を表示す:" data-lang-zh="查看日期:" data-lang-es="Ver la fecha:" data-lang-ru="Посмотреть дата:" data-lang-en="View date:" data-lang-vi="Xem ngày:" class="add-on translate" id="dt_change_label">Xem ngày:</span>
+		<input data-lang-ja="日付の変更" data-lang-zh="更改日期" data-lang-es="Cambiar fecha" data-lang-ru="Изменение даты" data-lang-en="Change date" data-lang-vi="Đổi ngày" class="m-wrap required" placeholder="Đổi ngày" id="dt_change" type="text" name="dt_change" size="42" maxlength="128" value="'.$this->_dt_change.'" />
+	</div>
+	<div class="m-btn-group">
+		<a class="m-btn green" id="today"><i class="icon-calendar icon-white"></i><span class="translate" data-lang-ja=" 今日" data-lang-zh=" 今天" data-lang-es=" Hoy" data-lang-ru=" Сегодня" data-lang-en=" Today" data-lang-vi=" Hôm nay"> Hôm nay</span></a>
+		<a class="m-btn blue" id="prev"><i class="icon-backward icon-white"></i><span class="translate" data-lang-ja=" 戻る" data-lang-zh=" 回去" data-lang-es=" Atrás" data-lang-ru=" Назад" data-lang-en=" Back" data-lang-vi=" Trước"> Trước</span></a>
+		<a class="m-btn blue" id="next"><span class="translate" data-lang-ja="前進する " data-lang-zh="前进 " data-lang-es="Enviar " data-lang-ru="Вперед " data-lang-en="Forward " data-lang-vi="Sau ">Sau </span><i class="icon-forward icon-white"></i></a>
+	</div>
+	<div style="clear:both;"></div>
+</section>';
+	}
+	// Render chart
+	function render_chart() {
+		echo '<section id="chart">';
+		$this->render_highcharts();
+		echo '</section>';
+	}
+	// Render Highcharts
+	function render_highcharts() {
+		switch ($this->_lang_code) {
+			case 'vi':
+				$title_text = 'Ngày sinh: ';
+				$percentage_text = 'Phần trăm';
+				$average_text = 'Trung bình';
+				break;
+			case 'en':
+				$title_text = 'Date of birth: ';
+				$percentage_text = 'Percentage';
+				$average_text = 'Average';
+				break;
+			case 'ru':
+				$title_text = 'Дата рождения: ';
+				$percentage_text = 'Процент';
+				$average_text = 'Среднее число';
+				break;
+			case 'es':
+				$title_text = 'Fecha de nacimiento: ';
+				$percentage_text = 'Porcentaje';
+				$average_text = 'Promedio';
+				break;
+			case 'zh':
+				$title_text = '出生日期: ';
+				$percentage_text = '百分比';
+				$average_text = '平均';
+				break;
+			case 'ja':
+				$title_text = '生まれた日: ';
+				$percentage_text = '百分率';
+				$average_text = '平均する';
+				break;
+		}
+		echo '
+<section id="mychart" style="height: 420px;"></section>
+<script>
+$(function () {
+	$("#mychart").highcharts({
+		chart: {
+			type: "line"
+		},
+		title: {
+			text: "'.$title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'"
+		},
+		yAxis: {
+			title: {
+				text: "'.$percentage_text.' (%)"
+			},
+			min: 0,
+			max: 100,
+			maxPadding: 0,
+			plotLines: [{
+				color: "#ffd700",
+				width: 5,
+				value: 50
+			}]
+		},
+		xAxis: {
+			categories: [';
+	for ($d = 0; $d < count($this->_dates); $d++) {
+		echo '"'.$this->_dates[$d].'"';
+		echo ($d != (count($this->_dates)-1)) ? ',': '';
+	}
+	echo '	],
+			labels: {
+                rotation: 270
+            },
+			plotBands: [{
+				color: "#ffd",
+				from: 0,
+				to: 16
+			},
+			{
+				color: "#dff",
+				from: 16,
+				to: 32
+			}]
+		},
+		tooltip: {
+			enabled: true,
+			formatter: function() {
+				return "<b>"+ this.series.name +"</b><br/>"+
+					this.x +": "+ this.y +"%";
+			}
+		},
+		plotOptions: {
+			line: {
+				dataLabels: {
+					enabled: false
+				},
+				enableMouseTracking: true
+			},
+			series: {
+				animation: false,
+				cursor: "pointer",
+				events: {
+					click: function(e){
+						$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:(e.point.x-16),is_secondary:"'.$this->_is_secondary.'",dt_change:convertDate(+new Date($("#dt_change").val())+(e.point.x-16)*864e5),lang_code:lang});
+						console.log(e.point.x);
+					}
+				}
+			}
+		},
+		series: [';
+	echo '{
+		name: "'.$average_text.'",
+		data: [';
+	for ($d = 0; $d < count($this->_dates); $d++) {
+		echo average_count($this->_dob,$this->_dates[$d],$this->_rhythms);
+		echo ($d != (count($this->_dates)-1)) ? ',': '';
+	}
+	echo '
+		]},';
+	for ($r = 0; $r < count($this->_rhythms); $r++) {
+		switch ($this->_lang_code) {
+			case 'vi':
+				$biorhythm_name = $this->_rhythms[$r]['name'];
+				break;
+			case 'en':
+				$biorhythm_name = $this->_rhythms[$r]['description_en'];
+				break;
+			case 'ru':
+				$biorhythm_name = $this->_rhythms[$r]['description_ru'];
+				break;
+			case 'es':
+				$biorhythm_name = $this->_rhythms[$r]['description_es'];
+				break;
+			case 'zh':
+				$biorhythm_name = $this->_rhythms[$r]['description_zh'];
+				break;
+			case 'ja':
+				$biorhythm_name = $this->_rhythms[$r]['description_ja'];
+				break;
+		}
+		echo '{';
+		echo 'name: "'.$biorhythm_name.'",';
+		echo 'data: [';
+		for ($d = 0; $d < count($this->_dates); $d++) {
+			echo bio_count($this->_dob,$this->_dates[$d],$this->_rhythms[$r]['scale']);
+			echo ($d != (count($this->_dates)-1)) ? ',': '';
+		}
+		echo ']';
+		echo ($r != (count($this->_rhythms)-1)) ? '},': '}';
+	}
+	echo '
+		]
+	});
+});
+</script>
+		';
+	}
+	// Render jChartFX
+	function render_jchartfx() {
+		switch ($this->_lang_code) {
+			case 'vi':
+				$title_text = 'Ngày sinh: ';
+				$percentage_text = 'Phần trăm';
+				$average_text = 'Trung bình';
+				break;
+			case 'en':
+				$title_text = 'Date of birth: ';
+				$percentage_text = 'Percentage';
+				$average_text = 'Average';
+				break;
+			case 'ru':
+				$title_text = 'Дата рождения: ';
+				$percentage_text = 'Процент';
+				$average_text = 'Среднее число';
+				break;
+			case 'es':
+				$title_text = 'Fecha de nacimiento: ';
+				$percentage_text = 'Porcentaje';
+				$average_text = 'Promedio';
+				break;
+			case 'zh':
+				$title_text = '出生日期: ';
+				$percentage_text = '百分比';
+				$average_text = '平均';
+				break;
+			case 'ja':
+				$title_text = '生まれた日: ';
+				$percentage_text = '百分率';
+				$average_text = '平均する';
+				break;
+		}
+		echo '
+<section id="mychart" style="height: 420px;"></section>
+<script>
+function drawChart(chart) {
+	var items = [';
+		for ($d = 0; $d < count($this->_dates); $d++) {
+			echo '{';
+			echo '"'.$average_text.'": '.average_count($this->_dob,$this->_dates[$d],$this->_rhythms).',';
+			for ($r = 0; $r < count($this->_rhythms); $r++) {
+				switch ($this->_lang_code) {
+					case 'vi':
+						$biorhythm_name = $this->_rhythms[$r]['name'];
+						break;
+					case 'en':
+						$biorhythm_name = $this->_rhythms[$r]['description_en'];
+						break;
+					case 'ru':
+						$biorhythm_name = $this->_rhythms[$r]['description_ru'];
+						break;
+					case 'es':
+						$biorhythm_name = $this->_rhythms[$r]['description_es'];
+						break;
+					case 'zh':
+						$biorhythm_name = $this->_rhythms[$r]['description_zh'];
+						break;
+					case 'ja':
+						$biorhythm_name = $this->_rhythms[$r]['description_ja'];
+						break;
+				}
+				echo '"'.$biorhythm_name.'": '.bio_count($this->_dob,$this->_dates[$d],$this->_rhythms[$r]['scale']);
+				echo ',';
+			}
+			echo '"Date": "'.$this->_dates[$d].'"';
+			echo ($d != (count($this->_dates)-1)) ? '},': '}';
+		}
+		echo '
+	];
+	chart.setDataSource(items);
+}
+jchart = new cfx.Chart();
+jchart.setGallery(cfx.Gallery.Curve);
+var titles = jchart.getTitles();
+var title = new cfx.TitleDockable();
+var axisY = jchart.getAxisY();
+var axisX = jchart.getAxisX();
+var axisYGridLines = axisY.getCustomGridLines();
+var axisXGridLines = axisX.getCustomGridLines();
+var horizontalLine = new cfx.CustomGridLine();
+var verticalLine = new cfx.CustomGridLine();
+horizontalLine.setValue(50);
+verticalLine.setValue(17);
+axisYGridLines.add(horizontalLine);
+axisXGridLines.add(verticalLine);
+axisY.getTitle().setText("'.$percentage_text.' (%)");
+title.setText("'.$title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'");
+titles.add(title);
+drawChart(jchart);
+jchart._ud(true);
+jchart.create("mychart");
+</script>
+		';
+	}
+	// Render YUI Chart
+	function render_yui_chart() {
+		echo '
+<div id="mychart" style="'.(is_mobile() ? 'width: 460px; height: 240px;': 'width: 920px; height: 480px;').'"></div>
+<script>
+(function() {
+	YUI().use("charts-legend", function (Y) 
+	{ 
+		var myDataValues = [';
+		for ($d = 0; $d < count($this->_dates); $d++) {
+			echo '{date:"'.$this->_dates[$d].'"';
+			echo ', "Trung bình":'.average_count($this->_dob,$this->_dates[$d],$this->_rhythms);
+			foreach ($this->_rhythms as $rhythm) {
+				echo ', "'.$rhythm['name'].'":'.bio_count($this->_dob,$this->_dates[$d],$rhythm['scale']);
+			}
+			echo ($d != (count($this->_dates)-1)) ? '},': '}';
+		}
+		echo '
+		];
+		var styleDef = {
+			axes: { 
+				date: { 
+					label: {
+						rotation: -90
+					}
+				}
+			}
+		};
+		var mychart = new Y.Chart({
+		legend: {
+			position: "right",
+			width: '.(is_mobile() ? '150': '300').',
+			height: '.(is_mobile() ? '150': '300').',
+			styles: {
+				hAlign: "center",
+				hSpacing: 4
+			}
+		},
+		dataProvider:myDataValues, 
+		render:"#mychart", 
+		//type:"spline",
+		horizontalGridlines: {
+			styles: {
+				line: {
+					color: "#dad8c9"
+				}
+			}
+		},
+		verticalGridlines: {
+			styles: {
+				line: {
+					color: "#dad8c9"
+				}
+			}
+		},
+		styles: styleDef, 
+		categoryKey:"date", 
+		//categoryType:"time", 
+		interactionType:"planar",
+		seriesKeys:["Trung bình",';
+		for ($i = 0; $i < count($this->_rhythms); $i++) {
+			echo ($i != (count($this->_rhythms)-1)) ? '"'.$this->_rhythms[$i]['name'].'",': '"'.$this->_rhythms[$i]['name'].'"';
+		}
+		echo '
+		]
+		});
+	});
+})();
+</script>
+		';
+	}
+	// Render Google Chart
+	function render_google_chart() {
+		echo '
+<script>
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+			["Date", "Average",';
+		for ($i = 0; $i < count($this->_rhythms); $i++) {
+			echo ($i != (count($this->_rhythms)-1)) ? '"'.$this->_rhythms[$i]['name'].'",': '"'.$this->_rhythms[$i]['name'].'"';
+		}
+		echo '],';
+		for ($d = 0; $d < count($this->_dates); $d++) {
+			echo '["'.$this->_dates[$d].'"';
+			echo ', '.average_count($this->_dob,$this->_dates[$d],$this->_rhythms);
+			foreach ($this->_rhythms as $rhythm) {
+				echo ', '.bio_count($this->_dob,$this->_dates[$d],$rhythm['scale']);
+			}
+			echo ($d != (count($this->_dates)-1)) ? '],': ']';
+		}
+		echo '
+		]);
+
+		var options = {
+			title: "Biorhythms"
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById("mychart"));
+		chart.draw(data, options);
+	}
+</script>
+<div id="mychart" style="'.(is_mobile() ? 'width: 460px; height: 240px;': 'width: 920px; height: 480px;').'"></div>
+		';
+	}
+	// Render Flot Chart
+	function render_flot_chart() {
+		echo '
+<script>
+	$(function() {
+		var datasets = {
+			"average": {
+				label: "Average",
+				data: [';
+		for ($d = 0; $d < count($this->_dates); $d++) {
+			echo '['.$this->_dates[$d].','.average_count($this->_dob,$this->_dates[$d],$this->_rhythms).(($d != (count($this->_dates)-1)) ? '],': ']');
+		}
+		echo '
+				]
+			},';
+		for ($i = 0; $i < count($this->_rhythms); $i++) {
+			echo '"'.$this->_rhythms[$i]['name'].'": {
+				label: "'.$this->_rhythms[$i]['name'].'",
+				data: [';
+				for ($d = 0; $d < count($this->_dates); $d++) {
+					echo '['.$this->_dates[$d].','.bio_count($this->_dob,$this->_dates[$d],$this->_rhythms[$i]['scale']).(($d != (count($this->_dates)-1)) ? '],': ']');
+				}
+				echo '
+				]
+			'.(($i != (count($this->_rhythms)-1)) ? '},': '}');
+		}
+		echo '
+		};
+
+		$.plot("#mychart", datasets, {
+			yaxis: {
+				min: 0
+			},
+			xaxis: {
+				tickDecimals: 0
+			}
+		});
+	});
+</script>
+<div id="mychart" style="'.(is_mobile() ? 'width: 460px; height: 240px;': 'width: 920px; height: 480px;').'"></div>
+		';
+	}
+	// Render script
+	function render_script() {
+		echo '
+<script>';
+if (($this->_x+$this->_y) == 0) {
+		echo '
+$("#dob_form, #info, #controls, .add-on, label[for=is_secondary]").addClass("today");';
+} else {
+		echo '
+$("#dob_form, #info, #controls, .add-on, label[for=is_secondary]").removeClass("today");';
+}
+if (date('m-d',time()+86400*($this->_x+$this->_y)) == date('m-d',strtotime($this->_dob))) {
+		echo '
+$("#dob_form, #info, #controls, .add-on, label[for=is_secondary]").removeClass("today").addClass("birthday");
+$("body, header, footer, #logo, #ui-datepicker-div, .help, .rhythm.secondary, input[type=submit], input[type=reset], input[type=button], input.button, button, a.button").addClass("birthday");
+$("#logo > i").removeClass("m-icon-white").addClass("m-icon-red");
+$("li.rhythm > i").removeClass("icon-white").addClass("icon-red");
+$("#home_page, #dob_erase, #prev, #next").removeClass("blue").addClass("red");
+';
+} else {
+		echo '
+$("body, #dob_form, #info, #controls, .add-on, label[for=is_secondary], header, footer, #logo, #ui-datepicker-div, .help, .rhythm.secondary, input[type=submit], input[type=reset], input[type=button], input.button, button, a.button").removeClass("birthday");
+$("#logo > i").removeClass("m-icon-red").addClass("m-icon-white");
+$("li.rhythm > i").removeClass("icon-red").addClass("icon-white");
+$("#home_page, #dob_erase, #prev, #next").removeClass("red").addClass("blue");';
+}
+		echo '
+lang = $.cookie("NSH:lang");
+dt_curr = $("#dt_curr").val();
+dt_change = $("#dt_change").val();
+disableInput("dt_change");
+$("#dt_change").datepicker({
+	dateFormat: "yy-mm-dd",
+	changeYear: true,
+	changeMonth: true,
+	yearRange: "'.(date('Y',strtotime($this->_dob))).':2500",
+	defaultDate: "'.date('Y-m-d',strtotime($this->_dt_change)).'",
+	minDate: "'.$this->_dob.'",
+	showButtonPanel: true,
+	showAnim: ""
+});
+if ($("label[for=is_secondary]").find("#is_secondary").prop("checked") == false) {
+	$("label[for=is_secondary]").removeClass("clicked");
+} else if ($("label[for=is_secondary]").find("#is_secondary").prop("checked") == true) {
+	$("label[for=is_secondary]").addClass("clicked");
+}
+$("span.translate").each(function(){
+	$(this).text($(this).attr("data-lang-"+lang));
+});
+$("input.translate").each(function(){
+	$(this).text($(this).attr("data-lang-"+lang)).attr("placeholder",$(this).attr("data-lang-"+lang));
+});
+$(window).load(function(){
+	$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:dateDiff(dt_curr,$("#dt_change").val()),dt_change:$("#dt_change").val(),is_secondary:"'.$this->_is_secondary.'",dt_change: $("#dt_change").val(),lang_code:lang});
+});
+$("#controls").on("click", "#today", function(){
+	$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"0",y:"0",is_secondary:"'.$this->_is_secondary.'",dt_change:"'.date('Y-m-d').'",lang_code:lang});
+}).on("click", "#prev", function(){
+	$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:"-1",is_secondary:"'.$this->_is_secondary.'",dt_change:"'.date('Y-m-d',time()+86400*($this->_x+$this->_y-1)).'",lang_code:lang});
+}).on("click", "#next", function(){
+	$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:"+1",is_secondary:"'.$this->_is_secondary.'",dt_change:"'.date('Y-m-d',time()+86400*($this->_x+$this->_y+1)).'",lang_code:lang});
+}).on("change", "#dt_change", function(){
+	$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:dateDiff(dt_curr,$("#dt_change").val()),dt_change:$("#dt_change").val(),is_secondary:"'.$this->_is_secondary.'",dt_change: $("#dt_change").val(),lang_code:lang});
+}).on("change", "#is_secondary", function(){
+	if ($(this).prop("checked") == false) {
+		$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:"0",is_secondary:"0",dt_change:"'.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'",lang_code:lang});
+	} else if ($(this).prop("checked") == true) {
+		$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:"0",is_secondary:"1",dt_change:"'.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'",lang_code:lang});
+	}
+});
+$("#lang_bar").on("click", "#vi_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:"0",is_secondary:"'.$this->_is_secondary.'",dt_change:"'.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'",lang_code:"vi"});
+	}
+}).on("click", "#en_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:"0",is_secondary:"'.$this->_is_secondary.'",dt_change:"'.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'",lang_code:"en"});
+	}
+}).on("click", "#ru_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:"0",is_secondary:"'.$this->_is_secondary.'",dt_change:"'.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'",lang_code:"ru"});
+	}
+}).on("click", "#es_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:"0",is_secondary:"'.$this->_is_secondary.'",dt_change:"'.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'",lang_code:"es"});
+	}
+}).on("click", "#zh_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:"0",is_secondary:"'.$this->_is_secondary.'",dt_change:"'.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'",lang_code:"zh"});
+	}
+}).on("click", "#ja_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		$("#results").load("triggers/results.php",{dob:"'.$this->_dob.'",x:"'.($this->_x+$this->_y).'",y:"0",is_secondary:"'.$this->_is_secondary.'",dt_change:"'.date('Y-m-d',time()+86400*($this->_x+$this->_y)).'",lang_code:"ja"});
+	}
+});
+</script>
+		';
+	}
+	function render_array() {
+		echo '<pre>';
+		print_r($this->_rhythms);
+		echo '</pre>';
+	}
+}

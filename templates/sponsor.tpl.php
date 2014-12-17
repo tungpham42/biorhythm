@@ -1,0 +1,8 @@
+<?php
+$sposnor_id = md5(time());
+?>
+<p>Contact <a title="tung.42@gmail.com" href="mailto:tung.42@gmail.com" class="rotate"><span data-title="tung.42@gmail.com">tung.42@gmail.com</span></a> to discuss the banner size and position. Remember your Sponsor ID displayed in your payment page for verification.</p>
+<p>Pay via Bảo Kim:</p>
+<p><a target="_blank" href="https://www.baokim.vn/payment/product/version11?business=tung.42%40gmail.com&amp;id=&amp;order_description=Sponsor+Nhip+Sinh+Hoc+.+VN+ID:+<?php echo $sposnor_id; ?>&amp;product_name=Sponsor+ID:+<?php echo $sposnor_id; ?>&amp;product_price=20000&amp;product_quantity=1&amp;total_amount=50000&amp;url_cancel=&amp;url_detail=&amp;url_success=http%3A%2F%2Fnhipsinhhoc.vn%2F%3Fp%3Dthank-you%26sponsor_id%3<?php echo $sposnor_id; ?>"><img src="http://www.baokim.vn/developers/uploads/baokim_btn/thanhtoanantoan-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn" ></a></p>
+<p>Or Ngân Lượng:</p>
+<p><a target="_blank" href="https://www.nganluong.vn/button_payment.php?receiver=tung.42%40gmail.com&amp;product_name=Sponsor+ID:+<?php echo $sposnor_id; ?>&amp;price=50000&amp;return_url=http%3A%2F%2Fnhipsinhhoc.vn%2F%3Fp%3Dthank-you%26sponsor_id%3<?php echo $sposnor_id; ?>&amp;comments=Sponsor+Nhip+Sinh+Hoc+.+VN+ID:+<?php echo $sposnor_id; ?>" ><img src="https://www.nganluong.vn/data/images/buttons/11.gif"  border="0" /></a></p>

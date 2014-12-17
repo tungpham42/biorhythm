@@ -1,0 +1,63 @@
+
+
+.mawbutton
+{
+	outline: none;
+	border: 0px;
+	width: 221px;
+	height: 54px;
+	background-color:#0C9AF2;
+	overflow: hidden;
+	position: relative;
+	border-radius: 9px;
+	font-size: 20px;
+	letter-spacing: 2px;
+	color: white;
+	font-family: 'Lobster', cursive;
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none; 
+}
+
+
+
+.mawbutton .mawbutton-ripple{
+  position: absolute;
+  border-radius: 100%;
+  width: 0px;
+  height: 0px;
+  background: rgba(248,248,255, .3);
+  transition-property: border-radius,width,height,background,margin-left,margin-top;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+  -webkit-transition-property: border-radius,width,height,background,margin-left,margin-top;
+  -webkit-transition-duration:150ms;
+  -webkit-transition-timing-function:ease-out;
+  -moz-transition-property: border-radius,width,height,background,margin-left,margin-top;
+  -moz-transition-duration:150ms;
+  -moz-transition-timing-function:ease-out;  
+  -o-transition-property: border-radius,width,height,background,margin-left,margin-top;
+  -o-transition-duration:150ms;
+  -o-transition-timing-function:ease-out;    
+}
+
+.mawbutton .mawbutton-ripple-out{
+  background: rgba(248,248,255, .0);
+  transition: background 150ms ease-out opacity 150ms ease-out;
+   -webkit-transition: background 150ms ease-out opacity 150ms ease-out;
+   -moz-transition: background 150ms ease-out;
+   -o-transition: background 150ms ease-out;
+}
+
+.mawbutton .mawbutton-stop{
+  -moz-transition: none !important;
+   -o-transition: none !important;
+	-webkit-transition: none !important;
+ 	 transition: none !important;
+}
+
+.mawbutton.red{background-color: #dd0d32;}
+.mawbutton.green{background-color: #04A43B;}
+.mawbutton.blue{background-color: #405A83;}
+

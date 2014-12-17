@@ -1,0 +1,60 @@
+/* 
+	STYLE SHEET FOR IHWY JQUERY LISTNAV PLUGIN V 2.0, 3/2/2009
+	
+	For more information, visit http://www.ihwy.com/Labs/jquery-listnav-plugin.aspx
+*/
+
+
+/* default styling example
+----------------------------------------------------------------- */
+
+.listNav { margin:0 0 10px; }
+.dates-nav {position: relative}
+.ln-letters { 
+	overflow:hidden; 
+	height: auto;
+	clear: both;
+	padding: 2px 4px 8px;
+}
+.ln-letters a {
+	padding: 6px 8px;
+	margin: 2px 3px;
+	outline: 0;
+	border: 0;
+	vertical-align: middle;
+	background-color: transparent;
+	background-repeat: repeat-x;
+	z-index: 1;
+	font-family: Roboto,sans-serif;
+	font-size: 12px;
+	line-height: 12px;
+	color: #333;
+	text-shadow: white 0 1px 0;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+	float: left;
+}
+.ln-letters a.ln-last { border-right:0px solid #cdf; }
+.ln-letters a:hover {
+	color: #333;
+	text-decoration: none;
+	z-index: 100;
+	outline: 0;
+}
+.ln-letters a.ln-disabled {
+	color: #999;
+	background-color: whiteSmoke;
+	background-image: -moz-linear-gradient(top,#EEE,#DDD);
+	background-image: -ms-linear-gradient(top,#EEE,#DDD);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#EEE),to(#DDD));
+	background-image: -webkit-linear-gradient(top,#EEE,#DDD);
+	background-image: -o-linear-gradient(top,#EEE,#DDD);
+	background-image: linear-gradient(to top,#EEE,#DDD);
+	background-repeat: repeat-x;
+	cursor: default;
+	-webkit-box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: inset 0 1px 6px rgba(0,0,0,0.25);
+	box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.25);
+}
+.ln-letter-count {text-align:center;margin-bottom:0px;font-size:1em;line-height:1;color:#333;width: 42px}
