@@ -1,0 +1,25 @@
+$(document).ready(function(){
+	initLang();
+	styleMobile();
+	$('ui-datepicker-div').addClass('fade').addClass('out');
+	$('body').show();
+	NProgress.start();
+	$('#loading').fadeIn(42);
+	$(window).load(function() {
+		NProgress.done();
+		$('#loading').fadeOut(42);
+		$('.fade').removeClass('out');
+		styleMobile();
+	});
+	$('body').load(function(){
+		styleMobile();
+	});
+	$(window).resize(function(){
+		styleMobile();
+	});
+	$(document).ajaxStart(function(){
+		NProgress.start();
+	}).ajaxStop(function(){
+		NProgress.done();
+	});
+});

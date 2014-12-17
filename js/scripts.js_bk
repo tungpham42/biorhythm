@@ -1,0 +1,266 @@
+function isset(variable) {
+	if (typeof variable != 'undefined' && variable != 'undefined' && variable !== null) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function isEmpty(selector) {
+	if (!$.trim($(selector).val()).length) {
+		return true;
+	} else if ($.trim($(selector).val()).length) {
+		return false;
+	}
+}
+function isHovered(selector){
+    return $(selector+':hover').length > 0;
+}
+function isClicked(selector){
+    return $(selector+':active').length > 0;
+}
+function isFocused(selector){
+    return $(selector+':focus').length > 0;
+}
+function isBlurred(selector){
+    return $(selector+':not(:focus)').length > 0;
+}
+function isChild(parentSelector, childSelector) {
+	if ($(parentSelector).find(childSelector).length > 0) {
+		return true;
+	} else if (!($(parentSelector).find(childSelector).length > 0)) {
+		return false;
+	}	
+}
+function countChar(string, character) {
+	var charRegex = new RegExp(character, 'g');
+	return (string.match(charRegex)||[]).length;
+}
+function escapeRegExp(str) {
+	return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+}
+function replaceAll(find, replace, str) {
+	return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+function addParam(url, param, value) {
+    // Using a positive lookahead (?=\=) to find the
+    // given parameter, preceded by a ? or &, and followed
+    // by a = with a value after than (using a non-greedy selector)
+    // and then followed by a & or the end of the string
+    var val = new RegExp('(\\?|\\&)' + param + '=.*?(?=(&|$))'),
+        parts = url.toString().split('#'),
+        url = parts[0],
+        hash = parts[1]
+        qstring = /\?.+$/,
+        newURL = url;
+
+    // Check if the parameter exists
+    if (val.test(url)) {
+        // if it does, replace it, using the captured group
+        // to determine & or ? at the beginning
+        newURL = url.replace(val, '$1' + param + '=' + value);
+    } else if (qstring.test(url)) {
+        // otherwise, if there is a query string at all
+        // add the param to the end of it
+        newURL = url + '&' + param + '=' + value;
+    }
+    else {
+        // if there's no query string, add one
+        newURL = url + '?' + param + '=' + value;
+    }
+    if (hash) {
+        newURL += '#' + hash;
+    }
+    return newURL;
+}
+function dateDiff(start, end) {
+	var start_ts = new Date(start);
+	var end_ts = new Date(end);
+	var diff = end_ts.getTime() - start_ts.getTime();
+	return Math.round(diff/86400000);
+}
+function isDate(txtDate)
+{
+    var currVal = txtDate;
+    if (currVal == '')
+        return false;
+
+    var rxDatePattern = /^(\d{4})(-)(\d{1,2})(-)(\d{1,2})$/; //Declare Regex
+    var dtArray = currVal.match(rxDatePattern); // is format OK?
+
+    if (dtArray == null) 
+        return false;
+
+    dtMonth = dtArray[3];
+    dtDay= dtArray[5];
+    dtYear = dtArray[1];        
+    
+    if (dtMonth < 1 || dtMonth > 12) 
+        return false;
+    else if (dtDay < 1 || dtDay> 31) 
+        return false;
+    else if ((dtMonth==4 || dtMonth==6 || dtMonth==9 || dtMonth==11) && dtDay ==31) 
+        return false;
+    else if (dtMonth == 2) 
+    {
+        var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
+        if (dtDay> 29 || (dtDay ==29 && !isleap)) 
+			return false;
+    }
+    return true;
+}
+function pad(s) {
+	return (s < 10) ? '0' + s : s;
+}
+function dateFromISO(isostr) {
+	var parts = isostr.match(/\d+/g);
+	return new Date(parts[0], parts[1]-1, parts[2]);
+}
+function convertDate(inputFormat) {
+	var d = (typeof inputFormat == 'string') ? dateFromISO(inputFormat): new Date(inputFormat);
+	return [d.getFullYear(), pad(d.getMonth()+1), pad(d.getDate())].join('-');
+}
+function maskInput(input, textbox, location, delimiter) {
+    //Get the delimiter positons
+    var locs = location.split(',');
+    //Iterate until all the delimiters are placed in the textbox
+    for (var delimCount = 0; delimCount <= locs.length; delimCount++) {
+        for (var inputCharCount = 0; inputCharCount <= input.length; inputCharCount++) {
+            //Check for the actual position of the delimiter
+            if (inputCharCount == locs[delimCount]) {
+                //Confirm that the delimiter is not already present in that position
+                if (input.substring(inputCharCount, inputCharCount + 1) != delimiter) {
+                    input = input.substring(0, inputCharCount) + delimiter + input.substring(inputCharCount, input.length);
+                }
+            }
+        }
+    }
+    textbox.val(input);
+}
+function disableInput(fieldName) {
+	$('#'+fieldName).on('keypress', function(e){
+		return false;
+	}).on('keyup', function(e){
+		return false;
+	}).on('keydown', function(e){
+		return false;
+	});
+}
+function disableHyphen(fieldName) {
+	$('#'+fieldName).on('keypress', function(e){
+		if (e.which == 45) {
+			return false;
+		}
+	}).on('keyup', function(e){
+		if (e.which == 189 || e.which == 173 || e.which == 109) {
+			return false;
+		}
+	}).on('keydown', function(e){
+		if (e.which == 189 || e.which == 173 || e.which == 109) {
+			return false;
+		}
+	});
+}
+function styleMobile() {
+	var minBannerWidth = 1280;
+	var minWindowWidth = 960;
+	var minLangToggleWidth = 570;
+	var bannerDistance = ($(window).width()-960)/2-160;
+	if ($(window).width() < minBannerWidth) {
+		$('.banner').addClass('mobile');
+	} else {
+		$('.banner').removeClass('mobile');
+	}
+	if ($(window).width() < minWindowWidth) { // mobile
+		$('body').addClass('mobile');
+		$('#mychart, #mychart > div.highcharts-container, #mychart > div.highcharts-container > svg, body.mobile header, body.mobile header > h1, .adsense, .adsense ins.adsbygoogle, .adsense ins.adsbygoogle iframe, .adsense ins.adsbygoogle ins').css('width',($(window).width()-8)+'px');
+		$('#dob_form').prev().css('margin', 'auto');
+		$('body.mobile a#logo > i').removeClass('m-icon-big-swapright').addClass('m-icon-swapright');
+		$('body.mobile header > h1').css({'width':($(window).width()-64)+'px'});
+		if ($(window).width() < minLangToggleWidth) {
+			$('.lang_toggle').addClass('vertical');
+		} else {
+			$('.lang_toggle').removeClass('vertical');
+		}
+		if ($(window).width() >= 924 && $(window).width() < minWindowWidth) {
+			$('ul.dates > li').css('width', ($(window).width()/3)+'px');
+			$('ul.dates > li > a').css('width', ($(window).width()/3-4)+'px');
+		} else if ($(window).width() >= 616 && $(window).width() < 924) {
+			$('ul.dates > li').css('width', ($(window).width()/2)+'px');
+			$('ul.dates > li > a').css('width', ($(window).width()/2-4)+'px');
+		} else if ($(window).width() >= 0 && $(window).width() < 616) {
+			$('ul.dates > li').css('width', $(window).width()+'px');
+			$('ul.dates > li > a').css('width', ($(window).width()-4)+'px');
+		}
+	} else { // desktop
+		$('body').removeClass('mobile');
+		$('#mychart, #mychart > div.highcharts-container, #mychart > div.highcharts-container > svg, .adsense, .adsense ins.adsbygoogle, .adsense ins.adsbygoogle iframe, .adsense ins.adsbygoogle ins').css('width','916px');
+		$('.banner img.other_img').css({'height': '1px', 'width': '1px'});
+		$('a#logo > i').removeClass('m-icon-swapright').addClass('m-icon-big-swapright');
+		$('header').css('width', '960px');
+		$('header > h1').css('width', '878px');
+		$('ul.dates > li').css('width', '308px');
+		$('ul.dates > li > a').css('width', '304px');
+	}
+}
+function loadResults(dob,diff,isSecondary,dtChange,langCode) {
+	if ($('#results').length) {
+		$.ajax({
+			url: './triggers/results.php',
+			type: 'GET',
+			cache: false,
+			data: {
+				dob: dob,
+				diff: diff,
+				is_secondary: isSecondary,
+				dt_change: dtChange,
+				lang_code: langCode
+			},
+			dataType: 'html',
+			success: function(data){
+				$('#results').html(data);
+			}
+		});
+	}
+}
+function loadProverb(langCode) {
+	if ($('#proverb').length) {
+		$.ajax({
+			url: './triggers/proverb.php',
+			type: 'GET',
+			cache: false,
+			data: {
+				lang_code: langCode
+			},
+			dataType: 'html',
+			success: function(data){
+				$('#proverb').html(data);
+			}
+		});
+	}
+}
+function showBirthdates() {
+	if ($('#birthdates').length) {
+		$.ajax({
+			url: './triggers/birthdates.php',
+			type: 'GET',
+			cache: false,
+			dataType: 'html',
+			success: function(data){
+				$('#birthdates').html(data).show();
+			}
+		});
+	}
+}
+function hideBirthdates() {
+	$('#birthdates').html('').hide();
+}

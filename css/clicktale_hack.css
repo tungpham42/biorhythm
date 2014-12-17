@@ -1,0 +1,4 @@
+#restriction-box, body > .cm-ignore {
+	visibility: hidden !important;
+	display: none !important;
+}

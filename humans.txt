@@ -1,0 +1,12 @@
+/* TEAM */
+Web Developer: Tung Pham.
+Email: tung.42@gmail.com
+Twitter: tungpham42.
+Location: Saigon, Vietnam.
+/* THANKS */							
+Name: Tran Thi Lan Hai, Pham Quang Truong
+/* SITE */
+Last update: 2014/12/17
+Standards: HTML5, CSS3,..
+Components: jQuery, jQuery UI, Bootstrap, AddThis, AngularJS
+Software: Notepad++, FileZilla, Sublime Text
