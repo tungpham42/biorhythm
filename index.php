@@ -17,6 +17,9 @@ include $template_path.'clicktale_top.tpl.php';
 if (isset($_SESSION['loggedin'])):
 	include $template_path.'toolbar.tpl.php';
 endif;
+if (!is_birthday() && $show_ad):
+	include $template_path.'adsense_top.tpl.php';
+endif;
 ?>
 	<div id="page_section">
 		<!-- Start Header -->

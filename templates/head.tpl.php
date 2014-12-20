@@ -10,7 +10,7 @@
 <meta property="og:title" content="<?php echo $head_title; ?>">
 <meta property="og:description" content="<?php echo $head_description; ?>">
 <meta property="og:image" content="<?php echo 'http://nhipsinhhoc.vn/img/img_desc_'.((has_dob() && is_birthday()) ? 'birthday': 'logo').'.png'; ?>">
-<link rel="stylesheet" href="/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,bootstrap.css,m-styles.css,default.css,ui-blue/jquery-ui.css,nprogress.css&amp;356" />
+<link rel="stylesheet" href="/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,bootstrap.css,m-styles.css,default.css,ui-blue/jquery-ui.css,nprogress.css&amp;368" />
 <link rel="stylesheet" href="/min/f=css/print.css" media="print" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" href="/app-icons/apple-touch-icon-iphone.png">
@@ -29,3 +29,6 @@
 <!--[if lt IE 9]>
 <script src="/min/?f=js/html5shiv.js"></script>
 <![endif]-->
+<?php
+include $template_path.'hide_adsense.tpl.php';
+?>
