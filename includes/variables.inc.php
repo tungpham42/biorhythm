@@ -1,6 +1,6 @@
 <?php
-//error_reporting(0);
-//@ini_set('display_errors', 0);
+error_reporting(0);
+@ini_set('display_errors', 0);
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/geoipcity.inc.php';
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/timezone.php';
 $geoip = geoip_open(realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/GeoIPCity.dat',GEOIP_STANDARD);
@@ -16,7 +16,7 @@ $fullname = isset($_GET['fullname']) ? prevent_xss($_GET['fullname']): '';
 $embed = isset($_GET['embed']) ? prevent_xss($_GET['embed']): 0;
 $lang_code = init_lang_code();
 $time_zone = 7;
-$show_ad = false;
+$show_ad = true;
 $show_donate = false;
 $show_sponsor = false;
 $number = calculate_life_path($dob);

@@ -768,6 +768,7 @@ ul#nav_buttons > li > a.nav_button.button {
 	line-height: 32px;
 	top: 60px;
 	z-index: 420;
+	white-space: nowrap;
 }
 body:lang(vi) ul#nav_buttons > li > a.nav_button.button {display: block}
 body:lang(en) ul#nav_buttons > li > a.nav_button.button, body:lang(ru) ul#nav_buttons > li > a.nav_button.button, body:lang(es) ul#nav_buttons > li > a.nav_button.button, body:lang(zh) ul#nav_buttons > li > a.nav_button.button, body:lang(ja) ul#nav_buttons > li > a.nav_button.button {display: none}
@@ -1750,6 +1751,7 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 	display: inline-block;
 	padding: 6px 10px 7px;
 	margin: 0px;
+	white-space: nowrap;
 }
 #lunar {
 	position: relative;
@@ -1819,6 +1821,7 @@ label[for="is_secondary"] {
 	padding-left: 10px;
 	padding-right: 10px;
 	display: inline-block;
+	white-space: nowrap;
 }
 label[for="is_secondary"] > span {
 	float: right;
@@ -2107,6 +2110,7 @@ border:1px solid #6699FF;
 .dates-header {
 	padding: 4px 8px;
 	font-size: 16px;
+	white-space: nowrap;
 }
 .dates-header, .dates-nav {
 	position: relative;
@@ -2159,6 +2163,7 @@ ul.dates > li > a {
 #birthdates_toggle {
 	font-size: 16px;
 	font-weight: normal;
+	white-space: nowrap;
 }
 #timer {
 	float: left;
@@ -2200,28 +2205,25 @@ ul.dates > li > a {
 	position: fixed;
 	top: 0px;
 }
-.banner, .banner ins.adsbygoogle, .banner ins.adsbygoogle iframe, .banner ins.adsbygoogle ins {
+ins.adsbygoogle {display: inline-block;}
+.w728, .w300 {
+	margin: auto;
+}
+.w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {
+	width: 728px;
+	height: 90px;
+}
+.w300, .w300 > ins.adsbygoogle, .w300 > ins.adsbygoogle iframe, .w300 > ins.adsbygoogle ins {
+	width: 300px;
+	height: 250px;
+}
+.w160, .w160 > ins.adsbygoogle, .w160 > ins.adsbygoogle iframe, .w160 > ins.adsbygoogle ins {
+	width: 160px;
+	height: 600px;
+}
+.w120, .w120 > ins.adsbygoogle, .w120 > ins.adsbygoogle iframe, .w120 > ins.adsbygoogle ins {
 	width: 120px;
-}
-.mobile_banner {
-	display: none;
-	width: 300px;
-	height: 250px;
-	margin: auto;
-}
-.mobile_banner iframe, .mobile_banner img, .mobile_banner ins.adsbygoogle, .mobile_banner ins.adsbygoogle iframe, .mobile_banner ins.adsbygoogle ins {
-	width: 300px;
-	height: 250px;
-}
-.leader_banner {
-	display: none;
-	width: 728px;
-	height: 90px;
-	margin: auto;
-}
-.leader_banner iframe, .leader_banner img, .leader_banner ins.adsbygoogle, .leader_banner ins.adsbygoogle iframe, .leader_banner ins.adsbygoogle ins {
-	width: 728px;
-	height: 90px;
+	height: 600px;
 }
 body.birthday .banner {display: none !important}
 .banner.left.w160 {left: 0px}
@@ -2465,7 +2467,8 @@ p.explain:hover > span.explain_more {
 #explanation, footer, #uvTabLabel, .share42init {display: block}
 .rotate {
 	display: inline-block;
-	overflow: hidden;
+	overflow: hidden;rotate
+	white-space: nowrap;
 	vertical-align: top;
 	-webkit-perspective: 600px;
 	-moz-perspective: 600px;
@@ -2480,6 +2483,7 @@ p.explain:hover > span.explain_more {
 	display: block;
 	position: relative;
 	padding: 0 2px;
+	white-space: nowrap;
 	-webkit-transition: all 400ms ease;
 	-moz-transition: all 400ms ease;
 	-ms-transition: all 400ms ease;
@@ -2500,6 +2504,7 @@ p.explain:hover > span.explain_more {
 	left: 0;
 	top: 0;
 	padding: 0 2px;
+	white-space: nowrap;
 	-webkit-transform-origin: 50% 0%;
 	-moz-transform-origin: 50% 0%;
 	-ms-transform-origin: 50% 0%;
@@ -2599,7 +2604,7 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 		box-shadow: 0 0 20px rgba(255,0,0,.6), inset 0 0 10px rgba(255,0,0,.4);
 	}
 }
-#main_chart, #explanation_chart, .adsense, .adsense ins.adsbygoogle, .adsense ins.adsbygoogle iframe, .adsense ins.adsbygoogle ins {
+#main_chart, #explanation_chart {
 	width: 916px;
 }
 #main_chart > div.highcharts-container, #main_chart > div.highcharts-container > svg, #explanation_chart > div.highcharts-container, #explanation_chart > div.highcharts-container > svg {
@@ -3109,7 +3114,7 @@ img.ball {
 	}
 	#explanation_chart_results {display: block}
 	#explanation, footer, #uvTabLabel, .share42init, #fb_holder {display: none}
-	#main_chart, #explanation_chart, header, header > h1, .adsense, .adsense ins.adsbygoogle, .adsense ins.adsbygoogle iframe, .adsense ins.adsbygoogle ins {
+	#main_chart, #explanation_chart, header, header > h1 {
 		width: calc(100% - 8px);
 		width: -webkit-calc(100% - 8px);
 		width: -moz-calc(100% - 8px);
@@ -3130,16 +3135,22 @@ img.ball {
 	#sfi_banner.banner {
 		display: none !important;
 	}
-	.mobile_banner {
+	.mobile_banner, .w300, .w300 > ins.adsbygoogle, .w300 > ins.adsbygoogle iframe, .w300 > ins.adsbygoogle ins {
 		display: block;
+	}
+	.leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins, .banner.left, .banner.right, .w120, .w120 > ins.adsbygoogle, .w120 > ins.adsbygoogle iframe, .w120 > ins.adsbygoogle ins, .w160, .w160 > ins.adsbygoogle, .w160 > ins.adsbygoogle iframe, .w160 > ins.adsbygoogle ins {
+		display: none;
 	}
 	.bottom.button.donate, .bottom.button.sponsor {
 		margin-bottom: 52px;
 	}
 }
 @media all and (min-width: 960px) and (max-width: 1262px) {
-	.leader_banner {
+	.leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {
 		display: block;
+	}
+	.mobile_banner, .w300, .w300 > ins.adsbygoogle, .w300 > ins.adsbygoogle iframe, .w300 > ins.adsbygoogle ins, .banner.left, .banner.right, .w120, .w120 > ins.adsbygoogle, .w120 > ins.adsbygoogle iframe, .w120 > ins.adsbygoogle ins, .w160, .w160 > ins.adsbygoogle, .w160 > ins.adsbygoogle iframe, .w160 > ins.adsbygoogle ins {
+		display: none;
 	}
 	#embed_chart {
 		height: 45vw;
@@ -3197,6 +3208,12 @@ img.ball {
 	}
 	#embed_chart {
 		height: 42vw;
+	}
+	.banner.left, .banner.right, .w120, .w120 > ins.adsbygoogle, .w120 > ins.adsbygoogle iframe, .w120 > ins.adsbygoogle ins, .w160, .w160 > ins.adsbygoogle, .w160 > ins.adsbygoogle iframe, .w160 > ins.adsbygoogle ins {
+		display: block;
+	}
+	.mobile_banner, .w300, .w300 > ins.adsbygoogle, .w300 > ins.adsbygoogle iframe, .w300 > ins.adsbygoogle ins, .leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {
+		display: none;
 	}
 }
 @media all and (min-width: 1263px) and (max-width: 1582px) {
