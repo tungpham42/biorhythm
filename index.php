@@ -50,7 +50,9 @@ include $template_path.'footer.tpl.php';
 <?php
 include $template_path.'loading.tpl.php';
 if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
-	include $template_path.'addthis.tpl.php';
+	if ($show_addthis):
+		include $template_path.'addthis.tpl.php';
+	endif;
 	if (!is_birthday() && $show_ad):
 		include $template_path.'banner_160x600.tpl.php';
 	endif;
