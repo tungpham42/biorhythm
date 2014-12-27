@@ -2191,6 +2191,28 @@ ul.dates > li > a {
 #badge > a {
 	height: 32px !important;
 }
+body.lunar #solarDate {
+	cursor: pointer;
+	color: transparent;
+	text-shadow: 0px 0px #000;
+	filter: progid:DXImageTransform.Microsoft.Shadow(Color=#000000,Direction=180,Strength=1);
+	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Color=#000000,Direction=180,Strength=1);
+}
+body.lunar #prev {width: 58px}
+body.lunar #today {width: 78px}
+body.lunar #next {width: 48px}
+body.lunar #prev, body.lunar #today, body.lunar #next {
+	padding-left: 17px;
+	padding-right: 17px;
+}
+body.lunar .add-on.label {
+	width: 80px;
+	font-size: 14px;
+}
+body.lunar #solarDate, body.lunar .m-wrap.panel {
+	width: 180px;
+}
+body.lunar textarea {resize: none}
 #sfi_banner {
 	position: relative;
 	margin: 8px 2px 0px;
