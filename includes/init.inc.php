@@ -29,10 +29,12 @@ if (isset($_POST['login'])) {
 }
 /* End Auth */
 /* Initiate Program */
+$keywords = '';
 if (isset($_GET['q']) && $_GET['q'] != '') {
 	$h1 = search_title();
 	$title = search_title();
 	$body_class = 'search';
+	$keywords = 'search, search result, search results, tìm kiếm, kết quả tìm kiếm';
 } else if (!isset($_GET['p']) || $_GET['p'] == 'home') {
 	$h1 = home_title();
 	$title = home_title();
@@ -141,30 +143,37 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 	$h1 = 'Đua hộp - Bước 1';
 	$title = 'Đua hộp - Bước 1';
 	$body_class = 'game race';
+	$keywords = 'game, race';
 } else if ($p == 'race/2') {
 	$h1 = 'Đua hộp - Bước 2';
 	$title = 'Đua hộp - Bước 2';
 	$body_class = 'game race';
+	$keywords = 'game, race';
 } else if ($p == 'race/3') {
 	$h1 = 'Đua hộp - Chơi';
 	$title = 'Đua hộp - Chơi';
 	$body_class = 'game race';
+	$keywords = 'game, race';
 } else if ($p == 'race/single') {
 	$h1 = 'Square Race - Single Player';
 	$title = 'Square Race - Single Player';
 	$body_class = 'game race';
+	$keywords = 'game, race';
 } else if ($p == 'bmi') {
 	$h1 = 'Tính BMI';
 	$title = 'Tính BMI';
 	$body_class = 'bmi';
+	$keywords = 'bmi, chỉ số khối cơ thể, sức khỏe, chiều cao, cân nặng';
 } else if ($p == 'lunar') {
-	$h1 = 'Tính ngày Âm lịch';
-	$title = 'Tính ngày Âm lịch';
+	$h1 = 'Xem ngày tốt xấu';
+	$title = 'Xem ngày tốt xấu';
 	$body_class = 'lunar';
+	$keywords = 'xemngay, xem ngay tot, xem ngay cuoi, xem ngay, xem ngay tot xau, xem tuổi, xem ngày, xem ngày tốt xấu, ngay tot xau, ngay tot, xem ngày tốt, ngay cuoi, coi ngay tot, tìm ngày tốt, đổi ngày dương sang âm, coi ngay tot xau, xem ngày âm lịch, xem ngay cuoi tot, ngày dương ngày âm, chon ngay cuoi, xem ngày chọn giờ tốt, xem ngay cuoi, xem ngay gio tot xau, đổi ngày dương lịch sang ngày âm lịch, ngày tốt trong tháng, ngày tốt xấu, sao xấu, xem ngày tốt ngày xấu, ngày tốt, ngay tot ngay xau, xem sao tot xau, chọn ngày tốt xấu, xem tuoi cuoi, đổi ngày dương âm lịch, xem ngày tôt xấu, xem ngay thang, đổi ngày dương, chọn ngày tốt hoàng đạo, xem ngày nhập trạch, cung hoàng đạo, ngay xau ngay tot, ngày hoàng đạo, xem phong thuỷ, cung hoang dao, đổi ngày âm lịch, cách tính ngày hoàng đạo hắc đạo, hướng xuất hành, xemngay tot, xem giờ tốt, đổi lịch âm sang lịch dương lịch, xem ngày động thổ, lich van nien, lịch vạn niên, xem ngày cưới, coi ngay, lịch việt, lich viet, lich vietnam, lịch việt nam';
 } else if ($p == 'pong') {
 	$h1 = 'Bóng bàn 3D';
 	$title = 'Bóng bàn 3D';
 	$body_class = 'game pong';
+	$keywords = 'game, pong, bóng bàn, bong ban, bongban';
 } else if ($p == 'tictactoe') {
 	$h1 = 'Tic tac toe';
 	$title = 'Tic tac toe';
@@ -201,7 +210,7 @@ switch($p) {
 		$meta_description = 'Tính chỉ số BMI dựa trên cân nặng và chiều cao của bạn.';
 		break;
 	case 'lunar':
-		$meta_description = 'Chuyển đổi ngày Dương lịch sang ngày Âm lịch.';
+		$meta_description = 'Xem ngày tốt xấu, xem ngày cưới, xem ngày khai trương, xem ngày động thổ.';
 		break;
 	case 'pong':
 		$meta_description = 'Trò chơi bóng bàn 3D hấp dẫn.';

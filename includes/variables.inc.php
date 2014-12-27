@@ -143,7 +143,7 @@ $button_interfaces = array(
 		'ja' => 'ボディマス指数'
 	),
 	'lunar' => array(
-		'vi' => 'Âm lịch',
+		'vi' => 'Xem ngày',
 		'en' => 'Lunar calendar',
 		'ru' => 'Лунный календарь',
 		'es' => 'Calendario lunar',

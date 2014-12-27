@@ -1,8 +1,8 @@
-<script src="/min/b=js&amp;f=angular/angular.js,lunar.js&amp;4"></script>
+<script src="/min/b=js&amp;f=angular/angular.js,lunar.js&amp;37"></script>
 <div data-ng-app="lunarApp" data-ng-controller="lunarController">
 	<div class="m-input-prepend">
-		<span class="add-on label">Ngày tháng năm:</span>
-		<input id="solarDate" type="text" class="m-wrap" placeholder="ví dụ: 1961-09-26" data-ng-model="solarDate" required="required" value="<?php echo date('Y-m-d'); ?>">
+		<span class="add-on label">Xem ngày:</span>
+		<input id="solarDate" type="text" class="m-wrap" placeholder="ví dụ: 1961-09-26" data-ng-model="solarDate" data-ng-init="solarDate='<?php echo date('Y-m-d'); ?>'" required="required" value="<?php echo date('Y-m-d'); ?>">
 	</div>
 	<div class="m-input-prepend">
 		<span class="add-on label">Năm Âm:</span>
@@ -16,9 +16,36 @@
 		<span class="add-on label">Ngày Âm:</span>
 		<input type="text" class="m-wrap panel" disabled value="{{lunarDay()}}">
 	</div>
+	<div class="m-input-prepend">
+		<span class="add-on label">Trực:</span>
+		<input type="text" class="m-wrap panel" disabled value="{{lunarPeriod()}}">
+	</div>
+	<div class="m-input-prepend">
+		<span class="add-on label">Tiết khí:</span>
+		<input type="text" class="m-wrap panel" disabled value="{{lunarPeriodDate()}}">
+	</div>
+	<div class="m-input-prepend">
+		<span class="add-on label">Sao tốt:</span>
+		<textarea class="m-wrap panel" disabled>{{lunarGoodStars()}}</textarea>
+	</div>
+	<div class="m-input-prepend">
+		<span class="add-on label">Sao xấu:</span>
+		<textarea class="m-wrap panel" disabled>{{lunarBadStars()}}</textarea>
+	</div>
+	<div class="m-input-prepend">
+		<span class="add-on label">Đánh giá:</span>
+		<input type="text" class="m-wrap panel" disabled value="{{lunarRate()}}">
+	</div>
+	<div class="m-btn-group">
+		<a class="m-btn blue" id="prev"><i class="icon-backward icon-white"></i> Trước</a>
+		<a class="m-btn green" id="today"><i class="icon-calendar icon-white"></i> Hôm nay</a>
+		<a class="m-btn blue" id="next">Sau <i class="icon-forward icon-white"></i></a>
+	</div>
 </div>
 <script>
 $(document).ready(function(){
+	disableInput('solarDate');
+	$('textarea').autosize();
 	$('#solarDate').datepicker({
 		dateFormat: 'yy-mm-dd',
 		changeYear: true,
@@ -27,7 +54,35 @@ $(document).ready(function(){
 		defaultDate: '<?php echo date('Y-m-d'); ?>',
 		showButtonPanel: true,
 		showAnim: ''
+	}).on('change', function(){
+		$('textarea').trigger('autosize.resize');
 	});
 	$.datepicker.setDefaults($.datepicker.regional['vi']);
+	$('#prev').on('click', function(){
+		var date = new Date($('#solarDate').val());
+		date.setDate(date.getDate()-1);
+		date = date.toDateString();
+		date = new Date(Date.parse(date));
+		$('#solarDate').datepicker('setDate',date).trigger('input');
+		$('textarea').trigger('autosize.resize');
+	});
+	$('#today').on('click', function(){
+		var date = new Date(Date.parse('<?php echo date('Y-m-d'); ?>'));
+		$('#solarDate').datepicker('setDate',date).trigger('input');
+		$('textarea').trigger('autosize.resize');
+	});
+	$('#next').on('click', function(){
+		var date = new Date($('#solarDate').val());
+		date.setDate(date.getDate()+1);
+		date = date.toDateString();
+		date = new Date(Date.parse(date));
+		$('#solarDate').datepicker('setDate',date).trigger('input');
+		$('textarea').trigger('autosize.resize');
+	});
 });
 </script>
+<p>Nguồn:</p>
+<ul>
+	<li><a target="_blank" class="rotate" href="http://www.informatik.uni-leipzig.de/~duc/sach/phongtuc/muc_vii.html"><span data-title="http://www.informatik.uni-leipzig.de/~duc/sach/phongtuc/muc_vii.html">http://www.informatik.uni-leipzig.de/~duc/sach/phongtuc/muc_vii.html</span></a></li>
+	<li><a target="_blank" class="rotate" href="http://cuasomoi.vn/trang-nhat--12-con-giap/0/276.ttn"><span data-title="http://cuasomoi.vn/trang-nhat--12-con-giap/0/276.ttn">http://cuasomoi.vn/trang-nhat--12-con-giap/0/276.ttn</span></a></li>
+</ul>

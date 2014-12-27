@@ -1,5 +1,4 @@
 <?php
-$_GET['lang'] = 'vi';
-$_GET['p'] = 'lunar';
-require_once realpath($_SERVER['DOCUMENT_ROOT']).'/index.php';
+header('HTTP/1.1 301 Moved Permanently');
+header('Location: http://nhipsinhhoc.vn/xemngay');
 ?>
