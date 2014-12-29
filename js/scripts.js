@@ -568,7 +568,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 				fontFamily: 'Roboto,sans-serif'
 			}
 		},
-		colors: ['#FF0028','#FFD700','#0028FF','#FF5700','#A8FF00','#D700FF','#00FFA8','#00A8FF'],
+		colors: ['#E51400','#F09609','#8CBF26','#339933','#1BA1E2','#00ABA9','#A05000','#FF0097'],
 		credits: {
 			href: 'http://nhipsinhhoc.vn',
 			text: 'Nhịp Sinh Học . VN'

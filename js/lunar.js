@@ -957,6 +957,46 @@ function getBadStars(date) {
 	}
 	return goodStarsList;
 }
+var theDates = ['Thanh long','Minh đường','Thiên hình','Chu tước','Kim quỹ','Kim đường','Bạch hổ','Ngọc đường','Thiên lao','Nguyên vũ','Tư mệnh','Câu trần'];
+function getTheDate(date) {
+	var theDate = '';
+	var lunarDate = getLunarDate(date);
+	var lunarMonth = lunarDate[1];
+	var lunarDay = lunarDate[0];
+	var date = new Date(date);
+	var solarYear = date.getFullYear();
+	var solarMonth = date.getMonth()+1;
+	var solarDay = date.getDate();
+	var jd = jdFromDate(solarDay,solarMonth,solarYear);
+	var dayBranchIndex = (jd+1)%12;
+	switch (lunarMonth) {
+		case 1:
+		case 7:
+			theDate = theDates[(dayBranchIndex)%12];
+			break;
+		case 2:
+		case 8:
+			theDate = theDates[(dayBranchIndex+10)%12];
+			break;
+		case 3:
+		case 9:
+			theDate = theDates[(dayBranchIndex+8)%12];
+			break;
+		case 4:
+		case 10:
+			theDate = theDates[(dayBranchIndex+6)%12];
+			break;
+		case 5:
+		case 11:
+			theDate = theDates[(dayBranchIndex+4)%12];
+			break;
+		case 6:
+		case 12:
+			theDate = theDates[(dayBranchIndex+2)%12];
+			break;
+	}
+	return theDate;
+}
 function isGoodDate(date) { // Ngày Hoàng Đạo
 	var lunarDate = getLunarDate(date);
 	var lunarMonth = lunarDate[1];
@@ -968,17 +1008,17 @@ function isGoodDate(date) { // Ngày Hoàng Đạo
 	var jd = jdFromDate(solarDay,solarMonth,solarYear);
 	var dayBranchIndex = (jd+1)%12;
 	if (
-		((lunarMonth == 1 || lunarMonth == 7) && (dayBranchIndex == 0 || dayBranchIndex == 1 || dayBranchIndex == 5 || dayBranchIndex == 7)) // Tháng Giêng, Bảy Ngày Tý, Sửu, Tỵ, Mùi
+		((lunarMonth == 1 || lunarMonth == 7) && (dayBranchIndex == 0 || dayBranchIndex == 1 || dayBranchIndex == 4 || dayBranchIndex == 5 || dayBranchIndex == 7 || dayBranchIndex == 10)) // Tháng Giêng, Bảy Ngày Tý, Sửu, Thìn, Tỵ, Mùi, Tuất
 		||
-		((lunarMonth == 2 || lunarMonth == 8) && (dayBranchIndex == 2 || dayBranchIndex == 3 || dayBranchIndex == 7 || dayBranchIndex == 9)) // Tháng Hai, Tám Ngày Dần, Mẹo, Mùi, Dậu
+		((lunarMonth == 2 || lunarMonth == 8) && (dayBranchIndex == 2 || dayBranchIndex == 3 || dayBranchIndex == 6 || dayBranchIndex == 7 || dayBranchIndex == 9 || dayBranchIndex == 0)) // Tháng Hai, Tám Ngày Dần, Mẹo, Ngọ, Mùi, Dậu, Tý
 		||
-		((lunarMonth == 3 || lunarMonth == 9) && (dayBranchIndex == 4 || dayBranchIndex == 5 || dayBranchIndex == 9 || dayBranchIndex == 11)) // Tháng Ba, Chín Ngày Thìn, Tỵ, Dậu, Hợi
+		((lunarMonth == 3 || lunarMonth == 9) && (dayBranchIndex == 4 || dayBranchIndex == 5 || dayBranchIndex == 8 || dayBranchIndex == 9 || dayBranchIndex == 11 || dayBranchIndex == 2)) // Tháng Ba, Chín Ngày Thìn, Tỵ, Thân, Dậu, Hợi, Dần
 		||
-		((lunarMonth == 4 || lunarMonth == 10) && (dayBranchIndex == 6 || dayBranchIndex == 7 || dayBranchIndex == 11 || dayBranchIndex == 1)) // Tháng Tư, Mười Ngày Ngọ, Mùi, Dậu, Sửu
+		((lunarMonth == 4 || lunarMonth == 10) && (dayBranchIndex == 6 || dayBranchIndex == 7 || dayBranchIndex == 10 || dayBranchIndex == 11 || dayBranchIndex == 1 || dayBranchIndex == 4)) // Tháng Tư, Mười Ngày Ngọ, Mùi, Tuất, Hợi, Sửu, Thìn
 		||
-		((lunarMonth == 5 || lunarMonth == 11) && (dayBranchIndex == 8 || dayBranchIndex == 9 || dayBranchIndex == 1 || dayBranchIndex == 3)) // Tháng Năm, Mười Một Ngày Thân, Dậu, Sửu, Mẹo
+		((lunarMonth == 5 || lunarMonth == 11) && (dayBranchIndex == 8 || dayBranchIndex == 9 || dayBranchIndex == 0 || dayBranchIndex == 1 || dayBranchIndex == 3 || dayBranchIndex == 6)) // Tháng Năm, Mười Một Ngày Thân, Dậu, Tý, Sửu, Mẹo, Ngọ
 		||
-		((lunarMonth == 6 || lunarMonth == 12) && (dayBranchIndex == 10 || dayBranchIndex == 11 || dayBranchIndex == 3 || dayBranchIndex == 5)) // Tháng Sáu, Chạp Ngày Tuất, Hợi, Mẹo, Tỵ
+		((lunarMonth == 6 || lunarMonth == 12) && (dayBranchIndex == 10 || dayBranchIndex == 11 || dayBranchIndex == 2 || dayBranchIndex == 3 || dayBranchIndex == 5 || dayBranchIndex == 8)) // Tháng Sáu, Chạp Ngày Tuất, Hợi, Dần, Mẹo, Tỵ, Thân
 		) {
 		return true;
 	} else {
@@ -996,22 +1036,60 @@ function isBadDate(date) { // Ngày Hắc Đạo
 	var jd = jdFromDate(solarDay,solarMonth,solarYear);
 	var dayBranchIndex = (jd+1)%12;
 	if (
-		((lunarMonth == 1 || lunarMonth == 7) && (dayBranchIndex == 3 || dayBranchIndex == 6 || dayBranchIndex == 9 || dayBranchIndex == 11)) // Tháng Giêng, Bảy Ngày Mẹo, Ngọ, Dậu, Hợi
+		((lunarMonth == 1 || lunarMonth == 7) && (dayBranchIndex == 2 || dayBranchIndex == 3 || dayBranchIndex == 6 || dayBranchIndex == 8 || dayBranchIndex == 9 || dayBranchIndex == 11)) // Tháng Giêng, Bảy Ngày Dần, Mẹo, Ngọ, Thân, Dậu, Hợi
 		||
-		((lunarMonth == 2 || lunarMonth == 8) && (dayBranchIndex == 5 || dayBranchIndex == 8 || dayBranchIndex == 11 || dayBranchIndex == 1)) // Tháng Hai, Tám Ngày Tỵ, Thân, Hợi, Sửu
+		((lunarMonth == 2 || lunarMonth == 8) && (dayBranchIndex == 4 || dayBranchIndex == 5 || dayBranchIndex == 8 || dayBranchIndex == 10 || dayBranchIndex == 11 || dayBranchIndex == 1)) // Tháng Hai, Tám Ngày Thìn, Tỵ, Thân, Tuất, Hợi, Sửu
 		||
-		((lunarMonth == 3 || lunarMonth == 9) && (dayBranchIndex == 7 || dayBranchIndex == 10 || dayBranchIndex == 1 || dayBranchIndex == 11)) // Tháng Ba, Chín Ngày Mùi, Tuất, Sửu, Hợi
+		((lunarMonth == 3 || lunarMonth == 9) && (dayBranchIndex == 6 || dayBranchIndex == 7 || dayBranchIndex == 10 || dayBranchIndex == 0 || dayBranchIndex == 1 || dayBranchIndex == 3)) // Tháng Ba, Chín Ngày Ngọ, Mùi, Tuất, Tý, Sửu, Mẹo
 		||
-		((lunarMonth == 4 || lunarMonth == 10) && (dayBranchIndex == 9 || dayBranchIndex == 0 || dayBranchIndex == 3 || dayBranchIndex == 5)) // Tháng Tư, Mười Ngày Dậu, Tý, Mẹo, Tỵ
+		((lunarMonth == 4 || lunarMonth == 10) && (dayBranchIndex == 8 || dayBranchIndex == 9 || dayBranchIndex == 0 || dayBranchIndex == 2 || dayBranchIndex == 3 || dayBranchIndex == 5)) // Tháng Tư, Mười Ngày Thân, Dậu, Tý, Dần, Mẹo, Tỵ
 		||
-		((lunarMonth == 5 || lunarMonth == 11) && (dayBranchIndex == 11 || dayBranchIndex == 2 || dayBranchIndex == 5 || dayBranchIndex == 3)) // Tháng Năm, Mười Một Ngày Hợi, Dần, Tỵ, Mùi
+		((lunarMonth == 5 || lunarMonth == 11) && (dayBranchIndex == 10 || dayBranchIndex == 11 || dayBranchIndex == 2 || dayBranchIndex == 4 || dayBranchIndex == 5 || dayBranchIndex == 7)) // Tháng Năm, Mười Một Ngày Tuất, Hợi, Dần, Thìn, Tỵ, Mùi
 		||
-		((lunarMonth == 6 || lunarMonth == 12) && (dayBranchIndex == 1 || dayBranchIndex == 4 || dayBranchIndex == 7 || dayBranchIndex == 5)) // Tháng Sáu, Chạp Ngày Sửu, Thìn, Mùi, Dậu
+		((lunarMonth == 6 || lunarMonth == 12) && (dayBranchIndex == 0 || dayBranchIndex == 1 || dayBranchIndex == 4 || dayBranchIndex == 6 || dayBranchIndex == 7 || dayBranchIndex == 9)) // Tháng Sáu, Chạp Ngày Tý, Sửu, Thìn, Ngọ, Mùi, Dậu
 		) {
 		return true;
 	} else {
 		return false;
 	}
+}
+var theHours = ['Tý (23 - 1)','Sửu (1 - 3)','Dần (3 - 5)','Mẹo (5 - 7)','Thìn (7 - 9)','Tỵ (9 - 11)','Ngọ (11 - 13)','Mùi (13 - 15)','Thân (15 - 17)','Dậu (17 - 19)','Tuất (19 - 21)','Hợi (21 - 23)'];
+function getGoodHours(date) {
+	var goodHoursList = [];
+	var lunarDate = getLunarDate(date);
+	var date = new Date(date);
+	var solarYear = date.getFullYear();
+	var solarMonth = date.getMonth()+1;
+	var solarDay = date.getDate();
+	var jd = jdFromDate(solarDay,solarMonth,solarYear);
+	var dayBranchIndex = (jd+1)%12;
+	switch (dayBranchIndex) {
+		case 0:
+		case 6:
+			goodHoursList.push(theHours[0],theHours[1],theHours[3],theHours[6],theHours[8],theHours[9]);
+			break;
+		case 1:
+		case 7:
+			goodHoursList.push(theHours[2],theHours[3],theHours[5],theHours[8],theHours[10],theHours[11]);
+			break;
+		case 2:
+		case 8:
+			goodHoursList.push(theHours[0],theHours[1],theHours[4],theHours[5],theHours[7],theHours[10]);
+			break;
+		case 3:
+		case 9:
+			goodHoursList.push(theHours[0],theHours[2],theHours[3],theHours[6],theHours[7],theHours[9]);
+			break;
+		case 4:
+		case 10:
+			goodHoursList.push(theHours[2],theHours[4],theHours[5],theHours[8],theHours[9],theHours[11]);
+			break;
+		case 5:
+		case 11:
+			goodHoursList.push(theHours[1],theHours[4],theHours[6],theHours[7],theHours[10],theHours[11]);
+			break;
+	}
+	return goodHoursList;
 }
 var lunarApp = angular.module('lunarApp', []);
 lunarApp.controller('lunarController', ['$scope', function($scope) {
@@ -1040,15 +1118,15 @@ lunarApp.controller('lunarController', ['$scope', function($scope) {
 			return calculateLunarPeriodDate($scope.solarDate);
 		}
 	}
-	$scope.lunarRate = function(){
+	$scope.lunarTheDate = function(){
 		if (isset($scope.solarDate) && !isEmpty('#solarDate')) {
+			var theDate = getTheDate($scope.solarDate)+' - ';
 			if (isGoodDate($scope.solarDate)) {
-				return 'Ngày Hoàng đạo (tốt)';
+				theDate += 'Hoàng đạo';
 			} else if (isBadDate($scope.solarDate)) {
-				return 'Ngày Hắc đạo (xấu)';
-			} else {
-				return 'Ngày bình thường';
+				theDate += 'Hắc đạo';
 			}
+			return theDate;
 		}
 	}
 	$scope.lunarGoodStars = function(){
@@ -1061,6 +1139,12 @@ lunarApp.controller('lunarController', ['$scope', function($scope) {
 		if (isset($scope.solarDate) && !isEmpty('#solarDate')) {
 			var badStarsList = getBadStars($scope.solarDate);
 			return badStarsList.length > 0 ? badStarsList.join('\n'): 'Không có';
+		}
+	}
+	$scope.lunarGoodHours = function(){
+		if (isset($scope.solarDate) && !isEmpty('#solarDate')) {
+			var goodHoursList = getGoodHours($scope.solarDate);
+			return goodHoursList.length > 0 ? goodHoursList.join('\n'): 'Không có';
 		}
 	}
 }]);

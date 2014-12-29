@@ -2290,11 +2290,16 @@ body.birthday .banner {display: none !important}
 #fullname ~ #dob {width: 104px}
 #dob:disabled, #fullname:disabled {
 	cursor: text;
-	background: white;
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
-	-khtml-box-shadow: none;
-	box-shadow: none;
+	-ms-box-shadow: none !important;
+	-o-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	background: #fff !important;
+	color: #333 !important;
+	opacity: 1 !important;
+	-webkit-opacity: 1 !important;
+	-webkit-text-fill-color: #333 !important;
 }
 #fullname {width:100px}
 #name_toggle {
@@ -2576,7 +2581,7 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 	width: 24px;
 	font-size: 12px;
 }
-.m-wrap.panel {
+.m-wrap.panel, input[disabled].m-wrap.panel, select[disabled].m-wrap.panel, textarea[disabled].m-wrap.panel {
 	cursor: default !important;
 	-ms-box-shadow: none !important;
 	-o-box-shadow: none !important;
@@ -2585,6 +2590,9 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 	box-shadow: none !important;
 	background: #fff !important;
 	color: #333 !important;
+	opacity: 1 !important;
+	-webkit-opacity: 1 !important;
+	-webkit-text-fill-color: #333 !important;
 }
 #weight, #height {
 	width: 105px;
@@ -2786,7 +2794,7 @@ img.ball {
 }
 /* Responsive */
 
-@media all and (min-width: 0px) and (max-width: 551px) {
+@media all and (max-width: 551px) {
 	#lang_bar {
 		float: left;
 		left: 12px;
@@ -2796,7 +2804,7 @@ img.ball {
 		left: 0px;
 	}
 }
-@media all and (min-width: 0px) and (max-width: 419px) {
+@media all and (max-width: 419px) {
 	#proverb {display: none;}
 	.top.button.donate, .top.button.sponsor {display: none;}
 }
@@ -2934,7 +2942,7 @@ img.ball {
 		height: 24px;
 	}
 }
-@media all and (min-width: 0px) and (max-width: 598px) {
+@media all and (max-width: 598px) {
 	ul.dates > li {
 		width: 100%;
 	}
@@ -2950,7 +2958,7 @@ img.ball {
 		height: 66vw;
 	}
 }
-@media all and (min-width: 907px) and (max-width: 959px) {
+@media all and (max-width: 959px) {
 	ul.dates > li {
 		width: calc(100% / 3);
 		width: -webkit-calc(100% / 3);
@@ -2960,7 +2968,7 @@ img.ball {
 		height: 60vw;
 	}
 }
-@media all and (min-width: 0px) and (max-width: 959px) {
+@media all and (max-width: 959px) {
 	body {
 		background-image: url('images/clock_mobile.png');
 		margin: 0px auto;
@@ -3070,16 +3078,25 @@ img.ball {
 	body:lang(vi) header:hover ul#nav_buttons > li > a.nav_button.button, body:lang(vi) ul#nav_buttons:hover > li > a.nav_button.button, header:hover ul#nav_buttons > li > a#blog_link, ul#nav_buttons:hover > li > a#blog_link, header:hover ul#nav_buttons > li > a#forum_link, ul#nav_buttons:hover > li > a#forum_link {
 		display: block !important;
 	}
+	ul#nav_buttons > li {
+		float: none;
+	}
 	ul#nav_buttons > li > a.nav_button.button {
-		border-radius: 12px;
-		-webkit-border-radius: 12px;
-		-moz-border-radius: 12px;
-		-o-border-radius: 12px;
-		padding: 0px 8px;
+		border-radius: 16px;
+		-webkit-border-radius: 16px;
+		-moz-border-radius: 16px;
+		-o-border-radius: 16px;
+		padding: 4px 8px;
 		line-height: 24px;
-		top: 32px;
+		top: 42px;
 		margin: 0px;
-		font-size: 11px;
+		font-size: 12px;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=84)";
+		-moz-opacity: 0.84;
+		-khtml-opacity: 0.84;
+		opacity: 0.84;
+		width: 120px;
+		text-align: center;
 	}
 	#logo, .nav_button.button {
 		position: absolute;
@@ -3178,7 +3195,7 @@ img.ball {
 		height: 45vw;
 	}
 }
-@media all and (min-width: 0px) and (max-width: 1262px) {
+@media all and (max-width: 1262px) {
 	.banner {
 		display: none;
 	}
