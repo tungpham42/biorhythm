@@ -1,4 +1,4 @@
-<script src="/min/b=js&amp;f=angular/angular.js,lunar.js&amp;37"></script>
+<script src="/min/b=js&amp;f=angular/angular.js,lunar.js&amp;53"></script>
 <div data-ng-app="lunarApp" data-ng-controller="lunarController">
 	<div class="m-input-prepend">
 		<span class="add-on label">Xem ngày:</span>
@@ -17,6 +17,10 @@
 		<input type="text" class="m-wrap panel" disabled value="{{lunarDay()}}">
 	</div>
 	<div class="m-input-prepend">
+		<span class="add-on label">Là ngày:</span>
+		<input type="text" class="m-wrap panel" disabled value="{{lunarTheDate()}}">
+	</div>
+	<div class="m-input-prepend">
 		<span class="add-on label">Trực:</span>
 		<input type="text" class="m-wrap panel" disabled value="{{lunarPeriod()}}">
 	</div>
@@ -33,8 +37,8 @@
 		<textarea class="m-wrap panel" disabled>{{lunarBadStars()}}</textarea>
 	</div>
 	<div class="m-input-prepend">
-		<span class="add-on label">Đánh giá:</span>
-		<input type="text" class="m-wrap panel" disabled value="{{lunarRate()}}">
+		<span class="add-on label">Giờ tốt:</span>
+		<textarea class="m-wrap panel" disabled>{{lunarGoodHours()}}</textarea>
 	</div>
 	<div class="m-btn-group">
 		<a class="m-btn blue" id="prev"><i class="icon-backward icon-white"></i> Trước</a>
@@ -83,6 +87,6 @@ $(document).ready(function(){
 </script>
 <p>Nguồn:</p>
 <ul>
-	<li><a target="_blank" class="rotate" href="http://www.informatik.uni-leipzig.de/~duc/sach/phongtuc/muc_vii.html"><span data-title="http://www.informatik.uni-leipzig.de/~duc/sach/phongtuc/muc_vii.html">http://www.informatik.uni-leipzig.de/~duc/sach/phongtuc/muc_vii.html</span></a></li>
-	<li><a target="_blank" class="rotate" href="http://cuasomoi.vn/trang-nhat--12-con-giap/0/276.ttn"><span data-title="http://cuasomoi.vn/trang-nhat--12-con-giap/0/276.ttn">http://cuasomoi.vn/trang-nhat--12-con-giap/0/276.ttn</span></a></li>
+	<li><a target="_blank" class="rotate" href="http://www.informatik.uni-leipzig.de/~duc/sach/phongtuc/muc_vii.html"><span data-title="Vấn đề chọn ngày, giờ">Vấn đề chọn ngày, giờ</span></a></li>
+	<li><a target="_blank" class="rotate" href="http://cuasomoi.vn/trang-nhat--12-con-giap/0/276.ttn"><span data-title="12 Con Giáp">12 Con Giáp</span></a></li>
 </ul>
