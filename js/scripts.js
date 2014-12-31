@@ -559,6 +559,18 @@ function generatePlotLines(todayIndex) {
 	}
 	return plotLinesArray;
 }
+function setChartOptions(downloadJPEGText,downloadPDFText,downloadPNGText,downloadSVGText,printChartText,resetZoomText) {
+	Highcharts.setOptions({
+		lang: {
+			downloadJPEG: downloadJPEGText,
+			downloadPDF: downloadPDFText,
+			downloadPNG: downloadPNGText,
+			downloadSVG: downloadSVGText,
+			printChart: printChartText,
+			resetZoom: resetZoomText
+		}
+	});
+}
 function renderChart(selector,titleText,percentageText,dateText,datesArray,todayIndex,dob,diff,isSecondary,dateDiff,seriesData,type) {
 	var plotLinesArray = generatePlotLines(todayIndex);
 	$(selector).highcharts({
@@ -566,9 +578,12 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			type: 'spline',
 			style: {
 				fontFamily: 'Roboto,sans-serif'
-			}
+			},
+			zoomType: 'xy',
+			panning: true,
+            panKey: 'shift'
 		},
-		colors: ['#E51400','#F09609','#8CBF26','#339933','#1BA1E2','#00ABA9','#A05000','#FF0097'],
+		colors: ['#f15c80','#e4d354','#8085e8','#8d4653','#91e8e1','#7cb5ec','#434348','#90ed7d','#f7a35c','#8085e9'],
 		credits: {
 			href: 'http://nhipsinhhoc.vn',
 			text: 'Nhịp Sinh Học . VN'
@@ -633,12 +648,12 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			},
 			type: 'datetime',
 			plotBands: [{
-				color: '#ffd',
+				color: '#ffffe0',
 				from: 0,
 				to: 14
 			},
 			{
-				color: '#dff',
+				color: '#e0ffff',
 				from: 14,
 				to: 28
 			}],

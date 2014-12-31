@@ -1,6 +1,6 @@
 <?php
 class Chart {
-	protected $_dob, $_diff, $_date, $_is_secondary, $_dt_change, $_lang, $_rhythms_count,  $_dates_count, $_today_index, $_title_text, $_explanation_title_text, $_percentage_text, $_average_text, $_download_jpeg_text, $_download_pdf_text, $_download_png_text, $_download_svg_text, $_print_chart_text, $_date_text, $_age, $_statistics_h5, $_lunar_h5, $_controls_h5, $_dates_json, $_rhythms_json;
+	protected $_dob, $_diff, $_date, $_is_secondary, $_dt_change, $_lang, $_rhythms_count,  $_dates_count, $_today_index, $_title_text, $_explanation_title_text, $_percentage_text, $_average_text, $_download_jpeg_text, $_download_pdf_text, $_download_png_text, $_download_svg_text, $_print_chart_text, $_reset_zoom_text, $_date_text, $_age, $_statistics_h5, $_lunar_h5, $_controls_h5, $_dates_json, $_rhythms_json;
 	protected $_rhythms = array();
 	protected $_days = array();
 	protected $_dates = array();
@@ -41,6 +41,7 @@ class Chart {
 				$this->_download_png_text = 'Tải về tập tin PNG';
 				$this->_download_svg_text = 'Tải về tập tin SVG';
 				$this->_print_chart_text = 'In biểu đồ';
+				$this->_reset_zoom_text = 'Thiết lập lại';
 				$this->_date_text = 'Ngày';
 				$this->_age = 'tuổi';
 				$this->_statistics_h5 = 'Thống kê';
@@ -67,6 +68,7 @@ class Chart {
 				$this->_download_png_text = 'Download PNG file';
 				$this->_download_svg_text = 'Download SVG file';
 				$this->_print_chart_text = 'Print chart';
+				$this->_reset_zoom_text = 'Reset zoom';
 				$this->_date_text = 'Date';
 				$this->_age = pluralize(date('Y', time()+86400*$this->_diff) - date('Y', strtotime($this->_dob)),'year').' old';
 				$this->_statistics_h5 = 'Statistics';
@@ -93,6 +95,7 @@ class Chart {
 				$this->_download_png_text = 'Скачать PNG файл';
 				$this->_download_svg_text = 'Скачать SVG файл';
 				$this->_print_chart_text = 'Печать диаграммы';
+				$this->_reset_zoom_text = 'Сбросить зум';
 				$this->_date_text = 'Дата';
 				$this->_age = 'лет';
 				$this->_statistics_h5 = 'Статистика';
@@ -119,6 +122,7 @@ class Chart {
 				$this->_download_png_text = 'Descarga de archivos PNG';
 				$this->_download_svg_text = 'Descarga de archivos SVG';
 				$this->_print_chart_text = 'Imprimir el gráfico';
+				$this->_reset_zoom_text = 'Restablecer zoom';
 				$this->_date_text = 'Fecha';
 				$this->_age = 'años';
 				$this->_statistics_h5 = 'Estadística';
@@ -145,6 +149,7 @@ class Chart {
 				$this->_download_png_text = '下载 PNG 文件';
 				$this->_download_svg_text = '下载 SVG 文件';
 				$this->_print_chart_text = '打印图表';
+				$this->_reset_zoom_text = '重置缩放';
 				$this->_date_text = '上';
 				$this->_age = '岁老';
 				$this->_statistics_h5 = '统计学';
@@ -171,6 +176,7 @@ class Chart {
 				$this->_download_png_text = 'ダウンロード PNG ファイル';
 				$this->_download_svg_text = 'ダウンロード SVG ファイル';
 				$this->_print_chart_text = 'チャート印刷';
+				$this->_reset_zoom_text = 'ズームをリセット';
 				$this->_date_text = '日付';
 				$this->_age = '歳';
 				$this->_statistics_h5 = '統計学';
@@ -336,15 +342,7 @@ $(document).ready(function(){
 			}
 		}
 	});
-	Highcharts.setOptions({
-		lang: {
-			downloadJPEG: "'.$this->_download_jpeg_text.'",
-			downloadPDF: "'.$this->_download_pdf_text.'",
-			downloadPNG: "'.$this->_download_png_text.'",
-			downloadSVG: "'.$this->_download_svg_text.'",
-			printChart: "'.$this->_print_chart_text.'"
-		}
-	});
+	setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 	renderChart("#explanation_chart","∞ '.$this->_explanation_title_text.' ∞","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"1","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"explanation");
 });
 $("#lang_bar").on("click", "#vi_toggle", function(){
@@ -405,15 +403,7 @@ $(document).ready(function(){
 			}
 		}
 	});
-	Highcharts.setOptions({
-		lang: {
-			downloadJPEG: "'.$this->_download_jpeg_text.'",
-			downloadPDF: "'.$this->_download_pdf_text.'",
-			downloadPNG: "'.$this->_download_png_text.'",
-			downloadSVG: "'.$this->_download_svg_text.'",
-			printChart: "'.$this->_print_chart_text.'"
-		}
-	});
+	setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 	renderChart("#embed_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"0","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"embed");
 });
 </script>
@@ -461,15 +451,7 @@ $(document).ready(function(){
 			}
 		}
 	});
-	Highcharts.setOptions({
-		lang: {
-			downloadJPEG: "'.$this->_download_jpeg_text.'",
-			downloadPDF: "'.$this->_download_pdf_text.'",
-			downloadPNG: "'.$this->_download_png_text.'",
-			downloadSVG: "'.$this->_download_svg_text.'",
-			printChart: "'.$this->_print_chart_text.'"
-		}
-	});
+	setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 	renderChart("#main_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"'.$this->_is_secondary.'",$("#dt_change").val(),'.$this->serialize_chart_data().',"main");
 });
 </script>
