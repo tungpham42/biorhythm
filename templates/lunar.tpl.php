@@ -1,4 +1,4 @@
-<script src="/min/b=js&amp;f=angular/angular.js,lunar.js&amp;53"></script>
+<script src="/min/b=js&amp;f=angular/angular.js,lunar.js&amp;54"></script>
 <div data-ng-app="lunarApp" data-ng-controller="lunarController">
 	<div class="m-input-prepend">
 		<span class="add-on label">Xem ngày:</span>
