@@ -50,6 +50,9 @@ include $template_path.'footer.tpl.php';
 <?php
 include $template_path.'loading.tpl.php';
 if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
+	if ($show_sumome):
+		include $template_path.'sumome.tpl.php';
+	endif;
 	if ($show_addthis):
 		include $template_path.'addthis.tpl.php';
 	endif;
