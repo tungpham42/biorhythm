@@ -2958,7 +2958,7 @@ img.ball {
 		height: 66vw;
 	}
 }
-@media all and (max-width: 959px) {
+@media all and (min-width: 907px) and (max-width: 959px) {
 	ul.dates > li {
 		width: calc(100% / 3);
 		width: -webkit-calc(100% / 3);

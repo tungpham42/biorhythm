@@ -15,66 +15,66 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 	include $template_path.'login-page.tpl.php';
 } else if ($p == 'rhythm') {
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-		include $basepath.'/admin/rhythm/index.php';
+		include $template_path.'admin/rhythm/index.tpl.php';
 	} else {
 		echo 'You are not authorized';
 	}
 } else if ($p == 'rhythm/create') {
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-		include $basepath.'/admin/rhythm/create.php';
+		include $template_path.'admin/rhythm/create.tpl.php';
 	} else {
 		echo 'You are not authorized';
 	}
 } else if ($p == 'rhythm/edit') {
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-		include $basepath.'/admin/rhythm/edit.php';
+		include $template_path.'admin/rhythm/edit.tpl.php';
 	} else {
 		echo 'You are not authorized';
 	}
 } else if ($p == 'rhythm/delete') {
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-		include $basepath.'/admin/rhythm/delete.php';
+		include $template_path.'admin/rhythm/delete.tpl.php';
 	} else {
 		echo 'You are not authorized';
 	}
 } else if ($p == 'user') {
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-		include $basepath.'/admin/user/index.php';
+		include $template_path.'admin/user/index.tpl.php';
 	} else {
 		echo 'You are not authorized';
 	}
 } else if ($p == 'user/create') {
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-		include $basepath.'/admin/user/create.php';
+		include $template_path.'admin/user/create.tpl.php';
 	} else {
 		echo 'You are not authorized';
 	}
 } else if ($p == 'user/edit') {
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-		include $basepath.'/admin/user/edit.php';
+		include $template_path.'admin/user/edit.tpl.php';
 	} else {
 		echo 'You are not authorized';
 	}
 } else if ($p == 'user/delete') {
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-		include $basepath.'/admin/user/delete.php';
+		include $template_path.'admin/user/delete.tpl.php';
 	} else {
 		echo 'You are not authorized';
 	}
 } else if ($p == 'hash') {
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-		include $basepath.'/admin/hash/index.php';
+		include $template_path.'admin/hash/index.tpl.php';
 	} else {
 		echo 'You are not authorized';
 	}
 } else if ($p == 'race' || $p == 'race/1') {
-	include $basepath.'/race/step1.php';
+	include $template_path.'race/step1.tpl.php';
 } else if ($p == 'race/2') {
-	include $basepath.'/race/step2.php';
+	include $template_path.'race/step2.tpl.php';
 } else if ($p == 'race/3') {
-	include $basepath.'/race/step3.php';
+	include $template_path.'race/step3.tpl.php';
 } else if ($p == 'race/single') {
-	include $basepath.'/race/single.php';
+	include $template_path.'race/single.tpl.php';
 } else if ($p == 'bmi') {
 	include $template_path.'bmi.tpl.php';
 } else if ($p == 'lunar') {

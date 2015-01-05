@@ -578,10 +578,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			type: 'spline',
 			style: {
 				fontFamily: 'Roboto,sans-serif'
-			},
-			zoomType: 'xy',
-			panning: true,
-            panKey: 'shift'
+			}
 		},
 		colors: ['#f15c80','#e4d354','#8085e8','#8d4653','#91e8e1','#7cb5ec','#434348','#90ed7d','#f7a35c','#8085e9'],
 		credits: {
