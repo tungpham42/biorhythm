@@ -42,11 +42,11 @@ html {
 }
 
 * {
-	transition: border linear .24s, background-color linear .24s, background-image linear .24s;
-	-webkit-transition: border linear .24s, background-color linear .24s, background-image linear .24s;
-	-moz-transition: border linear .24s, background-color linear .24s, background-image linear .24s;
-	-o-transition: border linear .24s, background-color linear .24s, background-image linear .24s;
-	-ms-transition: border linear .24s, background-color linear .24s, background-image linear .24s;
+	transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
+	-webkit-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
+	-moz-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
+	-o-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
+	-ms-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
 }
 
 body {
@@ -56,7 +56,7 @@ body {
 	font: normal 1.3em Roboto,sans-serif;
 	padding-bottom: 1px;
 	width: 100%;
-	margin: 0px;
+	margin: 0;
 }
 ::selection {
 	color: #FFFFFF;
@@ -69,7 +69,7 @@ body {
 body.birthday {
 	background-color: #fff6c4;
 	background-image: url('images/gifts.png');
-	margin: 0px;
+	margin: 0;
 }
 body.birthday ::selection {
 	color: #E35604;
@@ -110,8 +110,8 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 	-webkit-border-radius: 100%;
 	-o-border-radius: 100%;
 	-moz-border-radius: 100%;
-	width: 0px;
-	height: 0px;
+	width: 0;
+	height: 0;
 	float: left;
 	transition-property: border-radius, width, height, background, margin-left, margin-top;
 	transition-duration: 150ms;
@@ -146,16 +146,16 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 #proverb {
 	position: relative;
 	float: right;
-	top: 0px;
+	top: 0;
 	right: 10px;
 	width: 600px;
 }
 #proverb, #proverb *, #proverb blockquote, #proverb span.arrow_down, #proverb span.arrow_down::after, #proverb p#proverb_author {
-	transition: box-shadow linear .24s, text-shadow linear .24s, background-color linear .24s;
-	-webkit-transition: box-shadow linear .24s, text-shadow linear .24s, background-color linear .24s;
-	-moz-transition: box-shadow linear .24s, text-shadow linear .24s, background-color linear .24s;
-	-o-transition: box-shadow linear .24s, text-shadow linear .24s, background-color linear .24s;
-	-ms-transition: box-shadow linear .24s, text-shadow linear .24s, background-color linear .24s;
+	transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
+	-webkit-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
+	-moz-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
+	-o-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
+	-ms-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
 }
 #proverb blockquote {
 	display: block;
@@ -212,8 +212,8 @@ body.birthday #proverb blockquote a {
 }
 #proverb span.arrow_down {
 	position: relative;
-	left: 0px;
-	top: 0px;
+	left: 0;
+	top: 0;
 	width: 28px;
 	height: 28px;
 	overflow: hidden;
@@ -232,10 +232,10 @@ body.birthday #proverb blockquote a {
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
 	background-color: #fff;
-	-moz-box-shadow: 3px 3px 3px 0px rgba(0,0,0,.33);
-	-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,.33);
-	-khtml-box-shadow: 3px 3px 3px 0px rgba(0,0,0,.33);
-	box-shadow: 3px 3px 3px 0px rgba(0,0,0,.33);
+	-moz-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
+	-webkit-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
+	-khtml-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
+	box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
 }
 #proverb p#proverb_author {
 	font-size: 14px;
@@ -279,10 +279,10 @@ body.birthday #proverb blockquote a {
     }
 }
 #proverb blockquote:hover ~ span.arrow_down::after {
-	-moz-box-shadow: 3px 3px 3px 0px rgba(0,0,0,.77);
-	-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,.77);
-	-khtml-box-shadow: 3px 3px 3px 0px rgba(0,0,0,.77);
-	box-shadow: 3px 3px 3px 0px rgba(0,0,0,.77);
+	-moz-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
+	-webkit-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
+	-khtml-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
+	box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
 }
 #proverb blockquote:hover ~ p.proverb_author {
 	text-shadow: 2px 2px 4px rgba(0,0,0,.77);
@@ -309,7 +309,7 @@ a:hover {
 
 fieldset {
 	margin: 1em 0 1.2em;
-	border: 0px solid #ccc;
+	border: 0 solid #ccc;
 }
 
 input,
@@ -325,7 +325,7 @@ input.image {
 }
 input.link, a.button.link {
 	background: transparent;
-	border: 0px;
+	border: 0;
 	text-decoration: none;
 }
 input.link:hover {
@@ -353,10 +353,6 @@ input[type="submit"], input[type="reset"], input[type="button"], input.button, b
 	padding: 6px 12px;
 	margin: 2px;
 	line-height: 30px;
-	border-radius: 6px;
-	-webkit-border-radius: 6px;
-	-o-border-radius: 6px;
-	-moz-border-radius: 6px;
 	border-width: 1px;
 	border-style: solid;
 	text-decoration: none;
@@ -542,7 +538,7 @@ img.right {margin: 0 0 15px 12px;}
 span.counter {
 	border: 1px solid #d2d2d2;
 	border-radius: 10px;
-	padding: 0px 3px;
+	padding: 0 3px;
 	background: #eaeaea;
 	position: relative;
 	top: -1px;
@@ -577,9 +573,9 @@ span.counter {
 #page_section {
 	position: relative;
 	background-color: rgba(255,255,255,0);
-	top: 0px;
+	top: 0;
 	width: 960px;
-	margin: 0px auto;
+	margin: 0 auto;
 	-ms-box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
 	-o-box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
 	-moz-box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
@@ -628,11 +624,11 @@ body.user a.user,
 }
 h1.title {color: #F22222;}
 header, header h1, #dob_form, #info, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
-	transition: box-shadow linear .24s, background-color linear .24s, background-image linear .24s, border-color linear .24s;
-	-webkit-transition: box-shadow linear .24s, background-color linear .24s, background-image linear .24s, border-color linear .24s;
-	-moz-transition: box-shadow linear .24s, background-color linear .24s, background-image linear .24s, border-color linear .24s;
-	-o-transition: box-shadow linear .24s, background-color linear .24s, background-image linear .24s, border-color linear .24s;
-	-ms-transition: box-shadow linear .24s, background-color linear .24s, background-image linear .24s, border-color linear .24s;
+	transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms;
+	-webkit-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms;
+	-moz-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms;
+	-o-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms;
+	-ms-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms;
 }
 header, #dob_form, #info, #life_path_link, #lunar_desc, footer, .help, .nav_button.button {
 	background-color: #4488EE;
@@ -648,14 +644,14 @@ header, #dob_form, #info, #life_path_link, #lunar_desc, footer, .help, .nav_butt
 }
 header {
 	position: relative;
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 	height: 100px;
 }
 #dob_form {
 	float: left;
 	padding: 8px;
-	padding-right: 0px;
+	padding-right: 0;
 	width: 272px;
 }
 header h1 {
@@ -664,9 +660,9 @@ header h1 {
 	width: -webkit-calc(100% - 82px);
 	width: -moz-calc(100% - 82px);
 	top: 18px;
-	left: 0px;
+	left: 0;
 	margin-left: 70px;
-	padding: 0px 6px;
+	padding: 0 6px;
 	font-size: 30px;
 	line-height: 40px;
 }
@@ -702,16 +698,16 @@ a#logo:active > i {
 	position: absolute;
 	right: 6px;
 	bottom: 6px;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	height: 34px;
 }
 #search_wrapper input#search {
 	width: 200px;
 }
 .gsc-control-cse table, .gsc-control-cse table td, .gsc-webResult .gsc-result {
-	border: 0px;
-	padding: 0px;
+	border: 0;
+	padding: 0;
 	margin: 8px;
 }
 #logo {
@@ -747,7 +743,7 @@ ul#nav_buttons {
 	display: block;
 	position: absolute;
 	list-style: none;
-	margin-left: 4px;
+	margin-left: 75px;
 }
 ul#nav_buttons > li {
 	float: left;
@@ -755,16 +751,8 @@ ul#nav_buttons > li {
 ul#nav_buttons > li > a.nav_button.button {
 	position: relative;
 	border: none;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=69)";
-	-moz-opacity: 0.69;
-	-khtml-opacity: 0.69;
-	opacity: 0.69;
 	font-weight: bold;
-	border-radius: 16px;
-	-webkit-border-radius: 16px;
-	-moz-border-radius: 16px;
-	-o-border-radius: 16px;
-	padding: 0px 12px;
+	padding: 0 12px;
 	line-height: 32px;
 	top: 60px;
 	z-index: 420;
@@ -805,7 +793,8 @@ span.lang {
 	padding: 2px 4px;
 }
 .lang_toggle.button {
-	padding: 0px 3px;
+	padding: 0 3px;
+	line-height: 28px;
 	float: right !important;
 }
 .lang_toggle.button.disabled.clicked, .lang_toggle.button.disabled.clicked:hover, .lang_toggle.button.disabled.clicked:active, .ln-letters a.ln-disabled, .ln-letters a.ln-disabled:hover, .ln-letters a.ln-disabled:active {
@@ -820,40 +809,40 @@ span.lang {
 	display: block;
 }
 #vi_toggle i.flag {
-	background-position: 0px 0px;
+	background-position: 0 0;
 }
 #en_toggle i.flag {
-	background-position: 0px -64px;
+	background-position: 0 -64px;
 }
 #ru_toggle i.flag {
-	background-position: 0px -128px;
+	background-position: 0 -128px;
 }
 #es_toggle i.flag {
-	background-position: 0px -192px;
+	background-position: 0 -192px;
 }
 #zh_toggle i.flag {
-	background-position: 0px -256px;
+	background-position: 0 -256px;
 }
 #ja_toggle i.flag {
-	background-position: 0px -320px;
+	background-position: 0 -320px;
 }
 #vi_toggle:hover i.flag {
-	background-position: 0px -32px;
+	background-position: 0 -32px;
 }
 #en_toggle:hover i.flag {
-	background-position: 0px -96px;
+	background-position: 0 -96px;
 }
 #ru_toggle:hover i.flag {
-	background-position: 0px -160px;
+	background-position: 0 -160px;
 }
 #es_toggle:hover i.flag {
-	background-position: 0px -224px;
+	background-position: 0 -224px;
 }
 #zh_toggle:hover i.flag {
-	background-position: 0px -288px;
+	background-position: 0 -288px;
 }
 #ja_toggle:hover i.flag {
-	background-position: 0px -352px;
+	background-position: 0 -352px;
 }
 #explanation_vi, #explanation_en, #explanation_ru, #explanation_es, #explanation_zh, #explanation_ja {display: none}
 body:lang(vi) #explanation_vi, body:lang(en) #explanation_en, body:lang(ru) #explanation_ru, body:lang(es) #explanation_es, body:lang(zh) #explanation_zh, body:lang(ja) #explanation_ja {display: block}
@@ -1203,16 +1192,16 @@ body.birthday #logo, body.birthday .nav_button.button {
 	box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 }
 body.birthday #logo:hover, body.birthday .nav_button.button:hover, body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover {
-	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0px 0px 0px rgba(227,86,4,.77) inset;
-	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0px 0px 0px rgba(227,86,4,.77) inset;
-	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0px 0px 0px rgba(227,86,4,.77) inset;
-	box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0px 0px 0px rgba(227,86,4,.77) inset;
+	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+	box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 }
 body.birthday #logo:active, body.birthday .nav_button.button:active, body.birthday input[type="submit"]:active, body.birthday input[type="reset"]:active, body.birthday input[type="button"]:active, body.birthday input.button:active, body.birthday button:active, body.birthday a.button:active, body.birthday input[type="submit"].clicked, body.birthday input[type="reset"].clicked, body.birthday input[type="button"].clicked, body.birthday input.button.clicked, body.birthday button.clicked, body.birthday a.button.clicked, body.birthday.bmi .nav_button.button.bmi, body.birthday.lunar .nav_button.button.lunar, body.birthday.game .nav_button.button.game {
-	-moz-box-shadow: 0 0px 0px 0px rgba(227,86,4,.77), 0 3px 6px 1px rgba(227,86,4,.77) inset;
-	-webkit-box-shadow: 0 0px 0px 0px rgba(227,86,4,.77), 0 3px 6px 1px rgba(227,86,4,.77) inset;
-	-khtml-box-shadow: 0 0px 0px 0px rgba(227,86,4,.77), 0 3px 6px 1px rgba(227,86,4,.77) inset;
-	box-shadow: 0 0px 0px 0px rgba(227,86,4,.77), 0 3px 6px 1px rgba(227,86,4,.77) inset;
+	-moz-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
+	-webkit-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
+	-khtml-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
+	box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
 }
 body.birthday label[for="is_secondary"], body.birthday #embed_toggle, body.birthday #lunar_desc {
 	-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);
@@ -1221,16 +1210,16 @@ body.birthday label[for="is_secondary"], body.birthday #embed_toggle, body.birth
 	box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);
 }
 body.birthday label[for="is_secondary"]:hover, body.birthday #embed_toggle:hover, body.birthday #lunar_desc:hover, body.birthday .ui-state-default:hover {
-	-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0px 0px 0 rgba(227,86,4,.77) inset;
-	-webkit-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0px 0px 0 rgba(227,86,4,.77) inset;
-	-khtml-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0px 0px 0 rgba(227,86,4,.77) inset;
-	box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0px 0px 0 rgba(227,86,4,.77) inset;
+	-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+	-webkit-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+	-khtml-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+	box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 }
 body.birthday label[for="is_secondary"]:active, body.birthday label[for="is_secondary"].clicked, body.birthday #embed_toggle:active, body.birthday #embed_toggle.clicked, body.birthday #lunar_desc:active, body.birthday #lunar_desc.clicked, body.birthday .ui-state-default:active {
-	-moz-box-shadow: 0 0px 0px 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
-	-webkit-box-shadow: 0 0px 0px 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
-	-khtml-box-shadow: 0 0px 0px 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
-	box-shadow: 0 0px 0px 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
+	-moz-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;
+	-webkit-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;
+	-khtml-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;
+	box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;
 }
 body.birthday .rhythm.secondary {
 	color: #c42;
@@ -1280,7 +1269,7 @@ body.birthday #ui-datepicker-div .ui-datepicker-next.ui-state-disabled, body.bir
 	border-left: 1px dotted black;
 }
 #topmenu ul > li:first-child {
-	border-left: 0px;
+	border-left: 0;
 }
 #topmenu ul > li > a {
 	color: black;
@@ -1295,11 +1284,11 @@ main {
 	position: relative;
 	font: normal 0.9em Roboto,sans-serif;
 	background: rgba(230,239,253,0.88);
-	padding: 0px;
+	padding: 0;
 	min-height: 420px;
 	height: 100%;
 	height: auto !important;
-	margin: 0px;
+	margin: 0;
 }
 
 main ul li {list-style: none;}
@@ -1317,15 +1306,15 @@ body.birthday main {
 	padding: 18px;
 }
 #content p,#content h1 {
-	margin: 5px 0px 0px 5px;
+	margin: 5px 0 0 5px;
 	word-wrap: break-word;
 	white-space:pre-wrap;
 }
 a.m-btn {
-	margin-top: 0px;
+	margin-top: 0;
 }
 .m-wrap {
-	margin-bottom: 0px !important;
+	margin-bottom: 0 !important;
 }
 #dob_bar {
 	position: relative;
@@ -1390,9 +1379,9 @@ body.birthday #dob_form_status.disabled_dob ~ #dob_wrapper #help_dob {
 	left: 35px;
 }
 #help_name.empty {
-	width: 0px;
-	height: 0px;
-	padding: 0px;
+	width: 0;
+	height: 0;
+	padding: 0;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 	-khtml-box-shadow: none;
@@ -1406,9 +1395,9 @@ body.birthday #dob_form_status.disabled_dob ~ #dob_wrapper #help_dob {
 }
 #help_dob_form {
 	position: relative;
-	margin: 0px;
+	margin: 0;
 	margin-bottom: -32px;
-	padding: 0px;
+	padding: 0;
 	width: 32px;
 	height: 32px;
 	border-radius: 16px;
@@ -1627,16 +1616,16 @@ body.birthday #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_d
 	box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 }
 #dob_form:hover, #info:hover, #controls:hover, #lunar:hover, #wiki:hover, #main_chart:hover, #explanation_chart:hover, .adsense:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover, a.button.clicked:hover, .m-btn:hover, input.m-wrap:hover, .m-btn.highlight, input.m-wrap.highlight, .zoom > img:hover, #logo:hover, #ui-datepicker-div:hover, #proverb blockquote:hover, #fb_holder:hover, #timer, .ln-letters > a:hover, #weight:hover, #height:hover {
-	-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0px 0px 0px rgba(0,0,0,.77) inset;
-	-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0px 0px 0px rgba(0,0,0,.77) inset;
-	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0px 0px 0px rgba(0,0,0,.77) inset;
-	box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0px 0px 0px rgba(0,0,0,.77) inset;
+	-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
+	-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
+	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
+	box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 }
 input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active, input.button:active, button:active, a.button:active, input[type="submit"].clicked, input[type="reset"].clicked, input[type="button"].clicked, input.button.clicked, button.clicked, a.button.clicked, input[type="submit"].clicked:hover, input[type="reset"].clicked:hover, input[type="button"].clicked:hover, input.button.clicked:hover, button.clicked:hover, a.button.clicked:hover, .m-btn:active, input.m-wrap:active, .m-btn.clicked, input.m-wrap.clicked, #logo:active, .ln-letters > a:active, .ln-letters > a.ln-selected, #weight:active, #height:active, body.bmi .nav_button.button.bmi, body.lunar .nav_button.button.lunar, body.game .nav_button.button.game {
-	-moz-box-shadow: 0 0px 0px 0px rgba(0,0,0,.77), 0 3px 6px 1px rgba(0,0,0,.77) inset;
-	-webkit-box-shadow: 0 0px 0px 0px rgba(0,0,0,.77), 0 3px 6px 1px rgba(0,0,0,.77) inset;
-	-khtml-box-shadow: 0 0px 0px 0px rgba(0,0,0,.77), 0 3px 6px 1px rgba(0,0,0,.77) inset;
-	box-shadow: 0 0px 0px 0px rgba(0,0,0,.77), 0 3px 6px 1px rgba(0,0,0,.77) inset;
+	-moz-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
+	-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
+	-khtml-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
+	box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
 }
 label[for="is_secondary"], #embed_toggle, #lunar_desc {
 	-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);
@@ -1645,16 +1634,16 @@ label[for="is_secondary"], #embed_toggle, #lunar_desc {
 	box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);
 }
 label[for="is_secondary"]:hover, #embed_toggle:hover, #lunar_desc:hover, .help, .ui-state-default:hover {
-	-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0px 0px 0 rgba(0,0,0,.77) inset;
-	-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0px 0px 0 rgba(0,0,0,.77) inset;
-	-khtml-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0px 0px 0 rgba(0,0,0,.77) inset;
-	box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0px 0px 0 rgba(0,0,0,.77) inset;
+	-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
+	-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
+	-khtml-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 }
 label[for="is_secondary"]:active, label[for="is_secondary"].clicked, #embed_toggle:active, #embed_toggle.clicked, #lunar_desc:active, #lunar_desc.clicked, .ui-state-default:active {
-	-moz-box-shadow: 0 0px 0px 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
-	-webkit-box-shadow: 0 0px 0px 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
-	-khtml-box-shadow: 0 0px 0px 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
-	box-shadow: 0 0px 0px 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
+	-moz-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;
+	-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;
+	-khtml-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;
+	box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;
 }
 label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > input[type="checkbox"]:hover, label[for="is_secondary"] > input[type="checkbox"]:active {
 	-moz-box-shadow: none;
@@ -1667,7 +1656,7 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 	z-index: 200;
 	display: none;
 	padding: 4px 8px;
-	margin: 0px;
+	margin: 0;
 	font-size: 14px;
 	line-height: 1.3em;
 	font-weight: bold;
@@ -1681,10 +1670,10 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 #explanation {
 	display: none;
 	position: relative;
-	bottom: 0px;
+	bottom: 0;
 	width: auto;
 	padding: 4px 8px;
-	margin: 20px 0px;
+	margin: 20px 0;
 	background-color: transparent;
 	color: #000;
 	font-size: 15px;
@@ -1693,7 +1682,7 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 	cursor: text;
 }
 #explanation p {
-	margin: 0px;
+	margin: 0;
 }
 #info {
 	position: relative;
@@ -1702,18 +1691,18 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 	font-size: 15px;
 	width: 270px;
 	padding: 5px;
-	margin: 9px 0px;
+	margin: 9px 0;
 	line-height: 1.3em;
 	cursor: default;
 }
 #info textarea#embed_box {
 	display: none;
 	width: 256px;
-	margin: 4px 0px;
+	margin: 4px 0;
 }
 #info #embed_toggle {
 	text-align: center;
-	padding: 2px 0px 0px;
+	padding: 2px 0 0;
 	margin: 3px auto 2px;
 	cursor: pointer;
 }
@@ -1750,7 +1739,7 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 	text-decoration: none;
 	display: inline-block;
 	padding: 6px 10px 7px;
-	margin: 0px;
+	margin: 0;
 	white-space: nowrap;
 }
 #lunar {
@@ -1760,7 +1749,7 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 	font-size: 15px;
 	width: 270px;
 	padding: 5px;
-	margin: 9px 0px;
+	margin: 9px 0;
 	line-height: 1.3em;
 	cursor: default;
 }
@@ -1774,7 +1763,7 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 	font-size: 15px;
 	width: 270px;
 	padding: 5px;
-	margin: 9px 0px;
+	margin: 9px 0;
 	background: #48e;
 	color: #FFF;
 	line-height: 1.3em;
@@ -1800,7 +1789,7 @@ input[type="text"] {
 	width: 120px;
 	cursor: pointer;
 	color: transparent;
-	text-shadow: 0px 0px #000;
+	text-shadow: 0 0 #000;
 	filter: progid:DXImageTransform.Microsoft.Shadow(Color=#000000, Direction=180, Strength=1);
 	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Color=#000000, Direction=180, Strength=1);
 }
@@ -1889,7 +1878,7 @@ p.highlight, h3.highlight {
 	text-decoration: underline;
 }
 table {
-	margin: 0px;
+	margin: 0;
 }
 /* Forms' status */
 #dob_form_status.alert_dob ~ #dob_wrapper #dob, #dob_form_status.restore_dob ~ #dob_wrapper #dob, #search_form_status.alert_search ~ #search_wrapper #search, #search_form_status.restore_search ~ #search_wrapper #search {
@@ -1913,7 +1902,7 @@ footer {
 	font-size: 1.6em;
 	font-weight: normal;
 	padding: 10px 5px;
-	margin: 0px;
+	margin: 0;
 	text-align: left;
 	clear: both;
 }
@@ -1925,7 +1914,7 @@ footer .right, footer .right a {
 footer a:hover {color: #d2d2d2;}
 table {
 	width: 100%;
-	margin: 0px;
+	margin: 0;
 	border: 1px solid #BEBFB9;
 }
 table td, table th {
@@ -1975,13 +1964,13 @@ td.count {
 	background-image: linear-gradient(-1deg, #34495E 0%, #3E4F64 3%, #34495E 6%, #3E4F64 9%, #34495E 13%, #3E4F64 16%, #34495E 19%, #3E4F64 22%, #34495E 25%, #3E4F64 28%, #34495E 31%, #3E4F64 34%, #34495E 38%, #3E4F64 41%, #34495E 44%, #3E4F64 47%, #34495E 50%, #3E4F64 53%, #34495E 56%, #3E4F64 59%, #34495E 63%, #3E4F64 66%, #34495E 69%, #3E4F64 72%, #34495E 75%, #3E4F64 78%, #34495E 81%, #3E4F64 84%, #34495E 88%, #3E4F64 91%, #34495E 94%, #3E4F64 97%, #34495E 100%);
 }
 .race_lane.first {
-	border-top: 0px;
+	border-top: 0;
 }
 .player {
 	position: relative;
 	height: 30px;
 	width: 72px;
-	left: 0px;
+	left: 0;
 	background: #333;
 	color: #e9eaed;
 	text-align: center;
@@ -1996,7 +1985,7 @@ td.count {
 	white-space: nowrap;
 	width: 60px;
 	margin: auto;
-	padding: 0px;
+	padding: 0;
 	font-weight: bold;
 	display: block;
 	font-size: 12px;
@@ -2087,7 +2076,7 @@ border:1px solid #6699FF;
 	position: relative;
 }
 #chart, #explanation_chart_results {
-	margin: 9px 0px;
+	margin: 9px 0;
 }
 #main_chart, #explanation_chart {
 	clear: both;
@@ -2097,14 +2086,14 @@ border:1px solid #6699FF;
 	height: 45vw;
 }
 #main_chart hr, #explanation_chart hr, #embed_chart hr {
-	margin: 5px 0px;
+	margin: 5px 0;
 }
 #main_chart text, #explanation_chart text, #embed_chart text {
 	cursor: default;
 }
 .dates-box {
 	position: relative;
-	margin: 9px 0px;
+	margin: 9px 0;
 	clear: both;
 }
 .dates-header {
@@ -2133,13 +2122,13 @@ ul.dates > li {
 	width: calc(100% / 3);
 	width: -webkit-calc(100% / 3);
 	width: -moz-calc(100% / 3);
-	margin: 0px;
+	margin: 0;
 }
 ul.dates > li > a {
 	width: calc(100% - 8px);
 	width: -webkit-calc(100% - 8px);
 	width: -moz-calc(100% - 8px);
-	padding: 8px 0px;
+	padding: 8px 0;
 	margin: 2px 3px 6px;
 	font-size: 12px;
 	color: #333;
@@ -2178,7 +2167,7 @@ ul.dates > li > a {
 	margin: 2px;
 }
 #badge {
-	margin-top: 0px;
+	margin-top: 0;
 	padding: 2px;
 	padding-top: 4px;
 	border-radius: 2px;
@@ -2194,7 +2183,7 @@ ul.dates > li > a {
 body.lunar #solarDate {
 	cursor: pointer;
 	color: transparent;
-	text-shadow: 0px 0px #000;
+	text-shadow: 0 0 #000;
 	filter: progid:DXImageTransform.Microsoft.Shadow(Color=#000000,Direction=180,Strength=1);
 	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Color=#000000,Direction=180,Strength=1);
 }
@@ -2215,7 +2204,7 @@ body.lunar #solarDate, body.lunar .m-wrap.panel {
 body.lunar textarea {resize: none}
 #sfi_banner {
 	position: relative;
-	margin: 8px 2px 0px;
+	margin: 8px 2px 0;
 }
 #sfi_banner.w240 {
 	width: 240px !important;
@@ -2225,7 +2214,7 @@ body.lunar textarea {resize: none}
 }
 .banner {
 	position: fixed;
-	top: 0px;
+	top: 0;
 }
 ins.adsbygoogle {display: inline-block;}
 .w728, .w300 {
@@ -2248,8 +2237,8 @@ ins.adsbygoogle {display: inline-block;}
 	height: 600px;
 }
 body.birthday .banner {display: none !important}
-.banner.left.w160 {left: 0px}
-.banner.right.w160 {right: 0px}
+.banner.left.w160 {left: 0}
+.banner.right.w160 {right: 0}
 .banner.left.w120 {left: 40px}
 .banner.right.w120 {right: 40px}
 .banner.left.w160, .banner.right.w160 {
@@ -2267,7 +2256,7 @@ body.birthday .banner {display: none !important}
 .banner > iframe {
 	position: absolute;
 	border: none;
-	margin: 0px;
+	margin: 0;
 	overflow: hidden;
 	overflow-x: hidden;
 	overflow-y: hidden;
@@ -2276,15 +2265,15 @@ body.birthday .banner {display: none !important}
 	border:0px;
 }
 .banner iframe, .banner img, .banner ins {position: relative}
-.banner.left iframe, .banner.left img, .banner.left ins {right: 0px}
-.banner.right iframe, .banner.right img, .banner.right ins {left: 0px}
+.banner.left iframe, .banner.left img, .banner.left ins {right: 0}
+.banner.right iframe, .banner.right img, .banner.right ins {left: 0}
 #lazada > a {float: left}
 #dob, #search {
-	transition: box-shadow linear .24s;
-	-webkit-transition: box-shadow linear .24s;
-	-moz-transition: box-shadow linear .24s;
-	-o-transition: box-shadow linear .24s;
-	-ms-transition: box-shadow linear .24s;
+	transition: box-shadow linear 150ms;
+	-webkit-transition: box-shadow linear 150ms;
+	-moz-transition: box-shadow linear 150ms;
+	-o-transition: box-shadow linear 150ms;
+	-ms-transition: box-shadow linear 150ms;
 }
 #name_toggle ~ #dob {width: 138px}
 #fullname ~ #dob {width: 104px}
@@ -2313,7 +2302,7 @@ body.birthday .banner {display: none !important}
 	text-align:	left;
 	border: 1px solid #ddd;
 	cursor: text;
-	margin-right: 0px;
+	margin-right: 0;
 }
 #name_toggle:active {
 	-moz-box-shadow: none;
@@ -2321,7 +2310,7 @@ body.birthday .banner {display: none !important}
 	-khtml-box-shadow: none;
 	box-shadow: none;
 }
-#name_remove {margin: 0px; padding: 10px; width: 0px}
+#name_remove {margin: 0; padding: 10px; width: 0}
 body:lang(en) .donate_text, body:lang(ru) .donate_text, body:lang(es) .donate_text, body:lang(zh) .donate_text, body:lang(ja) .donate_text {
 	display: none;
 }
@@ -2484,11 +2473,11 @@ p.explain:hover > span.explain_more {
 	display: inline;
 }
 .explain, .explain_more {
-	transition: color linear .24s, opacity linear .24s;
-	-webkit-transition: color linear .24s, opacity linear .24s;
-	-moz-transition: color linear .24s, opacity linear .24s;
-	-o-transition: color linear .24s, opacity linear .24s;
-	-ms-transition: color linear .24s, opacity linear .24s;
+	transition: color linear 150ms, opacity linear 150ms;
+	-webkit-transition: color linear 150ms, opacity linear 150ms;
+	-moz-transition: color linear 150ms, opacity linear 150ms;
+	-o-transition: color linear 150ms, opacity linear 150ms;
+	-ms-transition: color linear 150ms, opacity linear 150ms;
 }
 .highcharts-axis-labels text, .highcharts-axis-labels span {cursor: pointer !important}
 #explanation, footer, #uvTabLabel, .share42init {display: block}
@@ -2536,26 +2525,26 @@ p.explain:hover > span.explain_more {
 	-moz-transform-origin: 50% 0%;
 	-ms-transform-origin: 50% 0%;
 	transform-origin: 50% 0%;
-	-webkit-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
-	-moz-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
-	-ms-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
-	transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+	-webkit-transform: translate3d( 0, 105%, 0 ) rotateX( -90deg );
+	-moz-transform: translate3d( 0, 105%, 0 ) rotateX( -90deg );
+	-ms-transform: translate3d( 0, 105%, 0 ) rotateX( -90deg );
+	transform: translate3d( 0, 105%, 0 ) rotateX( -90deg );
 }
 .rotate:hover {
-	border-bottom: 0px !important;
+	border-bottom: 0 !important;
 }
 .rotate:hover span {
-	-webkit-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
-	-moz-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
-	-ms-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
-	transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+	-webkit-transform: translate3d( 0, 0, -30px ) rotateX( 90deg );
+	-moz-transform: translate3d( 0, 0, -30px ) rotateX( 90deg );
+	-ms-transform: translate3d( 0, 0, -30px ) rotateX( 90deg );
+	transform: translate3d( 0, 0, -30px ) rotateX( 90deg );
 }
 #explanation h2.explain + p.explain {
 	list-style-type: square !important;
 }
 #explanation h2.explain + p.explain .rotate {
 	color: #424242 !important;
-	margin: 0px;
+	margin: 0;
 }
 #explanation .rotate span::after, #explanation .rotate:hover span {
 	color: #FFFFFF;
@@ -2645,7 +2634,7 @@ body.embed header, body.embed footer {
 }
 body.embed #page_section {
 	width: 100%;
-	margin: 0px auto;
+	margin: 0 auto;
 	-ms-box-shadow: none;
 	-o-box-shadow: none;
 	-moz-box-shadow: none;
@@ -2719,8 +2708,8 @@ body:lang(ja) #rhythms_table {
 }
 #trace {
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     width: 498px;
     height: 498px;
     border: 1px solid red;
@@ -2774,7 +2763,7 @@ img.ball {
 	margin-top: 10px;
 	text-align: center;
 	font-size: 30px;
-	padding: 10px 0px;
+	padding: 10px 0;
 }
 .block {
     width: 100px;
@@ -2801,7 +2790,7 @@ img.ball {
 		bottom: 4px;
 	}
 	#lang_bar .lang_toggle.button {
-		left: 0px;
+		left: 0;
 	}
 }
 @media all and (max-width: 419px) {
@@ -2812,7 +2801,7 @@ img.ball {
 	.top.button.donate, .top.button.sponsor {display: none;}
 	#proverb {
 		top: -102px;
-		right: 0px;
+		right: 0;
 		width: calc(100% - 286px);
 		width: -webkit-calc(100% - 286px);
 		width: -moz-calc(100% - 286px);
@@ -2971,15 +2960,15 @@ img.ball {
 @media all and (max-width: 959px) {
 	body {
 		background-image: url('images/clock_mobile.png');
-		margin: 0px auto;
+		margin: 0 auto;
 	}
 	body.birthday {
 		background-image: url('images/gifts_mobile.png');
-		margin: 0px auto;
+		margin: 0 auto;
 	}
 	#page_section {
 		width: 100%;
-		margin: 0px auto;
+		margin: 0 auto;
 		-ms-box-shadow: none;
 		-o-box-shadow: none;
 		-moz-box-shadow: none;
@@ -3003,19 +2992,19 @@ img.ball {
 		height: 14px;
 	}
 	a#logo > i {
-		margin: 0px;
+		margin: 0;
 		width: 14px;
 		height: 14px;
 		background-position: -27px -10px !important;
 	}
 	header h1 {
 		position: relative;
-		top: 0px;
-		left: 0px;
+		top: 0;
+		left: 0;
 		font-size: 18px;
 		padding: 12px 8px 12px 48px;
 		text-align: left;
-		margin: 0px 0px 9px;
+		margin: 0 0 9px;
 		line-height: 24px;
 		background-color: #4488EE;
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#88AAFF',endColorstr='#4488EE',GradientType=0)";
@@ -3078,23 +3067,18 @@ img.ball {
 	body:lang(vi) header:hover ul#nav_buttons > li > a.nav_button.button, body:lang(vi) ul#nav_buttons:hover > li > a.nav_button.button, header:hover ul#nav_buttons > li > a#blog_link, ul#nav_buttons:hover > li > a#blog_link, header:hover ul#nav_buttons > li > a#forum_link, ul#nav_buttons:hover > li > a#forum_link {
 		display: block !important;
 	}
+	ul#nav_buttons {
+		margin-left: 45px;
+	}
 	ul#nav_buttons > li {
 		float: none;
 	}
 	ul#nav_buttons > li > a.nav_button.button {
-		border-radius: 16px;
-		-webkit-border-radius: 16px;
-		-moz-border-radius: 16px;
-		-o-border-radius: 16px;
 		padding: 4px 8px;
 		line-height: 24px;
-		top: 42px;
-		margin: 0px;
+		top: 45px;
+		margin: 0;
 		font-size: 12px;
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=84)";
-		-moz-opacity: 0.84;
-		-khtml-opacity: 0.84;
-		opacity: 0.84;
 		width: 120px;
 		text-align: center;
 	}
@@ -3106,16 +3090,16 @@ img.ball {
 		box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);
 	}
 	#logo:hover, .nav_button.button:hover {
-		-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0px 0px 0 rgba(0,0,0,.77) inset;
-		-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0px 0px 0 rgba(0,0,0,.77) inset;
-		-khtml-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0px 0px 0 rgba(0,0,0,.77) inset;
-		box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0px 0px 0 rgba(0,0,0,.77) inset;
+		-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
+		-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
+		-khtml-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
+		box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 	}
 	#logo:active, .nav_button.button:active, body.bmi .nav_button.button.bmi, body.lunar .nav_button.button.lunar, body.game .nav_button.button.game {
-		-moz-box-shadow: 0 0px 0px 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
-		-webkit-box-shadow: 0 0px 0px 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
-		-khtml-box-shadow: 0 0px 0px 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
-		box-shadow: 0 0px 0px 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
+		-moz-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;
+		-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;
+		-khtml-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;
+		box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;
 	}
 	body.birthday #logo, body.birthday .nav_button.button {
 		-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);
@@ -3124,16 +3108,16 @@ img.ball {
 		box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);
 	}
 	body.birthday #logo:hover, body.birthday .nav_button.button:hover {
-		-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0px 0px 0 rgba(227,86,4,.77) inset;
-		-webkit-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0px 0px 0 rgba(227,86,4,.77) inset;
-		-khtml-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0px 0px 0 rgba(227,86,4,.77) inset;
-		box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0px 0px 0 rgba(227,86,4,.77) inset;
+		-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+		-webkit-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+		-khtml-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+		box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	}
 	body.birthday #logo:active, body.birthday .nav_button.button:active, body.birthday.bmi .nav_button.button.bmi, body.birthday.lunar .nav_button.button.lunar, body.birthday.game .nav_button.button.game {
-		-moz-box-shadow: 0 0px 0px 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
-		-webkit-box-shadow: 0 0px 0px 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
-		-khtml-box-shadow: 0 0px 0px 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
-		box-shadow: 0 0px 0px 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
+		-moz-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;
+		-webkit-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;
+		-khtml-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;
+		box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;
 	}
 	.lang_toggle.button > span.lang {
 		display: none;
@@ -3142,14 +3126,14 @@ img.ball {
 	body main {
 		width: 100%;
 		background: none;
-		margin: 0px auto;
+		margin: 0 auto;
 		padding-bottom: 50px;
-		min-height: 0px;
+		min-height: 0;
 	}
-	body.embed main {padding-bottom: 0px}
+	body.embed main {padding-bottom: 0}
 	body #content {
-		padding: 0px;
-		min-height: 0px;
+		padding: 0;
+		min-height: 0;
 	}
 	#explanation_chart_results {display: block}
 	#explanation, footer, #uvTabLabel, .share42init, #fb_holder {display: none}
