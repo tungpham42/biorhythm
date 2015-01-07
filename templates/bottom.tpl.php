@@ -9,5 +9,6 @@ if ($show_donate) {
 if ($show_sponsor) {
 	include $template_path.'sponsor_bottom.tpl.php';
 }
+include $template_path.'voltrank.tpl.php';
 include $template_path.'install_app.tpl.php';
 ?>
