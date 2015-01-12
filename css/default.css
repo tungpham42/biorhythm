@@ -3061,7 +3061,7 @@ img.ball {
 		width: 42px;
 		height: 100%;
 	}
-	ul#nav_buttons > li > a.nav_button.button {
+	ul#nav_buttons > li > a.nav_button.button, body.home header:hover ul#nav_buttons > li > a.nav_button.button.home {
 		display: none !important;
 	}
 	body:lang(vi) header:hover ul#nav_buttons > li > a.nav_button.button, body:lang(vi) ul#nav_buttons:hover > li > a.nav_button.button, header:hover ul#nav_buttons > li > a#blog_link, ul#nav_buttons:hover > li > a#blog_link, header:hover ul#nav_buttons > li > a#forum_link, ul#nav_buttons:hover > li > a#forum_link {

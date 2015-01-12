@@ -11,7 +11,7 @@
 <meta property="og:description" content="<?php echo $head_description; ?>">
 <meta property="og:image" content="<?php echo 'http://nhipsinhhoc.vn/img/img_desc_'.((has_dob() && is_birthday()) ? 'birthday': 'logo').'.png'; ?>">
 <meta name="p:domain_verify" content="b30465bfdebc3906bbca8efaeda20ddf"/>
-<link rel="stylesheet" href="/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,bootstrap.css,m-styles.css,default.css,ui-blue/jquery-ui.css,nprogress.css&amp;387" />
+<link rel="stylesheet" href="/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,bootstrap.css,m-styles.css,default.css,ui-blue/jquery-ui.css,nprogress.css&amp;390" />
 <link rel="stylesheet" href="/min/f=css/print.css" media="print" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" href="/app-icons/apple-touch-icon-iphone.png">
