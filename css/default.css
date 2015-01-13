@@ -298,6 +298,24 @@ body.birthday #proverb blockquote {
 body.birthday #proverb blockquote a {
 	color: #FFD700;
 }
+body.birthday #proverb span.arrow_down::after {
+	-moz-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
+	-webkit-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
+	-khtml-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
+	box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
+}
+body.birthday #proverb p#proverb_author {
+	text-shadow: 2px 2px 4px rgba(227,86,4,.33);
+}
+body.birthday #proverb blockquote:hover ~ span.arrow_down::after {
+	-moz-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
+	-webkit-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
+	-khtml-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
+	box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
+}
+body.birthday #proverb blockquote:hover ~ p.proverb_author {
+	text-shadow: 2px 2px 4px rgba(227,86,4,.77);
+}
 
 /* Links */
 a:hover {
@@ -1184,6 +1202,24 @@ body.birthday .lang_toggle.button:active, body.birthday .nav_button.button:activ
 		#FFF740 100%
 		);
 	color: #E35604;
+}
+body.birthday #dob_form, body.birthday #info, body.birthday #controls, body.birthday #lunar, body.birthday #wiki, body.birthday #main_chart, body.birthday #explanation_chart, body.birthday .adsense, body.birthday #logo, body.birthday #ui-datepicker-div, body.birthday #proverb blockquote {
+	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
+	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
+	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
+	box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
+}
+body.birthday #dob_form:hover, body.birthday #info:hover, body.birthday #controls:hover, body.birthday #lunar:hover, body.birthday #wiki:hover, body.birthday #main_chart:hover, body.birthday #explanation_chart:hover, body.birthday .adsense:hover, body.birthday #ui-datepicker-div:hover, body.birthday #proverb blockquote:hover, body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover, body.birthday a.button.clicked:hover, body.birthday .m-btn:hover, body.birthday input.m-wrap:hover, body.birthday .m-btn.highlight, body.birthday input.m-wrap.highlight, body.birthday .ln-letters > a:hover {
+	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+	box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+}
+body.birthday input[type="submit"]:active, body.birthday input[type="reset"]:active, body.birthday input[type="button"]:active, body.birthday input.button:active, body.birthday button:active, body.birthday a.button:active, body.birthday input[type="submit"].clicked, body.birthday input[type="reset"].clicked, body.birthday input[type="button"].clicked, body.birthday input.button.clicked, body.birthday button.clicked, body.birthday a.button.clicked, body.birthday input[type="submit"].clicked:hover, body.birthday input[type="reset"].clicked:hover, body.birthday input[type="button"].clicked:hover, body.birthday input.button.clicked:hover, body.birthday button.clicked:hover, body.birthday a.button.clicked:hover, body.birthday .m-btn:active, body.birthday input.m-wrap:active, body.birthday .m-btn.clicked, body.birthday input.m-wrap.clicked, body.birthday .ln-letters > a:active, body.birthday .ln-letters > a.ln-selected {
+	-moz-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
+	-webkit-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
+	-khtml-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
+	box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
 }
 body.birthday #logo, body.birthday .nav_button.button {
 	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
@@ -2146,6 +2182,9 @@ ul.dates > li > a {
 #birthdates .m-btn, .dates-box .m-btn, .ln-letters a, #explain_source, #explain_source + .m-btn {
 	background: transparent;
 }
+body.birthday #birthdates .m-btn:hover, body.birthday .dates-box .m-btn:hover, body.birthday .ln-letters a:hover, body.birthday #explain_source:hover, body.birthday #explain_source + .m-btn:hover, body.birthday #birthdates .m-btn:active, body.birthday .dates-box .m-btn:active, body.birthday .ln-letters a:active, body.birthday #explain_source:active, body.birthday #explain_source + .m-btn:active {
+	color: #E35604;
+}
 #birthdates .m-btn:hover, .dates-box .m-btn:hover, .ln-letters a:hover, #explain_source:hover, #explain_source + .m-btn:hover, #birthdates .m-btn:active, .dates-box .m-btn:active, .ln-letters a:active, #explain_source:active, #explain_source + .m-btn:active, .ln-letters a.ln-selected {
 	background: rgba(250,250,250,0.25);
 }
@@ -3036,6 +3075,16 @@ img.ball {
 		background-image: -webkit-linear-gradient(top, #FFF740 0%, #FFD700 100%);
 		background-image: linear-gradient(to bottom, #FFF740 0%, #FFD700 100%);
 		color: #E35604;
+		-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
+		-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
+		-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
+		box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
+	}
+	body.birthday header h1:hover {
+		-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77);
+		-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77);
+		-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77);
+		box-shadow: 0 3px 6px 1px rgba(227,86,4,.77);
 	}
 	#search_wrapper {
 		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=63)";
