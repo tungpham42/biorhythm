@@ -142,181 +142,6 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 	-webkit-transition: none !important;
 	 transition: none !important;
 }
-/* Proverb */
-#proverb {
-	position: relative;
-	float: right;
-	top: 0;
-	right: 10px;
-	width: 600px;
-}
-#proverb, #proverb *, #proverb blockquote, #proverb span.arrow_down, #proverb span.arrow_down::after, #proverb p#proverb_author {
-	transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
-	-webkit-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
-	-moz-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
-	-o-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
-	-ms-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
-}
-#proverb blockquote {
-	display: block;
-	background: #fff;
-	width: auto;
-	padding: 25px;
-	margin: 10px 4px;
-	position: relative;
-	font-size: 20px;
-	font-style: italic;
-	line-height: 1.2;
-	color: #666;
-	text-align: left;
-	border-left: 25px solid;
-	border-right: 15px solid;
-	border-color: #4488ee;
-	-webkit-border-image: -webkit-gradient(linear, 0 0, 0 100%, from(#88AAFF), to(#4488EE)) 1 100%;
-    -webkit-border-image: -webkit-linear-gradient(#88AAFF, #4488EE) 1 100%;
-    -moz-border-image: -moz-linear-gradient(#88AAFF, #4488EE) 1 100%;
-    -o-border-image: -o-linear-gradient(#88AAFF, #4488EE) 1 100%;
-    border-image: linear-gradient(to bottom, #88AAFF, #4488EE) 1 100%;
-}
-#proverb blockquote::before, blockquote::after {
-	font-size: 30px;
-	font-weight: bold;
-	color: #999;
-	position: absolute;
-}
-#proverb blockquote::before {
-	content: "\201C";
-	left: 10px;
-	top: 6px;
-}
-#proverb blockquote::after {
-	content: "\201D";
-	right: 10px;
-	bottom: -7px;
-}
-#proverb blockquote a {
-	text-decoration: none;
-	background: #e9eaed;
-	cursor: pointer;
-	padding: 0 3px;
-	color: #4488ee;
-}
-body.birthday #proverb blockquote a {
-	background: transparent;
-}
-#proverb blockquote a:hover {
-	color: #666;
-}
-#proverb blockquote em {
-	font-style: italic;
-}
-#proverb span.arrow_down {
-	position: relative;
-	left: 0;
-	top: 0;
-	width: 28px;
-	height: 28px;
-	overflow: hidden;
-}
-#proverb span.arrow_down::after {
-	content: '';
-	position: relative;
-	left: 84px;
-	top: -26px;
-	display: block;
-	width: 28px;
-	height: 28px;
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	transform: rotate(45deg);
-	background-color: #fff;
-	-moz-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
-	-webkit-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
-	-khtml-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
-	box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
-}
-#proverb p#proverb_author {
-	font-size: 14px;
-	position: relative;
-	top: -26px;
-	left: 72px;
-	width: calc(100% - 84px);
-	width: -webkit-calc(100% - 84px);
-	width: -moz-calc(100% - 84px);
-	color: #333;
-	text-shadow: 2px 2px 4px rgba(0,0,0,.33);
-}
-#proverb i#proverb_refresh {
-	position: absolute;
-	top: 10px;
-	left: -20px;
-	z-index: 42;
-	cursor: pointer;
-	transform: rotate(0deg);
-	-webkit-transform: rotate(0deg);
-	-ms-transform: rotate(0deg);
-}
-#proverb i#proverb_refresh:hover {
-	-webkit-animation: rotate_refresh 1.8s linear 0s infinite;
-	animation: rotate_refresh 1.8s linear 0s infinite;
-}
-@-webkit-keyframes rotate_refresh {
-    0% {
-    	-webkit-transform: rotate(0deg);
-    }
-    100% {
-    	-webkit-transform: rotate(360deg);
-    }
-}
-@keyframes rotate_refresh {
-    0% {
-    	transform: rotate(0deg);
-    }
-    100% {
-    	transform: rotate(360deg);
-    }
-}
-#proverb blockquote:hover ~ span.arrow_down::after {
-	-moz-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
-	-webkit-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
-	-khtml-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
-	box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
-}
-#proverb blockquote:hover ~ p.proverb_author {
-	text-shadow: 2px 2px 4px rgba(0,0,0,.77);
-}
-body.birthday #proverb blockquote {
-	border-color: #FFD700;
-	-webkit-border-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF740), to(#FFD700)) 1 100%;
-    -webkit-border-image: -webkit-linear-gradient(#FFF740, #FFD700) 1 100%;
-    -moz-border-image: -moz-linear-gradient(#FFF740, #FFD700) 1 100%;
-    -o-border-image: -o-linear-gradient(#FFF740, #FFD700) 1 100%;
-    border-image: linear-gradient(to bottom, #FFF740, #FFD700) 1 100%;
-}
-body.birthday #proverb blockquote a {
-	color: #FFD700;
-}
-body.birthday #proverb span.arrow_down::after {
-	-moz-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
-	-webkit-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
-	-khtml-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
-	box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
-}
-body.birthday #proverb p#proverb_author {
-	text-shadow: 2px 2px 4px rgba(227,86,4,.33);
-}
-body.birthday #proverb blockquote:hover ~ span.arrow_down::after {
-	-moz-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
-	-webkit-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
-	-khtml-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
-	box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
-}
-body.birthday #proverb blockquote:hover ~ p.proverb_author {
-	text-shadow: 2px 2px 4px rgba(227,86,4,.77);
-}
-
 /* Links */
 a:hover {
 	text-decoration: underline;
@@ -599,6 +424,13 @@ span.counter {
 	-moz-box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
 	-webkit-box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
 	box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
+}
+body.birthday #page_section {
+	-ms-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
+	-o-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
+	-moz-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
+	-webkit-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
+	box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
 }
 #toolbar {
 	border: 0;
@@ -1315,6 +1147,181 @@ body.birthday #ui-datepicker-div .ui-datepicker-next.ui-state-disabled, body.bir
 #topmenu ul > li > a:hover {
 	text-decoration: underline;
 }
+/* Proverb */
+#proverb {
+	position: relative;
+	float: right;
+	top: 0;
+	right: 10px;
+	width: 600px;
+}
+#proverb, #proverb *, #proverb blockquote, #proverb span.arrow_down, #proverb span.arrow_down::after, #proverb p#proverb_author {
+	transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
+	-webkit-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
+	-moz-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
+	-o-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
+	-ms-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
+}
+#proverb blockquote {
+	display: block;
+	background: #fff;
+	width: auto;
+	padding: 25px;
+	margin: 10px 4px;
+	position: relative;
+	font-size: 20px;
+	font-style: italic;
+	line-height: 1.2;
+	color: #666;
+	text-align: left;
+	border-left: 25px solid;
+	border-right: 15px solid;
+	border-color: #4488ee;
+	-webkit-border-image: -webkit-gradient(linear, 0 0, 0 100%, from(#88AAFF), to(#4488EE)) 1 100%;
+    -webkit-border-image: -webkit-linear-gradient(#88AAFF, #4488EE) 1 100%;
+    -moz-border-image: -moz-linear-gradient(#88AAFF, #4488EE) 1 100%;
+    -o-border-image: -o-linear-gradient(#88AAFF, #4488EE) 1 100%;
+    border-image: linear-gradient(to bottom, #88AAFF, #4488EE) 1 100%;
+}
+#proverb blockquote::before, blockquote::after {
+	font-size: 30px;
+	font-weight: bold;
+	color: #999;
+	position: absolute;
+}
+#proverb blockquote::before {
+	content: "\201C";
+	left: 10px;
+	top: 6px;
+}
+#proverb blockquote::after {
+	content: "\201D";
+	right: 10px;
+	bottom: -7px;
+}
+#proverb blockquote a {
+	text-decoration: none;
+	background: #e9eaed;
+	cursor: pointer;
+	padding: 0 3px;
+	color: #4488ee;
+}
+body.birthday #proverb blockquote a {
+	background: transparent;
+}
+#proverb blockquote a:hover {
+	color: #666;
+}
+#proverb blockquote em {
+	font-style: italic;
+}
+#proverb span.arrow_down {
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 28px;
+	height: 28px;
+	overflow: hidden;
+}
+#proverb span.arrow_down::after {
+	content: '';
+	position: relative;
+	left: 84px;
+	top: -26px;
+	display: block;
+	width: 28px;
+	height: 28px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	background-color: #fff;
+	-moz-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
+	-webkit-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
+	-khtml-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
+	box-shadow: 3px 3px 3px 0 rgba(0,0,0,.33);
+}
+#proverb p#proverb_author {
+	font-size: 14px;
+	position: relative;
+	top: -26px;
+	left: 72px;
+	width: calc(100% - 84px);
+	width: -webkit-calc(100% - 84px);
+	width: -moz-calc(100% - 84px);
+	color: #333;
+	text-shadow: 2px 2px 4px rgba(0,0,0,.33);
+}
+#proverb i#proverb_refresh {
+	position: absolute;
+	top: 10px;
+	left: -20px;
+	z-index: 42;
+	cursor: pointer;
+	transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+}
+#proverb i#proverb_refresh:hover {
+	-webkit-animation: rotate_refresh 1.8s linear 0s infinite;
+	animation: rotate_refresh 1.8s linear 0s infinite;
+}
+@-webkit-keyframes rotate_refresh {
+    0% {
+    	-webkit-transform: rotate(0deg);
+    }
+    100% {
+    	-webkit-transform: rotate(360deg);
+    }
+}
+@keyframes rotate_refresh {
+    0% {
+    	transform: rotate(0deg);
+    }
+    100% {
+    	transform: rotate(360deg);
+    }
+}
+#proverb blockquote:hover ~ span.arrow_down::after {
+	-moz-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
+	-webkit-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
+	-khtml-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
+	box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
+}
+#proverb blockquote:hover ~ p.proverb_author {
+	text-shadow: 2px 2px 4px rgba(0,0,0,.77);
+}
+body.birthday #proverb blockquote {
+	border-color: #FFD700;
+	-webkit-border-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF740), to(#FFD700)) 1 100%;
+    -webkit-border-image: -webkit-linear-gradient(#FFF740, #FFD700) 1 100%;
+    -moz-border-image: -moz-linear-gradient(#FFF740, #FFD700) 1 100%;
+    -o-border-image: -o-linear-gradient(#FFF740, #FFD700) 1 100%;
+    border-image: linear-gradient(to bottom, #FFF740, #FFD700) 1 100%;
+}
+body.birthday #proverb blockquote a {
+	color: #FFD700;
+}
+body.birthday #proverb span.arrow_down::after {
+	-moz-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
+	-webkit-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
+	-khtml-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
+	box-shadow: 3px 3px 3px 0 rgba(227,86,4,.33);
+}
+body.birthday #proverb p#proverb_author {
+	text-shadow: 2px 2px 4px rgba(227,86,4,.33);
+}
+body.birthday #proverb blockquote:hover ~ span.arrow_down::after {
+	-moz-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
+	-webkit-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
+	-khtml-box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
+	box-shadow: 3px 3px 3px 0 rgba(227,86,4,.77);
+}
+body.birthday #proverb blockquote:hover ~ p.proverb_author {
+	text-shadow: 2px 2px 4px rgba(227,86,4,.77);
+}
+
 /* Main */
 main {
 	position: relative;
