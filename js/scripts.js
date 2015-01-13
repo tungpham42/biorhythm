@@ -549,7 +549,7 @@ function generatePlotLines(todayIndex) {
 			zIndex: 1
 		});
 	}
-	if (todayIndex >= 0 && todayIndex <= 28) {
+	if (todayIndex >= 0 && todayIndex <= 28 && todayIndex != '') {
 		plotLinesArray.push({
 			color: '#c0e0c0',
 			width: 2,
