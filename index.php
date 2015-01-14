@@ -12,6 +12,9 @@ include $template_path.'head.tpl.php';
 </head>
 <body lang="<?php echo init_lang_code(); ?>" class="<?php echo $body_class; ?>">
 <?php
+if (!isset($_GET['p']) || $_GET['p'] == 'home'):
+	include $template_path.'sitelinks_searchbox.tpl.php';
+endif;
 include $template_path.'img_desc.tpl.php';
 include $template_path.'clicktale_top.tpl.php';
 if (isset($_SESSION['loggedin'])):
