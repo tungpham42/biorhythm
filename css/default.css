@@ -2735,6 +2735,9 @@ body:lang(ja) #rhythms_table {
 .rhythm_hover > td.rhythm_label > span {
 	text-decoration: underline;
 }
+#comments, #comments > iframe, #___comments_0, #___comments_0 > iframe {
+	width: 100% !important;
+}
 /* Ping Pong */
 #board {
     width: 500px;
