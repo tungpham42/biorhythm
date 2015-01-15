@@ -94,9 +94,5 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 } else {
 	echo 'Page not found';
 }
-if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)) {
-	if (!is_birthday() && $show_ad) {
-		include $template_path.'bottom.tpl.php';
-	}
-}
+include $template_path.'bottom.tpl.php';
 ?>
