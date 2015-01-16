@@ -776,10 +776,10 @@ function birthday_title() {
 	global $lang_code;
 	global $fullname;
 	switch ($lang_code) {
-		case 'vi': return 'Chúc mừng sinh nhật '.(($fullname != '') ? $fullname: ''); break;
-		case 'en': return 'Happy birthday '.(($fullname != '') ? $fullname: ''); break;
-		case 'ru': return 'Днем Рождения '.(($fullname != '') ? $fullname: ''); break;
-		case 'es': return 'Feliz cumpleaños '.(($fullname != '') ? $fullname: ''); break;
+		case 'vi': return 'Chúc mừng sinh nhật'.(($fullname != '') ? ' '.$fullname: ''); break;
+		case 'en': return 'Happy birthday'.(($fullname != '') ? ' '.$fullname: ''); break;
+		case 'ru': return 'Днем Рождения'.(($fullname != '') ? ' '.$fullname: ''); break;
+		case 'es': return 'Feliz cumpleaños'.(($fullname != '') ? ' '.$fullname: ''); break;
 		case 'zh': return '生日快乐'.(($fullname != '') ? $fullname: ''); break;
 		case 'ja': return 'お誕生日おめでとうございます'.(($fullname != '') ? $fullname: ''); break;
 	}
