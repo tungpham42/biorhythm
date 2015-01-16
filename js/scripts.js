@@ -210,6 +210,31 @@ function updateHeadTitle(langCode) {
 		}
 	});
 }
+function updateHeadTitleBirthday(langCode,time) {
+	ajaxData = {
+		lang: langCode,
+		time: time
+	}
+	if (isset(q)) {
+		ajaxData.q = q;
+	}
+	if (isset(dob)) {
+		ajaxData.dob = dob;
+	}
+	if (isset(fullname)) {
+		ajaxData.fullname = fullname;
+	}
+	$.ajax({
+		url: '/triggers/head_title_birthday.php',
+		type: 'GET',
+		cache: false,
+		data: ajaxData,
+		dataType: 'html',
+		success: function(data) {
+			$('head > title').html(data);
+		}
+	});
+}
 function updateHeadingH1(langCode) {
 	ajaxData = {
 		lang: langCode
@@ -275,6 +300,31 @@ function updateHeadDescription(langCode) {
 	}
 	$.ajax({
 		url: '/triggers/head_description.php',
+		type: 'GET',
+		cache: false,
+		data: ajaxData,
+		dataType: 'html',
+		success: function(data) {
+			$('head > meta[name="description"]').attr('content', data);
+		}
+	});
+}
+function updateHeadDescriptionBirthday(langCode,time) {
+	ajaxData = {
+		lang: langCode,
+		time: time
+	}
+	if (isset(q)) {
+		ajaxData.q = q;
+	}
+	if (isset(dob)) {
+		ajaxData.dob = dob;
+	}
+	if (isset(fullname)) {
+		ajaxData.fullname = fullname;
+	}
+	$.ajax({
+		url: '/triggers/head_description_birthday.php',
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
@@ -383,6 +433,8 @@ function loadResults(dob,diff,isSecondary,dtChange,langCode) {
 			success: function(data) {
 				$('#results').html(data);
 				if ($('body').hasClass('has_dob')) {
+					updateHeadTitleBirthday(langCode,dtChange);
+					updateHeadDescriptionBirthday(langCode,dtChange);
 					updateHeadingH1Birthday(langCode,dtChange);
 				}
 			}

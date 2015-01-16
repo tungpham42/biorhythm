@@ -177,12 +177,12 @@ function manipulateBirthday() {
 	if ($('body').hasClass('birthday')) {
 		$("#logo > i").removeClass("m-icon-white").addClass("m-icon-orange");
 		$("i#proverb_refresh, li.rhythm > i, #embed_toggle > i").removeClass("icon-white").addClass("icon-orange");
-		$("#home_page, #dob_erase, #prev, #next").removeClass("blue").addClass("red");
+		$("#home_page, #dob_erase, #prev, #next").removeClass("blue").addClass("orange");
 		$('h1#heading').burn();
 	} else if (!$('body').hasClass('birthday')) {
 		$("#logo > i").removeClass("m-icon-orange").addClass("m-icon-white");
 		$("i#proverb_refresh, li.rhythm > i, #embed_toggle > i").removeClass("icon-orange").addClass("icon-white");
-		$("#home_page, #dob_erase, #prev, #next").removeClass("red").addClass("blue");
+		$("#home_page, #dob_erase, #prev, #next").removeClass("orange").addClass("blue");
 		$('h1#heading').burn(false);
 	}
 }
