@@ -12,6 +12,5 @@ $(document).ready(function() {
 	}).ajaxStop(function() {
 		NProgress.done();
 		$('#loading').fadeOut(42);
-		manipulateBirthday();
 	});
 });
