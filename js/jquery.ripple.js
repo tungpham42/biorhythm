@@ -2,8 +2,8 @@
 (function($){
 	$.fn.ripple = function (options) {
 		var settings = $.extend({
-			speed : 333,					// ms
-			alpha : 0.333,
+			speed : 620,					// ms
+			alpha : 0.26,
 			transitionEnd : function(){}	// callback when transition ends.
 		}, options);
 

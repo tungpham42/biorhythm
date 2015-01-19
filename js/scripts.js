@@ -433,6 +433,7 @@ function loadResults(dob,diff,isSecondary,dtChange,langCode) {
 			success: function(data) {
 				$('#results').html(data);
 				if ($('body').hasClass('has_dob')) {
+					manipulateBirthday();
 					updateHeadTitleBirthday(langCode,dtChange);
 					updateHeadDescriptionBirthday(langCode,dtChange);
 					updateHeadingH1Birthday(langCode,dtChange);
@@ -493,6 +494,9 @@ function loadProverb(langCode) {
 			dataType: 'html',
 			success: function(data) {
 				$('#proverb').html(data);
+				if ($('body').hasClass('has_dob')) {
+					manipulateBirthday();
+				}
 			}
 		});
 	}
