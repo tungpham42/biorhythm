@@ -3,6 +3,7 @@ if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
 ?>
 <script>
 $(document).ready(function(){
+	manipulateBirthday();
 	manipulateHeader();
 	manipulateDobForm();
 	manipulateProverb();
