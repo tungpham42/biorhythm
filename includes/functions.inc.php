@@ -996,7 +996,8 @@ function render_country_json() {
 }
 /* ass */
 function credential($type) {
-	$credential = load_credential(3);
+	global $credential_id;
+	$credential = load_credential($credential_id);
 	switch($type) {
 		case 0;
 			return $credential['user'];
