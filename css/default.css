@@ -368,7 +368,7 @@ input[disabled=disabled],input.button.disabled,a.button.disabled,input[disabled=
 	opacity: 0.69;
 	cursor: not-allowed;
 }
-.m-btn-group:hover > a.m-btn {
+.m-btn-group:hover > a.m-btn, ul#nav_buttons:hover > li > a.nav_button.button, #lang_bar:hover > a.lang_toggle:not(.first) {
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=69)";
 	filter: alpha(opacity=69);
 	-moz-opacity: 0.69;
@@ -376,7 +376,7 @@ input[disabled=disabled],input.button.disabled,a.button.disabled,input[disabled=
 	opacity: 0.69;
 	text-shadow: 0 0 10px #ffffff;
 }
-.m-btn-group > a.m-btn:hover {
+.m-btn-group > a.m-btn:hover, ul#nav_buttons > li > a.nav_button.button:hover, #lang_bar > a.lang_toggle:not(.first):hover {
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	filter: alpha(opacity=100);
 	-moz-opacity: 1;
