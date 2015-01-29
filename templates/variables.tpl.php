@@ -1,0 +1,1 @@
+<span id="variables" data-fullname="<?php echo $fullname; ?>" data-dob="<?php echo $dob; ?>" data-q="<?php echo $q; ?>"></span>

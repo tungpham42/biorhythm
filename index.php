@@ -1,6 +1,7 @@
 <?php
 $basepath = realpath($_SERVER['DOCUMENT_ROOT']);
 $template_path = $basepath.'/templates/';
+require_once $basepath.'/includes/redirect.inc.php';
 require_once $basepath.'/includes/init.inc.php';
 ?>
 <!DOCTYPE html>
@@ -12,6 +13,7 @@ include $template_path.'head.tpl.php';
 </head>
 <body lang="<?php echo init_lang_code(); ?>" class="<?php echo $body_class; ?>">
 <?php
+include $template_path.'variables.tpl.php';
 if (!isset($_GET['p']) || $_GET['p'] == 'home'):
 	include $template_path.'sitelinks_searchbox.tpl.php';
 endif;

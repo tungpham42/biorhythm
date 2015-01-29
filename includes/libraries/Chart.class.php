@@ -344,31 +344,31 @@ $(document).ready(function(){
 	});
 	setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 	renderChart("#explanation_chart","∞ '.$this->_explanation_title_text.' ∞","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"1","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"explanation");
-});
-$("#lang_bar").on("click", "#vi_toggle", function(){
-	if (!$(this).hasClass("disabled")) {
-		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","vi");
-	}
-}).on("click", "#en_toggle", function(){
-	if (!$(this).hasClass("disabled")) {
-		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","en");
-	}
-}).on("click", "#ru_toggle", function(){
-	if (!$(this).hasClass("disabled")) {
-		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","ru");
-	}
-}).on("click", "#es_toggle", function(){
-	if (!$(this).hasClass("disabled")) {
-		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","es");
-	}
-}).on("click", "#zh_toggle", function(){
-	if (!$(this).hasClass("disabled")) {
-		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","zh");
-	}
-}).on("click", "#ja_toggle", function(){
-	if (!$(this).hasClass("disabled")) {
-		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","ja");
-	}
+	$("#lang_bar").on("click", "#vi_toggle", function(){
+		if (!$(this).hasClass("disabled")) {
+			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","vi");
+		}
+	}).on("click", "#en_toggle", function(){
+		if (!$(this).hasClass("disabled")) {
+			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","en");
+		}
+	}).on("click", "#ru_toggle", function(){
+		if (!$(this).hasClass("disabled")) {
+			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","ru");
+		}
+	}).on("click", "#es_toggle", function(){
+		if (!$(this).hasClass("disabled")) {
+			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","es");
+		}
+	}).on("click", "#zh_toggle", function(){
+		if (!$(this).hasClass("disabled")) {
+			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","zh");
+		}
+	}).on("click", "#ja_toggle", function(){
+		if (!$(this).hasClass("disabled")) {
+			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","ja");
+		}
+	});
 });
 </script>
 		';

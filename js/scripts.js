@@ -102,13 +102,13 @@ function dateDiff(start, end) {
 function isDate(txtDate)
 {
     var currVal = txtDate;
-    if (currVal == '')
+    if (currVal === '')
         return false;
 
     var rxDatePattern = /^(\d{4})(-)(\d{1,2})(-)(\d{1,2})$/; //Declare Regex
     var dtArray = currVal.match(rxDatePattern); // is format OK?
 
-    if (dtArray == null) 
+    if (dtArray === null) 
         return false;
 
     dtMonth = dtArray[3];
@@ -121,9 +121,9 @@ function isDate(txtDate)
         return false;
     else if ((dtMonth==4 || dtMonth==6 || dtMonth==9 || dtMonth==11) && dtDay ==31) 
         return false;
-    else if (dtMonth == 2) 
+    else if (dtMonth === 2) 
     {
-        var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
+        var isleap = (dtYear % 4 === 0 && (dtYear % 100 != 0 || dtYear % 400 === 0));
         if (dtDay> 29 || (dtDay ==29 && !isleap)) 
 			return false;
     }
@@ -137,7 +137,7 @@ function dateFromISO(isostr) {
 	return new Date(parts[0], parts[1]-1, parts[2]);
 }
 function convertDate(inputFormat) {
-	var d = (typeof inputFormat == 'string') ? dateFromISO(inputFormat): new Date(inputFormat);
+	var d = (typeof inputFormat === 'string') ? dateFromISO(inputFormat): new Date(inputFormat);
 	return [d.getFullYear(), pad(d.getMonth()+1), pad(d.getDate())].join('-');
 }
 function maskInput(input, textbox, location, delimiter) {
@@ -158,9 +158,9 @@ function maskInput(input, textbox, location, delimiter) {
     textbox.val(input);
 }
 
-var q = decodeURIComponent(getUrlVars()['q']);
-var dob = decodeURIComponent(getUrlVars()['dob']);
-var fullname = replaceAll('+',' ',decodeURIComponent(getUrlVars()['fullname']));
+var q = (isset($('span#variables').attr('data-q')) && $('span#variables').attr('data-q') != '') ? $('span#variables').attr('data-q'): decodeURIComponent(getUrlVars()['q']);
+var dob = (isset($('span#variables').attr('data-dob')) && $('span#variables').attr('data-dob') != '') ? $('span#variables').attr('data-dob'): decodeURIComponent(getUrlVars()['dob']);
+var fullname = (isset($('span#variables').attr('data-fullname')) && $('span#variables').attr('data-fullname') != '') ? $('span#variables').attr('data-fullname'): replaceAll('+',' ',decodeURIComponent(getUrlVars()['fullname']));
 
 function disableInput(fieldName) {
 	$('#'+fieldName).on('keypress', function(e) {
@@ -173,15 +173,15 @@ function disableInput(fieldName) {
 }
 function disableHyphen(fieldName) {
 	$('#'+fieldName).on('keypress', function(e) {
-		if (e.which == 45) {
+		if (e.which === 45) {
 			return false;
 		}
 	}).on('keyup', function(e) {
-		if (e.which == 189 || e.which == 173 || e.which == 109) {
+		if (e.which === 189 || e.which === 173 || e.which === 109) {
 			return false;
 		}
 	}).on('keydown', function(e) {
-		if (e.which == 189 || e.which == 173 || e.which == 109) {
+		if (e.which === 189 || e.which === 173 || e.which === 109) {
 			return false;
 		}
 	});
@@ -206,7 +206,7 @@ function updateHeadTitle(langCode) {
 		data: ajaxData,
 		dataType: 'html',
 		success: function(data) {
-			$('head > title').html(data);
+			$('head').find('title').html(data);
 		}
 	});
 }
@@ -231,7 +231,7 @@ function updateHeadTitleBirthday(langCode,time) {
 		data: ajaxData,
 		dataType: 'html',
 		success: function(data) {
-			$('head > title').html(data);
+			$('head').find('title').html(data);
 		}
 	});
 }
@@ -305,7 +305,7 @@ function updateHeadDescription(langCode) {
 		data: ajaxData,
 		dataType: 'html',
 		success: function(data) {
-			$('head > meta[name="description"]').attr('content', data);
+			$('head').find('meta[name="description"]').attr('content', data);
 		}
 	});
 }
@@ -330,7 +330,7 @@ function updateHeadDescriptionBirthday(langCode,time) {
 		data: ajaxData,
 		dataType: 'html',
 		success: function(data) {
-			$('head > meta[name="description"]').attr('content', data);
+			$('head').find('meta[name="description"]').attr('content', data);
 		}
 	});
 }
@@ -533,27 +533,27 @@ function hideBirthdates() {
 }
 function toggleCookie(cookieName,objectSelector,toggleSelector,containerSelector) {
 	if (!isset($.cookie(cookieName))) {
-		if ($(objectSelector).css('display') == 'none' && !$(toggleSelector).hasClass('clicked')) {
+		if ($(objectSelector).css('display') === 'none' && !$(toggleSelector).hasClass('clicked')) {
 			$(toggleSelector).addClass('clicked');
 			$.cookie(cookieName, 'hide');
-		} else if ($(objectSelector).css('display') == 'block' && $(toggleSelector).hasClass('clicked')) {
+		} else if ($(objectSelector).css('display') === 'block' && $(toggleSelector).hasClass('clicked')) {
 			$(toggleSelector).removeClass('clicked');
 			$.cookie(cookieName, 'show');
 		}
 	}
-	if ($.cookie(cookieName) == 'show') {
+	if ($.cookie(cookieName) === 'show') {
 		$(objectSelector).css('display', 'block');
 		$(toggleSelector).addClass('clicked');
-	} else if ($.cookie(cookieName) == 'hide') {
+	} else if ($.cookie(cookieName) === 'hide') {
 		$(objectSelector).css('display', 'none');
 		$(toggleSelector).removeClass('clicked');
 	}
 	$(containerSelector).on('click', toggleSelector, function(){
-		if ($(objectSelector).css('display') == 'none' && !$(toggleSelector).hasClass('clicked')) {
+		if ($(objectSelector).css('display') === 'none' && !$(toggleSelector).hasClass('clicked')) {
 			$(objectSelector).css('display', 'block');
 			$(toggleSelector).addClass('clicked');
 			$.cookie(cookieName, 'show');
-		} else if ($(objectSelector).css('display') == 'block' && $(toggleSelector).hasClass('clicked')) {
+		} else if ($(objectSelector).css('display') === 'block' && $(toggleSelector).hasClass('clicked')) {
 			$(objectSelector).css('display', 'none');
 			$(toggleSelector).removeClass('clicked');
 			$.cookie(cookieName, 'hide');
@@ -571,9 +571,9 @@ function toggleRhythm(chartSelector,rhythmId,type) {
 			$.cookie(cookieName, 'show');
 		}
 	}
-	if ($.cookie(cookieName) == 'show') {
+	if ($.cookie(cookieName) === 'show') {
 		series.show();
-	} else if ($.cookie(cookieName) == 'hide') {
+	} else if ($.cookie(cookieName) === 'hide') {
 		series.hide();
 	}
 }
@@ -793,11 +793,11 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 						},
 						mouseOver: function() {
 							$('#rhythm_id_'+this.series.index).addClass('rhythm_hover');
-							$('#rhythm_id_'+this.series.index+' td.value > span').css('color',this.series.color);
+							$('#rhythm_id_'+this.series.index).find('td.value > span').css('color',this.series.color);
 						},
 						mouseOut: function() {
 							$('#rhythm_id_'+this.series.index).removeClass('rhythm_hover');
-							$('#rhythm_id_'+this.series.index+' td.value > span').css('color','black');
+							$('#rhythm_id_'+this.series.index).find('td.value > span').css('color','black');
 						}
 					}
 				}
@@ -805,7 +805,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 		},
 		series: seriesData
 	});
-	$('.highcharts-axis-labels text, .highcharts-axis-labels span').on('click',function(){
+	$('.highcharts-axis-labels').find('text, span').on('click',function(){
 		var labelText = this.textContent || this.innerText;
         var x = datesArray.indexOf(labelText);
         switch (type) {

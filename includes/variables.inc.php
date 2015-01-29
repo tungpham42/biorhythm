@@ -1,6 +1,6 @@
 <?php
-error_reporting(0);
-@ini_set('display_errors', 0);
+//error_reporting(0);
+//@ini_set('display_errors', 0);
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/geoipcity.inc.php';
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/timezone.php';
 $geoip = geoip_open(realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/GeoIPCity.dat',GEOIP_STANDARD);
@@ -241,6 +241,14 @@ $span_interfaces = array(
 		'es' => 'Correo electrónico',
 		'zh' => '电子邮件',
 		'ja' => '電子メール'
+	),
+	'blog' => array(
+		'vi' => 'Blog',
+		'en' => 'Blog',
+		'ru' => 'блог',
+		'es' => 'Blog',
+		'zh' => '博客',
+		'ja' => 'ブログ'
 	)
 );
 $menu_interfaces = array(

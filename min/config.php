@@ -181,4 +181,4 @@ $min_libPath = dirname(__FILE__) . '/lib';
 
 
 // try to disable output_compression (may not have an effect)
-ini_set('zlib.output_compression', '0');
+ini_set('zlib.output_compression', '1');
