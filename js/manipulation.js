@@ -7,7 +7,7 @@ function manipulateHeader() {
 			validateSearch(false);
 		},
 		keyup: function(e) {
-			if (e.which == 13) {
+			if (e.which === 13) {
 				$('#search_submit').removeClass('clicked');
 				validateSearch(true);
 			} else {
@@ -15,7 +15,7 @@ function manipulateHeader() {
 			}
 		},
 		keydown: function(e) {
-			if (e.which == 13) {
+			if (e.which === 13) {
 				$('#search_submit').addClass('clicked');
 				return false;
 			} else {
@@ -42,7 +42,7 @@ function manipulateDobForm() {
 			helpDobForm();
 		},
 		keypress: function(e) {
-			if (e.keyCode == 13) {
+			if (e.keyCode === 13) {
 				$('#dob_submit').addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
@@ -54,7 +54,7 @@ function manipulateDobForm() {
 			helpDobForm();
 		},
 		keyup: function(e) {
-			if (e.which == 13) {
+			if (e.which === 13) {
 				$('#dob_submit').removeClass('clicked');
 				validateDob(true);
 			} else {
@@ -63,7 +63,7 @@ function manipulateDobForm() {
 			helpDobForm();
 		},
 		keydown: function(e) {
-			if (e.which == 13) {
+			if (e.which === 13) {
 				$('#dob_submit').addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
@@ -92,13 +92,13 @@ function manipulateDobForm() {
 			helpFullname();
 		},
 		keypress: function(e) {
-			if (e.keyCode == 13) {
+			if (e.keyCode === 13) {
 				$('#dob_submit').addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
 				e.preventDefault();
 				return false;
-			} else if (e.keyCode == 27) {
+			} else if (e.keyCode === 27) {
 				$('#name_remove').addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
@@ -109,10 +109,10 @@ function manipulateDobForm() {
 			helpFullname();
 		},
 		keyup: function(e) {
-			if (e.which == 13) {
+			if (e.which === 13) {
 				$('#dob_submit').removeClass('clicked');
 				validateDob(true);
-			} else if (e.which == 27) {
+			} else if (e.which === 27) {
 				$('#name_remove').removeClass('clicked');
 				hideFullname();
 			}
@@ -120,13 +120,13 @@ function manipulateDobForm() {
 			helpFullname();
 		},
 		keydown: function(e) {
-			if (e.which == 13) {
+			if (e.which === 13) {
 				$('#dob_submit').addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
 				e.preventDefault();
 				return false;
-			} else if (e.which == 27) {
+			} else if (e.which === 27) {
 				$('#name_remove').addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
@@ -137,7 +137,7 @@ function manipulateDobForm() {
 			helpFullname();
 		}
 	}, '#fullname').on('click', '#dob_bar', function() {
-		if ($('#fullname').prop('disabled') == true || $('#dob').prop('disabled') == true) {
+		if ($('#fullname').prop('disabled') === true || $('#dob').prop('disabled') === true) {
 			enableFields(false);
 		}
 		helpDobForm();
@@ -188,7 +188,7 @@ function manipulateBirthday() {
 }
 function manipulateLangBar() {
 	$('.lang_toggle.button').tsort({order:'desc',attr:'data-order'}).each(function(){
-		if ($(this).attr('lang') == $('body').attr('lang')) {
+		if ($(this).attr('lang') === $('body').attr('lang')) {
 			$(this).addClass('first');
 		} else if ($(this).attr('lang') != $('body').attr('lang')) {
 			$(this).removeClass('first');
@@ -206,26 +206,26 @@ function manipulateLang() {
 	manipulateLangBar();
 	dobText = '';
 	fullnameText = '';
-	$('#pham_tung > span.translate').attr('data-title',$('#pham_tung > span.translate').attr('data-lang-'+lang));
+	$('#pham_tung').find('span.translate').attr('data-title',$('#pham_tungg').find('span.translate').attr('data-lang-'+lang));
 	$('span.translate').each(function() {
 		$(this).text($(this).attr('data-lang-'+lang));
 	});
-	if (lang == 'vi') {
+	if (lang === 'vi') {
 		dobText = 'Ngày sinh';
 		fullnameText = 'Họ tên';
-	} else if (lang == 'en') {
+	} else if (lang === 'en') {
 		dobText = 'Date of birth';
 		fullnameText = 'Full name';
-	} else if (lang == 'ru') {
+	} else if (lang === 'ru') {
 		dobText = 'Дата рождения';
 		fullnameText = 'Полное имя';
-	} else if (lang == 'es') {
+	} else if (lang === 'es') {
 		dobText = 'Fecha de nacimiento';
 		fullnameText = 'Nombre';
-	} else if (lang == 'zh') {
+	} else if (lang === 'zh') {
 		dobText = '出生日期';
 		fullnameText = '全名';
-	} else if (lang == 'ja') {
+	} else if (lang === 'ja') {
 		dobText = '生まれた日';
 		fullnameText = 'フルネーム';
 	}
@@ -284,7 +284,7 @@ function manipulateLang() {
 			fullnameText = 'フルネーム';
 		}
 	});
-	if (isset(decodeURIComponent(getUrlVars()['lang'])) && (decodeURIComponent(getUrlVars()['lang']) == 'vi' || decodeURIComponent(getUrlVars()['lang']) == 'en' || decodeURIComponent(getUrlVars()['lang']) == 'ru' || decodeURIComponent(getUrlVars()['lang']) == 'es' || decodeURIComponent(getUrlVars()['lang']) == 'zh' || decodeURIComponent(getUrlVars()['lang']) == 'ja')) {
+	if (isset(decodeURIComponent(getUrlVars()['lang'])) && (decodeURIComponent(getUrlVars()['lang']) === 'vi' || decodeURIComponent(getUrlVars()['lang']) === 'en' || decodeURIComponent(getUrlVars()['lang']) === 'ru' || decodeURIComponent(getUrlVars()['lang']) === 'es' || decodeURIComponent(getUrlVars()['lang']) === 'zh' || decodeURIComponent(getUrlVars()['lang']) === 'ja')) {
 		$('#'+decodeURIComponent(getUrlVars()['lang'])+'_toggle').trigger('click');
 	}
 }

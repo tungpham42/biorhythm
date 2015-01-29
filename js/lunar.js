@@ -173,7 +173,7 @@ function convertSolarToLunar(dd, mm, yy, timeZone) {
 		leapMonthDiff = getLeapMonthOffset(a11, timeZone);
 		if (diff >= leapMonthDiff) {
 			lunarMonth = diff + 10;
-			if (diff == leapMonthDiff) {
+			if (diff === leapMonthDiff) {
 				lunarLeap = 1;
 			}
 		}
@@ -278,7 +278,7 @@ function getLunarMonth(date) {
 	var lunarValues = getLunarValues(new Array(stemIndex,branchIndex));
 	var stem = lunarValues[0];
 	var branch = lunarValues[1];
-	return lunarMonth+((lunarLeap == 1) ? ' nhuận': '')+' - '+stem+' '+branch;
+	return lunarMonth+((lunarLeap === 1) ? ' nhuận': '')+' - '+stem+' '+branch;
 }
 function getLunarDay(date) {
 	var lunarDate = getLunarDate(date);
@@ -296,7 +296,7 @@ function getLunarDay(date) {
 	return lunarDay+' - '+stem+' '+branch;
 }
 function isLeapYear(year) {
-  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+  return ((year % 4 === 0) && (year % 100 != 0)) || (year % 400 === 0);
 }
 function calculateLunarPeriodDate(date) { //http://www.informatik.uni-leipzig.de/~duc/sach/phongtuc/cau_109.html
 	var date = new Date(date);
@@ -305,101 +305,101 @@ function calculateLunarPeriodDate(date) { //http://www.informatik.uni-leipzig.de
 	var day = date.getDate();
 	var periodDate = '';
 	var leapDiff = isLeapYear(year) ? 1: 0;
-	if (month == 2 && day == (4+leapDiff)) {
+	if (month === 2 && day === (4+leapDiff)) {
 		periodDate = 'Lập xuân';
-	} else if (month == 2 && day == (19+leapDiff)) {
+	} else if (month === 2 && day === (19+leapDiff)) {
 		periodDate = 'Vũ thủy';
-	} else if (month == 3 && day == (6+leapDiff)) {
+	} else if (month === 3 && day === (6+leapDiff)) {
 		periodDate = 'Kinh trập';
-	} else if (month == 3 && day == (21+leapDiff)) {
+	} else if (month === 3 && day === (21+leapDiff)) {
 		periodDate = 'Xuân phân';
-	} else if (month == 4 && day == (5+leapDiff)) {
+	} else if (month === 4 && day === (5+leapDiff)) {
 		periodDate = 'Thanh minh';
-	} else if (month == 4 && day == (20+leapDiff)) {
+	} else if (month === 4 && day === (20+leapDiff)) {
 		periodDate = 'Cốc vũ';
-	} else if (month == 5 && day == (6+leapDiff)) {
+	} else if (month === 5 && day === (6+leapDiff)) {
 		periodDate = 'Lập hạ';
-	} else if (month == 5 && day == (21+leapDiff)) {
+	} else if (month === 5 && day === (21+leapDiff)) {
 		periodDate = 'Tiểu mãn';
-	} else if (month == 6 && day == (6+leapDiff)) {
+	} else if (month === 6 && day === (6+leapDiff)) {
 		periodDate = 'Mang chủng';
-	} else if (month == 6 && day == (21+leapDiff)) {
+	} else if (month === 6 && day === (21+leapDiff)) {
 		periodDate = 'Hạ chí';
-	} else if (month == 7 && day == (7+leapDiff)) {
+	} else if (month === 7 && day === (7+leapDiff)) {
 		periodDate = 'Tiểu thử';
-	} else if (month == 7 && day == (23+leapDiff)) {
+	} else if (month === 7 && day === (23+leapDiff)) {
 		periodDate = 'Đại thử';
-	} else if (month == 8 && day == (8+leapDiff)) {
+	} else if (month === 8 && day === (8+leapDiff)) {
 		periodDate = 'Lập thu';
-	} else if (month == 8 && day == (23+leapDiff)) {
+	} else if (month === 8 && day === (23+leapDiff)) {
 		periodDate = 'Xử thử';
-	} else if (month == 9 && day == (8+leapDiff)) {
+	} else if (month === 9 && day === (8+leapDiff)) {
 		periodDate = 'Bạch lộ';
-	} else if (month == 9 && day == (23+leapDiff)) {
+	} else if (month === 9 && day === (23+leapDiff)) {
 		periodDate = 'Thu phân';
-	} else if (month == 10 && day == (8+leapDiff)) {
+	} else if (month === 10 && day === (8+leapDiff)) {
 		periodDate = 'Hàn lộ';
-	} else if (month == 10 && day == (23+leapDiff)) {
+	} else if (month === 10 && day === (23+leapDiff)) {
 		periodDate = 'Sương giáng';
-	} else if (month == 11 && day == (8+leapDiff)) {
+	} else if (month === 11 && day === (8+leapDiff)) {
 		periodDate = 'Lập đông';
-	} else if (month == 11 && day == (22+leapDiff)) {
+	} else if (month === 11 && day === (22+leapDiff)) {
 		periodDate = 'Tiểu tuyết';
-	} else if (month == 12 && day == (7+leapDiff)) {
+	} else if (month === 12 && day === (7+leapDiff)) {
 		periodDate = 'Đại tuyết';
-	} else if (month == 12 && day == (22+leapDiff)) {
+	} else if (month === 12 && day === (22+leapDiff)) {
 		periodDate = 'Đông chí';
-	} else if (month == 1 && day == (6+leapDiff)) {
+	} else if (month === 1 && day === (6+leapDiff)) {
 		periodDate = 'Tiểu hàn';
-	} else if (month == 1 && day == (20+leapDiff)) {
+	} else if (month === 1 && day === (20+leapDiff)) {
 		periodDate = 'Đại hàn';
-	} else if (month == 2 && (day > (4+leapDiff) && day < (19+leapDiff))) {
+	} else if (month === 2 && (day > (4+leapDiff) && day < (19+leapDiff))) {
 		periodDate = 'Lập xuân - Vũ thủy';
-	} else if ((month == 2 && (day > (19+leapDiff) && day <= (28+leapDiff))) || (month == 3 && (day >= 1 && day < (6+leapDiff)))) {
+	} else if ((month === 2 && (day > (19+leapDiff) && day <= (28+leapDiff))) || (month === 3 && (day >= 1 && day < (6+leapDiff)))) {
 		periodDate = 'Vũ thủy - Kinh trập';
-	} else if (month == 3 && (day > (6+leapDiff) && day < (21+leapDiff))) {
+	} else if (month === 3 && (day > (6+leapDiff) && day < (21+leapDiff))) {
 		periodDate = 'Kinh trập - Xuân phân';
-	} else if ((month == 3 && (day > (21+leapDiff) && day <= 31)) || (month == 4 && (day >= 1 && day < (5+leapDiff)))) {
+	} else if ((month === 3 && (day > (21+leapDiff) && day <= 31)) || (month === 4 && (day >= 1 && day < (5+leapDiff)))) {
 		periodDate = 'Xuân phân - Thanh minh';
-	} else if (month == 4 && (day > (5+leapDiff) && day < (20+leapDiff))) {
+	} else if (month === 4 && (day > (5+leapDiff) && day < (20+leapDiff))) {
 		periodDate = 'Thanh minh - Cốc vũ';
-	} else if ((month == 4 && (day > (20+leapDiff) && day <= 30)) || (month == 5 && (day >= 1 && day < (6+leapDiff)))) {
+	} else if ((month === 4 && (day > (20+leapDiff) && day <= 30)) || (month === 5 && (day >= 1 && day < (6+leapDiff)))) {
 		periodDate = 'Cốc vũ - Lập hạ';
-	} else if (month == 5 && (day > (6+leapDiff) && day < (21+leapDiff))) {
+	} else if (month === 5 && (day > (6+leapDiff) && day < (21+leapDiff))) {
 		periodDate = 'Lập hạ - Tiểu mãn';
-	} else if ((month == 5 && (day > (21+leapDiff) && day <= 31)) || (month == 6 && (day >= 1 && day < (6+leapDiff)))) {
+	} else if ((month === 5 && (day > (21+leapDiff) && day <= 31)) || (month === 6 && (day >= 1 && day < (6+leapDiff)))) {
 		periodDate = 'Tiểu mãn - Mang chủng';
-	} else if (month == 6 && (day > (6+leapDiff) && day < (21+leapDiff))) {
+	} else if (month === 6 && (day > (6+leapDiff) && day < (21+leapDiff))) {
 		periodDate = 'Mang chủng - Hạ chí';
-	} else if ((month == 6 && (day > (21+leapDiff) && day <= 30)) || (month == 7 && (day >= 1 && day < (7+leapDiff)))) {
+	} else if ((month === 6 && (day > (21+leapDiff) && day <= 30)) || (month === 7 && (day >= 1 && day < (7+leapDiff)))) {
 		periodDate = 'Hạ chí - Tiểu thử';
-	} else if (month == 7 && (day > (7+leapDiff) && day < (23+leapDiff))) {
+	} else if (month === 7 && (day > (7+leapDiff) && day < (23+leapDiff))) {
 		periodDate = 'Tiểu thử - Đại thử';
-	} else if ((month == 7 && (day > (23+leapDiff) && day <= 31)) || (month == 8 && (day >= 1 && day < (8+leapDiff)))) {
+	} else if ((month === 7 && (day > (23+leapDiff) && day <= 31)) || (month === 8 && (day >= 1 && day < (8+leapDiff)))) {
 		periodDate = 'Đại thử - Lập thu';
-	} else if (month == 8 && (day > (8+leapDiff) && day < (23+leapDiff))) {
+	} else if (month === 8 && (day > (8+leapDiff) && day < (23+leapDiff))) {
 		periodDate = 'Lập thu - Xử thử';
-	} else if ((month == 8 && (day > (23+leapDiff) && day <= 31)) || (month == 9 && (day >= 1 && day < (8+leapDiff)))) {
+	} else if ((month === 8 && (day > (23+leapDiff) && day <= 31)) || (month === 9 && (day >= 1 && day < (8+leapDiff)))) {
 		periodDate = 'Xử thử - Bạch lộ';
-	} else if (month == 9 && (day > (8+leapDiff) && day < (23+leapDiff))) {
+	} else if (month === 9 && (day > (8+leapDiff) && day < (23+leapDiff))) {
 		periodDate = 'Bạch lộ - Thu phân';
-	} else if ((month == 9 && (day > (23+leapDiff) && day <= 30)) || (month == 10 && (day >= 1 && day < (8+leapDiff)))) {
+	} else if ((month === 9 && (day > (23+leapDiff) && day <= 30)) || (month === 10 && (day >= 1 && day < (8+leapDiff)))) {
 		periodDate = 'Thu phân - Hàn lộ';
-	} else if (month == 10 && (day > (8+leapDiff) && day < (23+leapDiff))) {
+	} else if (month === 10 && (day > (8+leapDiff) && day < (23+leapDiff))) {
 		periodDate = 'Hàn lộ - Sương giáng';
-	} else if ((month == 10 && (day > (23+leapDiff) && day <= 31)) || (month == 11 && (day >= 1 && day < (8+leapDiff)))) {
+	} else if ((month === 10 && (day > (23+leapDiff) && day <= 31)) || (month === 11 && (day >= 1 && day < (8+leapDiff)))) {
 		periodDate = 'Sương giáng - Lập đông';
-	} else if (month == 11 && (day > (8+leapDiff) && day < (22+leapDiff))) {
+	} else if (month === 11 && (day > (8+leapDiff) && day < (22+leapDiff))) {
 		periodDate = 'Lập đông - Tiểu tuyết';
-	} else if ((month == 11 && (day > (22+leapDiff) && day <= 30)) || (month == 12 && (day >= 1 && day < (7+leapDiff)))) {
+	} else if ((month === 11 && (day > (22+leapDiff) && day <= 30)) || (month === 12 && (day >= 1 && day < (7+leapDiff)))) {
 		periodDate = 'Tiểu tuyết - Đại tuyết';
-	} else if (month == 12 && (day > (7+leapDiff) && day < (22+leapDiff))) {
+	} else if (month === 12 && (day > (7+leapDiff) && day < (22+leapDiff))) {
 		periodDate = 'Đại tuyết - Đông chí';
-	} else if ((month == 12 && (day > (22+leapDiff) && day <= 31)) || (month == 1 && (day >= 1 && day < (6+leapDiff)))) {
+	} else if ((month === 12 && (day > (22+leapDiff) && day <= 31)) || (month === 1 && (day >= 1 && day < (6+leapDiff)))) {
 		periodDate = 'Đông chí - Tiểu hàn';
-	} else if (month == 1 && (day > (6+leapDiff) && day < (20+leapDiff))) {
+	} else if (month === 1 && (day > (6+leapDiff) && day < (20+leapDiff))) {
 		periodDate = 'Tiểu hàn - Đại hàn';
-	} else if ((month == 1 && (day > (20+leapDiff) && day <= 31)) || (month == 2 && (day >= 1 && day < (4+leapDiff)))) {
+	} else if ((month === 1 && (day > (20+leapDiff) && day <= 31)) || (month === 2 && (day >= 1 && day < (4+leapDiff)))) {
 		periodDate = 'Đại hàn - Lập xuân';
 	}
 	return periodDate;
@@ -414,7 +414,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 	var jd = jdFromDate(day,month,year);
 	var branchIndex = (jd+1)%12;
 	var leapDiff = isLeapYear(year) ? 1: 0;
-	if ((month == 2 && (day >= (4+leapDiff) && day <= (28+leapDiff))) || (month == 3 && (day >= 1 && day < (6+leapDiff)))) { // Sau lập xuân
+	if ((month === 2 && (day >= (4+leapDiff) && day <= (28+leapDiff))) || (month === 3 && (day >= 1 && day < (6+leapDiff)))) { // Sau lập xuân
 		switch(branchIndex) {
 			case 0:	period = periods[10]; break; // Tý
 			case 1:	period = periods[11]; break; // Sửu
@@ -429,7 +429,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[8]; break; // Tuất
 			case 11: period = periods[9]; break; // Hợi
 		}
-	} else if ((month == 3 && (day >= (6+leapDiff) && day <= 31)) || (month == 4 && (day >= 1 && day < (5+leapDiff)))) { // Sau kinh trập
+	} else if ((month === 3 && (day >= (6+leapDiff) && day <= 31)) || (month === 4 && (day >= 1 && day < (5+leapDiff)))) { // Sau kinh trập
 		switch(branchIndex) {
 			case 0:	period = periods[9]; break; // Tý
 			case 1:	period = periods[10]; break; // Sửu
@@ -444,7 +444,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[7]; break; // Tuất
 			case 11: period = periods[8]; break; // Hợi
 		}
-	} else if ((month == 4 && (day >= (5+leapDiff) && day <= 30)) || (month == 5 && (day >= 1 && day < (6+leapDiff)))) { // Sau thanh minh
+	} else if ((month === 4 && (day >= (5+leapDiff) && day <= 30)) || (month === 5 && (day >= 1 && day < (6+leapDiff)))) { // Sau thanh minh
 		switch(branchIndex) {
 			case 0:	period = periods[8]; break; // Tý
 			case 1:	period = periods[9]; break; // Sửu
@@ -459,7 +459,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[6]; break; // Tuất
 			case 11: period = periods[7]; break; // Hợi
 		}
-	} else if ((month == 5 && (day >= (6+leapDiff) && day <= 31)) || (month == 6 && (day >= 1 && day < (6+leapDiff)))) { // Sau lập hạ
+	} else if ((month === 5 && (day >= (6+leapDiff) && day <= 31)) || (month === 6 && (day >= 1 && day < (6+leapDiff)))) { // Sau lập hạ
 		switch(branchIndex) {
 			case 0:	period = periods[7]; break; // Tý
 			case 1:	period = periods[8]; break; // Sửu
@@ -474,7 +474,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[5]; break; // Tuất
 			case 11: period = periods[6]; break; // Hợi
 		}
-	} else if ((month == 6 && (day >= (6+leapDiff) && day <= 30)) || (month == 7 && (day >= 1 && day < (7+leapDiff)))) { // Sau mang chủng
+	} else if ((month === 6 && (day >= (6+leapDiff) && day <= 30)) || (month === 7 && (day >= 1 && day < (7+leapDiff)))) { // Sau mang chủng
 		switch(branchIndex) {
 			case 0:	period = periods[6]; break; // Tý
 			case 1:	period = periods[7]; break; // Sửu
@@ -489,7 +489,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[4]; break; // Tuất
 			case 11: period = periods[5]; break; // Hợi
 		}
-	} else if ((month == 7 && (day >= (7+leapDiff) && day <= 31)) || (month == 8 && (day >= 1 && day < (8+leapDiff)))) { // Sau tiểu thử
+	} else if ((month === 7 && (day >= (7+leapDiff) && day <= 31)) || (month === 8 && (day >= 1 && day < (8+leapDiff)))) { // Sau tiểu thử
 		switch(branchIndex) {
 			case 0:	period = periods[5]; break; // Tý
 			case 1:	period = periods[6]; break; // Sửu
@@ -504,7 +504,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[3]; break; // Tuất
 			case 11: period = periods[4]; break; // Hợi
 		}
-	} else if ((month == 8 && (day >= (8+leapDiff) && day <= 31)) || (month == 9 && (day >= 1 && day < (8+leapDiff)))) { // Sau lập thu
+	} else if ((month === 8 && (day >= (8+leapDiff) && day <= 31)) || (month === 9 && (day >= 1 && day < (8+leapDiff)))) { // Sau lập thu
 		switch(branchIndex) {
 			case 0:	period = periods[4]; break; // Tý
 			case 1:	period = periods[5]; break; // Sửu
@@ -519,7 +519,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[2]; break; // Tuất
 			case 11: period = periods[3]; break; // Hợi
 		}
-	} else if ((month == 9 && (day >= (8+leapDiff) && day <= 30)) || (month == 10 && (day >= 1 && day < (8+leapDiff)))) { // Sau bạch lộ
+	} else if ((month === 9 && (day >= (8+leapDiff) && day <= 30)) || (month === 10 && (day >= 1 && day < (8+leapDiff)))) { // Sau bạch lộ
 		switch(branchIndex) {
 			case 0:	period = periods[3]; break; // Tý
 			case 1:	period = periods[4]; break; // Sửu
@@ -534,7 +534,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[1]; break; // Tuất
 			case 11: period = periods[2]; break; // Hợi
 		}
-	} else if ((month == 10 && (day >= (8+leapDiff) && day <= 30)) || (month == 11 && (day >= 1 && day < (8+leapDiff)))) { // Sau hàn lộ
+	} else if ((month === 10 && (day >= (8+leapDiff) && day <= 30)) || (month === 11 && (day >= 1 && day < (8+leapDiff)))) { // Sau hàn lộ
 		switch(branchIndex) {
 			case 0:	period = periods[2]; break; // Tý
 			case 1:	period = periods[3]; break; // Sửu
@@ -549,7 +549,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[0]; break; // Tuất
 			case 11: period = periods[1]; break; // Hợi
 		}
-	} else if ((month == 11 && (day >= (8+leapDiff) && day <= 30)) || (month == 12 && (day >= 1 && day < (7+leapDiff)))) { // Sau lập đông
+	} else if ((month === 11 && (day >= (8+leapDiff) && day <= 30)) || (month === 12 && (day >= 1 && day < (7+leapDiff)))) { // Sau lập đông
 		switch(branchIndex) {
 			case 0:	period = periods[1]; break; // Tý
 			case 1:	period = periods[2]; break; // Sửu
@@ -564,7 +564,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[11]; break; // Tuất
 			case 11: period = periods[0]; break; // Hợi
 		}
-	} else if ((month == 12 && (day >= (7+leapDiff) && day <= 31)) || (month == 1 && (day >= 1 && day < (6+leapDiff)))) { // Sau đại tuyết
+	} else if ((month === 12 && (day >= (7+leapDiff) && day <= 31)) || (month === 1 && (day >= 1 && day < (6+leapDiff)))) { // Sau đại tuyết
 		switch(branchIndex) {
 			case 0:	period = periods[0]; break; // Tý
 			case 1:	period = periods[1]; break; // Sửu
@@ -579,7 +579,7 @@ function calculateLunarPeriod(date) { //http://www.informatik.uni-leipzig.de/~du
 			case 10: period = periods[10]; break; // Tuất
 			case 11: period = periods[11]; break; // Hợi
 		}
-	} else if ((month == 1 && (day >= (6+leapDiff) && day <= 31)) || (month == 2 && (day >= 1 && day < (4+leapDiff)))) { // Sau tiểu hàn
+	} else if ((month === 1 && (day >= (6+leapDiff) && day <= 31)) || (month === 2 && (day >= 1 && day < (4+leapDiff)))) { // Sau tiểu hàn
 		switch(branchIndex) {
 			case 0:	period = periods[11]; break; // Tý
 			case 1:	period = periods[0]; break; // Sửu
@@ -611,10 +611,10 @@ function getStars(date) {
 	var jd = jdFromDate(solarDay,solarMonth,solarYear);
 	var dayStemIndex = (jd+9)%10;
 	var dayBranchIndex = (jd+1)%12;
-	if (lunarDay == 5 || lunarDay == 14 || lunarDay == 23) {
+	if (lunarDay === 5 || lunarDay === 14 || lunarDay === 23) {
 		starsList.push(badStars[18]);
 	}
-	if (lunarDay == 3 || lunarDay == 7 || lunarDay == 13 || lunarDay == 18 || lunarDay == 22 || lunarDay == 27) {
+	if (lunarDay === 3 || lunarDay === 7 || lunarDay === 13 || lunarDay === 18 || lunarDay === 22 || lunarDay === 27) {
 		starsList.push(badStars[19]);
 	}
 	/*
@@ -1008,17 +1008,17 @@ function isGoodDate(date) { // Ngày Hoàng Đạo
 	var jd = jdFromDate(solarDay,solarMonth,solarYear);
 	var dayBranchIndex = (jd+1)%12;
 	if (
-		((lunarMonth == 1 || lunarMonth == 7) && (dayBranchIndex == 0 || dayBranchIndex == 1 || dayBranchIndex == 4 || dayBranchIndex == 5 || dayBranchIndex == 7 || dayBranchIndex == 10)) // Tháng Giêng, Bảy Ngày Tý, Sửu, Thìn, Tỵ, Mùi, Tuất
+		((lunarMonth === 1 || lunarMonth === 7) && (dayBranchIndex === 0 || dayBranchIndex === 1 || dayBranchIndex === 4 || dayBranchIndex === 5 || dayBranchIndex === 7 || dayBranchIndex === 10)) // Tháng Giêng, Bảy Ngày Tý, Sửu, Thìn, Tỵ, Mùi, Tuất
 		||
-		((lunarMonth == 2 || lunarMonth == 8) && (dayBranchIndex == 2 || dayBranchIndex == 3 || dayBranchIndex == 6 || dayBranchIndex == 7 || dayBranchIndex == 9 || dayBranchIndex == 0)) // Tháng Hai, Tám Ngày Dần, Mẹo, Ngọ, Mùi, Dậu, Tý
+		((lunarMonth === 2 || lunarMonth === 8) && (dayBranchIndex === 2 || dayBranchIndex === 3 || dayBranchIndex === 6 || dayBranchIndex === 7 || dayBranchIndex === 9 || dayBranchIndex === 0)) // Tháng Hai, Tám Ngày Dần, Mẹo, Ngọ, Mùi, Dậu, Tý
 		||
-		((lunarMonth == 3 || lunarMonth == 9) && (dayBranchIndex == 4 || dayBranchIndex == 5 || dayBranchIndex == 8 || dayBranchIndex == 9 || dayBranchIndex == 11 || dayBranchIndex == 2)) // Tháng Ba, Chín Ngày Thìn, Tỵ, Thân, Dậu, Hợi, Dần
+		((lunarMonth === 3 || lunarMonth === 9) && (dayBranchIndex === 4 || dayBranchIndex === 5 || dayBranchIndex === 8 || dayBranchIndex === 9 || dayBranchIndex === 11 || dayBranchIndex === 2)) // Tháng Ba, Chín Ngày Thìn, Tỵ, Thân, Dậu, Hợi, Dần
 		||
-		((lunarMonth == 4 || lunarMonth == 10) && (dayBranchIndex == 6 || dayBranchIndex == 7 || dayBranchIndex == 10 || dayBranchIndex == 11 || dayBranchIndex == 1 || dayBranchIndex == 4)) // Tháng Tư, Mười Ngày Ngọ, Mùi, Tuất, Hợi, Sửu, Thìn
+		((lunarMonth === 4 || lunarMonth === 10) && (dayBranchIndex === 6 || dayBranchIndex === 7 || dayBranchIndex === 10 || dayBranchIndex === 11 || dayBranchIndex === 1 || dayBranchIndex === 4)) // Tháng Tư, Mười Ngày Ngọ, Mùi, Tuất, Hợi, Sửu, Thìn
 		||
-		((lunarMonth == 5 || lunarMonth == 11) && (dayBranchIndex == 8 || dayBranchIndex == 9 || dayBranchIndex == 0 || dayBranchIndex == 1 || dayBranchIndex == 3 || dayBranchIndex == 6)) // Tháng Năm, Mười Một Ngày Thân, Dậu, Tý, Sửu, Mẹo, Ngọ
+		((lunarMonth === 5 || lunarMonth === 11) && (dayBranchIndex === 8 || dayBranchIndex === 9 || dayBranchIndex === 0 || dayBranchIndex === 1 || dayBranchIndex === 3 || dayBranchIndex === 6)) // Tháng Năm, Mười Một Ngày Thân, Dậu, Tý, Sửu, Mẹo, Ngọ
 		||
-		((lunarMonth == 6 || lunarMonth == 12) && (dayBranchIndex == 10 || dayBranchIndex == 11 || dayBranchIndex == 2 || dayBranchIndex == 3 || dayBranchIndex == 5 || dayBranchIndex == 8)) // Tháng Sáu, Chạp Ngày Tuất, Hợi, Dần, Mẹo, Tỵ, Thân
+		((lunarMonth === 6 || lunarMonth === 12) && (dayBranchIndex === 10 || dayBranchIndex === 11 || dayBranchIndex === 2 || dayBranchIndex === 3 || dayBranchIndex === 5 || dayBranchIndex === 8)) // Tháng Sáu, Chạp Ngày Tuất, Hợi, Dần, Mẹo, Tỵ, Thân
 		) {
 		return true;
 	} else {
@@ -1036,17 +1036,17 @@ function isBadDate(date) { // Ngày Hắc Đạo
 	var jd = jdFromDate(solarDay,solarMonth,solarYear);
 	var dayBranchIndex = (jd+1)%12;
 	if (
-		((lunarMonth == 1 || lunarMonth == 7) && (dayBranchIndex == 2 || dayBranchIndex == 3 || dayBranchIndex == 6 || dayBranchIndex == 8 || dayBranchIndex == 9 || dayBranchIndex == 11)) // Tháng Giêng, Bảy Ngày Dần, Mẹo, Ngọ, Thân, Dậu, Hợi
+		((lunarMonth === 1 || lunarMonth === 7) && (dayBranchIndex === 2 || dayBranchIndex === 3 || dayBranchIndex === 6 || dayBranchIndex === 8 || dayBranchIndex === 9 || dayBranchIndex === 11)) // Tháng Giêng, Bảy Ngày Dần, Mẹo, Ngọ, Thân, Dậu, Hợi
 		||
-		((lunarMonth == 2 || lunarMonth == 8) && (dayBranchIndex == 4 || dayBranchIndex == 5 || dayBranchIndex == 8 || dayBranchIndex == 10 || dayBranchIndex == 11 || dayBranchIndex == 1)) // Tháng Hai, Tám Ngày Thìn, Tỵ, Thân, Tuất, Hợi, Sửu
+		((lunarMonth === 2 || lunarMonth === 8) && (dayBranchIndex === 4 || dayBranchIndex === 5 || dayBranchIndex === 8 || dayBranchIndex === 10 || dayBranchIndex === 11 || dayBranchIndex === 1)) // Tháng Hai, Tám Ngày Thìn, Tỵ, Thân, Tuất, Hợi, Sửu
 		||
-		((lunarMonth == 3 || lunarMonth == 9) && (dayBranchIndex == 6 || dayBranchIndex == 7 || dayBranchIndex == 10 || dayBranchIndex == 0 || dayBranchIndex == 1 || dayBranchIndex == 3)) // Tháng Ba, Chín Ngày Ngọ, Mùi, Tuất, Tý, Sửu, Mẹo
+		((lunarMonth === 3 || lunarMonth === 9) && (dayBranchIndex === 6 || dayBranchIndex === 7 || dayBranchIndex === 10 || dayBranchIndex === 0 || dayBranchIndex === 1 || dayBranchIndex === 3)) // Tháng Ba, Chín Ngày Ngọ, Mùi, Tuất, Tý, Sửu, Mẹo
 		||
-		((lunarMonth == 4 || lunarMonth == 10) && (dayBranchIndex == 8 || dayBranchIndex == 9 || dayBranchIndex == 0 || dayBranchIndex == 2 || dayBranchIndex == 3 || dayBranchIndex == 5)) // Tháng Tư, Mười Ngày Thân, Dậu, Tý, Dần, Mẹo, Tỵ
+		((lunarMonth === 4 || lunarMonth === 10) && (dayBranchIndex === 8 || dayBranchIndex === 9 || dayBranchIndex === 0 || dayBranchIndex === 2 || dayBranchIndex === 3 || dayBranchIndex === 5)) // Tháng Tư, Mười Ngày Thân, Dậu, Tý, Dần, Mẹo, Tỵ
 		||
-		((lunarMonth == 5 || lunarMonth == 11) && (dayBranchIndex == 10 || dayBranchIndex == 11 || dayBranchIndex == 2 || dayBranchIndex == 4 || dayBranchIndex == 5 || dayBranchIndex == 7)) // Tháng Năm, Mười Một Ngày Tuất, Hợi, Dần, Thìn, Tỵ, Mùi
+		((lunarMonth === 5 || lunarMonth === 11) && (dayBranchIndex === 10 || dayBranchIndex === 11 || dayBranchIndex === 2 || dayBranchIndex === 4 || dayBranchIndex === 5 || dayBranchIndex === 7)) // Tháng Năm, Mười Một Ngày Tuất, Hợi, Dần, Thìn, Tỵ, Mùi
 		||
-		((lunarMonth == 6 || lunarMonth == 12) && (dayBranchIndex == 0 || dayBranchIndex == 1 || dayBranchIndex == 4 || dayBranchIndex == 6 || dayBranchIndex == 7 || dayBranchIndex == 9)) // Tháng Sáu, Chạp Ngày Tý, Sửu, Thìn, Ngọ, Mùi, Dậu
+		((lunarMonth === 6 || lunarMonth === 12) && (dayBranchIndex === 0 || dayBranchIndex === 1 || dayBranchIndex === 4 || dayBranchIndex === 6 || dayBranchIndex === 7 || dayBranchIndex === 9)) // Tháng Sáu, Chạp Ngày Tý, Sửu, Thìn, Ngọ, Mùi, Dậu
 		) {
 		return true;
 	} else {

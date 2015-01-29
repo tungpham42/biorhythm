@@ -11,6 +11,8 @@ Options -Indexes
 # Follow symbolic links in this directory.
 Options +FollowSymLinks
 
+Options -MultiViews
+
 AddType application/x-web-app-manifest+json .webapp
 AddHandler x-web-app-manifest+json .webapp
 AddType text/cache-manifest .appcache
@@ -19,7 +21,6 @@ AddType video/ogg .ogv
 AddType video/mp4 .mp4
 AddType video/webm .webm
 
-Options +FollowSymLinks
 ## EXPIRES CACHING ##
 <IfModule mod_expires.c>
 	ExpiresActive On
@@ -34,14 +35,35 @@ Options +FollowSymLinks
 	ExpiresByType application/x-shockwave-flash "access 1 month"
 	ExpiresByType image/x-icon "access 1 year"
 	ExpiresDefault "access 1 month"
+	ExpiresByType font/ttf "access plus 10 years"
+	ExpiresByType font/otf "access plus 10 years"
+	ExpiresByType application/vnd.ms-fontobject "access plus 10 years"
+	ExpiresByType application/x-woff "access plus 10 years"
+	ExpiresByType image/svg+xml "access plus 10 years"
 </IfModule>
 ## EXPIRES CACHING ##
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	RewriteBase /
-	RewriteRule ^sitemap.xml$ sitemap.php [L]
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^sitemap.xml$ sitemap.php [L]
+	RewriteRule ^fullname/([^/]*)/dob/([^/]*)$ /?fullname=$1&dob=$2 [L,QSA,PT,R=301]
+	RewriteRule ^dob/([^/]*)$ /?dob=$1 [L,QSA,PT,R=301]
+</IfModule>
+<IfModule mod_headers.c>
+	Header set Connection keep-alive
+	<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|eot|woff|otf|ttf|svg)$">
+		Header set Cache-Control "max-age=290304000, public"
+	</FilesMatch>
+</IfModule>
+# BEGIN GZIP
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+	AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+	AddOutputFilterByType DEFLATE font/ttf
+	AddOutputFilterByType DEFLATE font/otf
+	AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 <IfModule mod_gzip.c>
 	mod_gzip_on Yes
@@ -53,6 +75,4 @@ Options +FollowSymLinks
 	mod_gzip_item_exclude mime ^image/.*
 	mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
 </IfModule>
-<IfModule mod_headers.c>
-Header set Connection keep-alive
-</IfModule>
+# END GZIP
