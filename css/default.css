@@ -2896,6 +2896,65 @@ img.ball {
 #feed_facebook > h2 {background: #3b5998}
 #feed_googleplus > h2 {background: #dd4b39}
 #feed_twitter > h2 {background: #55acee}
+
+.to-top {
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	position: fixed;
+	bottom: 40px;
+	right: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+	/* image replacement properties */
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+	background-image: url('images/to-top-arrow.svg');
+	background-repeat: no-repeat;
+	background-position: center 50%;
+	background-color: rgba(68,136,238,0.8);
+	visibility: hidden;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+	opacity: 0;
+	-webkit-transition: opacity .3s 0s, visibility 0s .3s;
+	-moz-transition: opacity .3s 0s, visibility 0s .3s;
+	transition: opacity .3s 0s, visibility 0s .3s;
+}
+body.birthday .to-top {
+	background-color: rgba(255,215,0,0.8);
+}
+.to-top.is-visible, .to-top.fade-out, .no-touch .to-top:hover {
+	-webkit-transition: opacity .3s 0s, visibility 0s 0s;
+	-moz-transition: opacity .3s 0s, visibility 0s 0s;
+	transition: opacity .3s 0s, visibility 0s 0s;
+}
+.to-top.is-visible {
+	/* the button becomes visible */
+	visibility: visible;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	-moz-opacity: 1;
+	-khtml-opacity: 1;
+	opacity: 1;
+}
+.to-top.fade-out {
+	/* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+}
+.no-touch .to-top:hover {
+	background-color: #4488ee;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	-moz-opacity: 1;
+	-khtml-opacity: 1;
+	opacity: 1;
+}
+body.birthday .no-touch .to-top:hover {
+	background-color: #ffd700;
+}
 /* Responsive */
 
 @media all and (max-width: 551px) {
@@ -3297,6 +3356,10 @@ img.ball {
 	.bottom.button.donate, .bottom.button.sponsor {
 		margin-bottom: 52px;
 	}
+	.to-top {
+		right: 40px !important;
+		bottom: 60px !important;
+	}
 }
 @media all and (min-width: 960px) and (max-width: 1262px) {
 	.leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {
@@ -3315,6 +3378,10 @@ img.ball {
 	}
 	#sfi_banner.banner {
 		display: block;
+	}
+	.to-top {
+		right: 20px;
+		bottom: 20px;
 	}
 }
 @media all and (min-width: 1263px) {
@@ -3375,6 +3442,12 @@ img.ball {
 	}
 	.mobile_banner, .w300, .w300 > ins.adsbygoogle, .w300 > ins.adsbygoogle iframe, .w300 > ins.adsbygoogle ins, .leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {
 		display: none;
+	}
+	.to-top {
+		height: 60px;
+		width: 60px;
+		right: 30px;
+		bottom: 30px;
 	}
 }
 @media all and (min-width: 1263px) and (max-width: 1582px) {

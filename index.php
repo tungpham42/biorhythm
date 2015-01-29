@@ -54,6 +54,7 @@ include $template_path.'footer.tpl.php';
 	</div>
 <?php
 include $template_path.'loading.tpl.php';
+include $template_path.'to_top.tpl.php';
 if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
 	if ($show_sumome):
 		include $template_path.'sumome.tpl.php';
