@@ -9,7 +9,7 @@ $description_ja = (isset($_POST['description_ja'])) ? $_POST['description_ja']: 
 if (isset($_POST['submit'])):
 	create_rhythm($name,$scale,$description_en,$description_ru,$description_es,$description_zh,$description_ja);
 	sleep(3);
-	header('location: /rhythm');
+	header('Location: /rhythm');
 endif;
 ?>
 <form id="form" method="post" action="">

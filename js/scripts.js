@@ -102,13 +102,13 @@ function dateDiff(start, end) {
 function isDate(txtDate)
 {
     var currVal = txtDate;
-    if (currVal === '')
+    if (currVal == '')
         return false;
 
     var rxDatePattern = /^(\d{4})(-)(\d{1,2})(-)(\d{1,2})$/; //Declare Regex
     var dtArray = currVal.match(rxDatePattern); // is format OK?
 
-    if (dtArray === null) 
+    if (dtArray == null) 
         return false;
 
     dtMonth = dtArray[3];
@@ -121,9 +121,9 @@ function isDate(txtDate)
         return false;
     else if ((dtMonth==4 || dtMonth==6 || dtMonth==9 || dtMonth==11) && dtDay ==31) 
         return false;
-    else if (dtMonth === 2) 
+    else if (dtMonth == 2) 
     {
-        var isleap = (dtYear % 4 === 0 && (dtYear % 100 != 0 || dtYear % 400 === 0));
+        var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
         if (dtDay> 29 || (dtDay ==29 && !isleap)) 
 			return false;
     }
@@ -137,7 +137,7 @@ function dateFromISO(isostr) {
 	return new Date(parts[0], parts[1]-1, parts[2]);
 }
 function convertDate(inputFormat) {
-	var d = (typeof inputFormat === 'string') ? dateFromISO(inputFormat): new Date(inputFormat);
+	var d = (typeof inputFormat == 'string') ? dateFromISO(inputFormat): new Date(inputFormat);
 	return [d.getFullYear(), pad(d.getMonth()+1), pad(d.getDate())].join('-');
 }
 function maskInput(input, textbox, location, delimiter) {
@@ -173,15 +173,15 @@ function disableInput(fieldName) {
 }
 function disableHyphen(fieldName) {
 	$('#'+fieldName).on('keypress', function(e) {
-		if (e.which === 45) {
+		if (e.which == 45) {
 			return false;
 		}
 	}).on('keyup', function(e) {
-		if (e.which === 189 || e.which === 173 || e.which === 109) {
+		if (e.which == 189 || e.which == 173 || e.which == 109) {
 			return false;
 		}
 	}).on('keydown', function(e) {
-		if (e.which === 189 || e.which === 173 || e.which === 109) {
+		if (e.which == 189 || e.which == 173 || e.which == 109) {
 			return false;
 		}
 	});
@@ -204,7 +204,7 @@ function updateHeadTitle(langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'html',
+		dataType: 'text',
 		success: function(data) {
 			$('head').find('title').html(data);
 		}
@@ -229,7 +229,7 @@ function updateHeadTitleBirthday(langCode,time) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'html',
+		dataType: 'text',
 		success: function(data) {
 			$('head').find('title').html(data);
 		}
@@ -253,7 +253,7 @@ function updateHeadingH1(langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'html',
+		dataType: 'text',
 		success: function(data) {
 			$('h1#heading').html(data);
 		}
@@ -278,8 +278,7 @@ function updateHeadingH1Birthday(langCode,time) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'html',
-		global: false,
+		dataType: 'text',
 		success: function(data) {
 			$('h1#heading').html(data);
 		}
@@ -303,7 +302,7 @@ function updateHeadDescription(langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'html',
+		dataType: 'text',
 		success: function(data) {
 			$('head').find('meta[name="description"]').attr('content', data);
 		}
@@ -328,7 +327,7 @@ function updateHeadDescriptionBirthday(langCode,time) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'html',
+		dataType: 'text',
 		success: function(data) {
 			$('head').find('meta[name="description"]').attr('content', data);
 		}
@@ -344,7 +343,7 @@ function updateInputInterface(inputId,langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'html',
+		dataType: 'text',
 		success: function(data) {
 			$('input[id="'+inputId+'"].translate').attr('placeholder', data);
 		}
@@ -360,9 +359,9 @@ function updateButtonInterface(buttonId,langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'html',
+		dataType: 'text',
 		success: function(data) {
-			$('a[id="'+buttonId+'"].translate > span').text(data);
+			$('a[id="'+buttonId+'"].translate > span').html(data);
 		}
 	});
 }
@@ -375,7 +374,7 @@ function updateChromeWebstoreItem(langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'html',
+		dataType: 'text',
 		success: function(data) {
 			$('link[rel="chrome-webstore-item"]').attr('href',data);
 		}
@@ -400,7 +399,6 @@ function updateInterfaceLanguage(langCode) {
 		updateHeadingH1(langCode);
 		updateHeadDescription(langCode);
 		updateChromeWebstoreItem(langCode);
-		$.datepicker.setDefaults($.datepicker.regional[langCode]);
 		$('#explanation').attr('data-lang', langCode);
 		$('#pham_tung > span.translate').attr('data-title',$('#pham_tung > span.translate').attr('data-lang-'+langCode));
 		$('span.translate').each(function() {
@@ -414,6 +412,9 @@ function updateInterfaceLanguage(langCode) {
 		});
 		$.cookie('NSH:lang', langCode);
 		$('html, body').attr('lang', langCode);
+		$(document).ready(function(){
+			$.datepicker.setDefaults($.datepicker.regional[langCode]);
+		});
 	}
 }
 function loadResults(dob,diff,isSecondary,dtChange,langCode) {
@@ -501,6 +502,22 @@ function loadProverb(langCode) {
 		});
 	}
 }
+function loadFeed(url,id) {
+	if ($('#'+id).length) {
+		$.ajax({
+			url: '/triggers/feed.php',
+			type: 'GET',
+			cache: false,
+			data: {
+				url: url
+			},
+			dataType: 'html',
+			success: function(data) {
+				$('#'+id).find('div.feed').html(data);
+			}
+		});
+	}
+}
 function loadHash(password) {
 	$.ajax({
 		url: '/triggers/hash.php',
@@ -531,30 +548,47 @@ function showBirthdates() {
 function hideBirthdates() {
 	$('#birthdates').html('').hide();
 }
+function toggleFade(selector,state) {
+	switch (state) {
+		case 'show':
+			$(selector).addClass('fade_toggle');
+			break;
+		case 'hide':
+			$(selector).removeClass('fade_toggle');
+			break;
+	}
+}
+function checkFade(selector) {
+	if ($(selector).hasClass('fade_toggle')) {
+		return 'show';
+	} else if (!$(selector).hasClass('fade_toggle')) {
+		return 'hide';
+	}
+}
 function toggleCookie(cookieName,objectSelector,toggleSelector,containerSelector) {
 	if (!isset($.cookie(cookieName))) {
-		if ($(objectSelector).css('display') === 'none' && !$(toggleSelector).hasClass('clicked')) {
+		if (checkFade(objectSelector) == 'hide' && !$(toggleSelector).hasClass('clicked')) {
 			$(toggleSelector).addClass('clicked');
 			$.cookie(cookieName, 'hide');
-		} else if ($(objectSelector).css('display') === 'block' && $(toggleSelector).hasClass('clicked')) {
+		} else if (checkFade(objectSelector) == 'show' && $(toggleSelector).hasClass('clicked')) {
 			$(toggleSelector).removeClass('clicked');
 			$.cookie(cookieName, 'show');
 		}
 	}
-	if ($.cookie(cookieName) === 'show') {
-		$(objectSelector).css('display', 'block');
+	if ($.cookie(cookieName) == 'show') {
+		toggleFade(objectSelector,'show');
 		$(toggleSelector).addClass('clicked');
-	} else if ($.cookie(cookieName) === 'hide') {
-		$(objectSelector).css('display', 'none');
+	} else if ($.cookie(cookieName) == 'hide') {
+		toggleFade(objectSelector,'hide');
 		$(toggleSelector).removeClass('clicked');
 	}
 	$(containerSelector).on('click', toggleSelector, function(){
-		if ($(objectSelector).css('display') === 'none' && !$(toggleSelector).hasClass('clicked')) {
-			$(objectSelector).css('display', 'block');
+		if (checkFade(objectSelector) == 'hide' && !$(toggleSelector).hasClass('clicked')) {
+			toggleFade(objectSelector,'show');
 			$(toggleSelector).addClass('clicked');
 			$.cookie(cookieName, 'show');
-		} else if ($(objectSelector).css('display') === 'block' && $(toggleSelector).hasClass('clicked')) {
-			$(objectSelector).css('display', 'none');
+		} else if (checkFade(objectSelector) == 'show' && $(toggleSelector).hasClass('clicked')) {
+			toggleFade(objectSelector,'hide');
 			$(toggleSelector).removeClass('clicked');
 			$.cookie(cookieName, 'hide');
 		}
@@ -571,9 +605,9 @@ function toggleRhythm(chartSelector,rhythmId,type) {
 			$.cookie(cookieName, 'show');
 		}
 	}
-	if ($.cookie(cookieName) === 'show') {
+	if ($.cookie(cookieName) == 'show') {
 		series.show();
-	} else if ($.cookie(cookieName) === 'hide') {
+	} else if ($.cookie(cookieName) == 'hide') {
 		series.hide();
 	}
 }
@@ -617,6 +651,9 @@ function generatePlotLines(todayIndex) {
 }
 function setChartOptions(downloadJPEGText,downloadPDFText,downloadPNGText,downloadSVGText,printChartText,resetZoomText) {
 	Highcharts.setOptions({
+		global: {
+			canvasToolsURL: "http://nhipsinhhoc.vn/js/highcharts/modules/canvas-tools.js"
+		},
 		lang: {
 			downloadJPEG: downloadJPEGText,
 			downloadPDF: downloadPDFText,
@@ -642,7 +679,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			text: 'Nhịp Sinh Học . VN'
 		},
 		exporting: {
-			url: 'http://export.highcharts.com'
+			url: 'http://nhipsinhhoc.vn:8080/highcharts-export-web/'
 		},
 		title: {
 			text: titleText
@@ -696,8 +733,8 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			tickColor: 'transparent',
 			tickPixelInterval: 50,
 			labels: {
-				rotation: 270,
-				x: 3
+				rotation: -90,
+				x: 0
 			},
 			type: 'datetime',
 			plotBands: [{

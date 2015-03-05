@@ -4,7 +4,7 @@ $rhythm = load_rhythm($rid);
 if (isset($_POST['submit'])):
 	delete_rhythm($_POST['id']);
 	sleep(3);
-	header('location: /rhythm');
+	header('Location: /rhythm');
 endif;
 ?>
 <h3>Do you want to delete the rhythm "<?php print $rhythm['name']; ?>"?</h3>

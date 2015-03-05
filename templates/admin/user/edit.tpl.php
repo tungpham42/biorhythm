@@ -7,16 +7,15 @@ $dob = (isset($_POST['dob'])) ? $_POST['dob']: '';
 if (isset($_POST['submit'])):
 	edit_user($uid,$name,$dob);
 	sleep(3);
-	header('location: /user');
+	header('Location: /user');
 endif;
 ?>
-</style>
 <form id="form" method="post" action="">
 	<input type="hidden" name="uid" value="<?php echo $uid; ?>"/>
 	<table>
 		<tr>
-			<td><label for="name">User name:</label></td>
-			<td><input type="text" name="name" size="60" maxlength="128" class="required" value="<?php echo $old_name; ?>" /></td>
+			<td><label for="name">Fullname:</label></td>
+			<td><input id="name" type="text" name="name" size="60" maxlength="128" class="required" value="<?php echo $old_name; ?>" /></td>
 		</tr>
 		<tr>
 			<td><label for="dob">Date of birth:</label></td>
@@ -28,6 +27,15 @@ endif;
 		</tr>
 	</table>
 </form>
-<script type="text/javascript" charset="utf-8">
-	$( "#dob" ).datepicker({ dateFormat: "yy-mm-dd" , changeYear: true , changeMonth: true , yearRange: "0:2500"});
+<script>
+	$('#name').autocomplete({
+		source: '/triggers/users.php',
+		minLength: 2
+	});
+	$('#dob').datepicker({
+		dateFormat:'yy-mm-dd',
+		changeYear:true,
+		changeMonth:true,
+		yearRange:'0:2500'
+	});
 </script>
