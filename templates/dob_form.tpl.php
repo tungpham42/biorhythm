@@ -1,6 +1,6 @@
 <span id="dob_form_status"></span>
 <div id="dob_wrapper">
-	<form id="dob_form" class="no-select-highlight" action="./" method="GET">
+	<form id="dob_form" class="no-select-highlight" action="/" method="GET">
 		<div class="m-input-prepend" id="dob_bar">
 <?php
 if ($fullname != ''):

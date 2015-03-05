@@ -77,7 +77,7 @@
 		<p class="explain"><strong><?php echo get_rhythm_title(6,'ja'); ?></strong>: このサイクルは48日<span class="explain_more">、自分自身の人格と個性を知覚する能力を表現しています</span>。</p>
 		<p class="explain"><strong><?php echo get_rhythm_title(7,'ja'); ?></strong>: このサイクルは53日<span class="explain_more">、内部安定性とリラックスした姿勢について説明します</span>。</p>
 	</section>
-	<div class="m-btn-group" style="color: black; float: right;">
+	<div id="ebook_wrapper" class="m-btn-group">
 		<a id="explain_source" target="_blank" class="m-btn" data-toggle="dropdown"><span>E-book</span></a>
 		<a class="m-btn dropdown-carettoggle" data-toggle="dropdown"><span class="caret"></span></a>
 		<ul class="m-dropdown-menu">

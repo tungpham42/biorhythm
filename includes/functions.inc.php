@@ -54,6 +54,18 @@ function load_array($table_name,$identifier,$value) { //Load array from database
 	$array = load_array_with_operator($table_name,$identifier,$value,'=');
 	return $array;
 }
+function search_array($table_name,$identifier,$value) {
+	global $pdo;
+	$array = array();
+	$result = $pdo->prepare('SELECT * FROM "'.$table_name.'" WHERE '.$identifier.' LIKE :value');
+	$result->execute(array(':value' => "%$value%"));
+	if ($result) {
+		while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+			$array[] = $row;
+		}
+	}
+	return $array;
+}
 function insert_record($array = array(), $table_name) { //Insert table record
 	global $pdo;
 	$keys = array_keys($array);
@@ -134,7 +146,7 @@ function load_user($uid) { //Load user array from user ID
 	return $users[0];
 }
 function load_user_from_name($name) { //Load user array from username
-	$users = load_array('nsh_users','name','"'.$name.'"');
+	$users = load_array('nsh_users','name',$name);
 	sort($users);
 	return $users[0];
 }
@@ -265,33 +277,31 @@ function list_user_links($name) {
 	$output .= '<div id="birthdates">';
 	$output .= '</div>';
 	$output .= '<script>
-				$(document).ready(function(){
-					var dobListStatus;
-					if (!$.cookie("NSH:list-'.$name.'-status")) {
+				var dobListStatus;
+				if (!$.cookie("NSH:list-'.$name.'-status")) {
+					dobListStatus = "hide";
+				} else {
+					dobListStatus = $.cookie("NSH:list-'.$name.'-status");
+				}
+				if (dobListStatus == "hide") {
+					$("#birthdates_toggle").removeClass("clicked");
+					hideBirthdates();
+				} else if (dobListStatus == "show") {
+					$("#birthdates_toggle").addClass("clicked");
+					showBirthdates();
+				}
+				$("#birthdates_toggle").click(function(){
+					if ($(this).hasClass("clicked") && dobListStatus == "show") {
+						$.cookie("NSH:list-'.$name.'-status", "hide")
 						dobListStatus = "hide";
-					} else {
-						dobListStatus = $.cookie("NSH:list-'.$name.'-status");
-					}
-					if (dobListStatus == "hide") {
-						$("#birthdates_toggle").removeClass("clicked");
+						$(this).removeClass("clicked");
 						hideBirthdates();
-					} else if (dobListStatus == "show") {
-						$("#birthdates_toggle").addClass("clicked");
+					} else if (!$(this).hasClass("clicked") && dobListStatus == "hide") {
+						$.cookie("NSH:list-'.$name.'-status", "show")
+						dobListStatus = "show";
+						$(this).addClass("clicked");
 						showBirthdates();
 					}
-					$("#birthdates_toggle").click(function(){
-						if ($(this).hasClass("clicked") && dobListStatus == "show") {
-							$.cookie("NSH:list-'.$name.'-status", "hide")
-							dobListStatus = "hide";
-							$(this).removeClass("clicked");
-							hideBirthdates();
-						} else if (!$(this).hasClass("clicked") && dobListStatus == "hide") {
-							$.cookie("NSH:list-'.$name.'-status", "show")
-							dobListStatus = "show";
-							$(this).addClass("clicked");
-							showBirthdates();
-						}
-					});
 				});
 				</script>';
 	return $output;
@@ -310,39 +320,53 @@ function list_ajax_user_links($name) {
 	$output .= '</ul>';
 	$output .= '<div class="clear"></div>';
 	$output .= '<script>
-				$(document).ready(function(){
-					lang = $.cookie("NSH:lang");
-					$("#'.$name.'").listnav({
-						includeOther: true,
-						cookieName: "NSH:list-'.$name.'"
-					});
-					$("a.all > span.translate").text($("a.all > span.translate").attr("data-lang-"+lang));
-					$("#birthdates .m-btn, .ln-letters a").ripple();
+				lang = $.cookie("NSH:lang");
+				$("#'.$name.'").listnav({
+					includeOther: true,
+					cookieName: "NSH:list-'.$name.'"
 				});
+				$("a.all > span.translate").text($("a.all > span.translate").attr("data-lang-"+lang));
+				$("#birthdates .m-btn, .ln-letters a").ripple();
 				</script>';
 	$output .= '</div>';
 	return $output;
 }
-function list_users() { //Return users list, for admin use
+function list_users($page=1) { //Return users list, for admin use
 	$output = '';
+	$count = 10;
 	$users = load_all_array('nsh_users');
 	usort($users,'sort_name_ascend');
-	$output .= '<a class="button" href="/user/create/">Create user</a>';
+	$users_count = count($users);
+	$pagination = new Pagination($users,$page,$count,20);
+	$pagination->setShowFirstAndLast(true);
+	$pagination->setMainSeperator('');
+	$users = $pagination->getResults();
+	$output .= '<a class="button right" href="/user/create/">Create user</a>';
+	$output .= '<span class="count">'.$users_count.' user'.(($users_count > 1) ? 's': '').'.</span>';
+	$output .= '<div class="paging">'.$pagination->getLinks().'</div>';
 	$output .= '<table class="admin">';
-	$output .= '<tr><th>User ID</th><th>Username</th><th>DOB</th><th colspan="2">Operations</th></tr>';
-	$count = count($users);
-	$output .= '<tr><td class="count" colspan="5">'.$count.' item'.(($count > 1) ? 's': '').' to display.</td></tr>';
+	$output .= '<tr><th>ID</th><th>User ID</th><th>Username</th><th>DOB</th><th colspan="2">Operations</th></tr>';
+	$output .= '<tr><td class="count" colspan="6">'.$count.' item'.(($count > 1) ? 's': '').' to display.</td></tr>';
 	for ($i = 0; $i < $count; ++$i) {
-		$class = 'class="'.table_row_class($i).'"';
-		$output .= '<tr '.$class.'>';
-		$output .= '<td>'.$users[$i]['uid'].'</td>';
-		$output .= '<td><a style="color: black" target="_blank" href="/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'].'">'.$users[$i]['name'].'</a></td>';
-		$output .= '<td>'.$users[$i]['dob'].'</td>';
-		$output .= '<td><form method="POST" action="/user/edit/"><input type="hidden" name="uid" value="'.$users[$i]['uid'].'" /><input type="hidden" name="old_name" value="'.$users[$i]['name'].'" /><input type="hidden" name="old_dob" value="'.$users[$i]['dob'].'" /><input name="user_edit" type="submit" value="Edit"/></form></td>';
-		$output .= '<td><form method="POST" action="/user/delete/"><input type="hidden" name="uid" value="'.$users[$i]['uid'].'" /><input name="user_delete" type="submit" value="Delete"/></form></td>';
-		$output .= '</tr>';
+		if (isset($users[$i])) {
+			$class = 'class="'.table_row_class($i).'"';
+			$output .= '<tr '.$class.'>';
+			$output .= '<td>'.(($page-1)*$count+($i+1)).'</td>';
+			$output .= '<td>'.$users[$i]['uid'].'</td>';
+			$output .= '<td><a style="color: black" target="_blank" href="/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'].'">'.$users[$i]['name'].'</a></td>';
+			$output .= '<td>'.$users[$i]['dob'].'</td>';
+			$output .= '<td><form method="POST" action="/user/edit/"><input type="hidden" name="uid" value="'.$users[$i]['uid'].'" /><input type="hidden" name="old_name" value="'.$users[$i]['name'].'" /><input type="hidden" name="old_dob" value="'.$users[$i]['dob'].'" /><input name="user_edit" type="submit" value="Edit"/></form></td>';
+			$output .= '<td><form method="POST" action="/user/delete/"><input type="hidden" name="uid" value="'.$users[$i]['uid'].'" /><input name="user_delete" type="submit" value="Delete"/></form></td>';
+			$output .= '</tr>';
+		}
 	}
 	$output .= '</table>';
+	$output .= '<div class="paging">'.$pagination->getLinks().'</div>';
+	$output .= '<script>
+				function turnPage(page) {
+					$("#admin_user").load("/triggers/admin_user.php",{page:page});
+				}
+				</script>';
 	return $output;
 }
 function create_user($name,$dob) { //Create new user
@@ -710,7 +734,7 @@ class filter {
 		if (isset($a['cid'])) {
 			if ($a['cid'] == $this->num) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
 		}
@@ -719,7 +743,7 @@ class filter {
 		if (isset($a['rid'])) {
 			if ($a['rid'] == $this->num) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
 		}
@@ -728,7 +752,7 @@ class filter {
 		if (isset($a['is_secondary'])) {
 			if ($a['is_secondary'] == $this->num) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
 		}
@@ -737,7 +761,7 @@ class filter {
 		if (isset($a['dob'])) {
 			if (has_birthday($a['dob'],time()) == $this->num) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
 		}
@@ -745,9 +769,9 @@ class filter {
 	function filter_has_same_birthday($a) { //Call back function to filter array by role ID
 		global $dob, $fullname;
 		if (isset($a['dob']) && $dob != '' && isset($a['name'])) {
-			if (has_birthday($a['dob'],strtotime($dob)) == $this->num && $a['name'] != $fullname) {
+			if (has_birthday($a['dob'],strtotime($dob)) == $this->num && prevent_xss($a['name']) != $fullname) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
 		}
@@ -760,7 +784,7 @@ function site_name() {
 		case 'en': return 'Biorhythm chart'; break;
 		case 'ru': return 'Биоритм диаграммы'; break;
 		case 'es': return 'Biorritmo carta'; break;
-		case 'zh': return '生物节律图'; break;
+		case 'zh': return '生理节律图'; break;
 		case 'ja': return 'バイオリズムチャート'; break;
 	}
 }
@@ -772,7 +796,7 @@ function home_title() {
 		case 'en': return 'Calculate biorhythm'.(($fullname != '') ? ' for '.$fullname: ''); break;
 		case 'ru': return 'Рассчитать биоритм'.(($fullname != '') ? ' для '.$fullname: ''); break;
 		case 'es': return 'Calcular biorritmo'.(($fullname != '') ? ' para '.$fullname: ''); break;
-		case 'zh': return '计算生物节律'.(($fullname != '') ? '供'.$fullname: ''); break;
+		case 'zh': return '计算生理节律'.(($fullname != '') ? '供'.$fullname: ''); break;
 		case 'ja': return 'を計算バイオリズム'.(($fullname != '') ? 'のために'.$fullname: ''); break;
 	}
 }
@@ -781,7 +805,7 @@ function birthday_title() {
 	global $fullname;
 	switch ($lang_code) {
 		case 'vi': return 'Chúc mừng sinh nhật'.(($fullname != '') ? ' '.$fullname: ''); break;
-		case 'en': return 'Happy birthday'.(($fullname != '') ? ' '.$fullname: ''); break;
+		case 'en': return 'Happy birthday'.(($fullname != '') ? ' '.$fullname: ' to you'); break;
 		case 'ru': return 'Днем Рождения'.(($fullname != '') ? ' '.$fullname: ''); break;
 		case 'es': return 'Feliz cumpleaños'.(($fullname != '') ? ' '.$fullname: ''); break;
 		case 'zh': return '生日快乐'.(($fullname != '') ? $fullname: ''); break;
@@ -881,8 +905,10 @@ function current_url() { //Get current page URL
 	return $page_url;
 }
 function current_url_lang($lang) {
+	global $p;
+	global $navs;
 	$current_url = current_url();
-	return change_url_lang($current_url, $lang);
+	return !in_array($p, $navs) ? change_url_lang($current_url, $lang): $current_url;
 }
 function current_default_url() {
 	$current_url = current_url();
@@ -1434,19 +1460,30 @@ function get_lunar_years_old($dob, $date = 'today') {
 	return $lunar_year-$lunar_birth_year;
 }
 function render_rss_feed($rss_url,$feed_header,$feed_id) {
-	global $span_interfaces;
-	global $lang_code;
-	$rss = new Rss;
-	$feed = $rss->getFeed($rss_url, Rss::XML);
 	$result = '<section id="'.$feed_id.'" class="rss_feed">';
 	$result .= '<h2>'.$feed_header.'</h2>';
+	$result .= '<div class="help help_rss_feed"><i class="m-icon-white"></i></div>';
+	$result .= '<div class="feed"></div>';
+	$result .= '</section>';
+	$result .= '<span id="'.$feed_id.'_end"></span>';
+	$result .= '<script>
+				loadFeed("'.$rss_url.'","'.$feed_id.'");
+				$("#'.$feed_id.' > h2").on("click", function(){
+					$("body, html").animate({scrollTop: $("#'.$feed_id.'_end").offset().top}, 700);
+				});
+				</script>';
+	echo $result;
+}
+function load_rss_feed($rss_url) {
+	$rss = new Rss;
+	$feed = $rss->getFeed($rss_url, Rss::XML);
+	$result = '';
 	foreach($feed as $item) {
 		$result .= '<div class="feed_item">';
-		$result .= '<a target="_blank" class="item_title rotate" href="'.$item[link].'"><span data-title="'.$item[title].'">'.$item[title].'</span></a>';
-		$result .= '<p class="item_date">'.$item[date].'</p>';
-		$result .= '<div class="item_desc">'.$item[description].'</div>';
+		$result .= '<a target="_blank" class="item_title rotate" href="'.$item['link'].'"><span data-title="'.$item['title'].'">'.$item['title'].'</span></a>';
+		$result .= '<p class="item_date">'.$item['date'].'</p>';
+		$result .= '<div class="item_desc">'.$item['description'].'</div>';
 		$result .= '</div>';
 	}
-	$result .= '</section>';
 	echo $result;
 }

@@ -1,5 +1,4 @@
 <?php
-$_GET['lang'] = 'vi';
-$_GET['p'] = 'pong';
+$_GET['p'] = '2048';
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/index.php';
 ?>

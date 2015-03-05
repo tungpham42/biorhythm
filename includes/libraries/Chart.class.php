@@ -318,57 +318,55 @@ class Chart {
 		echo '
 <div id="explanation_chart" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_lang_code.'"></div>
 <script>
-$(document).ready(function(){
-	$.contextMenu({
-		selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_lang_code.'",
-		items: {
-			"today": {
-				name: "'.$menu_interfaces['today'][$this->_lang_code].'",
-				callback: function(){
-					loadExplanationChartResults("'.$this->_dob.'","0","1","'.date('Y-m-d').'",lang);
-				}
-			},
-			"prev": {
-				name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
-				callback: function(){
-					loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff-1).'","1","'.date('Y-m-d',time()+86400*($this->_diff-1)).'",lang);
-				}
-			},
-			"next": {
-				name: "'.$menu_interfaces['next'][$this->_lang_code].'",
-				callback: function(){
-					loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff+1).'","1","'.date('Y-m-d',time()+86400*($this->_diff+1)).'",lang);
-				}
+$.contextMenu({
+	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_lang_code.'",
+	items: {
+		"today": {
+			name: "'.$menu_interfaces['today'][$this->_lang_code].'",
+			callback: function(){
+				loadExplanationChartResults("'.$this->_dob.'","0","1","'.date('Y-m-d').'",lang);
+			}
+		},
+		"prev": {
+			name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
+			callback: function(){
+				loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff-1).'","1","'.date('Y-m-d',time()+86400*($this->_diff-1)).'",lang);
+			}
+		},
+		"next": {
+			name: "'.$menu_interfaces['next'][$this->_lang_code].'",
+			callback: function(){
+				loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff+1).'","1","'.date('Y-m-d',time()+86400*($this->_diff+1)).'",lang);
 			}
 		}
-	});
-	setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
-	renderChart("#explanation_chart","∞ '.$this->_explanation_title_text.' ∞","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"1","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"explanation");
-	$("#lang_bar").on("click", "#vi_toggle", function(){
-		if (!$(this).hasClass("disabled")) {
-			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","vi");
-		}
-	}).on("click", "#en_toggle", function(){
-		if (!$(this).hasClass("disabled")) {
-			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","en");
-		}
-	}).on("click", "#ru_toggle", function(){
-		if (!$(this).hasClass("disabled")) {
-			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","ru");
-		}
-	}).on("click", "#es_toggle", function(){
-		if (!$(this).hasClass("disabled")) {
-			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","es");
-		}
-	}).on("click", "#zh_toggle", function(){
-		if (!$(this).hasClass("disabled")) {
-			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","zh");
-		}
-	}).on("click", "#ja_toggle", function(){
-		if (!$(this).hasClass("disabled")) {
-			loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","ja");
-		}
-	});
+	}
+});
+setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
+renderChart("#explanation_chart","∞ '.$this->_explanation_title_text.' ∞","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"1","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"explanation");
+$("#lang_bar").on("click", "#vi_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","vi");
+	}
+}).on("click", "#en_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","en");
+	}
+}).on("click", "#ru_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","ru");
+	}
+}).on("click", "#es_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","es");
+	}
+}).on("click", "#zh_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","zh");
+	}
+}).on("click", "#ja_toggle", function(){
+	if (!$(this).hasClass("disabled")) {
+		loadExplanationChartResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","ja");
+	}
 });
 </script>
 		';
@@ -379,105 +377,55 @@ $(document).ready(function(){
 		echo '
 <div id="embed_chart" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_lang_code.'"></div>
 <script>
-$(document).ready(function(){
-	$.contextMenu({
-		selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_lang_code.'",
-		items: {
-			"today": {
-				name: "'.$menu_interfaces['today'][$this->_lang_code].'",
-				callback: function(){
-					loadEmbedChartResults("'.$this->_dob.'","0","0","'.date('Y-m-d').'",lang);
-				}
-			},
-			"prev": {
-				name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
-				callback: function(){
-					loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff-1).'","0","'.date('Y-m-d',time()+86400*($this->_diff-1)).'",lang);
-				}
-			},
-			"next": {
-				name: "'.$menu_interfaces['next'][$this->_lang_code].'",
-				callback: function(){
-					loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff+1).'","0","'.date('Y-m-d',time()+86400*($this->_diff+1)).'",lang);
-				}
+$.contextMenu({
+	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_lang_code.'",
+	items: {
+		"today": {
+			name: "'.$menu_interfaces['today'][$this->_lang_code].'",
+			callback: function(){
+				loadEmbedChartResults("'.$this->_dob.'","0","0","'.date('Y-m-d').'",lang);
+			}
+		},
+		"prev": {
+			name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
+			callback: function(){
+				loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff-1).'","0","'.date('Y-m-d',time()+86400*($this->_diff-1)).'",lang);
+			}
+		},
+		"next": {
+			name: "'.$menu_interfaces['next'][$this->_lang_code].'",
+			callback: function(){
+				loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff+1).'","0","'.date('Y-m-d',time()+86400*($this->_diff+1)).'",lang);
 			}
 		}
-	});
-	setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
-	renderChart("#embed_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"0","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"embed");
+	}
 });
+setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
+renderChart("#embed_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"0","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"embed");
 </script>
 		';
-	}
-	// Render chart
-	function render_chart() {
-		echo '<div id="chart">';
-		$this->render_main_chart();
-		echo '</div>';
 	}
 	// Render Highcharts
 	function render_main_chart() {
 		global $menu_interfaces;
 		echo '
 <div id="main_chart" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_lang_code.'"></div>
-<script>
-$(document).ready(function(){
-	$.contextMenu({
-		selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_lang_code.'",
-		items: {
-			"today": {
-				name: "'.$menu_interfaces['today'][$this->_lang_code].'",
-				callback: function(){
-					loadResults("'.$this->_dob.'","0","'.$this->_is_secondary.'","'.date('Y-m-d').'",lang);
-				}
-			},
-			"prev": {
-				name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
-				callback: function(){
-					loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'",lang);
-				}
-			},
-			"next": {
-				name: "'.$menu_interfaces['next'][$this->_lang_code].'",
-				callback: function(){
-					loadResults("'.$this->_dob.'","'.($this->_diff+1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+1)).'",lang);
-				}
-			},
-			"next_birthday": {
-				name: "'.$menu_interfaces['next_birthday'][$this->_lang_code].'",
-				callback: function(){
-					loadResults("'.$this->_dob.'","'.($this->_diff+countdown_birthday($this->_dob, $this->_date)).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+countdown_birthday($this->_dob, $this->_date))).'",lang);
-				}
-			}
-		}
-	});
-	setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
-	renderChart("#main_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"'.$this->_is_secondary.'",$("#dt_change").val(),'.$this->serialize_chart_data().',"main");
-});
-</script>
-		';
-	}
-	// Render script
-	function render_script() {
-		echo '
-<script>
-$(document).ready(function(){';
+<script>';
 if ($this->_diff == 0) {
 		echo '
-	$("body").addClass("today");';
+$("body").addClass("today");';
 } else {
 		echo '
-	$("body").removeClass("today");';
+$("body").removeClass("today");';
 }
 if (date('m-d',time()+86400*$this->_diff) == date('m-d',strtotime($this->_dob))) {
 		echo '
-	$("body").removeClass("today").addClass("birthday");';
+$("body").removeClass("today").addClass("birthday");';
 } else {
 		echo '
-	$("body").removeClass("birthday");';
+$("body").removeClass("birthday");';
 	}
 		echo '
-});
 lang = $.cookie("NSH:lang");
 dt_curr = $("#dt_curr").val();
 dt_change = $("#dt_change").val();
@@ -504,6 +452,37 @@ $("span.translate").each(function(){
 $("input.translate").each(function(){
 	$(this).text($(this).attr("data-lang-"+lang)).attr("placeholder",$(this).attr("data-lang-"+lang));
 });
+$.contextMenu({
+	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_lang_code.'",
+	items: {
+		"today": {
+			name: "'.$menu_interfaces['today'][$this->_lang_code].'",
+			callback: function(){
+				loadResults("'.$this->_dob.'","0","'.$this->_is_secondary.'","'.date('Y-m-d').'",lang);
+			}
+		},
+		"prev": {
+			name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
+			callback: function(){
+				loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'",lang);
+			}
+		},
+		"next": {
+			name: "'.$menu_interfaces['next'][$this->_lang_code].'",
+			callback: function(){
+				loadResults("'.$this->_dob.'","'.($this->_diff+1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+1)).'",lang);
+			}
+		},
+		"next_birthday": {
+			name: "'.$menu_interfaces['next_birthday'][$this->_lang_code].'",
+			callback: function(){
+				loadResults("'.$this->_dob.'","'.($this->_diff+countdown_birthday($this->_dob, $this->_date)).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+countdown_birthday($this->_dob, $this->_date))).'",lang);
+			}
+		}
+	}
+});
+setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
+renderChart("#main_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"'.$this->_is_secondary.'",$("#dt_change").val(),'.$this->serialize_chart_data().',"main");
 toggleCookie("NSH:embed-toggle","textarea#embed_box","#embed_toggle","#info");
 toggleCookie("NSH:lunar-toggle","#lunar_desc ~ .lunar_desc","#lunar_desc","#lunar");
 $("#controls").on("click", "#today", function(){
@@ -555,8 +534,7 @@ $("#lang_bar").on("click", "#vi_toggle", function(){
 		$this->render_info();
 		$this->render_lunar();
 		$this->render_controls();
-		$this->render_chart();
-		$this->render_script();
+		$this->render_main_chart();
 	}
 	function render_array() {
 		echo '<pre>';

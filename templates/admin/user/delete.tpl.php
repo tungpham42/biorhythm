@@ -4,7 +4,7 @@ $user = load_user($uid);
 if (isset($_POST['submit'])):
 	delete_user($_POST['id']);
 	sleep(3);
-	header('location: /user');
+	header('Location: /user');
 endif;
 ?>
 <h3>Do you want to delete the user "<?php print $user['name']; ?>"?</h3>

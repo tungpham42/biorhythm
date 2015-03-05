@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $basepath = realpath($_SERVER['DOCUMENT_ROOT']);
 $template_path = $basepath.'/templates/';
 require_once $basepath.'/includes/redirect.inc.php';
@@ -71,3 +72,6 @@ include $template_path.'scripts_bottom.tpl.php';
 ?>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>
