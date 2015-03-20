@@ -1,0 +1,37 @@
+#setupForm {
+	background-color: #f8f8f8;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #bdbdbd;
+	font-family: Arial;
+	font-size: 10pt;
+	width: 590px;
+	padding:0px 5px 0px 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+label.left_side {
+	display: inline-block;
+	width: 100px;
+}
+input.right_side {
+	font-family: Arial;
+	font-size: 10pt;
+}
+#host_tip, #user_tip, #pass_tip, #name_tip, #pref_tip {
+	display: none;
+}
+
+#warning_cont {
+	background-color: #ffdddd;
+}
+#warn1, #warn2 {
+	display: none;
+	padding: 5px;
+	margin: 0px;
+}
+
+#p2 {
+	display: none;
+}

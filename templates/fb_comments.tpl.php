@@ -1,1 +1,1 @@
-<div class="fb-comments" data-numposts="5" data-colorscheme="light"></div>
+<div id="fb_comments" class="fb-comments" data-href="<?php echo str_replace('&', '&amp;', current_url()); ?>" data-width="100%" data-numposts="12" data-colorscheme="light"></div>

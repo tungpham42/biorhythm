@@ -1,13 +1,8 @@
-<script src="/min/b=js&amp;f=jquery.drawline.js,jquery.collision.js,pong.js&amp;8"></script>
-<div id="board">
-    <div id="game">
-        <div id="player"></div>
-        <div id="target">
-            <div id="opponent"></div>
-        </div>
-        <div id="trace">
-            <div id="ball"><img src="/images/ball.png" class="ball" alt="Ping Pong Ball" /></div>
-        </div>
-    </div>
-</div>
-<div id="scoreboard">0 - 0</div>
+<link href="/min/f=/css/SpeedBallPongStyle.css&amp;5" type="text/css" rel="stylesheet"/>
+<script src="/min/b=js&amp;f=easel.js,preload.js,phaser.js,SpeedBallPong.js&amp;3"></script>
+<div id="gameDiv"></div>
+<script>
+$(document).ready(function(){
+	var pong = new ram64.GameBase('gameDiv');
+});
+</script>
