@@ -20,6 +20,7 @@ if (!isset($_GET['p']) || $_GET['p'] == 'home'):
 endif;
 include $template_path.'img_desc.tpl.php';
 include $template_path.'clicktale_top.tpl.php';
+include $template_path.'fb_root.tpl.php';
 if (isset($_SESSION['loggedin'])):
 	include $template_path.'toolbar.tpl.php';
 endif;

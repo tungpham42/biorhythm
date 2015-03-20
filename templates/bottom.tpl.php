@@ -13,6 +13,7 @@ if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)) {
 		}
 	}
 	include $template_path.'comments.tpl.php';
+	include $template_path.'alexa.tpl.php';
 	include $template_path.'install_app.tpl.php';
 }
 ?>

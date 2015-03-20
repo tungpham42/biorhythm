@@ -1,5 +1,5 @@
 function isset(variable) {
-	if (typeof variable != 'undefined' && variable != 'undefined' && variable !== null) {
+	if (typeof variable !== 'undefined' && variable !== 'undefined' && variable !== null) {
 		return true;
 	} else {
 		return false;
@@ -13,16 +13,16 @@ function isEmpty(selector) {
 	}
 }
 function isHovered(selector) {
-    return $(selector+':hover').length > 0;
+	return $(selector+':hover').length > 0;
 }
 function isClicked(selector) {
-    return $(selector+':active').length > 0;
+	return $(selector+':active').length > 0;
 }
 function isFocused(selector) {
-    return $(selector+':focus').length > 0;
+	return $(selector+':focus').length > 0;
 }
 function isBlurred(selector) {
-    return $(selector+':not(:focus)').length > 0;
+	return $(selector+':not(:focus)').length > 0;
 }
 function isChild(parentSelector, childSelector) {
 	if ($(parentSelector).find(childSelector).length > 0) {
@@ -32,12 +32,13 @@ function isChild(parentSelector, childSelector) {
 	}	
 }
 function selectText(containerid) {
+	var range = null;
 	if (document.selection) {
-		var range = document.body.createTextRange();
+		range = document.body.createTextRange();
 		range.moveToElementText(document.getElementById(containerid));
 		range.select();
 	} else if (window.getSelection) {
-		var range = document.createRange();
+		range = document.createRange();
 		range.selectNode(document.getElementById(containerid));
 		window.getSelection().addRange(range);
 	}
@@ -53,45 +54,15 @@ function replaceAll(find, replace, str) {
 	return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
 function getUrlVars() {
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for (var i = 0; i < hashes.length; i++) {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-    return vars;
-}
-function addParam(url, param, value) {
-    // Using a positive lookahead (?=\=) to find the
-    // given parameter, preceded by a ? or &, and followed
-    // by a = with a value after than (using a non-greedy selector)
-    // and then followed by a & or the end of the string
-    var val = new RegExp('(\\?|\\&)' + param + '=.*?(?=(&|$))'),
-        parts = url.toString().split('#'),
-        url = parts[0],
-        hash = parts[1]
-        qstring = /\?.+$/,
-        newURL = url;
-
-    // Check if the parameter exists
-    if (val.test(url)) {
-        // if it does, replace it, using the captured group
-        // to determine & or ? at the beginning
-        newURL = url.replace(val, '$1' + param + '=' + value);
-    } else if (qstring.test(url)) {
-        // otherwise, if there is a query string at all
-        // add the param to the end of it
-        newURL = url + '&' + param + '=' + value;
-    }
-    else {
-        // if there's no query string, add one
-        newURL = url + '?' + param + '=' + value;
-    }
-    if (hash) {
-        newURL += '#' + hash;
-    }
-    return newURL;
+	var vars = [], hash;
+	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	var hashesLength = hashes.length;
+	for (var i = 0; i < hashesLength; ++i) {
+		hash = hashes[i].split('=');
+		vars.push(hash[0]);
+		vars[hash[0]] = hash[1];
+	}
+	return vars;
 }
 function dateDiff(start, end) {
 	var start_ts = new Date(start);
@@ -99,35 +70,34 @@ function dateDiff(start, end) {
 	var diff = end_ts.getTime() - start_ts.getTime();
 	return Math.round(diff/86400000);
 }
-function isDate(txtDate)
-{
-    var currVal = txtDate;
-    if (currVal == '')
-        return false;
+function isDate(txtDate) {
+	var currVal = txtDate;
+	if (currVal === '') {
+		return false;
+	}
+	var rxDatePattern = /^(\d{4})(-)(\d{1,2})(-)(\d{1,2})$/; //Declare Regex
+	var dtArray = currVal.match(rxDatePattern); // is format OK?
 
-    var rxDatePattern = /^(\d{4})(-)(\d{1,2})(-)(\d{1,2})$/; //Declare Regex
-    var dtArray = currVal.match(rxDatePattern); // is format OK?
-
-    if (dtArray == null) 
-        return false;
-
-    dtMonth = dtArray[3];
-    dtDay= dtArray[5];
-    dtYear = dtArray[1];        
-    
-    if (dtMonth < 1 || dtMonth > 12) 
-        return false;
-    else if (dtDay < 1 || dtDay> 31) 
-        return false;
-    else if ((dtMonth==4 || dtMonth==6 || dtMonth==9 || dtMonth==11) && dtDay ==31) 
-        return false;
-    else if (dtMonth == 2) 
-    {
-        var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
-        if (dtDay> 29 || (dtDay ==29 && !isleap)) 
+	if (dtArray === null) {
+		return false;
+	}
+	dtMonth = dtArray[3];
+	dtDay= dtArray[5];
+	dtYear = dtArray[1];		
+	
+	if (dtMonth < 1 || dtMonth > 12) {
+		return false;
+	} else if (dtDay < 1 || dtDay> 31) {
+		return false;
+	} else if ((dtMonth==4 || dtMonth==6 || dtMonth==9 || dtMonth==11) && dtDay ==31) {
+		return false;
+	} else if (dtMonth == 2) {
+		var isleap = (dtYear % 4 === 0 && (dtYear % 100 !== 0 || dtYear % 400 === 0));
+		if (dtDay> 29 || (dtDay ==29 && !isleap)) {
 			return false;
-    }
-    return true;
+		}
+	}
+	return true;
 }
 function pad(s) {
 	return (s < 10) ? '0' + s : s;
@@ -141,26 +111,28 @@ function convertDate(inputFormat) {
 	return [d.getFullYear(), pad(d.getMonth()+1), pad(d.getDate())].join('-');
 }
 function maskInput(input, textbox, location, delimiter) {
-    //Get the delimiter positons
-    var locs = location.split(',');
-    //Iterate until all the delimiters are placed in the textbox
-    for (var delimCount = 0; delimCount <= locs.length; ++delimCount) {
-        for (var inputCharCount = 0; inputCharCount <= input.length; ++inputCharCount) {
-            //Check for the actual position of the delimiter
-            if (inputCharCount == locs[delimCount]) {
-                //Confirm that the delimiter is not already present in that position
-                if (input.substring(inputCharCount, inputCharCount + 1) != delimiter) {
-                    input = input.substring(0, inputCharCount) + delimiter + input.substring(inputCharCount, input.length);
-                }
-            }
-        }
-    }
-    textbox.val(input);
+	//Get the delimiter positons
+	var locs = location.split(',');
+	var locsLength = locs.length;
+	var inputLength = input.length;
+	//Iterate until all the delimiters are placed in the textbox
+	for (var delimCount = 0; delimCount <= locsLength; ++delimCount) {
+		for (var inputCharCount = 0; inputCharCount <= inputLength; ++inputCharCount) {
+			//Check for the actual position of the delimiter
+			if (inputCharCount == locs[delimCount]) {
+				//Confirm that the delimiter is not already present in that position
+				if (input.substring(inputCharCount, inputCharCount + 1) != delimiter) {
+					input = input.substring(0, inputCharCount) + delimiter + input.substring(inputCharCount, input.length);
+				}
+			}
+		}
+	}
+	textbox.val(input);
 }
 
-var q = (isset($('span#variables').attr('data-q')) && $('span#variables').attr('data-q') != '') ? $('span#variables').attr('data-q'): decodeURIComponent(getUrlVars()['q']);
-var dob = (isset($('span#variables').attr('data-dob')) && $('span#variables').attr('data-dob') != '') ? $('span#variables').attr('data-dob'): decodeURIComponent(getUrlVars()['dob']);
-var fullname = (isset($('span#variables').attr('data-fullname')) && $('span#variables').attr('data-fullname') != '') ? $('span#variables').attr('data-fullname'): replaceAll('+',' ',decodeURIComponent(getUrlVars()['fullname']));
+var q = (isset($('span#variables').attr('data-q')) && $('span#variables').attr('data-q') !== '') ? $('span#variables').attr('data-q'): decodeURIComponent(getUrlVars()['q']);
+var dob = (isset($('span#variables').attr('data-dob')) && $('span#variables').attr('data-dob') !== '') ? $('span#variables').attr('data-dob'): decodeURIComponent(getUrlVars()['dob']);
+var fullname = (isset($('span#variables').attr('data-fullname')) && $('span#variables').attr('data-fullname') !== '') ? $('span#variables').attr('data-fullname'): replaceAll('+',' ',decodeURIComponent(getUrlVars()['fullname']));
 
 function disableInput(fieldName) {
 	$('#'+fieldName).on('keypress', function(e) {
@@ -189,7 +161,7 @@ function disableHyphen(fieldName) {
 function updateHeadTitle(langCode) {
 	ajaxData = {
 		lang: langCode
-	}
+	};
 	if (isset(q)) {
 		ajaxData.q = q;
 	}
@@ -214,7 +186,7 @@ function updateHeadTitleBirthday(langCode,time) {
 	ajaxData = {
 		lang: langCode,
 		time: time
-	}
+	};
 	if (isset(q)) {
 		ajaxData.q = q;
 	}
@@ -238,7 +210,7 @@ function updateHeadTitleBirthday(langCode,time) {
 function updateHeadingH1(langCode) {
 	ajaxData = {
 		lang: langCode
-	}
+	};
 	if (isset(q)) {
 		ajaxData.q = q;
 	}
@@ -263,7 +235,7 @@ function updateHeadingH1Birthday(langCode,time) {
 	ajaxData = {
 		lang: langCode,
 		time: time
-	}
+	};
 	if (isset(q)) {
 		ajaxData.q = q;
 	}
@@ -287,7 +259,7 @@ function updateHeadingH1Birthday(langCode,time) {
 function updateHeadDescription(langCode) {
 	ajaxData = {
 		lang: langCode
-	}
+	};
 	if (isset(q)) {
 		ajaxData.q = q;
 	}
@@ -312,7 +284,7 @@ function updateHeadDescriptionBirthday(langCode,time) {
 	ajaxData = {
 		lang: langCode,
 		time: time
-	}
+	};
 	if (isset(q)) {
 		ajaxData.q = q;
 	}
@@ -337,7 +309,7 @@ function updateInputInterface(inputId,langCode) {
 	ajaxData = {
 		input_id: inputId,
 		lang: langCode
-	}
+	};
 	$.ajax({
 		url: '/triggers/input_interface.php',
 		type: 'GET',
@@ -353,7 +325,7 @@ function updateButtonInterface(buttonId,langCode) {
 	ajaxData = {
 		button_id: buttonId,
 		lang: langCode
-	}
+	};
 	$.ajax({
 		url: '/triggers/button_interface.php',
 		type: 'GET',
@@ -368,7 +340,7 @@ function updateButtonInterface(buttonId,langCode) {
 function updateChromeWebstoreItem(langCode) {
 	ajaxData = {
 		lang: langCode
-	}
+	};
 	$.ajax({
 		url: '/triggers/chrome_webstore_item.php',
 		type: 'GET',
@@ -381,8 +353,8 @@ function updateChromeWebstoreItem(langCode) {
 	});
 }
 function updateInterfaceLanguage(langCode) {
-	langCodes = ['vi', 'en', 'ru', 'es', 'zh', 'ja'];
-	langCodeIndex = $.inArray(langCode, langCodes);
+	var langCodes = ['vi', 'en', 'ru', 'es', 'zh', 'ja'];
+	var langCodeIndex = $.inArray(langCode, langCodes);
 	if ($('body').hasClass('home') && langCodeIndex != -1) {
 		langCodes.splice(langCodeIndex, 1);
 		remainingLangCodeIds = '';
@@ -556,6 +528,8 @@ function toggleFade(selector,state) {
 		case 'hide':
 			$(selector).removeClass('fade_toggle');
 			break;
+		default:
+			break;
 	}
 }
 function checkFade(selector) {
@@ -639,7 +613,7 @@ function generatePlotLines(todayIndex) {
 			zIndex: 1
 		});
 	}
-	if (todayIndex >= 0 && todayIndex <= 28 && todayIndex != '') {
+	if (todayIndex >= 0 && todayIndex <= 28 && todayIndex !== '') {
 		plotLinesArray.push({
 			color: '#c0e0c0',
 			width: 2,
@@ -666,7 +640,8 @@ function setChartOptions(downloadJPEGText,downloadPDFText,downloadPNGText,downlo
 }
 function renderChart(selector,titleText,percentageText,dateText,datesArray,todayIndex,dob,diff,isSecondary,dateDiff,seriesData,type) {
 	var plotLinesArray = generatePlotLines(todayIndex);
-	$(selector).highcharts({
+	var chart = $(selector);
+	chart.highcharts({
 		chart: {
 			type: 'spline',
 			style: {
@@ -825,6 +800,8 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 								case 'explanation':
 									loadExplanationChartResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),lang);
 									break;
+								default:
+									break;
 							}
 							console.log(this.x);
 						},
@@ -844,8 +821,8 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 	});
 	$('.highcharts-axis-labels').find('text, span').on('click',function(){
 		var labelText = this.textContent || this.innerText;
-        var x = datesArray.indexOf(labelText);
-        switch (type) {
+		var x = datesArray.indexOf(labelText);
+		switch (type) {
 			case 'main':
 				loadResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),lang);
 				break;
@@ -854,6 +831,8 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 				break;
 			case 'explanation':
 				loadExplanationChartResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),lang);
+				break;
+			default:
 				break;
 		}
 	});

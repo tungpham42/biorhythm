@@ -169,10 +169,10 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 	$body_class = 'game 2048';
 	$keywords = 'game, 2048';
 } else if ($p == 'pong') {
-	$h1 = 'Bóng bàn 3D';
-	$title = 'Bóng bàn 3D | Bong ban 3D';
+	$h1 = 'Ping Pong';
+	$title = 'Ping Pong';
 	$body_class = 'game pong';
-	$keywords = 'game, pong, bóng bàn, bong ban, bongban';
+	$keywords = 'game, pong, ping pong, bóng bàn, bong ban, bongban';
 } else if ($p == 'tictactoe') {
 	$h1 = 'Tic tac toe';
 	$title = 'Tic tac toe';

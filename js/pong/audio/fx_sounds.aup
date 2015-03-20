@@ -1,0 +1,42 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="fx_sounds_data" version="1.3.0" audacityversion="2.0.5" sel0="1.2003778509" sel1="1.2003778509" vpos="0" h="0.0000000000" zoom="75.8615297128" rate="44100.0">
+	<tags>
+		<tag name="Software" value="Audacity"/>
+		<tag name="YEAR" value="2014"/>
+	</tags>
+	<wavetrack name="41155__sandyrb__dnb-kick-008" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.59580499">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="18346">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000908.au" len="18346" min="-0.751415" max="0.579834" rms="0.029013"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="23149">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000a79.au" len="23149" min="-0.283255" max="0.230246" rms="0.026001"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.20037785">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="70970">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000a21.au" len="70970" min="-0.063696" max="0.071218" rms="0.008594"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="3.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="43044">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000afa.au" len="43044" min="-0.271623" max="0.251987" rms="0.029176"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

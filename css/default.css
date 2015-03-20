@@ -1059,6 +1059,14 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 	-webkit-transition: none !important;
 	 transition: none !important;
 }
+header, header h1, #dob_form, #info, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
+	transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
+	-webkit-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
+	-moz-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
+	-o-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
+	-ms-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
+	-webkit-font-smoothing: antialiased;
+}
 /* Links */
 a {
 	color: #4488ee;
@@ -1269,6 +1277,20 @@ input[type="submit"], input[type="reset"], input[type="button"], input.button, b
 		);
 	color: #FFF;
 }
+.lang_toggle.button:hover, .nav_button.button:hover {
+	transform: scale(1.03);
+	-webkit-transform: scale(1.03);
+	-moz-transform: scale(1.03);
+	-o-transform: scale(1.03);
+	-ms-transform: scale(1.03);
+}
+label[for="is_secondary"]:hover, #embed_toggle:hover, #lunar_desc:hover {
+	transform: scale(1.02);
+	-webkit-transform: scale(1.02);
+	-moz-transform: scale(1.02);
+	-o-transform: scale(1.02);
+	-ms-transform: scale(1.02);
+}
 .lang_toggle.button:active > *, .nav_button.button:active > *, button:active > *, a.button:active > *, .lang_toggle.button.clicked > *, .nav_button.button.clicked > *, button.clicked > *, a.button.clicked > *, .lang_toggle.button.clicked:hover > *, .nav_button.button.clicked:hover > *, button.clicked:hover > *, a.button.clicked:hover > *, .m-btn:active > *, .m-btn.clicked > *, label[for="is_secondary"]:active > input, #embed_toggle:active > *, #lunar_desc:active > *, label[for="is_secondary"].clicked > input, #embed_toggle.clicked > *, #lunar_desc.clicked > *, body.bmi .nav_button.button.bmi > *, body.lunar .nav_button.button.lunar > *, body.game .nav_button.button.game > * {
 	position: relative;
 	top: 1px;
@@ -1323,6 +1345,9 @@ span.counter {
 /* Floats */
 .left {float: left;}
 .right {float: right;}
+.center {
+	margin: 0 auto;
+}
 .clear,.clearer {clear: both;}
 .clearer {
 	display: block;
@@ -1397,13 +1422,6 @@ body.user a.user,
 #toolbar ul.toolbar > li > a:active,
 #toolbar ul.toolbar > li > a.active:focus {
 	background: #444;
-}
-header, header h1, #dob_form, #info, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
-	transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms;
-	-webkit-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms;
-	-moz-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms;
-	-o-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms;
-	-ms-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms;
 }
 header, #dob_form, #info, #life_path_link, #lunar_desc, footer, .help, .nav_button.button {
 	background-color: #4488EE;
@@ -1552,6 +1570,7 @@ body:lang(en) p#char, body:lang(ru) p#char, body:lang(es) p#char, body:lang(zh) 
 #lang_bar {
 	position: relative;
 	right: 4px;
+	margin-top: 4px;
 }
 i.flag, span.lang {
 	float: left;
@@ -2082,15 +2101,18 @@ body.birthday #ui-datepicker-div .ui-datepicker-next.ui-state-disabled, body.bir
 	position: relative;
 	float: right;
 	top: 0;
-	right: 10px;
-	width: 600px;
+	right: 0px;
+	width: calc(100% - 304px);
+	width: -webkit-calc(100% - 304px);
+	width: -moz-calc(100% - 304px);
 }
 #proverb, #proverb *, #proverb blockquote, #proverb span.arrow_down, #proverb span.arrow_down::after, #proverb p#proverb_author {
-	transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
-	-webkit-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
-	-moz-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
-	-o-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
-	-ms-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms;
+	transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
+	-webkit-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
+	-moz-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
+	-o-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
+	-ms-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
+	-webkit-font-smoothing: antialiased;
 }
 #proverb blockquote {
 	display: block;
@@ -2468,18 +2490,18 @@ body.birthday #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_d
 }
 /* Dob */
 #dob_form_status.empty_dob ~ #help_dob_form, #dob_form_status.wrong_dob ~ #help_dob_form {
-	animation: help_form_dob 1s linear 0s infinite;
-	-webkit-animation: help_form_dob 1s linear 0s infinite;
+	animation: help_form_dob 1.2s linear 0s infinite;
+	-webkit-animation: help_form_dob 1.2s linear 0s infinite;
 }
 /* Submit */
 #dob_form_status.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {
-	animation: help_form 1s linear 0s infinite;
-	-webkit-animation: help_form 1s linear 0s infinite;
+	animation: help_form 1.2s linear 0s infinite;
+	-webkit-animation: help_form 1.2s linear 0s infinite;
 }
 /* Fullname */
 #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_dob_form {
-	animation: help_form_fullname 1s linear 0s infinite;
-	-webkit-animation: help_form_fullname 1s linear 0s infinite;
+	animation: help_form_fullname 1.2s linear 0s infinite;
+	-webkit-animation: help_form_fullname 1.2s linear 0s infinite;
 }
 @-webkit-keyframes help_form_dob {
 	0% {
@@ -2794,6 +2816,10 @@ input[name="is_secondary"] {display: none;}
 	margin: 12px 4px;
 	padding: 4px 8px;
 }
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+	min-width: 100% !important;
+	width: 100% !important;
+}
 .rhythm.secondary {
 	color: #eaeaea;
 }
@@ -2868,7 +2894,7 @@ footer {
 	width: 950px;
 	height: 32px;
 	float: left;
-	font-size: 1.6em;
+	font-size: 20px;
 	font-weight: normal;
 	padding: 10px 5px;
 	margin: 0;
@@ -3068,7 +3094,6 @@ border:1px solid #6699FF;
 .dates-header {
 	padding: 4px 8px;
 	font-size: 16px;
-	white-space: nowrap;
 }
 .dates-header, .dates-nav {
 	position: relative;
@@ -3122,7 +3147,7 @@ body.birthday #birthdates .m-btn:hover, body.birthday .dates-box .m-btn:hover, b
 	background: rgba(250,250,250,0.25);
 }
 #birthdates_toggle {
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: normal;
 	white-space: nowrap;
 }
@@ -3141,7 +3166,7 @@ body.birthday #birthdates .m-btn:hover, body.birthday .dates-box .m-btn:hover, b
 #badge {
 	margin-top: 0;
 	padding: 2px;
-	padding-top: 4px;
+	padding-top: 0;
 	border-radius: 2px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
@@ -3566,8 +3591,8 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 	width: 105px;
 }
 #weight:empty, #height:empty, #solarDate:empty, #weight:invalid, #height:invalid, #solarDate, #solarDate:invalid {
-	-webkit-animation: glow 1s ease-out infinite alternate;
-	animation: glow 1s ease-out infinite alternate;
+	-webkit-animation: glow 1.2s ease-out infinite alternate;
+	animation: glow 1.2s ease-out infinite alternate;
 }
 #weight:hover, #height:hover, #solarDate:hover, #weight:active, #height:active, #solarDate:active, #weight:focus, #height:focus, #solarDate:focus, #weight:valid, #height:valid, #weight:empty:hover, #height:empty:hover, #weight:invalid:hover, #height:invalid:hover {
 	-webkit-animation: 0s;
@@ -3668,7 +3693,7 @@ body:lang(ja) #rhythms_table {
 .rhythm_hover > td.rhythm_label > span {
 	text-decoration: underline;
 }
-#comments, #comments > iframe, #___comments_0, #___comments_0 > iframe {
+#g_comments, #g_comments > iframe, #___comments_0, #___comments_0 > iframe {
 	width: 100% !important;
 }
 /* Ping Pong */
@@ -3830,8 +3855,8 @@ img.ball {
 }
 .rss_feed > h2:hover + .help_rss_feed {
 	display: block;
-	animation: help_rss_feed 1s linear 0s infinite;
-	-webkit-animation: help_rss_feed 1s linear 0s infinite;
+	animation: help_rss_feed 1.2s linear 0s infinite;
+	-webkit-animation: help_rss_feed 1.2s linear 0s infinite;
 }
 @-webkit-keyframes help_rss_feed {
 	0% {
@@ -4014,6 +4039,14 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 		opacity: 1;
 	}
 }
+#alexa {
+	display: block;
+	width: 200px;
+	margin: auto;
+}
+#alexa > a > img {
+	width: 200px;
+}
 /* Responsive */
 @media all and (max-width: 551px) {
 	#lang_bar {
@@ -4041,10 +4074,10 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	.top.button.donate, .top.button.sponsor {display: none;}
 	#proverb {
 		top: -102px;
-		right: 0;
-		width: calc(100% - 286px);
-		width: -webkit-calc(100% - 286px);
-		width: -moz-calc(100% - 286px);
+		right: 2px;
+		width: calc(100% - 290px);
+		width: -webkit-calc(100% - 290px);
+		width: -moz-calc(100% - 290px);
 	}
 	#proverb blockquote::before, blockquote::after {font-size: 16px}
 	#proverb blockquote::before {
@@ -4097,10 +4130,10 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 		margin-right: -moz-calc((100% - 444px) / 2);
 	}
 	#proverb {
-		right: 6px;
-		width: calc(100% - 296px);
-		width: -webkit-calc(100% - 296px);
-		width: -moz-calc(100% - 296px);
+		right: 4px;
+		width: calc(100% - 295px);
+		width: -webkit-calc(100% - 295px);
+		width: -moz-calc(100% - 295px);
 	}
 	#proverb blockquote::before, blockquote::after {font-size: 20px}
 	#proverb blockquote::before {
@@ -4139,10 +4172,10 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 }
 @media all and (min-width: 750px) and (max-width: 959px) {
 	#proverb {
-		right: 16px;
-		width: calc(100% - 316px);
-		width: -webkit-calc(100% - 316px);
-		width: -moz-calc(100% - 316px);
+		right: 4px;
+		width: calc(100% - 295px);
+		width: -webkit-calc(100% - 295px);
+		width: -moz-calc(100% - 295px);
 	}
 	#proverb blockquote::before, blockquote::after {font-size: 25px}
 	#proverb blockquote::before {
@@ -4432,6 +4465,21 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	}
 	.rss_feed {display: none}
 }
+@media all and (min-width: 960px) {
+	#proverb {
+		top: 13px;
+	}
+	#info, #lunar, #controls, #chart, #explanation_chart_results {
+		margin: 22px 0;
+	}
+	#dob_form:hover, #info:hover, #lunar:hover, #controls:hover {
+		transform: scale(1.04);
+		-webkit-transform: scale(1.04);
+		-moz-transform: scale(1.04);
+		-o-transform: scale(1.04);
+		-ms-transform: scale(1.04);
+	}
+}
 @media all and (min-width: 960px) and (max-width: 1262px) {
 	.leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {
 		display: block;
@@ -4441,6 +4489,20 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	}
 	#embed_chart {
 		height: 45vw;
+	}
+	#main_chart:hover, #explanation_chart_results:hover {
+		transform: scale(1.02);
+		-webkit-transform: scale(1.02);
+		-moz-transform: scale(1.02);
+		-o-transform: scale(1.02);
+		-ms-transform: scale(1.02);
+	}
+	#proverb:hover {
+		transform: scale(1.04);
+		-webkit-transform: scale(1.04);
+		-moz-transform: scale(1.04);
+		-o-transform: scale(1.04);
+		-ms-transform: scale(1.04);
 	}
 }
 @media all and (max-width: 1262px) {
@@ -4485,11 +4547,6 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	#main_chart > .highcharts-container, #explanation_chart > .highcharts-container, #main_chart > .highcharts-container > svg, #explanation_chart > .highcharts-container > svg, #main_chart > .highcharts-container > svg > rect.highcharts-background, #explanation_chart > .highcharts-container > svg > rect.highcharts-background {
 		height: 100% !important;
 	}
-	#proverb {
-		width: calc(100% - 320px);
-		width: -webkit-calc(100% - 320px);
-		width: -moz-calc(100% - 320px);
-	}
 	#proverb blockquote {
 		font-size: calc(20vw / 12.8);
 		font-size: -webkit-calc(20vw / 12.8);
@@ -4530,6 +4587,20 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	#embed_chart {
 		height: 40vw;
 	}
+	#main_chart:hover, #explanation_chart_results:hover {
+		transform: scale(1.015);
+		-webkit-transform: scale(1.015);
+		-moz-transform: scale(1.015);
+		-o-transform: scale(1.015);
+		-ms-transform: scale(1.015);
+	}
+	#proverb:hover {
+		transform: scale(1.03);
+		-webkit-transform: scale(1.03);
+		-moz-transform: scale(1.03);
+		-o-transform: scale(1.03);
+		-ms-transform: scale(1.03);
+	}
 }
 @media all and (min-width: 1583px) {
 	ul.dates > li {
@@ -4537,5 +4608,19 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	}
 	#embed_chart {
 		height: 36vw;
+	}
+	#main_chart:hover, #explanation_chart_results:hover {
+		transform: scale(1.01);
+		-webkit-transform: scale(1.01);
+		-moz-transform: scale(1.01);
+		-o-transform: scale(1.01);
+		-ms-transform: scale(1.01);
+	}
+	#proverb:hover {
+		transform: scale(1.02);
+		-webkit-transform: scale(1.02);
+		-moz-transform: scale(1.02);
+		-o-transform: scale(1.02);
+		-ms-transform: scale(1.02);
 	}
 }

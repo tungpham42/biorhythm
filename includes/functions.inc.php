@@ -331,10 +331,10 @@ function list_ajax_user_links($name) {
 	$output .= '</div>';
 	return $output;
 }
-function list_users($page=1) { //Return users list, for admin use
+function list_users($page=1,$keyword='') { //Return users list, for admin use
 	$output = '';
 	$count = 10;
-	$users = load_all_array('nsh_users');
+	$users = ($keyword != '') ? array_filter(load_all_array('nsh_users'), array(new filter($keyword), 'filter_keyword')): load_all_array('nsh_users');
 	usort($users,'sort_name_ascend');
 	$users_count = count($users);
 	$pagination = new Pagination($users,$page,$count,20);
@@ -346,7 +346,6 @@ function list_users($page=1) { //Return users list, for admin use
 	$output .= '<div class="paging">'.$pagination->getLinks().'</div>';
 	$output .= '<table class="admin">';
 	$output .= '<tr><th>ID</th><th>User ID</th><th>Username</th><th>DOB</th><th colspan="2">Operations</th></tr>';
-	$output .= '<tr><td class="count" colspan="6">'.$count.' item'.(($count > 1) ? 's': '').' to display.</td></tr>';
 	for ($i = 0; $i < $count; ++$i) {
 		if (isset($users[$i])) {
 			$class = 'class="'.table_row_class($i).'"';
@@ -364,7 +363,7 @@ function list_users($page=1) { //Return users list, for admin use
 	$output .= '<div class="paging">'.$pagination->getLinks().'</div>';
 	$output .= '<script>
 				function turnPage(page) {
-					$("#admin_user").load("/triggers/admin_user.php",{page:page});
+					$("#admin_user").load("/triggers/admin_user.php",{page:page,keyword:"'.$keyword.'"});
 				}
 				</script>';
 	return $output;
@@ -730,9 +729,9 @@ class filter {
 	function __construct($num) {
 			$this->num = $num;
 	}
-	function filter_cid($a) { //Call back function to filter array by course ID
-		if (isset($a['cid'])) {
-			if ($a['cid'] == $this->num) {
+	function filter_keyword($a) { //Call back function to filter array by fullname
+		if (isset($a['name']) && isset($a['dob'])) {
+			if (preg_match("/$this->num/i",$a['name']) || preg_match("/$this->num/i",$a['dob'])) {
 				return true;
 			} else {
 				return false;

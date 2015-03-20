@@ -32,14 +32,14 @@ function restoreSearchField() {
 }
 function validateSearch(isSubmitted) {
 	if (!isEmpty('#search')) {
-		if (isSubmitted == true) {
+		if (isSubmitted === true) {
 			$('#search_form').submit();
-		} else if (isSubmitted == false) {
+		} else if (isSubmitted === false) {
 			restoreSearchField();
 		}
 	} else if (isEmpty('#search')) {
 		alertSearchField();
-		if (isSubmitted == true) {
+		if (isSubmitted === true) {
 			shakeElement('#search');
 		}
 	}
@@ -60,7 +60,7 @@ function alertFullname() {
 }
 function enableFields(isErased) {
 	$('#dob, #fullname').removeAttr('disabled').removeAttr('readonly');
-	if (isErased == true) {
+	if (isErased === true) {
 		$('#dob, #fullname').val('');
 	}
 }
@@ -80,9 +80,9 @@ function maskDob() {
 	});
 }
 function helpDobForm() {
-	if ($('#dob').prop('disabled') == true) {
+	if ($('#dob').prop('disabled') === true) {
 		$('span#dob_form_status').addClass('disabled_dob');
-	} else if ($('#dob').prop('disabled') == false) {
+	} else if ($('#dob').prop('disabled') === false) {
 		$('span#dob_form_status').removeClass('disabled_dob');
 	}
 	if ($('#dob').val() == $('#dob').datepicker('option','defaultDate')) {
@@ -101,7 +101,7 @@ function helpDobForm() {
 		$('span#dob_form_status').removeClass('empty_dob');
 		if (isDate($('#dob').val())) {
 			$('span#dob_form_status').removeClass('wrong_dob').addClass('correct_dob');
-			if (($('#dob_bar').has('#name_toggle').length || $('#fullname').prop('disabled') == false) && isEmpty('#fullname')) {
+			if (($('#dob_bar').has('#name_toggle').length || $('#fullname').prop('disabled') === false) && isEmpty('#fullname')) {
 				$('span#dob_form_status').addClass('empty_fullname').removeClass('filled_fullname');
 			} else {
 				$('span#dob_form_status').removeClass('empty_fullname').addClass('filled_fullname');
@@ -134,9 +134,9 @@ function submitDob() {
 function validateDob(isSubmitted) {
 	if (!isEmpty('#dob')) {
 		if (isDate($('#dob').val())) {
-			if (isSubmitted == true) {
-				if (($('#dob_bar').has('#name_toggle').length || $('#fullname').prop('disabled') == false) && $('#dob').prop('disabled') == false) {
-					if ($('#fullname').prop('disabled') == false && isEmpty('#fullname')) {
+			if (isSubmitted === true) {
+				if (($('#dob_bar').has('#name_toggle').length || $('#fullname').prop('disabled') === false) && $('#dob').prop('disabled') === false) {
+					if ($('#fullname').prop('disabled') === false && isEmpty('#fullname')) {
 						alertFullname();
 					} else if ($('span#dob_form_status').hasClass('default_dob') && !$('span#dob_form_status').hasClass('checked_default_dob')) {
 						$('span#dob_form_status').addClass('checked_default_dob');
@@ -151,19 +151,19 @@ function validateDob(isSubmitted) {
 				} else {
 					alertErase();
 				}
-			} else if (isSubmitted == false) {
+			} else if (isSubmitted === false) {
 				restoreDobField();
 			}
 		} else if (!isDate($('#dob').val())) {
 			alertDobField();
-			if (isSubmitted == true) {
+			if (isSubmitted === true) {
 				shakeElement('#dob');
 			}
 			maskDob();
 		}
 	} else if (isEmpty('#dob')) {
 		alertDobField();
-		if (isSubmitted == true) {
+		if (isSubmitted === true) {
 			shakeElement('#dob');
 		}
 	}
