@@ -21,7 +21,7 @@ $show_donate = false;
 $show_sponsor = false;
 $show_addthis = false;
 $show_sumome = true;
-$credential_id = 3;
+$credential_id = 4;
 $number = calculate_life_path($dob);
 if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['lang_code'])) {
 	$chart = new Chart($_GET['dob'],$_GET['diff'],$_GET['is_secondary'],$_GET['dt_change'],$_GET['lang_code']);
