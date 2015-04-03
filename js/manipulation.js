@@ -30,6 +30,7 @@ function manipulateDobForm() {
 	disableHyphen('dob');
 	helpDobForm();
 	helpFullname();
+	$('#name_toggle.ripple').removeClass('ripple');
 	$('#dob_form').on({
 		focus: function() {
 			$('#dob').attr('placeholder', 'YYYY-MM-DD');
@@ -176,12 +177,12 @@ function manipulateExplanation() {
 function manipulateBirthday() {
 	if ($('body').hasClass('birthday')) {
 		$('#home_page, #dob_erase, #prev, #next').removeClass('blue').addClass('orange');
-		$('#proverb_content, li.rhythm, #embed_toggle').find('i').removeClass('icon-white').addClass('icon-orange');
+		$('#proverb_content, li.rhythm, #embed_toggle, .helper, .infor').find('i').removeClass('icon-white').addClass('icon-orange');
 		$('#logo').find('i').removeClass('m-icon-white').addClass('m-icon-orange');
 		$('h1#heading').burn();
 	} else if (!$('body').hasClass('birthday')) {
 		$('#home_page, #dob_erase, #prev, #next').removeClass('orange').addClass('blue');
-		$('#proverb_content, li.rhythm, #embed_toggle').find('i').removeClass('icon-orange').addClass('icon-white');
+		$('#proverb_content, li.rhythm, #embed_toggle, .helper, .infor').find('i').removeClass('icon-orange').addClass('icon-white');
 		$('#logo').find('i').removeClass('m-icon-orange').addClass('m-icon-white');
 		$('h1#heading').burn(false);
 	}
@@ -189,21 +190,42 @@ function manipulateBirthday() {
 function manipulateLangBar() {
 	$('.lang_toggle.button').tsort({order:'desc',attr:'data-order'}).each(function(){
 		if ($(this).attr('lang') == $('body').attr('lang')) {
-			$(this).addClass('first');
+			$(this).addClass('first').appendTo('#lang_bar');
 		} else if ($(this).attr('lang') != $('body').attr('lang')) {
 			$(this).removeClass('first');
 		}
-		if ($(this).hasClass('first')) {
-			$(this).appendTo('#lang_bar');
-		}
 	});
 }
+lang = $('body').attr('lang');
+dobText = '';
+fullnameText = '';
+dobTexts = {
+	'vi': 'Ngày sinh',
+	'en': 'Date of birth',
+	'ru': 'Дата рождения',
+	'es': 'Fecha de nacimiento',
+	'zh': '出生日期',
+	'ja': '生まれた日'
+};
+fullnameTexts = {
+	'vi': 'Họ tên',
+	'en': 'Full name',
+	'ru': 'Полное имя',
+	'es': 'Nombre',
+	'zh': '全名',
+	'ja': 'フルネーム'
+};
+function manipulateLangEvent(langCode) {
+	updateInterfaceLanguage(langCode);
+	manipulateLangBar();
+	loadProverb(langCode);
+	lang = langCode;
+	dobText = dobTexts[langCode];
+	fullnameText = fullnameTexts[langCode];
+}
 function manipulateLang() {
-	lang = $('body').attr('lang');
 	updateInterfaceLanguage(lang);
 	manipulateLangBar();
-	dobText = '';
-	fullnameText = '';
 	$('#pham_tung').find('span.translate').attr('data-title',$('#pham_tung').find('span.translate').attr('data-lang-'+lang));
 	$('span.translate').each(function() {
 		$(this).text($(this).attr('data-lang-'+lang));
@@ -229,57 +251,27 @@ function manipulateLang() {
 	}
 	$('#lang_bar').on('click', '#vi_toggle', function() {
 		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			updateInterfaceLanguage('vi');
-			manipulateLangBar();
-			loadProverb('vi');
-			lang = 'vi';
-			dobText = 'Ngày sinh';
-			fullnameText = 'Họ tên';
+			manipulateLangEvent('vi');
 		}
 	}).on('click', '#en_toggle', function() {
 		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			updateInterfaceLanguage('en');
-			manipulateLangBar();
-			loadProverb('en');
-			lang = 'en';
-			dobText = 'Date of birth';
-			fullnameText = 'Full name';
+			manipulateLangEvent('en');
 		}
 	}).on('click', '#ru_toggle', function() {
 		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			updateInterfaceLanguage('ru');
-			manipulateLangBar();
-			loadProverb('ru');
-			lang = 'ru';
-			dobText = 'Дата рождения';
-			fullnameText = 'Полное имя';
+			manipulateLangEvent('ru');
 		}
 	}).on('click', '#es_toggle', function() {
 		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			updateInterfaceLanguage('es');
-			manipulateLangBar();
-			loadProverb('es');
-			lang = 'es';
-			dobText = 'Fecha de nacimiento';
-			fullnameText = 'Nombre';
+			manipulateLangEvent('es');
 		}
 	}).on('click', '#zh_toggle', function() {
 		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			updateInterfaceLanguage('zh');
-			manipulateLangBar();
-			loadProverb('zh');
-			lang = 'zh';
-			dobText = '出生日期';
-			fullnameText = '全名';
+			manipulateLangEvent('zh');
 		}
 	}).on('click', '#ja_toggle', function() {
 		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			updateInterfaceLanguage('ja');
-			manipulateLangBar();
-			loadProverb('ja');
-			lang = 'ja';
-			dobText = '生まれた日';
-			fullnameText = 'フルネーム';
+			manipulateLangEvent('ja');
 		}
 	});
 	if (isset(decodeURIComponent(getUrlVars()['lang'])) && (decodeURIComponent(getUrlVars()['lang']) == 'vi' || decodeURIComponent(getUrlVars()['lang']) == 'en' || decodeURIComponent(getUrlVars()['lang']) == 'ru' || decodeURIComponent(getUrlVars()['lang']) == 'es' || decodeURIComponent(getUrlVars()['lang']) == 'zh' || decodeURIComponent(getUrlVars()['lang']) == 'ja')) {
@@ -306,4 +298,28 @@ function manipulateVideo() {
 }
 function manipulateButtons() {
 	rippleButtons();
+}
+function manipulateHelper(selector,content) {
+	$(selector).on({
+		mouseenter: function(){
+			$(selector).find('.helper').append('<div class="helper_box">'+content+'</div>');
+		},
+		mouseleave: function(){
+			$(selector).find('.helper_box').remove();
+		}
+	}, '.helper').on('click', '.helper_box', function(){
+		$(selector).find('.helper_box').remove();
+	});
+}
+function manipulateInfor(selector,content) {
+	$(selector).on({
+		mouseenter: function(){
+			$(selector).find('.infor').append('<div class="infor_box">'+content+'</div>');
+		},
+		mouseleave: function(){
+			$(selector).find('.infor_box').remove();
+		}
+	}, '.infor').on('click', '.infor_box', function(){
+		$(selector).find('.infor_box').remove();
+	});
 }

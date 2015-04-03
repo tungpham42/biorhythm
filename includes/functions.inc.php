@@ -461,7 +461,7 @@ function bio_count($dob,$date,$scale) { //http://en.wikipedia.org/wiki/Biorhythm
 function percent_bio_count($dob,$date,$scale) {
 	return bio_count($dob,$date,$scale).' %';
 }
-function average_count($dob,$date,$rhythms) {
+function average_bio_count($dob,$date,$rhythms) {
 	$total = 0;
 	$count = (count($rhythms) > 0) ? count($rhythms): 1;
 	$i = 0;
@@ -470,6 +470,30 @@ function average_count($dob,$date,$rhythms) {
 		++$i;
 	}
 	return number_format($total/$count,2);
+}
+function percent_average_bio_count($dob,$date,$rhythms) {
+	return average_bio_count($dob,$date,$rhythms).' %';
+}
+// https://github.com/rmanasyan/compatzz/blob/master/js/main.js
+function compatible_count($this_dob,$that_dob,$scale) {
+	$x = abs(differ_date($this_dob,$that_dob));
+	return number_format(100*abs(cos(pi()*$x/$scale)),2);
+}
+function percent_compatible_count($this_dob,$that_dob,$scale) {
+	return ($this_dob == $that_dob) ? 'N/A': compatible_count($this_dob,$that_dob,$scale).' %';
+}
+function average_compatible_count($this_dob,$that_dob,$rhythms) {
+	$total = 0;
+	$count = (count($rhythms) > 0) ? count($rhythms): 1;
+	$i = 0;
+	foreach ($rhythms as $rhythm) {
+		$total += compatible_count($this_dob,$that_dob,$rhythm['scale']);
+		++$i;
+	}
+	return number_format($total/$count,2);
+}
+function percent_average_compatible_count($this_dob,$that_dob,$rhythms) {
+	return ($this_dob == $that_dob) ? 'N/A': average_compatible_count($this_dob,$that_dob,$rhythms).' %';
 }
 /* Zodiac Sign */
 function get_zodiac_sign($dob) {
@@ -1423,7 +1447,7 @@ function get_lunar_year($date = 'today', $lang = 'vi') {
 	$lunar_values = get_lunar_values(array($stem_index, $branch_index), $lang);
 	$stem = $lunar_values[0];
 	$branch = $lunar_values[1];
-	return $lunar_year.(($stem != '' && $branch != '') ? ' - '.$stem.' '.$branch: '');
+	return (($stem != '' && $branch != '') ? $stem.' '.$branch.' - ': '').$lunar_year;
 }
 function get_lunar_month($date = 'today', $lang = 'vi') {
 	$lunar_date = get_lunar_date($date);
@@ -1435,7 +1459,7 @@ function get_lunar_month($date = 'today', $lang = 'vi') {
 	$lunar_values = get_lunar_values(array($stem_index, $branch_index), $lang);
 	$stem = $lunar_values[0];
 	$branch = $lunar_values[1];
-	return $lunar_month.(($lunar_leap == 1) ? ' '.get_leap_value($lang): '').(($stem != '' && $branch != '') ? ' - '.$stem.' '.$branch: '');
+	return (($stem != '' && $branch != '') ? $stem.' '.$branch.' - ': '').$lunar_month.(($lunar_leap == 1) ? ' '.get_leap_value($lang): '');
 }
 function get_lunar_day($date = 'today', $lang = 'vi') {
 	$lunar_date = get_lunar_date($date);
@@ -1449,7 +1473,7 @@ function get_lunar_day($date = 'today', $lang = 'vi') {
 	$lunar_values = get_lunar_values(array($stem_index, $branch_index), $lang);
 	$stem = $lunar_values[0];
 	$branch = $lunar_values[1];
-	return $lunar_day.(($stem != '' && $branch != '') ? ' - '.$stem.' '.$branch: '');
+	return (($stem != '' && $branch != '') ? $stem.' '.$branch.' - ': '').$lunar_day;
 }
 function get_lunar_years_old($dob, $date = 'today') {
 	$lunar_date = get_lunar_date($date);

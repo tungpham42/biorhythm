@@ -389,7 +389,7 @@ function updateInterfaceLanguage(langCode) {
 		});
 	}
 }
-function loadResults(dob,diff,isSecondary,dtChange,langCode) {
+function loadResults(dob,diff,isSecondary,dtChange,partnerDob,langCode) {
 	if ($('#results').length) {
 		$.ajax({
 			url: '/triggers/results.php',
@@ -400,6 +400,7 @@ function loadResults(dob,diff,isSecondary,dtChange,langCode) {
 				diff: diff,
 				is_secondary: isSecondary,
 				dt_change: dtChange,
+				partner_dob: partnerDob,
 				lang_code: langCode
 			},
 			dataType: 'html',
@@ -415,7 +416,7 @@ function loadResults(dob,diff,isSecondary,dtChange,langCode) {
 		});
 	}
 }
-function loadExplanationChartResults(dob,diff,isSecondary,dtChange,langCode) {
+function loadExplanationChartResults(dob,diff,isSecondary,dtChange,partnerDob,langCode) {
 	if ($('#explanation_chart_results').length) {
 		$.ajax({
 			url: '/triggers/explanation_chart_results.php',
@@ -426,6 +427,7 @@ function loadExplanationChartResults(dob,diff,isSecondary,dtChange,langCode) {
 				diff: diff,
 				is_secondary: isSecondary,
 				dt_change: dtChange,
+				partner_dob: partnerDob,
 				lang_code: langCode
 			},
 			dataType: 'html',
@@ -435,7 +437,7 @@ function loadExplanationChartResults(dob,diff,isSecondary,dtChange,langCode) {
 		});
 	}
 }
-function loadEmbedChartResults(dob,diff,isSecondary,dtChange,langCode) {
+function loadEmbedChartResults(dob,diff,isSecondary,dtChange,partnerDob,langCode) {
 	if ($('#embed_chart_results').length) {
 		$.ajax({
 			url: '/triggers/embed_chart_results.php',
@@ -446,6 +448,7 @@ function loadEmbedChartResults(dob,diff,isSecondary,dtChange,langCode) {
 				diff: diff,
 				is_secondary: isSecondary,
 				dt_change: dtChange,
+				partner_dob: partnerDob,
 				lang_code: langCode
 			},
 			dataType: 'html',
@@ -727,6 +730,8 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 		tooltip: {
 			enabled: true,
 			shared: true,
+			followPointer: true,
+			followTouchMove: false,
 			crosshairs: [{
 				color: '#e0c0c0',
 				dashStyle: 'solid',
@@ -755,6 +760,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			},
 			series: {
 				animation: false,
+				stickyTracking: true,
 				cursor: 'pointer',
 				lineWidth: 1,
 				events: {
@@ -792,13 +798,13 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 						click: function(){
 							switch (type) {
 								case 'main':
-									loadResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),lang);
+									loadResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),$('#partner_dob').val(),lang);
 									break;
 								case 'embed':
-									loadEmbedChartResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),lang);
+									loadEmbedChartResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),dob,lang);
 									break;
 								case 'explanation':
-									loadExplanationChartResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),lang);
+									loadExplanationChartResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),dob,lang);
 									break;
 								default:
 									break;
@@ -824,13 +830,13 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 		var x = datesArray.indexOf(labelText);
 		switch (type) {
 			case 'main':
-				loadResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),lang);
+				loadResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),$('#partner_dob').val(),lang);
 				break;
 			case 'embed':
-				loadEmbedChartResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),lang);
+				loadEmbedChartResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),dob,lang);
 				break;
 			case 'explanation':
-				loadExplanationChartResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),lang);
+				loadExplanationChartResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),dob,lang);
 				break;
 			default:
 				break;

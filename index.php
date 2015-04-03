@@ -28,32 +28,34 @@ if (!is_birthday() && $show_ad):
 	include $template_path.'adsense_top.tpl.php';
 endif;
 ?>
-	<div id="page_section">
-		<!-- Start Header -->
-		<header id="header">
+	<!-- Start Header -->
+	<header id="header">
+		<div class="inner">
 <?php
 include $template_path.'header.tpl.php';
 ?>
-		</header>
-		<!-- End Header -->
-		<!-- Start Main -->
-		<main id="main">
-			<div id="content">
+		</div>
+	</header>
+	<!-- End Header -->
+	<!-- Start Main -->
+	<main id="main">
+		<div id="content">
 <?php
 include $template_path.'router.tpl.php';
 ?>
-			</div>
-		</main>
-		<!-- End Main -->
-		<!-- Start Footer -->
-		<footer id="footer">
+		</div>
+	</main>
+	<!-- End Main -->
+	<!-- Start Footer -->
+	<footer id="footer">
+		<div class="inner">
 <?php
 include $template_path.'footer.tpl.php';
 ?>
-		</footer>
-		<!-- End Footer -->
-		<div class="clear"></div>
-	</div>
+		</div>
+	</footer>
+	<!-- End Footer -->
+	<div class="clear"></div>
 <?php
 include $template_path.'loading.tpl.php';
 include $template_path.'to_top.tpl.php';

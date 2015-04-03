@@ -13,8 +13,8 @@ if (has_dob()) {
 } else if (!has_dob()) {
 	include $template_path.'explanation_chart.tpl.php';
 	include $template_path.'explanation.tpl.php';
-	include $template_path.'feed_facebook.tpl.php';
-	include $template_path.'feed_googleplus.tpl.php';
+	//include $template_path.'feed_facebook.tpl.php';
+	//include $template_path.'feed_googleplus.tpl.php';
 	//include $template_path.'feed_twitter.tpl.php';
 	include $template_path.'feed_blog.tpl.php';
 }

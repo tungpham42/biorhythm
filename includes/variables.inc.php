@@ -23,11 +23,11 @@ $show_addthis = false;
 $show_sumome = true;
 $credential_id = 4;
 $number = calculate_life_path($dob);
-if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['lang_code'])) {
-	$chart = new Chart($_GET['dob'],$_GET['diff'],$_GET['is_secondary'],$_GET['dt_change'],$_GET['lang_code']);
+if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['partner_dob']) && isset($_GET['lang_code'])) {
+	$chart = new Chart($_GET['dob'],$_GET['diff'],$_GET['is_secondary'],$_GET['dt_change'],$_GET['partner_dob'],$_GET['lang_code']);
 } else {
 	$date = (isset($_GET['date']) && $_GET['date'] != '') ? $_GET['date']: date('Y-m-d');
-	$chart = new Chart($dob,0,0,$date,$lang_code);
+	$chart = new Chart($dob,0,0,$date,$dob,$lang_code);
 }
 $input_interfaces = array(
 	'search' => array(
@@ -61,6 +61,14 @@ $input_interfaces = array(
 		'es' => 'Cambiar fecha',
 		'zh' => '更改日期',
 		'ja' => '日付の変更'
+	),
+	'partner_dob' => array(
+		'vi' => 'Đối tác',
+		'en' => 'Partner',
+		'ru' => 'Напарник',
+		'es' => 'Compañero',
+		'zh' => '伙伴',
+		'ja' => 'パートナー'
 	)
 );
 $button_interfaces = array(
@@ -286,6 +294,38 @@ $menu_interfaces = array(
 	)
 );
 $help_interfaces = array(
+	'info_box' => array(
+		'vi' => 'Hiển thị các thông số liên quan đến ngày sinh của bạn.',
+		'en' => 'Display the general statistics related to your birth date.',
+		'ru' => 'Показать общую статистику, связанные с вашей даты рождения.',
+		'es' => 'Mostrar las estadísticas generales relacionadas con su fecha de nacimiento.',
+		'zh' => '显示与你的出生日期的统计资料。',
+		'ja' => 'あなたの誕生日に関連する一般的な統計情報を表示します。'
+	),
+	'lunar_box' => array(
+		'vi' => 'Hiển thị ngày tháng năm sinh Âm lịch của bạn. Ấn nút Ngày Âm lịch sẽ hiện ra ngày tháng năm Âm lịch hiện tại.',
+		'en' => 'Display the Lunar Calendar year, month and day of your birth date. Click on Lunar date to show the current Lunar year, month and day.',
+		'ru' => 'Отображение лунному календарю год, месяц и день вашего дня рождения. Нажмите на Лунной даты, чтобы показать текущий лунный год, месяц и день.',
+		'es' => 'Visualizar el calendario lunar año, mes y día de su fecha de nacimiento. Clic en la fecha Lunar para mostrar la corriente Lunar año, mes y día.',
+		'zh' => '显示您的出生日期是农历日历年，月，日。点击农历日期显示当前的农历年，月，日。',
+		'ja' => 'あなたの誕生日の太陰暦の年、月、日を表示します。現在の月の年、月、日を示すために月の日付をクリックします。'
+	),
+	'compatibility_box' => array(
+		'vi' => 'Cho biết sự khả năng hòa hợp giữa Bạn và Đối tác (người yêu, bạn bè, thân hữu). Chọn ngày sinh (theo thứ tự năm, tháng, ngày) của Đối tác để xem các chỉ số thể hiện mức độ hòa hợp, chỉ số phần trăm càng cao thì càng gần gũi.',
+		'en' => 'Show the Compatibility between you and your Partner (lover, friends, acquaintance). Choose the birth date of your partner to get the values indicating compatibility, the higher the more compatible.',
+		'ru' => 'Показать совместимость между вами и вашим партнером (любовник, друзья, знакомства). Выберите дату рождения вашего партнера, чтобы получить значения, указывающие совместимость, выше более совместимыми.',
+		'es' => 'Mostrar el Compatibilidad entre usted y su pareja (amante, amigos, conocidos). Elija la fecha de nacimiento de su pareja para obtener los valores que indican la compatibilidad, el más alto es el más compatible.',
+		'zh' => '告诉你和你的伴侣（情人，朋友，熟人）之间的兼容性。选择你的伴侣的出生日期以获得显示兼容性值，越高越不兼容。',
+		'ja' => 'あなたとあなたのパートナー（恋人、友人、知人）間の互換性を表示します。より互換性が高い、互換性を示す値を取得するためにあなたのパートナーの誕生日を選択してください。'
+	),
+	'controls_box' => array(
+		'vi' => 'Hiển thị các chỉ số nhịp sinh học cho ngày hiện tại, chỉ số phần trăm càng cao thì càng tốt. Ấn nút Hiện nhịp sinh học phụ để hiện ra thêm các chỉ số phụ. Chọn ngày bằng cách ấn ô Xem ngày. Ấn nút Trước và Sau để thay đổi ngày hiện tại, nút Hôm nay để trở về Hôm nay.',
+		'en' => 'Display the biorhythm values for the current date, the higher the better. Press the button Show secondary rhythms to show more biorhythm values. Choose the date by clicking on the field View date. Click on Back or Forward to change the current date, show today values by clicking on Today.',
+		'ru' => 'Отображение значения биоритмов на текущую дату. Нажмите кнопку Показать вторичные ритмы, чтобы показать несколько значений биоритмов. Выберите дату, нажав на дату поле зрения. Нажмите на вперед или назад, чтобы изменить текущую дату, показать значения сегодня, нажав на Сегодня.',
+		'es' => 'Muestra los valores de biorritmo para la fecha actual. Pulse el botón Mostrar ritmos secundarias para mostrar más valores biorritmo. Elija la fecha haciendo clic en el campo de fecha Vista. Haga clic en Atrás o en Siguiente para cambiar la fecha actual, mostrar los valores actuales, haga clic en Hoy.',
+		'zh' => '显示的生物节律的值对于当前日期。按下按钮显示次要节奏，表现出更多的生物节律值。通过单击现场查看日期。单击后退或前进，以改变当前的日期，点击今天显示今天的价值观。',
+		'ja' => '現在の日付のためのバイオリズム値を表示します。より多くのバイオリズムの値を表示するためにボタンを表示二次リズムを押します。フィールドビューの日付をクリックして日付を選択してください。 、現在の日付を変更するには、戻るまたは進むをクリックして今日をクリックすることで、今日の値を表示。'
+	),
 	'biorhythm' => array(
 		'vi' => 'nhịp sinh học',
 		'en' => 'biorhythm',
@@ -325,5 +365,159 @@ $help_interfaces = array(
 		'es' => '/',
 		'zh' => '/',
 		'ja' => '.html'
+	)
+);
+$information_interfaces = array(
+	'average' => array(
+		'vi' => array(
+			'excellent' => 'Ngày hiện tại của bạn rất tốt, bạn nên tận hưởng ngày này.',
+			'good' => 'Ngày hiện tại của bạn khá tốt, tuy nhiên bạn nên cẩn thận trong ngày này.',
+			'gray' => 'Ngày hiện tại của bạn không được tốt lắm, bạn nên cẩn trọng hơn.',
+			'bad' => 'Ngày hiện tại của bạn không khả quan, bạn nên cực kỳ cẩn thận.'
+		),
+		'en' => array(
+			'excellent' => 'Your current day is excellent, enjoy it.',
+			'good' => 'Your current day is quite good, take a little care.',
+			'gray' => 'Your current day is not good, take more care of yourself.',
+			'bad' => 'Your current day is bad, should take a lot of care.'
+		),
+		'ru' => array(
+			'excellent' => 'Ваш текущий день отлично, наслаждаться ею.',
+			'good' => 'Ваш текущий день является достаточно хорошим, возьмите немного заботы.',
+			'gray' => 'Ваш текущий день не очень хорошо, больше заботиться о себе.',
+			'bad' => 'Ваш текущий день плохо, должно занять много ухода.'
+		),
+		'es' => array(
+			'excellent' => 'Su día actual es excelente, que lo disfruten.',
+			'good' => 'Su día actual es bastante buena, tomar un poco de cuidado.',
+			'gray' => 'Su día actual no es bueno, tener más cuidado de ti mismo.',
+			'bad' => 'Su día actual es mala, hay que tener mucho cuidado.'
+		),
+		'zh' => array(
+			'excellent' => '您当前的一天是优秀的，享受它。',
+			'good' => '您当前的一天是相当不错的，需要一点点的关心。',
+			'gray' => '您当前的日子是不好的，把自己的更多的关怀。',
+			'bad' => '您当前的日子是不好的，应该采取大量的关怀。'
+		),
+		'ja' => array(
+			'excellent' => 'あなたの現在の日が優れている、それを楽しむ。',
+			'good' => '現在の日はかなり良いです、少し注意してください。',
+			'gray' => '現在の日はよくない、自分のことをより多くの世話をする。',
+			'bad' => 'あなたの現在の日が悪い、介護の多くを取る必要があります。'
+		)
+	),
+	'physical' => array(
+		'vi' => array(
+			'excellent' => 'Sức khỏe hiện tại của bạn rất tốt, hãy tham gia vận động nhiều hơn.',
+			'good' => 'Sức khỏe hiện tại của bạn khá tốt, hãy vận động điều độ.',
+			'gray' => 'Sức khỏe hiện tại của bạn không được tốt, hãy nghĩ ngơi một tí.',
+			'bad' => 'Sức khỏe hiện tại của bạn không khả quan, hãy nghỉ ngơi nhiều hơn.'
+		),
+		'en' => array(
+			'excellent' => 'Your current health is excellent, you should work out more.',
+			'good' => 'Your current health is quite good, you should work out with care.',
+			'gray' => 'Your current health is not good, take a little rest.',
+			'bad' => 'Your current health is bad, take more rest.'
+		),
+		'ru' => array(
+			'excellent' => 'Ваше текущее здоровье отличное, вы должны работать больше.',
+			'good' => 'Ваше текущее здоровье неплохое, вы должны работать с осторожностью.',
+			'gray' => 'Ваше текущее здоровье не хорошо, немного отдохнуть.',
+			'bad' => 'Ваше текущее здоровье плохо, взять больше отдыхать.'
+		),
+		'es' => array(
+			'excellent' => 'Su estado de salud actual es excelente, debe trabajar más.',
+			'good' => 'Su estado de salud actual es bastante bueno, usted debe hacer ejercicio con cuidado.',
+			'gray' => 'Su estado de salud actual no es buena, tomar un poco de descanso.',
+			'bad' => 'Su estado de salud actual es mala, tener más descanso.'
+		),
+		'zh' => array(
+			'excellent' => '您当前的健康是优秀的，你应该更多。',
+			'good' => '您当前的健康是相当不错的，你应该制定出谨慎。',
+			'gray' => '你目前的身体不好，需要一点休息。',
+			'bad' => '您当前的健康是不好的，需要更多的休息。'
+		),
+		'ja' => array(
+			'excellent' => 'あなたの現在の健康状態が優れている、あなたはより多くを動作するはずです。',
+			'good' => 'あなたの現在の健康状態はかなり良いですが、あなたが注意して動作するはずです。',
+			'gray' => 'あなたの現在の健康状態が良くない、少し休憩を取る。',
+			'bad' => 'あなたの現在の健康状態が悪いと、より多くの休息を取る。'
+		)
+	),
+	'emotional' => array(
+		'vi' => array(
+			'excellent' => 'Tình cảm hiện tại của bạn rất tốt, hãy tham gia gặp gỡ bạn bè nhiều hơn.',
+			'good' => 'Tình cảm hiện tại của bạn khá tốt, hãy gặp gỡ bạn bè.',
+			'gray' => 'Tình cảm hiện tại của bạn không được tốt, bạn hơi dễ cáu kỉnh.',
+			'bad' => 'Tình cảm hiện tại của bạn không khả quan, bạn nên tránh các cuộc xung đột.'
+		),
+		'en' => array(
+			'excellent' => 'Your current mood is excellent, you meet more friends.',
+			'good' => 'Your current mood is quite good, you should meet some friends.',
+			'gray' => 'Your current mood is not good, you are easily annoyed.',
+			'bad' => 'Your current mood is bad, avoid conflicts.'
+		),
+		'ru' => array(
+			'excellent' => 'Ваше текущее настроение отличное, вы встретите больше друзей.',
+			'good' => 'Ваше текущее настроение неплохое, вы должны встретиться с друзьями.',
+			'gray' => 'Ваше текущее настроение не очень хорошо, вы легко раздражаться.',
+			'bad' => 'Ваше текущее настроение плохое, во избежание конфликтов.'
+		),
+		'es' => array(
+			'excellent' => 'Su estado de ánimo actual es excelente, te encuentras con más amigos.',
+			'good' => 'Su estado de ánimo actual es bastante buena, usted debe cumplir con algunos amigos.',
+			'gray' => 'Su estado de ánimo actual no es bueno, ustedes son fácilmente molesto.',
+			'bad' => 'Su estado de ánimo actual es mala, evitar conflictos.'
+		),
+		'zh' => array(
+			'excellent' => '你现在的心情非常好，你认识更多的朋友。',
+			'good' => '你现在的心情是相当不错的，你应该满足一些朋友。',
+			'gray' => '你现在的心情不是很好，你很容易生气。',
+			'bad' => '你现在的心情不好，避免冲突。'
+		),
+		'ja' => array(
+			'excellent' => 'あなたの現在の気分が優れている、あなたはより多くの友人に会う。',
+			'good' => 'あなたの現在の気分はかなり良いですが、あなたは何人かの友人を満たしている必要があります。',
+			'gray' => 'あなたの現在の気分が良くない、あなたは簡単にイライラです。',
+			'bad' => 'あなたの現在の気分が悪い、競合を避ける。'
+		)
+	),
+	'intellectual' => array(
+		'vi' => array(
+			'excellent' => 'Trí tuệ hiện tại của bạn rất tốt, bạn có thể đưa ra những quyết định sáng suốt.',
+			'good' => 'Trí tuệ hiện tại của bạn khá tốt, bạn có thể đưa ra quyết định nhưng cần suy tính kỹ.',
+			'gray' => 'Trí tuệ hiện tại của bạn không được tốt, bạn nên suy nghĩ kỹ trước khi ra quyết định.',
+			'bad' => 'Trí tuệ hiện tại của bạn không khả quan, bạn không nên đưa ra quyết định lớn.'
+		),
+		'en' => array(
+			'excellent' => 'Your current intellect is excellent, you can make great decisions.',
+			'good' => 'Your current intellect is quite good, you can make decisions with a little care.',
+			'gray' => 'Your current intellect is not good, you should think twice before making decisions.',
+			'bad' => 'Your current intellect is bad, you should not make big decisions.'
+		),
+		'ru' => array(
+			'excellent' => 'Ваше текущее интеллект отлично, вы можете сделать большие решения.',
+			'good' => 'Ваше текущее интеллект является достаточно хорошим, вы можете принимать решения с особого ухода.',
+			'gray' => 'Ваше текущее интеллект не является хорошим, вы должны подумать дважды, прежде чем принимать решения.',
+			'bad' => 'Ваше текущее интеллект плохо, вы не должны делать большие решения.'
+		),
+		'es' => array(
+			'excellent' => 'Su intelecto actual es excelente, puedes tomar grandes decisiones.',
+			'good' => 'Su intelecto actual es bastante buena, se puede tomar decisiones con un poco de cuidado.',
+			'gray' => 'Su intelecto actual no es buena, usted debe pensar dos veces antes de tomar decisiones.',
+			'bad' => 'Su intelecto actual es mala, no debe tomar decisiones importantes.'
+		),
+		'zh' => array(
+			'excellent' => '您当前的智力是优秀的，你可以做出伟大的决定。',
+			'good' => '您当前的智力是相当不错的，你可以用一点点小心做出决定。',
+			'gray' => '您当前的智力不好，你做决策前，应三思而后行。',
+			'bad' => '您当前的智力是坏的，你不应该做出重大的决定。'
+		),
+		'ja' => array(
+			'excellent' => 'あなたの現在の知性は、あなたは偉大な決定を行うことができ、優れたものである。',
+			'good' => 'あなたの現在の知性はかなり良いですが、あなたは少し注意して意思決定を行うことができます。',
+			'gray' => 'あなたの現在の知性はあなたが意思決定をする前に二度考える必要があり、良いではありません。',
+			'bad' => 'あなたの現在の知性は、あなたは大きな意思決定を行うべきではない、悪いです。'
+		)
 	)
 );
