@@ -1,4 +1,4 @@
-<link href="/min/f=css/2048.css&amp;5" rel="stylesheet" type="text/css">
+<link href="/min/f=css/2048.css&amp;6" rel="stylesheet" type="text/css">
 <div class="container">
 	<div class="heading">
 		<h1 class="title">2048</h1>

@@ -94,7 +94,6 @@ body {
 	font-size: 14px;
 	line-height: 20px;
 	color: #333333;
-	background-color: #ffffff;
 }
 p {
 	margin: 0 0 10px;
@@ -184,7 +183,7 @@ li {
 	line-height: 20px;
 }
 dl {
-	margin-bottom: 20px;
+	margin-bottom: 23px;
 }
 dt,
 dd {
@@ -233,7 +232,7 @@ blockquote:after {
 }
 address {
 	display: block;
-	margin-bottom: 20px;
+	margin-bottom: 23px;
 	font-style: normal;
 	line-height: 20px;
 }
@@ -288,7 +287,7 @@ legend {
 	display: block;
 	width: 100%;
 	padding: 0;
-	margin-bottom: 20px;
+	margin-bottom: 23px;
 	font-size: 21px;
 	line-height: 40px;
 	color: #333333;
@@ -370,7 +369,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-	background-color: #ffffff;
+	rgba(230,239,253,0.88)fff;
 	border: 1px solid #cccccc;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 		 -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -426,7 +425,7 @@ input[type="file"] {
 }
 select {
 	width: 220px;
-	background-color: #ffffff;
+	rgba(230,239,253,0.88)fff;
 	border: 1px solid #cccccc;
 }
 select[multiple],
@@ -491,7 +490,7 @@ input[type="checkbox"][readonly] {
 	background-position: 14px 14px;
 	background-repeat: no-repeat;
 }
-.icon-white {
+.m-btn .icon-white, .icon-white {
 	background-image: url("/img/glyphicons-halflings-white.png");
 }
 .icon-orange {
@@ -972,7 +971,7 @@ html {
 }
 body {
 	background-color: #c2d8f9;
-	background-image: url('images/clock.png');
+	/*background-image: url('images/clock.png');*/
 	color: #333;
 	font: normal 1.3em Roboto,sans-serif;
 	padding-bottom: 1px;
@@ -1059,7 +1058,7 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 	-webkit-transition: none !important;
 	 transition: none !important;
 }
-header, header h1, #dob_form, #info, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
+header, header h1, #dob_form, #info, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
 	transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
 	-webkit-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
 	-moz-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
@@ -1284,6 +1283,19 @@ input[type="submit"], input[type="reset"], input[type="button"], input.button, b
 	-o-transform: scale(1.03);
 	-ms-transform: scale(1.03);
 }
+table.ui-datepicker-calendar > tbody:hover > tr > td > a.ui-state-default, table.ui-datepicker-calendar > tbody:hover > tr > td {
+	z-index: 1 !important;
+}
+table.ui-datepicker-calendar > tbody > tr > td > a.ui-state-default:hover, table.ui-datepicker-calendar > tbody > tr > td:hover {
+	z-index: 2 !important;
+}
+table.ui-datepicker-calendar > tbody > tr > td > a.ui-state-default:hover {
+	transform: scale(1.111);
+	-webkit-transform: scale(1.111);
+	-moz-transform: scale(1.111);
+	-o-transform: scale(1.111);
+	-ms-transform: scale(1.111);
+}
 label[for="is_secondary"]:hover, #embed_toggle:hover, #lunar_desc:hover {
 	transform: scale(1.02);
 	-webkit-transform: scale(1.02);
@@ -1307,7 +1319,7 @@ input[disabled=disabled],input.button.disabled,a.button.disabled,input[disabled=
 	opacity: 0.69;
 	cursor: not-allowed;
 }
-.m-btn-group:hover > a.m-btn, ul#nav_buttons:hover > li > a.nav_button.button, #lang_bar:hover > a.lang_toggle:not(.first), table.ui-datepicker-calendar > tbody:hover > tr > td:not(.ui-state-disabled) > a.ui-state-default {
+.m-btn-group:hover > a.m-btn, ul#nav_buttons:hover > li > a.nav_button.button, #lang_bar:hover > a.lang_toggle:not(.first), table.ui-datepicker-calendar > tbody:hover > tr > td > a.ui-state-default {
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=69)";
 	filter: alpha(opacity=69);
 	-moz-opacity: 0.69;
@@ -1315,7 +1327,7 @@ input[disabled=disabled],input.button.disabled,a.button.disabled,input[disabled=
 	opacity: 0.69;
 	text-shadow: 0 0 10px #ffffff;
 }
-.m-btn-group > a.m-btn:hover, ul#nav_buttons > li > a.nav_button.button:hover, #lang_bar > a.lang_toggle:not(.first):hover, table.ui-datepicker-calendar > tbody > tr > td:not(.ui-state-disabled) > a.ui-state-default:hover {
+.m-btn-group > a.m-btn:hover, ul#nav_buttons > li > a.nav_button.button:hover, #lang_bar > a.lang_toggle:not(.first):hover, table.ui-datepicker-calendar > tbody > tr > td > a.ui-state-default:hover {
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	filter: alpha(opacity=100);
 	-moz-opacity: 1;
@@ -1423,8 +1435,7 @@ body.user a.user,
 #toolbar ul.toolbar > li > a.active:focus {
 	background: #444;
 }
-header, #dob_form, #info, #life_path_link, #lunar_desc, footer, .help, .nav_button.button {
-	background-color: #4488EE;
+header, #dob_form, #info, #compatibility, #life_path_link, #lunar_desc, footer, .help, .nav_button.button {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#88AAFF',endColorstr='#4488EE',GradientType=0)";
 	background-image: -ms-linear-gradient(top, #88AAFF 0%, #4488EE 100%);
 	background-image: -moz-linear-gradient(top, #88AAFF 0%, #4488EE 100%);
@@ -1436,10 +1447,24 @@ header, #dob_form, #info, #life_path_link, #lunar_desc, footer, .help, .nav_butt
 	border-color: #FFF;
 }
 header {
-	position: relative;
+	position: fixed;
 	padding: 0;
 	margin: 0;
 	height: 100px;
+	width: 100%;
+	z-index: 10;
+	-ms-box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
+	-o-box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
+	-moz-box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
+	-webkit-box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
+	box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
+}
+body.birthday header {
+	-ms-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
+	-o-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
+	-moz-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
+	-webkit-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
+	box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
 }
 #dob_form {
 	float: left;
@@ -1646,6 +1671,9 @@ body:lang(ru) #explanation_vi, body:lang(ru) #explanation_en, body:lang(ru) #exp
 body:lang(es) #explanation_vi, body:lang(es) #explanation_en, body:lang(es) #explanation_ru, body:lang(es) #explanation_zh, body:lang(es) #explanation_ja {display: none}
 body:lang(zh) #explanation_vi, body:lang(zh) #explanation_en, body:lang(zh) #explanation_ru, body:lang(zh) #explanation_es, body:lang(zh) #explanation_ja {display: none}
 body:lang(ja) #explanation_vi, body:lang(ja) #explanation_en, body:lang(ja) #explanation_ru, body:lang(ja) #explanation_es, body:lang(ja) #explanation_zh {display: none}
+#dob_control_bar {
+	display: block;
+}
 #dob_control_bar > .m-btn, #controls > .m-btn-group > .m-btn {
 	padding: 10px 9px;
 	width: auto;
@@ -1818,25 +1846,24 @@ body:lang(ja) #controls > .m-btn-group > .m-btn {
 	position: fixed;
 	top: 10px;
 	left: 10px;
-	width: 42px;
-	height: 42px;
+	width: 64px;
+	height: 64px;
 	background-repeat: no-repeat;
 }
-#loading.ajax-loader {
-	background-image: url('images/ajax-loader.gif');
+#loading.ajax_loader {
+	background-image: url('images/ajax_loader.gif');
 }
-#loading.ajax-birthday, body.birthday #loading {
-	background-image: url('images/ajax-birthday.gif');
+#loading.ajax_birthday, body.birthday #loading {
+	background-image: url('images/ajax_birthday.gif');
 }
 #ui-datepicker-div {
 	display: none;
-	z-index: 420 !important;
+	z-index: 9 !important;
 }
 #ui-datepicker-div .ui-state-default {
 	border: none;
 }
-body.today #dob_form, body.today #info, body.today #life_path_link, body.today #lunar_desc, body.today #controls, body.today #lunar, body.today .add-on, body.today #dt_change_label, body.today label[for="is_secondary"], body.today #embed_toggle, body.today #lunar_desc, body.today .add-on.label {
-	background-color: #33aa44 !important;
+body.today #dob_form, body.today #info, body.today #compatibility, body.today #life_path_link, body.today #lunar_desc, body.today #controls, body.today #lunar, body.today .add-on, body.today #dt_change_label, body.today #partner_dob_label, body.today label[for="is_secondary"], body.today #embed_toggle, body.today #lunar_desc, body.today .add-on.label {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#77bb66,endColorstr=#33aa44,GradientType=0)";
 	background-image: -ms-linear-gradient(top, #77bb66 0%, #33aa44 100%);
 	background-image: -moz-linear-gradient(top, #77bb66 0%, #33aa44 100%);
@@ -1847,8 +1874,7 @@ body.today #dob_form, body.today #info, body.today #life_path_link, body.today #
 	color: #FFF;
 	border-color: #FFF;
 }
-body.birthday header, body.birthday #dob_form, body.birthday #info, body.birthday #life_path_link, body.birthday #lunar_desc, body.birthday #controls, body.birthday #lunar, body.birthday .nav_button.button, body.birthday .help, body.birthday .add-on, body.birthday #dt_change_label, body.birthday label[for="is_secondary"], body.birthday #embed_toggle, body.birthday #lunar_desc, body.birthday footer	{
-	background-color: #FFD700 !important;
+body.birthday header, body.birthday #dob_form, body.birthday #info, body.birthday #compatibility, body.birthday #life_path_link, body.birthday #lunar_desc, body.birthday #controls, body.birthday #lunar, body.birthday .nav_button.button, body.birthday .help, body.birthday .add-on, body.birthday #dt_change_label, body.birthday #partner_dob_label, body.birthday label[for="is_secondary"], body.birthday #embed_toggle, body.birthday #lunar_desc, body.birthday footer	{
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF740,endColorstr=#FFD700,GradientType=0)";
 	background-image: -ms-linear-gradient(top, #FFF740 0%, #FFD700 100%);
 	background-image: -moz-linear-gradient(top, #FFF740 0%, #FFD700 100%);
@@ -1859,8 +1885,7 @@ body.birthday header, body.birthday #dob_form, body.birthday #info, body.birthda
 	color: #E35604;
 	border-color: #E35604;
 }
-body.today #dt_change_label:active, body.today label[for="is_secondary"]:active, body.today #embed_toggle:active, body.today #lunar_desc:active, body.today #dt_change_label.clicked, body.today label[for="is_secondary"].clicked, body.today #embed_toggle.clicked, body.today #lunar_desc.clicked {
-	background-color: #33aa44 !important;
+body.today #dt_change_label:active, body.today #partner_dob_label:active, body.today label[for="is_secondary"]:active, body.today #embed_toggle:active, body.today #lunar_desc:active, body.today #dt_change_label.clicked, body.today #partner_dob_label.clicked, body.today label[for="is_secondary"].clicked, body.today #embed_toggle.clicked, body.today #lunar_desc.clicked {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#33aa44,endColorstr=#77bb66,GradientType=0)";
 	background-image: -ms-linear-gradient(top, #33aa44 0%, #77bb66 100%);
 	background-image: -moz-linear-gradient(top, #33aa44 0%, #77bb66 100%);
@@ -1870,8 +1895,7 @@ body.today #dt_change_label:active, body.today label[for="is_secondary"]:active,
 	background-image: linear-gradient(to bottom, #33aa44 0%, #77bb66 100%);
 	color: #FFF;
 }
-body.birthday #dt_change_label:active, body.birthday label[for="is_secondary"]:active, body.birthday #embed_toggle:active, body.birthday #lunar_desc:active, body.birthday #dt_change_label.clicked, body.birthday label[for="is_secondary"].clicked, body.birthday #embed_toggle.clicked, body.birthday #lunar_desc.clicked	{
-	background-color: #FFD700 !important;
+body.birthday #dt_change_label:active, body.birthday #partner_dob_label:active, body.birthday label[for="is_secondary"]:active, body.birthday #embed_toggle:active, body.birthday #lunar_desc:active, body.birthday #dt_change_label.clicked, body.birthday #partner_dob_label.clicked, body.birthday label[for="is_secondary"].clicked, body.birthday #embed_toggle.clicked, body.birthday #lunar_desc.clicked	{
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFD700,endColorstr=#FFF740,GradientType=0)";
 	background-image: -ms-linear-gradient(top, #FFD700 0%, #FFF740 100%);
 	background-image: -moz-linear-gradient(top, #FFD700 0%, #FFF740 100%);
@@ -1979,13 +2003,13 @@ body.birthday .lang_toggle.button:active, body.birthday .nav_button.button:activ
 		);
 	color: #E35604;
 }
-body.birthday #dob_form, body.birthday #info, body.birthday #controls, body.birthday #lunar, body.birthday #wiki, body.birthday #main_chart, body.birthday #explanation_chart, body.birthday .adsense, body.birthday #logo, body.birthday #ui-datepicker-div, body.birthday #proverb blockquote {
+body.birthday #dob_form, body.birthday #info, body.birthday #compatibility, body.birthday #controls, body.birthday #lunar, body.birthday #wiki, body.birthday #main_chart, body.birthday #explanation_chart, body.birthday .adsense, body.birthday #logo, body.birthday #ui-datepicker-div, body.birthday #proverb blockquote {
 	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 	box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 }
-body.birthday #dob_form:hover, body.birthday #info:hover, body.birthday #controls:hover, body.birthday #lunar:hover, body.birthday #wiki:hover, body.birthday #main_chart:hover, body.birthday #explanation_chart:hover, body.birthday .adsense:hover, body.birthday #ui-datepicker-div:hover, body.birthday #proverb blockquote:hover, body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover, body.birthday a.button.clicked:hover, body.birthday .m-btn:hover, body.birthday input.m-wrap:hover, body.birthday .m-btn.highlight, body.birthday input.m-wrap.highlight, body.birthday .ln-letters > a:hover {
+body.birthday #dob_form:hover, body.birthday #info:hover, body.birthday #compatibility:hover, body.birthday #controls:hover, body.birthday #lunar:hover, body.birthday #wiki:hover, body.birthday #main_chart:hover, body.birthday #explanation_chart:hover, body.birthday .adsense:hover, body.birthday #ui-datepicker-div:hover, body.birthday #proverb blockquote:hover, body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover, body.birthday a.button.clicked:hover, body.birthday .m-btn:hover, body.birthday input.m-wrap:hover, body.birthday .m-btn.highlight, body.birthday input.m-wrap.highlight, body.birthday .ln-letters > a:hover {
 	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
@@ -2209,7 +2233,7 @@ body.birthday #proverb blockquote a {
 	position: absolute;
 	top: 10px;
 	left: -20px;
-	z-index: 42;
+	z-index: 8;
 	cursor: pointer;
 	transform: rotate(0deg);
 	-webkit-transform: rotate(0deg);
@@ -2279,10 +2303,11 @@ main {
 	font: normal 0.9em Roboto,sans-serif;
 	background: rgba(230,239,253,0.88);
 	padding: 0;
+	top: 100px;
 	min-height: 420px;
 	height: 100%;
 	height: auto !important;
-	margin: 0;
+	margin: 0 auto;
 }
 main ul li {list-style: none;}
 main ol li {list-style: decimal;}
@@ -2401,11 +2426,11 @@ body.birthday #dob_form_status.disabled_dob ~ #dob_wrapper #help_dob {
 	background-image: -moz-radial-gradient(#4d90fe,#4488ee);
 	background-image: radial-gradient(#4d90fe,#4488ee);
 	background-color: #4488ee;
-	transition: none;
-	-webkit-transition: none;
-	-moz-transition: none;
-	-o-transition: none;
-	-ms-transition: none;
+	transition: margin 333ms linear;
+	-webkit-transition: margin 333ms linear;
+	-moz-transition: margin 333ms linear;
+	-o-transition: margin 333ms linear;
+	-ms-transition: margin 333ms linear;
 }
 #help_dob_form > i {
 	width: 30px;
@@ -2415,31 +2440,25 @@ body.birthday #dob_form_status.disabled_dob ~ #dob_wrapper #help_dob {
 	-webkit-transform: rotate(315deg);
 	-ms-transform: rotate(315deg);
 	background-position: -78px -28px;
-	transition: none;
-	-webkit-transition: none;
-	-moz-transition: none;
-	-o-transition: none;
-	-ms-transition: none;
 }
-#dob_form_status.empty_dob ~ #help_dob_form > i, #dob_form_status.wrong_dob ~ #help_dob_form > i {
-	transform: rotate(225deg);
-	-webkit-transform: rotate(225deg);
-	-ms-transform: rotate(225deg);
+/* On Hovered */
+#dob_form_status.hovered.empty_dob ~ #help_dob_form, #dob_form_status.hovered.wrong_dob ~ #help_dob_form, #dob_form_status.hovered.alert_dob ~ #help_dob_form, #dob_form_status.hovered.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.hovered.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {
+	margin-left: 6px;
 }
 /* Dob */
 #dob_form_status.empty_dob ~ #help_dob_form, #dob_form_status.wrong_dob ~ #help_dob_form, #dob_form_status.alert_dob ~ #help_dob_form {
-	left: 280px;
-	bottom: 120px;
+	left: 273px;
+	bottom: 57px;
 }
 /* Submit */
 #dob_form_status.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {
-	left: 280px;
-	bottom: 10px;
+	left: 273px;
+	bottom: 17px;
 }
 /* Fullname */
 #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_dob_form {
-	left: 160px;
-	bottom: 50px;
+	left: 153px;
+	bottom: 57px;
 }
 /* Hide */
 #dob_form_status.disabled_dob ~ #help_dob_form, #dob_form_status.focus_dob ~ #help_dob_form, #dob_form_status.focus_fullname ~ #help_dob_form {
@@ -2490,101 +2509,101 @@ body.birthday #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_d
 }
 /* Dob */
 #dob_form_status.empty_dob ~ #help_dob_form, #dob_form_status.wrong_dob ~ #help_dob_form {
-	animation: help_form_dob 1.2s linear 0s infinite;
-	-webkit-animation: help_form_dob 1.2s linear 0s infinite;
+	animation: help_form_dob 999ms linear 0s infinite;
+	-webkit-animation: help_form_dob 999ms linear 0s infinite;
 }
 /* Submit */
 #dob_form_status.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {
-	animation: help_form 1.2s linear 0s infinite;
-	-webkit-animation: help_form 1.2s linear 0s infinite;
+	animation: help_form 999ms linear 0s infinite;
+	-webkit-animation: help_form 999ms linear 0s infinite;
 }
 /* Fullname */
 #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_dob_form {
-	animation: help_form_fullname 1.2s linear 0s infinite;
-	-webkit-animation: help_form_fullname 1.2s linear 0s infinite;
+	animation: help_form_fullname 999ms linear 0s infinite;
+	-webkit-animation: help_form_fullname 999ms linear 0s infinite;
 }
 @-webkit-keyframes help_form_dob {
 	0% {
-		left: 280px;
-		bottom: 120px;
+		left: 273px;
+		bottom: 57px;
 	}
 	50% {
-		left: 270px;
-		bottom: 110px;
+		left: 267px;
+		bottom: 63px;
 	}
 	100% {
-		left: 280px;
-		bottom: 120px;
+		left: 273px;
+		bottom: 57px;
 	}
 }
 @keyframes help_form_dob {
 	0% {
-		left: 280px;
-		bottom: 120px;
+		left: 273px;
+		bottom: 57px;
 	}
 	50% {
-		left: 270px;
-		bottom: 110px;
+		left: 267px;
+		bottom: 63px;
 	}
 	100% {
-		left: 280px;
-		bottom: 120px;
+		left: 273px;
+		bottom: 57px;
 	}
 }
 @-webkit-keyframes help_form_fullname {
 	0% {
-		left: 160px;
-		bottom: 50px;
+		left: 153px;
+		bottom: 57px;
 	}
 	50% {
-		left: 150px;
-		bottom: 60px;
+		left: 147px;
+		bottom: 63px;
 	}
 	100% {
-		left: 160px;
-		bottom: 50px;
+		left: 153px;
+		bottom: 57px;
 	}
 }
 @keyframes help_form_fullname {
 	0% {
-		left: 160px;
-		bottom: 50px;
+		left: 153px;
+		bottom: 57px;
 	}
 	50% {
-		left: 150px;
-		bottom: 60px;
+		left: 147px;
+		bottom: 63px;
 	}
 	100% {
-		left: 160px;
-		bottom: 50px;
+		left: 153px;
+		bottom: 57px;
 	}
 }
 @-webkit-keyframes help_form {
 	0% {
-		left: 280px;
-		bottom: 10px;
+		left: 273px;
+		bottom: 17px;
 	}
 	50% {
-		left: 270px;
-		bottom: 20px;
+		left: 267px;
+		bottom: 23px;
 	}
 	100% {
-		left: 280px;
-		bottom: 10px;
+		left: 273px;
+		bottom: 17px;
 	}
 }
 @keyframes help_form {
 	0% {
-		left: 280px;
-		bottom: 10px;
+		left: 273px;
+		bottom: 17px;
 	}
 	50% {
-		left: 270px;
-		bottom: 20px;
+		left: 267px;
+		bottom: 23px;
 	}
 	100% {
-		left: 280px;
-		bottom: 10px;
+		left: 273px;
+		bottom: 17px;
 	}
 }
 #dob_form_status.alert_dob ~ #dob, #dob_form_status.restore_dob ~ #dob, #search_form_status.alert_search ~ #search, #search_form_status.restore_search ~ #search {
@@ -2597,17 +2616,17 @@ body.birthday #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_d
 #dob_form_status.restore_dob ~ #dob, #search_form_status.restore_search ~ #search {
 	border-color: #35aa47;
 }
-#dob_form, #info, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .rss_feed {
+#dob_form, #info, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .rss_feed {
 	margin-left: 4px !important;
 	margin-right: 4px !important;
 }
-#dob_form, #info, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .adsense, #logo, #ui-datepicker-div, #proverb blockquote, #fb_holder, .nav_button.button {
+#dob_form, #info, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .adsense, #logo, #ui-datepicker-div, #proverb blockquote, #fb_holder, .nav_button.button {
 	-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 	-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 	box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 }
-#dob_form:hover, #info:hover, #controls:hover, #lunar:hover, #wiki:hover, #main_chart:hover, #explanation_chart:hover, .adsense:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover, a.button.clicked:hover, .m-btn:hover, input.m-wrap:hover, .m-btn.highlight, input.m-wrap.highlight, .zoom > img:hover, #logo:hover, #ui-datepicker-div:hover, #proverb blockquote:hover, #fb_holder:hover, #timer, .ln-letters > a:hover, #weight:hover, #height:hover {
+#dob_form:hover, #info:hover, #compatibility:hover, #controls:hover, #lunar:hover, #wiki:hover, #main_chart:hover, #explanation_chart:hover, .adsense:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover, a.button.clicked:hover, .m-btn:hover, input.m-wrap:hover, .m-btn.highlight, input.m-wrap.highlight, .zoom > img:hover, #logo:hover, #ui-datepicker-div:hover, #proverb blockquote:hover, #fb_holder:hover, #timer, .ln-letters > a:hover, #weight:hover, #height:hover {
 	-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 	-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
@@ -2645,7 +2664,7 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 }
 .help {
 	position: absolute;
-	z-index: 200;
+	z-index: 9;
 	display: none;
 	padding: 4px 8px;
 	margin: 0;
@@ -2723,6 +2742,17 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 #info #life_path_link {
 	cursor: pointer;
 }
+#compatibility {
+	position: relative;
+	clear: left;
+	display: block;
+	font-size: 15px;
+	width: 270px;
+	padding: 5px;
+	margin: 9px 0;
+	line-height: 1.3em;
+	cursor: default;
+}
 #lunar_box {
 	margin-bottom: -2px;
 }
@@ -2760,14 +2790,26 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 	color: #FFF;
 	line-height: 1.3em;
 }
-#controls ul > li, #birthdays ul > li > a {
+#controls ul > li, #compatibility ul > li, #birthdays ul > li > a {
 	padding: 4px 2px;
 }
-#controls ul > li.rhythm {
+#controls ul > li.rhythm, #compatibility ul > li.rhythm {
 	width: 265px;
 }
-#controls ul > li.rhythm, #controls > h5 {
+#controls ul > li.rhythm, #compatibility ul > li.rhythm, #controls > h5 {
 	cursor: default;
+}
+li.rhythm {
+	display: table-row;
+}
+li.rhythm > span {
+	display: table-cell;
+	padding: 5px;
+}
+li.rhythm > span.value {
+	width: 64px;
+	padding-right: 0px;
+	text-align: right;
 }
 #lunar_desc ~ .lunar_desc {
 	display: none;
@@ -2776,7 +2818,7 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 input[type="text"] {
 	width: 138px;
 }
-#dt_change {
+#dt_change, #partner_dob {
 	width: 120px;
 	cursor: pointer;
 	color: transparent;
@@ -2784,9 +2826,9 @@ input[type="text"] {
 	filter: progid:DXImageTransform.Microsoft.Shadow(Color=#000000, Direction=180, Strength=1);
 	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Color=#000000, Direction=180, Strength=1);
 }
-#dt_change_label {
+#dt_change_label, #partner_dob_label {
 	width: 120px;
-	cursor: default;
+	cursor: pointer;
 	border: none;
 	padding: 5px 7px;
 }
@@ -2835,7 +2877,7 @@ input[name="is_secondary"] {display: none;}
 }
 li.rhythm * {font-size: 15px}
 li.rhythm span {font-weight: bold}
-#controls, #lunar, .add-on, #dt_change_label, label[for="is_secondary"], #embed_toggle, #lunar_desc {
+#controls, #lunar, .add-on, #dt_change_label, #partner_dob_label, label[for="is_secondary"], #embed_toggle, #lunar_desc {
 	background-color: #4488ee !important;
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#88AAFF,endColorstr=#4488EE,GradientType=0)";
 	background-image: -ms-linear-gradient(top, #88AAFF 0%, #4488EE 100%);
@@ -2846,7 +2888,7 @@ li.rhythm span {font-weight: bold}
 	background-image: linear-gradient(to bottom, #88AAFF 0%, #4488EE 100%);
 	color: #FFF;
 }
-#dt_change_label:active, label[for="is_secondary"]:active, #embed_toggle:active, #lunar_desc:active, #dt_change_label.clicked, label[for="is_secondary"].clicked, #embed_toggle.clicked, #lunar_desc.clicked {
+#dt_change_label:active, #partner_dob_label:active, label[for="is_secondary"]:active, #embed_toggle:active, #lunar_desc:active, #dt_change_label.clicked, #partner_dob_label.clicked, label[for="is_secondary"].clicked, #embed_toggle.clicked, #lunar_desc.clicked {
 	background-color: #4488ee !important;
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#4488EE,endColorstr=#88AAFF,GradientType=0)";
 	background-image: -ms-linear-gradient(top, #4488EE 0%, #88AAFF 100%);
@@ -2875,6 +2917,9 @@ p.highlight, h3.highlight {
 table {
 	margin: 0;
 }
+#results > section > h5 {
+	font-variant: small-caps;
+}
 /* Forms' status */
 #dob_form_status.alert_dob ~ #dob_wrapper #dob, #dob_form_status.restore_dob ~ #dob_wrapper #dob, #search_form_status.alert_search ~ #search_wrapper #search, #search_form_status.restore_search ~ #search_wrapper #search {
 	border-width: 4px;
@@ -2891,6 +2936,8 @@ table {
 }
 /* Footer links */
 footer {
+	position: relative;
+	top: 100px;
 	width: 950px;
 	height: 32px;
 	float: left;
@@ -3247,7 +3294,8 @@ body.birthday .banner {display: none !important}
 .banner.right.w120 {right: 40px}
 .banner.left.w160, .banner.right.w160 {
 	width: 160px;
-	height: 600px;
+	height: 600px;	
+	margin-top: 100px;
 }
 .banner.left.w120, .banner.right.w120 {
 	width: 120px;
@@ -3279,7 +3327,7 @@ body.birthday .banner {display: none !important}
 	-o-transition: box-shadow linear 150ms;
 	-ms-transition: box-shadow linear 150ms;
 }
-#name_toggle ~ #dob {width: 138px}
+#name_toggle ~ #dob {width: 137px}
 #fullname ~ #dob {width: 104px}
 #dob:disabled, #fullname:disabled {
 	cursor: text;
@@ -3296,8 +3344,7 @@ body.birthday .banner {display: none !important}
 }
 #fullname {width:100px}
 #name_toggle {
-	padding-left: 6px;
-	padding-right: 6px;
+	padding: 10px 6px;
 	width: 101px;
 	height: 12px;
 	line-height: 12px;
@@ -3461,6 +3508,10 @@ p.explain {
 	text-shadow: 2px 2px 3px rgba(160,160,160,0.1) !important;
 }
 .explain_more {
+	display: inline;
+}
+/*
+.explain_more {
 	display: none;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	-moz-opacity: 0;
@@ -3476,6 +3527,7 @@ p.explain {
 p.explain:hover > span.explain_more {
 	display: inline;
 }
+*/
 .explain, .explain_more {
 	transition: color linear 150ms, opacity linear 150ms;
 	-webkit-transition: color linear 150ms, opacity linear 150ms;
@@ -3590,9 +3642,9 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 #weight, #height {
 	width: 105px;
 }
-#weight:empty, #height:empty, #solarDate:empty, #weight:invalid, #height:invalid, #solarDate, #solarDate:invalid {
-	-webkit-animation: glow 1.2s ease-out infinite alternate;
-	animation: glow 1.2s ease-out infinite alternate;
+#weight:empty, #height:empty, #solarDate:empty, #weight:invalid, #height:invalid, #solarDate, #solarDate:invalid, #compatibility:hover #partner_dob, #controls:hover #dt_change {
+	-webkit-animation: glow 999ms ease-out infinite alternate;
+	animation: glow 999ms ease-out infinite alternate;
 }
 #weight:hover, #height:hover, #solarDate:hover, #weight:active, #height:active, #solarDate:active, #weight:focus, #height:focus, #solarDate:focus, #weight:valid, #height:valid, #weight:empty:hover, #height:empty:hover, #weight:invalid:hover, #height:invalid:hover {
 	-webkit-animation: 0s;
@@ -3601,34 +3653,31 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 #unhashed, #hashed {width: 300px}
 @-webkit-keyframes glow {
 	0% {
-		-webkit-box-shadow: 0 0 5px rgba(255,0,0,.2), inset 0 0 5px rgba(255,0,0,.1);
-		-moz-box-shadow: 0 0 5px rgba(255,0,0,.2), inset 0 0 5px rgba(255,0,0,.1);
-		-khtml-box-shadow: 0 0 5px rgba(255,0,0,.2), inset 0 0 5px rgba(255,0,0,.1);
-		box-shadow: 0 0 5px rgba(255,0,0,.2), inset 0 0 5px rgba(255,0,0,.1);
+		-webkit-box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);
+		-moz-box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);
+		-khtml-box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);
+		box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);
 	}	
 	100% {
-		-webkit-box-shadow: 0 0 20px rgba(255,0,0,.6), inset 0 0 10px rgba(255,0,0,.4);
-		-moz-box-shadow: 0 0 20px rgba(255,0,0,.6), inset 0 0 10px rgba(255,0,0,.4);
-		-khtml-box-shadow: 0 0 20px rgba(255,0,0,.6), inset 0 0 10px rgba(255,0,0,.4);
-		box-shadow: 0 0 20px rgba(255,0,0,.6), inset 0 0 10px rgba(255,0,0,.4);
+		-webkit-box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);
+		-moz-box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);
+		-khtml-box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);
+		box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);
 	}
 }
 @keyframes glow {
 	0% {
-		-webkit-box-shadow: 0 0 5px rgba(255,0,0,.2), inset 0 0 5px rgba(255,0,0,.1);
-		-moz-box-shadow: 0 0 5px rgba(255,0,0,.2), inset 0 0 5px rgba(255,0,0,.1);
-		-khtml-box-shadow: 0 0 5px rgba(255,0,0,.2), inset 0 0 5px rgba(255,0,0,.1);
-		box-shadow: 0 0 5px rgba(255,0,0,.2), inset 0 0 5px rgba(255,0,0,.1);
+		-webkit-box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);
+		-moz-box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);
+		-khtml-box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);
+		box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);
 	}	
 	100% {
-		-webkit-box-shadow: 0 0 20px rgba(255,0,0,.6), inset 0 0 10px rgba(255,0,0,.4);
-		-moz-box-shadow: 0 0 20px rgba(255,0,0,.6), inset 0 0 10px rgba(255,0,0,.4);
-		-khtml-box-shadow: 0 0 20px rgba(255,0,0,.6), inset 0 0 10px rgba(255,0,0,.4);
-		box-shadow: 0 0 20px rgba(255,0,0,.6), inset 0 0 10px rgba(255,0,0,.4);
+		-webkit-box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);
+		-moz-box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);
+		-khtml-box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);
+		box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);
 	}
-}
-#main_chart, #explanation_chart {
-	width: 916px;
 }
 #main_chart > div.highcharts-container, #main_chart > div.highcharts-container > svg, #explanation_chart > div.highcharts-container, #explanation_chart > div.highcharts-container > svg {
 	width: 100%;
@@ -3636,7 +3685,7 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 body.embed header, body.embed footer {
 	display: none;
 }
-body.embed #page_section {
+body.embed #main {
 	width: 100%;
 	margin: 0 auto;
 	-ms-box-shadow: none;
@@ -3645,12 +3694,20 @@ body.embed #page_section {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
+body.embed #content {padding: 0}
 #android {
 	display: block;
 	margin: auto;
 	width: 200px;
 	height: 70px;
 	background: transparent url('images/android.png') no-repeat;
+}
+#windows_phone {
+	display: block;
+	margin: auto;
+	width: 200px;
+	height: 52px;
+	background: transparent url('images/windows_phone.png') no-repeat;
 }
 #rhythms_table {
 	border: none;
@@ -3692,6 +3749,57 @@ body:lang(ja) #rhythms_table {
 }
 .rhythm_hover > td.rhythm_label > span {
 	text-decoration: underline;
+}
+.helper {
+	float: right;
+	position: relative;
+	bottom: 24px;
+	cursor: help;
+}
+.infor {
+	float: right;
+	position: relative;
+	right: 10px;
+	bottom: 24px;
+	cursor: help;
+}
+.helper > i, .infor > i {
+	transform: scale(2);
+	-webkit-transform: scale(2);
+	-moz-transform: scale(2);
+	-o-transform: scale(2);
+	-ms-transform: scale(2);
+}
+.helper > .helper_box {
+	position: absolute;
+	background: rgba(248,248,248,0.8888);
+	color: rgb(42,42,42);
+	display: block;
+	float: left;
+	width: 248px;
+	right: -1px;
+	top: 21px;
+	padding: 12px;
+	z-index: 3;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 21px;
+}
+.infor > .infor_box {
+	position: absolute;
+	background: rgba(248,248,248,0.8888);
+	color: rgb(42,42,42);
+	display: block;
+	float: left;
+	width: 248px;
+	right: -29px;
+	top: 21px;
+	padding: 12px;
+	z-index: 3;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 21px;
+	font-variant: normal;
 }
 #g_comments, #g_comments > iframe, #___comments_0, #___comments_0 > iframe {
 	width: 100% !important;
@@ -3855,8 +3963,8 @@ img.ball {
 }
 .rss_feed > h2:hover + .help_rss_feed {
 	display: block;
-	animation: help_rss_feed 1.2s linear 0s infinite;
-	-webkit-animation: help_rss_feed 1.2s linear 0s infinite;
+	animation: help_rss_feed 999ms linear 0s infinite;
+	-webkit-animation: help_rss_feed 999ms linear 0s infinite;
 }
 @-webkit-keyframes help_rss_feed {
 	0% {
@@ -4232,31 +4340,26 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 }
 @media all and (max-width: 959px) {
 	body {
-		background-image: url('images/clock_mobile.png');
+		/*background-image: url('images/clock_mobile.png');*/
+		background-color: rgba(230,239,253,0.88) !important;
 		margin: 0 auto;
 	}
 	body.birthday {
 		background-image: url('images/gifts_mobile.png');
+		background-color: rgba(255,252,235,0.88) !important;
 		margin: 0 auto;
 	}
-	#page_section {
-		width: 100%;
-		margin: 0 auto;
-		-ms-box-shadow: none;
-		-o-box-shadow: none;
-		-moz-box-shadow: none;
-		-webkit-box-shadow: none;
-		box-shadow: none;
-		background: rgba(230,239,253,0.88);
-	}
-	body.birthday #page_section {
-		background: rgba(255,252,235,0.88);
-	}
-	header {
-		background: none !important;
+	body header#header {
+		background-color: none !important;
+		background-image: none !important;
 		height: auto;
 		margin-left: 4px;
 		margin-right: 4px;
+		-ms-box-shadow: none !important;
+		-o-box-shadow: none !important;
+		-moz-box-shadow: none !important;
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
 	}
 	header a#logo {
 		top: 5px;
@@ -4280,6 +4383,9 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 		margin: 0 0 9px;
 		line-height: 24px;
 		background-color: #4488EE;
+		width: calc(100% - 56px);
+		width: -webkit-calc(100% - 56px);
+		width: -moz-calc(100% - 56px);
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#88AAFF',endColorstr='#4488EE',GradientType=0)";
 		background-image: -ms-linear-gradient(top, #88AAFF 0%, #4488EE 100%);
 		background-image: -moz-linear-gradient(top, #88AAFF 0%, #4488EE 100%);
@@ -4326,6 +4432,7 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 		-khtml-opacity: 0.63;
 		opacity: 0.63;
 		width: auto;
+		bottom: 16px;
 	}
 	#search_wrapper input#search {
 		display: none;
@@ -4411,9 +4518,9 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	body.birthday main {background: none}
 	body main {
 		width: 100%;
-		background: none;
 		margin: 0 auto;
-		padding-bottom: 50px;
+		padding-bottom: 57px;
+		top: 52px;
 		min-height: 0;
 	}
 	body.embed main {padding-bottom: 0}
@@ -4464,15 +4571,18 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 		bottom: 60px !important;
 	}
 	.rss_feed {display: none}
+	#dob_form_status.hovered.empty_dob ~ #help_dob_form, #dob_form_status.hovered.wrong_dob ~ #help_dob_form, #dob_form_status.hovered.alert_dob ~ #help_dob_form, #dob_form_status.hovered.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.hovered.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {
+		margin-left: 0px;
+	}
 }
 @media all and (min-width: 960px) {
 	#proverb {
 		top: 13px;
 	}
-	#info, #lunar, #controls, #chart, #explanation_chart_results {
+	#info, #compatibility, #lunar, #controls, #chart, #explanation_chart_results {
 		margin: 22px 0;
 	}
-	#dob_form:hover, #info:hover, #lunar:hover, #controls:hover {
+	#dob_form:hover, #info:hover, #compatibility:hover, #lunar:hover, #controls:hover {
 		transform: scale(1.04);
 		-webkit-transform: scale(1.04);
 		-moz-transform: scale(1.04);
@@ -4481,6 +4591,9 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	}
 }
 @media all and (min-width: 960px) and (max-width: 1262px) {
+	#main {
+		width: 960px;
+	}
 	.leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {
 		display: block;
 	}
@@ -4514,14 +4627,23 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	}
 	.to-top {
 		right: 20px;
-		bottom: 20px;
+		bottom: 23px;
 	}
 }
 @media all and (min-width: 1263px) {
-	#page_section {
+	.inner {
 		width: calc(100% - 320px);
 		width: -webkit-calc(100% - 320px);
 		width: -moz-calc(100% - 320px);
+		margin: auto;
+	}
+	#main {
+		width: calc(100% - 320px);
+		width: -webkit-calc(100% - 320px);
+		width: -moz-calc(100% - 320px);
+	}
+	#search_wrapper {
+		right: 162px;
 	}
 	footer {
 		width: calc(100% - 10px);

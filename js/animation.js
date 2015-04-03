@@ -124,7 +124,14 @@ function helpDobForm() {
 		focusout: function(){
 			$('span#dob_form_status').removeClass('focus_fullname');
 		}
-	}, '#fullname');
+	}, '#fullname').on({
+		mouseenter: function(){
+			$('span#dob_form_status').addClass('hovered');
+		},
+		mouseleave: function(){
+			$('span#dob_form_status').removeClass('hovered');
+		}
+	});
 }
 function submitDob() {
 	$.cookie('NSH:fullname',$('#fullname').val());
