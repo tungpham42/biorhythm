@@ -64,20 +64,23 @@ function enableFields(isErased) {
 		$('#dob, #fullname').val('');
 	}
 }
-function maskDob() {
-	$('#dob').on('keypress', function(e) {
-		if (e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40 && e.keyCode != 46 && countChar($('#dob').val(), '-') < 2) {
-			maskInput($('#dob').val(),$('#dob'),'4,7','-');
+function maskField(selector) {
+	$(selector).on('keypress', function(e) {
+		if (e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40 && e.keyCode != 46 && countChar($(selector).val(), '-') < 2) {
+			maskInput($(selector).val(),$(selector),'4,7','-');
 		}
 	}).on('keyup', function(e) {
-		if (e.which != 8 && e.which != 37 && e.which != 38 && e.which != 39 && e.which != 40 && e.which != 46 && countChar($('#dob').val(), '-') < 2) {
-			maskInput($('#dob').val(),$('#dob'),'4,7','-');
+		if (e.which != 8 && e.which != 37 && e.which != 38 && e.which != 39 && e.which != 40 && e.which != 46 && countChar($(selector).val(), '-') < 2) {
+			maskInput($(selector).val(),$(selector),'4,7','-');
 		}
 	}).on('keydown', function(e) {
-		if (e.which != 8 && e.which != 37 && e.which != 38 && e.which != 39 && e.which != 40 && e.which != 46 && countChar($('#dob').val(), '-') < 2) {
-			maskInput($('#dob').val(),$('#dob'),'4,7','-');
+		if (e.which != 8 && e.which != 37 && e.which != 38 && e.which != 39 && e.which != 40 && e.which != 46 && countChar($(selector).val(), '-') < 2) {
+			maskInput($(selector).val(),$(selector),'4,7','-');
 		}
 	});
+}
+function maskDob() {
+	maskField('#dob');
 }
 function helpDobForm() {
 	if ($('#dob').prop('disabled') === true) {

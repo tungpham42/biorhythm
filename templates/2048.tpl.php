@@ -9,6 +9,7 @@
 	</div>
 
 	<div class="above-game">
+		<p class="game-intro">Kết hợp các số để được <strong>khối 2048!</strong></p>
 		<p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
 		<a class="restart-button">New Game</a>
 	</div>
@@ -55,6 +56,7 @@
 	</div>
 
 	<p class="game-explanation">
+		<strong class="important">Cách chơi:</strong> Dùng <strong>phím mũi tên</strong> để di chuyển các khối. Hai khối cùng số chạm nhau sẽ <strong>nhập làm một và nhân hai!</strong>
 		<strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
 	</p>
 	<hr>

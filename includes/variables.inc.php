@@ -6,7 +6,7 @@ require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/timezone.php';
 $geoip = geoip_open(realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/GeoIPCity.dat',GEOIP_STANDARD);
 $geoip_record = geoip_record_by_addr($geoip,$_SERVER['REMOTE_ADDR']);
 $lang_codes = array('vi','en','ru','es','zh','ja');
-$navs = array('bmi','lunar','pong');
+$navs = array('bmi','lunar','2048');
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/prep.inc.php';
 $brand = 'Nhip Sinh Hoc . VN';
 $p = isset($_GET['p']) ? prevent_xss($_GET['p']): 'home';
@@ -294,7 +294,7 @@ $menu_interfaces = array(
 	)
 );
 $help_interfaces = array(
-	'info_box' => array(
+	'stats_box' => array(
 		'vi' => 'Hiển thị các thông số liên quan đến ngày sinh của bạn.',
 		'en' => 'Display the general statistics related to your birth date.',
 		'ru' => 'Показать общую статистику, связанные с вашей даты рождения.',
@@ -371,9 +371,9 @@ $information_interfaces = array(
 	'average' => array(
 		'vi' => array(
 			'excellent' => 'Ngày hiện tại của bạn rất tốt, bạn nên tận hưởng ngày này.',
-			'good' => 'Ngày hiện tại của bạn khá tốt, tuy nhiên bạn nên cẩn thận trong ngày này.',
+			'good' => 'Ngày hiện tại của bạn tạm được, tuy nhiên bạn nên cẩn thận trong ngày này.',
 			'gray' => 'Ngày hiện tại của bạn không được tốt lắm, bạn nên cẩn trọng hơn.',
-			'bad' => 'Ngày hiện tại của bạn không khả quan, bạn nên cực kỳ cẩn thận.'
+			'bad' => 'Ngày hiện tại của bạn khá xấu, bạn nên cực kỳ cẩn thận.'
 		),
 		'en' => array(
 			'excellent' => 'Your current day is excellent, enjoy it.',
@@ -408,10 +408,10 @@ $information_interfaces = array(
 	),
 	'physical' => array(
 		'vi' => array(
-			'excellent' => 'Sức khỏe hiện tại của bạn rất tốt, hãy tham gia vận động nhiều hơn.',
+			'excellent' => 'Sức khỏe hiện tại của bạn tuyệt vời, hãy tham gia vận động nhiều hơn.',
 			'good' => 'Sức khỏe hiện tại của bạn khá tốt, hãy vận động điều độ.',
-			'gray' => 'Sức khỏe hiện tại của bạn không được tốt, hãy nghĩ ngơi một tí.',
-			'bad' => 'Sức khỏe hiện tại của bạn không khả quan, hãy nghỉ ngơi nhiều hơn.'
+			'gray' => 'Sức khỏe hiện tại của bạn hơi kém, hãy nghỉ ngơi một tí.',
+			'bad' => 'Sức khỏe hiện tại của bạn kém, hãy nghỉ ngơi nhiều hơn.'
 		),
 		'en' => array(
 			'excellent' => 'Your current health is excellent, you should work out more.',
@@ -446,10 +446,10 @@ $information_interfaces = array(
 	),
 	'emotional' => array(
 		'vi' => array(
-			'excellent' => 'Tình cảm hiện tại của bạn rất tốt, hãy tham gia gặp gỡ bạn bè nhiều hơn.',
-			'good' => 'Tình cảm hiện tại của bạn khá tốt, hãy gặp gỡ bạn bè.',
-			'gray' => 'Tình cảm hiện tại của bạn không được tốt, bạn hơi dễ cáu kỉnh.',
-			'bad' => 'Tình cảm hiện tại của bạn không khả quan, bạn nên tránh các cuộc xung đột.'
+			'excellent' => 'Tâm trạng hiện tại của bạn rất ổn, hãy tham gia gặp gỡ bạn bè nhiều hơn.',
+			'good' => 'Tâm trạng hiện tại của bạn tạm ổn, hãy gặp gỡ bạn bè.',
+			'gray' => 'Tâm trạng hiện tại của bạn hơi tệ, bạn hơi dễ cáu kỉnh.',
+			'bad' => 'Tâm trạng hiện tại của bạn rất tệ, bạn nên tránh các cuộc xung đột.'
 		),
 		'en' => array(
 			'excellent' => 'Your current mood is excellent, you meet more friends.',
@@ -484,10 +484,10 @@ $information_interfaces = array(
 	),
 	'intellectual' => array(
 		'vi' => array(
-			'excellent' => 'Trí tuệ hiện tại của bạn rất tốt, bạn có thể đưa ra những quyết định sáng suốt.',
-			'good' => 'Trí tuệ hiện tại của bạn khá tốt, bạn có thể đưa ra quyết định nhưng cần suy tính kỹ.',
-			'gray' => 'Trí tuệ hiện tại của bạn không được tốt, bạn nên suy nghĩ kỹ trước khi ra quyết định.',
-			'bad' => 'Trí tuệ hiện tại của bạn không khả quan, bạn không nên đưa ra quyết định lớn.'
+			'excellent' => 'Trí tuệ hiện tại của bạn rất minh mẫn, bạn có thể đưa ra những quyết định sáng suốt.',
+			'good' => 'Trí tuệ hiện tại của bạn khá sáng suốt, bạn có thể đưa ra quyết định nhưng cần suy tính kỹ.',
+			'gray' => 'Trí tuệ hiện tại của bạn không được ổn lắm, bạn nên suy nghĩ kỹ trước khi ra quyết định.',
+			'bad' => 'Trí tuệ hiện tại của bạn rất không sáng suốt, bạn không nên đưa ra quyết định lớn.'
 		),
 		'en' => array(
 			'excellent' => 'Your current intellect is excellent, you can make great decisions.',
