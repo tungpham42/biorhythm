@@ -26,7 +26,7 @@
 <link rel="alternate" hreflang="zh" href="<?php echo current_url_lang('zh'); ?>" />
 <link rel="alternate" hreflang="ja" href="<?php echo current_url_lang('ja'); ?>" />
 <link rel="chrome-webstore-item" href="<?php echo chrome_webstore_item(); ?>" />
-<link rel="stylesheet" href="/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,m-styles.css,default.css,ui-blue/jquery-ui.css,nprogress.css&amp;194" />
+<link rel="stylesheet" href="/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,m-styles.css,default.css,ui-blue/jquery-ui.css,nprogress.css&amp;232" />
 <link rel="stylesheet" href="/min/f=css/print.css&amp;1" media="print" />
 <!--[if lt IE 9]>
 <script src="/min/?f=js/html5shiv.js"></script>

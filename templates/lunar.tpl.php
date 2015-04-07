@@ -8,7 +8,7 @@
 	</div>
 	<div class="m-input-prepend">
 		<span class="add-on label">Xem ngày:</span>
-		<input id="solarDate" type="text" class="m-wrap" placeholder="ví dụ: 1961-09-26" data-ng-model="solarDate" data-ng-init="solarDate='<?php echo date('Y-m-d'); ?>'" data-ng-change="changeSolarDate()" required="required" value="<?php echo date('Y-m-d'); ?>">
+		<input pattern="\d*" id="solarDate" type="text" class="m-wrap" placeholder="ví dụ: 1961-09-26" data-ng-model="solarDate" data-ng-init="solarDate='<?php echo date('Y-m-d'); ?>'" data-ng-change="changeSolarDate()" required="required" value="<?php echo date('Y-m-d'); ?>">
 	</div>
 	<div class="m-input-prepend">
 		<span class="add-on label">Năm Âm:</span>
@@ -48,7 +48,7 @@
 	</div>
 </div>
 <script>
-disableInput('solarDate');
+maskField('#solarDate');
 $(document).ready(function(){
 	$('textarea').autosize();
 	$.datepicker.setDefaults($.datepicker.regional['vi']);
@@ -65,6 +65,8 @@ $('#solarDate').datepicker({
 		$(this).trigger('input');
 		$('textarea').trigger('autosize.resize');
 	}
+}).on('change keydown keyup', fucntion(){
+	$(this).trigger('input');
 });
 $('#prev').on('click', function(){
 	var date = new Date($('#solarDate').val());

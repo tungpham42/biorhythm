@@ -7,7 +7,7 @@ manipulateHeader();
 manipulateDobForm();
 manipulateProverb();
 manipulateExplanation();
-manipulateVideo();
+manipulateScroll();
 $('#dob').datepicker({
 	dateFormat: 'yy-mm-dd',
 	changeYear: true,
@@ -44,10 +44,10 @@ to_top.on('click', function(e){
 });
 $(document).ajaxStart(function() {
 	NProgress.start();
-	$('#loading').fadeIn(42);
+	$('body').addClass('loading');
 }).ajaxStop(function() {
 	NProgress.done();
-	$('#loading').fadeOut(42);
+	$('body').removeClass('loading');
 });
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

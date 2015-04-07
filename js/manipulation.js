@@ -323,3 +323,17 @@ function manipulateInfor(selector,content) {
 		$(selector).find('.infor_box').remove();
 	});
 }
+function manipulateScroll() {
+	if ($(document).scrollTop() > 0) {
+		$('body').addClass('scrolled');
+	} else if ($(document).scrollTop() == 0) {
+		$('body').removeClass('scrolled');
+	}
+	$(window).on('scroll mousewheel wheel DOMMouseScroll', function(){
+		if ($(document).scrollTop() > 0) {
+			$('body').addClass('scrolled');
+		} else if ($(document).scrollTop() == 0) {
+			$('body').removeClass('scrolled');
+		}
+	});
+}

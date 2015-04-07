@@ -1,6 +1,6 @@
 <?php
 class Chart {
-	protected $_dob, $_diff, $_date, $_is_secondary, $_dt_change, $_lang_code, $_partner_dob, $_rhythms_count,  $_dates_count, $_today_index, $_title_text, $_explanation_title_text, $_percentage_text, $_average_text, $_download_jpeg_text, $_download_pdf_text, $_download_png_text, $_download_svg_text, $_print_chart_text, $_reset_zoom_text, $_date_text, $_age, $_statistics_h5, $_compatibility_h5, $_lunar_h5, $_controls_h5, $_dates_json, $_rhythms_json;
+	protected $_dob, $_diff, $_date, $_is_secondary, $_dt_change, $_lang_code, $_partner_dob, $_rhythms_count,  $_dates_count, $_today_index, $_title_text, $_explanation_title_text, $_percentage_text, $_average_text, $_download_jpeg_text, $_download_pdf_text, $_download_png_text, $_download_svg_text, $_print_chart_text, $_reset_zoom_text, $_date_text, $_age, $_info_h5, $_statistics_h5, $_compatibility_h5, $_lunar_h5, $_controls_h5, $_dates_json, $_rhythms_json;
 	protected $_rhythms = array();
 	protected $_days = array();
 	protected $_dates = array();
@@ -45,8 +45,9 @@ class Chart {
 				$this->_reset_zoom_text = 'Thiết lập lại';
 				$this->_date_text = 'Ngày';
 				$this->_age = 'tuổi';
+				$this->_info_h5 = 'Lời khuyên';
 				$this->_statistics_h5 = 'Thống kê';
-				$this->_compatibility_h5 = 'Mức độ hòa hợp với đối tác';
+				$this->_compatibility_h5 = 'Độ hòa hợp với đối tác';
 				$this->_lunar_h5 = 'Âm lịch';
 				if (date('m-d',time()+86400*$this->_diff) == date('m-d',strtotime($this->_dob))) {
 					$this->_controls_h5 = 'Sinh nhật';
@@ -73,6 +74,7 @@ class Chart {
 				$this->_reset_zoom_text = 'Reset zoom';
 				$this->_date_text = 'Date';
 				$this->_age = pluralize(date('Y', time()+86400*$this->_diff) - date('Y', strtotime($this->_dob)),'year').' old';
+				$this->_info_h5 = 'Suggestion';
 				$this->_statistics_h5 = 'Statistics';
 				$this->_compatibility_h5 = 'Compatibility';
 				$this->_lunar_h5 = 'Lunar calendar';
@@ -101,6 +103,7 @@ class Chart {
 				$this->_reset_zoom_text = 'Сбросить зум';
 				$this->_date_text = 'Дата';
 				$this->_age = 'лет';
+				$this->_info_h5 = 'Предложение';
 				$this->_statistics_h5 = 'Статистика';
 				$this->_compatibility_h5 = 'Совместимость';
 				$this->_lunar_h5 = 'Лунный календарь';
@@ -129,6 +132,7 @@ class Chart {
 				$this->_reset_zoom_text = 'Restablecer zoom';
 				$this->_date_text = 'Fecha';
 				$this->_age = 'años';
+				$this->_info_h5 = 'Sugerencia';
 				$this->_statistics_h5 = 'Estadística';
 				$this->_compatibility_h5 = 'Compatibilidad';
 				$this->_lunar_h5 = 'Calendario lunar';
@@ -157,6 +161,7 @@ class Chart {
 				$this->_reset_zoom_text = '重置缩放';
 				$this->_date_text = '上';
 				$this->_age = '岁老';
+				$this->_info_h5 = '建议';
 				$this->_statistics_h5 = '统计学';
 				$this->_compatibility_h5 = '兼容性';
 				$this->_lunar_h5 = '阴历';
@@ -185,6 +190,7 @@ class Chart {
 				$this->_reset_zoom_text = 'ズームをリセット';
 				$this->_date_text = '日付';
 				$this->_age = '歳';
+				$this->_info_h5 = '提案';
 				$this->_statistics_h5 = '統計学';
 				$this->_compatibility_h5 = '互換性';
 				$this->_lunar_h5 = '太陰暦';
@@ -300,11 +306,21 @@ class Chart {
 		}
 		return $meta_description;
 	}
-	// Render info
+	// Render stats
 	function render_info() {
 		global $help_interfaces;
 		echo '
 <section id="info" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
+	<h5>'.$this->_info_h5.'</h5>
+	<p>'.$this->get_infor().'</p>
+</section>
+		';
+	}
+	// Render stats
+	function render_stats() {
+		global $help_interfaces;
+		echo '
+<section id="stats" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
 	<h5>'.$this->_statistics_h5.'</h5>
 	<div class="helper"><i class="icon-question-sign icon-white"></i></div>
 	<p><strong><span class="translate" data-lang-ja="歳:" data-lang-zh="岁老:" data-lang-es="Años:" data-lang-ru="Лет:" data-lang-en="Years old:" data-lang-vi="Số năm tuổi:"></span></strong> '.(date('Y', time()+86400*$this->_diff) - date('Y', strtotime($this->_dob))).' <span class="translate" data-lang-ja="年々" data-lang-zh="岁" data-lang-es="año" data-lang-ru="лет" data-lang-en="'.pluralize(date('Y', time()+86400*$this->_diff) - date('Y', strtotime($this->_dob)),'year').'" data-lang-vi="năm"></span></p>
@@ -368,7 +384,6 @@ class Chart {
 <section id="controls" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
 	<h5>'.$this->_controls_h5.'</h5>
 	<div class="helper"><i class="icon-question-sign icon-white"></i></div>
-	<div class="infor"><i class="icon-white icon-info-sign"></i></div>
 	<ul>
 		<li class="rhythm"><span class="translate" data-lang-ja="平均する:" data-lang-zh="平均:" data-lang-es="Promedio:" data-lang-ru="Средний:" data-lang-en="Average:" data-lang-vi="Trung bình:"></span><span class="value">'.percent_average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms).'</span><i class="icon-white icon-arrow-'.((average_bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$this->_rhythms) < average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms)) ? 'up': 'down').'"></i></li>';
 		foreach ($this->_rhythms as $rhythm){
@@ -581,7 +596,7 @@ $.contextMenu({
 });
 setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 renderChart("#main_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"'.$this->_is_secondary.'",$("#dt_change").val(),'.$this->serialize_chart_data().',"main");
-toggleCookie("NSH:embed-toggle","textarea#embed_box","#embed_toggle","#info");
+toggleCookie("NSH:embed-toggle","textarea#embed_box","#embed_toggle","#stats");
 toggleCookie("NSH:lunar-toggle","#lunar_desc ~ .lunar_desc","#lunar_desc","#lunar");
 $("#compatibility").on("change", "#partner_dob", function(){
 	loadResults("'.$this->_dob.'","'.$this->_diff.'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*$this->_diff).'",$("#partner_dob").val(),lang);
@@ -636,16 +651,16 @@ $("#lang_bar").off("click","**").on("click", "#vi_toggle", function(){
 		loadResults("'.$this->_dob.'","'.$this->_diff.'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_partner_dob.'","ja");
 	}
 });
-manipulateHelper("#info","'.$help_interfaces['info_box'][$this->_lang_code].'");
+manipulateHelper("#stats","'.$help_interfaces['stats_box'][$this->_lang_code].'");
 manipulateHelper("#lunar","'.$help_interfaces['lunar_box'][$this->_lang_code].'");
 manipulateHelper("#compatibility","'.$help_interfaces['compatibility_box'][$this->_lang_code].'");
 manipulateHelper("#controls","'.$help_interfaces['controls_box'][$this->_lang_code].'");
-manipulateInfor("#controls","'.$this->get_infor().'");
 </script>
 		';
 	}
 	function render_results() {
 		$this->render_info();
+		$this->render_stats();
 		$this->render_lunar();
 		$this->render_compatibility();
 		$this->render_controls();
