@@ -342,6 +342,14 @@ $help_interfaces = array(
 		'zh' => '告诉你和你的伴侣（情人，朋友，熟人）之间的兼容性。选择你的伴侣的出生日期以获得显示兼容性值，越高越不兼容。',
 		'ja' => 'あなたとあなたのパートナー（恋人、友人、知人）間の互換性を表示します。より互換性が高い、互換性を示す値を取得するためにあなたのパートナーの誕生日を選択してください。'
 	),
+	'info_box' => array(
+		'vi' => 'Hiển thị lời khuyên cho ngày hiện tại.',
+		'en' => 'Display the suggestion for current date.',
+		'ru' => 'Показать предложение для текущей даты.',
+		'es' => 'Visualice la sugerencia para la fecha actual.',
+		'zh' => '显示的建议为当前日期。',
+		'ja' => '現在の日付のための提案を表示します。'
+	),
 	'controls_box' => array(
 		'vi' => 'Hiển thị các chỉ số nhịp sinh học cho ngày hiện tại, chỉ số phần trăm càng cao thì càng tốt. Ấn nút Hiện nhịp sinh học phụ để hiện ra thêm các chỉ số phụ. Chọn ngày bằng cách ấn ô Xem ngày. Ấn nút Trước và Sau để thay đổi ngày hiện tại, nút Hôm nay để trở về Hôm nay.',
 		'en' => 'Display the biorhythm values for the current date, the higher the better. Press the button Show secondary rhythms to show more biorhythm values. Choose the date by clicking on the field View date. Click on Back or Forward to change the current date, show today values by clicking on Today.',
@@ -508,7 +516,7 @@ $information_interfaces = array(
 	),
 	'intellectual' => array(
 		'vi' => array(
-			'excellent' => 'Trí tuệ hiện tại của bạn rất sáng suốt, bạn có thể đưa ra những quyết định sáng suốt.',
+			'excellent' => 'Trí tuệ hiện tại của bạn rất sáng suốt, bạn có thể đưa ra những quyết định đúng đắn.',
 			'good' => 'Trí tuệ hiện tại của bạn khá sáng suốt, bạn có thể đưa ra quyết định nhưng cần suy tính kỹ.',
 			'gray' => 'Trí tuệ hiện tại của bạn khá thiếu sáng suốt, bạn nên suy nghĩ kỹ trước khi ra quyết định.',
 			'bad' => 'Trí tuệ hiện tại của bạn rất thiếu sáng suốt, bạn không nên đưa ra quyết định lớn.'

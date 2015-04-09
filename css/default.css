@@ -922,11 +922,11 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 	 transition: none !important;
 }
 header, header h1, #dob_form, #help, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
-	transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms;
-	-webkit-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms;
-	-moz-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms;
-	-o-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms;
-	-ms-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms;
+	transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms, font cubic-bezier(0.4,0,0.2,1) 150ms;
+	-webkit-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms, font cubic-bezier(0.4,0,0.2,1) 150ms;
+	-moz-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms, font cubic-bezier(0.4,0,0.2,1) 150ms;
+	-o-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms, font cubic-bezier(0.4,0,0.2,1) 150ms;
+	-ms-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms, font cubic-bezier(0.4,0,0.2,1) 150ms;
 	-webkit-font-smoothing: antialiased;
 }
 /* Links */
@@ -3224,7 +3224,7 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 	animation: glow 888ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
 }
 /* Hide */
-#dob_form_status.disabled_dob ~ #dob_wrapper #dob_submit, #dob_form_status.focus_dob ~ #dob_wrapper #dob, #dob_form_status.focus_fullname ~ #dob_wrapper #fullname {
+#dob_form_status.disabled_dob ~ #dob_wrapper #dob_submit, #dob_form_status.focus_dob ~ #dob_wrapper #dob, #dob_form_status.focus_fullname ~ #dob_wrapper #fullname, #dob_submit:hover, #dob_submit:active, #dob_submit.clicked {
 	-webkit-animation: none !important;
 	animation: none !important;
 }

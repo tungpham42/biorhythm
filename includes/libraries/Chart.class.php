@@ -307,16 +307,6 @@ class Chart {
 		return $meta_description;
 	}
 	// Render stats
-	function render_info() {
-		global $help_interfaces;
-		echo '
-<section id="info" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
-	<h5>'.$this->_info_h5.'</h5>
-	<p>'.$this->get_infor().'</p>
-</section>
-		';
-	}
-	// Render stats
 	function render_stats() {
 		global $help_interfaces;
 		echo '
@@ -374,6 +364,17 @@ class Chart {
 	<div class="clear"></div>
 </section>';
 	}
+	// Render info
+	function render_info() {
+		global $help_interfaces;
+		echo '
+<section id="info" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
+	<h5>'.$this->_info_h5.'</h5>
+	<div class="helper"><i class="icon-question-sign icon-white"></i></div>
+	<p>'.$this->get_infor().'</p>
+</section>
+		';
+	}
 	// Render controls
 	function render_controls() {
 		global $button_interfaces;
@@ -398,7 +399,7 @@ class Chart {
 	</label>
 	<div class="m-input-prepend">
 		<span data-lang-ja="日付を表示す:" data-lang-zh="查看日期:" data-lang-es="Ver la fecha:" data-lang-ru="Посмотреть дата:" data-lang-en="View date:" data-lang-vi="Xem ngày:" class="add-on translate" id="dt_change_label"></span>
-		<input readonly data-lang-ja="'.$input_interfaces['dt_change']['ja'].'" data-lang-zh="'.$input_interfaces['dt_change']['zh'].'" data-lang-es="'.$input_interfaces['dt_change']['es'].'" data-lang-ru="'.$input_interfaces['dt_change']['ru'].'" data-lang-en="'.$input_interfaces['dt_change']['en'].'" data-lang-vi="'.$input_interfaces['dt_change']['vi'].'" class="m-wrap required" placeholder="'.$input_interfaces['dt_change'][$this->_lang_code].'" id="dt_change" type="text" name="dt_change" size="42" maxlength="128" value="'.$this->_dt_change.'" />
+		<input readonly data-lang-ja="'.$input_interfaces['dt_change']['ja'].'" data-lang-zh="'.$input_interfaces['dt_change']['zh'].'" data-lang-es="'.$input_interfaces['dt_change']['es'].'" data-lang-ru="'.$input_interfaces['dt_change']['ru'].'" data-lang-en="'.$input_interfaces['dt_change']['en'].'" data-lang-vi="'.$input_interfaces['dt_change']['vi'].'" class="m-wrap required" placeholder="'.$input_interfaces['dt_change'][$this->_lang_code].'" id="dt_change" type="text" name="dt_change" size="42" maxlength="128" value="'.(($this->_dt_change == date('Y-m-d')) ? 'YYYY-MM-DD': $this->_dt_change).'" />
 	</div>
 	<div class="m-btn-group">
 		<a class="m-btn green" id="today"><i class="icon-calendar icon-white"></i><span class="translate" data-lang-ja="'.$button_interfaces['today']['ja'].'" data-lang-zh="'.$button_interfaces['today']['zh'].'" data-lang-es="'.$button_interfaces['today']['es'].'" data-lang-ru="'.$button_interfaces['today']['ru'].'" data-lang-en="'.$button_interfaces['today']['en'].'" data-lang-vi="'.$button_interfaces['today']['vi'].'">'.$button_interfaces['today'][$this->_lang_code].'</span></a>
@@ -654,15 +655,16 @@ $("#lang_bar").off("click","**").on("click", "#vi_toggle", function(){
 manipulateHelper("#stats","'.$help_interfaces['stats_box'][$this->_lang_code].'");
 manipulateHelper("#lunar","'.$help_interfaces['lunar_box'][$this->_lang_code].'");
 manipulateHelper("#compatibility","'.$help_interfaces['compatibility_box'][$this->_lang_code].'");
+manipulateHelper("#info","'.$help_interfaces['info_box'][$this->_lang_code].'");
 manipulateHelper("#controls","'.$help_interfaces['controls_box'][$this->_lang_code].'");
 </script>
 		';
 	}
 	function render_results() {
-		$this->render_info();
 		$this->render_stats();
 		$this->render_lunar();
 		$this->render_compatibility();
+		$this->render_info();
 		$this->render_controls();
 		$this->render_main_chart();
 	}
