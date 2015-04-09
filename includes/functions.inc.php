@@ -811,6 +811,17 @@ function site_name() {
 		case 'ja': return 'バイオリズムチャート'; break;
 	}
 }
+function intro_title() {
+	global $lang_code;
+	switch ($lang_code) {
+		case 'vi': return 'Giới thiệu'; break;
+		case 'en': return 'Introduction'; break;
+		case 'ru': return 'Введение'; break;
+		case 'es': return 'Introducción'; break;
+		case 'zh': return '介绍'; break;
+		case 'ja': return 'はじめに'; break;
+	}
+}
 function home_title() {
 	global $lang_code;
 	global $fullname;

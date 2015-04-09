@@ -128,6 +128,14 @@ $button_interfaces = array(
 		'zh' => '前进 ',
 		'ja' => '前進する '
 	),
+	'intro' => array(
+		'vi' => 'Giới thiệu',
+		'en' => 'Introduction',
+		'ru' => 'Введение',
+		'es' => 'Introducción',
+		'zh' => '介绍',
+		'ja' => 'はじめに'
+	),
 	'blog' => array(
 		'vi' => 'Blog',
 		'en' => 'Blog',
@@ -294,6 +302,22 @@ $menu_interfaces = array(
 	)
 );
 $help_interfaces = array(
+	'help_h5' => array(
+		'vi' => 'Hướng dẫn',
+		'en' => 'Instruction',
+		'ru' => 'Инструкция',
+		'es' => 'Instrucción',
+		'zh' => '指令',
+		'ja' => '命令'
+	),
+	'help_p' => array(
+		'vi' => 'Nhập thông tin ngày tháng năm sinh Dương lịch của bạn vào ô Ngày sinh. Sau đó, nhấn nút Chạy. Biểu đồ Nhịp sinh học hiển thị dự đoán Sức khỏe, Tình cảm, Trí tuệ của bạn.',
+		'en' => 'Type in your date of birth into the Date of birth field. Then click Run. Biorhythm chart tells your physical, emotional, intellectual values.',
+		'ru' => 'Введите дату своего рождения в поле День Рождения. Затем нажмите кнопку Идти. Биоритм диаграммы рассказывает ваш физические, эмоциональные, интеллектуальные ценности.',
+		'es' => 'Escriba su fecha de nacimiento en el campo Fecha de nacimiento. Luego haga clic en Correr. Biorritmo Carta le dice tu valores físicos, intelectuales y emocionales.',
+		'zh' => '输入你的出生日期为出生场的日期。然后单击运行。生物节律图表告诉你的身体，情绪，智力值。',
+		'ja' => '誕生フィールドの日にあなたの生年月日を入力します。 [走る]をクリックします。バイオリズムチャートは、物理的、感情的、知的なあなたの値を伝えます。'
+	),
 	'stats_box' => array(
 		'vi' => 'Hiển thị các thông số liên quan đến ngày sinh của bạn.',
 		'en' => 'Display the general statistics related to your birth date.',
@@ -371,9 +395,9 @@ $information_interfaces = array(
 	'average' => array(
 		'vi' => array(
 			'excellent' => 'Ngày hiện tại của bạn rất tốt, bạn nên tận hưởng ngày này.',
-			'good' => 'Ngày hiện tại của bạn tạm được, tuy nhiên bạn nên cẩn thận trong ngày này.',
-			'gray' => 'Ngày hiện tại của bạn không được tốt lắm, bạn nên cẩn trọng hơn.',
-			'bad' => 'Ngày hiện tại của bạn khá xấu, bạn nên cực kỳ cẩn thận.'
+			'good' => 'Ngày hiện tại của bạn khá tốt, tuy nhiên bạn nên cẩn thận trong ngày này.',
+			'gray' => 'Ngày hiện tại của bạn khá xấu, bạn nên cẩn trọng hơn.',
+			'bad' => 'Ngày hiện tại của bạn rất xấu, bạn nên cực kỳ cẩn thận.'
 		),
 		'en' => array(
 			'excellent' => 'Your current day is excellent, enjoy it.',
@@ -408,10 +432,10 @@ $information_interfaces = array(
 	),
 	'physical' => array(
 		'vi' => array(
-			'excellent' => 'Sức khỏe hiện tại của bạn tuyệt vời, hãy tham gia vận động nhiều hơn.',
-			'good' => 'Sức khỏe hiện tại của bạn khá tốt, hãy vận động điều độ.',
-			'gray' => 'Sức khỏe hiện tại của bạn hơi kém, hãy nghỉ ngơi một tí.',
-			'bad' => 'Sức khỏe hiện tại của bạn kém, hãy nghỉ ngơi nhiều hơn.'
+			'excellent' => 'Sức khỏe hiện tại của bạn rất sung mãn, hãy tham gia vận động nhiều hơn.',
+			'good' => 'Sức khỏe hiện tại của bạn khá sung mãn, hãy vận động điều độ.',
+			'gray' => 'Sức khỏe hiện tại của bạn khá kém, hãy nghỉ ngơi một tí.',
+			'bad' => 'Sức khỏe hiện tại của bạn rất kém, hãy nghỉ ngơi nhiều hơn.'
 		),
 		'en' => array(
 			'excellent' => 'Your current health is excellent, you should work out more.',
@@ -447,8 +471,8 @@ $information_interfaces = array(
 	'emotional' => array(
 		'vi' => array(
 			'excellent' => 'Tâm trạng hiện tại của bạn rất ổn, hãy tham gia gặp gỡ bạn bè nhiều hơn.',
-			'good' => 'Tâm trạng hiện tại của bạn tạm ổn, hãy gặp gỡ bạn bè.',
-			'gray' => 'Tâm trạng hiện tại của bạn hơi tệ, bạn hơi dễ cáu kỉnh.',
+			'good' => 'Tâm trạng hiện tại của bạn khá ổn, hãy gặp gỡ bạn bè.',
+			'gray' => 'Tâm trạng hiện tại của bạn khá tệ, bạn hơi dễ cáu kỉnh.',
 			'bad' => 'Tâm trạng hiện tại của bạn rất tệ, bạn nên tránh các cuộc xung đột.'
 		),
 		'en' => array(
@@ -484,10 +508,10 @@ $information_interfaces = array(
 	),
 	'intellectual' => array(
 		'vi' => array(
-			'excellent' => 'Trí tuệ hiện tại của bạn rất minh mẫn, bạn có thể đưa ra những quyết định sáng suốt.',
+			'excellent' => 'Trí tuệ hiện tại của bạn rất sáng suốt, bạn có thể đưa ra những quyết định sáng suốt.',
 			'good' => 'Trí tuệ hiện tại của bạn khá sáng suốt, bạn có thể đưa ra quyết định nhưng cần suy tính kỹ.',
-			'gray' => 'Trí tuệ hiện tại của bạn không được ổn lắm, bạn nên suy nghĩ kỹ trước khi ra quyết định.',
-			'bad' => 'Trí tuệ hiện tại của bạn rất không sáng suốt, bạn không nên đưa ra quyết định lớn.'
+			'gray' => 'Trí tuệ hiện tại của bạn khá thiếu sáng suốt, bạn nên suy nghĩ kỹ trước khi ra quyết định.',
+			'bad' => 'Trí tuệ hiện tại của bạn rất thiếu sáng suốt, bạn không nên đưa ra quyết định lớn.'
 		),
 		'en' => array(
 			'excellent' => 'Your current intellect is excellent, you can make great decisions.',

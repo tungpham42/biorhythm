@@ -38,12 +38,17 @@ function manipulateDobForm() {
 		blur: function() {
 			$('#dob').attr('placeholder', dobText);
 		},
+		focusout: function() {
+			if (Modernizr.touch) {
+				validateDob(true);
+			}
+		},
 		change: function() {
 			validateDob(false);
 			helpDobForm();
 		},
 		keypress: function(e) {
-			if (e.keyCode == 13) {
+			if (e.keyCode == 13 || e.which == 13) {
 				$('#dob_submit').addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
