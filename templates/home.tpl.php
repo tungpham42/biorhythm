@@ -6,7 +6,6 @@ if ($show_sponsor) {
 	include $template_path.'sponsor_top.tpl.php';
 }
 if (has_dob()) {
-	include $template_path.'proverb.tpl.php';
 	//include $template_path.'video.tpl.php';
 	include $template_path.'results.tpl.php';
 	include $template_path.'explanation.tpl.php';

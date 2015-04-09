@@ -730,7 +730,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 		tooltip: {
 			enabled: true,
 			shared: true,
-			followPointer: true,
+			followPointer: false,
 			followTouchMove: false,
 			crosshairs: [{
 				color: '#e0c0c0',
@@ -745,7 +745,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			backgroundColor: 'rgba(250,250,250,0.666)',
 			borderColor: '#c0c0c0',
 			borderRadius: 4,
-			snap: 0,
+			snap: 42,
 			useHTML: true,
 			headerFormat: '<strong><u>'+dateText+': {point.key}</u></strong><table id="rhythms_table">',
 			pointFormat: '<tr class="rhythm_value" id="rhythm_id_{series.index}"><td class="rhythm_label"><span style="color: {series.color}"><em>{series.name}<em></span>: </td><td class="value"><span><strong>{point.y} %<strong></span></td></tr>',
@@ -760,7 +760,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			},
 			series: {
 				animation: false,
-				stickyTracking: true,
+				stickyTracking: false,
 				cursor: 'pointer',
 				lineWidth: 1,
 				events: {

@@ -7,7 +7,7 @@
 	</div>
 	<div class="m-input-prepend m-input-append">
 		<span class="add-on label">Chiều cao:</span>
-		<input pattern="\d*" id="height" type="number" min="1" max="2.5" step="0.01" class="m-wrap" placeholder="ví dụ: 1.77" data-ng-model="height" required="required">
+		<input id="height" type="number" min="1" max="2.5" step="0.01" class="m-wrap" placeholder="ví dụ: 1.77" data-ng-model="height" required="required">
 		<span class="add-on unit">mét</span>
 	</div>
 	<div class="m-input-prepend">

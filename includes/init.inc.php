@@ -39,6 +39,10 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 	} else if ($embed == 1) {
 		$body_class = 'embed';
 	}
+} else if ($p == 'intro') {
+	$h1 = intro_title();
+	$title = intro_title();
+	$body_class = 'intro';
 } else if ($p == 'login') {
 	$h1 = 'Login';
 	$title = 'Login';

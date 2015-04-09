@@ -8,17 +8,27 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 	if ($embed == 0 && !isset($hide_lang_bar)) {
 		include $template_path.'lang_bar.tpl.php';
 		include $template_path.'dob_form.tpl.php';
+		include $template_path.'proverb.tpl.php';
+		if (!has_dob()) {
+			include $template_path.'help.tpl.php';
+		}
 		include $template_path.'scripts_top.tpl.php';
 		include $template_path.'home.tpl.php';
 	} else if (isset($hide_lang_bar)) {
 		include $template_path.'dob_form.tpl.php';
+		include $template_path.'proverb.tpl.php';
+		if (!has_dob()) {
+			include $template_path.'help.tpl.php';
+		}
 		include $template_path.'scripts_top.tpl.php';
 		include $template_path.'home.tpl.php';
 	} else if ($embed == 1) {
 		include $template_path.'scripts_top.tpl.php';
 		include $template_path.'embed.tpl.php';
 	}
-} else if ($p == 'login') {
+} else if ($p == 'intro') {
+	include $template_path.'intro.tpl.php';
+}  else if ($p == 'login') {
 	include $template_path.'login-page.tpl.php';
 } else if ($p == 'rhythm') {
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
