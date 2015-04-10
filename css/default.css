@@ -1023,6 +1023,7 @@ input[type="submit"], input[type="reset"], input[type="button"], input.button, b
 	background-image: linear-gradient(to bottom, #3377dd 0%, #4480dd 50%, #6692ee 50%, #7799ee 100%);
 	color: #FFF;
 }
+/*
 .lang_toggle.button:hover, .nav_button.button:hover {
 	transform: scale(1.03);
 	-webkit-transform: scale(1.03);
@@ -1030,12 +1031,14 @@ input[type="submit"], input[type="reset"], input[type="button"], input.button, b
 	-o-transform: scale(1.03);
 	-ms-transform: scale(1.03);
 }
+*/
 table.ui-datepicker-calendar > tbody:hover > tr > td > a.ui-state-default, table.ui-datepicker-calendar > tbody:hover > tr > td {
 	z-index: 1 !important;
 }
 table.ui-datepicker-calendar > tbody > tr > td > a.ui-state-default:hover, table.ui-datepicker-calendar > tbody > tr > td:hover {
 	z-index: 2 !important;
 }
+/*
 table.ui-datepicker-calendar > tbody > tr > td > a.ui-state-default:hover {
 	transform: scale(1.111);
 	-webkit-transform: scale(1.111);
@@ -1050,6 +1053,7 @@ label[for="is_secondary"]:hover, #embed_toggle:hover, #lunar_desc:hover {
 	-o-transform: scale(1.02);
 	-ms-transform: scale(1.02);
 }
+*/
 .lang_toggle.button:active > *, .nav_button.button:active > *, button:active > *, a.button:active > *, .lang_toggle.button.clicked > *, .nav_button.button.clicked > *, button.clicked > *, a.button.clicked > *, .lang_toggle.button.clicked:hover > *, .nav_button.button.clicked:hover > *, button.clicked:hover > *, a.button.clicked:hover > *, .m-btn:active > *, .m-btn.clicked > *, label[for="is_secondary"]:active > input, #embed_toggle:active > *, #lunar_desc:active > *, label[for="is_secondary"].clicked > input, #embed_toggle.clicked > *, #lunar_desc.clicked > *, body.bmi .nav_button.button.bmi > *, body.lunar .nav_button.button.lunar > *, body.game .nav_button.button.game > *, body.intro .nav_button.button.intro > * {
 	position: relative;
 	top: 1px;
@@ -3810,7 +3814,7 @@ body.scrolled header {
 	body.scrolled .banner.left.w160, body.scrolled .banner.right.w160 {margin-top: 75px;}
 	#proverb {top: 13px;}
 	#info, #stats, #compatibility, #lunar, #controls, #chart, #explanation_chart_results {margin: 22px 0;}
-	#dob_form:hover, #help:hover, #info:hover, #stats:hover, #compatibility:hover, #lunar:hover, #controls:hover {transform: scale(1.04);-webkit-transform: scale(1.04);-moz-transform: scale(1.04);-o-transform: scale(1.04);-ms-transform: scale(1.04);}
+	/*#dob_form:hover, #help:hover, #info:hover, #stats:hover, #compatibility:hover, #lunar:hover, #controls:hover {transform: scale(1.04);-webkit-transform: scale(1.04);-moz-transform: scale(1.04);-o-transform: scale(1.04);-ms-transform: scale(1.04);}*/
 }
 @media all and (min-width: 960px) and (max-width: 1262px) {
 	.inner {width: 960px;margin: auto;}
@@ -3820,8 +3824,8 @@ body.scrolled header {
 	.leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {display: block;}
 	.mobile_banner, .w300, .w300 > ins.adsbygoogle, .w300 > ins.adsbygoogle iframe, .w300 > ins.adsbygoogle ins, .banner.left, .banner.right, .w120, .w120 > ins.adsbygoogle, .w120 > ins.adsbygoogle iframe, .w120 > ins.adsbygoogle ins, .w160, .w160 > ins.adsbygoogle, .w160 > ins.adsbygoogle iframe, .w160 > ins.adsbygoogle ins {display: none;}
 	#embed_chart {height: 45vw;}
-	#main_chart:hover, #explanation_chart_results:hover {transform: scale(1.02);-webkit-transform: scale(1.02);-moz-transform: scale(1.02);-o-transform: scale(1.02);-ms-transform: scale(1.02);}
-	#proverb:hover {transform: scale(1.04);-webkit-transform: scale(1.04);-moz-transform: scale(1.04);-o-transform: scale(1.04);-ms-transform: scale(1.04);}
+	/*#main_chart:hover, #explanation_chart_results:hover {transform: scale(1.02);-webkit-transform: scale(1.02);-moz-transform: scale(1.02);-o-transform: scale(1.02);-ms-transform: scale(1.02);}
+	#proverb:hover {transform: scale(1.04);-webkit-transform: scale(1.04);-moz-transform: scale(1.04);-o-transform: scale(1.04);-ms-transform: scale(1.04);}*/
 }
 @media all and (max-width: 1262px) {
 	.banner {display: none;}
@@ -3847,12 +3851,12 @@ body.scrolled header {
 @media all and (min-width: 1263px) and (max-width: 1582px) {
 	ul.dates > li {width: calc(100% / 3);width: -webkit-calc(100% / 3);width: -moz-calc(100% / 3);}
 	#embed_chart {height: 40vw;}
-	#main_chart:hover, #explanation_chart_results:hover {transform: scale(1.015);-webkit-transform: scale(1.015);-moz-transform: scale(1.015);-o-transform: scale(1.015);-ms-transform: scale(1.015);}
-	#proverb:hover {transform: scale(1.03);-webkit-transform: scale(1.03);-moz-transform: scale(1.03);-o-transform: scale(1.03);-ms-transform: scale(1.03);}
+	/*#main_chart:hover, #explanation_chart_results:hover {transform: scale(1.015);-webkit-transform: scale(1.015);-moz-transform: scale(1.015);-o-transform: scale(1.015);-ms-transform: scale(1.015);}
+	#proverb:hover {transform: scale(1.03);-webkit-transform: scale(1.03);-moz-transform: scale(1.03);-o-transform: scale(1.03);-ms-transform: scale(1.03);}*/
 }
 @media all and (min-width: 1583px) {
 	ul.dates > li {width: 25%;}
 	#embed_chart {height: 36vw;}
-	#main_chart:hover, #explanation_chart_results:hover {transform: scale(1.01);-webkit-transform: scale(1.01);-moz-transform: scale(1.01);-o-transform: scale(1.01);-ms-transform: scale(1.01);}
-	#proverb:hover {transform: scale(1.02);-webkit-transform: scale(1.02);-moz-transform: scale(1.02);-o-transform: scale(1.02);-ms-transform: scale(1.02);}
+	/*#main_chart:hover, #explanation_chart_results:hover {transform: scale(1.01);-webkit-transform: scale(1.01);-moz-transform: scale(1.01);-o-transform: scale(1.01);-ms-transform: scale(1.01);}
+	#proverb:hover {transform: scale(1.02);-webkit-transform: scale(1.02);-moz-transform: scale(1.02);-o-transform: scale(1.02);-ms-transform: scale(1.02);}*/
 }
