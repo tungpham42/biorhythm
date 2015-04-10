@@ -334,11 +334,13 @@ function manipulateScroll() {
 	} else if ($(document).scrollTop() == 0) {
 		$('body').removeClass('scrolled');
 	}
-	$(window).on('scroll mousewheel wheel DOMMouseScroll', function(){
+	animateScrollProverb();
+	$(window).on('scroll mousewheel wheel DOMMouseScroll resize', function(){
 		if ($(document).scrollTop() > 0) {
 			$('body').addClass('scrolled');
 		} else if ($(document).scrollTop() == 0) {
 			$('body').removeClass('scrolled');
 		}
+		animateScrollProverb();
 	});
 }

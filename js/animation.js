@@ -273,3 +273,31 @@ function updateBanner() {
 		$('.banner.right').load('triggers/banner.php', {partner: 'sfi'});
 	}
 }
+// Animate Scroll
+function animateScrollProverb() {
+	if (Modernizr.mq('all and (min-width: 420px) and (max-width: 551px)')) {
+		if ($(document).scrollTop() <= 40) {
+			$('#proverb').css('top','-99px');
+		} else if ($(document).scrollTop() > 40 && $(document).scrollTop() <= ($('#results').height()-$('#main_chart').height()-$('#proverb').height()+40)) {
+			$('#proverb').css('top',($(document).scrollTop()-139)+'px');
+		} else if ($(document).scrollTop() > ($('#results').height()-$('#main_chart').height()-$('#proverb').height()+40)) {
+			$('#proverb').css('top',($('#results').height()-$('#main_chart').height()-$('#proverb').height())+'px');
+		}
+	} else if (Modernizr.mq('all and (max-width: 959px)')) {
+		if ($(document).scrollTop() <= 100) {
+			$('#proverb').css('top','0px');
+		} else if ($(document).scrollTop() > 100 && $(document).scrollTop() <= ($('#results').height()-$('#main_chart').height()-$('#proverb').height()+100)) {
+			$('#proverb').css('top',($(document).scrollTop()-100)+'px');
+		} else if ($(document).scrollTop() > ($('#results').height()-$('#main_chart').height()-$('#proverb').height()+100)) {
+			$('#proverb').css('top',($('#results').height()-$('#main_chart').height()-$('#proverb').height())+'px');
+		}
+	} else if (Modernizr.mq('all and (min-width: 960px)')) {
+		if ($(document).scrollTop() <= 115) {
+			$('#proverb').css('top','13px');
+		} else if ($(document).scrollTop() > 115 && $(document).scrollTop() <= ($('#results').height()-$('#main_chart').height()-$('#proverb').height()+115)) {
+			$('#proverb').css('top',($(document).scrollTop()-102)+'px');
+		} else if ($(document).scrollTop() > ($('#results').height()-$('#main_chart').height()-$('#proverb').height()+115)) {
+			$('#proverb').css('top',($('#results').height()-$('#main_chart').height()-$('#proverb').height())+'px');
+		}
+	}
+}

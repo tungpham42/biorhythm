@@ -846,16 +846,23 @@ function birthday_title() {
 		case 'ja': return 'お誕生日おめでとうございます'.(($fullname != '') ? $fullname: ''); break;
 	}
 }
+function get_wish($lang) {
+	$wishes = new parseCSV();
+	$wishes->parse(realpath($_SERVER['DOCUMENT_ROOT']).'/wishes/'.$lang.'.csv');
+	$count = count($wishes->data);
+	$index = rand(0, $count-1);
+	return $wishes->data[$index]['wish'];
+}
 function birthday_wish() {
 	global $lang_code;
 	global $fullname;
 	switch ($lang_code) {
-		case 'vi': return 'Xin Ơn trên phù hộ'.(($fullname != '') ? ' '.$fullname: ' bạn'); break;
-		case 'en': return 'May God bless you'.(($fullname != '') ? ', '.$fullname: ''); break;
-		case 'ru': return 'Будьте здоровы'.(($fullname != '') ? ', '.$fullname: ''); break;
-		case 'es': return 'Salud'.(($fullname != '') ? ', '.$fullname: ''); break;
-		case 'zh': return '上帝保佑你'.(($fullname != '') ? ', '.$fullname: ''); break;
-		case 'ja': return 'お大事に'.(($fullname != '') ? ', '.$fullname: ''); break;
+		case 'vi': return get_wish('vi'); break;
+		case 'en': return get_wish('en'); break;
+		case 'ru': return get_wish('ru'); break;
+		case 'es': return get_wish('es'); break;
+		case 'zh': return get_wish('zh'); break;
+		case 'ja': return get_wish('ja'); break;
 	}
 }
 function search_title() {
