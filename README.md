@@ -1,6 +1,8 @@
 Nhip Sinh Hoc . VN
 =========
 
+[![Join the chat at https://gitter.im/tungpham42/biorhythm](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tungpham42/biorhythm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A biorhythm calculator in 6 languages: Vietnamese, English, Russian, Spanish, Chinese, and Japanese.
 
 [Demo site](http://nhipsinhhoc.vn)
