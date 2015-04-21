@@ -6,21 +6,21 @@ require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/timezone.php';
 $geoip = geoip_open(realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/GeoIPCity.dat',GEOIP_STANDARD);
 $geoip_record = geoip_record_by_addr($geoip,$_SERVER['REMOTE_ADDR']);
 $lang_codes = array('vi','en','ru','es','zh','ja');
-$navs = array('bmi','lunar','2048');
+$navs = array('intro','bmi','lunar','2048');
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/prep.inc.php';
 $brand = 'Nhip Sinh Hoc . VN';
 $p = isset($_GET['p']) ? prevent_xss($_GET['p']): 'home';
 $q = isset($_GET['q']) ? prevent_xss($_GET['q']): '';
-$dob = isset($_GET['dob']) ? prevent_xss($_GET['dob']): '';
-$fullname = isset($_GET['fullname']) ? prevent_xss($_GET['fullname']): '';
+$dob = isset($_GET['dob']) ? prevent_xss($_GET['dob']): (isset($_COOKIE['NSH:remembered_dob']) ? $_COOKIE['NSH:remembered_dob']: '');
+$fullname = isset($_GET['fullname']) ? prevent_xss($_GET['fullname']): (isset($_COOKIE['NSH:remembered_fullname']) ? $_COOKIE['NSH:remembered_fullname']: '');
 $embed = isset($_GET['embed']) ? prevent_xss($_GET['embed']): 0;
 $lang_code = init_lang_code();
 $time_zone = 7;
-$show_ad = true;
+$show_ad = false;
 $show_donate = false;
 $show_sponsor = false;
 $show_addthis = false;
-$show_sumome = true;
+$show_sumome = false;
 $credential_id = 4;
 $number = calculate_life_path($dob);
 if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['partner_dob']) && isset($_GET['lang_code'])) {
@@ -28,6 +28,9 @@ if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) 
 } else {
 	$date = (isset($_GET['date']) && $_GET['date'] != '') ? $_GET['date']: date('Y-m-d');
 	$chart = new Chart($dob,0,0,$date,$dob,$lang_code);
+}
+if (isset($_GET['ad'])) {
+	setcookie('NSH:show_ad',$_GET['ad']);
 }
 $input_interfaces = array(
 	'search' => array(
@@ -176,6 +179,14 @@ $button_interfaces = array(
 		'zh' => '游戏',
 		'ja' => 'ゲーム'
 	),
+	'survey' => array(
+		'vi' => 'Góp ý',
+		'en' => 'Survey',
+		'ru' => 'Обзор',
+		'es' => 'Estudio',
+		'zh' => '调查',
+		'ja' => '調査'
+	),
 	'donate' => array(
 		'vi' => 'ĐÓNG GÓP',
 		'en' => 'DONATE',
@@ -265,6 +276,14 @@ $span_interfaces = array(
 		'es' => 'Blog',
 		'zh' => '博客',
 		'ja' => 'ブログ'
+	),
+	'news' => array(
+		'vi' => 'Tin tức',
+		'en' => 'News',
+		'ru' => 'Новости',
+		'es' => 'Noticias',
+		'zh' => '新闻',
+		'ja' => 'ニュース'
 	)
 );
 $menu_interfaces = array(
@@ -311,12 +330,20 @@ $help_interfaces = array(
 		'ja' => '命令'
 	),
 	'help_p' => array(
-		'vi' => 'Nhập thông tin ngày tháng năm sinh Dương lịch của bạn vào ô Ngày sinh. Sau đó, nhấn nút Chạy. Biểu đồ Nhịp sinh học hiển thị dự đoán Sức khỏe, Tình cảm, Trí tuệ của bạn.',
-		'en' => 'Type in your date of birth into the Date of birth field. Then click Run. Biorhythm chart tells your physical, emotional, intellectual values.',
-		'ru' => 'Введите дату своего рождения в поле День Рождения. Затем нажмите кнопку Идти. Биоритм диаграммы рассказывает ваш физические, эмоциональные, интеллектуальные ценности.',
-		'es' => 'Escriba su fecha de nacimiento en el campo Fecha de nacimiento. Luego haga clic en Correr. Biorritmo Carta le dice tu valores físicos, intelectuales y emocionales.',
-		'zh' => '输入你的出生日期为出生场的日期。然后单击运行。生物节律图表告诉你的身体，情绪，智力值。',
-		'ja' => '誕生フィールドの日にあなたの生年月日を入力します。 [走る]をクリックします。バイオリズムチャートは、物理的、感情的、知的なあなたの値を伝えます。'
+		'vi' => 'Nhập thông tin ngày tháng năm sinh Dương lịch của bạn vào ô Ngày sinh. Sau đó, nhấn nút Chạy để hiển thị dự đoán Sức khỏe, Tình cảm, Trí tuệ.',
+		'en' => 'Type in your date of birth into the Date of birth field. Then click Run to know your physical, emotional, intellectual values.',
+		'ru' => 'Введите дату своего рождения в поле День Рождения. Затем нажмите кнопку Идти, чтобы узнать ваши физические, эмоциональные, интеллектуальные ценности.',
+		'es' => 'Escriba su fecha de nacimiento en el campo Fecha de nacimiento. Luego haga clic en Correr para conocer sus valores, físicas, intelectuales y emocionales.',
+		'zh' => '输入你的出生日期为出生场的日期。然后点击运行就知道你的身体，情绪，智力值。',
+		'ja' => '誕生フィールドの日にあなたの生年月日を入力します。 次に、あなたの物理的、感情的、知的な値を知るために実行]をクリックします。'
+	),
+	'news_box' => array(
+		'vi' => 'Hiển thị các tin tức liên quan đến bạn.',
+		'en' => 'Show the news related to you.',
+		'ru' => 'Показать новости, связанные с вами.',
+		'es' => 'Mostrar las noticias relacionadas con usted.',
+		'zh' => '显示的消息与你。',
+		'ja' => 'あなたに関連するニュースを表示します。'
 	),
 	'stats_box' => array(
 		'vi' => 'Hiển thị các thông số liên quan đến ngày sinh của bạn.',

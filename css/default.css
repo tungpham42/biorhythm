@@ -284,7 +284,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 	rgba(230,239,253,0.88)fff;
 	border: 1px solid #cccccc;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	-webkit-transition: border cubic-bezier(0.4,0,0.2,1) 0.2s, box-shadow cubic-bezier(0.4,0,0.2,1) 0.2s; -moz-transition: border cubic-bezier(0.4,0,0.2,1) 0.2s, box-shadow cubic-bezier(0.4,0,0.2,1) 0.2s;	 -o-transition: border cubic-bezier(0.4,0,0.2,1) 0.2s, box-shadow cubic-bezier(0.4,0,0.2,1) 0.2s; transition: border cubic-bezier(0.4,0,0.2,1) 0.2s, box-shadow cubic-bezier(0.4,0,0.2,1) 0.2s;
+	-webkit-transition: border linear 0.2s, box-shadow linear 0.2s; -moz-transition: border linear 0.2s, box-shadow linear 0.2s;	 -o-transition: border linear 0.2s, box-shadow linear 0.2s; transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
 	border-color: rgba(82, 168, 236, 0.8);
@@ -827,11 +827,14 @@ html {
 	height: 100%;
 }
 * {
-	transition: border cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms;
-	-webkit-transition: border cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms;
-	-moz-transition: border cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms;
-	-o-transition: border cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms;
-	-ms-transition: border cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms;
+	transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
+	-webkit-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
+	-moz-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
+	-o-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
+	-ms-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;	
+	-moz-border-radius: 0.1px;
+	-webkit-border-radius: 0.1px;
+	border-radius: 0.1px;
 }
 body {
 	background-color: #c2d8f9;
@@ -894,24 +897,24 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 	float: left;
 	transition-property: border-radius, width, height, background, margin-left, margin-top;
 	transition-duration: 150ms;
-	transition-timing-function: cubic-bezier(0.4,0,0.2,1);
+	transition-timing-function: linear;
 	-webkit-transition-property: border-radius, width, height, background, margin-left, margin-top;
 	-webkit-transition-duration: 150ms;
-	-webkit-transition-timing-function: cubic-bezier(0.4,0,0.2,1);
+	-webkit-transition-timing-function: linear;
 	-moz-transition-property: border-radius, width, height, background, margin-left, margin-top;
 	-moz-transition-duration: 150ms;
-	-moz-transition-timing-function: cubic-bezier(0.4,0,0.2,1);	
+	-moz-transition-timing-function: linear;	
 	-o-transition-property: border-radius, width, height, background, margin-left, margin-top;
 	-o-transition-duration: 150ms;
-	-o-transition-timing-function: cubic-bezier(0.4,0,0.2,1);
+	-o-transition-timing-function: linear;
 }
 .ripple .ripple-effect-out {
 	position: absolute !important;
 	pointer-events: none !important;
-	transition: background 150ms cubic-bezier(0.4,0,0.2,1), opacity 150ms cubic-bezier(0.4,0,0.2,1);
-	-webkit-transition: background 150ms cubic-bezier(0.4,0,0.2,1), opacity 150ms cubic-bezier(0.4,0,0.2,1);
-	-moz-transition: background 150ms cubic-bezier(0.4,0,0.2,1), opacity 150ms cubic-bezier(0.4,0,0.2,1);
-	-o-transition: background 150ms cubic-bezier(0.4,0,0.2,1), opacity 150ms cubic-bezier(0.4,0,0.2,1);
+	transition: background 150ms linear, opacity 150ms linear;
+	-webkit-transition: background 150ms linear, opacity 150ms linear;
+	-moz-transition: background 150ms linear, opacity 150ms linear;
+	-o-transition: background 150ms linear, opacity 150ms linear;
 }
 .ripple .ripple-stop {
 	position: absolute !important;
@@ -921,12 +924,12 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 	-webkit-transition: none !important;
 	 transition: none !important;
 }
-header, header h1, #dob_form, #help, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
-	transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms, font cubic-bezier(0.4,0,0.2,1) 150ms;
-	-webkit-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms, font cubic-bezier(0.4,0,0.2,1) 150ms;
-	-moz-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms, font cubic-bezier(0.4,0,0.2,1) 150ms;
-	-o-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms, font cubic-bezier(0.4,0,0.2,1) 150ms;
-	-ms-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, background-image cubic-bezier(0.4,0,0.2,1) 150ms, border-color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms, font cubic-bezier(0.4,0,0.2,1) 150ms;
+header, header h1, #dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
+	transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
+	-webkit-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
+	-moz-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
+	-o-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
+	-ms-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
 	-webkit-font-smoothing: antialiased;
 }
 /* Links */
@@ -1181,7 +1184,7 @@ ul.toolbar > li > a {
 body.rhythm a.rhythm, body.user a.user, #toolbar ul.toolbar > li > a:focus, #toolbar ul.toolbar > li > a:hover, #toolbar ul.toolbar > li > a:active, #toolbar ul.toolbar > li > a.active:focus {
 	background: #444;
 }
-header, #dob_form, #help, #info, #stats, #compatibility, #life_path_link, #lunar_desc, footer, .help, .nav_button.button {
+header, #dob_form, #clock, #help, #news, #info, #stats, #compatibility, #life_path_link, #lunar_desc, footer, .help, .nav_button.button {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#7799ee',endColorstr='#3377dd',GradientType=0)";
 	background-image: -ms-linear-gradient(top, #7799ee 0%, #3377dd 100%);
 	background-image: -moz-linear-gradient(top, #7799ee 0%, #3377dd 100%);
@@ -1230,6 +1233,7 @@ header h1 {
 	padding: 0 6px;
 	font-size: 30px;
 	line-height: 40px;
+	white-space: nowrap;
 }
 body:not(.birthday) header h1#heading {text-shadow: none !important;}
 a#logo > i {
@@ -1237,11 +1241,11 @@ a#logo > i {
 	width: 30px;
 	height: 30px;
 	background-position: -42px -28px;
-	transition: transform cubic-bezier(0.4,0,0.2,1) 1.2s;
-	-webkit-transition: -webkit-transform cubic-bezier(0.4,0,0.2,1) 1.2s;
-	-moz-transition: -moz-transform cubic-bezier(0.4,0,0.2,1) 1.2s;
-	-o-transition: -o-transform cubic-bezier(0.4,0,0.2,1) 1.2s;
-	-ms-transition: -ms-transform cubic-bezier(0.4,0,0.2,1) 1.2s;
+	transition: transform linear 1.2s;
+	-webkit-transition: -webkit-transform linear 1.2s;
+	-moz-transition: -moz-transform linear 1.2s;
+	-o-transition: -o-transform linear 1.2s;
+	-ms-transition: -ms-transform linear 1.2s;
 }
 a#logo:hover > i {
 	transform: rotate(360deg);
@@ -1610,7 +1614,7 @@ body:lang(ja) #controls > .m-btn-group > .m-btn {
 #ui-datepicker-div .ui-state-default {
 	border: none;
 }
-body.today #dob_form, body.today #info, body.today #stats, body.today #compatibility, body.today #life_path_link, body.today #lunar_desc, body.today #controls, body.today #lunar, body.today .add-on, body.today #dt_change_label, body.today #partner_dob_label, body.today label[for="is_secondary"], body.today #embed_toggle, body.today #lunar_desc, body.today .add-on.label {
+body.today #dob_form, body.today #clock, body.today #news, body.today #info, body.today #stats, body.today #compatibility, body.today #life_path_link, body.today #lunar_desc, body.today #controls, body.today #lunar, body.today .add-on, body.today #dt_change_label, body.today #partner_dob_label, body.today label[for="is_secondary"], body.today #embed_toggle, body.today #lunar_desc, body.today .add-on.label {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#77bb66,endColorstr=#33aa44,GradientType=0)";
 	background-image: -ms-linear-gradient(top, #77bb66 0%, #33aa44 100%);
 	background-image: -moz-linear-gradient(top, #77bb66 0%, #33aa44 100%);
@@ -1621,7 +1625,7 @@ body.today #dob_form, body.today #info, body.today #stats, body.today #compatibi
 	color: #FFF;
 	border-color: #FFF;
 }
-body.birthday header, body.birthday #dob_form, body.birthday #info, body.birthday #stats, body.birthday #compatibility, body.birthday #life_path_link, body.birthday #lunar_desc, body.birthday #controls, body.birthday #lunar, body.birthday .nav_button.button, body.birthday .help, body.birthday .add-on, body.birthday #dt_change_label, body.birthday #partner_dob_label, body.birthday label[for="is_secondary"], body.birthday #embed_toggle, body.birthday #lunar_desc, body.birthday footer	{
+body.birthday header, body.birthday #dob_form, body.birthday #clock, body.birthday #news, body.birthday #info, body.birthday #stats, body.birthday #compatibility, body.birthday #life_path_link, body.birthday #lunar_desc, body.birthday #controls, body.birthday #lunar, body.birthday .nav_button.button, body.birthday .help, body.birthday .add-on, body.birthday #dt_change_label, body.birthday #partner_dob_label, body.birthday label[for="is_secondary"], body.birthday #embed_toggle, body.birthday #lunar_desc, body.birthday footer	{
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF740,endColorstr=#FFD700,GradientType=0)";
 	background-image: -ms-linear-gradient(top, #FFF740 0%, #FFD700 100%);
 	background-image: -moz-linear-gradient(top, #FFF740 0%, #FFD700 100%);
@@ -1674,13 +1678,13 @@ body.birthday .lang_toggle.button:active, body.birthday .nav_button.button:activ
 	background-image: linear-gradient(to bottom, #FFD700 0%, #FFDF10 50%, #FFEF30 50%, #FFF740 100%);
 	color: #E35604;
 }
-body.birthday #dob_form, body.birthday #info, body.birthday #stats, body.birthday #compatibility, body.birthday #controls, body.birthday #lunar, body.birthday #wiki, body.birthday #main_chart, body.birthday #explanation_chart, body.birthday .adsense, body.birthday #logo, body.birthday #ui-datepicker-div, body.birthday #proverb blockquote {
+body.birthday #dob_form, body.birthday #clock, body.birthday #news, body.birthday #info, body.birthday #stats, body.birthday #compatibility, body.birthday #controls, body.birthday #lunar, body.birthday #wiki, body.birthday #main_chart, body.birthday #explanation_chart, body.birthday .adsense, body.birthday #logo, body.birthday #ui-datepicker-div, body.birthday #proverb blockquote {
 	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 	box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 }
-body.birthday #dob_form:hover, body.birthday #info:hover, body.birthday #stats:hover, body.birthday #compatibility:hover, body.birthday #controls:hover, body.birthday #lunar:hover, body.birthday #wiki:hover, body.birthday #main_chart:hover, body.birthday #explanation_chart:hover, body.birthday .adsense:hover, body.birthday #ui-datepicker-div:hover, body.birthday #proverb blockquote:hover, body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover, body.birthday a.button.clicked:hover, body.birthday .m-btn:hover, body.birthday input.m-wrap:hover, body.birthday .m-btn.highlight, body.birthday input.m-wrap.highlight, body.birthday .ln-letters > a:hover {
+body.birthday #dob_form:hover, body.birthday #clock:hover, body.birthday #news:hover, body.birthday #info:hover, body.birthday #stats:hover, body.birthday #compatibility:hover, body.birthday #controls:hover, body.birthday #lunar:hover, body.birthday #wiki:hover, body.birthday #main_chart:hover, body.birthday #explanation_chart:hover, body.birthday .adsense:hover, body.birthday #ui-datepicker-div:hover, body.birthday #proverb blockquote:hover, body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover, body.birthday a.button.clicked:hover, body.birthday .m-btn:hover, body.birthday input.m-wrap:hover, body.birthday .m-btn.highlight, body.birthday input.m-wrap.highlight, body.birthday .ln-letters > a:hover {
 	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
@@ -1796,17 +1800,17 @@ body.birthday #ui-datepicker-div .ui-datepicker-next.ui-state-disabled, body.bir
 	position: relative;
 	float: right;
 	top: 0;
-	right: 0px;
+	right: 0;
 	width: calc(100% - 304px);
 	width: -webkit-calc(100% - 304px);
 	width: -moz-calc(100% - 304px);
 }
 #proverb, #proverb *, #proverb blockquote, #proverb span.arrow_down, #proverb span.arrow_down::after, #proverb p#proverb_author {
-	transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, text-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms;
-	-webkit-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, text-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms;
-	-moz-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, text-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms;
-	-o-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, text-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms;
-	-ms-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms, text-shadow cubic-bezier(0.4,0,0.2,1) 150ms, background-color cubic-bezier(0.4,0,0.2,1) 150ms, transform cubic-bezier(0.4,0,0.2,1) 150ms;
+	transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
+	-webkit-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
+	-moz-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
+	-o-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
+	-ms-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
 	-webkit-font-smoothing: antialiased;
 }
 #proverb blockquote {
@@ -1911,12 +1915,12 @@ body.birthday #proverb blockquote a {
 	-ms-transform: rotate(0deg);
 }
 #proverb i#proverb_refresh:hover {
-	-webkit-animation: rotate_refresh 1.8s cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	animation: rotate_refresh 1.8s cubic-bezier(0.4,0,0.2,1) 0s infinite;
+	-webkit-animation: rotate_refresh 1.8s linear 0s infinite;
+	animation: rotate_refresh 1.8s linear 0s infinite;
 }
 body.loading a#logo > i {
-	-webkit-animation: rotate_refresh 90ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	animation: rotate_refresh 90ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
+	-webkit-animation: rotate_refresh 90ms linear 0s infinite;
+	animation: rotate_refresh 90ms linear 0s infinite;
 }
 body.loading .lang_toggle.button, body.loading #proverb i#proverb_refresh, body.loading label[for="is_secondary"], body.loading #controls > .m-btn-group > .m-btn {
 	pointer-events: none !important;
@@ -2179,30 +2183,30 @@ body.birthday #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_d
 }
 /* Dob */
 #dob_form_status.hovered.empty_dob ~ #help_dob_form, #dob_form_status.hovered.wrong_dob ~ #help_dob_form {
-	animation: help_form_dob 1111ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	-webkit-animation: help_form_dob 1111ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
+	animation: help_form_dob 1s linear 0s infinite;
+	-webkit-animation: help_form_dob 1s linear 0s infinite;
 }
 #dob_form_status.empty_dob ~ #help_dob_form, #dob_form_status.wrong_dob ~ #help_dob_form {
-	animation: help_form_dob 2222ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	-webkit-animation: help_form_dob 2222ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
+	animation: help_form_dob 2s linear 0s infinite;
+	-webkit-animation: help_form_dob 2s linear 0s infinite;
 }
 /* Submit */
 #dob_form_status.hovered.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.hovered.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {
-	animation: help_form 1111ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	-webkit-animation: help_form 1111ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
+	animation: help_form 1s linear 0s infinite;
+	-webkit-animation: help_form 1s linear 0s infinite;
 }
 #dob_form_status.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {
-	animation: help_form 2222ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	-webkit-animation: help_form 2222ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
+	animation: help_form 2s linear 0s infinite;
+	-webkit-animation: help_form 2s linear 0s infinite;
 }
 /* Fullname */
 #dob_form_status.hovered.has_fullname.empty_fullname.correct_dob ~ #help_dob_form {
-	animation: help_form_fullname 1111ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	-webkit-animation: help_form_fullname 1111ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
+	animation: help_form_fullname 1s linear 0s infinite;
+	-webkit-animation: help_form_fullname 1s linear 0s infinite;
 }
 #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_dob_form {
-	animation: help_form_fullname 2222ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	-webkit-animation: help_form_fullname 2222ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
+	animation: help_form_fullname 2s linear 0s infinite;
+	-webkit-animation: help_form_fullname 2s linear 0s infinite;
 }
 @-webkit-keyframes help_form_dob {
 	0% {left: 273px;bottom: 57px;}
@@ -2244,17 +2248,17 @@ body.birthday #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_d
 #dob_form_status.restore_dob ~ #dob, #search_form_status.restore_search ~ #search {
 	border-color: #35aa47;
 }
-#dob_form, #help, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .rss_feed {
+#dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .rss_feed {
 	margin-left: 4px !important;
 	margin-right: 4px !important;
 }
-#dob_form, #help, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .adsense, #logo, #ui-datepicker-div, #proverb blockquote, #fb_holder, .nav_button.button {
+#dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .adsense, #logo, #ui-datepicker-div, #proverb blockquote, #fb_holder, .nav_button.button {
 	-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 	-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 	box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 }
-#dob_form:hover, #help:hover, #info:hover, #stats:hover, #compatibility:hover, #controls:hover, #lunar:hover, #wiki:hover, #main_chart:hover, #explanation_chart:hover, .adsense:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover, a.button.clicked:hover, .m-btn:hover, input.m-wrap:hover, .m-btn.highlight, input.m-wrap.highlight, .zoom > img:hover, #logo:hover, #ui-datepicker-div:hover, #proverb blockquote:hover, #fb_holder:hover, #timer, .ln-letters > a:hover, #weight:hover, #height:hover {
+#dob_form:hover, #clock:hover, #help:hover, #news:hover, #info:hover, #stats:hover, #compatibility:hover, #controls:hover, #lunar:hover, #wiki:hover, #main_chart:hover, #explanation_chart:hover, .adsense:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover, a.button.clicked:hover, .m-btn:hover, input.m-wrap:hover, .m-btn.highlight, input.m-wrap.highlight, .zoom > img:hover, #logo:hover, #ui-datepicker-div:hover, #proverb blockquote:hover, #fb_holder:hover, #timer, .ln-letters > a:hover, #weight:hover, #height:hover {
 	-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 	-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
@@ -2323,6 +2327,274 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 #explanation p {
 	margin: 0;
 }
+#clock {
+	position: relative;
+	clear: left;
+	display: block;
+	width: 264px;
+	height: 264px;
+	padding: 8px;
+	margin: 22px 4px 0;
+}
+.clock-circle {
+	width: 248px;
+	height: 248px;
+	margin: 0 auto;
+	position: relative;
+	border: 8px solid #ffffff;
+	border-radius: 132px;
+	-webkit-border-radius: 132px;
+	-moz-border-radius: 132px;
+	-o-border-radius: 132px;
+	-ms-border-radius: 132px;
+	-moz-box-shadow: 0 1px 8px rgba(36,36,36,0.555),inset 0 1px 8px rgba(36,36,36,0.555);
+	-webkit-box-shadow: 0 1px 8px rgba(36,36,36,0.555),inset 0 1px 8px rgba(36,36,36,0.555);
+	box-shadow: 0 1px 8px rgba(36,36,36,0.555),inset 0 1px 8px rgba(36,36,36,0.555);
+	background: rgba(248,248,248,0.1);
+	-webkit-animation: glass_reflect 1s linear infinite alternate;
+	animation: glass_reflect 1s linear infinite alternate;
+}
+body.birthday .clock-circle {
+	-moz-box-shadow: 0 1px 8px rgba(36,18,9,0.555),inset 0 1px 8px rgba(36,18,9,0.555);
+	-webkit-box-shadow: 0 1px 8px rgba(36,18,9,0.555),inset 0 1px 8px rgba(36,18,9,0.555);
+	box-shadow: 0 1px 8px rgba(36,18,9,0.555),inset 0 1px 8px rgba(36,18,9,0.555);
+	background: rgba(248,124,62,0.1);
+	-webkit-animation: glass_reflect_birthday 1s linear infinite alternate;
+	animation: glass_reflect_birthday 1s linear infinite alternate;
+}
+@-webkit-keyframes glass_reflect {
+	0% {
+		background: rgba(248,248,248,0.1);
+	}
+	50% {
+		background: rgba(248,248,248,0.2);
+	}
+	100% {
+		background: rgba(248,248,248,0.1);
+	}
+}
+@keyframes glass_reflect {
+	0% {
+		background: rgba(248,248,248,0.1);
+	}
+	50% {
+		background: rgba(248,248,248,0.2);
+	}
+	100% {
+		background: rgba(248,248,248,0.1);
+	}
+}
+@-webkit-keyframes glass_reflect_birthday {
+	0% {
+		background: rgba(248,124,62,0.1);
+	}
+	50% {
+		background: rgba(248,124,62,0.2);
+	}
+	100% {
+		background: rgba(248,124,62,0.1);
+	}
+}
+@keyframes glass_reflect_birthday {
+	0% {
+		background: rgba(248,124,62,0.1);
+	}
+	50% {
+		background: rgba(248,124,62,0.2);
+	}
+	100% {
+		background: rgba(248,124,62,0.1);
+	}
+}
+.clock-face {
+	width: 100%;
+	height: 100%;
+}
+.clock-hour {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -4px 0 -4px -25%;
+	padding: 4px 0 4px 25%;
+	background: #ffffff;
+	-webkit-transform-origin: 100% 50%;
+	-moz-transform-origin: 100% 50%;
+	-ms-transform-origin: 100% 50%;
+	transform-origin: 100% 50%;
+	border-radius: 4px 0 0 4px;
+	-webkit-border-radius: 4px 0 0 4px;
+	-moz-border-radius: 4px 0 0 4px;
+	-o-border-radius: 4px 0 0 4px;
+	-ms-border-radius: 4px 0 0 4px;
+}
+.clock-minute {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -40% -3px 0;
+	padding: 40% 3px 0;
+	background: #ffffff;
+	-webkit-transform-origin: 50% 100%;
+	-moz-transform-origin: 50% 100%;
+	-ms-transform-origin: 50% 100%;
+	transform-origin: 50% 100%;
+	border-radius: 3px 3px 0 0;
+	-webkit-border-radius: 3px 3px 0 0;
+	-moz-border-radius: 3px 3px 0 0;
+	-o-border-radius: 3px 3px 0 0;
+	-ms-border-radius: 3px 3px 0 0;
+}
+.clock-second {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -40% -1px 0 0;
+	padding: 40% 1px 0;
+	background: #ffffff;
+	-webkit-transform-origin: 50% 100%;
+	-moz-transform-origin: 50% 100%;
+	-ms-transform-origin: 50% 100%;
+	transform-origin: 50% 100%;
+}
+.clock-digits {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	-ms-border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -50%;
+}
+.clock-digits li {
+	font-size: 1.2em;
+	display: block;
+	width: 1.6em;
+	height: 1.6em;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	line-height: 1.6em;
+	text-align: center;
+	margin: -.8em 0 0 -.8em;
+	font-weight: bolder;
+	border-radius: 0.8em;
+	-webkit-border-radius: 0.8em;
+	-moz-border-radius: 0.8em;
+	-o-border-radius: 0.8em;
+	-ms-border-radius: 0.8em;
+}
+.clock-digits li:nth-child(1) {
+	-webkit-transform:translate(3.9em, -6.9em);
+	-moz-transform:translate(3.9em, -6.9em);
+	-ms-transform:translate(3.9em, -6.9em);
+	transform:translate(3.9em, -6.9em);
+}
+.clock-digits li:nth-child(2) {
+	-webkit-transform:translate(6.9em, -4em);
+	-moz-transform:translate(6.9em, -4em);
+	-ms-transform:translate(6.9em, -4em);
+	transform:translate(6.9em, -4em);
+}
+.clock-digits li:nth-child(3) {
+	-webkit-transform:translate(8em, 0);
+	-moz-transform:translate(8em, 0);
+	-ms-transform:translate(8em, 0);
+	transform:translate(8em, 0);
+}
+.clock-digits li:nth-child(4) {
+	-webkit-transform:translate(6.8em, 4em);
+	-moz-transform:translate(6.8em, 4em);
+	-ms-transform:translate(6.8em, 4em);
+	transform:translate(6.8em, 4em);
+}
+.clock-digits li:nth-child(5) {
+	-webkit-transform:translate(3.9em, 6.9em);
+	-moz-transform:translate(3.9em, 6.9em);
+	-ms-transform:translate(3.9em, 6.9em);
+	transform:translate(3.9em, 6.9em);
+}
+.clock-digits li:nth-child(6) {
+	-webkit-transform:translate(0, 8em);
+	-moz-transform:translate(0, 8em);
+	-ms-transform:translate(0, 8em);
+	transform:translate(0, 8em);
+}
+.clock-digits li:nth-child(7) {
+	-webkit-transform:translate(-3.9em, 6.9em);
+	-moz-transform:translate(-3.9em, 6.9em);
+	-ms-transform:translate(-3.9em, 6.9em);
+	transform:translate(-3.9em, 6.9em);
+}
+.clock-digits li:nth-child(8) {
+	-webkit-transform:translate(-6.8em, 4em);
+	-moz-transform:translate(-6.8em, 4em);
+	-ms-transform:translate(-6.8em, 4em);
+	transform:translate(-6.8em, 4em);
+}
+.clock-digits li:nth-child(9) {
+	-webkit-transform:translate(-8em, 0);
+	-moz-transform:translate(-8em, 0);
+	-ms-transform:translate(-8em, 0);
+	transform:translate(-8em, 0);
+}
+.clock-digits li:nth-child(10) {
+	-webkit-transform:translate(-6.9em, -4em);
+	-moz-transform:translate(-6.9em, -4em);
+	-ms-transform:translate(-6.9em, -4em);
+	transform:translate(-6.9em, -4em);
+}
+.clock-digits li:nth-child(11) {
+	-webkit-transform:translate(-3.9em, -6.9em);
+	-moz-transform:translate(-3.9em, -6.9em);
+	-ms-transform:translate(-3.9em, -6.9em);
+	transform:translate(-3.9em, -6.9em);
+}
+.clock-digits li:nth-child(12) {
+	-webkit-transform:translate(0, -8em);
+	-moz-transform:translate(0, -8em);
+	-ms-transform:translate(0, -8em);
+	transform:translate(0, -8em);
+}
+.clock-face:after {
+	position: absolute;
+	top: 124px;
+	left: 124px;
+	width: 18px;
+	height: 18px;
+	margin: -9px 0 0 -9px;
+	background: #ffffff;
+	border-radius: 9px;
+	-webkit-border-radius: 9px;
+	-moz-border-radius: 9px;
+	-o-border-radius: 9px;
+	-ms-border-radius: 9px;
+	content: "";
+	display: block;
+}
+.clock-hour, .clock-minute, .clock-second, .clock-face:after, .clock-digits li {
+	-moz-box-shadow: 0 0 4px rgba(84,84,84,0.248),inset 0 0 4px rgba(84,84,84,0.248);
+	-webkit-box-shadow: 0 0 4px rgba(84,84,84,0.248),inset 0 0 4px rgba(84,84,84,0.248);
+	box-shadow: 0 0 4px rgba(84,84,84,0.248),inset 0 0 4px rgba(84,84,84,0.248);
+}
+body.birthday .clock-circle {border-color: #E35604;}
+body.birthday .clock-hour, body.birthday .clock-minute, body.birthday .clock-second, body.birthday .clock-face:after {
+	background: #E35604;
+}
+body.birthday .clock-hour, body.birthday .clock-minute, body.birthday .clock-second, body.birthday .clock-face:after, body.birthday .clock-digits li {
+	-moz-box-shadow: 0 0 4px rgba(84,42,21,0.248),inset 0 0 4px rgba(84,42,21,0.248);
+	-webkit-box-shadow: 0 0 4px rgba(84,42,21,0.248),inset 0 0 4px rgba(84,42,21,0.248);
+	box-shadow: 0 0 4px rgba(84,42,21,0.248),inset 0 0 4px rgba(84,42,21,0.248);
+}
 #help {
 	position: relative;
 	clear: left;
@@ -2337,6 +2609,34 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 #help > p {
 	font-size: 16px;
 	line-height: 1.8em;
+}
+#news {
+	position: relative;
+	clear: left;
+	display: block;
+	font-size: 15px;
+	width: 270px;
+	padding: 5px;
+	margin: 9px 0;
+	line-height: 1.3em;
+	cursor: default;
+}
+#news a {
+	color: #ffffff;
+	font-variant: small-caps;
+	font-size: 15px;
+}
+#news p {
+	font-size: 12px;
+	text-decoration: none;
+}
+#news ul {
+	height: 420px;
+	overflow-y: scroll;
+	width: 268px;
+}
+body.birthday #news a {
+	color: #E35604;
 }
 #info {
 	position: relative;
@@ -2448,7 +2748,7 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 	color: #FFF;
 	line-height: 1.3em;
 }
-#controls ul > li, #compatibility ul > li, #birthdays ul > li > a {
+#controls ul > li, #compatibility ul > li, #news ul > li, #birthdays ul > li > a {
 	padding: 4px 2px;
 }
 #controls ul > li.rhythm, #compatibility ul > li.rhythm {
@@ -2466,7 +2766,7 @@ li.rhythm > span {
 }
 li.rhythm > span.value {
 	width: 64px;
-	padding-right: 0px;
+	padding-right: 0;
 	text-align: right;
 }
 #lunar_desc ~ .lunar_desc {
@@ -2702,8 +3002,8 @@ td.count {
 	font-weight: bold;
 }
 .player.first {
-	-webkit-animation: glowFirst 420ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
-	animation: glowFirst 420ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
+	-webkit-animation: glowFirst 400ms linear infinite alternate;
+	animation: glowFirst 400ms linear infinite alternate;
 }
 @-webkit-keyframes glowFirst {
 	0% {-webkit-box-shadow: 0 0 5px rgba(255,0,40,.4), inset 0 0 5px rgba(255,0,40,.2);-moz-box-shadow: 0 0 5px rgba(255,0,40,.4), inset 0 0 5px rgba(255,0,40,.2);-khtml-box-shadow: 0 0 5px rgba(255,0,40,.4), inset 0 0 5px rgba(255,0,40,.2);box-shadow: 0 0 5px rgba(255,0,40,.4), inset 0 0 5px rgba(255,0,40,.2);}	
@@ -2714,8 +3014,8 @@ td.count {
 	100% {-webkit-box-shadow: 0 0 20px rgba(255,0,40,1), inset 0 0 10px rgba(255,0,40,.5);-moz-box-shadow: 0 0 20px rgba(255,0,40,1), inset 0 0 10px rgba(255,0,40,.5);-khtml-box-shadow: 0 0 20px rgba(255,0,40,1), inset 0 0 10px rgba(255,0,40,.5);box-shadow: 0 0 20px rgba(255,0,40,1), inset 0 0 10px rgba(255,0,40,.5);}
 }
 .player.last {
-	-webkit-animation: glowLast 420ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
-	animation: glowLast 420ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
+	-webkit-animation: glowLast 400ms linear infinite alternate;
+	animation: glowLast 400ms linear infinite alternate;
 }
 @-webkit-keyframes glowLast {
 	0% {-webkit-box-shadow: 0 0 5px rgba(255,255,255,.4), inset 0 0 5px rgba(255,255,255,.2);-moz-box-shadow: 0 0 5px rgba(255,255,255,.4), inset 0 0 5px rgba(255,255,255,.2);-khtml-box-shadow: 0 0 5px rgba(255,255,255,.4), inset 0 0 5px rgba(255,255,255,.2);box-shadow: 0 0 5px rgba(255,255,255,.4), inset 0 0 5px rgba(255,255,255,.2);}	
@@ -2938,11 +3238,11 @@ body.birthday .banner {display: none !important}
 .banner.right iframe, .banner.right img, .banner.right ins {left: 0}
 #lazada > a {float: left}
 #dob, #search {
-	transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms;
-	-webkit-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms;
-	-moz-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms;
-	-o-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms;
-	-ms-transition: box-shadow cubic-bezier(0.4,0,0.2,1) 150ms;
+	transition: box-shadow linear 150ms;
+	-webkit-transition: box-shadow linear 150ms;
+	-moz-transition: box-shadow linear 150ms;
+	-o-transition: box-shadow linear 150ms;
+	-ms-transition: box-shadow linear 150ms;
 }
 #dob::-webkit-inner-spin-button, 
 #dob::-webkit-outer-spin-button { 
@@ -3075,13 +3375,18 @@ p.explain:hover > span.explain_more {
 }
 */
 .explain, .explain_more {
-	transition: color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms;
-	-webkit-transition: color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms;
-	-moz-transition: color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms;
-	-o-transition: color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms;
-	-ms-transition: color cubic-bezier(0.4,0,0.2,1) 150ms, opacity cubic-bezier(0.4,0,0.2,1) 150ms;
+	transition: color linear 150ms, opacity linear 150ms;
+	-webkit-transition: color linear 150ms, opacity linear 150ms;
+	-moz-transition: color linear 150ms, opacity linear 150ms;
+	-o-transition: color linear 150ms, opacity linear 150ms;
+	-ms-transition: color linear 150ms, opacity linear 150ms;
 }
-.highcharts-axis-labels text, .highcharts-axis-labels span {cursor: pointer !important}
+.highcharts-xaxis-labels text {
+	cursor: pointer !important;
+}
+.highcharts-xaxis-labels text:hover {
+	font-weight: bolder !important;
+}
 #explanation, footer, #uvTabLabel, .share42init {display: block}
 .rotate {
 	display: inline-block;
@@ -3205,8 +3510,8 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 	width: 105px;
 }
 #weight:empty, #height:empty, #solarDate:empty, #weight:invalid, #height:invalid, #solarDate, #solarDate:invalid, #compatibility:hover #partner_dob, #controls:hover #dt_change {
-	-webkit-animation: glow 888ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
-	animation: glow 888ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
+	-webkit-animation: glow 1s linear infinite alternate;
+	animation: glow 1s linear infinite alternate;
 }
 #weight:hover, #height:hover, #solarDate:hover, #weight:active, #height:active, #solarDate:active, #weight:focus, #height:focus, #solarDate:focus, #weight:valid, #height:valid, #weight:empty:hover, #height:empty:hover, #weight:invalid:hover, #height:invalid:hover {
 	-webkit-animation: 0s;
@@ -3214,21 +3519,29 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 }
 /* Dob */
 #dob_form_status.empty_dob ~ #dob_wrapper #dob, #dob_form_status.wrong_dob ~ #dob_wrapper #dob {
-	-webkit-animation: glow 888ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
-	animation: glow 888ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
+	-webkit-animation: glow 1s linear infinite alternate;
+	animation: glow 1s linear infinite alternate;
 }
 /* Submit */
 #dob_form_status.no_fullname.correct_dob ~ #dob_wrapper #dob_submit, #dob_form_status.has_fullname.filled_fullname.correct_dob ~ #dob_wrapper #dob_submit {
-	-webkit-animation: glow 888ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
-	animation: glow 888ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
+	-webkit-animation: glow_button 1s linear infinite alternate;
+	animation: glow_button 1s linear infinite alternate;
 }
 /* Fullname */
 #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #dob_wrapper #fullname {
-	-webkit-animation: glow 888ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
-	animation: glow 888ms cubic-bezier(0.4,0,0.2,1) infinite alternate;
+	-webkit-animation: glow 1s linear infinite alternate;
+	animation: glow 1s linear infinite alternate;
 }
 /* Hide */
 #dob_form_status.disabled_dob ~ #dob_wrapper #dob_submit, #dob_form_status.focus_dob ~ #dob_wrapper #dob, #dob_form_status.focus_fullname ~ #dob_wrapper #fullname, #dob_submit:hover, #dob_submit:active, #dob_submit.clicked {
+	-webkit-animation: none !important;
+	animation: none !important;
+}
+.nav_button.button.new {
+	-webkit-animation: glow_new 1s linear infinite alternate;
+	animation: glow_new 1s linear infinite alternate;
+}
+.nav_button.button.new:hover, .nav_button.button.new:active {
 	-webkit-animation: none !important;
 	animation: none !important;
 }
@@ -3240,6 +3553,22 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 @keyframes glow {
 	0% {-webkit-box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);-moz-box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);-khtml-box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);box-shadow: 0 0 5px rgba(255,0,0,.24), inset 0 0 5px rgba(255,0,0,.12);}	
 	100% {-webkit-box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);-moz-box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);-khtml-box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);box-shadow: 0 0 20px rgba(255,0,0,.72), inset 0 0 10px rgba(255,0,0,.48);}
+}
+@-webkit-keyframes glow_button {
+	0% {-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;}	
+	100% {-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;-moz-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;-khtml-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;}
+}
+@keyframes glow_button {
+	0% {-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;}	
+	100% {-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;-moz-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;-khtml-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;}
+}
+@-webkit-keyframes glow_new {
+	0% {-webkit-box-shadow: 0 0 5px rgba(255,255,255,.24), inset 0 0 5px rgba(255,255,255,.12);-moz-box-shadow: 0 0 5px rgba(255,255,255,.24), inset 0 0 5px rgba(255,255,255,.12);-khtml-box-shadow: 0 0 5px rgba(255,255,255,.24), inset 0 0 5px rgba(255,255,255,.12);box-shadow: 0 0 5px rgba(255,255,255,.24), inset 0 0 5px rgba(255,255,255,.12);}	
+	100% {-webkit-box-shadow: 0 0 20px rgba(255,255,255,.72), inset 0 0 10px rgba(255,255,255,.48);-moz-box-shadow: 0 0 20px rgba(255,255,255,.72), inset 0 0 10px rgba(255,255,255,.48);-khtml-box-shadow: 0 0 20px rgba(255,255,255,.72), inset 0 0 10px rgba(255,255,255,.48);box-shadow: 0 0 20px rgba(255,255,255,.72), inset 0 0 10px rgba(255,255,255,.48);}
+}
+@keyframes glow_new {
+	0% {-webkit-box-shadow: 0 0 5px rgba(255,255,255,.24), inset 0 0 5px rgba(255,255,255,.12);-moz-box-shadow: 0 0 5px rgba(255,255,255,.24), inset 0 0 5px rgba(255,255,255,.12);-khtml-box-shadow: 0 0 5px rgba(255,255,255,.24), inset 0 0 5px rgba(255,255,255,.12);box-shadow: 0 0 5px rgba(255,255,255,.24), inset 0 0 5px rgba(255,255,255,.12);}	
+	100% {-webkit-box-shadow: 0 0 20px rgba(255,255,255,.72), inset 0 0 10px rgba(255,255,255,.48);-moz-box-shadow: 0 0 20px rgba(255,255,255,.72), inset 0 0 10px rgba(255,255,255,.48);-khtml-box-shadow: 0 0 20px rgba(255,255,255,.72), inset 0 0 10px rgba(255,255,255,.48);box-shadow: 0 0 20px rgba(255,255,255,.72), inset 0 0 10px rgba(255,255,255,.48);}
 }
 #main_chart > div.highcharts-container, #main_chart > div.highcharts-container > svg, #explanation_chart > div.highcharts-container, #explanation_chart > div.highcharts-container > svg {
 	width: 100%;
@@ -3303,11 +3632,11 @@ body:lang(ja) #rhythms_table {
 	text-align: right;
 }
 .rhythm_value {
-	transition: all cubic-bezier(0.4,0,0.2,1) .0666s;
-	-webkit-transition: all cubic-bezier(0.4,0,0.2,1) .0666s;
-	-moz-transition: all cubic-bezier(0.4,0,0.2,1) .0666s;
-	-o-transition: all cubic-bezier(0.4,0,0.2,1) .0666s;
-	-ms-transition: all cubic-bezier(0.4,0,0.2,1) .0666s;
+	transition: all linear .07s;
+	-webkit-transition: all linear .07s;
+	-moz-transition: all linear .07s;
+	-o-transition: all linear .07s;
+	-ms-transition: all linear .07s;
 }
 .rhythm_hover > td.rhythm_label > span {
 	text-decoration: underline;
@@ -3334,7 +3663,7 @@ body:lang(ja) #rhythms_table {
 }
 .helper > .helper_box {
 	position: absolute;
-	background: rgba(248,248,248,0.8888);
+	background: rgba(248,248,248,0.8);
 	color: rgb(42,42,42);
 	display: block;
 	float: left;
@@ -3349,7 +3678,7 @@ body:lang(ja) #rhythms_table {
 }
 .infor > .infor_box {
 	position: absolute;
-	background: rgba(248,248,248,0.8888);
+	background: rgba(248,248,248,0.8);
 	color: rgb(42,42,42);
 	display: block;
 	float: left;
@@ -3525,8 +3854,8 @@ img.ball {
 }
 .rss_feed > h2:hover + .help_rss_feed {
 	display: block;
-	animation: help_rss_feed 999ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
-	-webkit-animation: help_rss_feed 999ms cubic-bezier(0.4,0,0.2,1) 0s infinite;
+	animation: help_rss_feed 1s linear 0s infinite;
+	-webkit-animation: help_rss_feed 1s linear 0s infinite;
 }
 @-webkit-keyframes help_rss_feed {
 	0% {margin-top: -12px;}
@@ -3540,11 +3869,11 @@ img.ball {
 }
 .rss_feed > .feed > .feed_item {
 	background-color: transparent;
-	padding: 12px 0px;
+	padding: 12px 0;
 	border-bottom: 1px dotted #3377dd;
 }
 .rss_feed > .feed > .feed_item:last-child {
-	border-bottom: 0px;
+	border-bottom: 0;
 }
 .rss_feed > .feed > .feed_item	> .item_title {
 	font-size: 18px;
@@ -3568,7 +3897,7 @@ img.ball {
 	position: relative;
 	line-height: 20px;
 	word-spacing: 4px;
-	margin: 15px 0px;
+	margin: 15px 0;
 }
 .paging a.paging_button {
 	color: #1C1C1B !important;
@@ -3576,7 +3905,7 @@ img.ball {
 	font-size: 12px;
 	text-decoration: none;
 	padding: 4px 7px;
-	margin: 0px;
+	margin: 0;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
@@ -3611,7 +3940,7 @@ img.ball {
 	height: 40px;
 	width: 40px;
 	position: fixed;
-	bottom: 40px;
+	bottom: 10px;
 	right: 10px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.05);
 	/* image replacement properties */
@@ -3666,8 +3995,8 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 }
 .fade_toggle {
 	display: block !important;
-	-webkit-animation: fade 420ms;
-	animation: fade 420ms;
+	-webkit-animation: fade 400ms;
+	animation: fade 400ms;
 }
 @-webkit-keyframes fade {
 	from {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;}
@@ -3686,11 +4015,18 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	width: 200px;
 }
 body.scrolled header {
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=88)";
-	filter: alpha(opacity=88);
-	-moz-opacity: 0.88;
-	-khtml-opacity: 0.88;
-	opacity: 0.88;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+	filter: alpha(opacity=95);
+	-moz-opacity: 0.95;
+	-khtml-opacity: 0.95;
+	opacity: 0.95;
+}
+#help_dob_form, #dob, #fullname, #dob_submit, .nav_button.button.new, #weight, #height, .clock-circle {
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
 }
 /* Responsive */
 @media all and (max-width: 551px) {
@@ -3798,10 +4134,10 @@ body.scrolled header {
 	.mobile_banner, .w300, .w300 > ins.adsbygoogle, .w300 > ins.adsbygoogle iframe, .w300 > ins.adsbygoogle ins {display: block;}
 	.leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins, .banner.left, .banner.right, .w120, .w120 > ins.adsbygoogle, .w120 > ins.adsbygoogle iframe, .w120 > ins.adsbygoogle ins, .w160, .w160 > ins.adsbygoogle, .w160 > ins.adsbygoogle iframe, .w160 > ins.adsbygoogle ins {display: none;}
 	.bottom.button.donate, .bottom.button.sponsor {margin-bottom: 52px;}
-	.to-top {right: 40px !important;bottom: 60px !important;}
+	.to-top {right: 10px !important;bottom: 10px !important;}
 	.rss_feed {display: none}
-	#dob_form_status.hovered.empty_dob ~ #help_dob_form, #dob_form_status.hovered.wrong_dob ~ #help_dob_form, #dob_form_status.hovered.alert_dob ~ #help_dob_form, #dob_form_status.hovered.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.hovered.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {margin-left: 0px;}
-	#help {margin-top: 10px;margin-bottom: 0;}
+	#dob_form_status.hovered.empty_dob ~ #help_dob_form, #dob_form_status.hovered.wrong_dob ~ #help_dob_form, #dob_form_status.hovered.alert_dob ~ #help_dob_form, #dob_form_status.hovered.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.hovered.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {margin-left: 0;}
+	#clock, #help {margin-top: 10px;margin-bottom: 0;}
 }
 @media all and (min-width: 960px) {
 	body.scrolled header {height: 75px;}
@@ -3813,7 +4149,7 @@ body.scrolled header {
 	body.scrolled #search_wrapper {bottom: 3px;}
 	body.scrolled .banner.left.w160, body.scrolled .banner.right.w160 {margin-top: 75px;}
 	#proverb {top: 13px;}
-	#info, #stats, #compatibility, #lunar, #controls, #chart, #explanation_chart_results {margin: 22px 0;}
+	#news, #info, #stats, #compatibility, #lunar, #controls, #chart, #explanation_chart_results {margin: 22px 0;}
 	/*#dob_form:hover, #help:hover, #info:hover, #stats:hover, #compatibility:hover, #lunar:hover, #controls:hover {transform: scale(1.04);-webkit-transform: scale(1.04);-moz-transform: scale(1.04);-o-transform: scale(1.04);-ms-transform: scale(1.04);}*/
 }
 @media all and (min-width: 960px) and (max-width: 1262px) {
@@ -3830,7 +4166,7 @@ body.scrolled header {
 @media all and (max-width: 1262px) {
 	.banner {display: none;}
 	#sfi_banner.banner {display: block;}
-	.to-top {right: 20px;bottom: 23px;}
+	.to-top {right: 20px;bottom: 20px;}
 }
 @media all and (min-width: 1263px) {
 	.inner {width: calc(100% - 320px);width: -webkit-calc(100% - 320px);width: -moz-calc(100% - 320px);margin: auto;}
@@ -3844,9 +4180,9 @@ body.scrolled header {
 	#proverb p#proverb_author {font-size: calc(14vw / 12.8);font-size: -webkit-calc(14vw / 12.8);font-size: -moz-calc(14vw / 12.8);}
 	ul.dates > li > a {width: calc(100% - 8px);width: -webkit-calc(100% - 8px);width: -moz-calc(100% - 8px);}
 	#embed_chart {height: 42vw;}
-	.banner.left, .banner.right, .w120, .w120 > ins.adsbygoogle, .w120 > ins.adsbygoogle iframe, .w120 > ins.adsbygoogle ins, .w160, .w160 > ins.adsbygoogle, .w160 > ins.adsbygoogle iframe, .w160 > ins.adsbygoogle ins {display: block;}
-	.mobile_banner, .w300, .w300 > ins.adsbygoogle, .w300 > ins.adsbygoogle iframe, .w300 > ins.adsbygoogle ins, .leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {display: none;}
-	.to-top {height: 60px;width: 60px;right: 30px;bottom: 30px;}
+	.banner.left, .banner.right, .w120, .w120 > ins.adsbygoogle, .w120 > ins.adsbygoogle iframe, .w120 > ins.adsbygoogle ins, .w160, .w160 > ins.adsbygoogle, .w160 > ins.adsbygoogle iframe, .w160 > ins.adsbygoogle ins, .leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {display: block;}
+	.mobile_banner, .w300, .w300 > ins.adsbygoogle, .w300 > ins.adsbygoogle iframe, .w300 > ins.adsbygoogle ins {display: none;}
+	.to-top {height: 60px;width: 60px;right: 20px;bottom: 20px;}
 }
 @media all and (min-width: 1263px) and (max-width: 1582px) {
 	ul.dates > li {width: calc(100% / 3);width: -webkit-calc(100% / 3);width: -moz-calc(100% / 3);}

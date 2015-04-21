@@ -477,6 +477,22 @@ function loadProverb(langCode) {
 		});
 	}
 }
+function loadNews(langCode) {
+	if ($('#news').length) {
+		$.ajax({
+			url: '/triggers/news.php',
+			type: 'GET',
+			cache: false,
+			data: {
+				lang_code: langCode
+			},
+			dataType: 'html',
+			success: function(data) {
+				$('#news ul').html(data);
+			}
+		});
+	}
+}
 function loadFeed(url,id) {
 	if ($('#'+id).length) {
 		$.ajax({
@@ -731,7 +747,6 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			enabled: true,
 			shared: true,
 			followPointer: false,
-			followTouchMove: false,
 			crosshairs: [{
 				color: '#e0c0c0',
 				dashStyle: 'solid',
@@ -798,7 +813,11 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 						click: function(){
 							switch (type) {
 								case 'main':
-									loadResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),$('#partner_dob').val(),lang);
+									if ($('#partner_dob').val() != 'YYYY-MM-DD') {
+										loadResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),$('#partner_dob').val(),lang);
+									} else if ($('#partner_dob').val() == 'YYYY-MM-DD') {
+										loadResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),dob,lang);
+									}
 									break;
 								case 'embed':
 									loadEmbedChartResults(dob,diff+this.x-14,isSecondary,convertDate(+new Date(dateDiff)+(this.x-14)*864e5),dob,lang);
@@ -825,12 +844,16 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 		},
 		series: seriesData
 	});
-	$('.highcharts-axis-labels').find('text, span').on('click',function(){
+	$('.highcharts-xaxis-labels').find('text').on('click',function(){
 		var labelText = this.textContent || this.innerText;
 		var x = datesArray.indexOf(labelText);
 		switch (type) {
 			case 'main':
-				loadResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),$('#partner_dob').val(),lang);
+				if ($('#partner_dob').val() != 'YYYY-MM-DD') {
+					loadResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),$('#partner_dob').val(),lang);
+				} else if ($('#partner_dob').val() == 'YYYY-MM-DD') {
+					loadResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),dob,lang);
+				}
 				break;
 			case 'embed':
 				loadEmbedChartResults(dob,diff+x-14,isSecondary,convertDate(+new Date(dateDiff)+(x-14)*864e5),dob,lang);

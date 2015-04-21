@@ -22,7 +22,9 @@
  */
 use google\appengine\api\app_identity\AppIdentityService;
 
-require_once realpath(dirname(__FILE__) . '/../../../autoload.php');
+if (!class_exists('Google_Client')) {
+  require_once dirname(__FILE__) . '/../autoload.php';
+}
 
 /**
  * Authentication via the Google App Engine App Identity service.
@@ -30,8 +32,6 @@ require_once realpath(dirname(__FILE__) . '/../../../autoload.php');
 class Google_Auth_AppIdentity extends Google_Auth_Abstract
 {
   const CACHE_PREFIX = "Google_Auth_AppIdentity::";
-  const CACHE_LIFETIME = 1500;
-  private $key = null;
   private $client;
   private $token = false;
   private $tokenScopes = false;
@@ -49,22 +49,40 @@ class Google_Auth_AppIdentity extends Google_Auth_Abstract
     if ($this->token && $this->tokenScopes == $scopes) {
       return $this->token;
     }
-    $memcache = new Memcached();
-    $this->token = $memcache->get(self::CACHE_PREFIX . $scopes);
-    if (!$this->token) {
-      $this->token = AppIdentityService::getAccessToken($scopes);
-      if ($this->token) {
-        $memcache_key = self::CACHE_PREFIX;
-        if (is_string($scopes)) {
-          $memcache_key .= $scopes;
-        } else if (is_array($scopes)) {
-          $memcache_key .= implode(":", $scopes);
-        }
-        $memcache->set($memcache_key, $this->token, self::CACHE_LIFETIME);
-      }
+
+    $cacheKey = self::CACHE_PREFIX;
+    if (is_string($scopes)) {
+      $cacheKey .= $scopes;
+    } else if (is_array($scopes)) {
+      $cacheKey .= implode(":", $scopes);
     }
+
+    $this->token = $this->client->getCache()->get($cacheKey);
+    if (!$this->token) {
+      $this->retrieveToken($scopes, $cacheKey);
+    } else if ($this->token['expiration_time'] < time()) {
+      $this->client->getCache()->delete($cacheKey);
+      $this->retrieveToken($scopes, $cacheKey);
+    }
+
     $this->tokenScopes = $scopes;
     return $this->token;
+  }
+
+  /**
+   * Retrieve a new access token and store it in cache
+   * @param mixed $scopes
+   * @param string $cacheKey
+   */
+  private function retrieveToken($scopes, $cacheKey)
+  {
+    $this->token = AppIdentityService::getAccessToken($scopes);
+    if ($this->token) {
+      $this->client->getCache()->set(
+          $cacheKey,
+          $this->token
+      );
+    }
   }
 
   /**
@@ -80,7 +98,7 @@ class Google_Auth_AppIdentity extends Google_Auth_Abstract
   public function authenticatedRequest(Google_Http_Request $request)
   {
     $request = $this->sign($request);
-    return $this->io->makeRequest($request);
+    return $this->client->getIo()->makeRequest($request);
   }
 
   public function sign(Google_Http_Request $request)
@@ -89,6 +107,9 @@ class Google_Auth_AppIdentity extends Google_Auth_Abstract
       // No token, so nothing to do.
       return $request;
     }
+
+    $this->client->getLogger()->debug('App Identity authentication');
+
     // Add the OAuth2 header to the request
     $request->setRequestHeaders(
         array('Authorization' => 'Bearer ' . $this->token['access_token'])

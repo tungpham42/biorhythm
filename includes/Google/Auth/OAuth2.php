@@ -15,13 +15,12 @@
  * limitations under the License.
  */
 
-require_once realpath(dirname(__FILE__) . '/../../../autoload.php');
+if (!class_exists('Google_Client')) {
+  require_once dirname(__FILE__) . '/../autoload.php';
+}
 
 /**
  * Authentication class that deals with the OAuth 2 web-server authentication flow
- *
- * @author Chris Chabot <chabotc@google.com>
- * @author Chirag Shah <chirags@google.com>
  *
  */
 class Google_Auth_OAuth2 extends Google_Auth_Abstract
@@ -112,15 +111,15 @@ class Google_Auth_OAuth2 extends Google_Auth_Abstract
     } else {
       $decodedResponse = json_decode($response->getResponseBody(), true);
       if ($decodedResponse != null && $decodedResponse['error']) {
-        $decodedResponse = $decodedResponse['error'];
+        $errorText = $decodedResponse['error'];
         if (isset($decodedResponse['error_description'])) {
-          $decodedResponse .= ": " . $decodedResponse['error_description'];
+          $errorText .= ": " . $decodedResponse['error_description'];
         }
       }
       throw new Google_Auth_Exception(
           sprintf(
               "Error fetching OAuth2 access token, message: '%s'",
-              $decodedResponse
+              $errorText
           ),
           $response->getResponseHttpCode()
       );
@@ -144,11 +143,15 @@ class Google_Auth_OAuth2 extends Google_Auth_Abstract
         'access_type' => $this->client->getClassConfig($this, 'access_type'),
     );
 
-    $params = $this->maybeAddParam($params, 'approval_prompt');
+    // Prefer prompt to approval prompt.
+    if ($this->client->getClassConfig($this, 'prompt')) {
+      $params = $this->maybeAddParam($params, 'prompt');
+    } else {
+      $params = $this->maybeAddParam($params, 'approval_prompt');
+    }
     $params = $this->maybeAddParam($params, 'login_hint');
     $params = $this->maybeAddParam($params, 'hd');
     $params = $this->maybeAddParam($params, 'openid.realm');
-    $params = $this->maybeAddParam($params, 'prompt');
     $params = $this->maybeAddParam($params, 'include_granted_scopes');
 
     // If the list of scopes contains plus.login, add request_visible_actions
@@ -229,16 +232,20 @@ class Google_Auth_OAuth2 extends Google_Auth_Abstract
       if ($this->assertionCredentials) {
         $this->refreshTokenWithAssertion();
       } else {
+        $this->client->getLogger()->debug('OAuth2 access token expired');
         if (! array_key_exists('refresh_token', $this->token)) {
-            throw new Google_Auth_Exception(
-                "The OAuth 2.0 access token has expired,"
-                ." and a refresh token is not available. Refresh tokens"
-                ." are not returned for responses that were auto-approved."
-            );
+          $error = "The OAuth 2.0 access token has expired,"
+                  ." and a refresh token is not available. Refresh tokens"
+                  ." are not returned for responses that were auto-approved.";
+
+          $this->client->getLogger()->error($error);
+          throw new Google_Auth_Exception($error);
         }
         $this->refreshToken($this->token['refresh_token']);
       }
     }
+
+    $this->client->getLogger()->debug('OAuth2 authentication');
 
     // Add the OAuth2 header to the request
     $request->setRequestHeaders(
@@ -291,6 +298,7 @@ class Google_Auth_OAuth2 extends Google_Auth_Abstract
       }
     }
 
+    $this->client->getLogger()->debug('OAuth2 access token expired');
     $this->refreshTokenRequest(
         array(
           'grant_type' => 'assertion',
@@ -310,6 +318,14 @@ class Google_Auth_OAuth2 extends Google_Auth_Abstract
 
   private function refreshTokenRequest($params)
   {
+    if (isset($params['assertion'])) {
+      $this->client->getLogger()->info(
+          'OAuth2 access token refresh with Signed JWT assertion grants.'
+      );
+    } else {
+      $this->client->getLogger()->info('OAuth2 access token refresh');
+    }
+
     $http = new Google_Http_Request(
         self::OAUTH2_TOKEN_URI,
         'POST',

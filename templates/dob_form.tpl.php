@@ -5,7 +5,7 @@
 <?php
 if ($fullname != ''):
 ?>
-			<a tabindex="4" id="name_remove" class="m-btn green icn-only"><i class="icon-remove icon-white"></i></a><input tabindex="1" data-lang-ja="<?php echo $input_interfaces['fullname']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['fullname']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['fullname']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['fullname']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['fullname']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['fullname']['vi']; ?>" placeholder='<?php echo $input_interfaces['fullname'][$lang_code]; ?>' id='fullname' type='text' name='fullname' size='24' maxlength='128' class='required m-wrap translate' readonly disabled value='<?php echo $_GET['fullname']; ?>' />
+			<a tabindex="4" id="name_remove" class="m-btn green icn-only"><i class="icon-remove icon-white"></i></a><input tabindex="1" data-lang-ja="<?php echo $input_interfaces['fullname']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['fullname']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['fullname']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['fullname']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['fullname']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['fullname']['vi']; ?>" placeholder='<?php echo $input_interfaces['fullname'][$lang_code]; ?>' id='fullname' type='text' name='fullname' size='24' maxlength='128' class='required m-wrap translate' readonly disabled value='<?php echo $fullname; ?>' />
 <?php
 else:
 ?>
@@ -14,7 +14,7 @@ else:
 endif;
 ?>
 			<div id="help_name" class="help"></div>
-			<input pattern="\d*" tabindex="2" data-lang-ja="<?php echo $input_interfaces['dob']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['dob']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['dob']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['dob']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['dob']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['dob']['vi']; ?>" placeholder="<?php echo $input_interfaces['dob'][$lang_code]; ?>" id="dob" type="text" name="dob" size="10" maxlength="128" class="required m-wrap translate" <?php echo (isset($_GET['dob']) && $_GET['dob'] != '') ? 'readonly disabled': ''; ?> value="<?php echo (isset($_GET['dob']) && $_GET['dob'] != '') ? date('Y-m-d',strtotime($_GET['dob'])): ''; ?>" autocomplete="off" spellcheck="false" />
+			<input pattern="\d*" tabindex="2" data-lang-ja="<?php echo $input_interfaces['dob']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['dob']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['dob']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['dob']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['dob']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['dob']['vi']; ?>" placeholder="<?php echo $input_interfaces['dob'][$lang_code]; ?>" id="dob" type="text" name="dob" size="10" maxlength="128" class="required m-wrap translate" <?php echo ($dob != '') ? 'readonly disabled': ''; ?> value="<?php echo ($dob != '') ? date('Y-m-d',strtotime($dob)): ''; ?>" autocomplete="off" spellcheck="false" />
 			<div id="help_dob" class="help">YYYY-MM-DD</div>
 		</div>
 		<div class="m-btn-group" id="dob_control_bar">
