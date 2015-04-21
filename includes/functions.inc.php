@@ -1002,7 +1002,7 @@ function curl($url){
 }
  
 //parse the json output
-function get_results($json){
+function get_wiki_results($json){
 	$results = array();
 	$json_array = json_decode($json, true);
 	foreach($json_array['query']['pages'] as $page){
@@ -1028,7 +1028,7 @@ function get_wiki_image($keyword,$limit) {
     $url = 'http://en.wikipedia.org/w/api.php?action=query&titles='.$term.'&prop=images&format=json&imlimit='.$limit;
  
     $json = curl($url);
-    $results = get_results($json);
+    $results = get_wiki_results($json);
  
 	//print the results using an unordered list
 	$output .= '<table style="border: 0px;" border="0" cellpadding="2" width="100%"><tr>';
@@ -1525,6 +1525,24 @@ function load_rss_feed($rss_url) {
 		$result .= '<p class="item_date">'.$item['date'].'</p>';
 		$result .= '<div class="item_desc">'.$item['description'].'</div>';
 		$result .= '</div>';
+	}
+	echo $result;
+}
+function load_news_feed($keyword) {
+	$keyword = urlencode(utf8_encode($keyword));
+	$url = 'https://ajax.googleapis.com/ajax/services/search/blogs?v=1.0&rsz=small&q='.$keyword;
+	$body = file_get_contents($url);
+	$json = json_decode($body);
+	$result = '';
+	if (isset($json->responseData)) {
+		$count = count($json->responseData->results);
+		for ($i=0; $i < $count; ++$i) {
+			$result .= '<li>';
+			$result .= '<a target="_blank" class="news_item" href="'.$json->responseData->results[$i]->postUrl.'">'.$json->responseData->results[$i]->title.'</span></a>';
+			$result .= '</li>';
+		}
+	} else if (!isset($json->responseData)) {
+		$result .= '<li>...</li>';
 	}
 	echo $result;
 }

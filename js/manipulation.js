@@ -224,6 +224,7 @@ function manipulateLangEvent(langCode) {
 	updateInterfaceLanguage(langCode);
 	manipulateLangBar();
 	loadProverb(langCode);
+	loadNews(langCode);
 	lang = langCode;
 	dobText = dobTexts[langCode];
 	fullnameText = fullnameTexts[langCode];
@@ -329,18 +330,57 @@ function manipulateInfor(selector,content) {
 	});
 }
 function manipulateScroll() {
-	if ($(document).scrollTop() > 0) {
+	if ($(document).scrollTop() >= 9) {
 		$('body').addClass('scrolled');
-	} else if ($(document).scrollTop() == 0) {
+	} else if ($(document).scrollTop() >= 0 && $(document).scrollTop() < 9) {
 		$('body').removeClass('scrolled');
 	}
 	animateScrollProverb();
 	$(window).on('scroll mousewheel wheel DOMMouseScroll resize', function(){
-		if ($(document).scrollTop() > 0) {
+		if ($(document).scrollTop() >= 9) {
 			$('body').addClass('scrolled');
-		} else if ($(document).scrollTop() == 0) {
+		} else if ($(document).scrollTop() >= 0 && $(document).scrollTop() < 9) {
 			$('body').removeClass('scrolled');
 		}
 		animateScrollProverb();
 	});
+}
+function manipulateClock() {
+	var clock = new analogClock();
+	window.setInterval(function(){
+		clock.run();
+	}, 1000);
+}
+function manipulateMixPanel() {
+	mixpanel.track_links('#logo', 'click logo link', {
+		'referrer': document.referrer
+	});
+	mixpanel.track_links('#home_page', 'click home_page link', {
+		'referrer': document.referrer
+	});
+	mixpanel.track_links('#home_link', 'click home_link link', {
+		'referrer': document.referrer
+	});
+	mixpanel.track_links('#intro_link', 'click intro_link link', {
+		'referrer': document.referrer
+	});
+	mixpanel.track_links('#blog_link', 'click blog_link link', {
+		'referrer': document.referrer
+	});
+	mixpanel.track_links('#forum_link', 'click forum_link link', {
+		'referrer': document.referrer
+	});
+	mixpanel.track_links('#lunar_link', 'click lunar_link link', {
+		'referrer': document.referrer
+	});
+	mixpanel.track_links('#bmi_link', 'click bmi_link link', {
+		'referrer': document.referrer
+	});
+	mixpanel.track_links('#survey_link', 'click survey_link link', {
+		'referrer': document.referrer
+	});
+	mixpanel.track_links('#game_link', 'click game_link link', {
+		'referrer': document.referrer
+	});
+	mixpanel.track_forms('#dob_form', 'submit dob_form');
 }

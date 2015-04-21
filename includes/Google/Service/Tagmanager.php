@@ -16,11 +16,10 @@
  */
 
 /**
- * Service definition for Tagmanager (v1).
+ * Service definition for TagManager (v1).
  *
  * <p>
- * API for accessing Tag Manager accounts and containers.
- * </p>
+ * API for accessing Tag Manager accounts and containers.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -29,22 +28,29 @@
  *
  * @author Google, Inc.
  */
-class Google_Service_Tagmanager extends Google_Service
+class Google_Service_TagManager extends Google_Service
 {
-  /** Google Tag Manager. */
-  const TAGMANAGER_DELETE_CONTAINERS = "https://www.googleapis.com/auth/tagmanager.delete.containers";
-  /** Google Tag Manager. */
-  const TAGMANAGER_EDIT_CONTAINERS = "https://www.googleapis.com/auth/tagmanager.edit.containers";
-  /** Google Tag Manager. */
-  const TAGMANAGER_EDIT_CONTAINERVERSIONS = "https://www.googleapis.com/auth/tagmanager.edit.containerversions";
-  /** Google Tag Manager. */
-  const TAGMANAGER_MANAGE_ACCOUNTS = "https://www.googleapis.com/auth/tagmanager.manage.accounts";
-  /** Google Tag Manager. */
-  const TAGMANAGER_MANAGE_USERS = "https://www.googleapis.com/auth/tagmanager.manage.users";
-  /** Google Tag Manager. */
-  const TAGMANAGER_PUBLISH = "https://www.googleapis.com/auth/tagmanager.publish";
-  /** Google Tag Manager. */
-  const TAGMANAGER_READONLY = "https://www.googleapis.com/auth/tagmanager.readonly";
+  /** Delete your Google Tag Manager containers. */
+  const TAGMANAGER_DELETE_CONTAINERS =
+      "https://www.googleapis.com/auth/tagmanager.delete.containers";
+  /** Manage your Google Tag Manager containers. */
+  const TAGMANAGER_EDIT_CONTAINERS =
+      "https://www.googleapis.com/auth/tagmanager.edit.containers";
+  /** Manage your Google Tag Manager container versions. */
+  const TAGMANAGER_EDIT_CONTAINERVERSIONS =
+      "https://www.googleapis.com/auth/tagmanager.edit.containerversions";
+  /** Manage your Google Tag Manager accounts. */
+  const TAGMANAGER_MANAGE_ACCOUNTS =
+      "https://www.googleapis.com/auth/tagmanager.manage.accounts";
+  /** Manage user permissions of your Google Tag Manager data. */
+  const TAGMANAGER_MANAGE_USERS =
+      "https://www.googleapis.com/auth/tagmanager.manage.users";
+  /** Publish your Google Tag Manager containers. */
+  const TAGMANAGER_PUBLISH =
+      "https://www.googleapis.com/auth/tagmanager.publish";
+  /** View your Google Tag Manager containers. */
+  const TAGMANAGER_READONLY =
+      "https://www.googleapis.com/auth/tagmanager.readonly";
 
   public $accounts;
   public $accounts_containers;
@@ -58,7 +64,7 @@ class Google_Service_Tagmanager extends Google_Service
   
 
   /**
-   * Constructs the internal representation of the Tagmanager service.
+   * Constructs the internal representation of the TagManager service.
    *
    * @param Google_Client $client
    */
@@ -69,7 +75,7 @@ class Google_Service_Tagmanager extends Google_Service
     $this->version = 'v1';
     $this->serviceName = 'tagmanager';
 
-    $this->accounts = new Google_Service_Tagmanager_Accounts_Resource(
+    $this->accounts = new Google_Service_TagManager_Accounts_Resource(
         $this,
         $this->serviceName,
         'accounts',
@@ -107,7 +113,7 @@ class Google_Service_Tagmanager extends Google_Service
           )
         )
     );
-    $this->accounts_containers = new Google_Service_Tagmanager_AccountsContainers_Resource(
+    $this->accounts_containers = new Google_Service_TagManager_AccountsContainers_Resource(
         $this,
         $this->serviceName,
         'containers',
@@ -186,7 +192,7 @@ class Google_Service_Tagmanager extends Google_Service
           )
         )
     );
-    $this->accounts_containers_macros = new Google_Service_Tagmanager_AccountsContainersMacros_Resource(
+    $this->accounts_containers_macros = new Google_Service_TagManager_AccountsContainersMacros_Resource(
         $this,
         $this->serviceName,
         'macros',
@@ -290,7 +296,7 @@ class Google_Service_Tagmanager extends Google_Service
           )
         )
     );
-    $this->accounts_containers_rules = new Google_Service_Tagmanager_AccountsContainersRules_Resource(
+    $this->accounts_containers_rules = new Google_Service_TagManager_AccountsContainersRules_Resource(
         $this,
         $this->serviceName,
         'rules',
@@ -394,7 +400,7 @@ class Google_Service_Tagmanager extends Google_Service
           )
         )
     );
-    $this->accounts_containers_tags = new Google_Service_Tagmanager_AccountsContainersTags_Resource(
+    $this->accounts_containers_tags = new Google_Service_TagManager_AccountsContainersTags_Resource(
         $this,
         $this->serviceName,
         'tags',
@@ -498,7 +504,7 @@ class Google_Service_Tagmanager extends Google_Service
           )
         )
     );
-    $this->accounts_containers_triggers = new Google_Service_Tagmanager_AccountsContainersTriggers_Resource(
+    $this->accounts_containers_triggers = new Google_Service_TagManager_AccountsContainersTriggers_Resource(
         $this,
         $this->serviceName,
         'triggers',
@@ -602,7 +608,7 @@ class Google_Service_Tagmanager extends Google_Service
           )
         )
     );
-    $this->accounts_containers_variables = new Google_Service_Tagmanager_AccountsContainersVariables_Resource(
+    $this->accounts_containers_variables = new Google_Service_TagManager_AccountsContainersVariables_Resource(
         $this,
         $this->serviceName,
         'variables',
@@ -706,7 +712,7 @@ class Google_Service_Tagmanager extends Google_Service
           )
         )
     );
-    $this->accounts_containers_versions = new Google_Service_Tagmanager_AccountsContainersVersions_Resource(
+    $this->accounts_containers_versions = new Google_Service_TagManager_AccountsContainersVersions_Resource(
         $this,
         $this->serviceName,
         'versions',
@@ -878,7 +884,7 @@ class Google_Service_Tagmanager extends Google_Service
           )
         )
     );
-    $this->accounts_permissions = new Google_Service_Tagmanager_AccountsPermissions_Resource(
+    $this->accounts_permissions = new Google_Service_TagManager_AccountsPermissions_Resource(
         $this,
         $this->serviceName,
         'permissions',
@@ -961,56 +967,56 @@ class Google_Service_Tagmanager extends Google_Service
  * The "accounts" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Google_Service_Tagmanager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $accounts = $tagmanagerService->accounts;
  *  </code>
  */
-class Google_Service_Tagmanager_Accounts_Resource extends Google_Service_Resource
+class Google_Service_TagManager_Accounts_Resource extends Google_Service_Resource
 {
 
   /**
    * Gets a GTM Account. (accounts.get)
    *
-   * @param string $accountId
-   * The GTM Account ID.
+   * @param string $accountId The GTM Account ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Account
+   * @return Google_Service_TagManager_Account
    */
   public function get($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Tagmanager_Account");
+    return $this->call('get', array($params), "Google_Service_TagManager_Account");
   }
+
   /**
    * Lists all GTM Accounts that a user has access to. (accounts.listAccounts)
    *
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ListAccountsResponse
+   * @return Google_Service_TagManager_ListAccountsResponse
    */
   public function listAccounts($optParams = array())
   {
     $params = array();
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Tagmanager_ListAccountsResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListAccountsResponse");
   }
+
   /**
    * Updates a GTM Account. (accounts.update)
    *
-   * @param string $accountId
-   * The GTM Account ID.
+   * @param string $accountId The GTM Account ID.
    * @param Google_Account $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string fingerprint
-   * When provided, this fingerprint must match the fingerprint of the account in storage.
-   * @return Google_Service_Tagmanager_Account
+   * @opt_param string fingerprint When provided, this fingerprint must match the
+   * fingerprint of the account in storage.
+   * @return Google_Service_TagManager_Account
    */
-  public function update($accountId, Google_Service_Tagmanager_Account $postBody, $optParams = array())
+  public function update($accountId, Google_Service_TagManager_Account $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Tagmanager_Account");
+    return $this->call('update', array($params), "Google_Service_TagManager_Account");
   }
 }
 
@@ -1018,35 +1024,33 @@ class Google_Service_Tagmanager_Accounts_Resource extends Google_Service_Resourc
  * The "containers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Google_Service_Tagmanager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $containers = $tagmanagerService->containers;
  *  </code>
  */
-class Google_Service_Tagmanager_AccountsContainers_Resource extends Google_Service_Resource
+class Google_Service_TagManager_AccountsContainers_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a Container. (containers.create)
    *
-   * @param string $accountId
-   * The GTM Account ID.
+   * @param string $accountId The GTM Account ID.
    * @param Google_Container $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Container
+   * @return Google_Service_TagManager_Container
    */
-  public function create($accountId, Google_Service_Tagmanager_Container $postBody, $optParams = array())
+  public function create($accountId, Google_Service_TagManager_Container $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Google_Service_Tagmanager_Container");
+    return $this->call('create', array($params), "Google_Service_TagManager_Container");
   }
+
   /**
    * Deletes a Container. (containers.delete)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
    */
   public function delete($accountId, $containerId, $optParams = array())
@@ -1055,56 +1059,54 @@ class Google_Service_Tagmanager_AccountsContainers_Resource extends Google_Servi
     $params = array_merge($params, $optParams);
     return $this->call('delete', array($params));
   }
+
   /**
    * Gets a Container. (containers.get)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Container
+   * @return Google_Service_TagManager_Container
    */
   public function get($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Tagmanager_Container");
+    return $this->call('get', array($params), "Google_Service_TagManager_Container");
   }
+
   /**
    * Lists all Containers that belongs to a GTM Account.
    * (containers.listAccountsContainers)
    *
-   * @param string $accountId
-   * The GTM Account ID.
+   * @param string $accountId The GTM Account ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ListContainersResponse
+   * @return Google_Service_TagManager_ListContainersResponse
    */
   public function listAccountsContainers($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Tagmanager_ListContainersResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListContainersResponse");
   }
+
   /**
    * Updates a Container. (containers.update)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param Google_Container $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string fingerprint
-   * When provided, this fingerprint must match the fingerprint of the container in storage.
-   * @return Google_Service_Tagmanager_Container
+   * @opt_param string fingerprint When provided, this fingerprint must match the
+   * fingerprint of the container in storage.
+   * @return Google_Service_TagManager_Container
    */
-  public function update($accountId, $containerId, Google_Service_Tagmanager_Container $postBody, $optParams = array())
+  public function update($accountId, $containerId, Google_Service_TagManager_Container $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Tagmanager_Container");
+    return $this->call('update', array($params), "Google_Service_TagManager_Container");
   }
 }
 
@@ -1112,39 +1114,35 @@ class Google_Service_Tagmanager_AccountsContainers_Resource extends Google_Servi
  * The "macros" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Google_Service_Tagmanager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $macros = $tagmanagerService->macros;
  *  </code>
  */
-class Google_Service_Tagmanager_AccountsContainersMacros_Resource extends Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersMacros_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a GTM Macro. (macros.create)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param Google_Macro $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Macro
+   * @return Google_Service_TagManager_Macro
    */
-  public function create($accountId, $containerId, Google_Service_Tagmanager_Macro $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_Macro $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Google_Service_Tagmanager_Macro");
+    return $this->call('create', array($params), "Google_Service_TagManager_Macro");
   }
+
   /**
    * Deletes a GTM Macro. (macros.delete)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $macroId
-   * The GTM Macro ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $macroId The GTM Macro ID.
    * @param array $optParams Optional parameters.
    */
   public function delete($accountId, $containerId, $macroId, $optParams = array())
@@ -1153,100 +1151,91 @@ class Google_Service_Tagmanager_AccountsContainersMacros_Resource extends Google
     $params = array_merge($params, $optParams);
     return $this->call('delete', array($params));
   }
+
   /**
    * Gets a GTM Macro. (macros.get)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $macroId
-   * The GTM Macro ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $macroId The GTM Macro ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Macro
+   * @return Google_Service_TagManager_Macro
    */
   public function get($accountId, $containerId, $macroId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'macroId' => $macroId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Tagmanager_Macro");
+    return $this->call('get', array($params), "Google_Service_TagManager_Macro");
   }
+
   /**
    * Lists all GTM Macros of a Container. (macros.listAccountsContainersMacros)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ListMacrosResponse
+   * @return Google_Service_TagManager_ListMacrosResponse
    */
   public function listAccountsContainersMacros($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Tagmanager_ListMacrosResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListMacrosResponse");
   }
+
   /**
    * Updates a GTM Macro. (macros.update)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $macroId
-   * The GTM Macro ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $macroId The GTM Macro ID.
    * @param Google_Macro $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string fingerprint
-   * When provided, this fingerprint must match the fingerprint of the macro in storage.
-   * @return Google_Service_Tagmanager_Macro
+   * @opt_param string fingerprint When provided, this fingerprint must match the
+   * fingerprint of the macro in storage.
+   * @return Google_Service_TagManager_Macro
    */
-  public function update($accountId, $containerId, $macroId, Google_Service_Tagmanager_Macro $postBody, $optParams = array())
+  public function update($accountId, $containerId, $macroId, Google_Service_TagManager_Macro $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'macroId' => $macroId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Tagmanager_Macro");
+    return $this->call('update', array($params), "Google_Service_TagManager_Macro");
   }
 }
 /**
  * The "rules" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Google_Service_Tagmanager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $rules = $tagmanagerService->rules;
  *  </code>
  */
-class Google_Service_Tagmanager_AccountsContainersRules_Resource extends Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersRules_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a GTM Rule. (rules.create)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param Google_Rule $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Rule
+   * @return Google_Service_TagManager_Rule
    */
-  public function create($accountId, $containerId, Google_Service_Tagmanager_Rule $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_Rule $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Google_Service_Tagmanager_Rule");
+    return $this->call('create', array($params), "Google_Service_TagManager_Rule");
   }
+
   /**
    * Deletes a GTM Rule. (rules.delete)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $ruleId
-   * The GTM Rule ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $ruleId The GTM Rule ID.
    * @param array $optParams Optional parameters.
    */
   public function delete($accountId, $containerId, $ruleId, $optParams = array())
@@ -1255,100 +1244,91 @@ class Google_Service_Tagmanager_AccountsContainersRules_Resource extends Google_
     $params = array_merge($params, $optParams);
     return $this->call('delete', array($params));
   }
+
   /**
    * Gets a GTM Rule. (rules.get)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $ruleId
-   * The GTM Rule ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $ruleId The GTM Rule ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Rule
+   * @return Google_Service_TagManager_Rule
    */
   public function get($accountId, $containerId, $ruleId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'ruleId' => $ruleId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Tagmanager_Rule");
+    return $this->call('get', array($params), "Google_Service_TagManager_Rule");
   }
+
   /**
    * Lists all GTM Rules of a Container. (rules.listAccountsContainersRules)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ListRulesResponse
+   * @return Google_Service_TagManager_ListRulesResponse
    */
   public function listAccountsContainersRules($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Tagmanager_ListRulesResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListRulesResponse");
   }
+
   /**
    * Updates a GTM Rule. (rules.update)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $ruleId
-   * The GTM Rule ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $ruleId The GTM Rule ID.
    * @param Google_Rule $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string fingerprint
-   * When provided, this fingerprint must match the fingerprint of the rule in storage.
-   * @return Google_Service_Tagmanager_Rule
+   * @opt_param string fingerprint When provided, this fingerprint must match the
+   * fingerprint of the rule in storage.
+   * @return Google_Service_TagManager_Rule
    */
-  public function update($accountId, $containerId, $ruleId, Google_Service_Tagmanager_Rule $postBody, $optParams = array())
+  public function update($accountId, $containerId, $ruleId, Google_Service_TagManager_Rule $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'ruleId' => $ruleId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Tagmanager_Rule");
+    return $this->call('update', array($params), "Google_Service_TagManager_Rule");
   }
 }
 /**
  * The "tags" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Google_Service_Tagmanager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $tags = $tagmanagerService->tags;
  *  </code>
  */
-class Google_Service_Tagmanager_AccountsContainersTags_Resource extends Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersTags_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a GTM Tag. (tags.create)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param Google_Tag $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Tag
+   * @return Google_Service_TagManager_Tag
    */
-  public function create($accountId, $containerId, Google_Service_Tagmanager_Tag $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_Tag $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Google_Service_Tagmanager_Tag");
+    return $this->call('create', array($params), "Google_Service_TagManager_Tag");
   }
+
   /**
    * Deletes a GTM Tag. (tags.delete)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $tagId
-   * The GTM Tag ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $tagId The GTM Tag ID.
    * @param array $optParams Optional parameters.
    */
   public function delete($accountId, $containerId, $tagId, $optParams = array())
@@ -1357,100 +1337,91 @@ class Google_Service_Tagmanager_AccountsContainersTags_Resource extends Google_S
     $params = array_merge($params, $optParams);
     return $this->call('delete', array($params));
   }
+
   /**
    * Gets a GTM Tag. (tags.get)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $tagId
-   * The GTM Tag ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $tagId The GTM Tag ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Tag
+   * @return Google_Service_TagManager_Tag
    */
   public function get($accountId, $containerId, $tagId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'tagId' => $tagId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Tagmanager_Tag");
+    return $this->call('get', array($params), "Google_Service_TagManager_Tag");
   }
+
   /**
    * Lists all GTM Tags of a Container. (tags.listAccountsContainersTags)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ListTagsResponse
+   * @return Google_Service_TagManager_ListTagsResponse
    */
   public function listAccountsContainersTags($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Tagmanager_ListTagsResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListTagsResponse");
   }
+
   /**
    * Updates a GTM Tag. (tags.update)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $tagId
-   * The GTM Tag ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $tagId The GTM Tag ID.
    * @param Google_Tag $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string fingerprint
-   * When provided, this fingerprint must match the fingerprint of the tag in storage.
-   * @return Google_Service_Tagmanager_Tag
+   * @opt_param string fingerprint When provided, this fingerprint must match the
+   * fingerprint of the tag in storage.
+   * @return Google_Service_TagManager_Tag
    */
-  public function update($accountId, $containerId, $tagId, Google_Service_Tagmanager_Tag $postBody, $optParams = array())
+  public function update($accountId, $containerId, $tagId, Google_Service_TagManager_Tag $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'tagId' => $tagId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Tagmanager_Tag");
+    return $this->call('update', array($params), "Google_Service_TagManager_Tag");
   }
 }
 /**
  * The "triggers" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Google_Service_Tagmanager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $triggers = $tagmanagerService->triggers;
  *  </code>
  */
-class Google_Service_Tagmanager_AccountsContainersTriggers_Resource extends Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersTriggers_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a GTM Trigger. (triggers.create)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param Google_Trigger $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Trigger
+   * @return Google_Service_TagManager_Trigger
    */
-  public function create($accountId, $containerId, Google_Service_Tagmanager_Trigger $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_Trigger $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Google_Service_Tagmanager_Trigger");
+    return $this->call('create', array($params), "Google_Service_TagManager_Trigger");
   }
+
   /**
    * Deletes a GTM Trigger. (triggers.delete)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $triggerId
-   * The GTM Trigger ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $triggerId The GTM Trigger ID.
    * @param array $optParams Optional parameters.
    */
   public function delete($accountId, $containerId, $triggerId, $optParams = array())
@@ -1459,101 +1430,92 @@ class Google_Service_Tagmanager_AccountsContainersTriggers_Resource extends Goog
     $params = array_merge($params, $optParams);
     return $this->call('delete', array($params));
   }
+
   /**
    * Gets a GTM Trigger. (triggers.get)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $triggerId
-   * The GTM Trigger ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $triggerId The GTM Trigger ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Trigger
+   * @return Google_Service_TagManager_Trigger
    */
   public function get($accountId, $containerId, $triggerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'triggerId' => $triggerId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Tagmanager_Trigger");
+    return $this->call('get', array($params), "Google_Service_TagManager_Trigger");
   }
+
   /**
    * Lists all GTM Triggers of a Container.
    * (triggers.listAccountsContainersTriggers)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ListTriggersResponse
+   * @return Google_Service_TagManager_ListTriggersResponse
    */
   public function listAccountsContainersTriggers($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Tagmanager_ListTriggersResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListTriggersResponse");
   }
+
   /**
    * Updates a GTM Trigger. (triggers.update)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $triggerId
-   * The GTM Trigger ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $triggerId The GTM Trigger ID.
    * @param Google_Trigger $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string fingerprint
-   * When provided, this fingerprint must match the fingerprint of the trigger in storage.
-   * @return Google_Service_Tagmanager_Trigger
+   * @opt_param string fingerprint When provided, this fingerprint must match the
+   * fingerprint of the trigger in storage.
+   * @return Google_Service_TagManager_Trigger
    */
-  public function update($accountId, $containerId, $triggerId, Google_Service_Tagmanager_Trigger $postBody, $optParams = array())
+  public function update($accountId, $containerId, $triggerId, Google_Service_TagManager_Trigger $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'triggerId' => $triggerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Tagmanager_Trigger");
+    return $this->call('update', array($params), "Google_Service_TagManager_Trigger");
   }
 }
 /**
  * The "variables" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Google_Service_Tagmanager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $variables = $tagmanagerService->variables;
  *  </code>
  */
-class Google_Service_Tagmanager_AccountsContainersVariables_Resource extends Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersVariables_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a GTM Variable. (variables.create)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param Google_Variable $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Variable
+   * @return Google_Service_TagManager_Variable
    */
-  public function create($accountId, $containerId, Google_Service_Tagmanager_Variable $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_Variable $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Google_Service_Tagmanager_Variable");
+    return $this->call('create', array($params), "Google_Service_TagManager_Variable");
   }
+
   /**
    * Deletes a GTM Variable. (variables.delete)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $variableId
-   * The GTM Variable ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $variableId The GTM Variable ID.
    * @param array $optParams Optional parameters.
    */
   public function delete($accountId, $containerId, $variableId, $optParams = array())
@@ -1562,101 +1524,92 @@ class Google_Service_Tagmanager_AccountsContainersVariables_Resource extends Goo
     $params = array_merge($params, $optParams);
     return $this->call('delete', array($params));
   }
+
   /**
    * Gets a GTM Variable. (variables.get)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $variableId
-   * The GTM Variable ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $variableId The GTM Variable ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_Variable
+   * @return Google_Service_TagManager_Variable
    */
   public function get($accountId, $containerId, $variableId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'variableId' => $variableId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Tagmanager_Variable");
+    return $this->call('get', array($params), "Google_Service_TagManager_Variable");
   }
+
   /**
    * Lists all GTM Variables of a Container.
    * (variables.listAccountsContainersVariables)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ListVariablesResponse
+   * @return Google_Service_TagManager_ListVariablesResponse
    */
   public function listAccountsContainersVariables($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Tagmanager_ListVariablesResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListVariablesResponse");
   }
+
   /**
    * Updates a GTM Variable. (variables.update)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $variableId
-   * The GTM Variable ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $variableId The GTM Variable ID.
    * @param Google_Variable $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string fingerprint
-   * When provided, this fingerprint must match the fingerprint of the variable in storage.
-   * @return Google_Service_Tagmanager_Variable
+   * @opt_param string fingerprint When provided, this fingerprint must match the
+   * fingerprint of the variable in storage.
+   * @return Google_Service_TagManager_Variable
    */
-  public function update($accountId, $containerId, $variableId, Google_Service_Tagmanager_Variable $postBody, $optParams = array())
+  public function update($accountId, $containerId, $variableId, Google_Service_TagManager_Variable $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'variableId' => $variableId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Tagmanager_Variable");
+    return $this->call('update', array($params), "Google_Service_TagManager_Variable");
   }
 }
 /**
  * The "versions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Google_Service_Tagmanager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $versions = $tagmanagerService->versions;
  *  </code>
  */
-class Google_Service_Tagmanager_AccountsContainersVersions_Resource extends Google_Service_Resource
+class Google_Service_TagManager_AccountsContainersVersions_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a Container Version. (versions.create)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param Google_CreateContainerVersionRequestVersionOptions $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_CreateContainerVersionResponse
+   * @return Google_Service_TagManager_CreateContainerVersionResponse
    */
-  public function create($accountId, $containerId, Google_Service_Tagmanager_CreateContainerVersionRequestVersionOptions $postBody, $optParams = array())
+  public function create($accountId, $containerId, Google_Service_TagManager_CreateContainerVersionRequestVersionOptions $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Google_Service_Tagmanager_CreateContainerVersionResponse");
+    return $this->call('create', array($params), "Google_Service_TagManager_CreateContainerVersionResponse");
   }
+
   /**
    * Deletes a Container Version. (versions.delete)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $containerVersionId
-   * The GTM Container Version ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $containerVersionId The GTM Container Version ID.
    * @param array $optParams Optional parameters.
    */
   public function delete($accountId, $containerId, $containerVersionId, $optParams = array())
@@ -1665,161 +1618,148 @@ class Google_Service_Tagmanager_AccountsContainersVersions_Resource extends Goog
     $params = array_merge($params, $optParams);
     return $this->call('delete', array($params));
   }
+
   /**
    * Gets a Container Version. (versions.get)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $containerVersionId
-   * The GTM Container Version ID. Specify published to retrieve the currently published version.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $containerVersionId The GTM Container Version ID. Specify
+   * published to retrieve the currently published version.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ContainerVersion
+   * @return Google_Service_TagManager_ContainerVersion
    */
   public function get($accountId, $containerId, $containerVersionId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'containerVersionId' => $containerVersionId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Tagmanager_ContainerVersion");
+    return $this->call('get', array($params), "Google_Service_TagManager_ContainerVersion");
   }
+
   /**
    * Lists all Container Versions of a GTM Container.
    * (versions.listAccountsContainersVersions)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool headers
-   * Retrieve headers only when true.
-   * @return Google_Service_Tagmanager_ListContainerVersionsResponse
+   * @opt_param bool headers Retrieve headers only when true.
+   * @return Google_Service_TagManager_ListContainerVersionsResponse
    */
   public function listAccountsContainersVersions($accountId, $containerId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Tagmanager_ListContainerVersionsResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListContainerVersionsResponse");
   }
+
   /**
    * Publishes a Container Version. (versions.publish)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $containerVersionId
-   * The GTM Container Version ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $containerVersionId The GTM Container Version ID.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string fingerprint
-   * When provided, this fingerprint must match the fingerprint of the container version in storage.
-   * @return Google_Service_Tagmanager_PublishContainerVersionResponse
+   * @opt_param string fingerprint When provided, this fingerprint must match the
+   * fingerprint of the container version in storage.
+   * @return Google_Service_TagManager_PublishContainerVersionResponse
    */
   public function publish($accountId, $containerId, $containerVersionId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'containerVersionId' => $containerVersionId);
     $params = array_merge($params, $optParams);
-    return $this->call('publish', array($params), "Google_Service_Tagmanager_PublishContainerVersionResponse");
+    return $this->call('publish', array($params), "Google_Service_TagManager_PublishContainerVersionResponse");
   }
+
   /**
    * Restores a Container Version. This will overwrite the container's current
    * configuration (including its macros, rules and tags). The operation will not
    * have any effect on the version that is being served (i.e. the published
    * version). (versions.restore)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $containerVersionId
-   * The GTM Container Version ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $containerVersionId The GTM Container Version ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ContainerVersion
+   * @return Google_Service_TagManager_ContainerVersion
    */
   public function restore($accountId, $containerId, $containerVersionId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'containerVersionId' => $containerVersionId);
     $params = array_merge($params, $optParams);
-    return $this->call('restore', array($params), "Google_Service_Tagmanager_ContainerVersion");
+    return $this->call('restore', array($params), "Google_Service_TagManager_ContainerVersion");
   }
+
   /**
    * Undeletes a Container Version. (versions.undelete)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $containerVersionId
-   * The GTM Container Version ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $containerVersionId The GTM Container Version ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ContainerVersion
+   * @return Google_Service_TagManager_ContainerVersion
    */
   public function undelete($accountId, $containerId, $containerVersionId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'containerVersionId' => $containerVersionId);
     $params = array_merge($params, $optParams);
-    return $this->call('undelete', array($params), "Google_Service_Tagmanager_ContainerVersion");
+    return $this->call('undelete', array($params), "Google_Service_TagManager_ContainerVersion");
   }
+
   /**
    * Updates a Container Version. (versions.update)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $containerId
-   * The GTM Container ID.
-   * @param string $containerVersionId
-   * The GTM Container Version ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $containerId The GTM Container ID.
+   * @param string $containerVersionId The GTM Container Version ID.
    * @param Google_ContainerVersion $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string fingerprint
-   * When provided, this fingerprint must match the fingerprint of the container version in storage.
-   * @return Google_Service_Tagmanager_ContainerVersion
+   * @opt_param string fingerprint When provided, this fingerprint must match the
+   * fingerprint of the container version in storage.
+   * @return Google_Service_TagManager_ContainerVersion
    */
-  public function update($accountId, $containerId, $containerVersionId, Google_Service_Tagmanager_ContainerVersion $postBody, $optParams = array())
+  public function update($accountId, $containerId, $containerVersionId, Google_Service_TagManager_ContainerVersion $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'containerId' => $containerId, 'containerVersionId' => $containerVersionId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Tagmanager_ContainerVersion");
+    return $this->call('update', array($params), "Google_Service_TagManager_ContainerVersion");
   }
 }
 /**
  * The "permissions" collection of methods.
  * Typical usage is:
  *  <code>
- *   $tagmanagerService = new Google_Service_Tagmanager(...);
+ *   $tagmanagerService = new Google_Service_TagManager(...);
  *   $permissions = $tagmanagerService->permissions;
  *  </code>
  */
-class Google_Service_Tagmanager_AccountsPermissions_Resource extends Google_Service_Resource
+class Google_Service_TagManager_AccountsPermissions_Resource extends Google_Service_Resource
 {
 
   /**
    * Creates a user's Account & Container Permissions. (permissions.create)
    *
-   * @param string $accountId
-   * The GTM Account ID.
+   * @param string $accountId The GTM Account ID.
    * @param Google_UserAccess $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_UserAccess
+   * @return Google_Service_TagManager_UserAccess
    */
-  public function create($accountId, Google_Service_Tagmanager_UserAccess $postBody, $optParams = array())
+  public function create($accountId, Google_Service_TagManager_UserAccess $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('create', array($params), "Google_Service_Tagmanager_UserAccess");
+    return $this->call('create', array($params), "Google_Service_TagManager_UserAccess");
   }
+
   /**
    * Removes a user from the account, revoking access to it and all of its
    * containers. (permissions.delete)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $permissionId
-   * The GTM User ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $permissionId The GTM User ID.
    * @param array $optParams Optional parameters.
    */
   public function delete($accountId, $permissionId, $optParams = array())
@@ -1828,61 +1768,60 @@ class Google_Service_Tagmanager_AccountsPermissions_Resource extends Google_Serv
     $params = array_merge($params, $optParams);
     return $this->call('delete', array($params));
   }
+
   /**
    * Gets a user's Account & Container Permissions. (permissions.get)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $permissionId
-   * The GTM User ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $permissionId The GTM User ID.
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_UserAccess
+   * @return Google_Service_TagManager_UserAccess
    */
   public function get($accountId, $permissionId, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'permissionId' => $permissionId);
     $params = array_merge($params, $optParams);
-    return $this->call('get', array($params), "Google_Service_Tagmanager_UserAccess");
+    return $this->call('get', array($params), "Google_Service_TagManager_UserAccess");
   }
+
   /**
    * List all users that have access to the account along with Account and
    * Container Permissions granted to each of them.
    * (permissions.listAccountsPermissions)
    *
-   * @param string $accountId
-   * The GTM Account ID. @required tagmanager.accounts.permissions.list
+   * @param string $accountId The GTM Account ID. @required
+   * tagmanager.accounts.permissions.list
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_ListAccountUsersResponse
+   * @return Google_Service_TagManager_ListAccountUsersResponse
    */
   public function listAccountsPermissions($accountId, $optParams = array())
   {
     $params = array('accountId' => $accountId);
     $params = array_merge($params, $optParams);
-    return $this->call('list', array($params), "Google_Service_Tagmanager_ListAccountUsersResponse");
+    return $this->call('list', array($params), "Google_Service_TagManager_ListAccountUsersResponse");
   }
+
   /**
    * Updates a user's Account & Container Permissions. (permissions.update)
    *
-   * @param string $accountId
-   * The GTM Account ID.
-   * @param string $permissionId
-   * The GTM User ID.
+   * @param string $accountId The GTM Account ID.
+   * @param string $permissionId The GTM User ID.
    * @param Google_UserAccess $postBody
    * @param array $optParams Optional parameters.
-   * @return Google_Service_Tagmanager_UserAccess
+   * @return Google_Service_TagManager_UserAccess
    */
-  public function update($accountId, $permissionId, Google_Service_Tagmanager_UserAccess $postBody, $optParams = array())
+  public function update($accountId, $permissionId, Google_Service_TagManager_UserAccess $postBody, $optParams = array())
   {
     $params = array('accountId' => $accountId, 'permissionId' => $permissionId, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
-    return $this->call('update', array($params), "Google_Service_Tagmanager_UserAccess");
+    return $this->call('update', array($params), "Google_Service_TagManager_UserAccess");
   }
 }
 
 
 
 
-class Google_Service_Tagmanager_Account extends Google_Model
+class Google_Service_TagManager_Account extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -1891,96 +1830,88 @@ class Google_Service_Tagmanager_Account extends Google_Model
   public $name;
   public $shareData;
 
+
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
-
   public function getAccountId()
   {
     return $this->accountId;
   }
-
   public function setFingerprint($fingerprint)
   {
     $this->fingerprint = $fingerprint;
   }
-
   public function getFingerprint()
   {
     return $this->fingerprint;
   }
-
   public function setName($name)
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
   }
-
   public function setShareData($shareData)
   {
     $this->shareData = $shareData;
   }
-
   public function getShareData()
   {
     return $this->shareData;
   }
 }
 
-class Google_Service_Tagmanager_AccountAccess extends Google_Collection
+class Google_Service_TagManager_AccountAccess extends Google_Collection
 {
   protected $collection_key = 'permission';
   protected $internal_gapi_mappings = array(
   );
   public $permission;
 
+
   public function setPermission($permission)
   {
     $this->permission = $permission;
   }
-
   public function getPermission()
   {
     return $this->permission;
   }
 }
 
-class Google_Service_Tagmanager_Condition extends Google_Collection
+class Google_Service_TagManager_Condition extends Google_Collection
 {
   protected $collection_key = 'parameter';
   protected $internal_gapi_mappings = array(
   );
-  protected $parameterType = 'Google_Service_Tagmanager_Parameter';
+  protected $parameterType = 'Google_Service_TagManager_Parameter';
   protected $parameterDataType = 'array';
   public $type;
+
 
   public function setParameter($parameter)
   {
     $this->parameter = $parameter;
   }
-
   public function getParameter()
   {
     return $this->parameter;
   }
-
   public function setType($type)
   {
     $this->type = $type;
   }
-
   public function getType()
   {
     return $this->type;
   }
 }
 
-class Google_Service_Tagmanager_Container extends Google_Collection
+class Google_Service_TagManager_Container extends Google_Collection
 {
   protected $collection_key = 'usageContext';
   protected $internal_gapi_mappings = array(
@@ -1988,6 +1919,7 @@ class Google_Service_Tagmanager_Container extends Google_Collection
   public $accountId;
   public $containerId;
   public $domainName;
+  public $enabledBuiltInVariable;
   public $fingerprint;
   public $name;
   public $notes;
@@ -1996,108 +1928,98 @@ class Google_Service_Tagmanager_Container extends Google_Collection
   public $timeZoneId;
   public $usageContext;
 
+
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
-
   public function getAccountId()
   {
     return $this->accountId;
   }
-
   public function setContainerId($containerId)
   {
     $this->containerId = $containerId;
   }
-
   public function getContainerId()
   {
     return $this->containerId;
   }
-
   public function setDomainName($domainName)
   {
     $this->domainName = $domainName;
   }
-
   public function getDomainName()
   {
     return $this->domainName;
   }
-
+  public function setEnabledBuiltInVariable($enabledBuiltInVariable)
+  {
+    $this->enabledBuiltInVariable = $enabledBuiltInVariable;
+  }
+  public function getEnabledBuiltInVariable()
+  {
+    return $this->enabledBuiltInVariable;
+  }
   public function setFingerprint($fingerprint)
   {
     $this->fingerprint = $fingerprint;
   }
-
   public function getFingerprint()
   {
     return $this->fingerprint;
   }
-
   public function setName($name)
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
   }
-
   public function setNotes($notes)
   {
     $this->notes = $notes;
   }
-
   public function getNotes()
   {
     return $this->notes;
   }
-
   public function setPublicId($publicId)
   {
     $this->publicId = $publicId;
   }
-
   public function getPublicId()
   {
     return $this->publicId;
   }
-
   public function setTimeZoneCountryId($timeZoneCountryId)
   {
     $this->timeZoneCountryId = $timeZoneCountryId;
   }
-
   public function getTimeZoneCountryId()
   {
     return $this->timeZoneCountryId;
   }
-
   public function setTimeZoneId($timeZoneId)
   {
     $this->timeZoneId = $timeZoneId;
   }
-
   public function getTimeZoneId()
   {
     return $this->timeZoneId;
   }
-
   public function setUsageContext($usageContext)
   {
     $this->usageContext = $usageContext;
   }
-
   public function getUsageContext()
   {
     return $this->usageContext;
   }
 }
 
-class Google_Service_Tagmanager_ContainerAccess extends Google_Collection
+class Google_Service_TagManager_ContainerAccess extends Google_Collection
 {
   protected $collection_key = 'permission';
   protected $internal_gapi_mappings = array(
@@ -2105,172 +2027,158 @@ class Google_Service_Tagmanager_ContainerAccess extends Google_Collection
   public $containerId;
   public $permission;
 
+
   public function setContainerId($containerId)
   {
     $this->containerId = $containerId;
   }
-
   public function getContainerId()
   {
     return $this->containerId;
   }
-
   public function setPermission($permission)
   {
     $this->permission = $permission;
   }
-
   public function getPermission()
   {
     return $this->permission;
   }
 }
 
-class Google_Service_Tagmanager_ContainerVersion extends Google_Collection
+class Google_Service_TagManager_ContainerVersion extends Google_Collection
 {
-  protected $collection_key = 'trigger';
+  protected $collection_key = 'variable';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
-  protected $containerType = 'Google_Service_Tagmanager_Container';
+  protected $containerType = 'Google_Service_TagManager_Container';
   protected $containerDataType = '';
   public $containerId;
   public $containerVersionId;
   public $deleted;
   public $fingerprint;
-  protected $macroType = 'Google_Service_Tagmanager_Macro';
+  protected $macroType = 'Google_Service_TagManager_Macro';
   protected $macroDataType = 'array';
   public $name;
   public $notes;
-  protected $ruleType = 'Google_Service_Tagmanager_Rule';
+  protected $ruleType = 'Google_Service_TagManager_Rule';
   protected $ruleDataType = 'array';
-  protected $tagType = 'Google_Service_Tagmanager_Tag';
+  protected $tagType = 'Google_Service_TagManager_Tag';
   protected $tagDataType = 'array';
-  protected $triggerType = 'Google_Service_Tagmanager_Trigger';
+  protected $triggerType = 'Google_Service_TagManager_Trigger';
   protected $triggerDataType = 'array';
+  protected $variableType = 'Google_Service_TagManager_Variable';
+  protected $variableDataType = 'array';
+
 
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
-
   public function getAccountId()
   {
     return $this->accountId;
   }
-
-  public function setContainer(Google_Service_Tagmanager_Container $container)
+  public function setContainer(Google_Service_TagManager_Container $container)
   {
     $this->container = $container;
   }
-
   public function getContainer()
   {
     return $this->container;
   }
-
   public function setContainerId($containerId)
   {
     $this->containerId = $containerId;
   }
-
   public function getContainerId()
   {
     return $this->containerId;
   }
-
   public function setContainerVersionId($containerVersionId)
   {
     $this->containerVersionId = $containerVersionId;
   }
-
   public function getContainerVersionId()
   {
     return $this->containerVersionId;
   }
-
   public function setDeleted($deleted)
   {
     $this->deleted = $deleted;
   }
-
   public function getDeleted()
   {
     return $this->deleted;
   }
-
   public function setFingerprint($fingerprint)
   {
     $this->fingerprint = $fingerprint;
   }
-
   public function getFingerprint()
   {
     return $this->fingerprint;
   }
-
   public function setMacro($macro)
   {
     $this->macro = $macro;
   }
-
   public function getMacro()
   {
     return $this->macro;
   }
-
   public function setName($name)
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
   }
-
   public function setNotes($notes)
   {
     $this->notes = $notes;
   }
-
   public function getNotes()
   {
     return $this->notes;
   }
-
   public function setRule($rule)
   {
     $this->rule = $rule;
   }
-
   public function getRule()
   {
     return $this->rule;
   }
-
   public function setTag($tag)
   {
     $this->tag = $tag;
   }
-
   public function getTag()
   {
     return $this->tag;
   }
-
   public function setTrigger($trigger)
   {
     $this->trigger = $trigger;
   }
-
   public function getTrigger()
   {
     return $this->trigger;
   }
+  public function setVariable($variable)
+  {
+    $this->variable = $variable;
+  }
+  public function getVariable()
+  {
+    return $this->variable;
+  }
 }
 
-class Google_Service_Tagmanager_ContainerVersionHeader extends Google_Model
+class Google_Service_TagManager_ContainerVersionHeader extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2283,99 +2191,92 @@ class Google_Service_Tagmanager_ContainerVersionHeader extends Google_Model
   public $numRules;
   public $numTags;
   public $numTriggers;
+  public $numVariables;
+
 
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
-
   public function getAccountId()
   {
     return $this->accountId;
   }
-
   public function setContainerId($containerId)
   {
     $this->containerId = $containerId;
   }
-
   public function getContainerId()
   {
     return $this->containerId;
   }
-
   public function setContainerVersionId($containerVersionId)
   {
     $this->containerVersionId = $containerVersionId;
   }
-
   public function getContainerVersionId()
   {
     return $this->containerVersionId;
   }
-
   public function setDeleted($deleted)
   {
     $this->deleted = $deleted;
   }
-
   public function getDeleted()
   {
     return $this->deleted;
   }
-
   public function setName($name)
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
   }
-
   public function setNumMacros($numMacros)
   {
     $this->numMacros = $numMacros;
   }
-
   public function getNumMacros()
   {
     return $this->numMacros;
   }
-
   public function setNumRules($numRules)
   {
     $this->numRules = $numRules;
   }
-
   public function getNumRules()
   {
     return $this->numRules;
   }
-
   public function setNumTags($numTags)
   {
     $this->numTags = $numTags;
   }
-
   public function getNumTags()
   {
     return $this->numTags;
   }
-
   public function setNumTriggers($numTriggers)
   {
     $this->numTriggers = $numTriggers;
   }
-
   public function getNumTriggers()
   {
     return $this->numTriggers;
   }
+  public function setNumVariables($numVariables)
+  {
+    $this->numVariables = $numVariables;
+  }
+  public function getNumVariables()
+  {
+    return $this->numVariables;
+  }
 }
 
-class Google_Service_Tagmanager_CreateContainerVersionRequestVersionOptions extends Google_Model
+class Google_Service_TagManager_CreateContainerVersionRequestVersionOptions extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
@@ -2383,250 +2284,242 @@ class Google_Service_Tagmanager_CreateContainerVersionRequestVersionOptions exte
   public $notes;
   public $quickPreview;
 
+
   public function setName($name)
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
   }
-
   public function setNotes($notes)
   {
     $this->notes = $notes;
   }
-
   public function getNotes()
   {
     return $this->notes;
   }
-
   public function setQuickPreview($quickPreview)
   {
     $this->quickPreview = $quickPreview;
   }
-
   public function getQuickPreview()
   {
     return $this->quickPreview;
   }
 }
 
-class Google_Service_Tagmanager_CreateContainerVersionResponse extends Google_Model
+class Google_Service_TagManager_CreateContainerVersionResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $compilerError;
-  protected $containerVersionType = 'Google_Service_Tagmanager_ContainerVersion';
+  protected $containerVersionType = 'Google_Service_TagManager_ContainerVersion';
   protected $containerVersionDataType = '';
+
 
   public function setCompilerError($compilerError)
   {
     $this->compilerError = $compilerError;
   }
-
   public function getCompilerError()
   {
     return $this->compilerError;
   }
-
-  public function setContainerVersion(Google_Service_Tagmanager_ContainerVersion $containerVersion)
+  public function setContainerVersion(Google_Service_TagManager_ContainerVersion $containerVersion)
   {
     $this->containerVersion = $containerVersion;
   }
-
   public function getContainerVersion()
   {
     return $this->containerVersion;
   }
 }
 
-class Google_Service_Tagmanager_ListAccountUsersResponse extends Google_Collection
+class Google_Service_TagManager_ListAccountUsersResponse extends Google_Collection
 {
   protected $collection_key = 'userAccess';
   protected $internal_gapi_mappings = array(
   );
-  protected $userAccessType = 'Google_Service_Tagmanager_UserAccess';
+  protected $userAccessType = 'Google_Service_TagManager_UserAccess';
   protected $userAccessDataType = 'array';
+
 
   public function setUserAccess($userAccess)
   {
     $this->userAccess = $userAccess;
   }
-
   public function getUserAccess()
   {
     return $this->userAccess;
   }
 }
 
-class Google_Service_Tagmanager_ListAccountsResponse extends Google_Collection
+class Google_Service_TagManager_ListAccountsResponse extends Google_Collection
 {
   protected $collection_key = 'accounts';
   protected $internal_gapi_mappings = array(
   );
-  protected $accountsType = 'Google_Service_Tagmanager_Account';
+  protected $accountsType = 'Google_Service_TagManager_Account';
   protected $accountsDataType = 'array';
+
 
   public function setAccounts($accounts)
   {
     $this->accounts = $accounts;
   }
-
   public function getAccounts()
   {
     return $this->accounts;
   }
 }
 
-class Google_Service_Tagmanager_ListContainerVersionsResponse extends Google_Collection
+class Google_Service_TagManager_ListContainerVersionsResponse extends Google_Collection
 {
   protected $collection_key = 'containerVersionHeader';
   protected $internal_gapi_mappings = array(
   );
-  protected $containerVersionType = 'Google_Service_Tagmanager_ContainerVersion';
+  protected $containerVersionType = 'Google_Service_TagManager_ContainerVersion';
   protected $containerVersionDataType = 'array';
-  protected $containerVersionHeaderType = 'Google_Service_Tagmanager_ContainerVersionHeader';
+  protected $containerVersionHeaderType = 'Google_Service_TagManager_ContainerVersionHeader';
   protected $containerVersionHeaderDataType = 'array';
+
 
   public function setContainerVersion($containerVersion)
   {
     $this->containerVersion = $containerVersion;
   }
-
   public function getContainerVersion()
   {
     return $this->containerVersion;
   }
-
   public function setContainerVersionHeader($containerVersionHeader)
   {
     $this->containerVersionHeader = $containerVersionHeader;
   }
-
   public function getContainerVersionHeader()
   {
     return $this->containerVersionHeader;
   }
 }
 
-class Google_Service_Tagmanager_ListContainersResponse extends Google_Collection
+class Google_Service_TagManager_ListContainersResponse extends Google_Collection
 {
   protected $collection_key = 'containers';
   protected $internal_gapi_mappings = array(
   );
-  protected $containersType = 'Google_Service_Tagmanager_Container';
+  protected $containersType = 'Google_Service_TagManager_Container';
   protected $containersDataType = 'array';
+
 
   public function setContainers($containers)
   {
     $this->containers = $containers;
   }
-
   public function getContainers()
   {
     return $this->containers;
   }
 }
 
-class Google_Service_Tagmanager_ListMacrosResponse extends Google_Collection
+class Google_Service_TagManager_ListMacrosResponse extends Google_Collection
 {
   protected $collection_key = 'macros';
   protected $internal_gapi_mappings = array(
   );
-  protected $macrosType = 'Google_Service_Tagmanager_Macro';
+  protected $macrosType = 'Google_Service_TagManager_Macro';
   protected $macrosDataType = 'array';
+
 
   public function setMacros($macros)
   {
     $this->macros = $macros;
   }
-
   public function getMacros()
   {
     return $this->macros;
   }
 }
 
-class Google_Service_Tagmanager_ListRulesResponse extends Google_Collection
+class Google_Service_TagManager_ListRulesResponse extends Google_Collection
 {
   protected $collection_key = 'rules';
   protected $internal_gapi_mappings = array(
   );
-  protected $rulesType = 'Google_Service_Tagmanager_Rule';
+  protected $rulesType = 'Google_Service_TagManager_Rule';
   protected $rulesDataType = 'array';
+
 
   public function setRules($rules)
   {
     $this->rules = $rules;
   }
-
   public function getRules()
   {
     return $this->rules;
   }
 }
 
-class Google_Service_Tagmanager_ListTagsResponse extends Google_Collection
+class Google_Service_TagManager_ListTagsResponse extends Google_Collection
 {
   protected $collection_key = 'tags';
   protected $internal_gapi_mappings = array(
   );
-  protected $tagsType = 'Google_Service_Tagmanager_Tag';
+  protected $tagsType = 'Google_Service_TagManager_Tag';
   protected $tagsDataType = 'array';
+
 
   public function setTags($tags)
   {
     $this->tags = $tags;
   }
-
   public function getTags()
   {
     return $this->tags;
   }
 }
 
-class Google_Service_Tagmanager_ListTriggersResponse extends Google_Collection
+class Google_Service_TagManager_ListTriggersResponse extends Google_Collection
 {
   protected $collection_key = 'triggers';
   protected $internal_gapi_mappings = array(
   );
-  protected $triggersType = 'Google_Service_Tagmanager_Trigger';
+  protected $triggersType = 'Google_Service_TagManager_Trigger';
   protected $triggersDataType = 'array';
+
 
   public function setTriggers($triggers)
   {
     $this->triggers = $triggers;
   }
-
   public function getTriggers()
   {
     return $this->triggers;
   }
 }
 
-class Google_Service_Tagmanager_ListVariablesResponse extends Google_Collection
+class Google_Service_TagManager_ListVariablesResponse extends Google_Collection
 {
   protected $collection_key = 'variables';
   protected $internal_gapi_mappings = array(
   );
-  protected $variablesType = 'Google_Service_Tagmanager_Variable';
+  protected $variablesType = 'Google_Service_TagManager_Variable';
   protected $variablesDataType = 'array';
+
 
   public function setVariables($variables)
   {
     $this->variables = $variables;
   }
-
   public function getVariables()
   {
     return $this->variables;
   }
 }
 
-class Google_Service_Tagmanager_Macro extends Google_Collection
+class Google_Service_TagManager_Macro extends Google_Collection
 {
   protected $collection_key = 'parameter';
   protected $internal_gapi_mappings = array(
@@ -2639,233 +2532,201 @@ class Google_Service_Tagmanager_Macro extends Google_Collection
   public $macroId;
   public $name;
   public $notes;
-  protected $parameterType = 'Google_Service_Tagmanager_Parameter';
+  protected $parameterType = 'Google_Service_TagManager_Parameter';
   protected $parameterDataType = 'array';
   public $scheduleEndMs;
   public $scheduleStartMs;
   public $type;
 
+
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
-
   public function getAccountId()
   {
     return $this->accountId;
   }
-
   public function setContainerId($containerId)
   {
     $this->containerId = $containerId;
   }
-
   public function getContainerId()
   {
     return $this->containerId;
   }
-
   public function setDisablingRuleId($disablingRuleId)
   {
     $this->disablingRuleId = $disablingRuleId;
   }
-
   public function getDisablingRuleId()
   {
     return $this->disablingRuleId;
   }
-
   public function setEnablingRuleId($enablingRuleId)
   {
     $this->enablingRuleId = $enablingRuleId;
   }
-
   public function getEnablingRuleId()
   {
     return $this->enablingRuleId;
   }
-
   public function setFingerprint($fingerprint)
   {
     $this->fingerprint = $fingerprint;
   }
-
   public function getFingerprint()
   {
     return $this->fingerprint;
   }
-
   public function setMacroId($macroId)
   {
     $this->macroId = $macroId;
   }
-
   public function getMacroId()
   {
     return $this->macroId;
   }
-
   public function setName($name)
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
   }
-
   public function setNotes($notes)
   {
     $this->notes = $notes;
   }
-
   public function getNotes()
   {
     return $this->notes;
   }
-
   public function setParameter($parameter)
   {
     $this->parameter = $parameter;
   }
-
   public function getParameter()
   {
     return $this->parameter;
   }
-
   public function setScheduleEndMs($scheduleEndMs)
   {
     $this->scheduleEndMs = $scheduleEndMs;
   }
-
   public function getScheduleEndMs()
   {
     return $this->scheduleEndMs;
   }
-
   public function setScheduleStartMs($scheduleStartMs)
   {
     $this->scheduleStartMs = $scheduleStartMs;
   }
-
   public function getScheduleStartMs()
   {
     return $this->scheduleStartMs;
   }
-
   public function setType($type)
   {
     $this->type = $type;
   }
-
   public function getType()
   {
     return $this->type;
   }
 }
 
-class Google_Service_Tagmanager_Parameter extends Google_Collection
+class Google_Service_TagManager_Parameter extends Google_Collection
 {
   protected $collection_key = 'map';
   protected $internal_gapi_mappings = array(
   );
   public $key;
-  protected $listType = 'Google_Service_Tagmanager_Parameter';
+  protected $listType = 'Google_Service_TagManager_Parameter';
   protected $listDataType = 'array';
-  protected $mapType = 'Google_Service_Tagmanager_Parameter';
+  protected $mapType = 'Google_Service_TagManager_Parameter';
   protected $mapDataType = 'array';
   public $type;
   public $value;
+
 
   public function setKey($key)
   {
     $this->key = $key;
   }
-
   public function getKey()
   {
     return $this->key;
   }
-
   public function setList($list)
   {
     $this->list = $list;
   }
-
   public function getList()
   {
     return $this->list;
   }
-
   public function setMap($map)
   {
     $this->map = $map;
   }
-
   public function getMap()
   {
     return $this->map;
   }
-
   public function setType($type)
   {
     $this->type = $type;
   }
-
   public function getType()
   {
     return $this->type;
   }
-
   public function setValue($value)
   {
     $this->value = $value;
   }
-
   public function getValue()
   {
     return $this->value;
   }
 }
 
-class Google_Service_Tagmanager_PublishContainerVersionResponse extends Google_Model
+class Google_Service_TagManager_PublishContainerVersionResponse extends Google_Model
 {
   protected $internal_gapi_mappings = array(
   );
   public $compilerError;
-  protected $containerVersionType = 'Google_Service_Tagmanager_ContainerVersion';
+  protected $containerVersionType = 'Google_Service_TagManager_ContainerVersion';
   protected $containerVersionDataType = '';
+
 
   public function setCompilerError($compilerError)
   {
     $this->compilerError = $compilerError;
   }
-
   public function getCompilerError()
   {
     return $this->compilerError;
   }
-
-  public function setContainerVersion(Google_Service_Tagmanager_ContainerVersion $containerVersion)
+  public function setContainerVersion(Google_Service_TagManager_ContainerVersion $containerVersion)
   {
     $this->containerVersion = $containerVersion;
   }
-
   public function getContainerVersion()
   {
     return $this->containerVersion;
   }
 }
 
-class Google_Service_Tagmanager_Rule extends Google_Collection
+class Google_Service_TagManager_Rule extends Google_Collection
 {
   protected $collection_key = 'condition';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
-  protected $conditionType = 'Google_Service_Tagmanager_Condition';
+  protected $conditionType = 'Google_Service_TagManager_Condition';
   protected $conditionDataType = 'array';
   public $containerId;
   public $fingerprint;
@@ -2873,78 +2734,66 @@ class Google_Service_Tagmanager_Rule extends Google_Collection
   public $notes;
   public $ruleId;
 
+
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
-
   public function getAccountId()
   {
     return $this->accountId;
   }
-
   public function setCondition($condition)
   {
     $this->condition = $condition;
   }
-
   public function getCondition()
   {
     return $this->condition;
   }
-
   public function setContainerId($containerId)
   {
     $this->containerId = $containerId;
   }
-
   public function getContainerId()
   {
     return $this->containerId;
   }
-
   public function setFingerprint($fingerprint)
   {
     $this->fingerprint = $fingerprint;
   }
-
   public function getFingerprint()
   {
     return $this->fingerprint;
   }
-
   public function setName($name)
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
   }
-
   public function setNotes($notes)
   {
     $this->notes = $notes;
   }
-
   public function getNotes()
   {
     return $this->notes;
   }
-
   public function setRuleId($ruleId)
   {
     $this->ruleId = $ruleId;
   }
-
   public function getRuleId()
   {
     return $this->ruleId;
   }
 }
 
-class Google_Service_Tagmanager_Tag extends Google_Collection
+class Google_Service_TagManager_Tag extends Google_Collection
 {
   protected $collection_key = 'parameter';
   protected $internal_gapi_mappings = array(
@@ -2953,476 +2802,392 @@ class Google_Service_Tagmanager_Tag extends Google_Collection
   public $blockingRuleId;
   public $blockingTriggerId;
   public $containerId;
-  protected $dependenciesType = 'Google_Service_Tagmanager_Parameter';
-  protected $dependenciesDataType = '';
   public $fingerprint;
   public $firingRuleId;
   public $firingTriggerId;
   public $liveOnly;
   public $name;
   public $notes;
-  protected $parameterType = 'Google_Service_Tagmanager_Parameter';
+  protected $parameterType = 'Google_Service_TagManager_Parameter';
   protected $parameterDataType = 'array';
-  protected $priorityType = 'Google_Service_Tagmanager_Parameter';
+  protected $priorityType = 'Google_Service_TagManager_Parameter';
   protected $priorityDataType = '';
   public $scheduleEndMs;
   public $scheduleStartMs;
   public $tagId;
   public $type;
 
+
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
-
   public function getAccountId()
   {
     return $this->accountId;
   }
-
   public function setBlockingRuleId($blockingRuleId)
   {
     $this->blockingRuleId = $blockingRuleId;
   }
-
   public function getBlockingRuleId()
   {
     return $this->blockingRuleId;
   }
-
   public function setBlockingTriggerId($blockingTriggerId)
   {
     $this->blockingTriggerId = $blockingTriggerId;
   }
-
   public function getBlockingTriggerId()
   {
     return $this->blockingTriggerId;
   }
-
   public function setContainerId($containerId)
   {
     $this->containerId = $containerId;
   }
-
   public function getContainerId()
   {
     return $this->containerId;
   }
-
-  public function setDependencies(Google_Service_Tagmanager_Parameter $dependencies)
-  {
-    $this->dependencies = $dependencies;
-  }
-
-  public function getDependencies()
-  {
-    return $this->dependencies;
-  }
-
   public function setFingerprint($fingerprint)
   {
     $this->fingerprint = $fingerprint;
   }
-
   public function getFingerprint()
   {
     return $this->fingerprint;
   }
-
   public function setFiringRuleId($firingRuleId)
   {
     $this->firingRuleId = $firingRuleId;
   }
-
   public function getFiringRuleId()
   {
     return $this->firingRuleId;
   }
-
   public function setFiringTriggerId($firingTriggerId)
   {
     $this->firingTriggerId = $firingTriggerId;
   }
-
   public function getFiringTriggerId()
   {
     return $this->firingTriggerId;
   }
-
   public function setLiveOnly($liveOnly)
   {
     $this->liveOnly = $liveOnly;
   }
-
   public function getLiveOnly()
   {
     return $this->liveOnly;
   }
-
   public function setName($name)
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
   }
-
   public function setNotes($notes)
   {
     $this->notes = $notes;
   }
-
   public function getNotes()
   {
     return $this->notes;
   }
-
   public function setParameter($parameter)
   {
     $this->parameter = $parameter;
   }
-
   public function getParameter()
   {
     return $this->parameter;
   }
-
-  public function setPriority(Google_Service_Tagmanager_Parameter $priority)
+  public function setPriority(Google_Service_TagManager_Parameter $priority)
   {
     $this->priority = $priority;
   }
-
   public function getPriority()
   {
     return $this->priority;
   }
-
   public function setScheduleEndMs($scheduleEndMs)
   {
     $this->scheduleEndMs = $scheduleEndMs;
   }
-
   public function getScheduleEndMs()
   {
     return $this->scheduleEndMs;
   }
-
   public function setScheduleStartMs($scheduleStartMs)
   {
     $this->scheduleStartMs = $scheduleStartMs;
   }
-
   public function getScheduleStartMs()
   {
     return $this->scheduleStartMs;
   }
-
   public function setTagId($tagId)
   {
     $this->tagId = $tagId;
   }
-
   public function getTagId()
   {
     return $this->tagId;
   }
-
   public function setType($type)
   {
     $this->type = $type;
   }
-
   public function getType()
   {
     return $this->type;
   }
 }
 
-class Google_Service_Tagmanager_Trigger extends Google_Collection
+class Google_Service_TagManager_Trigger extends Google_Collection
 {
   protected $collection_key = 'filter';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;
-  protected $autoEventFilterType = 'Google_Service_Tagmanager_Condition';
+  protected $autoEventFilterType = 'Google_Service_TagManager_Condition';
   protected $autoEventFilterDataType = 'array';
-  protected $checkValidationType = 'Google_Service_Tagmanager_Parameter';
+  protected $checkValidationType = 'Google_Service_TagManager_Parameter';
   protected $checkValidationDataType = '';
   public $containerId;
-  protected $customEventFilterType = 'Google_Service_Tagmanager_Condition';
+  protected $customEventFilterType = 'Google_Service_TagManager_Condition';
   protected $customEventFilterDataType = 'array';
-  protected $enableAllVideosType = 'Google_Service_Tagmanager_Parameter';
+  protected $enableAllVideosType = 'Google_Service_TagManager_Parameter';
   protected $enableAllVideosDataType = '';
-  protected $eventNameType = 'Google_Service_Tagmanager_Parameter';
+  protected $eventNameType = 'Google_Service_TagManager_Parameter';
   protected $eventNameDataType = '';
-  protected $filterType = 'Google_Service_Tagmanager_Condition';
+  protected $filterType = 'Google_Service_TagManager_Condition';
   protected $filterDataType = 'array';
   public $fingerprint;
-  protected $intervalType = 'Google_Service_Tagmanager_Parameter';
+  protected $intervalType = 'Google_Service_TagManager_Parameter';
   protected $intervalDataType = '';
-  protected $limitType = 'Google_Service_Tagmanager_Parameter';
+  protected $limitType = 'Google_Service_TagManager_Parameter';
   protected $limitDataType = '';
   public $name;
   public $triggerId;
   public $type;
-  protected $uniqueTriggerIdType = 'Google_Service_Tagmanager_Parameter';
+  protected $uniqueTriggerIdType = 'Google_Service_TagManager_Parameter';
   protected $uniqueTriggerIdDataType = '';
-  protected $videoPercentageListType = 'Google_Service_Tagmanager_Parameter';
+  protected $videoPercentageListType = 'Google_Service_TagManager_Parameter';
   protected $videoPercentageListDataType = '';
-  protected $waitForTagsType = 'Google_Service_Tagmanager_Parameter';
+  protected $waitForTagsType = 'Google_Service_TagManager_Parameter';
   protected $waitForTagsDataType = '';
-  protected $waitForTagsTimeoutType = 'Google_Service_Tagmanager_Parameter';
+  protected $waitForTagsTimeoutType = 'Google_Service_TagManager_Parameter';
   protected $waitForTagsTimeoutDataType = '';
+
 
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
-
   public function getAccountId()
   {
     return $this->accountId;
   }
-
   public function setAutoEventFilter($autoEventFilter)
   {
     $this->autoEventFilter = $autoEventFilter;
   }
-
   public function getAutoEventFilter()
   {
     return $this->autoEventFilter;
   }
-
-  public function setCheckValidation(Google_Service_Tagmanager_Parameter $checkValidation)
+  public function setCheckValidation(Google_Service_TagManager_Parameter $checkValidation)
   {
     $this->checkValidation = $checkValidation;
   }
-
   public function getCheckValidation()
   {
     return $this->checkValidation;
   }
-
   public function setContainerId($containerId)
   {
     $this->containerId = $containerId;
   }
-
   public function getContainerId()
   {
     return $this->containerId;
   }
-
   public function setCustomEventFilter($customEventFilter)
   {
     $this->customEventFilter = $customEventFilter;
   }
-
   public function getCustomEventFilter()
   {
     return $this->customEventFilter;
   }
-
-  public function setEnableAllVideos(Google_Service_Tagmanager_Parameter $enableAllVideos)
+  public function setEnableAllVideos(Google_Service_TagManager_Parameter $enableAllVideos)
   {
     $this->enableAllVideos = $enableAllVideos;
   }
-
   public function getEnableAllVideos()
   {
     return $this->enableAllVideos;
   }
-
-  public function setEventName(Google_Service_Tagmanager_Parameter $eventName)
+  public function setEventName(Google_Service_TagManager_Parameter $eventName)
   {
     $this->eventName = $eventName;
   }
-
   public function getEventName()
   {
     return $this->eventName;
   }
-
   public function setFilter($filter)
   {
     $this->filter = $filter;
   }
-
   public function getFilter()
   {
     return $this->filter;
   }
-
   public function setFingerprint($fingerprint)
   {
     $this->fingerprint = $fingerprint;
   }
-
   public function getFingerprint()
   {
     return $this->fingerprint;
   }
-
-  public function setInterval(Google_Service_Tagmanager_Parameter $interval)
+  public function setInterval(Google_Service_TagManager_Parameter $interval)
   {
     $this->interval = $interval;
   }
-
   public function getInterval()
   {
     return $this->interval;
   }
-
-  public function setLimit(Google_Service_Tagmanager_Parameter $limit)
+  public function setLimit(Google_Service_TagManager_Parameter $limit)
   {
     $this->limit = $limit;
   }
-
   public function getLimit()
   {
     return $this->limit;
   }
-
   public function setName($name)
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
   }
-
   public function setTriggerId($triggerId)
   {
     $this->triggerId = $triggerId;
   }
-
   public function getTriggerId()
   {
     return $this->triggerId;
   }
-
   public function setType($type)
   {
     $this->type = $type;
   }
-
   public function getType()
   {
     return $this->type;
   }
-
-  public function setUniqueTriggerId(Google_Service_Tagmanager_Parameter $uniqueTriggerId)
+  public function setUniqueTriggerId(Google_Service_TagManager_Parameter $uniqueTriggerId)
   {
     $this->uniqueTriggerId = $uniqueTriggerId;
   }
-
   public function getUniqueTriggerId()
   {
     return $this->uniqueTriggerId;
   }
-
-  public function setVideoPercentageList(Google_Service_Tagmanager_Parameter $videoPercentageList)
+  public function setVideoPercentageList(Google_Service_TagManager_Parameter $videoPercentageList)
   {
     $this->videoPercentageList = $videoPercentageList;
   }
-
   public function getVideoPercentageList()
   {
     return $this->videoPercentageList;
   }
-
-  public function setWaitForTags(Google_Service_Tagmanager_Parameter $waitForTags)
+  public function setWaitForTags(Google_Service_TagManager_Parameter $waitForTags)
   {
     $this->waitForTags = $waitForTags;
   }
-
   public function getWaitForTags()
   {
     return $this->waitForTags;
   }
-
-  public function setWaitForTagsTimeout(Google_Service_Tagmanager_Parameter $waitForTagsTimeout)
+  public function setWaitForTagsTimeout(Google_Service_TagManager_Parameter $waitForTagsTimeout)
   {
     $this->waitForTagsTimeout = $waitForTagsTimeout;
   }
-
   public function getWaitForTagsTimeout()
   {
     return $this->waitForTagsTimeout;
   }
 }
 
-class Google_Service_Tagmanager_UserAccess extends Google_Collection
+class Google_Service_TagManager_UserAccess extends Google_Collection
 {
   protected $collection_key = 'containerAccess';
   protected $internal_gapi_mappings = array(
   );
-  protected $accountAccessType = 'Google_Service_Tagmanager_AccountAccess';
+  protected $accountAccessType = 'Google_Service_TagManager_AccountAccess';
   protected $accountAccessDataType = '';
   public $accountId;
-  protected $containerAccessType = 'Google_Service_Tagmanager_ContainerAccess';
+  protected $containerAccessType = 'Google_Service_TagManager_ContainerAccess';
   protected $containerAccessDataType = 'array';
   public $emailAddress;
   public $permissionId;
 
-  public function setAccountAccess(Google_Service_Tagmanager_AccountAccess $accountAccess)
+
+  public function setAccountAccess(Google_Service_TagManager_AccountAccess $accountAccess)
   {
     $this->accountAccess = $accountAccess;
   }
-
   public function getAccountAccess()
   {
     return $this->accountAccess;
   }
-
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
-
   public function getAccountId()
   {
     return $this->accountId;
   }
-
   public function setContainerAccess($containerAccess)
   {
     $this->containerAccess = $containerAccess;
   }
-
   public function getContainerAccess()
   {
     return $this->containerAccess;
   }
-
   public function setEmailAddress($emailAddress)
   {
     $this->emailAddress = $emailAddress;
   }
-
   public function getEmailAddress()
   {
     return $this->emailAddress;
   }
-
   public function setPermissionId($permissionId)
   {
     $this->permissionId = $permissionId;
   }
-
   public function getPermissionId()
   {
     return $this->permissionId;
   }
 }
 
-class Google_Service_Tagmanager_Variable extends Google_Collection
+class Google_Service_TagManager_Variable extends Google_Collection
 {
   protected $collection_key = 'parameter';
   protected $internal_gapi_mappings = array(
@@ -3434,128 +3199,106 @@ class Google_Service_Tagmanager_Variable extends Google_Collection
   public $fingerprint;
   public $name;
   public $notes;
-  protected $parameterType = 'Google_Service_Tagmanager_Parameter';
+  protected $parameterType = 'Google_Service_TagManager_Parameter';
   protected $parameterDataType = 'array';
   public $scheduleEndMs;
   public $scheduleStartMs;
   public $type;
   public $variableId;
 
+
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
-
   public function getAccountId()
   {
     return $this->accountId;
   }
-
   public function setContainerId($containerId)
   {
     $this->containerId = $containerId;
   }
-
   public function getContainerId()
   {
     return $this->containerId;
   }
-
   public function setDisablingTriggerId($disablingTriggerId)
   {
     $this->disablingTriggerId = $disablingTriggerId;
   }
-
   public function getDisablingTriggerId()
   {
     return $this->disablingTriggerId;
   }
-
   public function setEnablingTriggerId($enablingTriggerId)
   {
     $this->enablingTriggerId = $enablingTriggerId;
   }
-
   public function getEnablingTriggerId()
   {
     return $this->enablingTriggerId;
   }
-
   public function setFingerprint($fingerprint)
   {
     $this->fingerprint = $fingerprint;
   }
-
   public function getFingerprint()
   {
     return $this->fingerprint;
   }
-
   public function setName($name)
   {
     $this->name = $name;
   }
-
   public function getName()
   {
     return $this->name;
   }
-
   public function setNotes($notes)
   {
     $this->notes = $notes;
   }
-
   public function getNotes()
   {
     return $this->notes;
   }
-
   public function setParameter($parameter)
   {
     $this->parameter = $parameter;
   }
-
   public function getParameter()
   {
     return $this->parameter;
   }
-
   public function setScheduleEndMs($scheduleEndMs)
   {
     $this->scheduleEndMs = $scheduleEndMs;
   }
-
   public function getScheduleEndMs()
   {
     return $this->scheduleEndMs;
   }
-
   public function setScheduleStartMs($scheduleStartMs)
   {
     $this->scheduleStartMs = $scheduleStartMs;
   }
-
   public function getScheduleStartMs()
   {
     return $this->scheduleStartMs;
   }
-
   public function setType($type)
   {
     $this->type = $type;
   }
-
   public function getType()
   {
     return $this->type;
   }
-
   public function setVariableId($variableId)
   {
     $this->variableId = $variableId;
   }
-
   public function getVariableId()
   {
     return $this->variableId;
