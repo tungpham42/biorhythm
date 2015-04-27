@@ -129,6 +129,25 @@ function maskInput(input, textbox, location, delimiter) {
 	}
 	textbox.val(input);
 }
+function analogClock(){
+}
+analogClock.prototype.run = function() {
+	var date = new Date();
+	var second = date.getSeconds()*6;
+	var minute = date.getMinutes()*6+second/60;
+	var hour = ((date.getHours()%12)/12)*360+90+minute/12;
+	jQuery('#hour').css('transform','rotate('+hour+'deg)');
+	jQuery('#minute').css('transform','rotate('+minute+'deg)');
+	jQuery('#second').css('transform', 'rotate('+second+'deg)');
+};
+$.fn.textWidth = function() {
+	var htmlOrg = $(this).html();
+	var htmlCalc = '<span>'+htmlOrg+'</span>';
+	$(this).html(htmlCalc);
+	var width = $(this).find('span:first').width();
+	$(this).html(htmlOrg);
+	return width;
+};
 
 var q = (isset($('span#variables').attr('data-q')) && $('span#variables').attr('data-q') !== '') ? $('span#variables').attr('data-q'): decodeURIComponent(getUrlVars()['q']);
 var dob = (isset($('span#variables').attr('data-dob')) && $('span#variables').attr('data-dob') !== '') ? $('span#variables').attr('data-dob'): decodeURIComponent(getUrlVars()['dob']);

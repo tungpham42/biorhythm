@@ -355,13 +355,13 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
 	background-repeat: no-repeat;
 }
 .m-btn .icon-white, .icon-white {
-	background-image: url("/img/glyphicons-halflings-white.png");
+	background-image: url("/img/glyphicons-halflings-white.png") !important;
 }
-.icon-orange {
-	background-image: url("/img/glyphicons-halflings-orange.png");
+.m-btn .icon-orange, .icon-orange {
+	background-image: url("/img/glyphicons-halflings-orange.png") !important;
 }
-.icon-red {
-	background-image: url("/img/glyphicons-halflings-red.png");
+.m-btn .icon-red, .icon-red {
+	background-image: url("/img/glyphicons-halflings-red.png") !important;
 }
 .icon-glass {
 	background-position: 0 0;
@@ -925,11 +925,11 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 	 transition: none !important;
 }
 header, header h1, #dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
-	transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
-	-webkit-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
-	-moz-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
-	-o-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
-	-ms-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms;
+	transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms, text-indent linear 150ms;
+	-webkit-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms, text-indent linear 150ms;
+	-moz-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms, text-indent linear 150ms;
+	-o-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms, text-indent linear 150ms;
+	-ms-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms, text-indent linear 150ms;
 	-webkit-font-smoothing: antialiased;
 }
 /* Links */
@@ -1426,7 +1426,7 @@ body:lang(ja) #explanation_vi, body:lang(ja) #explanation_en, body:lang(ja) #exp
 	display: block;
 }
 #dob_control_bar > .m-btn, #controls > .m-btn-group > .m-btn {
-	padding: 10px 9px;
+	padding: 12px 9px;
 	width: auto;
 }
 body:lang(vi) #home_page {
@@ -3794,6 +3794,12 @@ img.ball {
 	height: 420px;
 	margin-bottom: 8px;
 }
+body.birthday .rss_feed {
+	border: 8px solid rgba(240,230,220,0.42);
+}
+body.birthday .rss_feed a {
+	color: #E35604;
+}
 .rss_feed p {
 	white-space: normal !important;
 }
@@ -3814,6 +3820,10 @@ img.ball {
 	-khtml-opacity: 0.42;
 	opacity: 0.42;
 	z-index: 1;
+}
+body.birthday .rss_feed > h2 {
+	color: #E35604;
+	background: #FFD700;
 }
 .rss_feed > .help_rss_feed {
 	display: none;
@@ -3871,6 +3881,9 @@ img.ball {
 	background-color: transparent;
 	padding: 12px 0;
 	border-bottom: 1px dotted #3377dd;
+}
+body.birthday .rss_feed > .feed > .feed_item {
+	border-bottom-color: #FFD700;
 }
 .rss_feed > .feed > .feed_item:last-child {
 	border-bottom: 0;
@@ -4106,8 +4119,8 @@ body.scrolled header {
 	#search_wrapper:hover input#search, #search_wrapper input#search:focus {display: inline-block;}
 	#results table {width: 420px;height: 100%;}
 	#results table td{width: 42px;height: 100%;}
-	ul#nav_buttons > li > a.nav_button.button, body.home header:hover ul#nav_buttons > li > a.nav_button.button.home {display: none !important;}
-	body:lang(vi) header:hover ul#nav_buttons > li > a.nav_button.button, body:lang(vi) ul#nav_buttons:hover > li > a.nav_button.button, header:hover ul#nav_buttons > li > a#intro_link, header:hover ul#nav_buttons > li > a#game_link, ul#nav_buttons:hover > li > a#intro_link, ul#nav_buttons:hover > li > a#game_link, header:hover ul#nav_buttons > li > a#blog_link, ul#nav_buttons:hover > li > a#blog_link, header:hover ul#nav_buttons > li > a#forum_link, ul#nav_buttons:hover > li > a#forum_link {display: block !important;}
+	ul#nav_buttons > li > a.nav_button.button, body.home header.clicked ul#nav_buttons > li > a.nav_button.button.home {display: none !important;}
+	body:lang(vi) header.clicked ul#nav_buttons > li > a.nav_button.button, body:lang(vi) ul#nav_buttons:hover > li > a.nav_button.button, header.clicked ul#nav_buttons > li > a#intro_link, header.clicked ul#nav_buttons > li > a#game_link, ul#nav_buttons:hover > li > a#intro_link, ul#nav_buttons:hover > li > a#game_link, header.clicked ul#nav_buttons > li > a#blog_link, ul#nav_buttons:hover > li > a#blog_link, header.clicked ul#nav_buttons > li > a#forum_link, ul#nav_buttons:hover > li > a#forum_link {display: block !important;}
 	ul#nav_buttons {margin-left: 45px;top: 45px;}
 	ul#nav_buttons > li {float: none;}
 	ul#nav_buttons > li > a.nav_button.button {padding: 4px 8px;line-height: 24px;margin: 0;font-size: 12px;width: 120px;text-align: center;}
@@ -4140,14 +4153,14 @@ body.scrolled header {
 	#clock, #help {margin-top: 10px;margin-bottom: 0;}
 }
 @media all and (min-width: 960px) {
-	body.scrolled header {height: 75px;}
-	body.scrolled header h1 {font-size: 21px;line-height: 28px;top: 10px;margin-left: 45px;width: calc(100% - 57px);width: -webkit-calc(100% - 57px);width: -moz-calc(100% - 57px);}
-	body.scrolled #logo {transform: scale(0.8);-webkit-transform: scale(0.8);-moz-transform: scale(0.8);-o-transform: scale(0.8);-ms-transform: scale(0.8);top: 4px;left: -4px;}
-	body.scrolled #main {padding-top: 75px;}
-	body.scrolled ul#nav_buttons {margin-left: 62px;top: 38px;}
+	body.scrolled header {height: 70px;}
+	body.scrolled header h1 {font-size: 21px;line-height: 28px;top: 5px;margin-left: 45px;width: calc(100% - 57px);width: -webkit-calc(100% - 57px);width: -moz-calc(100% - 57px);}
+	body.scrolled #logo {transform: scale(0.8);-webkit-transform: scale(0.8);-moz-transform: scale(0.8);-o-transform: scale(0.8);-ms-transform: scale(0.8);top: 2px;left: -4px;}
+	body.scrolled #main {padding-top: 70px;}
+	body.scrolled ul#nav_buttons {margin-left: 62px;top: 36px;}
 	body.scrolled ul#nav_buttons > li > a.nav_button.button {line-height: 26px;font-size: 11px;}
 	body.scrolled #search_wrapper {bottom: 3px;}
-	body.scrolled .banner.left.w160, body.scrolled .banner.right.w160 {margin-top: 75px;}
+	body.scrolled .banner.left.w160, body.scrolled .banner.right.w160 {margin-top: 70px;}
 	#proverb {top: 13px;}
 	#news, #info, #stats, #compatibility, #lunar, #controls, #chart, #explanation_chart_results {margin: 22px 0;}
 	/*#dob_form:hover, #help:hover, #info:hover, #stats:hover, #compatibility:hover, #lunar:hover, #controls:hover {transform: scale(1.04);-webkit-transform: scale(1.04);-moz-transform: scale(1.04);-o-transform: scale(1.04);-ms-transform: scale(1.04);}*/

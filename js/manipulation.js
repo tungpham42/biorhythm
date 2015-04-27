@@ -1,4 +1,5 @@
 function manipulateHeader() {
+	var supportedEvent = ('ontouchstart' in window ) ? 'touchstart':'mousedown';
 	$('header').on({
 		change: function() {
 			validateSearch(false);
@@ -22,8 +23,21 @@ function manipulateHeader() {
 				validateSearch(false);
 			}
 		}
-	}, '#search').on('click', '#search_submit', function() {
+	}, '#search').on({
+		mouseenter: function() {
+			marqueeHeading();
+		},
+		mouseleave: function() {
+			$('h1#heading').css('textIndent','0px');
+		}
+	}, 'h1#heading').on('click', '#search_submit', function() {
 		validateSearch(true);
+	}).on(supportedEvent, function() {
+		if (!$('header').hasClass('clicked')) {
+			$('header').addClass('clicked');
+		} else if ($('header').hasClass('clicked')) {
+			$('header').removeClass('clicked');
+		}
 	});
 }
 function manipulateDobForm() {
@@ -181,14 +195,14 @@ function manipulateExplanation() {
 }
 function manipulateBirthday() {
 	if ($('body').hasClass('birthday')) {
-		$('#home_page, #dob_erase, #prev, #next').removeClass('blue').addClass('orange');
-		$('#proverb_content, li.rhythm, #embed_toggle, .helper, .infor').find('i').removeClass('icon-white').addClass('icon-orange');
-		$('#logo').find('i').removeClass('m-icon-white').addClass('m-icon-orange');
+		$('.button_changeable.blue').removeClass('blue').addClass('orange');
+		$('.changeable').find('i.icon-white').removeClass('icon-white').addClass('icon-orange');
+		$('.changeable').find('i.m-icon-white').removeClass('m-icon-white').addClass('m-icon-orange');
 		$('h1#heading').burn();
 	} else if (!$('body').hasClass('birthday')) {
-		$('#home_page, #dob_erase, #prev, #next').removeClass('orange').addClass('blue');
-		$('#proverb_content, li.rhythm, #embed_toggle, .helper, .infor').find('i').removeClass('icon-orange').addClass('icon-white');
-		$('#logo').find('i').removeClass('m-icon-orange').addClass('m-icon-white');
+		$('.button_changeable.orange').removeClass('orange').addClass('blue');
+		$('.changeable').find('i.icon-orange').removeClass('icon-orange').addClass('icon-white');
+		$('.changeable').find('i.m-icon-orange').removeClass('m-icon-orange').addClass('m-icon-white');
 		$('h1#heading').burn(false);
 	}
 }
@@ -332,14 +346,14 @@ function manipulateInfor(selector,content) {
 function manipulateScroll() {
 	if ($(document).scrollTop() >= 9) {
 		$('body').addClass('scrolled');
-	} else if ($(document).scrollTop() >= 0 && $(document).scrollTop() < 9) {
+	} else {
 		$('body').removeClass('scrolled');
 	}
 	animateScrollProverb();
 	$(window).on('scroll mousewheel wheel DOMMouseScroll resize', function(){
 		if ($(document).scrollTop() >= 9) {
 			$('body').addClass('scrolled');
-		} else if ($(document).scrollTop() >= 0 && $(document).scrollTop() < 9) {
+		} else {
 			$('body').removeClass('scrolled');
 		}
 		animateScrollProverb();

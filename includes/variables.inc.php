@@ -6,6 +6,22 @@ require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/timezone.php';
 $geoip = geoip_open(realpath($_SERVER['DOCUMENT_ROOT']).'/includes/ip/GeoIPCity.dat',GEOIP_STANDARD);
 $geoip_record = geoip_record_by_addr($geoip,$_SERVER['REMOTE_ADDR']);
 $lang_codes = array('vi','en','ru','es','zh','ja');
+$lang_fb_apis = array(
+	'vi' => 'vi_VN',
+	'en' => 'en_US',
+	'ru' => 'ru_RU',
+	'es' => 'es_ES',
+	'zh' => 'zh_CN',
+	'ja' => 'ja_JP'
+);
+$lang_g_apis = array(
+	'vi' => 'vi',
+	'en' => 'en-US',
+	'ru' => 'ru',
+	'es' => 'es',
+	'zh' => 'zh-CN',
+	'ja' => 'ja'
+);
 $navs = array('intro','bmi','lunar','2048');
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/prep.inc.php';
 $brand = 'Nhip Sinh Hoc . VN';
