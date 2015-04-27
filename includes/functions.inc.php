@@ -826,12 +826,12 @@ function home_title() {
 	global $lang_code;
 	global $fullname;
 	switch ($lang_code) {
-		case 'vi': return 'Tính nhịp sinh học'.(($fullname != '') ? ' cho '.$fullname: ''); break;
-		case 'en': return 'Calculate biorhythm'.(($fullname != '') ? ' for '.$fullname: ''); break;
-		case 'ru': return 'Рассчитать биоритм'.(($fullname != '') ? ' для '.$fullname: ''); break;
-		case 'es': return 'Calcular biorritmo'.(($fullname != '') ? ' para '.$fullname: ''); break;
-		case 'zh': return '计算生理节律'.(($fullname != '') ? '供'.$fullname: ''); break;
-		case 'ja': return 'を計算バイオリズム'.(($fullname != '') ? 'のために'.$fullname: ''); break;
+		case 'vi': return 'Nhịp sinh học'.(($fullname != '') ? ' của '.$fullname: ''); break;
+		case 'en': return 'Biorhythm'.(($fullname != '') ? ' of '.$fullname: ''); break;
+		case 'ru': return 'Биоритм'.(($fullname != '') ? ' из '.$fullname: ''); break;
+		case 'es': return 'Biorritmo'.(($fullname != '') ? ' de '.$fullname: ''); break;
+		case 'zh': return '生理节律'.(($fullname != '') ? '的'.$fullname: ''); break;
+		case 'ja': return 'バイオリズム'.(($fullname != '') ? 'の'.$fullname: ''); break;
 	}
 }
 function birthday_title() {
@@ -880,11 +880,11 @@ function search_title() {
 function head_description() {
 	global $lang_code;
 	switch ($lang_code) {
-		case 'vi': return 'Biểu đồ Nhịp sinh học hiển thị dự đoán Sức khỏe, Tình cảm, Trí tuệ của bạn'; break;
+		case 'vi': return 'Biểu đồ nhịp sinh học hiển thị dự đoán Sức khỏe, Tình cảm, Trí tuệ của bạn'; break;
 		case 'en': return 'Biorhythm chart tells your physical, emotional, intellectual values'; break;
 		case 'ru': return 'Биоритм диаграммы рассказывает ваш физические, эмоциональные, интеллектуальные ценности'; break;
-		case 'es': return 'Biorritmo Carta le dice tu valores físicos, intelectuales y emocionales'; break;
-		case 'zh': return '生物节律图表告诉你的身体，情绪，智力值'; break;
+		case 'es': return 'Biorritmo carta le dice tu valores físicos, intelectuales y emocionales'; break;
+		case 'zh': return '生理节律图表告诉你的身体，情绪，智力值'; break;
 		case 'ja': return 'バイオリズムチャートは、物理的、感情的、知的なあなたの値を伝えます'; break;
 	}
 }
@@ -1065,7 +1065,7 @@ function render_proverb($name) {
 	$proverbs->parse(realpath($_SERVER['DOCUMENT_ROOT']).'/proverbs/'.$name.'.csv');
 	$count = count($proverbs->data);
 	$index = rand(0, $count-1);
-	echo '<blockquote id="proverb_content"><i id="proverb_refresh" class="icon-white icon-refresh"></i><div id="proverb_text" onClick="selectText(\'proverb_text\')">'.$proverbs->data[$index]['content'].'</div></blockquote ><span class="arrow_down"></span><p id="proverb_author">'.$proverbs->data[$index]['author'].'</p>';
+	echo '<blockquote id="proverb_content" class="changeable"><i id="proverb_refresh" class="icon-white icon-refresh"></i><div id="proverb_text" onClick="selectText(\'proverb_text\')">'.$proverbs->data[$index]['content'].'</div></blockquote ><span class="arrow_down"></span><p id="proverb_author">'.$proverbs->data[$index]['author'].'</p>';
 }
 function render_country_json() {
 	global $geoip_record;
@@ -1503,7 +1503,7 @@ function get_lunar_years_old($dob, $date = 'today') {
 function render_rss_feed($rss_url,$feed_header,$feed_id) {
 	$result = '<section id="'.$feed_id.'" class="rss_feed">';
 	$result .= '<h2>'.$feed_header.'</h2>';
-	$result .= '<div class="help help_rss_feed"><i class="m-icon-white"></i></div>';
+	$result .= '<div class="help help_rss_feed changeable"><i class="m-icon-white"></i></div>';
 	$result .= '<div class="feed"></div>';
 	$result .= '</section>';
 	$result .= '<span id="'.$feed_id.'_end"></span>';

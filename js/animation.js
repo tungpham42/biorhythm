@@ -210,8 +210,15 @@ function helpFullname() {
 		$('#help_name').removeClass('empty');
 	}
 }
+function marqueeHeading() {
+	if ($('h1#heading').textWidth() > $('h1#heading').width()) {
+		$('h1#heading').css('textIndent',-($('h1#heading').textWidth()-$('h1#heading').width())+'px');
+	} else if ($('h1#heading').textWidth() <= $('h1#heading').width()) {
+		$('h1#heading').css('textIndent','0px');
+	}
+}
 function rippleButtons() {
-	$('a.button, button, input[type="submit"], input[type="reset"], input[type="button"], a.m-btn, a#logo, .dates-box .m-btn, #explain_source').ripple();
+	$('a.button, button, input[type="submit"], input[type="reset"], input[type="button"], a.m-btn:not(#name_toggle), a#logo, .dates-box .m-btn, #explain_source').ripple();
 }
 // Race functions
 function getRandom(min, max) {
@@ -310,14 +317,3 @@ function animateScrollProverb() {
 		}
 	}
 }
-function analogClock(){
-}
-analogClock.prototype.run = function() {
-	var date = new Date();
-	var second = date.getSeconds()*6;
-	var minute = date.getMinutes()*6+second/60;
-	var hour = ((date.getHours()%12)/12)*360+90+minute/12;
-	jQuery('#hour').css('transform','rotate('+hour+'deg)');
-	jQuery('#minute').css('transform','rotate('+minute+'deg)');
-	jQuery('#second').css('transform', 'rotate('+second+'deg)');
-};

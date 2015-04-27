@@ -1,10 +1,7 @@
 <style>
-	#page_section {
-		top: 30px;
-	}
-	#loading {
-		top: 40px !important;
-	}
+header, main, footer, .w160 {
+	top: 30px;
+}
 </style>
 <div id="toolbar">
 	<ul class="toolbar">
