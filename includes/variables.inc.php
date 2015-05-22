@@ -32,12 +32,12 @@ $fullname = isset($_GET['fullname']) ? prevent_xss($_GET['fullname']): (isset($_
 $embed = isset($_GET['embed']) ? prevent_xss($_GET['embed']): 0;
 $lang_code = init_lang_code();
 $time_zone = 7;
-$show_ad = false;
+$show_ad = true;
 $show_donate = false;
 $show_sponsor = false;
 $show_addthis = false;
-$show_sumome = false;
-$credential_id = 4;
+$show_sumome = true;
+$credential_id = 3;
 $number = calculate_life_path($dob);
 if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['partner_dob']) && isset($_GET['lang_code'])) {
 	$chart = new Chart($_GET['dob'],$_GET['diff'],$_GET['is_secondary'],$_GET['dt_change'],$_GET['partner_dob'],$_GET['lang_code']);
@@ -172,7 +172,7 @@ $button_interfaces = array(
 		'ja' => 'フォーラム'
 	),
 	'bmi' => array(
-		'vi' => 'Chỉ số khối cơ thể',
+		'vi' => 'BMI',
 		'en' => 'Body mass index',
 		'ru' => 'Индекс массы тела',
 		'es' => 'Índice de masa corporal',
@@ -202,6 +202,14 @@ $button_interfaces = array(
 		'es' => 'Estudio',
 		'zh' => '调查',
 		'ja' => '調査'
+	),
+	'apps' => array(
+		'vi' => 'Các ứng dụng',
+		'en' => 'Applications',
+		'ru' => 'Приложений',
+		'es' => 'Aplicaciones',
+		'zh' => '应用',
+		'ja' => 'アプリケーション'
 	),
 	'donate' => array(
 		'vi' => 'ĐÓNG GÓP',
@@ -234,6 +242,22 @@ $button_interfaces = array(
 		'es' => 'poner bandera',
 		'zh' => '把旗帜',
 		'ja' => 'バナーを置くために'
+	),
+	'install_chrome' => array(
+		'vi' => 'Thêm vào Chrome',
+		'en' => 'Add to Chrome',
+		'ru' => 'Добавить в Chrome',
+		'es' => 'Añadir a Chrome',
+		'zh' => '添加到Chrome浏览器',
+		'ja' => 'クロームに追加'
+	),
+	'install_firefox' => array(
+		'vi' => 'Cài ứng dụng Firefox',
+		'en' => 'Install Firefox app',
+		'ru' => 'Установите Firefox приложение',
+		'es' => 'Instalar Firefox aplicación',
+		'zh' => '安装Firefox的应用程序',
+		'ja' => 'Firefoxのアプリをインストール'
 	)
 );
 $span_interfaces = array(
@@ -300,6 +324,22 @@ $span_interfaces = array(
 		'es' => 'Noticias',
 		'zh' => '新闻',
 		'ja' => 'ニュース'
+	),
+	'apps' => array(
+		'vi' => 'Các ứng dụng',
+		'en' => 'Applications',
+		'ru' => 'Приложений',
+		'es' => 'Aplicaciones',
+		'zh' => '应用',
+		'ja' => 'アプリケーション'
+	),
+	'apps_one_lang' => array(
+		'vi' => 'Một ngôn ngữ',
+		'en' => 'Single language',
+		'ru' => 'Один язык',
+		'es' => 'Uno lenguaje',
+		'zh' => '一語言',
+		'ja' => '一言語'
 	)
 );
 $menu_interfaces = array(

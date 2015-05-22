@@ -77,16 +77,5 @@
 		<p class="explain"><strong><?php echo get_rhythm_title(6,'ja'); ?></strong>: このサイクルは48日<span class="explain_more">、自分自身の人格と個性を知覚する能力を表現しています</span>。</p>
 		<p class="explain"><strong><?php echo get_rhythm_title(7,'ja'); ?></strong>: このサイクルは53日<span class="explain_more">、内部安定性とリラックスした姿勢について説明します</span>。</p>
 	</section>
-	<div id="ebook_wrapper" class="m-btn-group">
-		<a id="explain_source" target="_blank" class="m-btn" data-toggle="dropdown"><span>E-book</span></a>
-		<a class="m-btn dropdown-carettoggle" data-toggle="dropdown"><span class="caret"></span></a>
-		<ul class="m-dropdown-menu">
-			<li><a target="_blank" href="/uploads/Biorhythm_Awareness.pdf">Biorhythm_Awareness.pdf</a></li>
-			<li><a target="_blank" href="/uploads/IDOSI.pdf">IDOSI.pdf</a></li>
-			<li><a target="_blank" href="/uploads/IJBR.pdf">IJBR.pdf</a></li>
-			<li><a target="_blank" href="/uploads/TextRoad.pdf">TextRoad.pdf</a></li>
-			<li><a target="_blank" href="/uploads/Utah.pdf">Utah.pdf</a></li>
-		</ul>
-	</div>
 	<div class="clear"></div>
 </div>

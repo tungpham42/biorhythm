@@ -89,8 +89,9 @@ cite {
 }
 h1, h2, h3, h4, h5, h6 {
 	margin: 10px 0;
-	font-family: inherit;
-	font-weight: bold;
+	font-family: 'Myriad Pro',sans-serif !important;
+	font-weight: inherit;
+	font-style: inherit;
 	line-height: 1;
 	color: inherit;
 }
@@ -827,11 +828,11 @@ html {
 	height: 100%;
 }
 * {
-	transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
-	-webkit-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
-	-moz-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
-	-o-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;
-	-ms-transition: border linear 150ms, background-color linear 150ms, background-image linear 150ms;	
+	transition: border linear 120ms, background-color linear 120ms, background-image linear 120ms;
+	-webkit-transition: border linear 120ms, background-color linear 120ms, background-image linear 120ms;
+	-moz-transition: border linear 120ms, background-color linear 120ms, background-image linear 120ms;
+	-o-transition: border linear 120ms, background-color linear 120ms, background-image linear 120ms;
+	-ms-transition: border linear 120ms, background-color linear 120ms, background-image linear 120ms;
 	-moz-border-radius: 0.1px;
 	-webkit-border-radius: 0.1px;
 	border-radius: 0.1px;
@@ -896,25 +897,25 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 	height: 0;
 	float: left;
 	transition-property: border-radius, width, height, background, margin-left, margin-top;
-	transition-duration: 150ms;
+	transition-duration: 120ms;
 	transition-timing-function: linear;
 	-webkit-transition-property: border-radius, width, height, background, margin-left, margin-top;
-	-webkit-transition-duration: 150ms;
+	-webkit-transition-duration: 120ms;
 	-webkit-transition-timing-function: linear;
 	-moz-transition-property: border-radius, width, height, background, margin-left, margin-top;
-	-moz-transition-duration: 150ms;
+	-moz-transition-duration: 120ms;
 	-moz-transition-timing-function: linear;	
 	-o-transition-property: border-radius, width, height, background, margin-left, margin-top;
-	-o-transition-duration: 150ms;
+	-o-transition-duration: 120ms;
 	-o-transition-timing-function: linear;
 }
 .ripple .ripple-effect-out {
 	position: absolute !important;
 	pointer-events: none !important;
-	transition: background 150ms linear, opacity 150ms linear;
-	-webkit-transition: background 150ms linear, opacity 150ms linear;
-	-moz-transition: background 150ms linear, opacity 150ms linear;
-	-o-transition: background 150ms linear, opacity 150ms linear;
+	transition: background 120ms linear, opacity 120ms linear;
+	-webkit-transition: background 120ms linear, opacity 120ms linear;
+	-moz-transition: background 120ms linear, opacity 120ms linear;
+	-o-transition: background 120ms linear, opacity 120ms linear;
 }
 .ripple .ripple-stop {
 	position: absolute !important;
@@ -925,12 +926,27 @@ h6 {font: bold 1.2em Roboto,sans-serif;}
 	 transition: none !important;
 }
 header, header h1, #dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
-	transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms, text-indent linear 150ms;
-	-webkit-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms, text-indent linear 150ms;
-	-moz-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms, text-indent linear 150ms;
-	-o-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms, text-indent linear 150ms;
-	-ms-transition: box-shadow linear 150ms, background-color linear 150ms, background-image linear 150ms, border-color linear 150ms, opacity linear 150ms, transform linear 150ms, text-indent linear 150ms;
+	transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
+	-webkit-transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
+	-moz-transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
+	-o-transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
+	-ms-transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
 	-webkit-font-smoothing: antialiased;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	perspective: 1000px;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	-o-perspective: 1000px;
+	-ms-perspective: 1000px;
+	transform: translate3d(0,0,0);
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
 }
 /* Links */
 a {
@@ -1130,6 +1146,7 @@ span.counter {
 	-ms-user-select: none;
 }
 /* Layout */
+#canvas {display: block;}
 #page_section {
 	position: relative;
 	background-color: rgba(255,255,255,0);
@@ -1210,6 +1227,15 @@ header {
 	box-shadow: 0 0 10px 3px rgba(42,42,42,.42);
 }
 body.birthday header {
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E37644,endColorstr=#E35604,GradientType=0)";
+	background-image: -ms-linear-gradient(top, #E37644 0%, #E35604 100%);
+	background-image: -moz-linear-gradient(top, #E37644 0%, #E35604 100%);
+	background-image: -o-linear-gradient(top, #E37644 0%, #E35604 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #E37644), color-stop(1, #E35604));
+	background-image: -webkit-linear-gradient(top, #E37644 0%, #E35604 100%);
+	background-image: linear-gradient(to bottom, #E37644 0%, #E35604 100%);
+	color: #FFD700;
+	border-color: #FFD700;
 	-ms-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
 	-o-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
 	-moz-box-shadow: 0 0 10px 3px rgba(168,84,42,.42);
@@ -1235,7 +1261,9 @@ header h1 {
 	line-height: 40px;
 	white-space: nowrap;
 }
-body:not(.birthday) header h1#heading {text-shadow: none !important;}
+body:not(.birthday) header h1#heading {
+	text-shadow: 0 1px 0 #d2d2d2, 0 2px 0 #dbdbdb, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15) !important;
+}
 a#logo > i {
 	margin: 6px;
 	width: 30px;
@@ -1273,6 +1301,18 @@ a#logo:active > i {
 }
 #search_wrapper input#search {
 	width: 200px;
+}
+body.scrolled.one_lang #search_wrapper {
+	width: auto;
+}
+body.scrolled.one_lang #search_wrapper input#search {
+	display: none;
+}
+body.scrolled.one_lang #search_wrapper:hover, body.scrolled.one_lang #search_wrapper:focus {
+	width: 260px;
+}
+body.scrolled.one_lang #search_wrapper:hover input#search, body.scrolled.one_lang #search_wrapper input#search:focus {
+	display: inline-block;
 }
 .gsc-control-cse table, .gsc-control-cse table td, .gsc-webResult .gsc-result {
 	border: 0;
@@ -1329,7 +1369,7 @@ ul#nav_buttons > li > a.nav_button.button {
 }
 body:lang(vi) ul#nav_buttons > li > a.nav_button.button {display: block}
 body:lang(en) ul#nav_buttons > li > a.nav_button.button, body:lang(ru) ul#nav_buttons > li > a.nav_button.button, body:lang(es) ul#nav_buttons > li > a.nav_button.button, body:lang(zh) ul#nav_buttons > li > a.nav_button.button, body:lang(ja) ul#nav_buttons > li > a.nav_button.button {display: none}
-ul#nav_buttons > li > a#intro_link, ul#nav_buttons > li > a#game_link, ul#nav_buttons > li > a#blog_link, ul#nav_buttons > li > a#forum_link, body.intro ul#nav_buttons > li > a.nav_button.button.home, body.game ul#nav_buttons > li > a.nav_button.button.home {display: block}
+ul#nav_buttons > li > a#intro_link, ul#nav_buttons > li > a#game_link, ul#nav_buttons > li > a#apps_link, ul#nav_buttons > li > a#blog_link, ul#nav_buttons > li > a#forum_link, body.intro ul#nav_buttons > li > a.nav_button.button.home, body.game ul#nav_buttons > li > a.nav_button.button.home {display: block}
 body.home ul#nav_buttons > li > a.nav_button.button.home {display: none}
 body:lang(vi) p#char {display: block}
 body:lang(en) p#char, body:lang(ru) p#char, body:lang(es) p#char, body:lang(zh) p#char, body:lang(ja) p#char {display: none}
@@ -1414,14 +1454,14 @@ span.lang {
 #ja_toggle:hover i.flag {
 	background-position: 0 -352px;
 }
-#explanation_vi, #explanation_en, #explanation_ru, #explanation_es, #explanation_zh, #explanation_ja, #introduction_vi, #introduction_en, #introduction_ru, #introduction_es, #introduction_zh, #introduction_ja {display: none}
-body:lang(vi) #explanation_vi, body:lang(en) #explanation_en, body:lang(ru) #explanation_ru, body:lang(es) #explanation_es, body:lang(zh) #explanation_zh, body:lang(ja) #explanation_ja, body:lang(vi) #introduction_vi, body:lang(en) #introduction_en, body:lang(ru) #introduction_ru, body:lang(es) #introduction_es, body:lang(zh) #introduction_zh, body:lang(ja) #introduction_ja {display: block}
-body:lang(vi) #explanation_en, body:lang(vi) #explanation_ru, body:lang(vi) #explanation_es, body:lang(vi) #explanation_zh, body:lang(vi) #explanation_ja, body:lang(vi) #introduction_en, body:lang(vi) #introduction_ru, body:lang(vi) #introduction_es, body:lang(vi) #introduction_zh, body:lang(vi) #introduction_ja {display: none}
-body:lang(en) #explanation_vi, body:lang(en) #explanation_ru, body:lang(en) #explanation_es, body:lang(en) #explanation_zh, body:lang(en) #explanation_ja, body:lang(en) #introduction_vi, body:lang(en) #introduction_ru, body:lang(en) #introduction_es, body:lang(en) #introduction_zh, body:lang(en) #introduction_ja {display: none}
-body:lang(ru) #explanation_vi, body:lang(ru) #explanation_en, body:lang(ru) #explanation_es, body:lang(ru) #explanation_zh, body:lang(ru) #explanation_ja, body:lang(ru) #introduction_vi, body:lang(ru) #introduction_en, body:lang(ru) #introduction_es, body:lang(ru) #introduction_zh, body:lang(ru) #introduction_ja {display: none}
-body:lang(es) #explanation_vi, body:lang(es) #explanation_en, body:lang(es) #explanation_ru, body:lang(es) #explanation_zh, body:lang(es) #explanation_ja, body:lang(es) #introduction_vi, body:lang(es) #introduction_en, body:lang(es) #introduction_ru, body:lang(es) #introduction_zh, body:lang(es) #introduction_ja {display: none}
-body:lang(zh) #explanation_vi, body:lang(zh) #explanation_en, body:lang(zh) #explanation_ru, body:lang(zh) #explanation_es, body:lang(zh) #explanation_ja, body:lang(zh) #introduction_vi, body:lang(zh) #introduction_en, body:lang(zh) #introduction_ru, body:lang(zh) #introduction_es, body:lang(zh) #introduction_ja {display: none}
-body:lang(ja) #explanation_vi, body:lang(ja) #explanation_en, body:lang(ja) #explanation_ru, body:lang(ja) #explanation_es, body:lang(ja) #explanation_zh, body:lang(ja) #introduction_vi, body:lang(ja) #introduction_en, body:lang(ja) #introduction_ru, body:lang(ja) #introduction_es, body:lang(ja) #introduction_zh {display: none}
+#explanation_vi, #explanation_en, #explanation_ru, #explanation_es, #explanation_zh, #explanation_ja, #introduction_vi, #introduction_en, #introduction_ru, #introduction_es, #introduction_zh, #introduction_ja, #android_vi, #android_en, #android_ru, #android_es, #android_zh, #android_ja, #android_lunar, h4.apps.lunar {display: none}
+body:lang(vi) #explanation_vi, body:lang(en) #explanation_en, body:lang(ru) #explanation_ru, body:lang(es) #explanation_es, body:lang(zh) #explanation_zh, body:lang(ja) #explanation_ja, body:lang(vi) #introduction_vi, body:lang(en) #introduction_en, body:lang(ru) #introduction_ru, body:lang(es) #introduction_es, body:lang(zh) #introduction_zh, body:lang(ja) #introduction_ja, body:lang(vi) #android_vi, body:lang(en) #android_en, body:lang(ru) #android_ru, body:lang(es) #android_es, body:lang(zh) #android_zh, body:lang(ja) #android_ja, body:lang(vi) #android_lunar, body:lang(vi) h4.apps.lunar {display: block}
+body:lang(vi) #explanation_en, body:lang(vi) #explanation_ru, body:lang(vi) #explanation_es, body:lang(vi) #explanation_zh, body:lang(vi) #explanation_ja, body:lang(vi) #introduction_en, body:lang(vi) #introduction_ru, body:lang(vi) #introduction_es, body:lang(vi) #introduction_zh, body:lang(vi) #introduction_ja, body:lang(vi) #android_en, body:lang(vi) #android_ru, body:lang(vi) #android_es, body:lang(vi) #android_zh, body:lang(vi) #android_ja {display: none}
+body:lang(en) #explanation_vi, body:lang(en) #explanation_ru, body:lang(en) #explanation_es, body:lang(en) #explanation_zh, body:lang(en) #explanation_ja, body:lang(en) #introduction_vi, body:lang(en) #introduction_ru, body:lang(en) #introduction_es, body:lang(en) #introduction_zh, body:lang(en) #introduction_ja, body:lang(en) #android_vi, body:lang(en) #android_ru, body:lang(en) #android_es, body:lang(en) #android_zh, body:lang(en) #android_ja, body:lang(en) #android_lunar, body:lang(en) h4.apps.lunar {display: none}
+body:lang(ru) #explanation_vi, body:lang(ru) #explanation_en, body:lang(ru) #explanation_es, body:lang(ru) #explanation_zh, body:lang(ru) #explanation_ja, body:lang(ru) #introduction_vi, body:lang(ru) #introduction_en, body:lang(ru) #introduction_es, body:lang(ru) #introduction_zh, body:lang(ru) #introduction_ja, body:lang(ru) #android_vi, body:lang(ru) #android_en, body:lang(ru) #android_es, body:lang(ru) #android_zh, body:lang(ru) #android_ja, body:lang(ru) #android_lunar, body:lang(ru) h4.apps.lunar {display: none}
+body:lang(es) #explanation_vi, body:lang(es) #explanation_en, body:lang(es) #explanation_ru, body:lang(es) #explanation_zh, body:lang(es) #explanation_ja, body:lang(es) #introduction_vi, body:lang(es) #introduction_en, body:lang(es) #introduction_ru, body:lang(es) #introduction_zh, body:lang(es) #introduction_ja, body:lang(es) #android_vi, body:lang(es) #android_en, body:lang(es) #android_ru, body:lang(es) #android_zh, body:lang(es) #android_ja, body:lang(es) #android_lunar, body:lang(es) h4.apps.lunar {display: none}
+body:lang(zh) #explanation_vi, body:lang(zh) #explanation_en, body:lang(zh) #explanation_ru, body:lang(zh) #explanation_es, body:lang(zh) #explanation_ja, body:lang(zh) #introduction_vi, body:lang(zh) #introduction_en, body:lang(zh) #introduction_ru, body:lang(zh) #introduction_es, body:lang(zh) #introduction_ja, body:lang(zh) #android_vi, body:lang(zh) #android_en, body:lang(zh) #android_ru, body:lang(zh) #android_es, body:lang(zh) #android_ja, body:lang(zh) #android_lunar, body:lang(zh) h4.apps.lunar {display: none}
+body:lang(ja) #explanation_vi, body:lang(ja) #explanation_en, body:lang(ja) #explanation_ru, body:lang(ja) #explanation_es, body:lang(ja) #explanation_zh, body:lang(ja) #introduction_vi, body:lang(ja) #introduction_en, body:lang(ja) #introduction_ru, body:lang(ja) #introduction_es, body:lang(ja) #introduction_zh, body:lang(ja) #android_vi, body:lang(ja) #android_en, body:lang(ja) #android_ru, body:lang(ja) #android_es, body:lang(ja) #android_zh, body:lang(ja) #android_lunar, body:lang(ja) h4.apps.lunar {display: none}
 #dob_control_bar {
 	display: block;
 }
@@ -1625,7 +1665,7 @@ body.today #dob_form, body.today #clock, body.today #news, body.today #info, bod
 	color: #FFF;
 	border-color: #FFF;
 }
-body.birthday header, body.birthday #dob_form, body.birthday #clock, body.birthday #news, body.birthday #info, body.birthday #stats, body.birthday #compatibility, body.birthday #life_path_link, body.birthday #lunar_desc, body.birthday #controls, body.birthday #lunar, body.birthday .nav_button.button, body.birthday .help, body.birthday .add-on, body.birthday #dt_change_label, body.birthday #partner_dob_label, body.birthday label[for="is_secondary"], body.birthday #embed_toggle, body.birthday #lunar_desc, body.birthday footer	{
+body.birthday #dob_form, body.birthday #clock, body.birthday #news, body.birthday #info, body.birthday #stats, body.birthday #compatibility, body.birthday #life_path_link, body.birthday #lunar_desc, body.birthday #controls, body.birthday #lunar, body.birthday .nav_button.button, body.birthday .help, body.birthday .add-on, body.birthday #dt_change_label, body.birthday #partner_dob_label, body.birthday label[for="is_secondary"], body.birthday #embed_toggle, body.birthday #lunar_desc, body.birthday footer	{
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF740,endColorstr=#FFD700,GradientType=0)";
 	background-image: -ms-linear-gradient(top, #FFF740 0%, #FFD700 100%);
 	background-image: -moz-linear-gradient(top, #FFF740 0%, #FFD700 100%);
@@ -1678,7 +1718,7 @@ body.birthday .lang_toggle.button:active, body.birthday .nav_button.button:activ
 	background-image: linear-gradient(to bottom, #FFD700 0%, #FFDF10 50%, #FFEF30 50%, #FFF740 100%);
 	color: #E35604;
 }
-body.birthday #dob_form, body.birthday #clock, body.birthday #news, body.birthday #info, body.birthday #stats, body.birthday #compatibility, body.birthday #controls, body.birthday #lunar, body.birthday #wiki, body.birthday #main_chart, body.birthday #explanation_chart, body.birthday .adsense, body.birthday #logo, body.birthday #ui-datepicker-div, body.birthday #proverb blockquote {
+body.birthday #dob_form, body.birthday #clock, body.birthday #news, body.birthday #info, body.birthday #stats, body.birthday #compatibility, body.birthday #controls, body.birthday #lunar, body.birthday #wiki, body.birthday #main_chart, body.birthday #explanation_chart, body.birthday .adsense, body.birthday #ui-datepicker-div, body.birthday #proverb blockquote {
 	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
@@ -1703,16 +1743,22 @@ body.birthday .m-btn:active, body.birthday input.m-wrap:active, body.birthday .m
 	box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(160,80,4,.77) inset;
 }
 body.birthday #logo, body.birthday .nav_button.button {
-	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
-	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
-	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
-	box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
+	-moz-box-shadow: 0 3px 6px 1px rgba(255,215,0,.33);
+	-webkit-box-shadow: 0 3px 6px 1px rgba(255,215,0,.33);
+	-khtml-box-shadow: 0 3px 6px 1px rgba(255,215,0,.33);
+	box-shadow: 0 3px 6px 1px rgba(255,215,0,.33);
 }
-body.birthday #logo:hover, body.birthday .nav_button.button:hover, body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover {
+body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover {
 	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
+}
+body.birthday #logo:hover, body.loading.birthday #logo, body.birthday .nav_button.button:hover {
+	-moz-box-shadow: 0 3px 6px 1px rgba(255,215,0,.77), 0 0 0 0 rgba(255,215,0,.77) inset;
+	-webkit-box-shadow: 0 3px 6px 1px rgba(255,215,0,.77), 0 0 0 0 rgba(255,215,0,.77) inset;
+	-khtml-box-shadow: 0 3px 6px 1px rgba(255,215,0,.77), 0 0 0 0 rgba(255,215,0,.77) inset;
+	box-shadow: 0 3px 6px 1px rgba(255,215,0,.77), 0 0 0 0 rgba(255,215,0,.77) inset;
 }
 body.birthday #logo:active, body.birthday .nav_button.button:active, body.birthday input[type="submit"]:active, body.birthday input[type="reset"]:active, body.birthday input[type="button"]:active, body.birthday input.button:active, body.birthday button:active, body.birthday a.button:active, body.birthday input[type="submit"].clicked, body.birthday input[type="reset"].clicked, body.birthday input[type="button"].clicked, body.birthday input.button.clicked, body.birthday button.clicked, body.birthday a.button.clicked, body.birthday.bmi .nav_button.button.bmi, body.birthday.lunar .nav_button.button.lunar, body.birthday.game .nav_button.button.game, body.birthday.intro .nav_button.button.intro {
 	-moz-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
@@ -1806,12 +1852,27 @@ body.birthday #ui-datepicker-div .ui-datepicker-next.ui-state-disabled, body.bir
 	width: -moz-calc(100% - 304px);
 }
 #proverb, #proverb *, #proverb blockquote, #proverb span.arrow_down, #proverb span.arrow_down::after, #proverb p#proverb_author {
-	transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
-	-webkit-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
-	-moz-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
-	-o-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
-	-ms-transition: box-shadow linear 150ms, text-shadow linear 150ms, background-color linear 150ms, transform linear 150ms;
+	transition: box-shadow linear 120ms, text-shadow linear 120ms, background-color linear 120ms;
+	-webkit-transition: box-shadow linear 120ms, text-shadow linear 120ms, background-color linear 120ms;
+	-moz-transition: box-shadow linear 120ms, text-shadow linear 120ms, background-color linear 120ms;
+	-o-transition: box-shadow linear 120ms, text-shadow linear 120ms, background-color linear 120ms;
+	-ms-transition: box-shadow linear 120ms, text-shadow linear 120ms, background-color linear 120ms;
 	-webkit-font-smoothing: antialiased;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	perspective: 1000px;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	-o-perspective: 1000px;
+	-ms-perspective: 1000px;
+	transform: translate3d(0,0,0);
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
 }
 #proverb blockquote {
 	display: block;
@@ -1919,8 +1980,8 @@ body.birthday #proverb blockquote a {
 	animation: rotate_refresh 1.8s linear 0s infinite;
 }
 body.loading a#logo > i {
-	-webkit-animation: rotate_refresh 90ms linear 0s infinite;
-	animation: rotate_refresh 90ms linear 0s infinite;
+	-webkit-animation: rotate_refresh 5ms linear 0s infinite;
+	animation: rotate_refresh 5ms linear 0s infinite;
 }
 body.loading .lang_toggle.button, body.loading #proverb i#proverb_refresh, body.loading label[for="is_secondary"], body.loading #controls > .m-btn-group > .m-btn {
 	pointer-events: none !important;
@@ -2019,6 +2080,9 @@ a.m-btn {
 #fullname ~ #help_dob {
 	left: 149px;
 }
+#dob_form_status.disabled_dob ~ #dob_wrapper #dob, #dob_form_status.disabled_dob ~ #dob_wrapper #fullname {
+	pointer-events: none;
+}
 #dob_form_status.correct_dob ~ #dob_wrapper #help_dob, #dob_form_status.correct_dob.focus_dob ~ #dob_wrapper #help_dob {
 	background-color: #33aa44;
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#77bb66',endColorstr='#33aa44',GradientType=0)";
@@ -2100,11 +2164,11 @@ body.birthday #dob_form_status.disabled_dob ~ #dob_wrapper #help_dob {
 	background-image: -moz-radial-gradient(#4d90fe,#3377dd);
 	background-image: radial-gradient(#4d90fe,#3377dd);
 	background-color: #3377dd;
-	transition: margin 150ms linear;
-	-webkit-transition: margin 150ms linear;
-	-moz-transition: margin 150ms linear;
-	-o-transition: margin 150ms linear;
-	-ms-transition: margin 150ms linear;
+	transition: margin 120ms linear;
+	-webkit-transition: margin 120ms linear;
+	-moz-transition: margin 120ms linear;
+	-o-transition: margin 120ms linear;
+	-ms-transition: margin 120ms linear;
 }
 #help_dob_form > i {
 	width: 30px;
@@ -2258,7 +2322,7 @@ body.birthday #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_d
 	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 	box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 }
-#dob_form:hover, #clock:hover, #help:hover, #news:hover, #info:hover, #stats:hover, #compatibility:hover, #controls:hover, #lunar:hover, #wiki:hover, #main_chart:hover, #explanation_chart:hover, .adsense:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover, a.button.clicked:hover, .m-btn:hover, input.m-wrap:hover, .m-btn.highlight, input.m-wrap.highlight, .zoom > img:hover, #logo:hover, #ui-datepicker-div:hover, #proverb blockquote:hover, #fb_holder:hover, #timer, .ln-letters > a:hover, #weight:hover, #height:hover {
+#dob_form:hover, #clock:hover, #help:hover, #news:hover, #info:hover, #stats:hover, #compatibility:hover, #controls:hover, #lunar:hover, #wiki:hover, #main_chart:hover, #explanation_chart:hover, .adsense:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover, a.button.clicked:hover, .m-btn:hover, input.m-wrap:hover, .m-btn.highlight, input.m-wrap.highlight, .zoom > img:hover, #logo:hover, body.loading #logo, #ui-datepicker-div:hover, #proverb blockquote:hover, #fb_holder:hover, #timer, .ln-letters > a:hover, #weight:hover, #height:hover {
 	-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 	-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
@@ -2296,7 +2360,7 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 }
 .help {
 	position: absolute;
-	z-index: 9;
+	z-index: 11;
 	display: none;
 	padding: 4px 8px;
 	margin: 0;
@@ -3238,11 +3302,11 @@ body.birthday .banner {display: none !important}
 .banner.right iframe, .banner.right img, .banner.right ins {left: 0}
 #lazada > a {float: left}
 #dob, #search {
-	transition: box-shadow linear 150ms;
-	-webkit-transition: box-shadow linear 150ms;
-	-moz-transition: box-shadow linear 150ms;
-	-o-transition: box-shadow linear 150ms;
-	-ms-transition: box-shadow linear 150ms;
+	transition: box-shadow linear 120ms;
+	-webkit-transition: box-shadow linear 120ms;
+	-moz-transition: box-shadow linear 120ms;
+	-o-transition: box-shadow linear 120ms;
+	-ms-transition: box-shadow linear 120ms;
 }
 #dob::-webkit-inner-spin-button, 
 #dob::-webkit-outer-spin-button { 
@@ -3375,11 +3439,11 @@ p.explain:hover > span.explain_more {
 }
 */
 .explain, .explain_more {
-	transition: color linear 150ms, opacity linear 150ms;
-	-webkit-transition: color linear 150ms, opacity linear 150ms;
-	-moz-transition: color linear 150ms, opacity linear 150ms;
-	-o-transition: color linear 150ms, opacity linear 150ms;
-	-ms-transition: color linear 150ms, opacity linear 150ms;
+	transition: color linear 120ms, opacity linear 120ms;
+	-webkit-transition: color linear 120ms, opacity linear 120ms;
+	-moz-transition: color linear 120ms, opacity linear 120ms;
+	-o-transition: color linear 120ms, opacity linear 120ms;
+	-ms-transition: color linear 120ms, opacity linear 120ms;
 }
 .highcharts-xaxis-labels text {
 	cursor: pointer !important;
@@ -3457,6 +3521,18 @@ p.explain:hover > span.explain_more {
 	color: #FFFFFF;
 	background: #3377dd;
 }
+footer .rotate span::after, footer .rotate:hover span {
+	color: #3377dd;
+	background: #FFFFFF;
+}
+body.birthday #explanation .rotate span::after, body.birthday #explanation .rotate:hover span, body.birthday .item_title.rotate span::after, body.birthday .item_title.rotate:hover span {
+	color: #E35604;
+	background: #FFD700;
+}
+body.birthday footer .rotate span::after, body.birthday footer .rotate:hover span {
+	color: #FFD700;
+	background: #E35604;
+}
 #introduction h3 {
 	font-variant: small-caps;
 	font-size: 24px;
@@ -3472,18 +3548,6 @@ p.explain:hover > span.explain_more {
 	list-style-position: inside;
 	font-size: 18px;
 	line-height: 24px;
-}
-footer .rotate span::after, footer .rotate:hover span {
-	color: #3377dd;
-	background: #FFFFFF;
-}
-body.birthday #explanation .rotate span::after, body.birthday #explanation .rotate:hover span, body.birthday .item_title.rotate span::after, body.birthday .item_title.rotate:hover span {
-	color: #E35604;
-	background: #FFD700;
-}
-body.birthday footer .rotate span::after, body.birthday footer .rotate:hover span {
-	color: #FFD700;
-	background: #E35604;
 }
 .add-on.label {
 	width: 120px;
@@ -3586,19 +3650,62 @@ body.embed #main {
 	box-shadow: none;
 }
 body.embed #content {padding: 0}
-#android {
+h2#apps, h3.apps, h4.apps {
+	margin: auto;
+	display: block;
+	width: 200px;
+	text-align: center;
+}
+h2#apps, h4.apps.pro {
+	font-weight: bolder;
+}
+#android, #android_pro, #android_vi, #android_en, #android_ru, #android_es, #android_zh, #android_ja, #android_lunar {
 	display: block;
 	margin: auto;
 	width: 200px;
 	height: 70px;
-	background: transparent url('images/android.png') no-repeat;
+}
+body:lang(vi) #android, body:lang(vi) #android_pro, #android_vi, #android_lunar {
+	background: transparent url('images/android_vi.png') no-repeat;
+}
+body:lang(en) #android, body:lang(en) #android_pro, #android_en {
+	background: transparent url('images/android_en.png') no-repeat;
+}
+body:lang(ru) #android, body:lang(ru) #android_pro, #android_ru {
+	background: transparent url('images/android_ru.png') no-repeat;
+}
+body:lang(es) #android, body:lang(es) #android_pro, #android_es {
+	background: transparent url('images/android_es.png') no-repeat;
+}
+body:lang(zh) #android, body:lang(zh) #android_pro, #android_zh {
+	background: transparent url('images/android_zh.png') no-repeat;
+}
+body:lang(ja) #android, body:lang(ja) #android_pro, #android_ja {
+	background: transparent url('images/android_ja.png') no-repeat;
 }
 #windows_phone {
 	display: block;
 	margin: auto;
 	width: 200px;
 	height: 52px;
-	background: transparent url('images/windows_phone.png') no-repeat;
+}
+body:lang(vi) #windows_phone {
+	background: transparent url('images/windows_phone_vi.png') no-repeat;
+}
+body:lang(en) #windows_phone {
+	background: transparent url('images/windows_phone_en.png') no-repeat;
+}
+body:lang(ru) #windows_phone {
+	background: transparent url('images/windows_phone_ru.png') no-repeat;
+}
+body:lang(es) #windows_phone {
+	background: transparent url('images/windows_phone_es.png') no-repeat;
+}
+body:lang(zh) #windows_phone {
+	background: transparent url('images/windows_phone_zh.png') no-repeat;
+}
+body:lang(ja) #windows_phone {
+	background: transparent url('images/windows_phone_ja.png') no-repeat;
 }
 #rhythms_table {
 	border: none;
@@ -3917,8 +4024,8 @@ body.birthday .rss_feed > .feed > .feed_item {
 	background: #C6C6C5;
 	font-size: 12px;
 	text-decoration: none;
-	padding: 4px 7px;
-	margin: 0;
+	padding: 0px 5px;
+	margin: -2px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
@@ -3965,6 +4072,7 @@ body.birthday .rss_feed > .feed > .feed_item {
 	background-position: center 50%;
 	background-color: rgba(68,136,238,0.9);
 	visibility: hidden;
+	z-index: 9;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	-moz-opacity: 0;
 	-khtml-opacity: 0;
@@ -4034,13 +4142,6 @@ body.scrolled header {
 	-khtml-opacity: 0.95;
 	opacity: 0.95;
 }
-#help_dob_form, #dob, #fullname, #dob_submit, .nav_button.button.new, #weight, #height, .clock-circle {
-	-webkit-transform: translateZ(0);
-	-moz-transform: translateZ(0);
-	-ms-transform: translateZ(0);
-	-o-transform: translateZ(0);
-	transform: translateZ(0);
-}
 /* Responsive */
 @media all and (max-width: 551px) {
 	#lang_bar {float: left;left: 12px;bottom: 4px;}
@@ -4090,6 +4191,8 @@ body.scrolled header {
 	#proverb blockquote {font-size: 18px;padding: 21px;}
 	#proverb span.arrow_down {width: 24px;height: 24px;}
 	#proverb span.arrow_down::after {top: -23px;width: 24px;height: 24px;}
+	footer #copyright_text, footer #copyright_space, footer #badge {display: none !important}
+	footer #copyright_year, footer #email_text, footer #email_space, footer #copyright, footer #pham_tung, footer #footer_divider, footer #gmail {display: inline-block !important}
 }
 @media all and (max-width: 598px) {
 	ul.dates > li {width: 100%;}
@@ -4111,7 +4214,7 @@ body.scrolled header {
 	a#logo > i {margin: 0;width: 14px;height: 14px;background-position: -27px -10px !important;}
 	header h1 {position: relative;top: 0;left: 0;font-size: 18px;padding: 12px 8px 12px 48px;text-align: left;margin: 0 0 9px;line-height: 24px;background-color: #3377dd;width: calc(100% - 56px);width: -webkit-calc(100% - 56px);width: -moz-calc(100% - 56px);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#7799ee',endColorstr='#3377dd',GradientType=0)";background-image: -ms-linear-gradient(top, #7799ee 0%, #3377dd 100%);background-image: -moz-linear-gradient(top, #7799ee 0%, #3377dd 100%);background-image: -o-linear-gradient(top, #7799ee 0%, #3377dd 100%);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #7799ee), color-stop(1, #3377dd));background-image: -webkit-linear-gradient(top, #7799ee 0%, #3377dd 100%);background-image: linear-gradient(to bottom, #7799ee 0%, #3377dd 100%);color: #fff;-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);}
 	header h1:hover {-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77);-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77);-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77);box-shadow: 0 3px 6px 1px rgba(0,0,0,.77);}
-	body.birthday header h1 {background-color: #FFD700 !important;-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFF740,endColorstr=#FFD700,GradientType=0)";background-image: -ms-linear-gradient(top, #FFF740 0%, #FFD700 100%);background-image: -moz-linear-gradient(top, #FFF740 0%, #FFD700 100%);background-image: -o-linear-gradient(top, #FFF740 0%, #FFD700 100%);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFF740), color-stop(1, #FFD700));background-image: -webkit-linear-gradient(top, #FFF740 0%, #FFD700 100%);background-image: linear-gradient(to bottom, #FFF740 0%, #FFD700 100%);color: #E35604;-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);}
+	body.birthday header h1 {background-color: #E35604 !important;-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E37644,endColorstr=#E35604,GradientType=0)";background-image: -ms-linear-gradient(top, #E37644 0%, #E35604 100%);background-image: -moz-linear-gradient(top, #E37644 0%, #E35604 100%);background-image: -o-linear-gradient(top, #E37644 0%, #E35604 100%);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #E37644), color-stop(1, #E35604));background-image: -webkit-linear-gradient(top, #E37644 0%, #E35604 100%);background-image: linear-gradient(to bottom, #E37644 0%, #E35604 100%);color: #FFD700;-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);}
 	body.birthday header h1:hover {-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77);-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77);-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77);box-shadow: 0 3px 6px 1px rgba(227,86,4,.77);}
 	#search_wrapper {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=63)";-moz-opacity: 0.63;-khtml-opacity: 0.63;opacity: 0.63;width: auto;bottom: 16px;}
 	#search_wrapper input#search {display: none;}
@@ -4120,15 +4223,15 @@ body.scrolled header {
 	#results table {width: 420px;height: 100%;}
 	#results table td{width: 42px;height: 100%;}
 	ul#nav_buttons > li > a.nav_button.button, body.home header.clicked ul#nav_buttons > li > a.nav_button.button.home {display: none !important;}
-	body:lang(vi) header.clicked ul#nav_buttons > li > a.nav_button.button, body:lang(vi) ul#nav_buttons:hover > li > a.nav_button.button, header.clicked ul#nav_buttons > li > a#intro_link, header.clicked ul#nav_buttons > li > a#game_link, ul#nav_buttons:hover > li > a#intro_link, ul#nav_buttons:hover > li > a#game_link, header.clicked ul#nav_buttons > li > a#blog_link, ul#nav_buttons:hover > li > a#blog_link, header.clicked ul#nav_buttons > li > a#forum_link, ul#nav_buttons:hover > li > a#forum_link {display: block !important;}
+	body:lang(vi) header.clicked ul#nav_buttons > li > a.nav_button.button, body:lang(vi) ul#nav_buttons:hover > li > a.nav_button.button, header.clicked ul#nav_buttons > li > a#intro_link, header.clicked ul#nav_buttons > li > a#game_link, ul#nav_buttons:hover > li > a#intro_link, ul#nav_buttons:hover > li > a#game_link, header.clicked ul#nav_buttons > li > a#apps_link, ul#nav_buttons:hover > li > a#apps_link, header.clicked ul#nav_buttons > li > a#blog_link, ul#nav_buttons:hover > li > a#blog_link, header.clicked ul#nav_buttons > li > a#forum_link, ul#nav_buttons:hover > li > a#forum_link {display: block !important;}
 	ul#nav_buttons {margin-left: 45px;top: 45px;}
 	ul#nav_buttons > li {float: none;}
 	ul#nav_buttons > li > a.nav_button.button {padding: 4px 8px;line-height: 24px;margin: 0;font-size: 12px;width: 120px;text-align: center;}
 	#logo, .nav_button.button {position: absolute;-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);-khtml-box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);}
-	#logo:hover, .nav_button.button:hover {-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;-khtml-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;}
+	#logo:hover, body.loading #logo, .nav_button.button:hover {-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;-khtml-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;}
 	#logo:active, .nav_button.button:active, body.bmi .nav_button.button.bmi, body.lunar .nav_button.button.lunar, body.game .nav_button.button.game, body.intro .nav_button.button.intro {-moz-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;-khtml-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;}
 	body.birthday #logo, body.birthday .nav_button.button {-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);-webkit-box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);-khtml-box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);}
-	body.birthday #logo:hover, body.birthday .nav_button.button:hover {-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;-webkit-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;-khtml-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;}
+	body.birthday #logo:hover, body.loading.birthday #logo, body.birthday .nav_button.button:hover {-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;-webkit-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;-khtml-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;}
 	body.birthday #logo:active, body.birthday .nav_button.button:active, body.birthday.bmi .nav_button.button.bmi, body.birthday.lunar .nav_button.button.lunar, body.birthday.game .nav_button.button.game, body.birthday.intro .nav_button.button.intro {-moz-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;-webkit-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;-khtml-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;}
 	.lang_toggle.button > span.lang {display: none;}
 	.lang_toggle.button.first > span.lang {display: block;}
@@ -4137,7 +4240,10 @@ body.scrolled header {
 	body #content {padding: 0;min-height: 0;}
 	#explanation_chart_results {display: block}
 	#explanation {font-size: 14px}
-	footer, #uvTabLabel, .share42init, #fb_holder {display: none}
+	#uvTabLabel, .share42init, #fb_holder {display: none}
+	footer {width: calc(100% - 10px);width: -webkit-calc(100% - 10px);width: -moz-calc(100% - 10px);}
+	footer #copyright, footer #copyright_year, footer #copyright_text, footer #copyright_space, footer #email_text, footer #email_space, footer #badge {display: none}
+	footer #pham_tung, footer #footer_divider, footer #gmail {display: inline-block}
 	#main_chart, #explanation_chart {width: calc(100% - 8px);width: -webkit-calc(100% - 8px);width: -moz-calc(100% - 8px);}
 	.rss_feed {width: calc(100% - 32px);width: -webkit-calc(100% - 32px);width: -moz-calc(100% - 32px);}
 	#dob_wrapper {margin: auto;}
@@ -4149,12 +4255,17 @@ body.scrolled header {
 	.bottom.button.donate, .bottom.button.sponsor {margin-bottom: 52px;}
 	.to-top {right: 10px !important;bottom: 10px !important;}
 	.rss_feed {display: none}
+	#help_dob {top: 0;}
+	#help_name {top: 34px;}
+	#name_toggle ~ #help_dob {left: 10px;}
+	#fullname ~ #help_dob {left: 42px;}
 	#dob_form_status.hovered.empty_dob ~ #help_dob_form, #dob_form_status.hovered.wrong_dob ~ #help_dob_form, #dob_form_status.hovered.alert_dob ~ #help_dob_form, #dob_form_status.hovered.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.hovered.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {margin-left: 0;}
 	#clock, #help {margin-top: 10px;margin-bottom: 0;}
 }
 @media all and (min-width: 960px) {
 	body.scrolled header {height: 70px;}
 	body.scrolled header h1 {font-size: 21px;line-height: 28px;top: 5px;margin-left: 45px;width: calc(100% - 57px);width: -webkit-calc(100% - 57px);width: -moz-calc(100% - 57px);}
+	body.scrolled.one_lang header h1 {top: 20px;}
 	body.scrolled #logo {transform: scale(0.8);-webkit-transform: scale(0.8);-moz-transform: scale(0.8);-o-transform: scale(0.8);-ms-transform: scale(0.8);top: 2px;left: -4px;}
 	body.scrolled #main {padding-top: 70px;}
 	body.scrolled ul#nav_buttons {margin-left: 62px;top: 36px;}
