@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION['username'])):
+if (!isset($_SESSION['loggedin'])):
 ?>
 <form method="post" action="">
 	<?php
@@ -20,7 +20,7 @@ if (!isset($_SESSION['username'])):
 	</div>
 </form>
 <?php
-elseif (isset($_SESSION['username'])):
-	header('Location: '.$_SERVER['HTTP_REFERER']);
+elseif (isset($_SESSION['loggedin'])):
+	echo '<h2>You have logged in!</h2>';
 endif;
 ?>

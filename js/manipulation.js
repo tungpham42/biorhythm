@@ -206,96 +206,87 @@ function manipulateBirthday() {
 		$('h1#heading').burn(false);
 	}
 }
-function manipulateLangBar() {
-	$('.lang_toggle.button').tsort({order:'desc',attr:'data-order'}).each(function(){
-		if ($(this).attr('lang') == $('body').attr('lang')) {
-			$(this).addClass('first').appendTo('#lang_bar');
-		} else if ($(this).attr('lang') != $('body').attr('lang')) {
-			$(this).removeClass('first');
-		}
-	});
+function manipulateLangBar() {	
+	if ($('#lang_bar').length) {
+		$('.lang_toggle.button').tsort({order:'desc',attr:'data-order'}).each(function(){
+			if ($(this).attr('lang') == $('body').attr('lang')) {
+				$(this).addClass('first').appendTo('#lang_bar');
+			} else if ($(this).attr('lang') != $('body').attr('lang')) {
+				$(this).removeClass('first');
+			}
+		});
+	}
 }
-lang = $('body').attr('lang');
-dobText = '';
-fullnameText = '';
-dobTexts = {
-	'vi': 'Ngày sinh',
-	'en': 'Date of birth',
-	'ru': 'Дата рождения',
-	'es': 'Fecha de nacimiento',
-	'zh': '出生日期',
-	'ja': '生まれた日'
-};
-fullnameTexts = {
-	'vi': 'Họ tên',
-	'en': 'Full name',
-	'ru': 'Полное имя',
-	'es': 'Nombre',
-	'zh': '全名',
-	'ja': 'フルネーム'
-};
 function manipulateLangEvent(langCode) {
-	updateInterfaceLanguage(langCode);
-	manipulateLangBar();
-	loadProverb(langCode);
-	loadNews(langCode);
-	lang = langCode;
-	dobText = dobTexts[langCode];
-	fullnameText = fullnameTexts[langCode];
+	if ($('#lang_bar').length) {
+		updateInterfaceLanguage(langCode);
+		manipulateLangBar();
+		loadProverb(langCode);
+		loadNews(langCode);
+		lang = langCode;
+		dobText = dobTexts[langCode];
+		fullnameText = fullnameTexts[langCode];
+	}
 }
 function manipulateLang() {
-	updateInterfaceLanguage(lang);
-	manipulateLangBar();
-	$('#pham_tung').find('span.translate').attr('data-title',$('#pham_tung').find('span.translate').attr('data-lang-'+lang));
-	$('span.translate').each(function() {
-		$(this).text($(this).attr('data-lang-'+lang));
-	});
-	if (lang == 'vi') {
-		dobText = 'Ngày sinh';
-		fullnameText = 'Họ tên';
-	} else if (lang == 'en') {
-		dobText = 'Date of birth';
-		fullnameText = 'Full name';
-	} else if (lang == 'ru') {
-		dobText = 'Дата рождения';
-		fullnameText = 'Полное имя';
-	} else if (lang == 'es') {
-		dobText = 'Fecha de nacimiento';
-		fullnameText = 'Nombre';
-	} else if (lang == 'zh') {
-		dobText = '出生日期';
-		fullnameText = '全名';
-	} else if (lang == 'ja') {
-		dobText = '生まれた日';
-		fullnameText = 'フルネーム';
-	}
-	$('#lang_bar').on('click', '#vi_toggle', function() {
-		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			manipulateLangEvent('vi');
+	if ($('#lang_bar').length) {
+		updateInterfaceLanguage(lang);
+		manipulateLangBar();
+		$('#pham_tung').find('span.translate').attr('data-title',$('#pham_tung').find('span.translate').attr('data-lang-'+lang));
+		$('span.translate').each(function() {
+			$(this).text($(this).attr('data-lang-'+lang));
+		});
+		if (lang == 'vi') {
+			dobText = 'Ngày sinh';
+			fullnameText = 'Họ tên';
+		} else if (lang == 'en') {
+			dobText = 'Date of birth';
+			fullnameText = 'Full name';
+		} else if (lang == 'ru') {
+			dobText = 'Дата рождения';
+			fullnameText = 'Полное имя';
+		} else if (lang == 'es') {
+			dobText = 'Fecha de nacimiento';
+			fullnameText = 'Nombre';
+		} else if (lang == 'zh') {
+			dobText = '出生日期';
+			fullnameText = '全名';
+		} else if (lang == 'ja') {
+			dobText = '生まれた日';
+			fullnameText = 'フルネーム';
 		}
-	}).on('click', '#en_toggle', function() {
-		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			manipulateLangEvent('en');
+		$('#lang_bar').on('click', '#vi_toggle', function() {
+			if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
+				manipulateLangEvent('vi');
+			}
+		}).on('click', '#en_toggle', function() {
+			if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
+				manipulateLangEvent('en');
+			}
+		}).on('click', '#ru_toggle', function() {
+			if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
+				manipulateLangEvent('ru');
+			}
+		}).on('click', '#es_toggle', function() {
+			if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
+				manipulateLangEvent('es');
+			}
+		}).on('click', '#zh_toggle', function() {
+			if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
+				manipulateLangEvent('zh');
+			}
+		}).on('click', '#ja_toggle', function() {
+			if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
+				manipulateLangEvent('ja');
+			}
+		});
+		if (isset(decodeURIComponent(getUrlVars()['lang'])) && (decodeURIComponent(getUrlVars()['lang']) == 'vi' || decodeURIComponent(getUrlVars()['lang']) == 'en' || decodeURIComponent(getUrlVars()['lang']) == 'ru' || decodeURIComponent(getUrlVars()['lang']) == 'es' || decodeURIComponent(getUrlVars()['lang']) == 'zh' || decodeURIComponent(getUrlVars()['lang']) == 'ja')) {
+			$('#'+decodeURIComponent(getUrlVars()['lang'])+'_toggle').trigger('click');
 		}
-	}).on('click', '#ru_toggle', function() {
-		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			manipulateLangEvent('ru');
-		}
-	}).on('click', '#es_toggle', function() {
-		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			manipulateLangEvent('es');
-		}
-	}).on('click', '#zh_toggle', function() {
-		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			manipulateLangEvent('zh');
-		}
-	}).on('click', '#ja_toggle', function() {
-		if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
-			manipulateLangEvent('ja');
-		}
-	});
-	if (isset(decodeURIComponent(getUrlVars()['lang'])) && (decodeURIComponent(getUrlVars()['lang']) == 'vi' || decodeURIComponent(getUrlVars()['lang']) == 'en' || decodeURIComponent(getUrlVars()['lang']) == 'ru' || decodeURIComponent(getUrlVars()['lang']) == 'es' || decodeURIComponent(getUrlVars()['lang']) == 'zh' || decodeURIComponent(getUrlVars()['lang']) == 'ja')) {
-		$('#'+decodeURIComponent(getUrlVars()['lang'])+'_toggle').trigger('click');
+	} else {
+		$(document).ready(function(){
+			$.datepicker.setDefaults($.datepicker.regional[lang]);
+		});
 	}
 }
 function manipulateVideo() {
@@ -344,19 +335,42 @@ function manipulateInfor(selector,content) {
 	});
 }
 function manipulateScroll() {
-	if ($(document).scrollTop() >= 9) {
+	var offset = 300, offset_opacity = 1200, scroll_top_duration = 700;
+	if ($(document).scrollTop() > 0) {
 		$('body').addClass('scrolled');
 	} else {
 		$('body').removeClass('scrolled');
 	}
+	if ($(document).scrollTop() >= ($('#apps').offset().top-$('header').height())) {
+		$('#apps_link').addClass('clicked');
+	} else {
+		$('#apps_link').removeClass('clicked');
+	}
 	animateScrollProverb();
 	$(window).on('scroll mousewheel wheel DOMMouseScroll resize', function(){
-		if ($(document).scrollTop() >= 9) {
+		($(this).scrollTop() > offset) ? $('.to-top').addClass('is-visible') : $('.to-top').removeClass('is-visible fade-out');
+		if($(this).scrollTop() > offset_opacity) {
+			$('.to-top').addClass('fade-out');
+		}
+		if ($(document).scrollTop() > 0) {
 			$('body').addClass('scrolled');
 		} else {
 			$('body').removeClass('scrolled');
 		}
+		if ($(document).scrollTop() >= Math.floor($('#apps').offset().top-$('header').height())) {
+			$('#apps_link').addClass('clicked');
+		} else {
+			$('#apps_link').removeClass('clicked');
+		}
 		animateScrollProverb();
+	});
+	$('.to-top').on('click', function(e){
+		e.preventDefault();
+		$('body,html').stop().animate({scrollTop: 0}, scroll_top_duration);
+	});
+	$('#apps_link').on('click', function(){
+		$('body, html').stop().animate({scrollTop: ($('#apps').offset().top-$('header').height())}, scroll_top_duration);
+		$('#apps_link').addClass('clicked');
 	});
 }
 function manipulateClock() {

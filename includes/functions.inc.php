@@ -803,7 +803,7 @@ class filter {
 function site_name() {
 	global $lang_code;
 	switch ($lang_code) {
-		case 'vi': return 'Biểu đồ nhịp sinh học'; break;
+		case 'vi': return 'Biểu đồ nhịp sinh học | Bieu do nhip sinh hoc'; break;
 		case 'en': return 'Biorhythm chart'; break;
 		case 'ru': return 'Биоритм диаграммы'; break;
 		case 'es': return 'Biorritmo carta'; break;
@@ -1510,7 +1510,7 @@ function render_rss_feed($rss_url,$feed_header,$feed_id) {
 	$result .= '<script>
 				loadFeed("'.$rss_url.'","'.$feed_id.'");
 				$("#'.$feed_id.' > h2").on("click", function(){
-					$("body, html").animate({scrollTop: $("#'.$feed_id.'_end").offset().top}, 700);
+					$("body, html").animate({scrollTop: ($("#'.$feed_id.'_end").offset().top-$("header").height())}, 700);
 				});
 				</script>';
 	echo $result;

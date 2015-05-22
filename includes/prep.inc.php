@@ -119,3 +119,12 @@ function calculate_life_path($dob) {
 	$life_path_number = digitval(digitval($year) + digitval($month) + digitval($day));
 	return $life_path_number;
 }
+function has_one_lang() {
+	global $hide_lang_bar;
+	global $hide_nav;
+	if ($hide_lang_bar == true && $hide_nav == true) {
+		return true;
+	} else {
+		return false;
+	}
+}

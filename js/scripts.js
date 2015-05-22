@@ -149,9 +149,29 @@ $.fn.textWidth = function() {
 	return width;
 };
 
-var q = (isset($('span#variables').attr('data-q')) && $('span#variables').attr('data-q') !== '') ? $('span#variables').attr('data-q'): decodeURIComponent(getUrlVars()['q']);
-var dob = (isset($('span#variables').attr('data-dob')) && $('span#variables').attr('data-dob') !== '') ? $('span#variables').attr('data-dob'): decodeURIComponent(getUrlVars()['dob']);
-var fullname = (isset($('span#variables').attr('data-fullname')) && $('span#variables').attr('data-fullname') !== '') ? $('span#variables').attr('data-fullname'): replaceAll('+',' ',decodeURIComponent(getUrlVars()['fullname']));
+q = (isset($('span#variables').attr('data-q')) && $('span#variables').attr('data-q') !== '') ? $('span#variables').attr('data-q'): decodeURIComponent(getUrlVars()['q']);
+dob = (isset($('span#variables').attr('data-dob')) && $('span#variables').attr('data-dob') !== '') ? $('span#variables').attr('data-dob'): decodeURIComponent(getUrlVars()['dob']);
+fullname = (isset($('span#variables').attr('data-fullname')) && $('span#variables').attr('data-fullname') !== '') ? $('span#variables').attr('data-fullname'): replaceAll('+',' ',decodeURIComponent(getUrlVars()['fullname']));
+givenLang = window.location.pathname.substr(1,2);
+lang = $('body').attr('lang');
+dobText = '';
+fullnameText = '';
+dobTexts = {
+	'vi': 'Ngày sinh',
+	'en': 'Date of birth',
+	'ru': 'Дата рождения',
+	'es': 'Fecha de nacimiento',
+	'zh': '出生日期',
+	'ja': '生まれた日'
+};
+fullnameTexts = {
+	'vi': 'Họ tên',
+	'en': 'Full name',
+	'ru': 'Полное имя',
+	'es': 'Nombre',
+	'zh': '全名',
+	'ja': 'フルネーム'
+};
 
 function disableInput(fieldName) {
 	$('#'+fieldName).on('keypress', function(e) {
@@ -688,8 +708,14 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 		},
 		colors: ['#f15c80','#e4d354','#8085e8','#8d4653','#91e8e1','#7cb5ec','#434348','#90ed7d','#f7a35c','#8085e9'],
 		credits: {
-			href: 'http://nhipsinhhoc.vn',
-			text: 'Nhịp Sinh Học . VN'
+			href: 'http://nhipsinhhoc.vn/',
+			text: 'Nhịp Sinh Học . VN',
+			position: {
+				align: 'right',
+				x: -10,
+				verticalAlign: 'bottom',
+				y: -10
+			}
 		},
 		exporting: {
 			url: 'http://nhipsinhhoc.vn:8080/highcharts-export-web/'

@@ -559,11 +559,12 @@ $("body").removeClass("today").addClass("birthday");';
 $("body").removeClass("birthday");';
 	}
 		echo '
-lang = $.cookie("NSH:lang");
+lang = $("body").attr("lang");
 dt_curr = $("#dt_curr").val();
 dt_change = $("#dt_change").val();
 partner_dob = $("#partner_dob").val();
 disableInput("dt_change");
+input_date = getUrlVars()["date"];
 $("#dt_change").datepicker({
 	dateFormat: "yy-mm-dd",
 	changeYear: true,
@@ -691,6 +692,11 @@ manipulateHelper("#lunar","'.$help_interfaces['lunar_box'][$this->_lang_code].'"
 manipulateHelper("#compatibility","'.$help_interfaces['compatibility_box'][$this->_lang_code].'");
 manipulateHelper("#info","'.$help_interfaces['info_box'][$this->_lang_code].'");
 manipulateHelper("#controls","'.$help_interfaces['controls_box'][$this->_lang_code].'");
+if (isset(input_date)) {
+	$(document).one("ready", function(){
+		loadResults("'.$this->_dob.'",'.$this->_diff.'+dateDiff(dt_curr,input_date),"'.$this->_is_secondary.'",input_date,"'.$this->_partner_dob.'",lang);
+	});
+}
 </script>
 		';
 	}

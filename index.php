@@ -6,13 +6,13 @@ require_once $basepath.'/includes/redirect.inc.php';
 require_once $basepath.'/includes/init.inc.php';
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo init_lang_code(); ?>">
+<html lang="<?php echo $lang_code; ?>">
 <head>
 <?php
 include $template_path.'head.tpl.php';
 ?>
 </head>
-<body lang="<?php echo init_lang_code(); ?>" class="<?php echo $body_class; ?>">
+<body lang="<?php echo $lang_code; ?>" class="<?php echo $body_class.(has_one_lang() ? ' one_lang': ''); ?>">
 <?php
 include $template_path.'variables.tpl.php';
 if (!isset($_GET['p']) || $_GET['p'] == 'home'):
