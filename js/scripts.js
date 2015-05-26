@@ -148,6 +148,38 @@ $.fn.textWidth = function() {
 	$(this).html(htmlOrg);
 	return width;
 };
+// Highcharts plugin for displaying value information in the legend
+// Author: Torstein Hønsi
+// License: MIT license
+// Last revision: 2013-07-29
+(function (H) {
+	H.Series.prototype.point = {}; // The active point
+	H.Chart.prototype.callbacks.push(function (chart) {
+		$(chart.container).bind('mousemove', function () {
+			var legendOptions = chart.legend.options,
+				hoverPoints = chart.hoverPoints;
+			
+			if (!hoverPoints && chart.hoverPoint) {
+				hoverPoints = [chart.hoverPoint];
+			}
+			if (hoverPoints) {
+				H.each(hoverPoints, function (point) {
+					point.series.point = point;
+				});
+				H.each(chart.legend.allItems, function (item) {
+					item.legendItem.attr({
+						text: legendOptions.labelFormat ? 
+							H.format(legendOptions.labelFormat, item) :
+							legendOptions.labelFormatter.call(item)
+					});
+				});
+				chart.legend.render();
+			}
+		});
+	});
+	// Hide the tooltip but allow the crosshair
+	//H.Tooltip.prototype.defaultFormatter = function () { return false; };
+}(Highcharts));
 
 q = (isset($('span#variables').attr('data-q')) && $('span#variables').attr('data-q') !== '') ? $('span#variables').attr('data-q'): decodeURIComponent(getUrlVars()['q']);
 dob = (isset($('span#variables').attr('data-dob')) && $('span#variables').attr('data-dob') !== '') ? $('span#variables').attr('data-dob'): decodeURIComponent(getUrlVars()['dob']);
@@ -706,7 +738,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 				fontFamily: 'Roboto,sans-serif'
 			}
 		},
-		colors: ['#f15c80','#e4d354','#8085e8','#8d4653','#91e8e1','#7cb5ec','#434348','#90ed7d','#f7a35c','#8085e9'],
+		colors: ['#f15c80','#d4c344','#8085e8','#8d4653','#81d8d1','#5c95cc','#434348','#90ed7d','#f7a35c','#7075d9'],
 		credits: {
 			href: 'http://nhipsinhhoc.vn/',
 			text: 'Nhịp Sinh Học . VN',
@@ -808,8 +840,12 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			snap: 42,
 			useHTML: true,
 			headerFormat: '<strong><u>'+dateText+': {point.key}</u></strong><table id="rhythms_table">',
-			pointFormat: '<tr class="rhythm_value" id="rhythm_id_{series.index}"><td class="rhythm_label"><span style="color: {series.color}"><em>{series.name}<em></span>: </td><td class="value"><span><strong>{point.y} %<strong></span></td></tr>',
+			pointFormat: '<tr class="rhythm_value" id="rhythm_id_{series.index}"><td class="rhythm_label"><span style="color: {series.color}">{series.name}:</span></td><td class="value"><span><strong>{point.y} %<strong></span></td></tr>',
 			footerFormat: '</table>'
+		},
+		legend: {
+			enabled: true,
+			labelFormat: '<span style="color:{color}">{name}: </span><strong>{point.y} %</strong>'
 		},
 		plotOptions: {
 			line: {

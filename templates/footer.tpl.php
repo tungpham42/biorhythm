@@ -6,5 +6,4 @@
 	<a title="Valid HTML 5" target="_blank" href="http://validator.w3.org/check?uri=referer">
 		<img src="/img/html5.png" alt="Valid HTML 5" height="32" width="32" />
 	</a>
-	<script src="https://streamtest.github.io/badges/streamtest.js" type="text/javascript"></script>
 </div>
