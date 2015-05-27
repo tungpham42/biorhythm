@@ -56,9 +56,9 @@
 
 /* Component containers
 ----------------------------------*/
-.ui-widget { font-family: Roboto,sans-serif font-size: 1.1em; }
+.ui-widget { font-family: 'Myriad Pro',sans-serif font-size: 1.1em; }
 .ui-widget .ui-widget { font-size: 1em; }
-.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Roboto,sans-serif; font-size: 1em; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: 'Myriad Pro',sans-serif; font-size: 1em; }
 .ui-widget-content { border: 1px solid #dddddd; background: #ffffff; color: #444444; }
 .ui-widget-content a { color: #444444; }
 .ui-widget-header { border: 1px solid #dddddd; background: #dddddd; color: #444444;}
@@ -568,7 +568,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 
 /* General */
 html, body{background-color:#ffffff;}
-.ui-widget{font-family:Roboto,sans-serif}
+.ui-widget{font-family:'Myriad Pro',sans-serif}
 
 /* Interaction states
 ----------------------------------*/

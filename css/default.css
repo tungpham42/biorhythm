@@ -67,7 +67,7 @@ textarea {
 body {
 	margin: 0;
 	padding: 0;
-	font-family: Roboto,sans-serif;
+	font-family: 'Myriad Pro',sans-serif;
 	font-size: 14px;
 	line-height: 20px;
 	color: #333333;
@@ -259,7 +259,7 @@ label, input, button, select, textarea {
 	line-height: 20px;
 }
 input, button, select, textarea {
-	font-family: Roboto,sans-serif;
+	font-family: 'Myriad Pro',sans-serif;
 }
 label {
 	display: block;
@@ -841,7 +841,7 @@ body {
 	background-color: #c2d8f9;
 	/*background-image: url('images/clock.png');*/
 	color: #333;
-	font: normal 1.3em Roboto,sans-serif;
+	font: normal 1.3em 'Myriad Pro',sans-serif;
 	width: 100%;
 	margin: 0;
 }
@@ -871,12 +871,12 @@ p {
 	line-height: 1.4em;
 	padding: 0.2em 0 0.2em;
 }
-h1 {font: normal 2.2em Roboto,sans-serif;}
-h2 {font: normal 2em Roboto,sans-serif;}
-h3 {font: normal 1.8em Roboto,sans-serif;}
-h4 {font: normal 1.6em Roboto,sans-serif;}
-h5 {font: normal 1.4em Roboto,sans-serif;}
-h6 {font: bold 1.2em Roboto,sans-serif;}
+h1 {font: normal 2.2em 'Myriad Pro',sans-serif;}
+h2 {font: normal 2em 'Myriad Pro',sans-serif;}
+h3 {font: normal 1.8em 'Myriad Pro',sans-serif;}
+h4 {font: normal 1.6em 'Myriad Pro',sans-serif;}
+h5 {font: normal 1.4em 'Myriad Pro',sans-serif;}
+h6 {font: bold 1.2em 'Myriad Pro',sans-serif;}
 /* Ripple button https://github.com/yuhua-chen/MAWButton */
 .ripple {
 	overflow: hidden;
@@ -1003,7 +1003,7 @@ input[type="submit"], input[type="reset"], input[type="button"], input.button, b
 	border-width: 1px;
 	border-style: solid;
 	text-decoration: none;
-	font-family: Roboto,sans-serif;
+	font-family: 'Myriad Pro',sans-serif;
 	font-size: 12px;
 	color: #000;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.09);
@@ -1173,7 +1173,7 @@ body.birthday #page_section {
 	text-align: left; /* LTR */
 	vertical-align: baseline;
 	color: #ccc;
-	font: normal small Roboto,sans-serif;
+	font: normal small 'Myriad Pro',sans-serif;
 	left: 0;
 	margin: 0;
 	position: fixed;
@@ -2035,7 +2035,7 @@ body.birthday #proverb blockquote:hover ~ p.proverb_author {
 /* Main */
 main {
 	position: relative;
-	font: normal 0.9em Roboto,sans-serif;
+	font: normal 0.9em 'Myriad Pro',sans-serif;
 	background: rgba(230,239,253,0.88);
 	padding: 0;
 	padding-top: 100px;
@@ -2890,7 +2890,7 @@ input[name="is_secondary"] {display: none;}
 }
 .rhythm > i {
 	position: relative;
-	top: 3px;
+	top: 1px;
 	left: 4px;
 	transition: none;
 	-webkit-transition: none;

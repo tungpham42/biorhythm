@@ -745,7 +745,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 		chart: {
 			type: 'spline',
 			style: {
-				fontFamily: 'Roboto,sans-serif'
+				fontFamily: '"Myriad Pro",sans-serif'
 			}
 		},
 		colors: ['#f15c80','#d4c344','#8085e8','#8d4653','#81d8d1','#5c95cc','#434348','#90ed7d','#f7a35c','#7075d9'],
