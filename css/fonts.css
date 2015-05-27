@@ -1,79 +1,36 @@
 @font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-Regular.woff') format('woff');
+	font-family: 'Myriad Pro';
+	src: url('font/MyriadPro-Regular.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-Italic.woff') format('woff');
-	font-weight: normal;
-	font-style: italic;
-}
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-Thin.woff') format('woff');
-	font-weight: 100;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-ThinItalic.woff') format('woff');
-	font-weight: 100;
-	font-style: italic;
-}
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-Light.woff') format('woff');
-	font-weight: 200;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-LightItalic.woff') format('woff');
-	font-weight: 200;
-	font-style: italic;
-}
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-Bold.woff') format('woff');
-	font-weight: bold;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-BoldItalic.woff') format('woff');
-	font-weight: bold;
-	font-style: italic;
-}
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-ExtraBold.woff') format('woff');
-	font-weight: 900;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-ExtraBoldItalic.woff') format('woff');
-	font-weight: 900;
-	font-style: italic;
-}
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-Semibold.woff') format('woff');
-	font-weight: 600;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'Roboto';
-	src: url('font/Roboto-SemiboldItalic.woff') format('woff');
-	font-weight: 600;
-	font-style: italic;
-}
-
 @font-face {
 	font-family: 'Myriad Pro';
-	src: url('font/MyriadPro.woff') format('woff');
+	src: url('font/MyriadPro-Italic.woff') format('woff');
 	font-weight: normal;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'Myriad Pro';
+	src: url('font/MyriadPro-Bold.woff') format('woff');
+	font-weight: bold;
 	font-style: normal;
+}
+@font-face {
+	font-family: 'Myriad Pro';
+	src: url('font/MyriadPro-BoldItalic.woff') format('woff');
+	font-weight: bold;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'Myriad Pro';
+	src: url('font/MyriadPro-Semibold.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Myriad Pro';
+	src: url('font/MyriadPro-SemiboldItalic.woff') format('woff');
+	font-weight: 600;
+	font-style: italic;
 }
