@@ -2070,6 +2070,7 @@ a.m-btn {
 }
 #dob_bar {
 	position: relative;
+	cursor: text;
 }
 #help_dob, #help_name {
 	top: -26px;
