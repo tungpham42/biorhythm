@@ -728,6 +728,16 @@ function setChartOptions(downloadJPEGText,downloadPDFText,downloadPNGText,downlo
 		}
 	});
 }
+function getLegendItemWidth() {
+	switch (lang) {
+		case 'vi': return 140; break;
+		case 'en': return 140; break;
+		case 'ru': return 190; break;
+		case 'es': return 140; break;
+		case 'zh': return 120; break;
+		case 'ja': return 130; break;
+	}
+}
 function renderChart(selector,titleText,percentageText,dateText,datesArray,todayIndex,dob,diff,isSecondary,dateDiff,seriesData,type) {
 	var plotLinesArray = generatePlotLines(todayIndex);
 	var chart = $(selector);
@@ -845,6 +855,8 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 		},
 		legend: {
 			enabled: true,
+			align: 'center',
+			itemWidth: getLegendItemWidth(),
 			labelFormat: '<span style="color:{color}">{name}: </span><strong>{point.y} %</strong>'
 		},
 		plotOptions: {
