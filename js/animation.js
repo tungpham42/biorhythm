@@ -290,30 +290,32 @@ function updateBanner() {
 // Animate Scroll
 function animateScrollProverb() {
 	if ($('#results').length && $('#main_chart').length) {
-		if (Modernizr.mq('all and (min-width: 420px) and (max-width: 551px)')) {
-			if ($(document).scrollTop() <= 40) {
-				$('#proverb').css('top','-99px');
-			} else if ($(document).scrollTop() > 40 && $(document).scrollTop() <= ($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height()+40)) {
-				$('#proverb').css('top',($(document).scrollTop()-139)+'px');
-			} else if ($(document).scrollTop() > ($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height()+40)) {
-				$('#proverb').css('top',($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height())+'px');
+		$(document).ready(function(){
+			if (Modernizr.mq(mqGenie.adjustMediaQuery('all and (min-width: 420px) and (max-width: 551px)'))) {
+				if ($(document).scrollTop() <= 33) {
+					$('#proverb').css('top','-106px');
+				} else if ($(document).scrollTop() > 33 && $(document).scrollTop() <= ($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height()+143)) {
+					$('#proverb').css('top',($(document).scrollTop()-141)+'px');
+				} else {
+					$('#proverb').css('top',($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height())+'px');
+				}
+			} else if (Modernizr.mq(mqGenie.adjustMediaQuery('all and (max-width: 959px)'))) {
+				if ($(document).scrollTop() <= 100) {
+					$('#proverb').css('top','0px');
+				} else if ($(document).scrollTop() > 100 && $(document).scrollTop() <= ($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height()+100)) {
+					$('#proverb').css('top',($(document).scrollTop()-100)+'px');
+				} else {
+					$('#proverb').css('top',($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height())+'px');
+				}
+			} else if (Modernizr.mq(mqGenie.adjustMediaQuery('all and (min-width: 960px)'))) {
+				if ($(document).scrollTop() <= 115) {
+					$('#proverb').css('top','13px');
+				} else if ($(document).scrollTop() > 115 && $(document).scrollTop() <= ($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height()+115)) {
+					$('#proverb').css('top',($(document).scrollTop()-102)+'px');
+				} else {
+					$('#proverb').css('top',($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height())+'px');
+				}
 			}
-		} else if (Modernizr.mq('all and (max-width: 959px)')) {
-			if ($(document).scrollTop() <= 100) {
-				$('#proverb').css('top','0px');
-			} else if ($(document).scrollTop() > 100 && $(document).scrollTop() <= ($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height()+100)) {
-				$('#proverb').css('top',($(document).scrollTop()-100)+'px');
-			} else if ($(document).scrollTop() > ($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height()+100)) {
-				$('#proverb').css('top',($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height())+'px');
-			}
-		} else if (Modernizr.mq('all and (min-width: 960px)')) {
-			if ($(document).scrollTop() <= 115) {
-				$('#proverb').css('top','13px');
-			} else if ($(document).scrollTop() > 115 && $(document).scrollTop() <= ($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height()+115)) {
-				$('#proverb').css('top',($(document).scrollTop()-102)+'px');
-			} else if ($(document).scrollTop() > ($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height()+115)) {
-				$('#proverb').css('top',($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height())+'px');
-			}
-		}
+		});
 	}
 }

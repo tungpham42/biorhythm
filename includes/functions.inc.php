@@ -274,6 +274,7 @@ function list_user_links($name) {
 	$output = '';
 	$output .= '<a id="birthdates_toggle" class="button"><span class="translate" data-lang-ja="'.$span_interfaces['list_user_links']['ja'].'" data-lang-zh="'.$span_interfaces['list_user_links']['zh'].'" data-lang-es="'.$span_interfaces['list_user_links']['es'].'" data-lang-ru="'.$span_interfaces['list_user_links']['ru'].'" data-lang-en="'.$span_interfaces['list_user_links']['en'].'" data-lang-vi="'.$span_interfaces['list_user_links']['vi'].'">'.$span_interfaces['list_user_links'][$lang_code].'</span></a>';
 	$output .= '<div class="clear"></div>';
+	$output .= '<input id="user_birthdates_search" type="text" name="user_birthdates_search" class="m-wrap" size="60" maxlength="128" />';
 	$output .= '<div id="birthdates">';
 	$output .= '</div>';
 	$output .= '<script>
@@ -290,7 +291,7 @@ function list_user_links($name) {
 					$("#birthdates_toggle").addClass("clicked");
 					showBirthdates();
 				}
-				$("#birthdates_toggle").click(function(){
+				$("#birthdates_toggle").on("click",function(){
 					if ($(this).hasClass("clicked") && dobListStatus == "show") {
 						$.cookie("NSH:list-'.$name.'-status", "hide")
 						dobListStatus = "hide";
@@ -303,12 +304,20 @@ function list_user_links($name) {
 						showBirthdates();
 					}
 				});
+				$("#user_birthdates_search").on({
+					input: function(){
+						searchBirthdates($("#user_birthdates_search").val());
+					},
+					change: function(){
+						searchBirthdates($("#user_birthdates_search").val());
+					}
+				});
 				</script>';
 	return $output;
 }
-function list_ajax_user_links($name) {
+function list_ajax_user_links($name,$keyword='') {
 	$output = '';
-	$users = load_all_array('nsh_users');
+	$users = ($keyword != '') ? array_filter(load_all_array('nsh_users'), array(new filter($keyword), 'filter_keyword')): load_all_array('nsh_users');
 	usort($users,'sort_name_ascend');
 	$output .= '<div class="dates-box">';
 	$output .= '<div class="dates-nav" id="'.$name.'-nav"></div>';

@@ -155,7 +155,7 @@ $.fn.textWidth = function() {
 (function (H) {
 	H.Series.prototype.point = {}; // The active point
 	H.Chart.prototype.callbacks.push(function (chart) {
-		$(chart.container).bind('mousemove', function () {
+		$(chart.container).bind('mousemove touchmove', function () {
 			var legendOptions = chart.legend.options,
 				hoverPoints = chart.hoverPoints;
 			
@@ -423,6 +423,20 @@ function updateChromeWebstoreItem(langCode) {
 		}
 	});
 }
+function updateExplanation(langCode) {
+	$.ajax({
+		url: '/triggers/explanation.php',
+		type: 'GET',
+		cache: false,
+		data: {
+			lang: langCode
+		},
+		dataType: 'html',
+		success: function(data) {
+			$('#explanation').html(data);
+		}
+	});
+}
 function updateInterfaceLanguage(langCode) {
 	var langCodes = ['vi', 'en', 'ru', 'es', 'zh', 'ja'];
 	var langCodeIndex = $.inArray(langCode, langCodes);
@@ -442,6 +456,7 @@ function updateInterfaceLanguage(langCode) {
 		updateHeadingH1(langCode);
 		updateHeadDescription(langCode);
 		updateChromeWebstoreItem(langCode);
+		updateExplanation(langCode);
 		$('#explanation').attr('data-lang', langCode);
 		$('#pham_tung > span.translate').attr('data-title',$('#pham_tung > span.translate').attr('data-lang-'+langCode));
 		$('span.translate').each(function() {
@@ -594,6 +609,22 @@ function loadHash(password) {
 		}
 	});
 }
+function searchBirthdates(keyword) {
+	if ($('#birthdates').length) {
+		$.ajax({
+			url: '/triggers/birthdates.php',
+			type: 'GET',
+			cache: false,
+			data: {
+				keyword: keyword
+			},
+			dataType: 'html',
+			success: function(data) {
+				$('#birthdates').html(data);
+			}
+		});
+	}
+}
 function showBirthdates() {
 	if ($('#birthdates').length) {
 		$.ajax({
@@ -603,6 +634,9 @@ function showBirthdates() {
 			dataType: 'html',
 			success: function(data) {
 				$('#birthdates').html(data).show();
+				if (!isEmpty('#user_birthdates_search')) {
+					searchBirthdates($('#user_birthdates_search').val());
+				}
 			}
 		});
 	}
