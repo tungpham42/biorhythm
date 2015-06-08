@@ -6,10 +6,7 @@ echo list_users();
 </div>
 <script>
 $("#user_search").on({
-	keyup: function(){
-		$("#admin_user").load("/triggers/admin_user.php",{page:1,keyword:$("#user_search").val()});
-	},
-	keydown: function(){
+	input: function(){
 		$("#admin_user").load("/triggers/admin_user.php",{page:1,keyword:$("#user_search").val()});
 	},
 	change: function(){

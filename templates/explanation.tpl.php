@@ -1,4 +1,8 @@
 <div data-lang="<?php echo $lang_code; ?>" id="explanation">
+<?php
+switch ($lang_code):
+	case 'vi':
+?>
 	<section id="explanation_vi">
 		<h2 class="explain">Bạn có biết?</h2>
 		<p class="explain"><strong><a target="_blank" class="rotate" href="<?php echo $help_interfaces['wiki']['vi']; ?>"><span data-title="Nhịp sinh học">Nhịp sinh học</span></a></strong> (tiếng Anh: biorhythm) là một chu trình giả thiết về tình trạng khỏe mạnh hay năng lực sinh lý, cảm xúc, hoặc trí thông minh. Một nghiên cứu ở Nhật Bản trên công ty giao thông Ohmi Railway cũng đã lập các biểu đồ sinh học cho các tài xế lái xe của công ty để họ có sự cảnh giác và phòng tránh. Kết quả tai nạn của các tài xế đã giảm 50% từ năm 1969 đến 1970 tại Tokyo.</p>
@@ -12,6 +16,10 @@
 		<p class="explain"><strong><?php echo get_rhythm_title(6,'vi'); ?></strong>: Đường này có chu kỳ 48 ngày<span class="explain_more"> và nó thể hiện khả năng cảm nhận được cá tính riêng</span>.</p>
 		<p class="explain"><strong><?php echo get_rhythm_title(7,'vi'); ?></strong>: Đường này có chu kỳ 53 ngày<span class="explain_more"> và nó mô tả sự ổn định bên trong và thái độ thoải mái của bạn</span>.</p>
 	</section>
+<?php
+	break;
+	case 'en':
+?>
 	<section id="explanation_en">
 		<h2 class="explain">Do you know?</h2>
 		<p class="explain">A <strong><a target="_blank" class="rotate" href="<?php echo $help_interfaces['wiki']['en']; ?>"><span data-title="biorhythm">biorhythm</span></a></strong> (from Greek βίος - bios, "life" and ῥυθμός - rhuthmos, "any regular recurring motion, rhythm") is an attempt to predict various aspects of a person's life through simple mathematical cycles. Most scientists believe that the idea has no more predictive power than chance and consider the concept an example of pseudoscience.</p>
@@ -25,6 +33,10 @@
 		<p class="explain"><strong><?php echo get_rhythm_title(6,'en'); ?></strong>: This cycle is 48 days<span class="explain_more"> and expresses ability to perceive own personality and individuality</span>.</p>
 		<p class="explain"><strong><?php echo get_rhythm_title(7,'en'); ?></strong>: This cycle is 53 days<span class="explain_more"> and describes inner stability and relaxed attitude</span>.</p>
 	</section>
+<?php
+	break;
+	case 'ru':
+?>
 	<section id="explanation_ru">
 		<h2 class="explain">Знаете ли вы?</h2>
 		<p class="explain"><strong><a target="_blank" class="rotate" href="<?php echo $help_interfaces['wiki']['ru']; ?>"><span data-title="Биоритм">Биоритм</span></a></strong> - (биоритмы) периодически повторяющиеся изменения характера и интенсивности биологических процессов и явлений. Они свойственны живой материи на всех уровнях ее организации — от молекулярных и субклеточных до биосферы. Являются фундаментальным процессом в живой природе. Одни биологические ритмы относительно самостоятельны (например, частота сокращений сердца, дыхания), другие связаны с приспособлением организмов к геофизическим циклам — суточным (например, колебания интенсивности деления клеток, обмена веществ, двигательной активности животных), приливным (например, открывание и закрывание раковин у морских моллюсков, связанные с уровнем морских приливов), годичным (изменение численности и активности животных, роста и развития растений и др.)</p>
@@ -38,6 +50,10 @@
 		<p class="explain"><strong><?php echo get_rhythm_title(6,'ru'); ?></strong>: Этот цикл составляет 48 дней<span class="explain_more"> и выражает способность воспринимать собственную индивидуальность и индивидуальность</span>.</p>
 		<p class="explain"><strong><?php echo get_rhythm_title(7,'ru'); ?></strong>: Этот цикл составляет 53 дней<span class="explain_more"> и описывает внутреннюю стабильность и спокойное отношение</span>.</p>
 	</section>
+<?php
+	break;
+	case 'es':
+?>
 	<section id="explanation_es">
 		<h2 class="explain">¿Sabe usted?</h2>
 		<p class="explain">Los <strong><a target="_blank" class="rotate" href="<?php echo $help_interfaces['wiki']['es']; ?>"><span data-title="biorritmos">biorritmos</span></a></strong> constituyen un intento de predecir aspectos diversos de la vida de un individuo recurriendo a ciclos matemáticos sencillos. La mayoría de los investigadores estima que esta idea no tendría más poder predictivo que el que podría atribuirse al propio azar, considerándola un caso claro de pseudociencia.</p>
@@ -51,6 +67,10 @@
 		<p class="explain"><strong><?php echo get_rhythm_title(6,'es'); ?></strong>: Este ciclo es de 48 días<span class="explain_more">, y expresa la capacidad de percibir la propia personalidad e individualidad</span>.</p>
 		<p class="explain"><strong><?php echo get_rhythm_title(7,'es'); ?></strong>: Este ciclo es de 53 días<span class="explain_more"> y describe estabilidad interna y actitud relajada</span>.</p>
 	</section>
+<?php
+	break;
+	case 'zh':
+?>
 	<section id="explanation_zh">
 		<h2 class="explain">你知道吗?</h2>
 		<p class="explain"><strong><a target="_blank" class="rotate" href="<?php echo $help_interfaces['wiki']['zh']; ?>"><span data-title="生理节律">生理节律</span></a></strong>是一種描述人類的身體、情感及智力的假想周期的理論。該概念与生物节律无关。在生物学和医学领域，这个词都是会被小心避免的，因為它被一些人認為是一种伪科学或是前科学。</p>
@@ -64,6 +84,10 @@
 		<p class="explain"><strong><?php echo get_rhythm_title(6,'zh'); ?></strong>: 这个周期为48天<span class="explain_more">，表现为感知自己的人格和个性的能力</span>。</p>
 		<p class="explain"><strong><?php echo get_rhythm_title(7,'zh'); ?></strong>: 这个周期为53天<span class="explain_more">，说明内部的稳定和轻松的态度</span>。</p>
 	</section>
+<?php
+	break;
+	case 'ja':
+?>
 	<section id="explanation_ja">
 		<h2 class="explain">あなたが知っていますか</h2>
 		<p class="explain"><strong><a target="_blank" class="rotate" href="<?php echo $help_interfaces['wiki']['ja']; ?>"><span data-title="バイオリズム">バイオリズム</span></a></strong>（英: biorhythm）とは、「生命」を意味する bio-（バイオ）と「規則的な運動」を意味する rhythm（リズム）の合成語で、生命体の生理状態、感情、知性などは周期的パターンに沿って変化するという仮説、およびそれを図示したグラフである。</p>
@@ -77,5 +101,9 @@
 		<p class="explain"><strong><?php echo get_rhythm_title(6,'ja'); ?></strong>: このサイクルは48日<span class="explain_more">、自分自身の人格と個性を知覚する能力を表現しています</span>。</p>
 		<p class="explain"><strong><?php echo get_rhythm_title(7,'ja'); ?></strong>: このサイクルは53日<span class="explain_more">、内部安定性とリラックスした姿勢について説明します</span>。</p>
 	</section>
+<?php
+	break;
+endswitch;
+?>
 	<div class="clear"></div>
 </div>

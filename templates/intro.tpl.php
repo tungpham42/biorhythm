@@ -1,4 +1,8 @@
 <div data-lang="<?php echo $lang_code; ?>" id="introduction">
+<?php
+switch ($lang_code):
+	case 'vi':
+?>
 	<section id="introduction_vi">
 		<p>Nhịp sinh học (tiếng Anh: biorhythm) là một chu trình giả thiết về tình trạng khỏe mạnh hay năng lực sinh lý, cảm xúc, hoặc trí thông minh.</p>
 		<p>Cụ thể hơn, lấy một ví dụ, người ta cho rằng có thời điểm một người rất dễ mắc bệnh, còn có lúc khác thì không. Các thời điểm này cứ lặp đi lặp lại rất nhiều lần và có quy luật. Quy luật đó gọi là nhịp sinh học. Và chúng sẽ dao động đều trong khoảng -100% đến 100% trong đồ thị nhịp sinh học (số càng lớn thì càng mạnh).</p>
@@ -46,6 +50,10 @@
 		<p>Một nghiên cứu ở Nhật Bản trên công ty giao thông Ohmi Railway cũng đã lập các biểu đồ sinh học cho các tài xế lái xe của công ty để họ có sự cảnh giác và phòng tránh. Kết quả tai nạn của các tài xế đã giảm 50% từ năm 1969 đến 1970 tại Tokyo.</p>
 		<p>Với ứng dụng hàng ngày, bạn nên xem qua các đường sinh học của mình để có những biện pháp đối phó phù hợp. Ví như nếu nhịp sinh học về cảm xúc ở mức thấp thì bạn rất dễ bị bực bội, cáu kỉnh. Khi đó, nên tìm những không gian thoáng đãng, vui tươi hay trò chuyện với những người vui vẻ. Hoặc nếu Nhịp sinh học Sức khỏe giảm sút, bạn chớ nên làm những việc nặng nhọc hay đòi hỏi thời gian làm kéo dài.</p>
 	</section>
+<?php
+	break;
+	case 'en':
+?>
 	<section id="introduction_en">
 		<p>A biorhythm (from Greek βίος - bios, "life" and ῥυθμός - rhuthmos, "any regular recurring motion, rhythm") is an attempt to predict various aspects of a person's life through simple mathematical cycles. Most scientists believe that the idea has no more predictive power than chance and consider the concept an example of pseudoscience.</p>
 		<p>According to the theory of biorhythms, a person's life is influenced by rhythmic biological cycles that affect his or her ability in various domains, such as mental, physical and emotional activity. These cycles begin at birth and oscillate in a steady (sine wave) fashion throughout life, and by modeling them mathematically, it is suggested that a person's level of ability in each of these domains can be predicted from day to day. The theory is built on the idea that the biofeedback chemical and hormonal secretion functions within the body could show a sinusoidal behavior over time.</p>
@@ -66,6 +74,10 @@
 		<p>The practice of consulting biorhythms was popularized in the 1970s by a series of books by Bernard Gittelson, including Biorhythm — A Personal Science, Biorhythm Charts of the Famous and Infamous, and Biorhythm Sports Forecasting. Gittelson's company, Biorhythm Computers, Inc., made a business selling personal biorhythm charts and calculators, but his ability to predict sporting events was not substantiated.</p>
 		<p>Charting biorhythms for personal use was popular in the United States during the 1970s; many places (especially video arcades and amusement areas) had a biorhythm machine that provided charts upon entry of date of birth. Biorhythm charts were common in newspapers, usually found with horoscopes, at the time as well. Biorhythm programs were a common application on personal computers; and in the late 1970s, there were also handheld biorhythm calculators on the market, the Kosmos 1 and the Casio Biolator. Though biorhythms have declined in popularity, there are numerous websites on the Internet that offer free biorhythm readings. In addition, there exist free and proprietary software programs that offer more advanced charting and analysis capabilities.</p>
 	</section>
+<?php
+	break;
+	case 'ru':
+?>
 	<section id="introduction_ru">
 		<p>Биологи́ческие ри́тмы — (биоритмы) периодически повторяющиеся изменения характера и интенсивности биологических процессов и явлений. Они свойственны живой материи на всех уровнях её организации — от молекулярных и субклеточных до биосферы. Являются фундаментальным процессом в живой природе. Одни биологические ритмы относительно самостоятельны (например, частота сокращений сердца, дыхания), другие связаны с приспособлением организмов к геофизическим циклам — суточным (например, колебания интенсивности деления клеток, обмена веществ, двигательной активности животных), приливным (например, открывание и закрывание раковин у морских моллюсков, связанные с уровнем морских приливов), годичным (изменение численности и активности животных, роста и развития растений и др.)</p>
 		<p>Наука, изучающая роль фактора времени в осуществлении биологических явлений и в поведении живых систем, временнýю организацию биологических систем, природу, условия возникновения и значение биоритмов для организмов называется — биоритмология. Биоритмология является одним из направлений, сформировавшегося в 1960-е гг. раздела биологии — хронобиологии. На стыке биоритмологии и клинической медицины находится так называемая хрономедицина, изучающая взаимосвязи биоритмов с течением различных заболеваний, разрабатывающая схемы лечения и профилактики болезней с учетом биоритмов и исследующая другие медицинские аспекты биоритмов и их нарушений.</p>
@@ -89,6 +101,10 @@
 		<p>В 1959 году Юрген Ашофф (англ.)русск., впоследствии директор Планковского Института физиологии поведения (нем.)русск. в Андексе (Германия), обнаружил закономерность, которая была названа «правилом Ашоффа» (под этим названием оно вошло в хронобиологию и историю науки): «У ночных животных активный период (бодрствование) более продолжителен при постоянном освещении, в то время как у дневных животных бодрствование более продолжительно при постоянной темноте».</p>
 		<p>Им было установлено, что при длительной изоляции человека и дневных животных в темноте, цикл «бодрствование-сон» удлиняется за счет увеличения продолжительности фазы бодрствования. Ю. Ашофф предположил, что именно свет стабилизирует циркадные ритмы организма.</p>
 	</section>
+<?php
+	break;
+	case 'es':
+?>
 	<section id="introduction_es">
 		<p>Los biorritmos constituyen un intento de predecir aspectos diversos de la vida de un individuo recurriendo a ciclos matemáticos sencillos. La mayoría de los investigadores estima que esta idea no tendría más poder predictivo que el que podría atribuirse al propio azar, considerándola un caso claro de pseudociencia.</p>
 		<p>Según los creyentes en los biorritmos, la vida de una persona se vería determinada por ciclos biológicos rítmicos que afectarían a la capacidad de cada individuo en distintos terrenos, como el mental, el físico o el de las emociones. Estos ciclos se iniciarían con el nacimiento y oscilarían de acuerdo a una onda senoidal durante toda la vida. De este modo, la capacidad de una persona en cada uno de estos terrenos podría predecirse día por día mediante un modelo matemático ad hoc.</p>
@@ -112,6 +128,10 @@
 		<p>También se consultaban los biorritmos para evitar realizar actividades arriesgadas o peligrosas en los días críticos o de mayor debilidad: conducir, manejar maquinaria peligrosa, etc. En el ámbito lectivo, ante unos exámenes, el estudiante podría concentrar sus esfuerzos en los días de mayor energía intelectual relajándose los días de menor potencia.</p>
 		<p>En el mundo laboral, los ferrocarriles y las aerolíneas han experimentado grandemente con los biorritmos. Un piloto pone de relieve la actitud hacia los biorritmos de japoneses y estadounidenses.8 Sostiene, revisando su bitácora de piloto, que sus mayores errores de juicio habrían tenido lugar durante los llamados días críticos pero concluye que conocer los propios días críticos y prestar más atención (en ellos) sería suficiente para garantizar la seguridad. Un antiguo piloto de United Airlines confirmó que la compañía habría hecho uso de los biorritmos hasta mediados de los años 90, mientras que la aerolinea de carga Nippon Express aun los seguiría empleando.</p>
 	</section>
+<?php
+	break;
+	case 'zh':
+?>
 	<section id="introduction_zh">
 		<p>生理节律是一種描述人類的身體、情感及智力的假想周期的理論。該概念与生物节律无关。在生物学和医学领域，这个词都是会被小心避免的，因為它被一些人認為是一种伪科学或是前科学。</p>
 		<h3>理论内容</h3>
@@ -156,6 +176,10 @@
 		<p>除了对三种节律的疑问外，人们对这些节律是否有时间相关性都提出了疑问。女性的月经若没有荷尔蒙的调节会出现不稳定，这不可能提前几个月去预测。</p>
 		<p>由于生理周期的概念与生物钟学被揉集，导致后者也被一些人怀疑。</p>
 	</section>
+<?php
+	break;
+	case 'ja':
+?>
 	<section id="introduction_ja">
 		<p>バイオリズム（英: biorhythm）とは、「生命」を意味する bio-（バイオ）と「規則的な運動」を意味する rhythm（リズム）の合成語で、生命体の生理状態、感情、知性などは周期的パターンに沿って変化するという仮説、およびそれを図示したグラフである。</p>
 		<h3>概要</h3>
@@ -165,6 +189,10 @@
 		<p>なお、数学的には、23と28と33の最小公倍数は21252であり、バイオリズムが完全に一巡するにはおよそ58.2年かかる計算になる。</p>
 		<p>最近では元の意味から離れて、単に体調の波を言ったり、月経周期の隠語的言い回しとしてバイオリズムという言葉が使われることがある。</p>
 	</section>
+<?php
+	break;
+endswitch;
+?>
 	<h3><a class="right rotate" target="_blank" href="<?php echo $help_interfaces['wiki'][$lang_code]; ?>"><span data-title="Wikipedia">Wikipedia</span></a></h3>
 	<div class="clear"></div>
 </div>

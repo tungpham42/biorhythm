@@ -37,7 +37,7 @@ $show_donate = false;
 $show_sponsor = false;
 $show_addthis = false;
 $show_sumome = true;
-$credential_id = 3;
+$credential_id = 4;
 $number = calculate_life_path($dob);
 if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['partner_dob']) && isset($_GET['lang_code'])) {
 	$chart = new Chart($_GET['dob'],$_GET['diff'],$_GET['is_secondary'],$_GET['dt_change'],$_GET['partner_dob'],$_GET['lang_code']);
@@ -105,7 +105,7 @@ $button_interfaces = array(
 		'ru' => 'Дом',
 		'es' => 'Casa',
 		'zh' => '主页',
-		'ja' => 'わが家へ'
+		'ja' => 'ホーム'
 	),
 	'dob_erase' => array(
 		'vi' => 'Xóa',

@@ -195,14 +195,8 @@ function manipulateExplanation() {
 }
 function manipulateBirthday() {
 	if ($('body').hasClass('birthday')) {
-		$('.button_changeable.blue').removeClass('blue').addClass('orange');
-		$('.changeable').find('i.icon-white').removeClass('icon-white').addClass('icon-orange');
-		$('.changeable').find('i.m-icon-white').removeClass('m-icon-white').addClass('m-icon-orange');
 		$('h1#heading').burn();
 	} else if (!$('body').hasClass('birthday')) {
-		$('.button_changeable.orange').removeClass('orange').addClass('blue');
-		$('.changeable').find('i.icon-orange').removeClass('icon-orange').addClass('icon-white');
-		$('.changeable').find('i.m-icon-orange').removeClass('m-icon-orange').addClass('m-icon-white');
 		$('h1#heading').burn(false);
 	}
 }
@@ -228,33 +222,19 @@ function manipulateLangEvent(langCode) {
 		fullnameText = fullnameTexts[langCode];
 	}
 }
+function manipulateLangText() {
+	$('#pham_tung').find('span.translate').attr('data-title',$('#pham_tung').find('span.translate').attr('data-lang-'+lang));
+	$('span.translate').each(function() {
+		$(this).text($(this).attr('data-lang-'+lang));
+	});
+	dobText = dobTexts[lang];
+	fullnameText = fullnameTexts[lang];
+}
 function manipulateLang() {
 	if ($('#lang_bar').length) {
 		updateInterfaceLanguage(lang);
 		manipulateLangBar();
-		$('#pham_tung').find('span.translate').attr('data-title',$('#pham_tung').find('span.translate').attr('data-lang-'+lang));
-		$('span.translate').each(function() {
-			$(this).text($(this).attr('data-lang-'+lang));
-		});
-		if (lang == 'vi') {
-			dobText = 'Ngày sinh';
-			fullnameText = 'Họ tên';
-		} else if (lang == 'en') {
-			dobText = 'Date of birth';
-			fullnameText = 'Full name';
-		} else if (lang == 'ru') {
-			dobText = 'Дата рождения';
-			fullnameText = 'Полное имя';
-		} else if (lang == 'es') {
-			dobText = 'Fecha de nacimiento';
-			fullnameText = 'Nombre';
-		} else if (lang == 'zh') {
-			dobText = '出生日期';
-			fullnameText = '全名';
-		} else if (lang == 'ja') {
-			dobText = '生まれた日';
-			fullnameText = 'フルネーム';
-		}
+		manipulateLangText();
 		$('#lang_bar').on('click', '#vi_toggle', function() {
 			if (!$(this).hasClass('clicked') && !$(this).hasClass('disabled')) {
 				manipulateLangEvent('vi');
@@ -287,6 +267,7 @@ function manipulateLang() {
 		$(document).ready(function(){
 			$.datepicker.setDefaults($.datepicker.regional[lang]);
 		});
+		manipulateLangText();
 	}
 }
 function manipulateVideo() {
