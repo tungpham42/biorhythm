@@ -1,3 +1,4 @@
+<div id="bottom">
 <?php
 if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)) {
 	if (!is_birthday()) {
@@ -17,3 +18,4 @@ if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)) {
 	include $template_path.'install_app.tpl.php';
 }
 ?>
+</div>

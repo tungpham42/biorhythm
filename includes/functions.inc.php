@@ -307,7 +307,7 @@ function list_user_links($name) {
 	$output .= '<script>
 				var dobListStatus;
 				if (!$.cookie("NSH:list-'.$name.'-status")) {
-					dobListStatus = "hide";
+					dobListStatus = "show";
 				} else {
 					dobListStatus = $.cookie("NSH:list-'.$name.'-status");
 				}
@@ -347,7 +347,7 @@ function list_ajax_user_links($name,$keyword='') {
 	$users = ($keyword != '') ? array_filter(load_all_array('nsh_users'), array(new filter($keyword), 'filter_keyword')): load_all_array('nsh_users');
 	usort($users,'sort_name_ascend');
 	$output .= '<div class="dates-box">';
-	$output .= '<div class="dates-nav" id="'.$name.'-nav"></div>';
+	//$output .= '<div class="dates-nav" id="'.$name.'-nav"></div>';
 	$output .= '<ul class="dates" id="'.$name.'">';
 	$count = count($users);
 	for ($i = 0; $i < $count; ++$i) {
@@ -357,12 +357,26 @@ function list_ajax_user_links($name,$keyword='') {
 	$output .= '<div class="clear"></div>';
 	$output .= '<script>
 				lang = $.cookie("NSH:lang");
+				minBirthdatesCount = 12;
+				maxBirthdatesCount = 24;
 				$("#'.$name.'").listnav({
 					includeOther: true,
 					cookieName: "NSH:list-'.$name.'"
 				});
 				$("a.all > span.translate").text($("a.all > span.translate").attr("data-lang-"+lang));
 				$("#birthdates .m-btn, .ln-letters a").ripple();
+				if ($("#birthdates").length) {
+					$("#birthdates").find("ul.dates").find("li").slice(12).hide();
+				}
+				$(window).on("scroll mousewheel wheel DOMMouseScroll resize", function(){
+					if ($("#birthdates").length) {
+						if (($(document).scrollTop()+$(window).height()) >= ($(document).height()-$("#bottom").height())) {
+							$("#birthdates").find("ul.dates").find("li").slice(minBirthdatesCount,maxBirthdatesCount).fadeIn(1200);
+							minBirthdatesCount += 12;
+							maxBirthdatesCount += 12;
+						}
+					}
+				});
 				</script>';
 	$output .= '</div>';
 	return $output;
