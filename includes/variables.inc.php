@@ -37,7 +37,7 @@ $show_donate = false;
 $show_sponsor = false;
 $show_addthis = false;
 $show_sumome = true;
-$credential_id = 4;
+$credential_id = 4; //change this to 4 in DEMO
 $number = calculate_life_path($dob);
 if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['partner_dob']) && isset($_GET['lang_code'])) {
 	$chart = new Chart($_GET['dob'],$_GET['diff'],$_GET['is_secondary'],$_GET['dt_change'],$_GET['partner_dob'],$_GET['lang_code']);
@@ -278,12 +278,12 @@ $span_interfaces = array(
 		'ja' => '今日は有名人誕生日'
 	),
 	'list_user_links' => array(
-		'vi' => 'Hiện ngày sinh người nổi tiếng',
-		'en' => 'Show celebrities birth dates',
-		'ru' => 'Показать знаменитости даты рождения',
-		'es' => 'Mostrar celebridades fecha de nacimiento',
-		'zh' => '示名人的出生日期',
-		'ja' => '表示有名人誕生日'
+		'vi' => 'Ngày sinh người nổi tiếng',
+		'en' => 'Celebrities birth dates',
+		'ru' => 'Знаменитости даты рождения',
+		'es' => 'Celebridades fecha de nacimiento',
+		'zh' => '人的出生日期',
+		'ja' => '有名人誕生日'
 	),
 	'copyright' => array(
 		'vi' => 'bản quyền thuộc',

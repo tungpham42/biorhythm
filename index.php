@@ -1,5 +1,4 @@
 <?php
-ob_start();
 $basepath = realpath($_SERVER['DOCUMENT_ROOT']);
 $template_path = $basepath.'/templates/';
 require_once $basepath.'/includes/redirect.inc.php';
@@ -66,7 +65,7 @@ if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
 	if ($show_addthis):
 		include $template_path.'addthis.tpl.php';
 	endif;
-	if (!is_birthday() && $show_ad):
+	if (!is_birthday() && $show_ad && (isset($_COOKIE['NSH:show_ad']) && $_COOKIE['NSH:show_ad'] == 1)):
 		include $template_path.'banner_160x600.tpl.php';
 	endif;
 endif;

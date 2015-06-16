@@ -794,7 +794,7 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			}
 		},
 		exporting: {
-			url: 'http://nhipsinhhoc.vn:8080/highcharts-export-web/'
+			url: 'http://export.highcharts.com/'
 		},
 		title: {
 			text: titleText

@@ -9,7 +9,7 @@ if ($fullname != ''):
 <?php
 else:
 ?>
-			<a tabindex="1" class="m-btn" id="name_toggle"><span class="translate" data-lang-ja="<?php echo $button_interfaces['name_toggle']['ja']; ?>" data-lang-zh="<?php echo $button_interfaces['name_toggle']['zh']; ?>" data-lang-es="<?php echo $button_interfaces['name_toggle']['es']; ?>" data-lang-ru="<?php echo $button_interfaces['name_toggle']['ru']; ?>" data-lang-en="<?php echo $button_interfaces['name_toggle']['en']; ?>" data-lang-vi="<?php echo $button_interfaces['name_toggle']['vi']; ?>"><?php echo $button_interfaces['name_toggle'][$lang_code]; ?></span></a>
+			<a tabindex="1" class="m-btn" id="name_toggle"><?php echo translate_button('name_toggle'); ?></a>
 <?php
 endif;
 ?>
@@ -18,9 +18,9 @@ endif;
 			<div id="help_dob" class="help">YYYY-MM-DD</div>
 		</div>
 		<div class="m-btn-group" id="dob_control_bar">
-			<a tabindex="6" class="m-btn blue button_changeable" id="home_page" href="/<?php echo (isset($hide_lang_bar) && isset($hide_nav)) ? $lang_code.'/': ''; ?>"><i class="icon-home icon-white"></i> <span class="translate" data-lang-ja="<?php echo $button_interfaces['home_page']['ja']; ?>" data-lang-zh="<?php echo $button_interfaces['home_page']['zh']; ?>" data-lang-es="<?php echo $button_interfaces['home_page']['es']; ?>" data-lang-ru="<?php echo $button_interfaces['home_page']['ru']; ?>" data-lang-en="<?php echo $button_interfaces['home_page']['en']; ?>" data-lang-vi="<?php echo $button_interfaces['home_page']['vi']; ?>"><?php echo $button_interfaces['home_page'][$lang_code]; ?></span></a>
-			<a tabindex="5" class="m-btn blue button_changeable" id="dob_erase"><i class="icon-remove icon-white"></i> <span class="translate" data-lang-ja="<?php echo $button_interfaces['dob_erase']['ja']; ?>" data-lang-zh="<?php echo $button_interfaces['dob_erase']['zh']; ?>" data-lang-es="<?php echo $button_interfaces['dob_erase']['es']; ?>" data-lang-ru="<?php echo $button_interfaces['dob_erase']['ru']; ?>" data-lang-en="<?php echo $button_interfaces['dob_erase']['en']; ?>" data-lang-vi="<?php echo $button_interfaces['dob_erase']['vi']; ?>"><?php echo $button_interfaces['dob_erase'][$lang_code]; ?></span></a>
-			<a tabindex="3" class="m-btn green" id="dob_submit"><i class="icon-play icon-white"></i> <span class="translate" data-lang-ja="<?php echo $button_interfaces['dob_submit']['ja']; ?>" data-lang-zh="<?php echo $button_interfaces['dob_submit']['zh']; ?>" data-lang-es="<?php echo $button_interfaces['dob_submit']['es']; ?>" data-lang-ru="<?php echo $button_interfaces['dob_submit']['ru']; ?>" data-lang-en="<?php echo $button_interfaces['dob_submit']['en']; ?>" data-lang-vi="<?php echo $button_interfaces['dob_submit']['vi']; ?>"><?php echo $button_interfaces['dob_submit'][$lang_code]; ?></span></a>
+			<a tabindex="6" class="m-btn blue button_changeable" id="home_page" href="/<?php echo (isset($hide_lang_bar) && isset($hide_nav)) ? $lang_code.'/': ''; ?>"><i class="icon-home icon-white"></i> <?php echo translate_button('home_page'); ?></a>
+			<a tabindex="5" class="m-btn blue button_changeable" id="dob_erase"><i class="icon-remove icon-white"></i> <?php echo translate_button('dob_erase'); ?></a>
+			<a tabindex="3" class="m-btn green" id="dob_submit"><i class="icon-play icon-white"></i> <?php echo translate_button('dob_submit'); ?></a>
 		</div>
 	</form>
 	<div class="clear"></div>

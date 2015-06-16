@@ -1,7 +1,7 @@
 <?php
 if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)) {
 	if (!is_birthday()) {
-		if ($show_ad) {
+		if ($show_ad && (isset($_COOKIE['NSH:show_ad']) && $_COOKIE['NSH:show_ad'] == 1)) {
 			include $template_path.'banner_728x90.tpl.php';
 			include $template_path.'banner_300x250.tpl.php';
 		}

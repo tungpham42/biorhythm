@@ -293,7 +293,7 @@ function animateScrollProverb() {
 		$(document).ready(function(){
 			if (Modernizr.mq(mqGenie.adjustMediaQuery('all and (min-width: 420px) and (max-width: 551px)'))) {
 				if ($(document).scrollTop() <= 33) {
-					$('#proverb').css('top','-106px');
+					$('#proverb').css('top','-105px');
 				} else if ($(document).scrollTop() > 33 && $(document).scrollTop() <= ($('#results').height()-$('#main_chart').height()+$('#clock').outerHeight(true)+$('#news').outerHeight(true)-$('#proverb').height()+143)) {
 					$('#proverb').css('top',($(document).scrollTop()-141)+'px');
 				} else {

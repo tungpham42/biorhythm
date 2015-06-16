@@ -282,7 +282,7 @@ textarea {
 	height: auto;
 }
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-	rgba(230,239,253,0.88)fff;
+	background: #ffffff;
 	border: 1px solid #cccccc;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 	-webkit-transition: border linear 0.2s, box-shadow linear 0.2s; -moz-transition: border linear 0.2s, box-shadow linear 0.2s;	 -o-transition: border linear 0.2s, box-shadow linear 0.2s; transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -308,7 +308,7 @@ select, input[type="file"] {
 }
 select {
 	width: 220px;
-	rgba(230,239,253,0.88)fff;
+	background: #ffffff;
 	border: 1px solid #cccccc;
 }
 select[multiple], select[size] {
@@ -345,12 +345,12 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
 }
 [class^="icon-"], [class*=" icon-"] {
 	position: relative;
-	top: 2px;
-	width: 14px;
-	height: 14px;
+	top: 1px;
+	width: 13px;
+	height: 13px;
 	display: inline-block;
 	font-family: 'Glyphicons Halflings';
-	font-size: 14px;
+	font-size: 13px;
 	font-style: normal;
 	font-weight: normal;
 	line-height: 1;
@@ -1198,7 +1198,7 @@ html {
 }
 body {
 	background-color: #c2d8f9;
-	/*background-image: url('images/clock.png');*/
+	background-image: url('images/coin.png');
 	color: #333;
 	font: normal 1.3em 'Myriad Pro',sans-serif;
 	width: 100%;
@@ -1462,7 +1462,7 @@ label[for="is_secondary"]:hover, #embed_toggle:hover, #lunar_desc:hover {
 	top: 1px;
 }
 #embed_toggle:active > i, #embed_toggle.clicked > i, .m-btn:active > i, .m-btn.clicked > i {
-	top: 3px;
+	top: 2px;
 }
 input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active, input.button:active, input[type="submit"].clicked, input[type="reset"].clicked, input[type="button"].clicked, input.button.clicked, input[type="submit"].clicked:hover, input[type="reset"].clicked:hover, input[type="button"].clicked:hover, input.button.clicked:hover {
 	padding-top: 7px;
@@ -2349,6 +2349,9 @@ body.birthday #proverb blockquote a {
 }
 #proverb i#proverb_refresh {
 	position: absolute;
+	width: 14px;
+	height: 14px;
+	font-size: 14px;
 	top: 10px;
 	left: -20px;
 	z-index: 8;
@@ -2424,7 +2427,7 @@ body.birthday #proverb blockquote:hover ~ p.proverb_author {
 main {
 	position: relative;
 	font: normal 0.9em 'Myriad Pro',sans-serif;
-	background: rgba(230,239,253,0.88);
+	background: rgba(230,239,253,0.44);
 	padding: 0;
 	padding-top: 100px;
 	min-height: 420px;
@@ -2459,6 +2462,9 @@ a.m-btn {
 #dob_bar {
 	position: relative;
 	cursor: text;
+}
+#help_dob {
+	width: 88px;
 }
 #help_dob, #help_name {
 	top: -26px;
@@ -3627,12 +3633,23 @@ body.birthday #birthdates .m-btn:hover, body.birthday .dates-box .m-btn:hover, b
 }
 #user_birthdates_search {
 	display: none;
-	margin: 4px;
-	width: 200px;
-	padding: 4px;
+	margin: 8px 1px;
+	width: 180px;
+	padding: 5px;
 }
-#birthdates_toggle.clicked ~ #user_birthdates_search {
-	display: block;
+#user_birthdates_search_label {
+	display: none;
+	color: #999;
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	position: relative;
+	top: 16px;
+	right: 26px;
+	pointer-events: none;
+}
+#birthdates_toggle.clicked ~ #user_birthdates_search, #birthdates_toggle.clicked ~ #user_birthdates_search_label {
+	display: inline-block;
 }
 #timer {
 	float: left;
@@ -4244,7 +4261,7 @@ body:lang(ja) #rhythms_table {
 }
 .helper > .helper_box {
 	position: absolute;
-	background: rgba(248,248,248,0.8);
+	background: rgba(248,248,248,0.88);
 	color: rgb(42,42,42);
 	display: block;
 	float: left;
@@ -4259,7 +4276,7 @@ body:lang(ja) #rhythms_table {
 }
 .infor > .infor_box {
 	position: absolute;
-	background: rgba(248,248,248,0.8);
+	background: rgba(248,248,248,0.88);
 	color: rgb(42,42,42);
 	display: block;
 	float: left;
@@ -4642,7 +4659,7 @@ body.scrolled header {
 }
 @media all and (min-width: 420px) and (max-width: 551px) {
 	.top.button.donate, .top.button.sponsor {display: none;}
-	#proverb {top: -106px;right: 2px;width: calc(100% - 290px);width: -webkit-calc(100% - 290px);width: -moz-calc(100% - 290px);}
+	#proverb {top: -105px;right: 2px;width: calc(100% - 290px);width: -webkit-calc(100% - 290px);width: -moz-calc(100% - 290px);}
 	#proverb blockquote::before, blockquote::after {font-size: 16px}
 	#proverb blockquote::before {left: 2px;top: 1px;}
 	#proverb blockquote::after {right: 4px;bottom: -8px;}
@@ -4692,7 +4709,7 @@ body.scrolled header {
 	#embed_chart {height: 60vw;}
 }
 @media all and (max-width: 959px) {
-	body {/*background-image: url('images/clock_mobile.png');*/background-color: rgba(230,239,253,0.88) !important;margin: 0 auto;overflow-x: hidden;}
+	body {background-image: url('images/coin_mobile.png');background-color: rgba(230,239,253,0.44) !important;margin: 0 auto;overflow-x: hidden;}
 	body.birthday {background-image: url('images/gifts_mobile.png');background-color: rgba(255,252,235,0.88) !important;margin: 0 auto;}
 	body header#header {background-color: none !important;background-image: none !important;height: auto;-ms-box-shadow: none !important;-o-box-shadow: none !important;-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;}
 	header a#logo {top: 5px;left: 5px;width: 18px;height: 18px;padding: 9px;font-size: 18px;}
@@ -4780,7 +4797,7 @@ body.scrolled header {
 @media all and (min-width: 1263px) {
 	.inner {width: calc(100% - 320px);width: -webkit-calc(100% - 320px);width: -moz-calc(100% - 320px);margin: auto;}
 	#main {width: calc(100% - 320px);width: -webkit-calc(100% - 320px);width: -moz-calc(100% - 320px);}
-	#search_wrapper {right: 162px;}
+	#search_wrapper {right: 160px;}
 	footer {width: calc(100% - 10px);width: -webkit-calc(100% - 10px);width: -moz-calc(100% - 10px);}
 	#main_chart, #explanation_chart {width: calc(100% - 8px) !important;width: -webkit-calc(100% - 8px) !important;width: -moz-calc(100% - 8px) !important;height: calc(420vw / 12.8) !important;height: -webkit-calc(420vw / 12.8) !important;height: -moz-calc(420vw / 12.8) !important;}
 	.rss_feed {width: calc(100% - 32px) !important;width: -webkit-calc(100% - 32px) !important;width: -moz-calc(100% - 32px) !important;height: calc(420vw / 12.8) !important;height: -webkit-calc(420vw / 12.8) !important;height: -moz-calc(420vw / 12.8) !important;}

@@ -1,4 +1,5 @@
 <?php
+require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/compressor.inc.php';
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/variables.inc.php';
 
 /* General Functions */
@@ -183,6 +184,30 @@ function get_rhythm_title($rid,$lang) {
 			break;
 	}
 }
+function translate_raw($key,$data,$data_vi,$data_en,$data_ru,$data_es,$data_zh,$data_ja,$id='') {
+	$result = '<span '.($id != '' ? 'id="'.$id.'" ': '').'class="translate" data-lang-ja="'.$data_ja.'" data-lang-zh="'.$data_zh.'" data-lang-es="'.$data_es.'" data-lang-ru="'.$data_ru.'" data-lang-en="'.$data_en.'" data-lang-vi="'.$data_vi.'">'.$data.'</span>';
+	return $result;
+}
+function translate($type,$key,$id='') {
+	global $lang_code, $button_interfaces, $span_interfaces, $menu_interfaces, $help_interfaces, $information_interfaces;
+	$result = ($id != '') ? translate_raw($key,${$type.'_interfaces'}[$key][$lang_code],${$type.'_interfaces'}[$key]['vi'],${$type.'_interfaces'}[$key]['en'],${$type.'_interfaces'}[$key]['ru'],${$type.'_interfaces'}[$key]['es'],${$type.'_interfaces'}[$key]['zh'],${$type.'_interfaces'}[$key]['ja'],$id) : translate_raw($key,${$type.'_interfaces'}[$key][$lang_code],${$type.'_interfaces'}[$key]['vi'],${$type.'_interfaces'}[$key]['en'],${$type.'_interfaces'}[$key]['ru'],${$type.'_interfaces'}[$key]['es'],${$type.'_interfaces'}[$key]['zh'],${$type.'_interfaces'}[$key]['ja']);
+	return $result;
+}
+function translate_button($key,$id='') {
+	return ($id != '') ? translate('button',$key,$id) : translate('button',$key);
+}
+function translate_span($key,$id='') {
+	return ($id != '') ? translate('span',$key,$id) : translate('span',$key);
+}
+function translate_menu($key,$id='') {
+	return ($id != '') ? translate('menu',$key,$id) : translate('menu',$key);
+}
+function translate_help($key,$id='') {
+	return ($id != '') ? translate('help',$key,$id) : translate('help',$key);
+}
+function translate_information($key,$id='') {
+	return ($id != '') ? translate('information',$key,$id) : translate('information',$key);
+}
 function error($msg) { //Show popup meesage
     echo '
     <html>
@@ -236,7 +261,7 @@ function list_user_same_birthday_links($name) {
 	usort($users,'sort_name_ascend');
 	if (!empty($users) && $dob != '') {
 		$output .= '<div class="dates-box">';
-		$output .= '<h2 class="dates-header"><span class="translate" data-lang-ja="'.$span_interfaces['list_user_same_birthday_links']['ja'].'" data-lang-zh="'.$span_interfaces['list_user_same_birthday_links']['zh'].'" data-lang-es="'.$span_interfaces['list_user_same_birthday_links']['es'].'" data-lang-ru="'.$span_interfaces['list_user_same_birthday_links']['ru'].'" data-lang-en="'.$span_interfaces['list_user_same_birthday_links']['en'].'" data-lang-vi="'.$span_interfaces['list_user_same_birthday_links']['vi'].'">'.$span_interfaces['list_user_same_birthday_links'][$lang_code].'</span></h2>';
+		$output .= '<h2 class="dates-header">'.translate_span('list_user_same_birthday_links').'</h2>';
 		$output .= '<ul class="dates" id="'.$name.'">';
 		$count = count($users);
 		for ($i = 0; $i < $count; ++$i) {
@@ -256,7 +281,7 @@ function list_user_birthday_links($name) {
 	usort($users,'sort_name_ascend');
 	if (!empty($users)) {
 		$output .= '<div class="dates-box">';
-		$output .= '<h2 class="dates-header"><span class="translate" data-lang-ja="'.$span_interfaces['list_user_birthday_links']['ja'].'" data-lang-zh="'.$span_interfaces['list_user_birthday_links']['zh'].'" data-lang-es="'.$span_interfaces['list_user_birthday_links']['es'].'" data-lang-ru="'.$span_interfaces['list_user_birthday_links']['ru'].'" data-lang-en="'.$span_interfaces['list_user_birthday_links']['en'].'" data-lang-vi="'.$span_interfaces['list_user_birthday_links']['vi'].'">'.$span_interfaces['list_user_birthday_links'][$lang_code].'</span></h2>';
+		$output .= '<h2 class="dates-header">'.translate_span('list_user_birthday_links').'</h2>';
 		$output .= '<ul class="dates" id="'.$name.'">';
 		$count = count($users);
 		for ($i = 0; $i < $count; ++$i) {
@@ -272,10 +297,12 @@ function list_user_links($name) {
 	global $lang_code;
 	global $span_interfaces;
 	$output = '';
-	$output .= '<a id="birthdates_toggle" class="button"><span class="translate" data-lang-ja="'.$span_interfaces['list_user_links']['ja'].'" data-lang-zh="'.$span_interfaces['list_user_links']['zh'].'" data-lang-es="'.$span_interfaces['list_user_links']['es'].'" data-lang-ru="'.$span_interfaces['list_user_links']['ru'].'" data-lang-en="'.$span_interfaces['list_user_links']['en'].'" data-lang-vi="'.$span_interfaces['list_user_links']['vi'].'">'.$span_interfaces['list_user_links'][$lang_code].'</span></a>';
+	$output .= '<a id="birthdates_toggle" class="button">'.translate_span('list_user_links').'</a>';
 	$output .= '<div class="clear"></div>';
 	$output .= '<input id="user_birthdates_search" type="text" name="user_birthdates_search" class="m-wrap" size="60" maxlength="128" />';
+	$output .= '<i id="user_birthdates_search_label" class="icon-search"></i>';
 	$output .= '<div id="birthdates">';
+	$output .= list_ajax_user_links($name);
 	$output .= '</div>';
 	$output .= '<script>
 				var dobListStatus;
@@ -757,58 +784,6 @@ function sort_date_ascend($a,$b){ //Call back function to sort date ascendently
 		return strcmp($a['created'],$b['created']);
 	}
 }
-/* Filter Class */
-class filter {
-	function __construct($num) {
-			$this->num = $num;
-	}
-	function filter_keyword($a) { //Call back function to filter array by fullname
-		if (isset($a['name']) && isset($a['dob'])) {
-			if (preg_match("/$this->num/i",$a['name']) || preg_match("/$this->num/i",$a['dob'])) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
-	function filter_rid($a) { //Call back function to filter array by role ID
-		if (isset($a['rid'])) {
-			if ($a['rid'] == $this->num) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
-	function filter_secondary($a) { //Call back function to filter array by role ID
-		if (isset($a['is_secondary'])) {
-			if ($a['is_secondary'] == $this->num) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
-	function filter_has_birthday($a) { //Call back function to filter array by role ID
-		if (isset($a['dob'])) {
-			if (has_birthday($a['dob'],time()) == $this->num) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
-	function filter_has_same_birthday($a) { //Call back function to filter array by role ID
-		global $dob, $fullname;
-		if (isset($a['dob']) && $dob != '' && isset($a['name'])) {
-			if (has_birthday($a['dob'],strtotime($dob)) == $this->num && prevent_xss($a['name']) != $fullname) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	}
-}
 function site_name() {
 	global $lang_code;
 	switch ($lang_code) {
@@ -910,7 +885,6 @@ function chrome_webstore_item() {
 	}
 	return $item_link;
 }
-//array_filter($posts, array(new filter($cid), 'filter_cid'))
 function change_url_lang($url, $lang) {
 	global $lang_codes;
 	$changed_url = '';

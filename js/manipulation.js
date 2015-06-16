@@ -317,6 +317,14 @@ function manipulateInfor(selector,content) {
 }
 function manipulateScroll() {
 	var offset = 300, offset_opacity = 1200, scroll_top_duration = 700;
+	var settings = {
+		target: 'body',
+		speed: 10,
+		vertical: true,
+		vertical_inversed: true,
+		horizontal: true,
+		horizontal_inversed: true
+	};
 	if ($(document).scrollTop() > 0) {
 		$('body').addClass('scrolled');
 	} else {
