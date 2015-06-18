@@ -1,9 +1,9 @@
 <?php
-include $template_path.'logo.tpl.php';
+include template('logo');
 if (!isset($hide_nav)):
-	include $template_path.'nav.tpl.php';
+	include template('nav');
 endif;
-include $template_path.'heading_h1.tpl.php';
-include $template_path.'search_form.tpl.php';
+include template('heading_h1');
+include template('search_form');
 ?>
 <div class="clear"></div>

@@ -368,36 +368,15 @@ function manipulateClock() {
 		clock.run();
 	}, 1000);
 }
-function manipulateMixPanel() {
-	mixpanel.track_links('#logo', 'click logo link', {
-		'referrer': document.referrer
+function manipulateAjax() {
+	$(document).ajaxStart(function() {
+		NProgress.start();
+		$('body').addClass('loading');
+	}).ajaxStop(function() {
+		NProgress.done();
+		$('body').removeClass('loading');
+		if ($('#proverb').length) {
+			animateScrollProverb();
+		}
 	});
-	mixpanel.track_links('#home_page', 'click home_page link', {
-		'referrer': document.referrer
-	});
-	mixpanel.track_links('#home_link', 'click home_link link', {
-		'referrer': document.referrer
-	});
-	mixpanel.track_links('#intro_link', 'click intro_link link', {
-		'referrer': document.referrer
-	});
-	mixpanel.track_links('#blog_link', 'click blog_link link', {
-		'referrer': document.referrer
-	});
-	mixpanel.track_links('#forum_link', 'click forum_link link', {
-		'referrer': document.referrer
-	});
-	mixpanel.track_links('#lunar_link', 'click lunar_link link', {
-		'referrer': document.referrer
-	});
-	mixpanel.track_links('#bmi_link', 'click bmi_link link', {
-		'referrer': document.referrer
-	});
-	mixpanel.track_links('#survey_link', 'click survey_link link', {
-		'referrer': document.referrer
-	});
-	mixpanel.track_links('#game_link', 'click game_link link', {
-		'referrer': document.referrer
-	});
-	mixpanel.track_forms('#dob_form', 'submit dob_form');
 }

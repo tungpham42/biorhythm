@@ -3452,6 +3452,10 @@ td.count {
 	background: #efefef;
 	text-align: center;
 }
+#form > table {
+	width: 42%;
+	border: none;
+}
 #debug {display: none; margin-top: 12px;}
 .race_lane {
 	width: 882px;

@@ -333,6 +333,14 @@ $span_interfaces = array(
 		'zh' => '应用',
 		'ja' => 'アプリケーション'
 	),
+	'apps_six_lang' => array(
+		'vi' => '6 ngôn ngữ',
+		'en' => '6 language',
+		'ru' => '6 язык',
+		'es' => '6 lenguaje',
+		'zh' => '6語言',
+		'ja' => '6言語'
+	),
 	'apps_one_lang' => array(
 		'vi' => 'Một ngôn ngữ',
 		'en' => 'Single language',

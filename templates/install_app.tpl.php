@@ -1,9 +1,7 @@
 <h2 id="apps"><?php echo translate_span('apps'); ?></h2>
 <h3 class="apps">Android</h3>
-<h4 class="apps lite">Lite - ads</h4>
+<h4 class="apps lite"><?php echo translate_span('apps_six_lang'); ?></h4>
 <a target="_blank" id="android" href="https://play.google.com/store/apps/details?id=vn.nhipsinhhoc"></a>
-<h4 class="apps pro">PRO - no ads</h4>
-<a target="_blank" id="android_pro" href="https://play.google.com/store/apps/details?id=vn.nhipsinhhoc.pro"></a>
 <h4 class="apps one_lang"><?php echo translate_span('apps_one_lang'); ?></h4>
 <a target="_blank" id="android_vi" href="https://play.google.com/store/apps/details?id=vn.nhipsinhhoc.vi"></a>
 <a target="_blank" id="android_en" href="https://play.google.com/store/apps/details?id=vn.nhipsinhhoc.en"></a>

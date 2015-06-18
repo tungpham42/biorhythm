@@ -1,18 +1,18 @@
 <?php
 if ($show_donate) {
-	include $template_path.'donate_top.tpl.php';
+	include template('donate_top');
 }
 if ($show_sponsor) {
-	include $template_path.'sponsor_top.tpl.php';
+	include template('sponsor_top');
 }
 if (has_dob()) {
-	//include $template_path.'news.tpl.php';
-	include $template_path.'results.tpl.php';
+	//include template('news');
+	include template('results');
 } else if (!has_dob()) {
-	include $template_path.'explanation_chart.tpl.php';
+	include template('explanation_chart');
 }
-include $template_path.'explanation.tpl.php';
-//include $template_path.'feed_blog.tpl.php';
+include template('explanation');
+//include template('feed_blog');
 echo list_user_same_birthday_links('same-birthday-links');
 echo list_user_birthday_links('birthday-links');
 echo list_user_links('user-birthdates');

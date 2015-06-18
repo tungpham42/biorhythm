@@ -359,10 +359,10 @@ function list_ajax_user_links($name,$keyword='') {
 				lang = $.cookie("NSH:lang");
 				minBirthdatesCount = 12;
 				maxBirthdatesCount = 24;
-				$("#'.$name.'").listnav({
-					includeOther: true,
-					cookieName: "NSH:list-'.$name.'"
-				});
+				//$("#'.$name.'").listnav({
+				//	includeOther: true,
+				//	cookieName: "NSH:list-'.$name.'"
+				//});
 				$("a.all > span.translate").text($("a.all > span.translate").attr("data-lang-"+lang));
 				$("#birthdates .m-btn, .ln-letters a").ripple();
 				if ($("#birthdates").length) {
@@ -370,7 +370,7 @@ function list_ajax_user_links($name,$keyword='') {
 				}
 				$(window).on("scroll mousewheel wheel DOMMouseScroll resize", function(){
 					if ($("#birthdates").length) {
-						if (($(document).scrollTop()+$(window).height()) >= ($(document).height()-$("#bottom").height())) {
+						if (($(document).scrollTop()+$(window).height()) >= ($(document).height()-$("#bottom").height()+$("#bottom_banner").height())) {
 							$("#birthdates").find("ul.dates").find("li").slice(minBirthdatesCount,maxBirthdatesCount).fadeIn(1200);
 							minBirthdatesCount += 12;
 							maxBirthdatesCount += 12;
