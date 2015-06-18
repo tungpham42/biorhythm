@@ -1,4 +1,4 @@
-<script src="/min/b=js&amp;f=angular/angular.js,lunar.js&amp;63"></script>
+<script src="/min/b=js&amp;f=angular/angular.js,lunar.js&amp;64"></script>
 <div data-ng-app="lunarApp" data-ng-controller="lunarController">
 	<span data-ng-model="today" data-ng-init="today='<?php echo date('Y-m-d'); ?>'"></span>
 	<div class="m-btn-group">
