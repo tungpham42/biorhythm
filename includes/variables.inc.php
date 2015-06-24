@@ -209,7 +209,7 @@ $button_interfaces = array(
 		'ru' => 'Приложений',
 		'es' => 'Aplicaciones',
 		'zh' => '应用',
-		'ja' => 'アプリケーション'
+		'ja' => 'アプリ'
 	),
 	'donate' => array(
 		'vi' => 'ĐÓNG GÓP',
@@ -331,7 +331,7 @@ $span_interfaces = array(
 		'ru' => 'Приложений',
 		'es' => 'Aplicaciones',
 		'zh' => '应用',
-		'ja' => 'アプリケーション'
+		'ja' => 'アプリ'
 	),
 	'apps_six_lang' => array(
 		'vi' => '6 ngôn ngữ',

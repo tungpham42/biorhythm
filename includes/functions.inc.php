@@ -1,5 +1,4 @@
 <?php
-require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/compressor.inc.php';
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/variables.inc.php';
 
 /* General Functions */
