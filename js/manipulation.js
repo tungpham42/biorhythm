@@ -330,7 +330,7 @@ function manipulateScroll() {
 	} else {
 		$('body').removeClass('scrolled');
 	}
-	if ($(document).scrollTop() >= ($('#apps').offset().top-$('header').height()) && $(document).scrollTop() <= ($('#alexa').offset().top-$('header').height())) {
+	if ($(document).scrollTop() >= ($('#apps').offset().top-$('header').height())) {
 		$('#apps_link').addClass('clicked');
 	} else {
 		$('#apps_link').removeClass('clicked');
@@ -346,7 +346,7 @@ function manipulateScroll() {
 		} else {
 			$('body').removeClass('scrolled');
 		}
-		if ($(document).scrollTop() >= Math.floor($('#apps').offset().top-$('header').height()) && $(document).scrollTop() <= ($('#alexa').offset().top-$('header').height())) {
+		if ($(document).scrollTop() >= Math.floor($('#apps').offset().top-$('header').height())) {
 			$('#apps_link').addClass('clicked');
 		} else {
 			$('#apps_link').removeClass('clicked');
@@ -369,17 +369,14 @@ function manipulateClock() {
 	}, 1000);
 }
 function manipulateAjax() {
-	$(document).on({
-		ajaxStart: function() {
-			NProgress.start();
-			$('body').addClass('loading');
-		},
-		ajaxStop: function() {
-			NProgress.done();
-			$('body').removeClass('loading');
-			if ($('#proverb').length) {
-				animateScrollProverb();
-			}
+	$(document).ajaxStart(function() {
+		NProgress.start();
+		$('body').addClass('loading');
+	}).ajaxStop(function() {
+		NProgress.done();
+		$('body').removeClass('loading');
+		if ($('#proverb').length) {
+			animateScrollProverb();
 		}
 	});
 }

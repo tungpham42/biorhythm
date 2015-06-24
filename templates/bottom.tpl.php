@@ -1,9 +1,6 @@
 <div id="bottom">
 <?php
 if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
-	if ($p != 'home'):
-		include template('install_app');
-	endif;
 	if (!is_birthday()):
 		if ($show_ad):
 ?>
@@ -23,6 +20,8 @@ if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
 		endif;
 	endif;
 	include template('comments');
+	include template('alexa');
+	include template('install_app');
 endif;
 ?>
 </div>

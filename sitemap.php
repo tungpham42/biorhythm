@@ -1,10 +1,9 @@
 <?php
-header('Content-Disposition: attachment; filename=sitemap.xml');
 header('Content-type: application/xml');
 header('Pragma: public');
 header('Cache-Control: private');
 header('Expires: -1');
-require realpath($_SERVER['DOCUMENT_ROOT']).'/includes/init_trigger.inc.php';
+require realpath($_SERVER['DOCUMENT_ROOT']).'/includes/init.inc.php';
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -129,7 +128,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 $users = load_all_array('nsh_users');
 usort($users,'sort_name_ascend');
 $count = count($users);
-for ($i = 0; $i < $count; ++$i):
+for ($i = 0; $i < $count; $i++):
 ?>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?fullname=<?php echo str_replace(' ','+',$users[$i]['name']); ?>&amp;dob=<?php echo $users[$i]['dob']; ?></loc>

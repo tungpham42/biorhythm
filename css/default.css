@@ -1652,7 +1652,7 @@ body:not(.birthday) header h1#heading {
 	text-shadow: 0 1px 0 #d2d2d2, 0 2px 0 #dbdbdb, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15) !important;
 }
 a#logo > i {
-	top: 0;
+	top: 0px;
 	width: 32px;
 	height: 32px;
 	font-size: 32px;
@@ -3310,7 +3310,7 @@ label[for="is_secondary"] {
 label[for="is_secondary"] > span {
 	float: right;
 	position: relative;
-	bottom: 0;
+	bottom: 0px;
 }
 label[for="is_secondary"]:active > span, label[for="is_secondary"].clicked > span {
 	bottom: -1px;
@@ -3329,7 +3329,7 @@ input[name="is_secondary"] {display: none;}
 }
 .rhythm > i {
 	position: relative;
-	bottom: 0;
+	bottom: 0px;
 	left: 4px;
 	font-size: 13px !important;
 	transition: none;
@@ -4146,28 +4146,14 @@ body.embed #main {
 	box-shadow: none;
 }
 body.embed #content {padding: 0}
-#installation {
-	background-color: #121212;
-	background-image: -moz-linear-gradient(top,#121212,#242424);
-	background-image: -ms-linear-gradient(top,#121212,#242424);
-	background-image: -webkit-gradient(linear,0 0,0 100%,from(#121212),to(#242424));
-	background-image: -webkit-linear-gradient(top,#121212,#242424);
-	background-image: -o-linear-gradient(top,#121212,#242424);
-	background-image: linear-gradient(to top,#121212,#242424);
-	color: #ffffff;
-	width: 96%;
-	margin: auto;
-	padding: 2%;
-}
 h2#apps, h3.apps, h4.apps {
-	margin: 8px auto;
+	margin: auto;
 	display: block;
 	width: 200px;
 	text-align: center;
 }
-h2#apps {
+h2#apps, h4.apps.pro {
 	font-weight: bolder;
-	font-size: 32px;
 }
 #android, #android_pro, #android_vi, #android_en, #android_ru, #android_es, #android_zh, #android_ja, #android_lunar {
 	display: block;
@@ -4275,7 +4261,7 @@ body:lang(ja) #rhythms_table {
 	font-size: 24px;
 	width: 24px;
 	height: 24px;
-	top: 0;
+	top: 0px;
 }
 .helper > .helper_box {
 	position: absolute;
@@ -4539,7 +4525,7 @@ body.birthday .rss_feed > .feed > .feed_item {
 	background: #C6C6C5;
 	font-size: 12px;
 	text-decoration: none;
-	padding: 0 5px;
+	padding: 0px 5px;
 	margin: -2px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
@@ -4650,7 +4636,7 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 #alexa {
 	display: block;
 	width: 200px;
-	margin: 12px auto 0;
+	margin: auto;
 }
 #alexa > a > img {
 	width: 200px;

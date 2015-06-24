@@ -12,7 +12,6 @@ if (has_dob()) {
 	include template('explanation_chart');
 }
 include template('explanation');
-include template('install_app');
 //include template('feed_blog');
 echo list_user_same_birthday_links('same-birthday-links');
 echo list_user_birthday_links('birthday-links');
