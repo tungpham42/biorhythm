@@ -1,7 +1,7 @@
 <div id="bottom">
 <?php
 if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
-	if ($p != 'home'):
+	if ($p != 'home' && $p != 'member/home'):
 		include template('install_app');
 	endif;
 	if (!is_birthday()):

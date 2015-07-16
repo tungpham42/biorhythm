@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $basepath = realpath($_SERVER['DOCUMENT_ROOT']);
 $template_path = $basepath.'/templates/';
 require_once $basepath.'/includes/redirect.inc.php';
@@ -14,10 +15,10 @@ include template('head');
 </head>
 <body lang="<?php echo $lang_code; ?>" class="<?php echo $body_class.(has_one_lang() ? ' one_lang': ''); ?>">
 <?php
-include template('variables');
 if (!isset($_GET['p']) || $_GET['p'] == 'home'):
 	include template('sitelinks_searchbox');
 endif;
+include template('variables');
 include template('img_desc');
 include template('clicktale_top');
 include template('fb_root');

@@ -182,6 +182,7 @@ $.fn.textWidth = function() {
 }(Highcharts));
 
 q = (isset($('span#variables').attr('data-q')) && $('span#variables').attr('data-q') !== '') ? $('span#variables').attr('data-q'): decodeURIComponent(getUrlVars()['q']);
+p = (isset($('span#variables').attr('data-p')) && $('span#variables').attr('data-p') !== '') ? $('span#variables').attr('data-p'): decodeURIComponent(getUrlVars()['p']);
 dob = (isset($('span#variables').attr('data-dob')) && $('span#variables').attr('data-dob') !== '') ? $('span#variables').attr('data-dob'): decodeURIComponent(getUrlVars()['dob']);
 fullname = (isset($('span#variables').attr('data-fullname')) && $('span#variables').attr('data-fullname') !== '') ? $('span#variables').attr('data-fullname'): replaceAll('+',' ',decodeURIComponent(getUrlVars()['fullname']));
 givenLang = window.location.pathname.substr(1,2);
@@ -236,6 +237,9 @@ function updateHeadTitle(langCode) {
 	if (isset(q)) {
 		ajaxData.q = q;
 	}
+	if (isset(p)) {
+		ajaxData.p = p;
+	}
 	if (isset(dob)) {
 		ajaxData.dob = dob;
 	}
@@ -284,6 +288,9 @@ function updateHeadingH1(langCode) {
 	};
 	if (isset(q)) {
 		ajaxData.q = q;
+	}
+	if (isset(p)) {
+		ajaxData.p = p;
 	}
 	if (isset(dob)) {
 		ajaxData.dob = dob;
@@ -440,7 +447,7 @@ function updateExplanation(langCode) {
 function updateInterfaceLanguage(langCode) {
 	var langCodes = ['vi', 'en', 'ru', 'es', 'zh', 'ja'];
 	var langCodeIndex = $.inArray(langCode, langCodes);
-	if ($('body').hasClass('home') && langCodeIndex != -1) {
+	if ($('#lang_bar').length && langCodeIndex != -1) {
 		langCodes.splice(langCodeIndex, 1);
 		remainingLangCodeIds = '';
 		remainingLangCodesCount = langCodes.length;
@@ -464,6 +471,9 @@ function updateInterfaceLanguage(langCode) {
 		});
 		$('input.translate').each(function() {
 			$(this).text($(this).attr('data-lang-'+langCode)).attr('placeholder',$(this).attr('data-lang-'+langCode));
+		});
+		$('input[type="submit"].translate').each(function() {
+			$(this).val($(this).attr('data-lang-'+langCode));
 		});
 		$('label.placeholder').each(function() {
 			$(this).text($(this).next().attr('data-lang-'+langCode));
@@ -492,7 +502,7 @@ function loadResults(dob,diff,isSecondary,dtChange,partnerDob,langCode) {
 			dataType: 'html',
 			success: function(data) {
 				$('#results').html(data);
-				if ($('body').hasClass('has_dob')) {
+				if ($('body').hasClass('has_dob') || $('body').hasClass('member')) {
 					manipulateBirthday();
 					updateHeadTitleBirthday(langCode,dtChange);
 					updateHeadDescriptionBirthday(langCode,dtChange);
@@ -911,9 +921,11 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 						if (!this.visible) {
 							this.show();
 							$.cookie('NSH:rhythm-'+type+'-id-'+this.index, 'show');
+							$('i.rhythm_toggle[data-rhythm-id="'+this.index+'"]').removeClass('icon-remove').addClass('icon-ok');
 						} else if (this.visible) {
 							this.hide();
 							$.cookie('NSH:rhythm-'+type+'-id-'+this.index, 'hide');
+							$('i.rhythm_toggle[data-rhythm-id="'+this.index+'"]').removeClass('icon-ok').addClass('icon-remove');
 						}
 					}
 				},
@@ -993,4 +1005,118 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 		}
 	});
 	toggleRhythms(selector,type);
+	if (type == 'main') {
+		chart = $(selector).highcharts();
+		$('i.rhythm_toggle').each(function(){
+			id = $(this).attr('data-rhythm-id');
+			series = chart.series[id];
+			if (series.visible) {
+				series.show();
+				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'show');
+				$(this).removeClass('icon-remove').addClass('icon-ok');
+			} else if (!series.visible) {
+				series.hide();
+				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'hide');
+				$(this).removeClass('icon-ok').addClass('icon-remove');
+			}
+			console.log(id);
+		});
+		$('i.rhythm_toggle').on('click', function(){
+			id = $(this).attr('data-rhythm-id');
+			series = chart.series[id];
+			if (!series.visible) {
+				series.show();
+				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'show');
+				$(this).removeClass('icon-remove').addClass('icon-ok');
+				console.log(id);
+			} else if (series.visible) {
+				series.hide();
+				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'hide');
+				$(this).removeClass('icon-ok').addClass('icon-remove');
+				console.log(id);
+			}
+		});
+	}
+}
+/* Person Management */
+function createPerson() {
+	if ($('body').hasClass('member')) {
+		ajaxData = {
+			fullname: $('input[name="person_fullname"]').val(),
+			dob: $('input[name="person_dob"]').val()
+		};
+		$.ajax({
+			url: '/triggers/person_create.php',
+			type: 'POST',
+			cache: false,
+			data: ajaxData,
+			dataType: 'text',
+			success: function(lastId) {
+				$.ajax({
+					url: '/triggers/person_list.php',
+					type: 'GET',
+					cache: false,
+					dataType: 'html',
+					success: function(data) {
+						$('#persons_list').html(data);
+						window.location = $('#my_birthdate').attr('href')+'?pid='+lastId;
+					}
+				});
+			}
+		});
+	}
+}
+function editPerson() {
+	if ($('body').hasClass('member')) {
+		ajaxData = {
+			pid: decodeURIComponent(getUrlVars()['pid']),
+			fullname: $('input[name="person_fullname"]').val(),
+			dob: $('input[name="person_dob"]').val()
+		};
+		$.ajax({
+			url: '/triggers/person_edit.php',
+			type: 'POST',
+			cache: false,
+			data: ajaxData,
+			dataType: 'text',
+			success: function() {
+				$.ajax({
+					url: '/triggers/person_list.php',
+					type: 'GET',
+					cache: false,
+					dataType: 'html',
+					success: function(data) {
+						$('#persons_list').html(data);
+						window.location = $('#my_birthdate').attr('href')+'?pid='+decodeURIComponent(getUrlVars()['pid']);
+					}
+				});
+			}
+		});
+	}
+}
+function removePerson() {
+	if ($('body').hasClass('member')) {
+		ajaxData = {
+			pid: decodeURIComponent(getUrlVars()['pid'])
+		};
+		$.ajax({
+			url: '/triggers/person_remove.php',
+			type: 'POST',
+			cache: false,
+			data: ajaxData,
+			dataType: 'text',
+			success: function() {
+				$.ajax({
+					url: '/triggers/person_list.php',
+					type: 'GET',
+					cache: false,
+					dataType: 'html',
+					success: function(data) {
+						$('#persons_list').html(data);
+						window.location = $('#my_birthdate').attr('href');
+					}
+				});
+			}
+		});
+	}
 }

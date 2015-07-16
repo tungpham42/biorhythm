@@ -1,0 +1,1 @@
+<a id="member_register" class="m-btn green" href="/member/register/" tabindex="4"><?php echo translate_button('register'); ?></a>

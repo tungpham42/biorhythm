@@ -81,7 +81,7 @@ class Chart {
 				$this->_info_h5 = 'Suggestion';
 				$this->_statistics_h5 = 'Statistics';
 				$this->_compatibility_h5 = 'Compatibility';
-				$this->_lunar_h5 = 'Lunar calendar';
+				$this->_lunar_h5 = 'Lunar';
 				if (date('m-d',time()+86400*$this->_diff) == date('m-d',strtotime($this->_dob))) {
 					$this->_controls_h5 = 'Birthday';
 				} else if ($this->_diff == 0) {
@@ -112,7 +112,7 @@ class Chart {
 				$this->_info_h5 = 'Предложение';
 				$this->_statistics_h5 = 'Статистика';
 				$this->_compatibility_h5 = 'Совместимость';
-				$this->_lunar_h5 = 'Лунный календарь';
+				$this->_lunar_h5 = 'Лунный';
 				if (date('m-d',time()+86400*$this->_diff) == date('m-d',strtotime($this->_dob))) {
 					$this->_controls_h5 = 'День рождения';
 				} else if ($this->_diff == 0) {
@@ -143,7 +143,7 @@ class Chart {
 				$this->_info_h5 = 'Sugerencia';
 				$this->_statistics_h5 = 'Estadística';
 				$this->_compatibility_h5 = 'Compatibilidad';
-				$this->_lunar_h5 = 'Calendario lunar';
+				$this->_lunar_h5 = 'Lunar';
 				if (date('m-d',time()+86400*$this->_diff) == date('m-d',strtotime($this->_dob))) {
 					$this->_controls_h5 = 'Cumpleaños';
 				} else if ($this->_diff == 0) {
@@ -337,10 +337,10 @@ class Chart {
 	}
 	// Render stats
 	function render_stats() {
-		global $help_interfaces;
+		global $help_interfaces, $dob;
 		echo '
 <section id="stats" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
-	<h5>'.$this->_statistics_h5.'</h5>
+	<h5>'.$this->_statistics_h5.' - '.$dob.'</h5>
 	<div class="helper changeable"><i class="icon-question-sign icon-white"></i></div>
 	<p><strong><span class="translate" data-lang-ja="歳:" data-lang-zh="岁老:" data-lang-es="Años:" data-lang-ru="Лет:" data-lang-en="Years old:" data-lang-vi="Số năm tuổi:"></span></strong> '.(date('Y', time()+86400*$this->_diff) - date('Y', strtotime($this->_dob))).' <span class="translate" data-lang-ja="年々" data-lang-zh="岁" data-lang-es="año" data-lang-ru="лет" data-lang-en="'.pluralize(date('Y', time()+86400*$this->_diff) - date('Y', strtotime($this->_dob)),'year').'" data-lang-vi="năm"></span></p>
 	<p><strong><span class="translate" data-lang-ja="日古:" data-lang-zh="日老:" data-lang-es="Días:" data-lang-ru="Дней:" data-lang-en="Days old:" data-lang-vi="Số ngày tuổi:"></span></strong> '.differ_date($this->_dob, $this->_date).' <span class="translate" data-lang-ja="日" data-lang-zh="日" data-lang-es="'.pluralize(differ_date($this->_dob, $this->_date),'día').'" data-lang-ru="дней" data-lang-en="'.pluralize(differ_date($this->_dob, $this->_date),'day').'" data-lang-vi="ngày"></span></p>
@@ -356,7 +356,7 @@ class Chart {
 	function render_lunar() {
 		echo '
 <section id="lunar" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
-	<h5>'.$this->_lunar_h5.'</h5>
+	<h5>'.$this->_lunar_h5.' - '.get_lunar_date($this->_dob,true).'</h5>
 	<div class="helper changeable"><i class="icon-question-sign icon-white"></i></div>
 	<p><strong><span class="translate" data-lang-ja="歳:" data-lang-zh="岁老:" data-lang-es="Años:" data-lang-ru="Лет:" data-lang-en="Years old:" data-lang-vi="Số năm tuổi:"></span></strong> '.get_lunar_years_old($this->_dob,$this->_date).' <span class="translate" data-lang-ja="年々" data-lang-zh="岁" data-lang-es="año" data-lang-ru="лет" data-lang-en="'.pluralize(get_lunar_years_old($this->_dob,$this->_date),'year').'" data-lang-vi="năm"></span></p>
 	<p><strong><span class="translate" data-lang-ja="年:" data-lang-zh="年:" data-lang-es="Año:" data-lang-ru="Год:" data-lang-en="Year:" data-lang-vi="Năm:"></span></strong> <span class="translate" data-lang-ja="'.get_lunar_year($this->_dob,'ja').'" data-lang-zh="'.get_lunar_year($this->_dob,'zh').'" data-lang-es="'.get_lunar_year($this->_dob,'es').'" data-lang-ru="'.get_lunar_year($this->_dob,'ru').'" data-lang-en="'.get_lunar_year($this->_dob,'en').'" data-lang-vi="'.get_lunar_year($this->_dob,'vi').'"></span></p>
@@ -415,9 +415,9 @@ class Chart {
 	<h5>'.$this->_controls_h5.'</h5>
 	<div class="helper changeable"><i class="icon-question-sign icon-white"></i></div>
 	<ul>
-		<li class="rhythm changeable"><span class="translate" data-lang-ja="平均する:" data-lang-zh="平均:" data-lang-es="Promedio:" data-lang-ru="Средний:" data-lang-en="Average:" data-lang-vi="Trung bình:"></span><span class="value">'.percent_average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms).'</span><i class="icon-white icon-arrow-'.((average_bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$this->_rhythms) < average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms)) ? 'up': 'down').'"></i></li>';
+		<li class="rhythm changeable"><span class="translate" data-lang-ja="平均する:" data-lang-zh="平均:" data-lang-es="Promedio:" data-lang-ru="Средний:" data-lang-en="Average:" data-lang-vi="Trung bình:"></span><span class="value">'.percent_average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms).'</span><i class="icon-white icon-arrow-'.((average_bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$this->_rhythms) < average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms)) ? 'up': 'down').'"></i><i class="rhythm_toggle" data-rhythm-id="0" class="icon-white"></i></li>';
 		foreach ($this->_rhythms as $rhythm){
-			echo '<li class="rhythm changeable'.(($rhythm['is_secondary'] == 1) ? ' secondary': '').'"><span class="translate" data-lang-ja="'.$rhythm['description_ja'].':" data-lang-zh="'.$rhythm['description_zh'].':" data-lang-es="'.$rhythm['description_es'].':" data-lang-ru="'.$rhythm['description_ru'].':" data-lang-en="'.$rhythm['description_en'].':" data-lang-vi="'.$rhythm['name'].':"></span><span class="value">'.percent_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale']).'</span><i class="icon-white icon-arrow-'.((bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$rhythm['scale']) < bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale'])) ? 'up': 'down').'"></i></li>';
+			echo '<li class="rhythm changeable'.(($rhythm['is_secondary'] == 1) ? ' secondary': '').'"><span class="translate" data-lang-ja="'.$rhythm['description_ja'].':" data-lang-zh="'.$rhythm['description_zh'].':" data-lang-es="'.$rhythm['description_es'].':" data-lang-ru="'.$rhythm['description_ru'].':" data-lang-en="'.$rhythm['description_en'].':" data-lang-vi="'.$rhythm['name'].':"></span><span class="value">'.percent_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale']).'</span><i class="icon-white icon-arrow-'.((bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$rhythm['scale']) < bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale'])) ? 'up': 'down').'"></i><i class="rhythm_toggle" data-rhythm-id="'.($rhythm['rid']).'" class="icon-white"></i></li>';
 		}
 		echo '
 	</ul>

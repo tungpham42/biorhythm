@@ -188,7 +188,7 @@ function translate_raw($key,$data,$data_vi,$data_en,$data_ru,$data_es,$data_zh,$
 	return $result;
 }
 function translate($type,$key,$id='') {
-	global $lang_code, $button_interfaces, $span_interfaces, $menu_interfaces, $help_interfaces, $information_interfaces;
+	global $lang_code, $button_interfaces, $span_interfaces, $menu_interfaces, $error_interfaces, $help_interfaces, $information_interfaces;
 	$result = ($id != '') ? translate_raw($key,${$type.'_interfaces'}[$key][$lang_code],${$type.'_interfaces'}[$key]['vi'],${$type.'_interfaces'}[$key]['en'],${$type.'_interfaces'}[$key]['ru'],${$type.'_interfaces'}[$key]['es'],${$type.'_interfaces'}[$key]['zh'],${$type.'_interfaces'}[$key]['ja'],$id) : translate_raw($key,${$type.'_interfaces'}[$key][$lang_code],${$type.'_interfaces'}[$key]['vi'],${$type.'_interfaces'}[$key]['en'],${$type.'_interfaces'}[$key]['ru'],${$type.'_interfaces'}[$key]['es'],${$type.'_interfaces'}[$key]['zh'],${$type.'_interfaces'}[$key]['ja']);
 	return $result;
 }
@@ -200,6 +200,9 @@ function translate_span($key,$id='') {
 }
 function translate_menu($key,$id='') {
 	return ($id != '') ? translate('menu',$key,$id) : translate('menu',$key);
+}
+function translate_error($key,$id='') {
+	return ($id != '') ? translate('error',$key,$id) : translate('error',$key);
 }
 function translate_help($key,$id='') {
 	return ($id != '') ? translate('help',$key,$id) : translate('help',$key);
@@ -795,6 +798,26 @@ function sort_date_descend($a,$b){ //Call back function to sort date descendentl
 function sort_date_ascend($a,$b){ //Call back function to sort date ascendently
 	if (isset($a['created']) && isset($b['created'])) {
 		return strcmp($a['created'],$b['created']);
+	}
+}
+function sort_fullname_descend($a,$b){ //Call back function to sort fullname descendently
+	if (isset($a['fullname']) && isset($b['fullname'])) {
+		return strcmp($b['fullname'],$a['fullname']);
+	}
+}
+function sort_fullname_ascend($a,$b){ //Call back function to sort fullname ascendently
+	if (isset($a['fullname']) && isset($b['fullname'])) {
+		return strcmp($a['fullname'],$b['fullname']);
+	}
+}
+function sort_dob_descend($a,$b){ //Call back function to sort dob descendently
+	if (isset($a['dob']) && isset($b['dob'])) {
+		return strcmp($b['dob'],$a['dob']);
+	}
+}
+function sort_dob_ascend($a,$b){ //Call back function to sort dob ascendently
+	if (isset($a['dob']) && isset($b['dob'])) {
+		return strcmp($a['dob'],$b['dob']);
 	}
 }
 function site_name() {
@@ -1541,4 +1564,222 @@ function load_news_feed($keyword) {
 		$result .= '<li>...</li>';
 	}
 	echo $result;
+}
+/* Member Management */
+/* Validation */
+function invalid_email($email) {
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function short_pass($pass) {
+	if (strlen($pass) < 8) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function long_pass($pass) {
+	if (strlen($pass) > 20) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function no_number_pass($pass) {
+	if (!preg_match('#[0-9]+#', $pass)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function no_letter_pass($pass) {
+	if (!preg_match('#[a-z]+#', $pass)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function no_caps_pass($pass) {
+	if (!preg_match('#[A-Z]+#', $pass)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function no_symbol_pass($pass) {
+	if (!preg_match('#\W+#', $pass)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function not_match_pass($pass,$repeat) {
+	if ($pass != $repeat) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function invalid_dob($dob) {
+	list($year, $month, $day) = explode('-', $dob);
+	if (is_numeric($year) && is_numeric($month) && is_numeric($day)) {
+		if (!checkdate($month,$day,$year)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+function taken_email($email) {
+	$path = realpath($_SERVER['DOCUMENT_ROOT']).'/member/'.$email;
+	if (is_dir($path)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function invalid_member($email,$password) {
+	$path = realpath($_SERVER['DOCUMENT_ROOT']).'/member/'.$email;
+	if (is_dir($path)) {
+		$db_path = $path.'/member.db';
+		$db_sql = 'SELECT password FROM "member"';
+		try {
+			$db = new PDO('sqlite:'.$db_path);
+			$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+			$db_query = $db->prepare($db_sql);
+			$db_query->execute();
+			if ($db_query) {
+				$retrieved_password = $db_query->fetchColumn();
+			}
+		} catch (PDOException $e) {
+			echo 'ERROR: '.$e->getMessage();
+		}
+		if (check_pass($password, $retrieved_password)) {
+			return false;
+		} else {
+			return true;
+		}
+	} else {
+		return true;
+	}
+}
+function load_member_from_email($email) {
+	$array = array();
+	if ($email != '') {
+		$path = realpath($_SERVER['DOCUMENT_ROOT']).'/member/'.$email;
+		$db_path = $path.'/member.db';
+		$db_sql = 'SELECT * FROM "member"';
+		try {
+			$db = new PDO('sqlite:'.$db_path);
+			$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+			$db_query = $db->prepare($db_sql);
+			$db_query->execute();
+			if ($db_query) {
+				while($row = $db_query->fetch(PDO::FETCH_ASSOC)) {
+					$array = $row;
+				}
+			}
+		} catch (PDOException $e) {
+			echo 'ERROR: '.$e->getMessage();
+		}
+		return $array;
+	} else {
+		return null;
+	}
+}
+function list_members($page=1,$keyword='') { //Return members list, for admin use
+	$output = '';
+	$emails = array();
+	$members = array();
+	$path = realpath($_SERVER['DOCUMENT_ROOT']).'/member/';
+	$directories = array_filter(glob($path.'*'), 'is_dir');
+	foreach ($directories as $directory) {
+		if (str_replace($path, '', $directory) != 'login' && str_replace($path, '', $directory) != 'register') {
+			$emails[] = str_replace($path, '', $directory);
+		}		
+	}
+	sort($emails);
+	$output .= '<a class="button" href="/member/register/">Register new member</a>';
+	$output .= '<table class="admin">';
+	$output .= '<tr><th>Email</th><th>Fullname</th><th>DOB</th><th>Created at</th><th>Edited at</th><th colspan="2">Operations</th></tr>';
+	$count = count($emails);
+	$output .= '<tr><td class="count" colspan="7">'.$count.' item'.(($count > 1) ? 's': '').' to display.</td></tr>';
+	for ($i = 0; $i < $count; ++$i) {
+		$members[$i] = load_member_from_email($emails[$i]);
+		$class = 'class="'.table_row_class($i).'"';
+		$output .= '<tr '.$class.'>';
+		$output .= '<td>'.$members[$i]['email'].'</td>';
+		$output .= '<td>'.$members[$i]['fullname'].'</td>';
+		$output .= '<td>'.$members[$i]['dob'].'</td>';
+		$output .= '<td>'.$members[$i]['created_at'].'</td>';
+		$output .= '<td>'.$members[$i]['edited_at'].'</td>';
+		$output .= '<td><a class="button" href="/member/'.$members[$i]['email'].'/">Edit</a></td>';
+		$output .= '<td><a class="button" onclick="return confirm(\'Are you sure?\')" href="/triggers/member_delete.php?email='.$members[$i]['email'].'">Delete</a></td>';
+		$output .= '</tr>';
+	}
+	$output .= '</table>';
+	return $output;
+}
+function send_mail($to,$subject,$message) {
+	global $lang_code, $span_interfaces;
+	$fullname = load_member_from_email($to)['fullname'];
+	$headers .= "Organization: Nhip Sinh Hoc . VN\r\n";
+	$headers  = "MIME-Version: 1.0\r\n";
+	$headers .= "Content-type: text/html; charset=UTF-8\r\n";
+	$headers .= "X-Priority: 3\r\n";
+	$headers .= "X-Mailer: PHP/". phpversion() ."\r\n";
+	$headers .= "From: ".$span_interfaces['pham_tung'][$lang_code]." <tung.42@gmail.com>\r\n";
+	$headers .= "Sender: ".$span_interfaces['pham_tung'][$lang_code]." <tung.42@gmail.com>\r\n";
+	$headers .= "To: ".$fullname." <".$to.">\r\n";
+	$headers .= "Reply-To: ".$fullname." <".$to.">\r\n";
+	$headers .= "Return-Path: ".$fullname." <".$to.">\r\n";
+	$headers .= "Subject: ".$subject."\r\n";
+	mail($to, $subject, $message, $headers);
+}
+function email_message($heading,$content) {
+	$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> <meta name="viewport" content="width=device-width"/></head><body style="padding: 0px; margin: 0px;"> <table class="body" style="color: #222222;background-image: url(\'http://nhipsinhhoc.vn/css/images/coin.png\'); min-height: 420px;border: none; border-spacing: 0px; position: relative; height: 100%;width: 100%; top: 0px; left: 0px; margin: 0px;"> <tr> <td style="padding: 0px; margin: 0px;text-align: center;" align="center" valign="top"> <center> <table style="height: 100px;padding: 0px;width: 100%;position: relative;background: #3377dd;" class="row header"> <tr> <td style="text-align: center;" align="center"> <center> <table style="margin: 0 auto;text-align: inherit;width: 95% !important;" class="container"> <tr> <td style="padding: 10px 20px 0px 0px;position: relative;display: block !important;padding-right: 0 !important;" class="wrapper last"> <table style="width: 95%;" class="twelve columns"> <tr> <td style="padding: 8px;" class="six sub-columns"> <a target="_blank" href="http://nhipsinhhoc.vn/"><img src="http://nhipsinhhoc.vn/app-icons/icon-60.png"> </a> </td><td class="six sub-columns last" style="text-align:left; vertical-align:middle;padding-right: 0px; color: white; width: 90%"> <span class="template-label"><a style="font-size: 24px;color: white; text-decoration: none;" target="_blank" href="http://nhipsinhhoc.vn/">'.$heading.'</a></span> </td><td class="expander"></td></tr></table> </td></tr></table> </center> </td></tr></table> <table class="container"> <tr> <td> <table class="row"> <tr> <td style="padding: 10px 10px 0px 0px;position: relative;display: block !important;padding-right: 0 !important;" class="wrapper last"> <table style="width: 95%;font-size: 16px;" class="twelve columns"> <tr> <td> '.$content.' </td><td class="expander"></td></tr></table> </td></tr></table> </td></tr></table> </center> </td></tr></table></body></html>';
+	return $message;
+}
+function email_create_member($email,$fullname,$password,$dob) {
+	global $lang_code, $email_interfaces, $input_interfaces, $span_interfaces;
+	$my_email = 'tung.42@gmail.com';
+	$heading = site_name();
+	$content = '';
+	$content .= '<h1>'.$email_interfaces['hi'][$lang_code].' '.$fullname.'</h1>';
+	$content .= '<p class="lead">'.$email_interfaces['create_user_thank'][$lang_code].'</p>';
+	$content .= '<p>'.$email_interfaces['create_user_detail'][$lang_code].'</p>';
+	$content .= '<ul>';
+	$content .= '<li>'.$input_interfaces['email'][$lang_code].': '.$email.'</li>';
+	$content .= '<li>'.$input_interfaces['fullname'][$lang_code].': '.$fullname.'</li>';
+	$content .= '<li>'.$input_interfaces['dob'][$lang_code].': '.$dob.'</li>';
+	$content .= '<li>'.$input_interfaces['password'][$lang_code].': '.substr($password,0,4).str_repeat('*',strlen($password)-4).'</li>';
+	$content .= '</ul>';
+	$content .= '<p>'.$email_interfaces['regards'][$lang_code].'</p>';
+	$content .= '<p>'.$span_interfaces['pham_tung'][$lang_code].'</p>';
+	$message = email_message($heading, $content);
+	send_mail($email,$email_interfaces['hi'][$lang_code].', '.$fullname.', '.$email_interfaces['create_user_thank'][$lang_code],$message);
+	send_mail($my_email,$email_interfaces['hi'][$lang_code].', '.$fullname.', '.$email_interfaces['create_user_thank'][$lang_code],$message);
+}
+function email_edit_member($email,$fullname,$password,$dob) {
+	global $lang_code, $email_interfaces, $input_interfaces, $span_interfaces;
+	$my_email = 'tung.42@gmail.com';
+	$heading = site_name();
+	$content = '';
+	$content .= '<h1>'.$email_interfaces['hi'][$lang_code].' '.$fullname.'</h1>';
+	$content .= '<p class="lead">'.$email_interfaces['edit_user_notify'][$lang_code].'</p>';
+	$content .= '<p>'.$email_interfaces['edit_user_detail'][$lang_code].'</p>';
+	$content .= '<ul>';
+	$content .= '<li>'.$input_interfaces['email'][$lang_code].': '.$email.'</li>';
+	$content .= '<li>'.$input_interfaces['fullname'][$lang_code].': '.$fullname.'</li>';
+	$content .= '<li>'.$input_interfaces['dob'][$lang_code].': '.$dob.'</li>';
+	$content .= '<li>'.$input_interfaces['password'][$lang_code].': '.($password == $email_interfaces['not_changed'][$lang_code] ? $email_interfaces['not_changed'][$lang_code] : substr($password,0,4).str_repeat('*',strlen($password)-4)).'</li>';
+	$content .= '</ul>';
+	$content .= '<p>'.$email_interfaces['regards'][$lang_code].'</p>';
+	$content .= '<p>'.$span_interfaces['pham_tung'][$lang_code].'</p>';
+	$message = email_message($heading, $content);
+	send_mail($email,$email_interfaces['hi'][$lang_code].', '.$fullname.', '.$email_interfaces['edit_user_notify'][$lang_code],$message);
+	send_mail($my_email,$email_interfaces['hi'][$lang_code].', '.$fullname.', '.$email_interfaces['edit_user_notify'][$lang_code],$message);
 }

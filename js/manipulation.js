@@ -44,6 +44,14 @@ function manipulateDobForm() {
 	disableHyphen('dob');
 	helpDobForm();
 	helpFullname();
+	buttonSelector = '';
+	if ($('#dob_submit').length) {
+		buttonSelector = '#dob_submit';
+	} else if ($('#dob_create').length) {
+		buttonSelector = '#dob_create';
+	} else if ($('#dob_edit').length) {
+		buttonSelector = '#dob_edit';
+	}
 	$('#name_toggle.ripple').removeClass('ripple');
 	$('#dob_form').on({
 		focus: function() {
@@ -63,34 +71,58 @@ function manipulateDobForm() {
 		},
 		keypress: function(e) {
 			if (e.keyCode == 13 || e.which == 13) {
-				$('#dob_submit').addClass('clicked');
+				$(buttonSelector).addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
 				e.preventDefault();
 				return false;
 			} else {
-				validateDob(false);
+				if ($('#dob_submit').length) {
+					validateDob(false);
+				} else if ($('#dob_create').length) {
+					validateDob(false,'create');
+				} else if ($('#dob_edit').length) {
+					validateDob(false,'edit');
+				}
 			}
 			helpDobForm();
 		},
 		keyup: function(e) {
 			if (e.which == 13) {
-				$('#dob_submit').removeClass('clicked');
-				validateDob(true);
+				$(buttonSelector).removeClass('clicked');
+				if ($('#dob_submit').length) {
+					validateDob(true);
+				} else if ($('#dob_create').length) {
+					validateDob(true,'create');
+				} else if ($('#dob_edit').length) {
+					validateDob(true,'edit');
+				}
 			} else {
-				validateDob(false);
+				if ($('#dob_submit').length) {
+					validateDob(false);
+				} else if ($('#dob_create').length) {
+					validateDob(false,'create');
+				} else if ($('#dob_edit').length) {
+					validateDob(false,'edit');
+				}
 			}
 			helpDobForm();
 		},
 		keydown: function(e) {
 			if (e.which == 13) {
-				$('#dob_submit').addClass('clicked');
+				$(buttonSelector).addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
 				e.preventDefault();
 				return false;
 			} else {
-				validateDob(false);
+				if ($('#dob_submit').length) {
+					validateDob(false);
+				} else if ($('#dob_create').length) {
+					validateDob(false,'create');
+				} else if ($('#dob_edit').length) {
+					validateDob(false,'edit');
+				}
 			}
 			helpDobForm();
 		}
@@ -113,7 +145,7 @@ function manipulateDobForm() {
 		},
 		keypress: function(e) {
 			if (e.keyCode == 13) {
-				$('#dob_submit').addClass('clicked');
+				$(buttonSelector).addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
 				e.preventDefault();
@@ -130,8 +162,14 @@ function manipulateDobForm() {
 		},
 		keyup: function(e) {
 			if (e.which == 13) {
-				$('#dob_submit').removeClass('clicked');
-				validateDob(true);
+				$(buttonSelector).removeClass('clicked');
+				if ($('#dob_submit').length) {
+					validateDob(true);
+				} else if ($('#dob_create').length) {
+					validateDob(true,'create');
+				} else if ($('#dob_edit').length) {
+					validateDob(true,'edit');
+				}
 			} else if (e.which == 27) {
 				$('#name_remove').removeClass('clicked');
 				hideFullname();
@@ -141,7 +179,7 @@ function manipulateDobForm() {
 		},
 		keydown: function(e) {
 			if (e.which == 13) {
-				$('#dob_submit').addClass('clicked');
+				$(buttonSelector).addClass('clicked');
 				e.stopImmediatePropagation();
 				e.stopPropagation();
 				e.preventDefault();
@@ -163,6 +201,15 @@ function manipulateDobForm() {
 		helpDobForm();
 	}).on('click', '#dob_submit', function() {
 		validateDob(true);
+		helpDobForm();
+	}).on('click', '#dob_create', function() {
+		validateDob(true,'create');
+		helpDobForm();
+	}).on('click', '#dob_edit', function() {
+		validateDob(true,'edit');
+		helpDobForm();
+	}).on('click', '#dob_remove', function() {
+		validateDob(true,'remove');
 		helpDobForm();
 	}).on('click', '#dob_erase', function() {
 		eraseDobField();
@@ -330,10 +377,12 @@ function manipulateScroll() {
 	} else {
 		$('body').removeClass('scrolled');
 	}
-	if ($(document).scrollTop() >= ($('#apps').offset().top-$('header').height()) && $(document).scrollTop() <= ($('#alexa').offset().top-$('header').height())) {
-		$('#apps_link').addClass('clicked');
-	} else {
-		$('#apps_link').removeClass('clicked');
+	if ($('#apps_link').length && $('#apps').length && $('#alexa').length) {
+		if ($(document).scrollTop() >= Math.floor($('#apps').offset().top-$('header').height()) && $(document).scrollTop() <= ($('#alexa').offset().top-$('header').height())) {
+			$('#apps_link').addClass('clicked');
+		} else {
+			$('#apps_link').removeClass('clicked');
+		}
 	}
 	animateScrollProverb();
 	$(window).on('scroll mousewheel wheel DOMMouseScroll resize', function(){
@@ -346,10 +395,12 @@ function manipulateScroll() {
 		} else {
 			$('body').removeClass('scrolled');
 		}
-		if ($(document).scrollTop() >= Math.floor($('#apps').offset().top-$('header').height()) && $(document).scrollTop() <= ($('#alexa').offset().top-$('header').height())) {
-			$('#apps_link').addClass('clicked');
-		} else {
-			$('#apps_link').removeClass('clicked');
+		if ($('#apps_link').length && $('#apps').length && $('#alexa').length) {
+			if ($(document).scrollTop() >= Math.floor($('#apps').offset().top-$('header').height()) && $(document).scrollTop() <= ($('#alexa').offset().top-$('header').height())) {
+				$('#apps_link').addClass('clicked');
+			} else {
+				$('#apps_link').removeClass('clicked');
+			}
 		}
 		animateScrollProverb();
 	});
@@ -357,10 +408,17 @@ function manipulateScroll() {
 		e.preventDefault();
 		$('body,html').stop().animate({scrollTop: 0}, scroll_top_duration);
 	});
-	$('#apps_link').on('click', function(){
-		$('body, html').stop().animate({scrollTop: ($('#apps').offset().top-$('header').height())}, scroll_top_duration);
-		$('#apps_link').addClass('clicked');
-	});
+	if ($('#dob_list').length && $('#persons_list_h2').length) {
+		$('#dob_list').on('click', function(){
+			$('body, html').stop().animate({scrollTop: ($('#persons_list_h2').offset().top-$('header').height())}, scroll_top_duration);
+		});		
+	}
+	if ($('#apps_link').length && $('#apps').length && $('#alexa').length) {
+		$('#apps_link').on('click', function(){
+			$('body, html').stop().animate({scrollTop: ($('#apps').offset().top-$('header').height())}, scroll_top_duration);
+			$('#apps_link').addClass('clicked');
+		});		
+	}
 }
 function manipulateClock() {
 	var clock = new analogClock();
@@ -381,5 +439,22 @@ function manipulateAjax() {
 				animateScrollProverb();
 			}
 		}
+	});
+}
+function manipulateShare() {
+	$('#social-tabs').dcSocialTabs({
+		widgets: 'facebook,fblike,fbrec,google,rss,twitter',
+		rssId: 'http://nhipsinhhoc.vn/blog/feed/',
+		twitterId: 'tungpham42',
+		facebookId: 'bieudonhipsinhhoc',
+		fblikeId: 'bieudonhipsinhhoc',
+		fbrecId: 'http://nhipsinhhoc.vn/',
+		googleId: 'TungPhamtungpham42',
+		location: 'right',
+		align: 'top',
+		offset: 120,
+		width: 360,
+		autoClose: true,
+		start: 0
 	});
 }

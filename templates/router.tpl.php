@@ -7,20 +7,8 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 } else if (!isset($_GET['p']) || $_GET['p'] == 'home') {
 	if ($embed == 0 && !isset($hide_lang_bar)) {
 		include template('lang_bar');
-		include template('dob_form');
-		include template('proverb');
-		if (!has_dob()) {
-			include template('help');
-		}
-		include template('scripts_top');
 		include template('home');
 	} else if (isset($hide_lang_bar)) {
-		include template('dob_form');
-		include template('proverb');
-		if (!has_dob()) {
-			include template('help');
-		}
-		include template('scripts_top');
 		include template('home');
 	} else if ($embed == 1) {
 		include template('scripts_top');
@@ -84,6 +72,21 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 	} else {
 		echo 'You are not authorized';
 	}
+} else if ($p == 'member') {
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
+		include template('admin/member/index');
+	} else {
+		echo 'You are not authorized';
+	}
+} else if ($p == 'member/register') {
+	include template('lang_bar');
+	include template('member/register');
+} else if ($p == 'member/login') {
+	include template('lang_bar');
+	include template('member/login');
+} else if ($p == 'member/home') {
+	include template('lang_bar');
+	include template('member/home');
 } else if ($p == 'race' || $p == 'race/1') {
 	include template('race/step1');
 } else if ($p == 'race/2') {

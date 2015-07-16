@@ -1,12 +1,13 @@
 <style>
-header, main, footer, .w160 {
-	top: 30px;
+header, main, .w160 {
+	margin-top: 30px !important;
 }
 </style>
 <div id="toolbar">
 	<ul class="toolbar">
 		<li><a class="rhythm" href="/rhythm">Manage Rhythms</a></li>
 		<li><a class="user" href="/user">Manage Users</a></li>
+		<li><a class="member" href="/member">Manage Members</a></li>
 	</ul>
 	<div class="right">
 		<ul class="toolbar">

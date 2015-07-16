@@ -1,4 +1,10 @@
 <?php
+include template('dob_form');
+include template('proverb');
+if (!has_dob()) {
+	include template('help');
+}
+include template('scripts_top');
 if ($show_donate) {
 	include template('donate_top');
 }

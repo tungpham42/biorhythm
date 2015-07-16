@@ -138,6 +138,28 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 		$title = 'Not authorized';
 		$body_class = 'not-authorized';
 	}
+} else if ($p == 'member') {
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
+		$h1 = 'List members';
+		$title = 'List members';
+		$body_class = 'admin member';
+	} else {
+		$h1 = 'Not authorized';
+		$title = 'Not authorized';
+		$body_class = 'not-authorized';
+	}
+} else if ($p == 'member/register') {
+	$h1 = $span_interfaces['register'][$lang_code];
+	$title = $span_interfaces['register'][$lang_code];
+	$body_class = 'member register';
+} else if ($p == 'member/login') {
+	$h1 = $span_interfaces['login'][$lang_code];
+	$title = $span_interfaces['login'][$lang_code];
+	$body_class = 'member login';
+}  else if ($p == 'member/home') {
+	$h1 = can_wish() ? birthday_title() : home_title();
+	$title = can_wish() ? birthday_title() : home_title();
+	$body_class = 'member home'.((isset($_GET['pid'])) ? ' person' : '');
 } else if ($p == 'race' || $p == 'race/1') {
 	$h1 = 'Đua hộp - Bước 1';
 	$title = 'Đua hộp - Bước 1';

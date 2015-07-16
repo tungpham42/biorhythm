@@ -1,1 +1,1 @@
-Sitemap: http://nhipsinhhoc.vn/sitemap.xml
+Sitemap: http://nhipsinhhoc.vn/sitemap.php

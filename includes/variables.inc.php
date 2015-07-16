@@ -22,7 +22,7 @@ $lang_g_apis = array(
 	'zh' => 'zh-CN',
 	'ja' => 'ja'
 );
-$navs = array('intro','bmi','lunar','2048');
+$navs = array('member/home','intro','bmi','lunar','2048');
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/prep.inc.php';
 $brand = 'Nhip Sinh Hoc . VN';
 $p = isset($_GET['p']) ? prevent_xss($_GET['p']): 'home';
@@ -36,7 +36,7 @@ $show_ad = true;
 $show_donate = false;
 $show_sponsor = false;
 $show_addthis = false;
-$show_sumome = true;
+$show_sumome = false;
 $credential_id = 4; //change this to 4 in DEMO
 $number = calculate_life_path($dob);
 if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['partner_dob']) && isset($_GET['lang_code'])) {
@@ -88,6 +88,30 @@ $input_interfaces = array(
 		'es' => 'Compañero',
 		'zh' => '伙伴',
 		'ja' => 'パートナー'
+	),
+	'email' => array(
+		'vi' => 'Thư điện tử',
+		'en' => 'Email',
+		'ru' => 'Электронная почта',
+		'es' => 'Correo electrónico',
+		'zh' => '电子邮件',
+		'ja' => '電子メール'
+	),
+	'password' => array(
+		'vi' => 'Mật khẩu',
+		'en' => 'Password',
+		'ru' => 'Пароль',
+		'es' => 'Contraseña',
+		'zh' => '密码',
+		'ja' => 'パスワード'
+	),
+	'repeat_password' => array(
+		'vi' => 'Lặp lại',
+		'en' => 'Repeat',
+		'ru' => 'Повторять',
+		'es' => 'Repetición',
+		'zh' => '重复',
+		'ja' => 'リピート'
 	)
 );
 $button_interfaces = array(
@@ -122,6 +146,38 @@ $button_interfaces = array(
 		'es' => 'Correr',
 		'zh' => '运行',
 		'ja' => '走る'
+	),
+	'dob_list' => array(
+		'vi' => 'Danh sách',
+		'en' => 'List',
+		'ru' => 'Список',
+		'es' => 'Lista',
+		'zh' => '名单',
+		'ja' => 'リスト'
+	),
+	'dob_create' => array(
+		'vi' => 'Tạo',
+		'en' => 'Create',
+		'ru' => 'Создать',
+		'es' => 'Crear',
+		'zh' => '创建',
+		'ja' => '作る'
+	),
+	'dob_edit' => array(
+		'vi' => 'Sửa',
+		'en' => 'Edit',
+		'ru' => 'Редактировать',
+		'es' => 'Editar',
+		'zh' => '编辑',
+		'ja' => '編集'
+	),
+	'dob_remove' => array(
+		'vi' => 'Xóa hẳn',
+		'en' => 'Remove',
+		'ru' => 'Удалить',
+		'es' => 'Quitar',
+		'zh' => '拆除',
+		'ja' => '削除します'
 	),
 	'today' => array(
 		'vi' => ' Hôm nay',
@@ -204,7 +260,7 @@ $button_interfaces = array(
 		'ja' => '調査'
 	),
 	'apps' => array(
-		'vi' => 'Các ứng dụng',
+		'vi' => 'Ứng dụng',
 		'en' => 'Applications',
 		'ru' => 'Приложений',
 		'es' => 'Aplicaciones',
@@ -258,16 +314,64 @@ $button_interfaces = array(
 		'es' => 'Instalar Firefox aplicación',
 		'zh' => '安装Firefox的应用程序',
 		'ja' => 'Firefoxのアプリをインストール'
+	),
+	'register' => array(
+		'vi' => 'Đăng ký',
+		'en' => 'Register',
+		'ru' => 'Регистр',
+		'es' => 'Registrarse',
+		'zh' => '注册',
+		'ja' => '登録'
+	),
+	'update' => array(
+		'vi' => 'Cập nhật',
+		'en' => 'Update',
+		'ru' => 'Обновлять',
+		'es' => 'Actualizar',
+		'zh' => '更新',
+		'ja' => 'アップデート'
+	),
+	'login' => array(
+		'vi' => 'Đăng nhập',
+		'en' => 'Log In',
+		'ru' => 'Войти',
+		'es' => 'Iniciar Sesión',
+		'zh' => '登录',
+		'ja' => 'ログイン'
+	),
+	'logout' => array(
+		'vi' => 'Đăng xuất',
+		'en' => 'Log Out',
+		'ru' => 'Выйти',
+		'es' => 'Cerrar Sesión',
+		'zh' => '登出',
+		'ja' => 'ログアウト'
+	),
+	'edit' => array(
+		'vi' => 'Sửa',
+		'en' => 'Edit',
+		'ru' => 'Редактировать',
+		'es' => 'Editar',
+		'zh' => '编辑',
+		'ja' => '編集'
 	)
 );
 $span_interfaces = array(
+	'me' => array(
+		'vi' => 'Tôi',
+		'en' => 'Me',
+		'ru' => 'Меня',
+		'es' => 'Yo',
+		'zh' => '我',
+		'ja' => '私に'
+	),
 	'list_user_same_birthday_links' => array(
-		'vi' => 'Những người trùng ngày sinh với bạn',
-		'en' => 'People with same birthday with you',
-		'ru' => 'Люди с таким же день рождения с вами',
-		'es' => 'Las personas con el mismo cumpleaños con ustedes',
-		'zh' => '人同与一天生日与你',
-		'ja' => 'あなたと同じ誕生日の人々'
+		'vi' => 'Những người trùng ngày sinh với tôi',
+		'en' => 'People with same birthday with me',
+		'ru' => 'Люди с таким же рождения со мной',
+		'es' => 'Las personas con misma fecha de cumpleaños conmigo',
+		'zh' => '与人同一天生日与我',
+		'ja' => '私と同じ誕生日を持つ人々'
 	),
 	'list_user_birthday_links' => array(
 		'vi' => 'Sinh nhật người nổi tiếng hôm nay',
@@ -285,6 +389,22 @@ $span_interfaces = array(
 		'zh' => '人的出生日期',
 		'ja' => '有名人誕生日'
 	),
+	'list_persons' => array(
+		'vi' => 'Danh sách ngày sinh của tôi',
+		'en' => 'My birthdates list',
+		'ru' => 'Мой список дат рождения',
+		'es' => 'Mi lista de fechas de nacimiento',
+		'zh' => '我的出生日期列表',
+		'ja' => '私の誕生日一覧'
+	),
+	'no_persons' => array(
+		'vi' => 'Tạo ngày sinh đầu tiên nào',
+		'en' => 'Create first birthdate now',
+		'ru' => 'Создать первую дату рождения в настоящее время',
+		'es' => 'Crea primera fecha de nacimiento ahora',
+		'zh' => '现在创建第一个生日',
+		'ja' => '今最初の誕生日を作成します'
+	),
 	'copyright' => array(
 		'vi' => 'bản quyền thuộc',
 		'en' => 'copyright',
@@ -296,7 +416,7 @@ $span_interfaces = array(
 	'pham_tung' => array(
 		'vi' => 'Phạm Tùng',
 		'en' => 'Tung Pham',
-		'ru' => 'Tung Pham',
+		'ru' => 'Тунг Фам',
 		'es' => 'Tung Pham',
 		'zh' => '范松',
 		'ja' => '范松'
@@ -326,7 +446,7 @@ $span_interfaces = array(
 		'ja' => 'ニュース'
 	),
 	'apps' => array(
-		'vi' => 'Các ứng dụng',
+		'vi' => 'Ứng dụng',
 		'en' => 'Applications',
 		'ru' => 'Приложений',
 		'es' => 'Aplicaciones',
@@ -348,6 +468,128 @@ $span_interfaces = array(
 		'es' => 'Uno lenguaje',
 		'zh' => '一語言',
 		'ja' => '一言語'
+	),
+	'email' => array(
+		'vi' => 'Thư điện tử',
+		'en' => 'Email',
+		'ru' => 'Электронная почта',
+		'es' => 'Correo electrónico',
+		'zh' => '电子邮件',
+		'ja' => '電子メール'
+	),
+	'fullname' => array(
+		'vi' => 'Họ tên',
+		'en' => 'Full name',
+		'ru' => 'Полное имя',
+		'es' => 'Nombre',
+		'zh' => '全名',
+		'ja' => 'フルネーム'
+	),
+	'dob' => array(
+		'vi' => 'Ngày sinh',
+		'en' => 'Date of birth',
+		'ru' => 'Дата рождения',
+		'es' => 'Fecha de nacimiento',
+		'zh' => '出生日期',
+		'ja' => '生まれた日'
+	),
+	'password' => array(
+		'vi' => 'Mật khẩu',
+		'en' => 'Password',
+		'ru' => 'Пароль',
+		'es' => 'Contraseña',
+		'zh' => '密码',
+		'ja' => 'パスワード'
+	),
+	'repeat_password' => array(
+		'vi' => 'Lặp lại',
+		'en' => 'Repeat',
+		'ru' => 'Повторять',
+		'es' => 'Repetición',
+		'zh' => '重复',
+		'ja' => 'リピート'
+	),
+	'register' => array(
+		'vi' => 'Đăng ký',
+		'en' => 'Register',
+		'ru' => 'Регистр',
+		'es' => 'Registrarse',
+		'zh' => '注册',
+		'ja' => '登録'
+	),
+	'login' => array(
+		'vi' => 'Đăng nhập',
+		'en' => 'Log In',
+		'ru' => 'Войти',
+		'es' => 'Iniciar Sesión',
+		'zh' => '登录',
+		'ja' => 'ログイン'
+	)
+);
+$email_interfaces = array(
+	'hi' => array(
+		'vi' => 'Xin chào',
+		'en' => 'Hi',
+		'ru' => 'Привет',
+		'es' => 'Hola',
+		'zh' => '你好',
+		'ja' => 'こんにちは'
+	),
+	'create_user_thank' => array(
+		'vi' => 'Cám ơn bạn đã quan tâm đến Nhịp sinh học.',
+		'en' => 'Thank you for your interest in Biorhythm.',
+		'ru' => 'Спасибо за ваш интерес к Биоритмы.',
+		'es' => 'Gracias por su interés en Biorritmo usted.',
+		'zh' => '感谢您对生物节律的兴趣。',
+		'ja' => 'バイオリズムにご関心をお寄せいただき、ありがとうございます。'
+	),
+	'create_user_detail' => array(
+		'vi' => 'Sau đây là thông tin tài khoản của bạn:',
+		'en' => 'Here is your account information:',
+		'ru' => 'Вот информация Ваш счет:',
+		'es' => 'Aquí está la información de su cuenta:',
+		'zh' => '这是您的帐户信息：',
+		'ja' => 'ここにあなたのアカウント情報は、次のとおりです：'
+	),
+	'edit_user_notify' => array(
+		'vi' => 'Bạn đã cập nhật hồ sơ Nhịp sinh học.',
+		'en' => 'You have updated your Biorhythm profile.',
+		'ru' => 'Вы обновили свой профиль Биоритм.',
+		'es' => 'Ha actualizado su perfil Biorritmo.',
+		'zh' => '您已经更新了您的个人资料生物节律。',
+		'ja' => 'あなたのバイオリズムのプロフィールを更新しました。'
+	),
+	'edit_user_detail' => array(
+		'vi' => 'Sau đây là thông tin tài khoản của bạn sau khi sửa đổi hồ sơ:',
+		'en' => 'Here is your account information after updating profile:',
+		'ru' => 'Вот информация Ваш счет после обновления профиля:',
+		'es' => 'Aquí está la información de su cuenta después de actualizar el perfil:',
+		'zh' => '这里是更新配置文件后您的帐户信息：',
+		'ja' => 'ここでは、プロファイルを更新した後、あなたのアカウント情報は、次のとおりです：'
+	),
+	'colon' => array(
+		'vi' => ':',
+		'en' => ':',
+		'ru' => ':',
+		'es' => ':',
+		'zh' => '：',
+		'ja' => '：'
+	),
+	'regards' => array(
+		'vi' => 'Trân trọng,',
+		'en' => 'Best regards,',
+		'ru' => 'С уважением,',
+		'es' => 'Atentamente,',
+		'zh' => '最好的问候，',
+		'ja' => '宜しくお願いします、'
+	),
+	'not_changed' => array(
+		'vi' => 'Không thay đổi',
+		'en' => 'Not changed',
+		'ru' => 'Не изменилось',
+		'es' => 'Sin cambio',
+		'zh' => '没有改变',
+		'ja' => '変更されていません'
 	)
 );
 $menu_interfaces = array(
@@ -382,6 +624,104 @@ $menu_interfaces = array(
 		'es' => 'Próximo cumpleaños',
 		'zh' => '下一个生日',
 		'ja' => '次の誕生日'
+	)
+);
+$error_interfaces = array(
+	'not_filled' => array(
+		'vi' => 'Chưa điền hết các mục',
+		'en' => 'All the fields must be filled in',
+		'ru' => 'Все поля должны быть заполнены',
+		'es' => 'Todos los campos deben ser llenados',
+		'zh' => '所有字段必须填写',
+		'ja' => 'すべてのフィールドは記入する必要があります'
+	),
+	'invalid_member' => array(
+		'vi' => 'Thư điện tử hoặc mật khẩu không chính xác',
+		'en' => 'Incorrect email or password',
+		'ru' => 'Неверный адрес электронной почты или пароль',
+		'es' => 'Correo o contraseña incorrectos',
+		'zh' => '不正确的电子邮件或密码',
+		'ja' => '不適切な電子メールやパスワード'
+	),
+	'invalid_email' => array(
+		'vi' => 'Thư điện tử không hợp lệ',
+		'en' => 'Invalid email',
+		'ru' => 'Неверный адрес электронной почты',
+		'es' => 'Email inválido',
+		'zh' => '不合规电邮',
+		'ja' => '無効なメール'
+	),
+	'short_pass' => array(
+		'vi' => 'Mật khẩu quá ngắn (08)',
+		'en' => 'Password too short (08)',
+		'ru' => 'Пароль слишком короткий (08)',
+		'es' => 'Contraseña demasiado corta (08)',
+		'zh' => '密码太短 (08)',
+		'ja' => 'パスワードが短すぎます (08)'
+	),
+	'long_pass' => array(
+		'vi' => 'Mật khẩu quá dài (20)',
+		'en' => 'Password too long (20)',
+		'ru' => 'Пароль слишком долго (20)',
+		'es' => 'Contraseña demasiado largo (20)',
+		'zh' => '密码太长 (20)',
+		'ja' => 'あまりにも長いパスワード (20)'
+	),
+	'no_number_pass' => array(
+		'vi' => 'Mật khẩu phải chứa ít nhất 1 chữ số',
+		'en' => 'Password must include at least one number',
+		'ru' => 'Пароль должен содержать по крайней мере один номер',
+		'es' => 'La contraseña debe incluir al menos un número',
+		'zh' => '密码必须包括至少一个数',
+		'ja' => 'パスワードは、少なくとも1つの番号を含める必要があります'
+	),
+	'no_letter_pass' => array(
+		'vi' => 'Mật khẩu phải chứa ít nhất 1 chữ cái',
+		'en' => 'Password must include at least one letter',
+		'ru' => 'Пароль должен содержать по меньшей мере одну букву',
+		'es' => 'La contraseña debe incluir al menos una letra',
+		'zh' => '密码必须包含至少一个字母',
+		'ja' => 'パスワードは、少なくとも1つの文字を含める必要があります'
+	),
+	'no_caps_pass' => array(
+		'vi' => 'Mật khẩu phải chứa ít nhất 1 chữ cái VIẾT HOA',
+		'en' => 'Password must include at least one CAPS',
+		'ru' => 'Пароль должен содержать по крайней мере один ЗАГЛАВНАЯ БУКВА',
+		'es' => 'La contraseña debe incluir al menos un MAYÚSCULA',
+		'zh' => '密码必须包括至少一个大写字母',
+		'ja' => 'パスワードは、少なくとも1つの大文字を含める必要があります'
+	),
+	'no_symbol_pass' => array(
+		'vi' => 'Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt',
+		'en' => 'Password must include at least one symbol',
+		'ru' => 'Пароль должен содержать по меньшей мере одну символ',
+		'es' => 'La contraseña debe incluir al menos una símbolo',
+		'zh' => '密码必须包含至少一个符号',
+		'ja' => 'パスワードは、少なくとも1つのシンボルを含める必要があります'
+	),
+	'not_match_pass' => array(
+		'vi' => 'Mật khẩu không khớp',
+		'en' => 'Password not match',
+		'ru' => 'Пароль не совпадает',
+		'es' => 'La contraseña no coincide',
+		'zh' => '密码不匹配',
+		'ja' => 'パスワードが一致しません'
+	),
+	'invalid_dob' => array(
+		'vi' => 'Ngày sinh không hợp lệ',
+		'en' => 'Invalid date of birth',
+		'ru' => 'Неправильная дата рождения',
+		'es' => 'Fecha no válida de nacimiento',
+		'zh' => '出生日期无效',
+		'ja' => '誕生の無効な日付'
+	),
+	'taken_email' => array(
+		'vi' => 'Thư điện tử đã được người khác dùng',
+		'en' => 'Email taken',
+		'ru' => 'Электронная почта приняты',
+		'es' => 'Email tomada',
+		'zh' => '采取电子邮件',
+		'ja' => 'メール撮影'
 	)
 );
 $help_interfaces = array(

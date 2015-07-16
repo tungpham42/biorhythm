@@ -49,7 +49,7 @@ button, input {
 	overflow: visible;
 	line-height: normal;
 }
-button, input[type="button"], input[type="reset"], input[type="submit"] {
+button, input[type="button"], input[type="reset"], input[type="submit"]:not(.m-btn) {
 	cursor: pointer;
 	-webkit-appearance: button;
 }
@@ -299,7 +299,7 @@ input[type="radio"], input[type="checkbox"] {
 	line-height: normal;
 	cursor: pointer;
 }
-input[type="file"], input[type="image"], input[type="submit"], input[type="reset"], input[type="button"], input[type="radio"], input[type="checkbox"] {
+input[type="file"], input[type="image"], input[type="submit"]:not(.m-btn), input[type="reset"], input[type="button"], input[type="radio"], input[type="checkbox"] {
 	width: auto;
 }
 select, input[type="file"] {
@@ -357,6 +357,9 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: #ffffff;
+}
+body.birthday .button [class^="icon-"], body.birthday .button [class*=" icon-"] {
+	color: #E35604;
 }
 .icon-asterisk:before {
 	content: "\2a";
@@ -1314,7 +1317,7 @@ h6 {font: bold 1.2em 'Myriad Pro',sans-serif;}
 	-webkit-transition: none !important;
 	 transition: none !important;
 }
-header, header h1, #dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
+header, header h1, #dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"]:not(.m-btn), input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
 	transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
 	-webkit-transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
 	-moz-transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
@@ -1379,7 +1382,7 @@ input.m-wrap::-moz-placeholder {
 input.m-wrap:-ms-input-placeholder {
 	color: #999;
 }
-input[type="submit"], input[type="reset"], input[type="button"], input.button, button, a.button {
+input[type="submit"]:not(.m-btn), input[type="reset"], input[type="button"], input.button, button, a.button {
 	display: inline-block;
 	padding: 6px 12px;
 	margin: 2px;
@@ -1404,7 +1407,7 @@ input[type="submit"], input[type="reset"], input[type="button"], input.button, b
 	background-image: linear-gradient(to top, #D2D2D2 0%, #E4E4E4 50%, #EDEDED 50%, #FFFFFF 100%);	
 }
 .button {float: left}
-.lang_toggle.button, .lang_toggle.button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover {
+.lang_toggle.button, .lang_toggle.button:hover, input[type="submit"]:not(.m-btn):hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover {
 	background-color: #3377dd;
 	border-color: #3377dd;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3377dd), color-stop(0.5, #4480dd), color-stop(0.5, #6692ee), color-stop(1, #7799ee));
@@ -1415,7 +1418,7 @@ input[type="submit"], input[type="reset"], input[type="button"], input.button, b
 	background-image: linear-gradient(to top, #3377dd 0%, #4480dd 50%, #6692ee 50%, #7799ee 100%);
 	color: #FFF;
 }
-.lang_toggle.button:active, .nav_button.button:active, input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active, input.button:active, button:active, a.button:active, .lang_toggle.button.clicked, .nav_button.button.clicked, input[type="submit"].clicked, input[type="reset"].clicked, input[type="button"].clicked, input.button.clicked, button.clicked, a.button.clicked, .lang_toggle.button.clicked:hover, .nav_button.button.clicked:hover, input[type="submit"].clicked:hover, input[type="reset"].clicked:hover, input[type="button"].clicked:hover, input.button.clicked:hover, button.clicked:hover, a.button.clicked:hover, body.bmi .nav_button.button.bmi, body.lunar .nav_button.button.lunar, body.game .nav_button.button.game, body.intro .nav_button.button.intro {
+.lang_toggle.button:active, .nav_button.button:active, input[type="submit"]:not(.m-btn):active, input[type="reset"]:active, input[type="button"]:active, input.button:active, button:active, a.button:active, .lang_toggle.button.clicked, .nav_button.button.clicked, input[type="submit"]:not(.m-btn).clicked, input[type="reset"].clicked, input[type="button"].clicked, input.button.clicked, button.clicked, a.button.clicked, .lang_toggle.button.clicked:hover, .nav_button.button.clicked:hover, input[type="submit"]:not(.m-btn).clicked:hover, input[type="reset"].clicked:hover, input[type="button"].clicked:hover, input.button.clicked:hover, button.clicked:hover, a.button.clicked:hover, body.member .nav_button.button.member, body.bmi .nav_button.button.bmi, body.lunar .nav_button.button.lunar, body.game .nav_button.button.game, body.intro .nav_button.button.intro {
 	background-color: #3377dd;
 	border-color: #3377dd;
 	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #3377dd), color-stop(0.5, #4480dd), color-stop(0.5, #6692ee), color-stop(1, #7799ee));
@@ -1457,14 +1460,14 @@ label[for="is_secondary"]:hover, #embed_toggle:hover, #lunar_desc:hover {
 	-ms-transform: scale(1.02);
 }
 */
-.lang_toggle.button:active > *, .nav_button.button:active > *, button:active > *, a.button:active > *, .lang_toggle.button.clicked > *, .nav_button.button.clicked > *, button.clicked > *, a.button.clicked > *, .lang_toggle.button.clicked:hover > *, .nav_button.button.clicked:hover > *, button.clicked:hover > *, a.button.clicked:hover > *, .m-btn:active > *, .m-btn.clicked > *, label[for="is_secondary"]:active > input, #embed_toggle:active > *, #lunar_desc:active > *, label[for="is_secondary"].clicked > input, #embed_toggle.clicked > *, #lunar_desc.clicked > *, body.bmi .nav_button.button.bmi > *, body.lunar .nav_button.button.lunar > *, body.game .nav_button.button.game > *, body.intro .nav_button.button.intro > * {
+.lang_toggle.button:active > *, .nav_button.button:active > *, button:active > *, a.button:active > *, .lang_toggle.button.clicked > *, .nav_button.button.clicked > *, button.clicked > *, a.button.clicked > *, .lang_toggle.button.clicked:hover > *, .nav_button.button.clicked:hover > *, button.clicked:hover > *, a.button.clicked:hover > *, .m-btn:active > *, .m-btn.clicked > *, label[for="is_secondary"]:active > input, #embed_toggle:active > *, #lunar_desc:active > *, label[for="is_secondary"].clicked > input, #embed_toggle.clicked > *, #lunar_desc.clicked > *, body.member .nav_button.button.member > *, body.bmi .nav_button.button.bmi > *, body.lunar .nav_button.button.lunar > *, body.game .nav_button.button.game > *, body.intro .nav_button.button.intro > * {
 	position: relative;
 	top: 1px;
 }
 #embed_toggle:active > i, #embed_toggle.clicked > i, .m-btn:active > i, .m-btn.clicked > i {
 	top: 2px;
 }
-input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active, input.button:active, input[type="submit"].clicked, input[type="reset"].clicked, input[type="button"].clicked, input.button.clicked, input[type="submit"].clicked:hover, input[type="reset"].clicked:hover, input[type="button"].clicked:hover, input.button.clicked:hover {
+input[type="submit"]:not(.m-btn):active, input[type="reset"]:active, input[type="button"]:active, input.button:active, input[type="submit"]:not(.m-btn).clicked, input[type="reset"].clicked, input[type="button"].clicked, input.button.clicked, input[type="submit"]:not(.m-btn).clicked:hover, input[type="reset"].clicked:hover, input[type="button"].clicked:hover, input.button.clicked:hover {
 	padding-top: 7px;
 	padding-bottom: 5px;
 }
@@ -1585,7 +1588,7 @@ ul.toolbar > li > a {
 	border-radius: 10px;
 	text-decoration: none;
 }
-body.rhythm a.rhythm, body.user a.user, #toolbar ul.toolbar > li > a:focus, #toolbar ul.toolbar > li > a:hover, #toolbar ul.toolbar > li > a:active, #toolbar ul.toolbar > li > a.active:focus {
+body.rhythm a.rhythm, body.user a.user, body.member a.member, #toolbar ul.toolbar > li > a:focus, #toolbar ul.toolbar > li > a:hover, #toolbar ul.toolbar > li > a:active, #toolbar ul.toolbar > li > a.active:focus {
 	background: #444;
 }
 header, #dob_form, #clock, #help, #news, #info, #stats, #compatibility, #life_path_link, #lunar_desc, footer, .help, .nav_button.button {
@@ -1634,6 +1637,7 @@ body.birthday header {
 	padding: 8px;
 	padding-right: 0;
 	width: 272px;
+	clear: left;
 }
 header h1 {
 	position: relative;
@@ -1756,7 +1760,7 @@ ul#nav_buttons > li > a.nav_button.button {
 }
 body:lang(vi) ul#nav_buttons > li > a.nav_button.button {display: block}
 body:lang(en) ul#nav_buttons > li > a.nav_button.button, body:lang(ru) ul#nav_buttons > li > a.nav_button.button, body:lang(es) ul#nav_buttons > li > a.nav_button.button, body:lang(zh) ul#nav_buttons > li > a.nav_button.button, body:lang(ja) ul#nav_buttons > li > a.nav_button.button {display: none}
-ul#nav_buttons > li > a#intro_link, ul#nav_buttons > li > a#game_link, ul#nav_buttons > li > a#apps_link, ul#nav_buttons > li > a#blog_link, ul#nav_buttons > li > a#forum_link, body.intro ul#nav_buttons > li > a.nav_button.button.home, body.game ul#nav_buttons > li > a.nav_button.button.home {display: block}
+ul#nav_buttons > li > a#member_link, ul#nav_buttons > li > a#intro_link, ul#nav_buttons > li > a#game_link, ul#nav_buttons > li > a#apps_link, ul#nav_buttons > li > a#blog_link, ul#nav_buttons > li > a#forum_link, body.intro ul#nav_buttons > li > a.nav_button.button.home, body.game ul#nav_buttons > li > a.nav_button.button.home {display: block}
 body.home ul#nav_buttons > li > a.nav_button.button.home {display: none}
 body:lang(vi) p#char {display: block}
 body:lang(en) p#char, body:lang(ru) p#char, body:lang(es) p#char, body:lang(zh) p#char, body:lang(ja) p#char {display: none}
@@ -2083,7 +2087,7 @@ body.birthday #dt_change_label:active, body.birthday #partner_dob_label:active, 
 	background-image: linear-gradient(to bottom, #FFD700 0%, #FFF740 100%);
 	color: #E35604;
 }
-body.birthday .lang_toggle.button, body.birthday .lang_toggle.button:hover, body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover, body.birthday .button.donate, body.birthday .button.donate:hover, body.birthday .button.sponsor, body.birthday .button.sponsor:hover {
+body.birthday .lang_toggle.button, body.birthday .lang_toggle.button:hover, body.birthday input[type="submit"]:not(.m-btn):hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover, body.birthday .button.donate, body.birthday .button.donate:hover, body.birthday .button.sponsor, body.birthday .button.sponsor:hover {
 	background-color: #FFD700;
 	border-color: #FFD700;
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFD700), color-stop(0.5, #FFDF10), color-stop(0.5, #FFEF30), color-stop(1, #FFF740));
@@ -2094,7 +2098,7 @@ body.birthday .lang_toggle.button, body.birthday .lang_toggle.button:hover, body
 	background-image: linear-gradient(to top, #FFD700 0%, #FFDF10 50%, #FFEF30 50%, #FFF740 100%);
 	color: #E35604;
 }
-body.birthday .lang_toggle.button:active, body.birthday .nav_button.button:active, body.birthday input[type="submit"]:active, body.birthday input[type="reset"]:active, body.birthday input[type="button"]:active, body.birthday input.button:active, body.birthday button:active, body.birthday a.button:active, body.birthday .lang_toggle.button.clicked, body.birthday .nav_button.button.clicked, body.birthday input[type="submit"].clicked, body.birthday input[type="reset"].clicked, body.birthday input[type="button"].clicked, body.birthday input.button.clicked, body.birthday button.clicked, body.birthday a.button.clicked, body.birthday .lang_toggle.button.clicked:hover, body.birthday .nav_button.button.clicked:hover, body.birthday input[type="submit"].clicked:hover, body.birthday input[type="reset"].clicked:hover, body.birthday input[type="button"].clicked:hover, body.birthday input.button.clicked:hover, body.birthday button.clicked:hover, body.birthday a.button.clicked:hover, body.birthday.bmi .nav_button.button.bmi, body.birthday.lunar .nav_button.button.lunar, body.birthday.game .nav_button.button.game, body.birthday.intro .nav_button.button.intro, body.birthday .button.donate:active, body.birthday .button.sponsor:active {
+body.birthday .lang_toggle.button:active, body.birthday .nav_button.button:active, body.birthday input[type="submit"]:not(.m-btn):active, body.birthday input[type="reset"]:active, body.birthday input[type="button"]:active, body.birthday input.button:active, body.birthday button:active, body.birthday a.button:active, body.birthday .lang_toggle.button.clicked, body.birthday .nav_button.button.clicked, body.birthday input[type="submit"]:not(.m-btn).clicked, body.birthday input[type="reset"].clicked, body.birthday input[type="button"].clicked, body.birthday input.button.clicked, body.birthday button.clicked, body.birthday a.button.clicked, body.birthday .lang_toggle.button.clicked:hover, body.birthday .nav_button.button.clicked:hover, body.birthday input[type="submit"]:not(.m-btn).clicked:hover, body.birthday input[type="reset"].clicked:hover, body.birthday input[type="button"].clicked:hover, body.birthday input.button.clicked:hover, body.birthday button.clicked:hover, body.birthday a.button.clicked:hover, body.birthday.member .nav_button.button.member, body.birthday.bmi .nav_button.button.bmi, body.birthday.lunar .nav_button.button.lunar, body.birthday.game .nav_button.button.game, body.birthday.intro .nav_button.button.intro, body.birthday .button.donate:active, body.birthday .button.sponsor:active {
 	background-color: #FFD700;
 	border-color: #FFD700;
 	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFD700), color-stop(0.5, #FFDF10), color-stop(0.5, #FFEF30), color-stop(1, #FFF740));
@@ -2111,13 +2115,13 @@ body.birthday #dob_form, body.birthday #clock, body.birthday #news, body.birthda
 	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 	box-shadow: 0 3px 6px 1px rgba(227,86,4,.33);
 }
-body.birthday #dob_form:hover, body.birthday #clock:hover, body.birthday #news:hover, body.birthday #info:hover, body.birthday #stats:hover, body.birthday #compatibility:hover, body.birthday #controls:hover, body.birthday #lunar:hover, body.birthday #wiki:hover, body.birthday #main_chart:hover, body.birthday #explanation_chart:hover, body.birthday .adsense:hover, body.birthday #ui-datepicker-div:hover, body.birthday #proverb blockquote:hover, body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover, body.birthday a.button.clicked:hover, body.birthday .m-btn:hover, body.birthday input.m-wrap:hover, body.birthday .m-btn.highlight, body.birthday input.m-wrap.highlight, body.birthday .ln-letters > a:hover {
+body.birthday #dob_form:hover, body.birthday #clock:hover, body.birthday #news:hover, body.birthday #info:hover, body.birthday #stats:hover, body.birthday #compatibility:hover, body.birthday #controls:hover, body.birthday #lunar:hover, body.birthday #wiki:hover, body.birthday #main_chart:hover, body.birthday #explanation_chart:hover, body.birthday .adsense:hover, body.birthday #ui-datepicker-div:hover, body.birthday #proverb blockquote:hover, body.birthday input[type="submit"]:not(.m-btn):hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover, body.birthday a.button.clicked:hover, body.birthday .m-btn:hover, body.birthday input.m-wrap:hover, body.birthday .m-btn.highlight, body.birthday input.m-wrap.highlight, body.birthday .ln-letters > a:hover {
 	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 }
-body.birthday input[type="submit"]:active, body.birthday input[type="reset"]:active, body.birthday input[type="button"]:active, body.birthday input.button:active, body.birthday button:active, body.birthday a.button:active, body.birthday input[type="submit"].clicked, body.birthday input[type="reset"].clicked, body.birthday input[type="button"].clicked, body.birthday input.button.clicked, body.birthday button.clicked, body.birthday a.button.clicked, body.birthday input[type="submit"].clicked:hover, body.birthday input[type="reset"].clicked:hover, body.birthday input[type="button"].clicked:hover, body.birthday input.button.clicked:hover, body.birthday button.clicked:hover, body.birthday a.button.clicked:hover, body.birthday .ln-letters > a:active, body.birthday .ln-letters > a.ln-selected {
+body.birthday input[type="submit"]:not(.m-btn):active, body.birthday input[type="reset"]:active, body.birthday input[type="button"]:active, body.birthday input.button:active, body.birthday button:active, body.birthday a.button:active, body.birthday input[type="submit"]:not(.m-btn).clicked, body.birthday input[type="reset"].clicked, body.birthday input[type="button"].clicked, body.birthday input.button.clicked, body.birthday button.clicked, body.birthday a.button.clicked, body.birthday input[type="submit"]:not(.m-btn).clicked:hover, body.birthday input[type="reset"].clicked:hover, body.birthday input[type="button"].clicked:hover, body.birthday input.button.clicked:hover, body.birthday button.clicked:hover, body.birthday a.button.clicked:hover, body.birthday .ln-letters > a:active, body.birthday .ln-letters > a.ln-selected {
 	-moz-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
 	-webkit-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
 	-khtml-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
@@ -2135,7 +2139,7 @@ body.birthday #logo, body.birthday .nav_button.button {
 	-khtml-box-shadow: 0 3px 6px 1px rgba(255,215,0,.33);
 	box-shadow: 0 3px 6px 1px rgba(255,215,0,.33);
 }
-body.birthday input[type="submit"]:hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover {
+body.birthday input[type="submit"]:not(.m-btn):hover, body.birthday input[type="reset"]:hover, body.birthday input[type="button"]:hover, body.birthday input.button:hover, body.birthday button:hover, body.birthday a.button:hover {
 	-moz-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	-webkit-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
 	-khtml-box-shadow: 0 3px 6px 1px rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;
@@ -2147,7 +2151,7 @@ body.birthday #logo:hover, body.loading.birthday #logo, body.birthday .nav_butto
 	-khtml-box-shadow: 0 3px 6px 1px rgba(255,215,0,.77), 0 0 0 0 rgba(255,215,0,.77) inset;
 	box-shadow: 0 3px 6px 1px rgba(255,215,0,.77), 0 0 0 0 rgba(255,215,0,.77) inset;
 }
-body.birthday #logo:active, body.birthday .nav_button.button:active, body.birthday input[type="submit"]:active, body.birthday input[type="reset"]:active, body.birthday input[type="button"]:active, body.birthday input.button:active, body.birthday button:active, body.birthday a.button:active, body.birthday input[type="submit"].clicked, body.birthday input[type="reset"].clicked, body.birthday input[type="button"].clicked, body.birthday input.button.clicked, body.birthday button.clicked, body.birthday a.button.clicked, body.birthday.bmi .nav_button.button.bmi, body.birthday.lunar .nav_button.button.lunar, body.birthday.game .nav_button.button.game, body.birthday.intro .nav_button.button.intro {
+body.birthday #logo:active, body.birthday .nav_button.button:active, body.birthday input[type="submit"]:not(.m-btn):active, body.birthday input[type="reset"]:active, body.birthday input[type="button"]:active, body.birthday input.button:active, body.birthday button:active, body.birthday a.button:active, body.birthday input[type="submit"]:not(.m-btn).clicked, body.birthday input[type="reset"].clicked, body.birthday input[type="button"].clicked, body.birthday input.button.clicked, body.birthday button.clicked, body.birthday a.button.clicked, body.birthday.member .nav_button.button.member, body.birthday.bmi .nav_button.button.bmi, body.birthday.lunar .nav_button.button.lunar, body.birthday.game .nav_button.button.game, body.birthday.intro .nav_button.button.intro {
 	-moz-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
 	-webkit-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
 	-khtml-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 2px 4px 0 rgba(227,86,4,.77) inset;
@@ -2738,13 +2742,13 @@ body.birthday #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_d
 	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 	box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 }
-#dob_form:hover, #clock:hover, #help:hover, #news:hover, #info:hover, #stats:hover, #compatibility:hover, #controls:hover, #lunar:hover, #wiki:hover, #main_chart:hover, #explanation_chart:hover, .adsense:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover, a.button.clicked:hover, .m-btn:hover, input.m-wrap:hover, .m-btn.highlight, input.m-wrap.highlight, .zoom > img:hover, #logo:hover, body.loading #logo, #ui-datepicker-div:hover, #proverb blockquote:hover, #fb_holder:hover, #timer, .ln-letters > a:hover, #weight:hover, #height:hover {
+#dob_form:hover, #clock:hover, #help:hover, #news:hover, #info:hover, #stats:hover, #compatibility:hover, #controls:hover, #lunar:hover, #wiki:hover, #main_chart:hover, #explanation_chart:hover, .adsense:hover, input[type="submit"]:not(.m-btn):hover, input[type="reset"]:hover, input[type="button"]:hover, input.button:hover, button:hover, a.button:hover, a.button.clicked:hover, .m-btn:hover, input.m-wrap:hover, .m-btn.highlight, input.m-wrap.highlight, .zoom > img:hover, #logo:hover, body.loading #logo, #ui-datepicker-div:hover, #proverb blockquote:hover, #fb_holder:hover, #timer, .ln-letters > a:hover, #weight:hover, #height:hover {
 	-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 	-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 	box-shadow: 0 3px 6px 1px rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;
 }
-input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active, input.button:active, button:active, a.button:active, input[type="submit"].clicked, input[type="reset"].clicked, input[type="button"].clicked, input.button.clicked, button.clicked, a.button.clicked, input[type="submit"].clicked:hover, input[type="reset"].clicked:hover, input[type="button"].clicked:hover, input.button.clicked:hover, button.clicked:hover, a.button.clicked:hover, .m-btn:active, input.m-wrap:active, .m-btn.clicked, input.m-wrap.clicked, #logo:active, .ln-letters > a:active, .ln-letters > a.ln-selected, #weight:active, #height:active, body.bmi .nav_button.button.bmi, body.lunar .nav_button.button.lunar, body.game .nav_button.button.game, body.intro .nav_button.button.intro {
+input[type="submit"]:not(.m-btn):active, input[type="reset"]:active, input[type="button"]:active, input.button:active, button:active, a.button:active, input[type="submit"]:not(.m-btn).clicked, input[type="reset"].clicked, input[type="button"].clicked, input.button.clicked, button.clicked, a.button.clicked, input[type="submit"]:not(.m-btn).clicked:hover, input[type="reset"].clicked:hover, input[type="button"].clicked:hover, input.button.clicked:hover, button.clicked:hover, a.button.clicked:hover, .m-btn:active, input.m-wrap:active, .m-btn.clicked, input.m-wrap.clicked, #logo:active, .ln-letters > a:active, .ln-letters > a.ln-selected, #weight:active, #height:active, body.member .nav_button.button.member, body.bmi .nav_button.button.bmi, body.lunar .nav_button.button.lunar, body.game .nav_button.button.game, body.intro .nav_button.button.intro {
 	-moz-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
 	-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
 	-khtml-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 2px 4px 0 rgba(0,0,0,.77) inset;
@@ -3381,8 +3385,7 @@ table {
 	margin: 0;
 }
 #results > section > h5, #help > h5 {
-	font-size: 22px;
-	font-variant: small-caps;
+	font-size: 21px;
 }
 /* Forms' status */
 #dob_form_status.alert_dob ~ #dob_wrapper #dob, #dob_form_status.restore_dob ~ #dob_wrapper #dob, #search_form_status.alert_search ~ #search_wrapper #search, #search_form_status.restore_search ~ #search_wrapper #search {
@@ -4258,6 +4261,10 @@ body:lang(ja) #rhythms_table {
 .rhythm_hover > td.rhythm_label > span {
 	text-decoration: underline;
 }
+.rhythm_toggle {
+	cursor: pointer;
+	margin-left: 1px;
+}
 .helper {
 	float: right;
 	position: relative;
@@ -4308,7 +4315,7 @@ body:lang(ja) #rhythms_table {
 	line-height: 21px;
 	font-variant: normal;
 }
-#g_comments, #g_comments > iframe, #___g_comments_0, #___g_comments_0 > iframe {
+#g_comments, #g_comments > iframe, #___comments_0, #___comments_0 > iframe, #___g_comments_0, #___g_comments_0 > iframe {
 	width: 100% !important;
 }
 /* Ping Pong */
@@ -4662,6 +4669,205 @@ body.scrolled header {
 	-khtml-opacity: 0.95;
 	opacity: 0.95;
 }
+/* Member Management */
+#persons_list_h2 {
+	font-size: 24px;
+}
+body.member form#profile_form, body.member.register form, body.member.login form {
+	display: block;
+	float: left;
+	width: 280px;
+	margin: 4px;
+}
+body.member #profile_form input.m-wrap, body.member.register input.m-wrap, body.member.login input.m-wrap {
+	width: 128px;
+	border: none;
+	padding: 7px 6px;
+}
+body.member #profile_form input[type='submit'], body.member #profile_form #member_logout, #member_login, #member_register, body.member.register input[type='submit'], body.member.login input[type='submit'] {
+	margin: 0;
+	font-size: 24px;
+	padding: 12px 24px;
+}
+body.member form#profile_form {
+	margin-bottom: 15px;
+}
+body.member #profile_form #member_logout, #member_login, #member_register {
+	display: inline-block;
+	padding: 18px 0px;
+	margin: 4px 0px;
+	width: 280px;
+}
+body.home #member_register {
+	margin: 4px;
+	padding: 39px 0 40px;
+	font-size: 42px;
+}
+body.member #profile_form span.error, body.member.register span.error, body.member.login span.error {
+	color: red;
+	font-size: 14px;
+	line-height: 21px;
+	display: block;
+	clear: left;
+	margin: 4px;
+}
+body.member #fullname, body.member #dob {
+	width: 119px !important;
+}
+body.member #help_name {
+	left: 0px;
+}
+body.member #help_dob {
+	left: 133px !important;
+}
+body.member #profile_form span.add-on, body.member.register span.add-on, body.member.login span.add-on {
+	width: 130px;
+	border: none;
+	padding: 5px;
+}
+body.member #profile_form input[type='submit'], body.member.register input[type='submit'], body.member.login input[type='submit'] {
+	width: 280px;
+	padding: 18px 12px;
+}
+
+body.member:lang(vi) #dob_list {
+	width: 84px;
+}
+body.member:lang(vi) #dob_erase {
+	width: 46px;
+}
+body.member:lang(vi) #dob_create {
+	width: 45px;
+}
+body.member:lang(vi) #dob_remove {
+	width: 66px;
+}
+body.member:lang(vi) #dob_edit {
+	width: 46px;
+}
+body.member:lang(vi) #dob_control_bar > .m-btn {
+	padding-left: 15px;
+	padding-right: 16px;
+}
+body.member.person:lang(vi) #dob_control_bar > .m-btn {
+	padding-left: 12px;
+	padding-right: 12px;
+}
+body.member:lang(en) #dob_list {
+	width: 46px;
+}
+body.member:lang(en) #dob_erase {
+	width: 60px;
+}
+body.member:lang(en) #dob_create {
+	width: 60px;
+}
+body.member:lang(en) #dob_remove {
+	width: 65px;
+}
+body.member:lang(en) #dob_edit {
+	width: 46px;
+}
+body.member:lang(en) #dob_control_bar > .m-btn {
+	padding-left: 17px;
+	padding-right: 17px;
+}
+body.member.person:lang(en) #dob_control_bar > .m-btn {
+	padding-left: 18px;
+	padding-right: 19px;
+}
+body.member:lang(ru) #dob_list {
+	width: 70px;
+}
+body.member:lang(ru) #dob_erase {
+	width: 80px;
+}
+body.member:lang(ru) #dob_create {
+	width: 76px;
+}
+body.member:lang(ru) #dob_remove {
+	width: 70px;
+}
+body.member:lang(ru) #dob_edit {
+	width: 110px;
+}
+body.member:lang(ru) #dob_control_bar > .m-btn {
+	padding-left: 7px;
+	padding-right: 7px;
+}
+body.member.person:lang(ru) #dob_control_bar > .m-btn {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+body.member:lang(es) #dob_list {
+	width: 55px;
+}
+body.member:lang(es) #dob_erase {
+	width: 65px;
+}
+body.member:lang(es) #dob_create {
+	width: 55px;
+}
+body.member:lang(es) #dob_remove {
+	width: 57px;
+}
+body.member:lang(es) #dob_edit {
+	width: 60px;
+}
+body.member:lang(es) #dob_control_bar > .m-btn {
+	padding-left: 15px;
+	padding-right: 16px;
+}
+body.member.person:lang(es) #dob_control_bar > .m-btn {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+body.member:lang(zh) #dob_list {
+	width: 51px;
+}
+body.member:lang(zh) #dob_erase {
+	width: 51px;
+}
+body.member:lang(zh) #dob_create {
+	width: 52px;
+}
+body.member:lang(zh) #dob_remove {
+	width: 51px;
+}
+body.member:lang(zh) #dob_edit {
+	width: 52px;
+}
+body.member:lang(zh) #dob_control_bar > .m-btn {
+	padding-left: 19px;
+	padding-right: 19px;
+}
+body.member.person:lang(zh) #dob_control_bar > .m-btn {
+	padding-left: 19px;
+	padding-right: 19px;
+}
+body.member:lang(ja) #dob_list {
+	width: 66px;
+}
+body.member:lang(ja) #dob_erase {
+	width: 50px;
+}
+body.member:lang(ja) #dob_create {
+	width: 50px;
+}
+body.member:lang(ja) #dob_remove {
+	width: 90px;
+}
+body.member:lang(ja) #dob_edit {
+	width: 52px;
+}
+body.member:lang(ja) #dob_control_bar > .m-btn {
+	padding-left: 17px;
+	padding-right: 17px;
+}
+body.member.person:lang(ja) #dob_control_bar > .m-btn {
+	padding-left: 10px;
+	padding-right: 10px;
+}
 /* Responsive */
 @media all and (max-width: 551px) {
 	#lang_bar {float: left;left: 12px;bottom: 4px;}
@@ -4743,16 +4949,16 @@ body.scrolled header {
 	#results table {width: 420px;height: 100%;}
 	#results table td{width: 42px;height: 100%;}
 	ul#nav_buttons > li > a.nav_button.button, body.home header.clicked ul#nav_buttons > li > a.nav_button.button.home {display: none !important;}
-	body:lang(vi) header.clicked ul#nav_buttons > li > a.nav_button.button, body:lang(vi) ul#nav_buttons:hover > li > a.nav_button.button, header.clicked ul#nav_buttons > li > a#intro_link, header.clicked ul#nav_buttons > li > a#game_link, ul#nav_buttons:hover > li > a#intro_link, ul#nav_buttons:hover > li > a#game_link, header.clicked ul#nav_buttons > li > a#apps_link, ul#nav_buttons:hover > li > a#apps_link, header.clicked ul#nav_buttons > li > a#blog_link, ul#nav_buttons:hover > li > a#blog_link, header.clicked ul#nav_buttons > li > a#forum_link, ul#nav_buttons:hover > li > a#forum_link {display: block !important;}
+	body:lang(vi) header.clicked ul#nav_buttons > li > a.nav_button.button, body:lang(vi) ul#nav_buttons:hover > li > a.nav_button.button, header.clicked ul#nav_buttons > li > a#member_link, header.clicked ul#nav_buttons > li > a#intro_link, header.clicked ul#nav_buttons > li > a#game_link, ul#nav_buttons:hover > li > a#member_link, ul#nav_buttons:hover > li > a#intro_link, ul#nav_buttons:hover > li > a#game_link, header.clicked ul#nav_buttons > li > a#apps_link, ul#nav_buttons:hover > li > a#apps_link, header.clicked ul#nav_buttons > li > a#blog_link, ul#nav_buttons:hover > li > a#blog_link, header.clicked ul#nav_buttons > li > a#forum_link, ul#nav_buttons:hover > li > a#forum_link {display: block !important;}
 	ul#nav_buttons {margin-left: 45px;top: 45px;}
 	ul#nav_buttons > li {float: none;}
 	ul#nav_buttons > li > a.nav_button.button {padding: 4px 8px;line-height: 24px;margin: 0;font-size: 12px;width: 120px;text-align: center;}
 	#logo, .nav_button.button {position: absolute;-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);-khtml-box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);box-shadow: 0 2px 4px 0 rgba(0,0,0,.33);}
 	#logo:hover, body.loading #logo, .nav_button.button:hover {-moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;-webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;-khtml-box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;box-shadow: 0 2px 4px 0 rgba(0,0,0,.77), 0 0 0 0 rgba(0,0,0,.77) inset;}
-	#logo:active, .nav_button.button:active, body.bmi .nav_button.button.bmi, body.lunar .nav_button.button.lunar, body.game .nav_button.button.game, body.intro .nav_button.button.intro {-moz-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;-khtml-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;}
+	#logo:active, .nav_button.button:active, body.member .nav_button.button.member, body.bmi .nav_button.button.bmi, body.lunar .nav_button.button.lunar, body.game .nav_button.button.game, body.intro .nav_button.button.intro {-moz-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;-webkit-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;-khtml-box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;box-shadow: 0 0 0 0 rgba(0,0,0,.77), 0 1px 2px 0 rgba(0,0,0,.77) inset;}
 	body.birthday #logo, body.birthday .nav_button.button {-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);-webkit-box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);-khtml-box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);box-shadow: 0 2px 4px 0 rgba(227,86,4,.33);}
 	body.birthday #logo:hover, body.loading.birthday #logo, body.birthday .nav_button.button:hover {-moz-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;-webkit-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;-khtml-box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;box-shadow: 0 2px 4px 0 rgba(227,86,4,.77), 0 0 0 0 rgba(227,86,4,.77) inset;}
-	body.birthday #logo:active, body.birthday .nav_button.button:active, body.birthday.bmi .nav_button.button.bmi, body.birthday.lunar .nav_button.button.lunar, body.birthday.game .nav_button.button.game, body.birthday.intro .nav_button.button.intro {-moz-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;-webkit-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;-khtml-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;}
+	body.birthday #logo:active, body.birthday .nav_button.button:active, body.birthday.member .nav_button.button.member, body.birthday.bmi .nav_button.button.bmi, body.birthday.lunar .nav_button.button.lunar, body.birthday.game .nav_button.button.game, body.birthday.intro .nav_button.button.intro {-moz-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;-webkit-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;-khtml-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;}
 	.lang_toggle.button > span.lang {display: none;}
 	.lang_toggle.button.first > span.lang {display: block;}
 	body main {width: 100%;margin: 0 auto;padding-bottom: 57px;padding-top: 52px;min-height: 0;}
@@ -4781,6 +4987,8 @@ body.scrolled header {
 	#fullname ~ #help_dob {left: 42px;}
 	#dob_form_status.hovered.empty_dob ~ #help_dob_form, #dob_form_status.hovered.wrong_dob ~ #help_dob_form, #dob_form_status.hovered.alert_dob ~ #help_dob_form, #dob_form_status.hovered.no_fullname.correct_dob ~ #help_dob_form, #dob_form_status.hovered.has_fullname.filled_fullname.correct_dob ~ #help_dob_form {margin-left: 0;}
 	#clock, #help {margin-top: 10px;margin-bottom: 0;}
+	body.member #help_dob {left: 29px !important;}
+	body.member form#profile_form {margin-bottom: 2px;}
 }
 @media all and (min-width: 960px) {
 	body.scrolled header {height: 70px;}
@@ -4806,6 +5014,7 @@ body.scrolled header {
 	#embed_chart {height: 45vw;}
 	/*#main_chart:hover, #explanation_chart_results:hover {transform: scale(1.02);-webkit-transform: scale(1.02);-moz-transform: scale(1.02);-o-transform: scale(1.02);-ms-transform: scale(1.02);}
 	#proverb:hover {transform: scale(1.04);-webkit-transform: scale(1.04);-moz-transform: scale(1.04);-o-transform: scale(1.04);-ms-transform: scale(1.04);}*/
+	body.home #member_register {margin-bottom: 20px;}
 }
 @media all and (max-width: 1262px) {
 	.banner {display: none;}
@@ -4827,6 +5036,7 @@ body.scrolled header {
 	.banner.left, .banner.right, .w120, .w120 > ins.adsbygoogle, .w120 > ins.adsbygoogle iframe, .w120 > ins.adsbygoogle ins, .w160, .w160 > ins.adsbygoogle, .w160 > ins.adsbygoogle iframe, .w160 > ins.adsbygoogle ins, .leader_banner, .w728, .w728 > ins.adsbygoogle, .w728 > ins.adsbygoogle iframe, .w728 > ins.adsbygoogle ins {display: block;}
 	.mobile_banner, .w300, .w300 > ins.adsbygoogle, .w300 > ins.adsbygoogle iframe, .w300 > ins.adsbygoogle ins {display: none;}
 	.to-top {height: 60px;width: 60px;right: 20px;bottom: 20px;}
+	body.home #member_register {margin-bottom: 20px;}
 }
 @media all and (min-width: 1263px) and (max-width: 1582px) {
 	ul.dates > li {width: calc(100% / 3);width: -webkit-calc(100% / 3);width: -moz-calc(100% / 3);}
@@ -4839,4 +5049,934 @@ body.scrolled header {
 	#embed_chart {height: 36vw;}
 	/*#main_chart:hover, #explanation_chart_results:hover {transform: scale(1.01);-webkit-transform: scale(1.01);-moz-transform: scale(1.01);-o-transform: scale(1.01);-ms-transform: scale(1.01);}
 	#proverb:hover {transform: scale(1.02);-webkit-transform: scale(1.02);-moz-transform: scale(1.02);-o-transform: scale(1.02);-ms-transform: scale(1.02);}*/
+}
+/*
+	jBar v2.0.0
+	URL: www.toddmotto.com
+*/
+
+/*------------------------------------*\
+    jBar
+\*------------------------------------*/
+
+.jbar {
+	font-family: inherit; /* inherit your fonts */
+	background: #3377dd;
+	border-bottom: 3px solid #FFF;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 998; /* set high to avoid possible existing z-indexes */
+	width: 100%;
+}
+.jbar, .jbar-push {
+	display: none;
+	transition: margin-top .25s linear;
+	-webkit-transition: margin-top .25s linear;
+	-moz-transition: margin-top .25s linear;
+}
+.jbar-wrap {
+	padding: 0 25px;
+	margin: 8px 0;
+	text-align: center;
+}
+.jbar p {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}
+.jbar p, .jbar-button {
+	color: #FFF;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+.jbar-button {
+	background: #33aa44;
+	text-decoration: none;
+	margin: 0 10px;
+	padding: 5px 15px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.jbar-button:hover {
+	background: #118822;
+}
+.jbar-up-toggle {
+	position: absolute;
+	top: 0;
+	right: 50px;
+	display: block;
+	padding: 10px;
+}
+.jbar-down-toggle {
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	right: 50px;
+	z-index: 999;
+	display: block;
+	padding: 10px 10px 5px;
+	background: #3377dd;
+	border: 3px solid #FFF;
+	border-top: none;
+	border-radius: 0 0 4px 4px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+	transition: margin-top .15s linear;
+	-webkit-transition: margin-top .15s linear;
+	-moz-transition: margin-top .15s linear;
+}
+.jbar-up-arrow {
+	width: 17px;
+	height: 19px;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAATCAMAAABBexbDAAAADFBMVEXu7u5JSUkAAAAAAABdVQ4zAAAABHRSTlOGfRIAX3wErQAAADtJREFUeNrNzrENACAMA8EH9t8ZKXrjFXDlXONwzEohsEMEdojAI4QSQgmhhFBCKDHxYjKLyvQfBPrbBQBhAvZmanT9AAAAAElFTkSuQmCC) no-repeat center center;
+}
+.jbar-down-arrow {
+	width: 21px;
+	height: 23px;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAXCAMAAADTAfSvAAAAnFBMVEWgoKD///8PDw8RERH///+cnJyfn58rKyv///////////8mJib///////+ampr///+FhYX///////////////+Dg4P///////+Li4sGBgb///////////8hISGOjo7///////////+WlpaRkZH///////8vLy////////////////////8XFxf///8cHBz///8MDAwAAAAAAAAAAABgXTkEAAAANHRSTlNWJmUsKVVVMBsYOS8XGlMBSQUfMzVIBANLKjI4HS5NNx4vUE8tJDE6IzQrNiwhLQIrYSkAN4qAdAAAAIRJREFUeNrdz0UWwzAQA9ApMyVlprATt9b979bWjuH5CNVu/mYkgsxbR521Cp2/0qj5G2pUzaaSKuElzglRl3mYjAlodFou9pKB/NaeviyOhhNIneV3w6dDXzfjz0fN1eVo+/LbeSexuLor+H77RVaUcBWbbC5YptAq1stVmMJXLAKD+AAYmVm/0d4W0wAAAABJRU5ErkJggg==) no-repeat center center;
+}
+body.birthday .jbar, body.birthday .jbar-down-toggle {background: #ffd700;}
+/* Reset */
+.dcsmt ul, .dcsmt li, .dcsmt h3 {
+	padding: 0; 
+	margin: 0; 
+	list-style: none!important;
+}
+
+/* Main widget styles */
+.dcsmt {
+	font-size: 12px;
+	color: #666;
+}
+.active.dcsmt .dcsmt-slider {
+	box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.6);
+	-moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.6);
+}
+.dcsmt a {
+	text-decoration:none;
+}
+.dcsmt-content {
+	position: relative;
+}
+
+/* Tabs */
+.social-tabs li {
+	padding: 3px 3px 3px 4px;
+	width: 27px;
+	height: 26px;
+	background: #777;
+	z-index: 10;
+}
+.active .social-tabs li {
+	z-index: 10;
+	-webkit-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.6);
+	-moz-box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.6);
+}
+.active .social-tabs li.active {
+	z-index: 11;
+	-webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.6);
+	-moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.6);
+}
+/** Static **/
+.static .social-tabs {
+	padding-left: 8px;
+}
+.static .social-tabs li {
+	float: left;
+	margin-right: 2px;
+	border-radius: 5px 5px 0 0; 
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+}
+/** Top **/
+.top .social-tabs {
+	padding-left: 8px;
+}
+.top.align-right .social-tabs {
+	padding-left: 0;
+	padding-right: 8px;
+}
+.top .social-tabs li {
+	padding: 3px 4px;
+	margin-right: 2px;
+	float: left;
+	border-radius: 0 0 5px 5px; 
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+}
+/** Right **/
+.right .social-tabs {
+	padding-top: 8px;
+}
+.right .social-tabs li {
+	margin: 0 0 2px 0;
+	border-radius: 5px 0 0 5px; 
+	-webkit-border-radius: 5px 0 0 5px;
+	-moz-border-radius: 5px 0 0 5px;
+}
+/** Bottom **/
+.bottom .social-tabs {
+	padding-left: 8px;
+}
+.bottom.align-right .social-tabs {
+	padding-left: 0;
+	padding-right: 8px;
+}
+.bottom .social-tabs li {
+	padding: 4px 4px 2px 4px;
+	margin: 0 2px 0 0;
+	float: left;
+	border-radius: 5px 5px 0 0; 
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+}
+/** Left **/
+.left .social-tabs {
+	padding-top: 8px;
+}
+.left .social-tabs li {
+	margin: 0 0 2px 0;
+	border-radius: 0 5px 5px 0; 
+	-webkit-border-radius: 0 5px 5px 0;
+	-moz-border-radius: 0 5px 5px 0;
+}
+
+/* Tab Content */
+.dcsmt-slider {
+	clear: both;
+	overflow: hidden;
+}
+.tab-content {
+	position: relative;
+	overflow: hidden;
+	z-index: 11;
+	background: url(images/loader.gif) no-repeat center 200px;
+}
+.tab-content ul {
+	font-size: 11px;
+}
+.tab-content .tab-inner {
+	background: #fff;
+	overflow: hidden;
+}
+.tab-inner ul {
+	padding: 0 10px;
+}
+.tab-inner .profile {
+	position: relative;
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+	background: #ececec;
+}
+.tab-inner .profile h3 {
+	margin: 0;
+	padding: 5px 0 3px 26px;
+	position: relative;
+	font-size: 14px; 
+	line-height: 20px;
+}
+.tab-inner .profile h3 a {
+	text-decoration: none;
+}
+.tab-inner .profile h3, .tab-inner .profile h3 a {
+	color: #555; 
+	text-shadow: 0 1px 0 #fff;
+}
+.tab-inner .dcsmt-btn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	font: bold 12px/14px Arial, sans-serif;
+	display:inline-block;
+	text-decoration:none;
+	outline:none;
+	padding: 5px 8px;
+	background: #fcfcfc url(images/btn.png) repeat-x 0 0;
+    color: #fff;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+}
+.tab-inner .dcsmt-btn:hover{
+	background-position: 0 100%;
+    color: #fff;
+}
+.tab-inner .profile a.avatar{
+	display:block;
+	float:left;
+	text-decoration:none;
+	outline:none;
+	margin:0 10px 0 0
+}
+.tab-inner .profile a.avatar img{
+	padding:1px;
+	background: #fff;
+	border: 3px solid #ccc;
+	display:block
+}
+/** Network specific profile header **/
+.tab-rss .profile h3 {
+	background: url(images/rss.png) no-repeat 0 1px;
+}
+.tab-flickr .profile h3 {
+	background: url(images/flickr.png) no-repeat 0 1px;
+}
+.tab-delicious .profile h3 {
+	background: url(images/delicious.png) no-repeat 0 1px;
+}
+.tab-twitter .profile h3 {
+	background: url(images/twitter.png) no-repeat 0 1px;
+}
+.tab-facebook .profile h3 {
+	background: url(images/facebook.png) no-repeat 0 1px;
+}
+.tab-fblike .profile h3 {
+	background: url(images/fblike.png) no-repeat 0 1px;
+}
+.tab-fbrec .profile h3 {
+	background: url(images/fbrec.png) no-repeat 0 1px;
+}
+.tab-google .profile h3 {
+	background: url(images/google.png) no-repeat 0 1px;
+}
+.tab-youtube .profile h3 {
+	background: url(images/youtube.png) no-repeat 0 1px;
+}
+.tab-pinterest .profile h3 {
+	background: url(images/pinterest.png) no-repeat 0 1px;
+}
+.tab-lastfm .profile h3 {
+	background: url(images/lastfm.png) no-repeat 0 1px;
+}
+.tab-dribbble .profile h3 {
+	background: url(images/dribbble.png) no-repeat 0 1px;
+}
+.tab-vimeo .profile h3 {
+	background: url(images/vimeo.png) no-repeat 0 1px;
+}
+.tab-stumbleupon .profile h3 {
+	background: url(images/stumbleupon.png) no-repeat 0 1px;
+}
+.tab-tumblr .profile h3 {
+	background: url(images/tumblr.png) no-repeat 0 1px;
+}
+.tab-deviantart .profile h3 {
+	background: url(images/deviantart.png) no-repeat 0 1px;
+}
+.tab-linkedin .profile h3 {
+	background: url(images/linkedin.png) no-repeat 0 1px;
+}
+.tab-instagram .profile h3 {
+	background: url(images/instagram.png) no-repeat 0 1px;
+}
+
+/** Static **/
+.static .dcsmt-slider {
+	border-radius: 10px; 
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+.static .tab-content {
+	padding: 10px;
+}
+.static .tab-inner {
+	border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+/** Top **/
+.top .dcsmt-slider {
+	border-radius: 0 0 10px 10px; 
+	-webkit-border-radius: 0 0 10px 10px;
+	-moz-border-radius: 0 0 10px 10px;
+}
+.top .tab-inner {
+	border-radius: 0 0 5px 5px; 
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+}
+.top .tab-content {
+	padding: 0 10px 10px 10px;
+}
+/** Right **/
+.right .dcsmt-slider {
+	border-radius: 10px 0 0 10px; 
+	-moz-border-radius: 10px 0 0 10px;
+	-webkit-border-radius: 10px 0 0 10px;
+}
+.right .tab-inner {
+	border-radius: 5px 0 0 5px; 
+	-webkit-border-radius: 5px 0 0 5px;
+	-moz-border-radius: 5px 0 0 5px;
+}
+.right .tab-content {
+	padding: 10px 0 10px 10px;
+}
+/** Bottom **/
+.bottom .dcsmt-slider {
+	border-radius: 10px 10px 0 0; 
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-border-radius: 10px 10px 0 0;
+}
+.bottom .tab-inner {
+	border-radius: 5px 5px 0 0; 
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+}
+.bottom .tab-content {
+	padding: 10px 10px 0 10px;
+}
+/** Left **/
+.left .dcsmt-slider {
+	border-radius: 0 10px 10px 0; 
+	-webkit-border-radius: 0 10px 10px 0;
+	-moz-border-radius: 0 10px 10px 0;
+}
+.left .tab-inner {
+	border-radius: 0 5px 5px 0; 
+	-webkit-border-radius: 0 5px 5px 0;
+	-moz-border-radius: 0 5px 5px 0;
+}
+.left .tab-content {
+	padding: 10px 10px 10px 0;
+}
+/** Network specific colors **/
+.tab-content.tab-rss, .social-tabs li.active.dcsmt-rss, .social-tabs li.dcsmt-rss:hover, .tab-rss .dcsmt-btn {
+	background-color: #FF9800;
+}
+.tab-content.tab-flickr, .social-tabs li.active.dcsmt-flickr, .social-tabs li.dcsmt-flickr:hover, .tab-flickr .dcsmt-btn {
+	background-color: #f90784;
+}
+.tab-content.tab-delicious, .social-tabs li.active.dcsmt-delicious, .social-tabs li.dcsmt-delicious:hover, .tab-delicious .dcsmt-btn {
+	background-color: #3271CB;
+}
+.tab-content.tab-twitter, .social-tabs li.active.dcsmt-twitter, .social-tabs li.dcsmt-twitter:hover, .tab-twitter .dcsmt-btn{
+	background-color: #4ec2dc;
+}
+.tab-content.tab-facebook, .social-tabs li.active.dcsmt-facebook, .social-tabs li.dcsmt-facebook:hover, .tab-facebook .dcsmt-btn {
+	background-color: #3b5998;
+}
+.tab-content.tab-fblike, .social-tabs li.active.dcsmt-fblike, .social-tabs li.dcsmt-fblike:hover, .tab-fblike .dcsmt-btn {
+	background-color: #3b5998;
+}
+.tab-content.tab-fbrec, .social-tabs li.active.dcsmt-fbrec, .social-tabs li.dcsmt-fbrec:hover, .tab-fbrec .dcsmt-btn {
+	background-color: #3b5998;
+}
+.tab-content.tab-google, .social-tabs li.active.dcsmt-google, .social-tabs li.dcsmt-google:hover, .tab-google .dcsmt-btn {
+	background-color: #2d2d2d;
+}
+.tab-content.tab-youtube, .social-tabs li.active.dcsmt-youtube, .social-tabs li.dcsmt-youtube:hover, .tab-youtube .dcsmt-btn {
+	background-color: #DF1F1C;
+}
+.tab-content.tab-digg, .social-tabs li.active.dcsmt-digg, .social-tabs li.dcsmt-digg:hover, .tab-digg .dcsmt-btn {
+	background-color: #195695;
+}
+.tab-content.tab-pinterest, .social-tabs li.active.dcsmt-pinterest, .social-tabs li.dcsmt-pinterest:hover, .tab-pinterest .dcsmt-btn {
+	background-color: #CB2528;
+}
+.tab-content.tab-lastfm, .social-tabs li.active.dcsmt-lastfm, .social-tabs li.dcsmt-lastfm:hover, .tab-lastfm .dcsmt-btn {
+	background-color: #C90E12;
+}
+.tab-content.tab-dribbble, .social-tabs li.active.dcsmt-dribbble, .social-tabs li.dcsmt-dribbble:hover, .tab-dribbble .dcsmt-btn {
+	background-color: #F175A8;
+}
+.tab-content.tab-vimeo, .social-tabs li.active.dcsmt-vimeo, .social-tabs li.dcsmt-vimeo:hover, .tab-vimeo .dcsmt-btn {
+	background-color: #4EBAFF;
+}
+.tab-content.tab-stumbleupon, .social-tabs li.active.dcsmt-stumbleupon, .social-tabs li.dcsmt-stumbleupon:hover, .tab-stumbleupon .dcsmt-btn {
+	background-color: #EB4924;
+}
+.tab-content.tab-tumblr, .social-tabs li.active.dcsmt-tumblr, .social-tabs li.dcsmt-tumblr:hover, .tab-tumblr .dcsmt-btn {
+	background-color: #365472;
+}
+.tab-content.tab-deviantart, .social-tabs li.active.dcsmt-deviantart, .social-tabs li.dcsmt-deviantart:hover, .tab-deviantart .dcsmt-btn {
+	background-color: #B8C529;
+}
+.tab-content.tab-linkedin, .social-tabs li.active.dcsmt-linkedin, .social-tabs li.dcsmt-linkedin:hover, .tab-linkedin .dcsmt-btn {
+	background-color: #006DA7;
+}
+.tab-content.tab-instagram, .social-tabs li.active.dcsmt-instagram, .social-tabs li.dcsmt-instagram:hover, .tab-instagram .dcsmt-btn {
+	background-color: #413A33;
+}
+
+/* Feeds */
+.dcsmt .stream {
+	overflow: hidden;
+}
+.stream p {
+	margin: 0;
+	padding: 0;
+}
+.tab-inner ul.stream > li {
+	padding: 5px 0 25px 0;
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+	background: none;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
+	line-height: 1.4em;
+}
+.tab-inner ul li .thumb {
+	float: left;
+	margin: 0 10px 0 0;
+}
+.tab-inner ul li .thumb img {
+	border: 3px solid #ececec;
+	padding: 1px;
+	background: #fff;
+}
+.tab-inner ul li .logo {
+	margin-bottom: 3px;
+}
+.tab-inner ul li .title {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 3px;
+}
+.tab-inner ul li .title.clear {
+	clear: both;
+}
+.tab-inner ul li .text {
+	display: block;
+}
+.tab-inner ul li  br{
+	display: block;
+}
+.tab-inner ul li .date {
+	position: absolute;
+	bottom: 5px;
+	left: 0;
+	font-style: italic;
+	color: #999;
+	font-size: 90%;
+}
+.tab-inner ul li .meta {
+	display: block;
+	font-size: 90%;
+	color: #999;
+}
+.tab-inner ul li .meta span {
+	margin: 0 8px 5px 0;
+	display: block;
+	float: left;
+	padding: 0 0 0 15px;
+	line-height: 12px;
+}
+.tab-inner ul li .meta.item-comments {
+	padding: 0 0 0 35px;
+	margin: 0 0 5px 0;
+	min-height: 30px;
+	position: relative;
+	clear: both;
+	line-height: 1.3em;
+}
+.tab-inner ul li .meta.item-comments img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 30px;
+}
+.tab-inner ul li .meta.item-likes {
+	padding: 0;
+	width: 100%;
+	overflow: hidden;
+	clear: both;
+	line-height: 1.3em;
+}
+.tab-inner ul li .meta.item-likes img {
+	float: left;
+	margin: 0 5px 5px 0;
+	width: 30px;
+	border: 1px solid #ddd;
+	padding: 1px;
+	background: #fff;
+}
+.tab-inner ul li .section-share {
+	bottom: 5px;
+    right: 0;
+    position: absolute;
+	z-index: 2;
+}
+.tab-inner ul li .section-share a {
+	display: block;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin: 0 2px 0 0;
+	background: url(images/share.png) no-repeat 0 0;
+}
+.tab-inner ul li .section-share a.share-twitter {
+	background-position: 0 -16px;
+}
+.tab-inner ul li .section-share a.share-reply {
+	background-position: 0 -32px;
+}
+.tab-inner ul li .section-share a.share-retweet {
+	background-position: 0 -48px;
+}
+.tab-inner ul li .section-share a.share-favorite {
+	background-position: 0 -64px;
+}
+.tab-inner ul li .section-share a.share-google {
+	background-position: 0 -80px;
+}
+.tab-inner ul li .section-share a.share-linkedin {
+	background-position: 0 -96px;
+}
+.tab-inner ul li .section-share a.share-facebook:hover {
+	background-position: -16px 0;
+}
+.tab-inner ul li .section-share a.share-twitter:hover {
+	background-position: -16px -16px;
+}
+.tab-inner ul li .section-share a.share-reply:hover {
+	background-position: -16px -32px;
+}
+.tab-inner ul li .section-share a.share-retweet:hover {
+	background-position: -16px -48px;
+}
+.tab-inner ul li .section-share a.share-favorite:hover {
+	background-position: -16px -64px;
+}
+.tab-inner ul li .section-share a.share-google:hover {
+	background-position: -16px -80px;
+}
+.tab-inner ul li .section-share a.share-linkedin:hover {
+	background-position: -16px -96px;
+}
+/* feeds network specific styles */
+.tab-dribbble .tab-inner ul li .thumb img {
+	margin-bottom: 5px;
+}
+.tab-lastfm .tab-inner ul li .title {
+	background: url(images/tracks.png) no-repeat 0 0;
+	padding-left: 17px;
+	margin-bottom: 0;
+}
+.tab-google .tab-inner ul li .title {
+	margin-bottom: 5px;
+}
+.tab-vimeo .tab-inner ul li .text {
+	margin-bottom: 5px;
+}
+.tab-inner ul li .meta span.plusones {
+	padding-left: 0;
+}
+.tab-inner ul li .meta span.shares {
+	background: url(images/shares.png) no-repeat 0 0;
+	padding-left: 20px;
+}
+.tab-inner ul li .meta span.views {
+	background: url(images/views.png) no-repeat 0 0;
+	padding-left: 18px;
+}
+.tab-inner ul li .meta span.likes {
+	background: url(images/likes.png) no-repeat 0 0;
+	padding-left: 16px;
+}
+.tab-inner ul li .meta span.comments {
+	background: url(images/comments.png) no-repeat 0 0;
+}
+.tab-inner ul li .meta span.users {
+	background: url(images/users.png) no-repeat 0 0;
+}
+.tab-inner ul li .meta span.videos {
+	background: url(images/videos.png) no-repeat 0 0;
+	padding-left: 16px;
+}
+.tab-inner ul li.dcsmt-error {
+	color: #990000;
+}
+.dcsmt-loading {
+	background: url(images/loader.gif) no-repeat 10px center;
+	padding: 10px 30px 10px 42px;
+}
+
+/* Controls */
+.dcsmt .controls {
+	position: absolute;
+	left: 10px;
+	height: 20px;
+	padding: 5px 0;
+	z-index: 12;
+	/*
+	display: none;
+	*/
+	background: url(images/bg_white.png) repeat 0 0;
+}
+.dcsmt .controls ul {
+	padding: 0 10px;
+}
+.dcsmt .controls li {
+	display: inline;
+}
+.dcsmt .controls a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	float: left;
+	margin-right: 4px;
+	background: url(images/controls.png) no-repeat 0 0;
+}
+.dcsmt .controls .prev {
+	background-position: -40px 0;
+}
+.dcsmt .controls .next {
+	background-position: -60px 0;
+}
+.dcsmt .controls .play {
+	background-position: 0 0;
+}
+.dcsmt .controls .pause {
+	background-position: -20px 0;
+}
+.dcsmt .controls .dcsmt-close {
+	background-position: -80px 0;
+}
+.dcsmt .controls .prev:hover {
+	background-position: -40px -20px;
+}
+.dcsmt .controls .next:hover {
+	background-position: -60px -20px;
+}
+.dcsmt .controls .play:hover {
+	background-position: 0 -20px;
+}
+.dcsmt .controls .pause:hover {
+	background-position: -20px -20px;
+}
+.dcsmt .controls .dcsmt-close:hover {
+	background-position: -80px -20px;
+}
+/** Static **/
+.dcsmt.static .controls {
+	bottom: 10px;
+}
+/** Top **/
+.dcsmt.top .controls {
+	bottom: 10px;
+}
+/** Right **/
+.dcsmt.right .controls {
+	bottom: 10px;
+	right: 0;
+}
+/** Bottom **/
+.dcsmt.bottom .controls {
+	bottom: 0;
+}
+/** Left **/
+.dcsmt.left .controls {
+	bottom: 10px;
+	left: 0;
+}
+/* twitter */
+.tab-twitter .tab-inner ul li a {
+	color: #38AEAE;
+}
+.tab-twitter .tab-inner ul li a:hover {
+	color: #38AEAE;
+	text-decoration: underline;
+}
+.tab-twitter .tab-inner ul li span.twitter-user a {
+	color: #999;
+	line-height: 1.5em;
+}
+.tab-twitter .tab-inner ul li span.twitter-user a:hover {
+	color: #999;
+	text-decoration: none;
+}
+.tab-twitter .tab-inner ul li span.twitter-user a strong{
+	color: #444;
+}
+.tab-twitter .tab-inner ul li span.twitter-user a:hover strong {
+	color: #38AEAE;
+	text-decoration: underline;
+}
+.tab-twitter .tab-inner ul li .thumb img {
+	border: 1px solid #ececec;
+	padding: 1px;
+	background: #fff;
+}
+.tab-twitter .tab-inner ul li .twitter-image {
+	display: block;
+	clear: both;
+	text-align: center;
+}
+.tab-twitter .tab-inner ul li .twitter-image img {
+	border: 1px solid #ececec;
+	padding: 1px;
+	background: #fff;
+}
+/* google */
+.tab-google .tab-inner .google-page {
+	overflow: hidden;
+	height: 55px;
+	border-bottom: 1px solid #ccc;
+}
+.tab-google .tab-inner .google-page.standard {
+	height: 117px;
+}
+.tab-google .tab-inner .google-page.small iframe{
+	height: 69px;
+	margin-bottom: 0;
+}
+.tab-google .tab-inner .google-page.standard iframe{
+	height: 131px;
+	margin-bottom: 0;
+}
+/** rss **/
+.tab-rss .tab-inner ul li p {
+	padding: 3px 0;
+}
+/** Facebook **/
+.tab-facebook .tab-inner ul li p {
+	padding: 3px 0;
+}
+.tab-facebook .tab-inner li img{
+	margin: 0 0 5px 0;
+	padding: 2px;
+	background: #fff;
+	border: 1px solid #ececec;
+	max-width: 98%;
+}
+.tab-facebook .tab-inner li .section-share .share-facebook {
+	display: none;
+}
+/** Flickr **/
+.tab-flickr .tab-inner ul {
+	padding-top: 5px;
+}
+.tab-flickr .tab-inner ul.stream li {
+	float: left;
+	clear: both;
+	padding: 0;
+	margin: 0 5px 5px 0;
+	border: none;
+}
+.tab-flickr .tab-inner li .thumb {
+	margin: 0;
+}
+.tab-flickr .tab-inner li img{
+	max-width: 100%;
+}
+.tab-flickr .tab-inner li .section-share {
+	bottom: 10px;
+	right: 5px;
+}
+/** Youtube **/
+.youtube-subscribe {
+	overflow: hidden; 
+	height: 105px; 
+	width: 100%; 
+	border: 0;
+}
+/* Digg */
+.tab-digg .digg-widget .digg-widget-head.premium, .tab-digg .digg-widget .digg-widget-head {
+    height: auto;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    white-space: nowrap;
+	border: none;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+}
+.tab-digg .digg-widget .digg-widget-head h2 {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 0 0 26px;
+    white-space: nowrap;
+	text-shadow: 0 1px 0 #fff;
+	background: url(images/digg.png) no-repeat 0 0;
+}
+.tab-digg .digg-widget .digg-widget-head a {
+	top: 12px;
+}
+.tab-digg .digg-widget-content {
+	border-top: 1px solid #ccc;
+}
+/* Pinterest */
+.tab-pinterest .tab-inner ul li {
+	background-color: #FFFFFF;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    font-size: 11px;
+    padding: 15px 15px 45px 15px;
+    width: 236px;
+	margin: 10px auto;
+}
+.tab-pinterest .tab-inner ul li a {
+
+}
+.tab-pinterest .tab-inner ul li img {
+	background: #fff;
+	margin-bottom: 2px;
+	border: none;
+	padding: none;
+}
+.tab-pinterest .tab-inner ul li p {
+	text-align: left;
+	padding: 0;
+	line-height: 1.35em;
+}
+.tab-pinterest .tab-inner ul li .date {
+	background-color: #F2F0F0;
+    padding: 10px 15px;
+	width: 192px;
+	left: -5px;
+	bottom: 0;
+	color: #8C7E7E;
+	font-style: normal;
+	font-weight: bold;
+}
+.tab-pinterest .tab-inner ul li .date {
+	margin-left: 0;
+}
+.tab-pinterest .tab-inner ul li .section-share {
+	right: 5px;
+	bottom: 9px;
+}
+/* dribbble */
+.tab-dribbble .tab-inner li .meta {
+	clear: both;
+}
+/* deviantart */
+.tab-deviantart .tab-inner li img {
+	margin: 5px 0;
+}
+/* tumblr */
+.tab-tumblr .tab-inner ul li img {
+	margin: 0 7px 5px 0;
+	float: left;
+	border: 1px solid #ddd;
+	padding: 1px;
+	background: #fff;
+}
+.tab-tumblr .tab-inner ul li p {
+	padding: 3px 0;
+}
+.tab-tumblr .tab-inner ul li .track {
+	display: block;
+	background: url(images/tracks.png) no-repeat 0 5px;
+	padding: 5px 0 0 17px;
+	margin-bottom: 0;
+}
+/* instagram */
+.tab-instagram .tab-inner ul li .thumb {
+	margin-bottom: 3px;
+}
+.tab-instagram .tab-inner ul li .meta .comments, .tab-instagram .tab-inner ul li .meta .likes {
+	margin-top: 5px;
 }
