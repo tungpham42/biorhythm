@@ -7,7 +7,10 @@ if ((isset($_COOKIE['NSH:member']) && $_COOKIE['NSH:member'] == get_member_email
 		include template('member/dob_form');
 	}
 	include template('proverb');
+	include template('clock');
+	include template('scripts_top');
 	if (has_dob()) {
+		include template('news');
 		include template('results');
 	}
 	echo list_persons();

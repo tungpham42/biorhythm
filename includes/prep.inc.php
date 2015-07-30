@@ -47,6 +47,7 @@ function init_timezone() {
 function init_lang_code() {
 	global $geoip_record;
 	global $lang_codes;
+	global $one_lang;
 	$lang_code = 'vi';
 	$country_code = isset($geoip_record) ? $geoip_record->country_code: 'VN';
 	$country_codes = array(
@@ -57,30 +58,34 @@ function init_lang_code() {
 		'zh' => array('CN', 'HK', 'MO', 'TW', 'SG'),
 		'ja' => array('JP')
 	);
+	if (isset($one_lang)) {
+		setcookie('NSH:lang', $one_lang, time()+604800, '/'.$one_lang.'/');
+		$lang_code = $one_lang;
+	}
 	if (!isset($_COOKIE['NSH:lang'])) {
 		if (in_array($country_code, $country_codes['vi']) || is_public_server() || is_bot()) {
-			setcookie('NSH:lang', 'vi', time()+3600, '/');
+			setcookie('NSH:lang', 'vi', time()+604800, '/');
 			$lang_code = 'vi';
 		} else if (in_array($country_code, $country_codes['en'])) {
-			setcookie('NSH:lang', 'en', time()+3600, '/');
+			setcookie('NSH:lang', 'en', time()+604800, '/');
 			$lang_code = 'en';
 		} else if (in_array($country_code, $country_codes['ru'])) {
-			setcookie('NSH:lang', 'ru', time()+3600, '/');
+			setcookie('NSH:lang', 'ru', time()+604800, '/');
 			$lang_code = 'ru';
 		} else if (in_array($country_code, $country_codes['es'])) {
-			setcookie('NSH:lang', 'es', time()+3600, '/');
+			setcookie('NSH:lang', 'es', time()+604800, '/');
 			$lang_code = 'es';
 		} else if (in_array($country_code, $country_codes['zh'])) {
-			setcookie('NSH:lang', 'zh', time()+3600, '/');
+			setcookie('NSH:lang', 'zh', time()+604800, '/');
 			$lang_code = 'zh';
 		} else if (in_array($country_code, $country_codes['ja'])) {
-			setcookie('NSH:lang', 'ja', time()+3600, '/');
+			setcookie('NSH:lang', 'ja', time()+604800, '/');
 			$lang_code = 'ja';
 		}
 	} else if (isset($_COOKIE['NSH:lang'])) {
 		$lang_code = $_COOKIE['NSH:lang'];
 	}
-	$lang_code = (isset($_GET['lang']) && in_array($_GET['lang'], $lang_codes)) ? prevent_xss($_GET['lang']): $lang_code;
+	$lang_code = (isset($one_lang)) ? $one_lang: ((isset($_GET['lang']) && in_array($_GET['lang'], $lang_codes)) ? prevent_xss($_GET['lang']): $lang_code);
 	return $lang_code;
 }
 function get_timezone() {

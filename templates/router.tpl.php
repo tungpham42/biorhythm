@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET['p']) && $_GET['p'] != 'home') {
+if (isset($_GET['p']) && $_GET['p'] != 'home' && $_GET['p'] != 'member/home') {
 	include template('scripts_top');
 }
 if (isset($_GET['q']) && $_GET['q'] != '') {

@@ -15,12 +15,15 @@ include template('head');
 </head>
 <body lang="<?php echo $lang_code; ?>" class="<?php echo $body_class.(has_one_lang() ? ' one_lang': ''); ?>">
 <?php
+include template('tag_manager');
 if (!isset($_GET['p']) || $_GET['p'] == 'home'):
 	include template('sitelinks_searchbox');
 endif;
 include template('variables');
 include template('img_desc');
-include template('clicktale_top');
+if ($clicktale):
+	include template('clicktale_top');
+endif;
 include template('fb_root');
 if (isset($_SESSION['loggedin'])):
 	include template('toolbar');
@@ -60,6 +63,7 @@ include template('footer');
 <?php
 include template('loading');
 include template('to_top');
+include template('register_modal');
 if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
 	if ($show_sumome):
 		include template('sumome');
@@ -71,7 +75,9 @@ if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
 		include template('banner_160x600');
 	endif;
 endif;
-include template('clicktale_bottom');
+if ($clicktale):
+	include template('clicktale_bottom');
+endif;
 include template('scripts_bottom');
 ?>
 </body>

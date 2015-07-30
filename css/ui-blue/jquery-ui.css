@@ -433,7 +433,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  *
  * http://docs.jquery.com/UI/Dialog#theming
  */
-.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
+.ui-dialog { position: absolute; padding: .2em; width: 300px; z-index: 12; overflow: hidden; }
 .ui-dialog .ui-dialog-titlebar { padding: .4em 1em; position: relative;  }
 .ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; } 
 .ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; background-color: transparent !important; border-color: transparent !important; -moz-box-shadow: none !important; -webkit-box-shadow: none !important; -khtml-box-shadow: none !important; box-shadow: none !important;}
@@ -606,7 +606,7 @@ html, body{background-color:#ffffff;}
 .ui-dialog{border-width:2px;padding:0;}
 .ui-dialog-titlebar {border:none;border-bottom-width:2px;padding:.6em 1em .6em 1em !important;font-weight:bold;font-size:1.1em;}
 .ui-dialog-buttonpane{border-top-width:2px !important;margin-top:0 !important;}
-.ui-dialog .ui-dialog-titlebar-close{width:28px;height:28px;margin:-13px 0px 0px 0px;padding:0;}
+.ui-dialog .ui-dialog-titlebar-close{width:28px;height:28px;margin:-7px -17px 0px 0px;padding:0;float:right;}
 .ui-dialog-titlebar-close > .ui-icon{margin:-8px !important;}
 
 /* Datepicker*/

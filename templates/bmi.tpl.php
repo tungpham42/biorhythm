@@ -1,4 +1,4 @@
-<script src="/min/b=js&amp;f=angular/angular.js,bmi.js&amp;40"></script>
+<script src="/min/b=js&amp;f=angular/angular.min.js,bmi.js&amp;1"></script>
 <div data-ng-app="bmiApp" data-ng-controller="bmiController">
 	<div class="m-input-prepend m-input-append">
 		<span class="add-on label">Cân nặng:</span>

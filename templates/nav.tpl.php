@@ -3,7 +3,7 @@
 		<!--
 		<li><a id="home_link" class="nav_button button home" href="/"><?php echo translate_button('home_page'); ?></a></li>
 		-->
-		<li><a id="member_link" class="nav_button button member" href="/member/login/"><i class="icon-user"></i></a></li>
+		<li><a id="member_link" class="nav_button button member" href="/member/login/"><i class="icon-<?php echo isset($_COOKIE['NSH:member']) ? 'user' : 'log-in'; ?>"></i></a></li>
 		<li><a id="intro_link" class="nav_button button intro" href="/introduction/"><?php echo translate_button('intro'); ?></a></li>
 		<li><a id="apps_link" class="nav_button button apps" href="javascript:void(0);"><?php echo translate_button('apps'); ?></a></li>
 		<li><a id="blog_link" class="nav_button button" href="/blog/"><?php echo translate_button('blog'); ?></a></li>

@@ -62,7 +62,7 @@ class Minify_Source {
             $segments = explode('.', $spec['filepath']);
             $ext = strtolower(array_pop($segments));
             switch ($ext) {
-            case 'js'   : $this->contentType = 'application/x-javascript';
+            case 'js'   : $this->contentType = 'application/javascript';
                           break;
             case 'css'  : $this->contentType = 'text/css';
                           break;

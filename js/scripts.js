@@ -129,6 +129,9 @@ function maskInput(input, textbox, location, delimiter) {
 	}
 	textbox.val(input);
 }
+function randomFromTo(from, to) {
+	return Math.floor(Math.random() * (to - from + 1) + from);
+}
 function analogClock(){
 }
 analogClock.prototype.run = function() {
@@ -921,11 +924,11 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 						if (!this.visible) {
 							this.show();
 							$.cookie('NSH:rhythm-'+type+'-id-'+this.index, 'show');
-							$('i.rhythm_toggle[data-rhythm-id="'+this.index+'"]').removeClass('icon-remove').addClass('icon-ok');
+							$('i.rhythm_toggle[data-rhythm-id="'+this.index+'"]').removeClass('icon-heart-empty').addClass('icon-heart');
 						} else if (this.visible) {
 							this.hide();
 							$.cookie('NSH:rhythm-'+type+'-id-'+this.index, 'hide');
-							$('i.rhythm_toggle[data-rhythm-id="'+this.index+'"]').removeClass('icon-ok').addClass('icon-remove');
+							$('i.rhythm_toggle[data-rhythm-id="'+this.index+'"]').removeClass('icon-heart').addClass('icon-heart-empty');
 						}
 					}
 				},
@@ -1013,11 +1016,11 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			if (series.visible) {
 				series.show();
 				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'show');
-				$(this).removeClass('icon-remove').addClass('icon-ok');
+				$(this).removeClass('icon-heart-empty').addClass('icon-heart');
 			} else if (!series.visible) {
 				series.hide();
 				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'hide');
-				$(this).removeClass('icon-ok').addClass('icon-remove');
+				$(this).removeClass('icon-heart').addClass('icon-heart-empty');
 			}
 			console.log(id);
 		});
@@ -1027,12 +1030,12 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 			if (!series.visible) {
 				series.show();
 				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'show');
-				$(this).removeClass('icon-remove').addClass('icon-ok');
+				$(this).removeClass('icon-heart-empty').addClass('icon-heart');
 				console.log(id);
 			} else if (series.visible) {
 				series.hide();
 				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'hide');
-				$(this).removeClass('icon-ok').addClass('icon-remove');
+				$(this).removeClass('icon-heart').addClass('icon-heart-empty');
 				console.log(id);
 			}
 		});

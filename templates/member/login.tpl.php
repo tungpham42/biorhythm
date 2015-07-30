@@ -11,12 +11,12 @@ if (isset($_POST['member_login_submit'])) {
 		$member_login_errors[] = translate_error('invalid_member');
 	}
 	if (!count($member_login_errors)) {
-		setrawcookie('NSH:member',$_POST['member_login_email'],time()+3600,'/');
+		setrawcookie('NSH:member',$_POST['member_login_email'],time()+604800,'/');
 		header('Location: http'.(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 's':'').'://nhipsinhhoc.vn/member/'.$_POST['member_login_email'].'/');
 	}
 }
 ?>
-<form method="POST" action="">
+<form id="login_form" method="POST" action="">
 	<div class="m-input-prepend">
 		<span class="add-on"><?php echo translate_span('email'); ?></span>
 		<input class="m-wrap translate required" size="20" type="text" name="member_login_email" data-lang-ja="<?php echo $input_interfaces['email']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['email']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['email']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['email']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['email']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['email']['vi']; ?>" placeholder="<?php echo $input_interfaces['email'][$lang_code]; ?>" value="<?php echo $inputted_email; ?>" tabindex="1" required>

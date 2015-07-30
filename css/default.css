@@ -1317,7 +1317,7 @@ h6 {font: bold 1.2em 'Myriad Pro',sans-serif;}
 	-webkit-transition: none !important;
 	 transition: none !important;
 }
-header, header h1, #dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"]:not(.m-btn), input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, .rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
+header, header h1, #dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, #chart, #explanation_chart_results, .rss_feed, .adsense, #logo, #explanation, #fb_holder, #ui-datepicker-div, .ui-state-default, input[type="submit"]:not(.m-btn), input[type="reset"], input[type="button"], input.button, button, a.button, .m-btn, .m-wrap, .zoom > img, .add-on, li.rhythm, .ln-letters a, label[for="is_secondary"], #embed_toggle, #lunar_desc {
 	transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
 	-webkit-transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
 	-moz-transition: box-shadow linear 120ms, background-color linear 120ms, background-image linear 120ms, border-color linear 120ms, opacity linear 120ms, text-indent linear 120ms;
@@ -2175,7 +2175,7 @@ body.birthday label[for="is_secondary"]:active, body.birthday label[for="is_seco
 	-khtml-box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;
 	box-shadow: 0 0 0 0 rgba(227,86,4,.77), 0 1px 2px 0 rgba(227,86,4,.77) inset;
 }
-body.birthday .rhythm.secondary {
+body.birthday li.rhythm.secondary {
 	color: #c42;
 }
 body.birthday #logo {
@@ -2196,15 +2196,20 @@ body.birthday #logo:active {
 }
 body.birthday footer a {color: #E35604}
 body.birthday footer a:hover {color: #d04200}
-body.birthday #ui-datepicker-div.ui-datepicker{border-color:#FFD700;}
+body.birthday #ui-datepicker-div.ui-datepicker, body.birthday .ui-dialog{border-color:#FFD700;}
 body.birthday #ui-datepicker-div.ui-datepicker .ui-datepicker-calendar .ui-state-highlight{border-color:#FFD700 !important;color:#E35604 !important;}
 body.birthday #ui-datepicker-div.ui-datepicker .ui-datepicker-header{background-color:#FFD700 !important;color:#E35604 !important;}
 body.birthday #ui-datepicker-div .ui-datepicker-calendar .ui-state-hover, body.birthday #ui-datepicker-div .ui-widget-content .ui-state-hover, body.birthday #ui-datepicker-div .ui-datepicker-calendar .ui-state-active{background-color:#FFF740 !important;background-image:none !important;border-color:#FFF740 !important;color:#E35604 !important;}
-body.birthday #ui-datepicker-div.ui-datepicker .ui-icon {background-image:url(ui-birthday/images/ui-icons_E35604_0.png);}
-body.birthday #ui-datepicker-div.ui-datepicker .ui-state-hover .ui-icon {background-image:url(ui-birthday/images/ui-icons_FFD700_0.png)}
+body.birthday #ui-datepicker-div.ui-datepicker .ui-icon {background-image:url(ui-birthday/images/ui-icons_E35604_0.png) !important;}
+body.birthday #ui-datepicker-div.ui-datepicker .ui-state-hover .ui-icon {background-image:url(ui-birthday/images/ui-icons_FFD700_0.png) !important;}
 body.birthday #ui-datepicker-div .ui-datepicker-next, body.birthday #ui-datepicker-div .ui-datepicker-prev{background-image:url(ui-birthday/images/ui-icons_E35604_0.png);background-position: -232px -216px;}
 body.birthday #ui-datepicker-div .ui-datepicker-next-hover, body.birthday #ui-datepicker-div .ui-datepicker-prev-hover{background-image:url(ui-birthday/images/ui-icons_E35604_0.png) !important;background-position: -232px -168px !important;opacity:1 !important;}
 body.birthday #ui-datepicker-div .ui-datepicker-next.ui-state-disabled, body.birthday #ui-datepicker-div .ui-datepicker-prev.ui-state-disabled{background-image:url(ui-birthday/images/ui-icons_E35604_0.png);background-position: -232px -216px;}
+body.birthday .ui-dialog-titlebar{border-color:#FFD700;color:#E35604;background-color:#FFD700;}
+body.birthday .ui-dialog-titlebar .ui-icon{background-image:url(ui-birthday/images/ui-icons_E35604_0.png);}
+body.birthday .ui-dialog-titlebar .ui-state-hover .ui-icon{background-image:url(ui-birthday/images/ui-icons_FFD700_0.png) !important;}
+body.birthday .ui-dialog-titlebar-close{background-image:url(ui-birthday/images/ui-icons_E35604_0.png) !important;background-position: -232px -216px !important;}
+body.birthday .ui-dialog-titlebar-close.ui-state-hover{background:url(ui-birthday/images/ui-icons_E35604_0.png) !important;background-position: -232px -168px !important;}
 /* Navigation */
 #topmenu {
 	float: left;
@@ -2736,7 +2741,7 @@ body.birthday #dob_form_status.has_fullname.empty_fullname.correct_dob ~ #help_d
 	margin-left: 4px !important;
 	margin-right: 4px !important;
 }
-#dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .adsense, #logo, #ui-datepicker-div, #proverb blockquote, #fb_holder, .nav_button.button {
+#dob_form, #clock, #help, #news, #info, #stats, #compatibility, #controls, #lunar, #wiki, #main_chart, #explanation_chart, .adsense, #logo, #ui-datepicker-div, #proverb blockquote, #fb_holder, .nav_button.button, .ui-dialog {
 	-moz-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 	-webkit-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
 	-khtml-box-shadow: 0 3px 6px 1px rgba(0,0,0,.33);
@@ -2835,18 +2840,22 @@ label[for="is_secondary"] > input[type="checkbox"], label[for="is_secondary"] > 
 	-webkit-box-shadow: 0 1px 8px rgba(36,36,36,0.555),inset 0 1px 8px rgba(36,36,36,0.555);
 	box-shadow: 0 1px 8px rgba(36,36,36,0.555),inset 0 1px 8px rgba(36,36,36,0.555);
 	background: rgba(248,248,248,0.1);
+/*
 	-webkit-animation: glass_reflect 1s linear infinite alternate;
 	-moz-animation: glass_reflect 1s linear infinite alternate;
 	animation: glass_reflect 1s linear infinite alternate;
+*/
 }
 body.birthday .clock-circle {
 	-moz-box-shadow: 0 1px 8px rgba(36,18,9,0.555),inset 0 1px 8px rgba(36,18,9,0.555);
 	-webkit-box-shadow: 0 1px 8px rgba(36,18,9,0.555),inset 0 1px 8px rgba(36,18,9,0.555);
 	box-shadow: 0 1px 8px rgba(36,18,9,0.555),inset 0 1px 8px rgba(36,18,9,0.555);
 	background: rgba(248,124,62,0.1);
+/*
 	-webkit-animation: glass_reflect_birthday 1s linear infinite alternate;
 	-moz-animation: glass_reflect_birthday 1s linear infinite alternate;
 	animation: glass_reflect_birthday 1s linear infinite alternate;
+*/
 }
 @-webkit-keyframes glass_reflect {
 	0% {
@@ -3129,19 +3138,82 @@ body.birthday .clock-hour, body.birthday .clock-minute, body.birthday .clock-sec
 	line-height: 1.3em;
 	cursor: default;
 }
+#news h5 {height: 25px;}
 #news a {
 	color: #ffffff;
-	font-variant: small-caps;
 	font-size: 15px;
 }
 #news p {
 	font-size: 12px;
 	text-decoration: none;
 }
-#news ul {
+#news ul#news_ul {
 	height: 420px;
 	overflow-y: scroll;
 	width: 268px;
+}
+#news ul#news_ul > li {
+	border-bottom: 2px solid #ffffff;
+	display: table;
+	word-wrap: break-word;
+}
+body.birthday #news ul#news_ul > li {
+	border-bottom-color: #E35604;
+}
+#news ul#news_ul > li:last-child {
+	border-bottom: none;
+}
+.news_img {
+	width: 30px;
+	float: left;
+}
+.news_title, .news_date {
+	float: left;
+	clear: right;
+}
+.news_title, .news_date, .news_text, .news_domain, .news_author {
+	word-wrap: break-word;
+	width: 100%;
+	display: block;
+}
+.news_title {
+	list-style: square;
+}
+.news_domain, .news_author {
+	font-variant: small-caps;
+	clear: both;
+}
+.news_date {
+	list-style: disc;
+}
+.news_thumb {
+	width: 270px;
+	height: 420px;
+	position: absolute;
+	top: 30px;
+	left: 3px;
+	overflow-y: scroll;
+	background: rgba(248,248,248,0.88);
+	color: rgb(42,42,42);
+	z-index: 2;
+}
+.news_thumb_img {
+	width: 100%;
+	display: block;
+	clear: both;
+}
+.news_toggle {
+	float: right;
+	right: 3px;
+}
+body.birthday .news_toggle {
+	color: #E35604;
+}
+.news_toggle:hover + .news_thumb, .news_thumb:hover {
+	display: block;
+}
+.news_thumb, .news_thumb:active {
+	display: none;
 }
 body.birthday #news a {
 	color: #E35604;
@@ -3328,14 +3400,14 @@ input[name="is_secondary"] {display: none;}
 	min-width: 100% !important;
 	width: 100% !important;
 }
-.rhythm.secondary {
+li.rhythm.secondary {
 	color: #eaeaea;
 }
-.rhythm > i {
+li.rhythm > i {
 	position: relative;
 	bottom: 0;
 	left: 4px;
-	font-size: 13px !important;
+	font-size: 15px !important;
 	transition: none;
 	-webkit-transition: none;
 	-moz-transition: none;
@@ -4068,6 +4140,11 @@ body.birthday footer .rotate span::after, body.birthday footer .rotate:hover spa
 	-moz-animation: glow 1s linear infinite alternate;
 	animation: glow 1s linear infinite alternate;
 }
+body.member #dob_form_status.empty_dob ~ #dob_wrapper #dob, body.member #dob_form_status.wrong_dob ~ #dob_wrapper #dob {
+	-webkit-animation: none;
+	-moz-animation: none;
+	animation: none;
+}
 /* Submit */
 #dob_form_status.no_fullname.correct_dob ~ #dob_wrapper #dob_submit, #dob_form_status.has_fullname.filled_fullname.correct_dob ~ #dob_wrapper #dob_submit {
 	-webkit-animation: glow_button 1s linear infinite alternate;
@@ -4142,6 +4219,7 @@ body.embed header, body.embed footer {
 body.embed #main {
 	width: 100%;
 	margin: 0 auto;
+	padding-top: 0;
 	-ms-box-shadow: none;
 	-o-box-shadow: none;
 	-moz-box-shadow: none;
@@ -4263,8 +4341,31 @@ body:lang(ja) #rhythms_table {
 }
 .rhythm_toggle {
 	cursor: pointer;
-	margin-left: 1px;
+	left: 12px !important;
+
 }
+/*
+li.rhythm:hover .rhythm_toggle {
+	animation: pop_rhythm 420ms linear 0s infinite;
+	-webkit-animation: pop_rhythm 420ms linear 0s infinite;
+	-moz-animation: pop_rhythm 420ms linear 0s infinite;
+}
+@-webkit-keyframes pop_rhythm {
+	0% {top: 0;}
+	50% {top: -2px;}
+	100% {top: 0;}
+}
+@-moz-keyframes pop_rhythm {
+	0% {top: 0;}
+	50% {top: -2px;}
+	100% {top: 0;}
+}
+@keyframes pop_rhythm {
+	0% {top: 0;}
+	50% {top: -2px;}
+	100% {top: 0;}
+}
+*/
 .helper {
 	float: right;
 	position: relative;
@@ -4654,6 +4755,9 @@ body.birthday .no-touch .to-top:hover, body.birthday .to-top:hover {
 	from {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;}
 	to {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";-moz-opacity: 1;-khtml-opacity: 1;opacity: 1;}
 }
+#bottom {
+	clear: both;
+}
 #alexa {
 	display: block;
 	width: 200px;
@@ -4673,7 +4777,7 @@ body.scrolled header {
 #persons_list_h2 {
 	font-size: 24px;
 }
-body.member form#profile_form, body.member.register form, body.member.login form {
+body.member form#profile_form, body.member.register form#register_form, body.member.login form#login_form {
 	display: block;
 	float: left;
 	width: 280px;
@@ -4694,7 +4798,7 @@ body.member form#profile_form {
 }
 body.member #profile_form #member_logout, #member_login, #member_register {
 	display: inline-block;
-	padding: 18px 0px;
+	padding: 12px 0px;
 	margin: 4px 0px;
 	width: 280px;
 }
@@ -4867,6 +4971,17 @@ body.member:lang(ja) #dob_control_bar > .m-btn {
 body.member.person:lang(ja) #dob_control_bar > .m-btn {
 	padding-left: 10px;
 	padding-right: 10px;
+}
+#register_modal {display: none;}
+#register_modal p {
+	font-size: 16px;
+	line-height: 24px;
+}
+#register_modal a {
+	margin: 4px 2px 0px;
+	font-size: 18px;
+	line-height: 27px;
+	padding: 9px 18px;
 }
 /* Responsive */
 @media all and (max-width: 551px) {

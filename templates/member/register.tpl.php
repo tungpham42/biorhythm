@@ -41,13 +41,13 @@ if (isset($_POST['member_register_submit'])) {
 		}
 	}
 	if (!count($member_register_errors)) {
-		create_member($_POST['member_register_email'], $_POST['member_register_fullname'], $_POST['member_register_password'], $_POST['member_register_dob']);
+		create_member($_POST['member_register_email'], $_POST['member_register_fullname'], $_POST['member_register_password'], $_POST['member_register_dob'], $lang_code);
 		email_create_member($_POST['member_register_email'], $_POST['member_register_fullname'], $_POST['member_register_password'], $_POST['member_register_dob']);
 		header('Location: http'.(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 's':'').'://nhipsinhhoc.vn/member/login/');
 	}
 }
 ?>
-<form method="POST" action="">
+<form id="register_form" method="POST" action="">
 	<div class="m-input-prepend">
 		<span class="add-on"><?php echo translate_span('email'); ?></span>
 		<input class="m-wrap translate required" size="20" type="text" name="member_register_email" data-lang-ja="<?php echo $input_interfaces['email']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['email']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['email']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['email']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['email']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['email']['vi']; ?>" placeholder="<?php echo $input_interfaces['email'][$lang_code]; ?>" value="<?php echo $inputted_email; ?>" tabindex="1" required>

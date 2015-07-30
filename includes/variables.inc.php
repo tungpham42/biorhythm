@@ -37,6 +37,7 @@ $show_donate = false;
 $show_sponsor = false;
 $show_addthis = false;
 $show_sumome = false;
+$clicktale = false;
 $credential_id = 4; //change this to 4 in DEMO
 $number = calculate_life_path($dob);
 if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['partner_dob']) && isset($_GET['lang_code'])) {
@@ -48,6 +49,11 @@ if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) 
 if (isset($_GET['ad'])) {
 	setcookie('NSH:show_ad',$_GET['ad']);
 }
+$email_credentials = array(
+	'username' => '',
+	'password' => ''
+);
+$faroo_key = '';
 $input_interfaces = array(
 	'search' => array(
 		'vi' => 'Tìm kiếm',
@@ -524,6 +530,38 @@ $span_interfaces = array(
 		'es' => 'Iniciar Sesión',
 		'zh' => '登录',
 		'ja' => 'ログイン'
+	),
+	'register_modal' => array(
+		'vi' => 'Hãy đăng ký ngay và khám phá thêm nhiều tính năng.',
+		'en' => 'Register now to explore more features.',
+		'ru' => 'Зарегистрируйтесь сейчас, чтобы изучить больше возможностей.',
+		'es' => 'Registrate ahora para explorar más características.',
+		'zh' => '现在注册探索更多的功能。',
+		'ja' => 'より多くの機能を探索するために今すぐ登録。'
+	),
+	'biorhythm' => array(
+		'vi' => 'nhịp sinh học',
+		'en' => 'biorhythm',
+		'ru' => 'биоритм',
+		'es' => 'biorritmo',
+		'zh' => '生理节律',
+		'ja' => 'バイオリズム'
+	),
+	'health' => array(
+		'vi' => 'sức khỏe',
+		'en' => 'health',
+		'ru' => 'здоровье',
+		'es' => 'salud',
+		'zh' => '健康',
+		'ja' => 'ヘルス'
+	),
+	'year' => array(
+		'vi' => 'năm',
+		'en' => 'year',
+		'ru' => 'год',
+		'es' => 'año',
+		'zh' => '年',
+		'ja' => '年'
 	)
 );
 $email_interfaces = array(
@@ -566,6 +604,22 @@ $email_interfaces = array(
 		'es' => 'Aquí está la información de su cuenta después de actualizar el perfil:',
 		'zh' => '这里是更新配置文件后您的帐户信息：',
 		'ja' => 'ここでは、プロファイルを更新した後、あなたのアカウント情報は、次のとおりです：'
+	),
+	'daily_suggestion' => array(
+		'vi' => 'Đây là lời khuyên cho hôm nay của bạn',
+		'en' => 'This is your daily suggestion',
+		'ru' => 'Это ваш день предложение',
+		'es' => 'Esta es su sugerencia diaria',
+		'zh' => '这是你的每日建议',
+		'ja' => 'これはあなたの毎日の提案です'
+	),
+	'go_to_your_profile' => array(
+		'vi' => 'Đi đến hồ sơ của bạn',
+		'en' => 'Go to your profile',
+		'ru' => 'Перейти в профиль',
+		'es' => 'Ir a su perfil',
+		'zh' => '转到您的个人资料',
+		'ja' => 'あなたのプロフィールに移動します'
 	),
 	'colon' => array(
 		'vi' => ':',

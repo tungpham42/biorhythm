@@ -800,6 +800,16 @@ function sort_date_ascend($a,$b){ //Call back function to sort date ascendently
 		return strcmp($a['created'],$b['created']);
 	}
 }
+function sort_date_member_descend($a,$b){ //Call back function to sort date descendently
+	if (isset($a['created_at']) && isset($b['created_at'])) {
+		return strcmp(strtotime($b['created_at']),strtotime($a['created_at']));
+	}
+}
+function sort_date_member_ascend($a,$b){ //Call back function to sort date ascendently
+	if (isset($a['created_at']) && isset($b['created_at'])) {
+		return strcmp(strtotime($a['created_at']),strtotime($b['created_at']));
+	}
+}
 function sort_fullname_descend($a,$b){ //Call back function to sort fullname descendently
 	if (isset($a['fullname']) && isset($b['fullname'])) {
 		return strcmp($b['fullname'],$a['fullname']);
@@ -1547,20 +1557,23 @@ function load_rss_feed($rss_url) {
 	}
 	echo $result;
 }
-function load_news_feed($keyword) {
-	$keyword = urlencode(utf8_encode($keyword));
-	$url = 'https://ajax.googleapis.com/ajax/services/search/blogs?v=1.0&rsz=small&q='.$keyword;
+function load_news_feed($keyword='') {
+	global $faroo_key;
+	$keyword = ($keyword != '') ? '%22'.urlencode($keyword).'%22' : '';
+	$url = 'http://www.faroo.com/api?q='.$keyword.'&start=1&length=20&src='.(($keyword == '') ? 'news': 'web').'&i=false&f=json&key='.$faroo_key;
 	$body = file_get_contents($url);
 	$json = json_decode($body);
 	$result = '';
-	if (isset($json->responseData)) {
-		$count = count($json->responseData->results);
+	if (isset($json->results)) {
+		$count = count($json->results);
 		for ($i=0; $i < $count; ++$i) {
 			$result .= '<li>';
-			$result .= '<a target="_blank" class="news_item" href="'.$json->responseData->results[$i]->postUrl.'">'.$json->responseData->results[$i]->title.'</span></a>';
+			$result .= '<a target="_blank" class="news_item" href="'.$json->results[$i]->url.'"><span class="news_title">'.$json->results[$i]->title.'</span><span class="news_domain">'.$json->results[$i]->domain.'</span><span class="news_date">'.date('l jS F Y h:i:s A',$json->results[$i]->date/1000).'</span></a>';
+			$result .= '<i class="icon-info-sign news_toggle"></i>';
+			$result .= '<div class="news_thumb">'.((isset($json->results[$i]->iurl) && $json->results[$i]->iurl != '') ? '<img class="news_thumb_img" src="'.$json->results[$i]->iurl.'" />' : '').'<span class="news_author">'.$json->results[$i]->author.'</span><span class="news_text">'.$json->results[$i]->kwic.'</span></div>';
 			$result .= '</li>';
 		}
-	} else if (!isset($json->responseData)) {
+	} else if (!isset($json->results)) {
 		$result .= '<li>...</li>';
 	}
 	echo $result;
@@ -1701,19 +1714,23 @@ function list_members($page=1,$keyword='') { //Return members list, for admin us
 			$emails[] = str_replace($path, '', $directory);
 		}		
 	}
+	$count = count($emails);
 	sort($emails);
+	for ($m = 0; $m < $count; ++$m) {
+		$members[$m] = load_member_from_email($emails[$m]);
+	}
+	usort($members,'sort_date_member_ascend');
 	$output .= '<a class="button" href="/member/register/">Register new member</a>';
 	$output .= '<table class="admin">';
-	$output .= '<tr><th>Email</th><th>Fullname</th><th>DOB</th><th>Created at</th><th>Edited at</th><th colspan="2">Operations</th></tr>';
-	$count = count($emails);
-	$output .= '<tr><td class="count" colspan="7">'.$count.' item'.(($count > 1) ? 's': '').' to display.</td></tr>';
+	$output .= '<tr><th>Email</th><th>Fullname</th><th>DOB</th><th>Language</th><th>Created at</th><th>Edited at</th><th colspan="2">Operations</th></tr>';
+	$output .= '<tr><td class="count" colspan="8">'.$count.' item'.(($count > 1) ? 's': '').' to display.</td></tr>';
 	for ($i = 0; $i < $count; ++$i) {
-		$members[$i] = load_member_from_email($emails[$i]);
 		$class = 'class="'.table_row_class($i).'"';
 		$output .= '<tr '.$class.'>';
 		$output .= '<td>'.$members[$i]['email'].'</td>';
 		$output .= '<td>'.$members[$i]['fullname'].'</td>';
 		$output .= '<td>'.$members[$i]['dob'].'</td>';
+		$output .= '<td>'.$members[$i]['lang'].'</td>';
 		$output .= '<td>'.$members[$i]['created_at'].'</td>';
 		$output .= '<td>'.$members[$i]['edited_at'].'</td>';
 		$output .= '<td><a class="button" href="/member/'.$members[$i]['email'].'/">Edit</a></td>';
@@ -1723,21 +1740,49 @@ function list_members($page=1,$keyword='') { //Return members list, for admin us
 	$output .= '</table>';
 	return $output;
 }
+function bulk_sql_members($db_sql) {
+	$emails = array();
+	$path = realpath($_SERVER['DOCUMENT_ROOT']).'/member/';
+	$directories = array_filter(glob($path.'*'), 'is_dir');
+	foreach ($directories as $directory) {
+		if (str_replace($path, '', $directory) != 'login' && str_replace($path, '', $directory) != 'register') {
+			$emails[] = str_replace($path, '', $directory);
+		}		
+	}
+	$count = count($emails);
+	sort($emails);
+	foreach ($emails as $email) {
+		$path = realpath($_SERVER['DOCUMENT_ROOT']).'/member/'.$email;
+		$db_path = $path.'/member.db';
+		try {
+			$db = new PDO('sqlite:'.$db_path);
+			$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+			$db_query = $db->prepare($db_sql);
+			$db_query->execute();
+		} catch (PDOException $e) {
+			echo 'ERROR: '.$e->getMessage();
+		}
+	}
+}
+function generate_message_id() {
+	return sprintf("<%s.%s@%s>",base_convert(microtime(), 10, 36),base_convert(bin2hex(openssl_random_pseudo_bytes(8)), 16, 36),"nhipsinhhoc.vn");
+}
 function send_mail($to,$subject,$message) {
-	global $lang_code, $span_interfaces;
+	global $lang_code, $span_interfaces, $email_credentials;
 	$fullname = load_member_from_email($to)['fullname'];
-	$headers .= "Organization: Nhip Sinh Hoc . VN\r\n";
-	$headers  = "MIME-Version: 1.0\r\n";
-	$headers .= "Content-type: text/html; charset=UTF-8\r\n";
-	$headers .= "X-Priority: 3\r\n";
-	$headers .= "X-Mailer: PHP/". phpversion() ."\r\n";
-	$headers .= "From: ".$span_interfaces['pham_tung'][$lang_code]." <tung.42@gmail.com>\r\n";
-	$headers .= "Sender: ".$span_interfaces['pham_tung'][$lang_code]." <tung.42@gmail.com>\r\n";
-	$headers .= "To: ".$fullname." <".$to.">\r\n";
-	$headers .= "Reply-To: ".$fullname." <".$to.">\r\n";
-	$headers .= "Return-Path: ".$fullname." <".$to.">\r\n";
-	$headers .= "Subject: ".$subject."\r\n";
-	mail($to, $subject, $message, $headers);
+	$headers = "";
+	$headers .= "Organization: \"Nhip Sinh Hoc . VN\"".PHP_EOL;
+	$headers  = "MIME-Version: 1.0".PHP_EOL;
+	$headers .= "Content-type: text/html; charset=UTF-8".PHP_EOL;
+	$headers .= "Message-Id: ".generate_message_id().PHP_EOL;
+	$headers .= "X-Priority: 3".PHP_EOL;
+	$headers .= "X-Mailer: PHP/". phpversion().PHP_EOL;
+	$headers .= "Content-Transfer-Encoding: 8bit".PHP_EOL;
+	$headers .= "From: \"".$span_interfaces['pham_tung'][$lang_code]."\" <noreply@nhipsinhhoc.vn>".PHP_EOL;
+	$headers .= "Sender: <noreply@nhipsinhhoc.vn>".PHP_EOL;
+	$headers .= "Reply-To: \"".$span_interfaces['pham_tung'][$lang_code]."\" <tung.42@gmail.com>".PHP_EOL;
+	$headers .= "Return-Path: \"".$fullname."\" <".$to.">".PHP_EOL;
+	mail("\"".$fullname."\" <".$to.">", $subject, $message, $headers);
 }
 function email_message($heading,$content) {
 	$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> <meta name="viewport" content="width=device-width"/></head><body style="padding: 0px; margin: 0px;"> <table class="body" style="color: #222222;background-image: url(\'http://nhipsinhhoc.vn/css/images/coin.png\'); min-height: 420px;border: none; border-spacing: 0px; position: relative; height: 100%;width: 100%; top: 0px; left: 0px; margin: 0px;"> <tr> <td style="padding: 0px; margin: 0px;text-align: center;" align="center" valign="top"> <center> <table style="height: 100px;padding: 0px;width: 100%;position: relative;background: #3377dd;" class="row header"> <tr> <td style="text-align: center;" align="center"> <center> <table style="margin: 0 auto;text-align: inherit;width: 95% !important;" class="container"> <tr> <td style="padding: 10px 20px 0px 0px;position: relative;display: block !important;padding-right: 0 !important;" class="wrapper last"> <table style="width: 95%;" class="twelve columns"> <tr> <td style="padding: 8px;" class="six sub-columns"> <a target="_blank" href="http://nhipsinhhoc.vn/"><img src="http://nhipsinhhoc.vn/app-icons/icon-60.png"> </a> </td><td class="six sub-columns last" style="text-align:left; vertical-align:middle;padding-right: 0px; color: white; width: 90%"> <span class="template-label"><a style="font-size: 24px;color: white; text-decoration: none;" target="_blank" href="http://nhipsinhhoc.vn/">'.$heading.'</a></span> </td><td class="expander"></td></tr></table> </td></tr></table> </center> </td></tr></table> <table class="container"> <tr> <td> <table class="row"> <tr> <td style="padding: 10px 10px 0px 0px;position: relative;display: block !important;padding-right: 0 !important;" class="wrapper last"> <table style="width: 95%;font-size: 16px;" class="twelve columns"> <tr> <td> '.$content.' </td><td class="expander"></td></tr></table> </td></tr></table> </td></tr></table> </center> </td></tr></table></body></html>';
@@ -1782,4 +1827,45 @@ function email_edit_member($email,$fullname,$password,$dob) {
 	$message = email_message($heading, $content);
 	send_mail($email,$email_interfaces['hi'][$lang_code].', '.$fullname.', '.$email_interfaces['edit_user_notify'][$lang_code],$message);
 	send_mail($my_email,$email_interfaces['hi'][$lang_code].', '.$fullname.', '.$email_interfaces['edit_user_notify'][$lang_code],$message);
+}
+function email_daily_suggestion() {
+	global $lang_code, $email_interfaces, $span_interfaces;
+	$my_email = 'tung.42@gmail.com';
+	$emails = array();
+	$members = array();
+	$path = realpath($_SERVER['DOCUMENT_ROOT']).'/member/';
+	$directories = array_filter(glob($path.'*'), 'is_dir');
+	foreach ($directories as $directory) {
+		if (str_replace($path, '', $directory) != 'login' && str_replace($path, '', $directory) != 'register') {
+			$emails[] = str_replace($path, '', $directory);
+		}		
+	}
+	$count = count($emails);
+	sort($emails);
+	for ($m = 0; $m < $count; ++$m) {
+		$members[$m] = load_member_from_email($emails[$m]);
+	}
+	usort($members,'sort_date_member_ascend');
+	for ($i = 0; $i < $count; ++$i) {
+		$member_chart = new Chart($members[$i]['dob'],0,0,date('Y-m-d'),$members[$i]['dob'],$members[$i]['lang']);
+		$heading = '';
+		switch ($members[$i]['lang']) {
+			case 'vi': $heading = 'Biểu đồ nhịp sinh học | Bieu do nhip sinh hoc'; break;
+			case 'en': $heading = 'Biorhythm chart'; break;
+			case 'ru': $heading = 'Биоритм диаграммы'; break;
+			case 'es': $heading = 'Biorritmo carta'; break;
+			case 'zh': $heading = '生理节律图'; break;
+			case 'ja': $heading = 'バイオリズムチャート'; break;
+		}
+		$content = '';
+		$content .= '<h1>'.$email_interfaces['hi'][$members[$i]['lang']].' '.$members[$i]['fullname'].'</h1>';
+		$content .= '<p class="lead">'.$email_interfaces['daily_suggestion'][$members[$i]['lang']].$email_interfaces['colon'][$members[$i]['lang']].'</p>';
+		$content .= '<p>'.$member_chart->get_infor().'</p>';
+		$content .= '<p><a href="http://nhipsinhhoc.vn/member/'.$members[$i]['email'].'/">'.$email_interfaces['go_to_your_profile'][$members[$i]['lang']].'</a></p>';
+		$content .= '<p>'.$email_interfaces['regards'][$members[$i]['lang']].'</p>';
+		$content .= '<p>'.$span_interfaces['pham_tung'][$members[$i]['lang']].'</p>';
+		$message = email_message($heading, $content);
+		//send_mail($my_email,$email_interfaces['hi'][$members[$i]['lang']].', '.$members[$i]['fullname'].', '.$email_interfaces['daily_suggestion'][$members[$i]['lang']].' | '.date('Y-m-d'),$message);
+		send_mail($members[$i]['email'],$email_interfaces['hi'][$members[$i]['lang']].', '.$members[$i]['fullname'].', '.$email_interfaces['daily_suggestion'][$members[$i]['lang']].' | '.date('Y-m-d'),$message);
+	}
 }

@@ -421,10 +421,17 @@ function manipulateScroll() {
 	}
 }
 function manipulateClock() {
-	var clock = new analogClock();
-	window.setInterval(function(){
-		clock.run();
-	}, 1000);
+	if ($('#clock').length) {
+		var clock = new analogClock();
+		window.setInterval(function(){
+			clock.run();
+		}, 1000);
+	}
+}
+function manipulateNews() {
+	if ($('#news').length) {
+		loadNews(lang);
+	}
 }
 function manipulateAjax() {
 	$(document).on({
@@ -457,4 +464,26 @@ function manipulateShare() {
 		autoClose: true,
 		start: 0
 	});
+}
+function manipulateRegisterModal() {
+	var transitions = ['blind','bounce','clip','drop','explode','fade','fold','highlight','puff','pulsate','scale','shake','size','slide'];
+	var effect = transitions[randomFromTo(0, transitions.length - 1)];
+	if (!isset($.cookie('NSH:member')) && $('#register_modal').length && $('body').hasClass('home') && !$('body').hasClass('member')) {
+		$('#register_modal').dialog({
+			autoOpen: false,
+			resizable: false,
+			modal: false,
+			show: {
+				effect: effect,
+				duration: 420
+			},
+			hide: {
+				effect: effect,
+				duration: 420
+			}
+		});
+		setTimeout(function(){
+			$('#register_modal').dialog('open');
+		}, 15000);
+	}
 }

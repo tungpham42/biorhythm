@@ -1,5 +1,5 @@
 <?php
-$_GET['lang'] = 'zh';
+$one_lang = 'zh';
 $_GET['p'] = 'intro';
 $hide_lang_bar = true;
 $hide_nav = true;

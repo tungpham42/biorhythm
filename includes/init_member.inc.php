@@ -18,7 +18,7 @@ function get_member_email() {
 	}
 	return $email;
 }
-function create_member($email,$fullname,$password,$dob) {
+function create_member($email,$fullname,$password,$dob,$lang) {
 	$hashed_password = hash_pass($password);
 	$created_time = date('Y-m-d h:i:s A');
 	$edited_time = 'Not edited yet';
@@ -42,6 +42,7 @@ require_once realpath(\$_SERVER['DOCUMENT_ROOT']).'/index.php';\r
 	password TEXT NOT NULL,
 	fullname TEXT NOT NULL,
 	dob TEXT NOT NULL,
+	lang TEXT NOT NULL,
 	created_at TEXT NOT NULL,
 	edited_at TEXT NOT NULL
 );';
@@ -51,7 +52,7 @@ require_once realpath(\$_SERVER['DOCUMENT_ROOT']).'/index.php';\r
 	fullname TEXT NOT NULL,
 	dob TEXT NOT NULL
 );';
-	$db_insert_sql = 'INSERT INTO member (email,password,fullname,dob,created_at,edited_at) VALUES (:email,:password,:fullname,:dob,:created_at,:edited_at)';
+	$db_insert_sql = 'INSERT INTO member (email,password,fullname,dob,lang,created_at,edited_at) VALUES (:email,:password,:fullname,:dob,:lang,:created_at,:edited_at)';
 	mkdir($path, 0777);
 	if (!$handle = fopen($index_path, 'wb')) {
 		echo 'Cannot open index file ('.$index_path.')';
@@ -74,6 +75,7 @@ require_once realpath(\$_SERVER['DOCUMENT_ROOT']).'/index.php';\r
 		$db_insert_query->bindParam(':password', $hashed_password);
 		$db_insert_query->bindParam(':fullname', $fullname);
 		$db_insert_query->bindParam(':dob', $dob);
+		$db_insert_query->bindParam(':lang', $lang);
 		$db_insert_query->bindParam(':created_at', $created_time);
 		$db_insert_query->bindParam(':edited_at', $edited_time);
 		$db_insert_query->execute();
