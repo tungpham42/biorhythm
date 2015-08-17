@@ -139,9 +139,9 @@ analogClock.prototype.run = function() {
 	var second = date.getSeconds()*6;
 	var minute = date.getMinutes()*6+second/60;
 	var hour = ((date.getHours()%12)/12)*360+90+minute/12;
-	jQuery('#hour').css('transform','rotate('+hour+'deg)');
-	jQuery('#minute').css('transform','rotate('+minute+'deg)');
-	jQuery('#second').css('transform', 'rotate('+second+'deg)');
+	$('#hour').css('transform','rotate('+hour+'deg)');
+	$('#minute').css('transform','rotate('+minute+'deg)');
+	$('#second').css('transform', 'rotate('+second+'deg)');
 };
 $.fn.textWidth = function() {
 	var htmlOrg = $(this).html();
@@ -150,6 +150,24 @@ $.fn.textWidth = function() {
 	var width = $(this).find('span:first').width();
 	$(this).html(htmlOrg);
 	return width;
+};
+$.fn.longTap = function(options) {
+	options = $.extend({
+		delay: 1000,
+		onRelease: null
+	}, options);
+	var eventType = {
+		mousedown: 'ontouchstart' in window ? 'touchstart' : 'mousedown',
+		mouseup: 'ontouchend' in window ? 'touchend' : 'mouseup'
+	};
+	return this.each(function() {
+		$(this).on(eventType.mousedown + '.longtap', function() {
+			$(this).data('touchstart', +new Date);
+		}).on(eventType.mouseup + '.longtap', function(e) {
+			var now = +new Date, than = $(this).data('touchstart');
+			now - than >= options.delay && options.onRelease && options.onRelease.call(this, e);
+		});
+	});
 };
 // Highcharts plugin for displaying value information in the legend
 // Author: Torstein Hønsi
@@ -582,12 +600,36 @@ function loadNews(langCode) {
 			url: '/triggers/news.php',
 			type: 'GET',
 			cache: false,
+			global: false,
 			data: {
 				lang_code: langCode
 			},
 			dataType: 'html',
 			success: function(data) {
 				$('#news ul').html(data);
+			}
+		});
+	}
+}
+function loadComments(langCode) {
+	if ($('#comments').length) {
+		if (window.FB) {
+			$('#facebook-jssdk, #fb-root').remove();
+			delete window.FB;
+		}
+		$.ajax({
+			url: '/triggers/comments.php',
+			type: 'GET',
+			cache: false,
+			global: false,
+			data: {
+				lang_code: langCode
+			},
+			dataType: 'html',
+			success: function(data) {
+				$('#comments').html(data).ajaxComplete(function(){
+					FB.XFBML.parse(document.body)
+				});
 			}
 		});
 	}
@@ -970,7 +1012,6 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 								default:
 									break;
 							}
-							console.log(this.x);
 						},
 						mouseOver: function() {
 							$('#rhythm_id_'+this.series.index).addClass('rhythm_hover');
@@ -1022,7 +1063,6 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'hide');
 				$(this).removeClass('icon-heart').addClass('icon-heart-empty');
 			}
-			console.log(id);
 		});
 		$('i.rhythm_toggle').on('click', function(){
 			id = $(this).attr('data-rhythm-id');
@@ -1031,12 +1071,10 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 				series.show();
 				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'show');
 				$(this).removeClass('icon-heart-empty').addClass('icon-heart');
-				console.log(id);
 			} else if (series.visible) {
 				series.hide();
 				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'hide');
 				$(this).removeClass('icon-heart').addClass('icon-heart-empty');
-				console.log(id);
 			}
 		});
 	}

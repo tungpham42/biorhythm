@@ -69,6 +69,7 @@ if (isset($_POST['member_register_submit'])) {
 		<input id="member_register_dob" class="m-wrap translate required" size="20" type="text" name="member_register_dob" pattern="\d{4}-\d{2}-\d{2}" data-lang-ja="<?php echo $input_interfaces['dob']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['dob']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['dob']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['dob']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['dob']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['dob']['vi']; ?>" placeholder="<?php echo $input_interfaces['dob'][$lang_code]; ?>" value="<?php echo $inputted_dob; ?>" tabindex="5" required>
 	</div>
 	<input class="m-btn translate green" name="member_register_submit" type="submit" data-lang-ja="<?php echo $button_interfaces['register']['ja']; ?>" data-lang-zh="<?php echo $button_interfaces['register']['zh']; ?>" data-lang-es="<?php echo $button_interfaces['register']['es']; ?>" data-lang-ru="<?php echo $button_interfaces['register']['ru']; ?>" data-lang-en="<?php echo $button_interfaces['register']['en']; ?>" data-lang-vi="<?php echo $button_interfaces['register']['vi']; ?>" value="<?php echo $button_interfaces['register'][$lang_code]; ?>" tabindex="6" />
+	<h5><?php echo translate_span('already_registered'); ?></h5>
 	<a id="member_login" class="m-btn blue button_changeable" href="/member/login/" tabindex="7"><?php echo translate_button('login'); ?></a>
 </form>
 <script>

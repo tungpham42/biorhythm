@@ -24,7 +24,6 @@ include template('img_desc');
 if ($clicktale):
 	include template('clicktale_top');
 endif;
-include template('fb_root');
 if (isset($_SESSION['loggedin'])):
 	include template('toolbar');
 endif;
@@ -63,7 +62,9 @@ include template('footer');
 <?php
 include template('loading');
 include template('to_top');
-include template('register_modal');
+if (!isset($hide_nav)):
+	include template('register_modal');
+endif;
 if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
 	if ($show_sumome):
 		include template('sumome');

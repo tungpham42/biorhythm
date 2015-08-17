@@ -310,6 +310,16 @@ class Chart {
 		}
 		return $average_text.' '.$physical_text.' '.$emotional_text.' '.$intellectual_text;
 	}
+	function get_infor_values() {
+		global $email_interfaces;
+		$infor_values = '<ul>';
+		$infor_values .= '<li>'.$this->_average_text.$email_interfaces['colon'][$this->_lang_code].' '.percent_average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms).' - '.((average_bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$this->_rhythms) < average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms)) ? $email_interfaces['going_up'][$this->_lang_code]: $email_interfaces['going_down'][$this->_lang_code]).'</li>';
+		foreach ($this->_rhythms as $rhythm) {
+			$infor_values .= '<li>'.$this->get_rhythm_name($rhythm).$email_interfaces['colon'][$this->_lang_code].' '.percent_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale']).' - '.((bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$rhythm['scale']) < bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale'])) ? $email_interfaces['going_up'][$this->_lang_code]: $email_interfaces['going_down'][$this->_lang_code]).'</li>';
+		}
+		$infor_values .= '</ul>';
+		return $infor_values;
+	}
 	function render_meta_description() {
 		$meta_description = (date('Y') - date('Y', strtotime($this->_dob))).' '.$this->_age;
 		$meta_description .= ' - '.date('Y-m-d',time()+86400*$this->_diff).' -';
@@ -431,9 +441,9 @@ class Chart {
 		<input readonly data-lang-ja="'.$input_interfaces['dt_change']['ja'].'" data-lang-zh="'.$input_interfaces['dt_change']['zh'].'" data-lang-es="'.$input_interfaces['dt_change']['es'].'" data-lang-ru="'.$input_interfaces['dt_change']['ru'].'" data-lang-en="'.$input_interfaces['dt_change']['en'].'" data-lang-vi="'.$input_interfaces['dt_change']['vi'].'" class="m-wrap required" placeholder="'.$input_interfaces['dt_change'][$this->_lang_code].'" id="dt_change" type="text" name="dt_change" size="42" maxlength="128" value="'.(($this->_dt_change == date('Y-m-d')) ? 'YYYY-MM-DD': $this->_dt_change).'" />
 	</div>
 	<div class="m-btn-group">
-		<a class="m-btn green" id="today"><i class="icon-calendar icon-white"></i><span class="translate" data-lang-ja="'.$button_interfaces['today']['ja'].'" data-lang-zh="'.$button_interfaces['today']['zh'].'" data-lang-es="'.$button_interfaces['today']['es'].'" data-lang-ru="'.$button_interfaces['today']['ru'].'" data-lang-en="'.$button_interfaces['today']['en'].'" data-lang-vi="'.$button_interfaces['today']['vi'].'">'.$button_interfaces['today'][$this->_lang_code].'</span></a>
-		<a class="m-btn blue button_changeable" id="prev"><i class="icon-backward icon-white"></i><span class="translate" data-lang-ja="'.$button_interfaces['prev']['ja'].'" data-lang-zh="'.$button_interfaces['prev']['zh'].'" data-lang-es="'.$button_interfaces['prev']['es'].'" data-lang-ru="'.$button_interfaces['prev']['ru'].'" data-lang-en="'.$button_interfaces['prev']['en'].'" data-lang-vi="'.$button_interfaces['prev']['vi'].'">'.$button_interfaces['prev'][$this->_lang_code].'</span></a>
-		<a class="m-btn blue button_changeable" id="next"><span class="translate" data-lang-ja="'.$button_interfaces['next']['ja'].'" data-lang-zh="'.$button_interfaces['next']['zh'].'" data-lang-es="'.$button_interfaces['next']['es'].'" data-lang-ru="'.$button_interfaces['next']['ru'].'" data-lang-en="'.$button_interfaces['next']['en'].'" data-lang-vi="'.$button_interfaces['next']['vi'].'">'.$button_interfaces['next'][$this->_lang_code].'</span><i class="icon-forward icon-white"></i></a>
+		<a class="m-btn green" id="today" title="[S] | [K]"><i class="icon-calendar icon-white"></i><span class="translate" data-lang-ja="'.$button_interfaces['today']['ja'].'" data-lang-zh="'.$button_interfaces['today']['zh'].'" data-lang-es="'.$button_interfaces['today']['es'].'" data-lang-ru="'.$button_interfaces['today']['ru'].'" data-lang-en="'.$button_interfaces['today']['en'].'" data-lang-vi="'.$button_interfaces['today']['vi'].'">'.$button_interfaces['today'][$this->_lang_code].'</span></a>
+		<a class="m-btn blue button_changeable" id="prev" title="[A] | [J]"><i class="icon-backward icon-white"></i><span class="translate" data-lang-ja="'.$button_interfaces['prev']['ja'].'" data-lang-zh="'.$button_interfaces['prev']['zh'].'" data-lang-es="'.$button_interfaces['prev']['es'].'" data-lang-ru="'.$button_interfaces['prev']['ru'].'" data-lang-en="'.$button_interfaces['prev']['en'].'" data-lang-vi="'.$button_interfaces['prev']['vi'].'">'.$button_interfaces['prev'][$this->_lang_code].'</span></a>
+		<a class="m-btn blue button_changeable" id="next" title="[D] | [L]"><span class="translate" data-lang-ja="'.$button_interfaces['next']['ja'].'" data-lang-zh="'.$button_interfaces['next']['zh'].'" data-lang-es="'.$button_interfaces['next']['es'].'" data-lang-ru="'.$button_interfaces['next']['ru'].'" data-lang-en="'.$button_interfaces['next']['en'].'" data-lang-vi="'.$button_interfaces['next']['vi'].'">'.$button_interfaces['next'][$this->_lang_code].'</span><i class="icon-forward icon-white"></i></a>
 	</div>
 	<div class="clear"></div>
 </section>';
@@ -444,29 +454,49 @@ class Chart {
 		echo '
 <div id="explanation_chart" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'"></div>
 <script>
+function goToTodayExplanation() {
+	loadExplanationChartResults("'.$this->_dob.'","0","1","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+}
+function goToPrevExplanation() {
+	loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff-1).'","1","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+}
+function goToNextExplanation() {
+	loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff+1).'","1","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+}
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
 	items: {
 		"today": {
 			name: "'.$menu_interfaces['today'][$this->_lang_code].'",
-			callback: function(){
-				loadExplanationChartResults("'.$this->_dob.'","0","1","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToTodayExplanation
 		},
 		"prev": {
 			name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
-			callback: function(){
-				loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff-1).'","1","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToPrevExplanation
 		},
 		"next": {
 			name: "'.$menu_interfaces['next'][$this->_lang_code].'",
-			callback: function(){
-				loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff+1).'","1","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToNextExplanation
 		}
 	}
 });
+var pressed = false;
+$(document).on("keyup", jwerty.event("k/s", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToTodayExplanation();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("j/a", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToPrevExplanation();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("l/d", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToNextExplanation();
+		pressed = true;
+	}
+}));
 setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 renderChart("#explanation_chart","∞ '.$this->_explanation_title_text.' ∞","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"1","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"explanation");
 $("#lang_bar").off("click","**").on("click", "#vi_toggle", function(){
@@ -509,29 +539,49 @@ $("#lang_bar").off("click","**").on("click", "#vi_toggle", function(){
 		echo '
 <div id="embed_chart" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'"></div>
 <script>
+function goToTodayEmbed() {
+	loadEmbedChartResults("'.$this->_dob.'","0","0","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+}
+function goToPrevEmbed() {
+	loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff-1).'","0","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+}
+function goToNextEmbed() {
+	loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff+1).'","0","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+}
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
 	items: {
 		"today": {
 			name: "'.$menu_interfaces['today'][$this->_lang_code].'",
-			callback: function(){
-				loadEmbedChartResults("'.$this->_dob.'","0","0","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToTodayEmbed
 		},
 		"prev": {
 			name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
-			callback: function(){
-				loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff-1).'","0","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToPrevEmbed
 		},
 		"next": {
 			name: "'.$menu_interfaces['next'][$this->_lang_code].'",
-			callback: function(){
-				loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff+1).'","0","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToNextEmbed
 		}
 	}
 });
+var pressed = false;
+$(document).on("keyup", jwerty.event("k/s", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToTodayEmbed();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("j/a", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToPrevEmbed();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("l/d", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToNextEmbed();
+		pressed = true;
+	}
+}));
 setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 renderChart("#embed_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"0","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"embed");
 </script>
@@ -596,35 +646,61 @@ $("span.translate").each(function(){
 $("input.translate").each(function(){
 	$(this).text($(this).attr("data-lang-"+lang)).attr("placeholder",$(this).attr("data-lang-"+lang));
 });
+function goToTodayMain() {
+	loadResults("'.$this->_dob.'","0","'.$this->_is_secondary.'","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+}
+function goToPrevMain() {
+	loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+}
+function goToNextMain() {
+	loadResults("'.$this->_dob.'","'.($this->_diff+1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+}
+function goToBirthdayMain() {
+	loadResults("'.$this->_dob.'","'.($this->_diff+countdown_birthday($this->_dob, $this->_date)).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+countdown_birthday($this->_dob, $this->_date))).'","'.$this->_partner_dob.'",lang);
+}
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
 	items: {
 		"today": {
 			name: "'.$menu_interfaces['today'][$this->_lang_code].'",
-			callback: function(){
-				loadResults("'.$this->_dob.'","0","'.$this->_is_secondary.'","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToTodayMain
 		},
 		"prev": {
 			name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
-			callback: function(){
-				loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToPrevMain
 		},
 		"next": {
 			name: "'.$menu_interfaces['next'][$this->_lang_code].'",
-			callback: function(){
-				loadResults("'.$this->_dob.'","'.($this->_diff+1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToNextMain
 		},
 		"next_birthday": {
 			name: "'.$menu_interfaces['next_birthday'][$this->_lang_code].'",
-			callback: function(){
-				loadResults("'.$this->_dob.'","'.($this->_diff+countdown_birthday($this->_dob, $this->_date)).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+countdown_birthday($this->_dob, $this->_date))).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToBirthdayMain
 		}
 	}
 });
+var pressed = false;
+$(document).on("keyup", jwerty.event("k/s", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToTodayMain();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("j/a", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToPrevMain();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("l/d", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToNextMain();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("i/w", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToBirthdayMain();
+		pressed = true;
+	}
+}));
 setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 if ($("#dt_change").val() != "YYYY-MM-DD") {
 	renderChart("#main_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"'.$this->_is_secondary.'",$("#dt_change").val(),'.$this->serialize_chart_data().',"main");
@@ -638,13 +714,7 @@ $("#compatibility").on("change", "#partner_dob", function(){
 }).on("click", "#partner_dob_label", function(){
 	$("#partner_dob").datepicker("show");
 });
-$("#controls").on("click", "#today", function(){
-	loadResults("'.$this->_dob.'","0","'.$this->_is_secondary.'","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
-}).on("click", "#prev", function(){
-	loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
-}).on("click", "#next", function(){
-	loadResults("'.$this->_dob.'","'.($this->_diff+1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
-}).on("change", "#dt_change", function(){
+$("#controls").on("click", "#today", goToTodayMain).on("click", "#prev", goToPrevMain).on("click", "#next", goToNextMain).on("change", "#dt_change", function(){
 	loadResults("'.$this->_dob.'",'.$this->_diff.'+dateDiff(dt_curr,$("#dt_change").val()),"'.$this->_is_secondary.'",$("#dt_change").val(),"'.$this->_partner_dob.'",lang);
 }).on("change", "#is_secondary", function(){
 	if ($(this).prop("checked") == false) {

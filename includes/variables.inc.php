@@ -360,6 +360,14 @@ $button_interfaces = array(
 		'es' => 'Editar',
 		'zh' => '编辑',
 		'ja' => '編集'
+	),
+	'profile' => array(
+		'vi' => 'Hồ sơ',
+		'en' => 'Profile',
+		'ru' => 'Профиль',
+		'es' => 'Perfil',
+		'zh' => '轮廓',
+		'ja' => 'プロフィール'
 	)
 );
 $span_interfaces = array(
@@ -531,6 +539,22 @@ $span_interfaces = array(
 		'zh' => '登录',
 		'ja' => 'ログイン'
 	),
+	'not_yet_registered' => array(
+		'vi' => 'Chưa đăng ký?',
+		'en' => 'Not yet registered?',
+		'ru' => 'Еще не зарегистрированы?',
+		'es' => '¿Todavía no estás registrado?',
+		'zh' => '尚未注册？',
+		'ja' => 'まだ登録されていませんか？'
+	),
+	'already_registered' => array(
+		'vi' => 'Đã đăng ký?',
+		'en' => 'Already registered?',
+		'ru' => 'Уже зарегистрирован?',
+		'es' => '¿Ya registrado?',
+		'zh' => '已经注册？',
+		'ja' => '既に登録されています？'
+	),
 	'register_modal' => array(
 		'vi' => 'Hãy đăng ký ngay và khám phá thêm nhiều tính năng.',
 		'en' => 'Register now to explore more features.',
@@ -562,11 +586,19 @@ $span_interfaces = array(
 		'es' => 'año',
 		'zh' => '年',
 		'ja' => '年'
+	),
+	'keyboard_shortcuts' => array(
+		'vi' => 'Phím tắt',
+		'en' => 'Keyboard shortcuts',
+		'ru' => 'Горячие клавиши',
+		'es' => 'Atajos de teclado',
+		'zh' => '快捷键',
+		'ja' => 'キーボードショートカット'
 	)
 );
 $email_interfaces = array(
 	'hi' => array(
-		'vi' => 'Xin chào',
+		'vi' => 'Xin chào bạn',
 		'en' => 'Hi',
 		'ru' => 'Привет',
 		'es' => 'Hola',
@@ -613,6 +645,14 @@ $email_interfaces = array(
 		'zh' => '这是你的每日建议',
 		'ja' => 'これはあなたの毎日の提案です'
 	),
+	'daily_values' => array(
+		'vi' => 'Các chỉ số nhịp sinh học chính của bạn',
+		'en' => 'Your primary biorhythm values',
+		'ru' => 'Ваши первичные значения биоритмов',
+		'es' => 'Sus valores biorritmo primarias',
+		'zh' => '您的主要生物节律值',
+		'ja' => 'あなたの主なバイオリズム値'
+	),
 	'go_to_your_profile' => array(
 		'vi' => 'Đi đến hồ sơ của bạn',
 		'en' => 'Go to your profile',
@@ -629,6 +669,22 @@ $email_interfaces = array(
 		'zh' => '：',
 		'ja' => '：'
 	),
+	'going_up' => array(
+		'vi' => 'đang lên',
+		'en' => 'going up',
+		'ru' => 'подниматься',
+		'es' => 'subiendo',
+		'zh' => '上升',
+		'ja' => '上がっていく'
+	),
+	'going_down' => array(
+		'vi' => 'đang xuống',
+		'en' => 'going down',
+		'ru' => 'спускаться',
+		'es' => 'bajando',
+		'zh' => '下降',
+		'ja' => '下っていく'
+	),
 	'regards' => array(
 		'vi' => 'Trân trọng,',
 		'en' => 'Best regards,',
@@ -644,6 +700,46 @@ $email_interfaces = array(
 		'es' => 'Sin cambio',
 		'zh' => '没有改变',
 		'ja' => '変更されていません'
+	),
+	'not_mark_as_spam' => array(
+		'vi' => 'Đây không phải là thư rác. Vui lòng không đánh dấu thư rác.',
+		'en' => 'This is not a spam. Please do not mark it as spam.',
+		'ru' => 'Это не спам. Пожалуйста, не отметить его как спам.',
+		'es' => 'Esto no es un spam. Por favor, no marcarlo como spam.',
+		'zh' => '这不是一个垃圾邮件。请不要将其标记为垃圾邮件。',
+		'ja' => 'これはスパムではありません。スパムとしてそれをマークしないでください。'
+	),
+	'definition' => array(
+		'vi' => 'Nhịp sinh học (tiếng Anh: biorhythm) là một chu trình giả thiết về tình trạng khỏe mạnh hay năng lực sinh lý, cảm xúc, hoặc trí thông minh. Một nghiên cứu ở Nhật Bản trên công ty giao thông Ohmi Railway cũng đã lập các biểu đồ sinh học cho các tài xế lái xe của công ty để họ có sự cảnh giác và phòng tránh. Kết quả tai nạn của các tài xế đã giảm 50% từ năm 1969 đến 1970 tại Tokyo.',
+		'en' => 'A biorhythm (from Greek βίος - bios, "life" and ῥυθμός - rhuthmos, "any regular recurring motion, rhythm") is an attempt to predict various aspects of a person\'s life through simple mathematical cycles. Most scientists believe that the idea has no more predictive power than chance and consider the concept an example of pseudoscience.',
+		'ru' => 'Биоритм - (биоритмы) периодически повторяющиеся изменения характера и интенсивности биологических процессов и явлений. Они свойственны живой материи на всех уровнях ее организации — от молекулярных и субклеточных до биосферы. Являются фундаментальным процессом в живой природе. Одни биологические ритмы относительно самостоятельны (например, частота сокращений сердца, дыхания), другие связаны с приспособлением организмов к геофизическим циклам — суточным (например, колебания интенсивности деления клеток, обмена веществ, двигательной активности животных), приливным (например, открывание и закрывание раковин у морских моллюсков, связанные с уровнем морских приливов), годичным (изменение численности и активности животных, роста и развития растений и др.)',
+		'es' => 'Los biorritmos constituyen un intento de predecir aspectos diversos de la vida de un individuo recurriendo a ciclos matemáticos sencillos. La mayoría de los investigadores estima que esta idea no tendría más poder predictivo que el que podría atribuirse al propio azar, considerándola un caso claro de pseudociencia.',
+		'zh' => '生理节律是一種描述人類的身體、情感及智力的假想周期的理論。該概念与生物节律无关。在生物学和医学领域，这个词都是会被小心避免的，因為它被一些人認為是一种伪科学或是前科学。',
+		'ja' => 'バイオリズム（英: biorhythm）とは、「生命」を意味する bio-（バイオ）と「規則的な運動」を意味する rhythm（リズム）の合成語で、生命体の生理状態、感情、知性などは周期的パターンに沿って変化するという仮説、およびそれを図示したグラフである。'
+	),
+	'instruction_video_text' => array(
+		'vi' => 'Video hướng dẫn',
+		'en' => 'Instruction video',
+		'ru' => 'Видео инструкции',
+		'es' => 'Instrucción de vídeo',
+		'zh' => '教学视频',
+		'ja' => '教育ビデオ'
+	),
+	'instruction_video_youtube_id' => array(
+		'vi' => '0od3PsgixvQ',
+		'en' => '7dRGGRcvI0E',
+		'ru' => 'rp8_cTRP4ro',
+		'es' => 'sifJsC3v-Lw',
+		'zh' => 'TG2ngtokaVc',
+		'ja' => 'SJw7lMuKipc'
+	),
+	'keyboard_shortcuts' => array(
+		'vi' => 'Phím tắt: s/k -> Hôm nay, a/j -> Trước, d/l -> Sau, w/i -> Sinh nhật, r/p -> Thành ngữ',
+		'en' => 'Keyboard shortcuts: s/k -> Today, a/j -> Back, d/l -> Forward, w/i -> Birthday, r/p -> Proverb',
+		'ru' => 'Горячие клавиши: s/k -> Сегодня, a/j -> Назад, d/l -> Вперед, w/i -> День рождения, r/p -> Пословица',
+		'es' => 'Atajos de teclado: s/k -> Hoy, a/j -> Atrás, d/l -> Enviar, w/i -> Cumpleaños, r/p -> Proverbio',
+		'zh' => '快捷键： s/k -> 今天, a/j -> 回去, d/l -> 前进, w/i -> 生辰, r/p -> 谚语',
+		'ja' => 'キーボードショートカット： s/k -> 今日, a/j -> 戻る, d/l -> 前進する, w/i -> バースデー, r/p -> ことわざ'
 	)
 );
 $menu_interfaces = array(
@@ -706,20 +802,20 @@ $error_interfaces = array(
 		'ja' => '無効なメール'
 	),
 	'short_pass' => array(
-		'vi' => 'Mật khẩu quá ngắn (08)',
-		'en' => 'Password too short (08)',
-		'ru' => 'Пароль слишком короткий (08)',
-		'es' => 'Contraseña demasiado corta (08)',
-		'zh' => '密码太短 (08)',
-		'ja' => 'パスワードが短すぎます (08)'
-	),
+		'vi' => 'Mật khẩu quá ngắn (≥ 8)',
+		'en' => 'Password too short (≥ 8)',
+		'ru' => 'Пароль слишком короткий (≥ 8)',
+		'es' => 'Contraseña demasiado corta (≥ 8)',
+		'zh' => '密码太短 (≥= 8)',
+		'ja' => 'パスワードが短すぎます (≥ 8)'
+	), 
 	'long_pass' => array(
-		'vi' => 'Mật khẩu quá dài (20)',
-		'en' => 'Password too long (20)',
-		'ru' => 'Пароль слишком долго (20)',
-		'es' => 'Contraseña demasiado largo (20)',
-		'zh' => '密码太长 (20)',
-		'ja' => 'あまりにも長いパスワード (20)'
+		'vi' => 'Mật khẩu quá dài (≤ 20)',
+		'en' => 'Password too long (≤ 20)',
+		'ru' => 'Пароль слишком долго (≤ 20)',
+		'es' => 'Contraseña demasiado largo (≤ 20)',
+		'zh' => '密码太长 (≤ 20)',
+		'ja' => 'あまりにも長いパスワード (≤ 20)'
 	),
 	'no_number_pass' => array(
 		'vi' => 'Mật khẩu phải chứa ít nhất 1 chữ số',
@@ -889,8 +985,8 @@ $information_interfaces = array(
 		'vi' => array(
 			'excellent' => 'Ngày hiện tại của bạn rất tốt, bạn nên tận hưởng ngày này.',
 			'good' => 'Ngày hiện tại của bạn khá tốt, tuy nhiên bạn nên cẩn thận trong ngày này.',
-			'gray' => 'Ngày hiện tại của bạn khá xấu, bạn nên cẩn trọng hơn.',
-			'bad' => 'Ngày hiện tại của bạn rất xấu, bạn nên cực kỳ cẩn thận.'
+			'gray' => 'Ngày hiện tại của bạn hơi xấu, bạn nên cẩn trọng hơn.',
+			'bad' => 'Ngày hiện tại của bạn khá xấu, bạn nên cực kỳ cẩn thận.'
 		),
 		'en' => array(
 			'excellent' => 'Your current day is excellent, enjoy it.',
@@ -927,8 +1023,8 @@ $information_interfaces = array(
 		'vi' => array(
 			'excellent' => 'Sức khỏe hiện tại của bạn rất sung mãn, hãy tham gia vận động nhiều hơn.',
 			'good' => 'Sức khỏe hiện tại của bạn khá sung mãn, hãy vận động điều độ.',
-			'gray' => 'Sức khỏe hiện tại của bạn khá kém, hãy nghỉ ngơi một tí.',
-			'bad' => 'Sức khỏe hiện tại của bạn rất kém, hãy nghỉ ngơi nhiều hơn.'
+			'gray' => 'Sức khỏe hiện tại của bạn hơi kém, hãy nghỉ ngơi một tí.',
+			'bad' => 'Sức khỏe hiện tại của bạn khá kém, hãy nghỉ ngơi nhiều hơn.'
 		),
 		'en' => array(
 			'excellent' => 'Your current health is excellent, you should work out more.',
@@ -965,8 +1061,8 @@ $information_interfaces = array(
 		'vi' => array(
 			'excellent' => 'Tâm trạng hiện tại của bạn rất ổn, hãy tham gia gặp gỡ bạn bè nhiều hơn.',
 			'good' => 'Tâm trạng hiện tại của bạn khá ổn, hãy gặp gỡ bạn bè.',
-			'gray' => 'Tâm trạng hiện tại của bạn khá tệ, bạn hơi dễ cáu kỉnh.',
-			'bad' => 'Tâm trạng hiện tại của bạn rất tệ, bạn nên tránh các cuộc xung đột.'
+			'gray' => 'Tâm trạng hiện tại của bạn hơi tệ, bạn hơi dễ cáu kỉnh.',
+			'bad' => 'Tâm trạng hiện tại của bạn khá tệ, bạn nên tránh các cuộc xung đột.'
 		),
 		'en' => array(
 			'excellent' => 'Your current mood is excellent, you meet more friends.',
@@ -1003,8 +1099,8 @@ $information_interfaces = array(
 		'vi' => array(
 			'excellent' => 'Trí tuệ hiện tại của bạn rất sáng suốt, bạn có thể đưa ra những quyết định đúng đắn.',
 			'good' => 'Trí tuệ hiện tại của bạn khá sáng suốt, bạn có thể đưa ra quyết định nhưng cần suy tính kỹ.',
-			'gray' => 'Trí tuệ hiện tại của bạn khá thiếu sáng suốt, bạn nên suy nghĩ kỹ trước khi ra quyết định.',
-			'bad' => 'Trí tuệ hiện tại của bạn rất thiếu sáng suốt, bạn không nên đưa ra quyết định lớn.'
+			'gray' => 'Trí tuệ hiện tại của bạn hơi thiếu sáng suốt, bạn nên suy nghĩ kỹ trước khi ra quyết định.',
+			'bad' => 'Trí tuệ hiện tại của bạn khá thiếu sáng suốt, bạn không nên đưa ra quyết định lớn.'
 		),
 		'en' => array(
 			'excellent' => 'Your current intellect is excellent, you can make great decisions.',
@@ -1038,3 +1134,33 @@ $information_interfaces = array(
 		)
 	)
 );
+// DKIM is used to sign e-mails. If you change your RSA key, apply modifications to the DNS DKIM record of the mailing (sub)domain too !
+// Disclaimer : the php openssl extension can be buggy with Windows, try with Linux first
+
+// To generate a new private key with Linux :
+// openssl genrsa -des3 -out private.pem 1024
+// Then get the public key
+// openssl rsa -in private.pem -out public.pem -outform PEM -pubout
+
+// Edit with your own info :
+
+define('MAIL_RSA_PASSPHRASE', '');
+
+define('MAIL_RSA_PRIV',
+'-----BEGIN RSA PRIVATE KEY-----
+
+-----END RSA PRIVATE KEY-----');
+
+define('MAIL_RSA_PUBL',
+'-----BEGIN PUBLIC KEY-----
+
+-----END PUBLIC KEY-----');
+
+// Domain or subdomain of the signing entity (i.e. the domain where the e-mail comes from)
+define('MAIL_DOMAIN', '');  
+
+// Allowed user, defaults is "@<MAIL_DKIM_DOMAIN>", meaning anybody in the MAIL_DKIM_DOMAIN domain. Ex: 'admin@mydomain.tld'. You'll never have to use this unless you do not control the "From" value in the e-mails you send.
+define('MAIL_IDENTITY', NULL);
+
+// Selector used in your DKIM DNS record, e.g. : selector._domainkey.MAIL_DKIM_DOMAIN
+define('MAIL_SELECTOR', '');

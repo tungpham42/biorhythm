@@ -1656,29 +1656,21 @@ body:not(.birthday) header h1#heading {
 	text-shadow: 0 1px 0 #d2d2d2, 0 2px 0 #dbdbdb, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15) !important;
 }
 a#logo > i {
+	display: block;
 	top: 0;
 	width: 32px;
 	height: 32px;
 	font-size: 32px;
-	transition: transform linear 1.2s;
-	-webkit-transition: -webkit-transform linear 1.2s;
-	-moz-transition: -moz-transform linear 1.2s;
-	-o-transition: -o-transform linear 1.2s;
-	-ms-transition: -ms-transform linear 1.2s;
 }
 a#logo:hover > i {
-	transform: rotate(360deg);
-	-webkit-transform: rotate(360deg);
-	-moz-transform: rotate(360deg);
-	-o-transform: rotate(360deg);
-	-ms-transform: rotate(360deg);
+	-webkit-animation: spin 1.2s linear 0s infinite;
+	-moz-animation: spin 1.2s linear 0s infinite;
+	animation: spin 1.2s linear 0s infinite;
 }
 a#logo:active > i {
-	transform: rotate(1440deg);
-	-webkit-transform: rotate(1440deg);
-	-moz-transform: rotate(1440deg);
-	-o-transform: rotate(1440deg);
-	-ms-transform: rotate(1440deg);
+	-webkit-animation: spin .3s linear 0s infinite;
+	-moz-animation: spin .3s linear 0s infinite;
+	animation: spin .3s linear 0s infinite;
 }
 #search_wrapper {
 	width: 260px;
@@ -1730,8 +1722,10 @@ body.scrolled.one_lang #search_wrapper:hover input#search, body.scrolled.one_lan
 	font-size: 32px;
 	font-weight: bold;
 	text-align: center;
+	overflow: visible;
 	float: left;
-	z-index: 42;
+	text-decoration: none !important;
+	z-index: 12;
 }
 #logo:active {
 	background-image: -webkit-radial-gradient(#3377dd,#7799ee);
@@ -2370,29 +2364,29 @@ body.birthday #proverb blockquote a {
 	-ms-transform: rotate(0deg);
 }
 #proverb i#proverb_refresh:hover {
-	-webkit-animation: rotate_refresh 1.8s linear 0s infinite;
-	-moz-animation: rotate_refresh 1.8s linear 0s infinite;
-	animation: rotate_refresh 1.8s linear 0s infinite;
+	-webkit-animation: spin 1.8s linear 0s infinite;
+	-moz-animation: spin 1.8s linear 0s infinite;
+	animation: spin 1.8s linear 0s infinite;
 }
 body.loading a#logo > i {
-	-webkit-animation: rotate_refresh 60ms linear 0s infinite;
-	-moz-animation: rotate_refresh 60ms linear 0s infinite;
-	animation: rotate_refresh 60ms linear 0s infinite;
+	-webkit-animation: spin 120ms linear 0s infinite;
+	-moz-animation: spin 120ms linear 0s infinite;
+	animation: spin 120ms linear 0s infinite;
 }
 body.loading .lang_toggle.button, body.loading #proverb i#proverb_refresh, body.loading label[for="is_secondary"], body.loading #controls > .m-btn-group > .m-btn {
 	pointer-events: none !important;
 }
-@-webkit-keyframes rotate_refresh {
+@-webkit-keyframes spin {
 	0% {-webkit-transform: rotate(0deg);}
 	100% {-webkit-transform: rotate(360deg);}
 }
-@-moz-keyframes rotate_refresh {
+@-moz-keyframes spin {
 	0% {-moz-transform: rotate(0deg);}
 	100% {-moz-transform: rotate(360deg);}
 }
-@keyframes rotate_refresh {
-	0% {transform: rotate(0deg);}
-	100% {transform: rotate(360deg);}
+@keyframes spin {
+	0% {transform: rotate(0deg);-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);}
+	100% {transform: rotate(360deg);-webkit-transform: rotate(360deg);-moz-transform: rotate(360deg);}
 }
 #proverb blockquote:hover ~ span.arrow_down::after {
 	-moz-box-shadow: 3px 3px 3px 0 rgba(0,0,0,.77);
@@ -3173,7 +3167,7 @@ body.birthday #news ul#news_ul > li {
 }
 .news_title, .news_date, .news_text, .news_domain, .news_author {
 	word-wrap: break-word;
-	width: 100%;
+	width: 246px;
 	display: block;
 }
 .news_title {
@@ -4061,6 +4055,19 @@ p.explain:hover > span.explain_more {
 	-ms-transform: translate3d( 0, 0, -30px ) rotateX( 90deg );
 	transform: translate3d( 0, 0, -30px ) rotateX( 90deg );
 }
+#keyboard_shortcuts {
+	font-size: 16px;
+	text-align: center;
+	line-height: 24px;
+	font-weight: bold;
+	width: 300px;
+	margin: 14px auto 0 !important;
+}
+#keyboard_shortcuts kbd {
+	font-size: 16px;
+	padding: 4px;
+	margin: 2px;
+}
 #explanation h2.explain + p.explain {
 	list-style-type: square !important;
 }
@@ -4793,6 +4800,14 @@ body.member #profile_form input[type='submit'], body.member #profile_form #membe
 	font-size: 24px;
 	padding: 12px 24px;
 }
+body.member.register h5, body.member.login h5 {
+	text-align: center;
+	margin: 12px auto 6px;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: bold;
+	color: #555555;
+}
 body.member form#profile_form {
 	margin-bottom: 15px;
 }
@@ -4972,7 +4987,16 @@ body.member.person:lang(ja) #dob_control_bar > .m-btn {
 	padding-left: 10px;
 	padding-right: 10px;
 }
-#register_modal {display: none;}
+#avatar {
+	display: block;
+	width: 270px;
+	margin: 2px 4px;
+	border: 5px solid rgba(200,200,200,0.2);
+}
+#register_modal {
+	display: none;
+	text-align: center;
+}
 #register_modal p {
 	font-size: 16px;
 	line-height: 24px;

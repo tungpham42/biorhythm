@@ -16,12 +16,13 @@ if ($show_sponsor) {
 }
 if (has_dob()) {
 	if (isset($_COOKIE['NSH:member'])) {
-		include template('news');
+		//include template('news');
 	}
 	include template('results');
 } else if (!has_dob()) {
 	include template('explanation_chart');
 }
+include template('keyboard');
 include template('explanation');
 include template('install_app');
 //include template('feed_blog');

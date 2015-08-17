@@ -59,27 +59,27 @@ function init_lang_code() {
 		'ja' => array('JP')
 	);
 	if (isset($one_lang)) {
-		setcookie('NSH:lang', $one_lang, time()+604800, '/'.$one_lang.'/');
+		setcookie('NSH:lang', $one_lang, time()+(10*365*24*60*60), '/'.$one_lang.'/');
 		$lang_code = $one_lang;
 	}
 	if (!isset($_COOKIE['NSH:lang'])) {
 		if (in_array($country_code, $country_codes['vi']) || is_public_server() || is_bot()) {
-			setcookie('NSH:lang', 'vi', time()+604800, '/');
+			setcookie('NSH:lang', 'vi', time()+(10*365*24*60*60), '/');
 			$lang_code = 'vi';
 		} else if (in_array($country_code, $country_codes['en'])) {
-			setcookie('NSH:lang', 'en', time()+604800, '/');
+			setcookie('NSH:lang', 'en', time()+(10*365*24*60*60), '/');
 			$lang_code = 'en';
 		} else if (in_array($country_code, $country_codes['ru'])) {
-			setcookie('NSH:lang', 'ru', time()+604800, '/');
+			setcookie('NSH:lang', 'ru', time()+(10*365*24*60*60), '/');
 			$lang_code = 'ru';
 		} else if (in_array($country_code, $country_codes['es'])) {
-			setcookie('NSH:lang', 'es', time()+604800, '/');
+			setcookie('NSH:lang', 'es', time()+(10*365*24*60*60), '/');
 			$lang_code = 'es';
 		} else if (in_array($country_code, $country_codes['zh'])) {
-			setcookie('NSH:lang', 'zh', time()+604800, '/');
+			setcookie('NSH:lang', 'zh', time()+(10*365*24*60*60), '/');
 			$lang_code = 'zh';
 		} else if (in_array($country_code, $country_codes['ja'])) {
-			setcookie('NSH:lang', 'ja', time()+604800, '/');
+			setcookie('NSH:lang', 'ja', time()+(10*365*24*60*60), '/');
 			$lang_code = 'ja';
 		}
 	} else if (isset($_COOKIE['NSH:lang'])) {

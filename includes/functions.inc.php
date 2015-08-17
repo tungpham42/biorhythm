@@ -1568,7 +1568,7 @@ function load_news_feed($keyword='') {
 		$count = count($json->results);
 		for ($i=0; $i < $count; ++$i) {
 			$result .= '<li>';
-			$result .= '<a target="_blank" class="news_item" href="'.$json->results[$i]->url.'"><span class="news_title">'.$json->results[$i]->title.'</span><span class="news_domain">'.$json->results[$i]->domain.'</span><span class="news_date">'.date('l jS F Y h:i:s A',$json->results[$i]->date/1000).'</span></a>';
+			$result .= '<a target="_blank" class="news_item" href="'.$json->results[$i]->url.'"><span class="news_title">'.$json->results[$i]->title.'</span><span class="news_domain">'.$json->results[$i]->domain.'</span><span class="news_date">'.date('Y-m-d h:i:s A',$json->results[$i]->date/1000).'</span></a>';
 			$result .= '<i class="icon-info-sign news_toggle"></i>';
 			$result .= '<div class="news_thumb">'.((isset($json->results[$i]->iurl) && $json->results[$i]->iurl != '') ? '<img class="news_thumb_img" src="'.$json->results[$i]->iurl.'" />' : '').'<span class="news_author">'.$json->results[$i]->author.'</span><span class="news_text">'.$json->results[$i]->kwic.'</span></div>';
 			$result .= '</li>';
@@ -1769,24 +1769,57 @@ function generate_message_id() {
 }
 function send_mail($to,$subject,$message) {
 	global $lang_code, $span_interfaces, $email_credentials;
-	$fullname = load_member_from_email($to)['fullname'];
-	$headers = "";
-	$headers .= "Organization: \"Nhip Sinh Hoc . VN\"".PHP_EOL;
-	$headers  = "MIME-Version: 1.0".PHP_EOL;
-	$headers .= "Content-type: text/html; charset=UTF-8".PHP_EOL;
-	$headers .= "Message-Id: ".generate_message_id().PHP_EOL;
-	$headers .= "X-Priority: 3".PHP_EOL;
-	$headers .= "X-Mailer: PHP/". phpversion().PHP_EOL;
-	$headers .= "Content-Transfer-Encoding: 8bit".PHP_EOL;
-	$headers .= "From: \"".$span_interfaces['pham_tung'][$lang_code]."\" <noreply@nhipsinhhoc.vn>".PHP_EOL;
-	$headers .= "Sender: <noreply@nhipsinhhoc.vn>".PHP_EOL;
-	$headers .= "Reply-To: \"".$span_interfaces['pham_tung'][$lang_code]."\" <tung.42@gmail.com>".PHP_EOL;
-	$headers .= "Return-Path: \"".$fullname."\" <".$to.">".PHP_EOL;
-	mail("\"".$fullname."\" <".$to.">", $subject, $message, $headers);
+	$unsubscriber_emails = array();
+	$unsubscribers = new parseCSV();
+	$unsubscribers->parse(realpath($_SERVER['DOCUMENT_ROOT']).'/member/unsubscribers_list.csv');
+	$unsubscribers_count = count($unsubscribers->data);
+	for ($i = 0; $i < $unsubscribers_count; ++$i) {
+		$unsubscriber_emails[$i] = $unsubscribers->data[$i]['email'];
+	}
+	sort($unsubscriber_emails);
+	if (!in_array($to, $unsubscriber_emails)) {
+		$fullname = load_member_from_email($to)['fullname'];
+		$boundary = uniqid('np');
+		$headers = "";
+		$headers .= "Organization: \"Nhip Sinh Hoc . VN\"".PHP_EOL;
+		$headers  = "MIME-Version: 1.0".PHP_EOL;
+		$headers .= "X-Priority: 1 (Highest)".PHP_EOL;
+		$headers .= "Importance: High".PHP_EOL;
+		$headers .= "X-Mailer: PHP/". phpversion().PHP_EOL;
+		$headers .= "Content-Transfer-Encoding: 8bit".PHP_EOL;
+		$headers .= "From: \"Nhip Sinh Hoc . VN\" <noreply@nhipsinhhoc.vn>".PHP_EOL;
+		$headers .= "Sender: <noreply@nhipsinhhoc.vn>".PHP_EOL;
+		$headers .= "Reply-To: \"Nhip Sinh Hoc . VN\" <admin@nhipsinhhoc.vn>".PHP_EOL;
+		$headers .= "Return-Path: \"Nhip Sinh Hoc . VN\" <admin@nhipsinhhoc.vn>".PHP_EOL;
+		$headers .= "List-Unsubscribe: <mailto:admin@nhipsinhhoc.vn?subject=Unsubscribe me out of Nhip Sinh Hoc . VN mailing list&body=Please unsubscribe my email&cc=tung.42@gmail.com>".PHP_EOL;
+		$headers .= "Content-Type: multipart/alternative;boundary=".$boundary.PHP_EOL;
+		//here is the content body
+		$body = "This is a MIME encoded message.".PHP_EOL;
+		$body .= PHP_EOL.PHP_EOL."--".$boundary.PHP_EOL;
+		$body .= "Content-type: text/plain;charset=utf-8".PHP_EOL.PHP_EOL;
+		//Plain text body
+		$body .= $message['plain'].PHP_EOL;
+		$body .= PHP_EOL.PHP_EOL."--".$boundary.PHP_EOL;
+		$body .= "Content-type: text/html;charset=utf-8".PHP_EOL.PHP_EOL;
+		//Html body
+		$body .= $message['html'].PHP_EOL;
+		$body .= PHP_EOL.PHP_EOL."--".$boundary."--";
+		$signature = new mail_signature(
+			MAIL_RSA_PRIV,
+			MAIL_RSA_PASSPHRASE,
+			MAIL_DOMAIN,
+			MAIL_SELECTOR
+		);
+		$signed_headers = $signature->get_signed_headers("\"".$fullname."\" <".$to.">", $subject, $body, $headers);
+		mail("\"".$fullname."\" <".$to.">", '=?utf-8?B?'.base64_encode($subject).'?=', $body, $signed_headers.$headers);
+	}
 }
 function email_message($heading,$content) {
-	$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> <meta name="viewport" content="width=device-width"/></head><body style="padding: 0px; margin: 0px;"> <table class="body" style="color: #222222;background-image: url(\'http://nhipsinhhoc.vn/css/images/coin.png\'); min-height: 420px;border: none; border-spacing: 0px; position: relative; height: 100%;width: 100%; top: 0px; left: 0px; margin: 0px;"> <tr> <td style="padding: 0px; margin: 0px;text-align: center;" align="center" valign="top"> <center> <table style="height: 100px;padding: 0px;width: 100%;position: relative;background: #3377dd;" class="row header"> <tr> <td style="text-align: center;" align="center"> <center> <table style="margin: 0 auto;text-align: inherit;width: 95% !important;" class="container"> <tr> <td style="padding: 10px 20px 0px 0px;position: relative;display: block !important;padding-right: 0 !important;" class="wrapper last"> <table style="width: 95%;" class="twelve columns"> <tr> <td style="padding: 8px;" class="six sub-columns"> <a target="_blank" href="http://nhipsinhhoc.vn/"><img src="http://nhipsinhhoc.vn/app-icons/icon-60.png"> </a> </td><td class="six sub-columns last" style="text-align:left; vertical-align:middle;padding-right: 0px; color: white; width: 90%"> <span class="template-label"><a style="font-size: 24px;color: white; text-decoration: none;" target="_blank" href="http://nhipsinhhoc.vn/">'.$heading.'</a></span> </td><td class="expander"></td></tr></table> </td></tr></table> </center> </td></tr></table> <table class="container"> <tr> <td> <table class="row"> <tr> <td style="padding: 10px 10px 0px 0px;position: relative;display: block !important;padding-right: 0 !important;" class="wrapper last"> <table style="width: 95%;font-size: 16px;" class="twelve columns"> <tr> <td> '.$content.' </td><td class="expander"></td></tr></table> </td></tr></table> </td></tr></table> </center> </td></tr></table></body></html>';
-	return $message;
+	$message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> <meta name="viewport" content="width=device-width"/></head><body style="padding: 0px; margin: 0px; width: 100%; min-width: 100%"> <table class="body" style="color: #222222;background-image: url(\'http://nhipsinhhoc.vn/css/images/coin.png\'); min-height: 420px;border: none; border-spacing: 0px; position: relative; height: 100%;width: 100%; top: 0px; left: 0px; margin: 0px;"> <tr style="padding: 0px; margin: 0px;text-align: center; width: 100%;"> <td style="padding: 0px; margin: 0px;text-align: center; width: 100%;" align="center" valign="top"> <center> <table style="height: 100px;padding: 0px;width: 100%;position: relative;background: #3377dd;" class="row header"> <tr> <td style="text-align: center;" align="center"> <center> <table style="margin: 0 auto;text-align: inherit;width: 95% !important;" class="container"> <tr> <td style="padding: 10px 20px 0px 0px;position: relative;display: block !important;padding-right: 0 !important;" class="wrapper last"> <table style="width: 95%;" class="twelve columns"> <tr> <td style="padding: 8px;" class="six sub-columns"> <a target="_blank" href="http://nhipsinhhoc.vn/"><img alt="logo" src="http://nhipsinhhoc.vn/app-icons/icon-60.png"> </a> </td><td class="six sub-columns last" style="text-align:left; vertical-align:middle;padding-right: 0px; color: white; width: 90%"> <span class="template-label"><a style="font-size: 24px;color: white; text-decoration: none;" target="_blank" href="http://nhipsinhhoc.vn/">'.$heading.'</a></span> </td><td class="expander"></td></tr></table> </td></tr></table> </center> </td></tr></table> <table class="container"> <tr> <td> <table class="row"> <tr> <td style="padding: 10px 10px 0px 0px;position: relative;display: block !important;padding-right: 0 !important;" class="wrapper last"> <table style="width: 80%;font-size:16px;margin: auto;" class="twelve columns"> <tr> <td> '.$content.' </td><td class="expander"></td></tr></table> </td></tr></table> </td></tr></table> </center> </td></tr></table></body></html>';
+	return array(
+		'html' => $message,
+		'plain' => strip_tags($content)
+	);
 }
 function email_create_member($email,$fullname,$password,$dob) {
 	global $lang_code, $email_interfaces, $input_interfaces, $span_interfaces;
@@ -1802,11 +1835,16 @@ function email_create_member($email,$fullname,$password,$dob) {
 	$content .= '<li>'.$input_interfaces['dob'][$lang_code].': '.$dob.'</li>';
 	$content .= '<li>'.$input_interfaces['password'][$lang_code].': '.substr($password,0,4).str_repeat('*',strlen($password)-4).'</li>';
 	$content .= '</ul>';
+	$content .= '<p><a href="http://nhipsinhhoc.vn/member/'.$email.'/">'.$email_interfaces['go_to_your_profile'][$lang_code].'</a></p>';
+	$content .= '<p><a href="https://www.youtube.com/watch?v='.$email_interfaces['instruction_video_youtube_id'][$lang_code].'">'.$email_interfaces['instruction_video_text'][$lang_code].'</a></p>';
 	$content .= '<p>'.$email_interfaces['regards'][$lang_code].'</p>';
 	$content .= '<p>'.$span_interfaces['pham_tung'][$lang_code].'</p>';
+	$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$lang_code].'</p>';
+	$content .= '<p><em>'.$email_interfaces['definition'][$lang_code].'</em></p>';
+	$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$lang_code].'</p>';
 	$message = email_message($heading, $content);
-	send_mail($email,$email_interfaces['hi'][$lang_code].', '.$fullname.', '.$email_interfaces['create_user_thank'][$lang_code],$message);
-	send_mail($my_email,$email_interfaces['hi'][$lang_code].', '.$fullname.', '.$email_interfaces['create_user_thank'][$lang_code],$message);
+	send_mail($email,$email_interfaces['hi'][$lang_code].' '.$fullname.', '.$email_interfaces['create_user_thank'][$lang_code],$message);
+	send_mail($my_email,$email_interfaces['hi'][$lang_code].' '.$fullname.', '.$email_interfaces['create_user_thank'][$lang_code],$message);
 }
 function email_edit_member($email,$fullname,$password,$dob) {
 	global $lang_code, $email_interfaces, $input_interfaces, $span_interfaces;
@@ -1822,14 +1860,20 @@ function email_edit_member($email,$fullname,$password,$dob) {
 	$content .= '<li>'.$input_interfaces['dob'][$lang_code].': '.$dob.'</li>';
 	$content .= '<li>'.$input_interfaces['password'][$lang_code].': '.($password == $email_interfaces['not_changed'][$lang_code] ? $email_interfaces['not_changed'][$lang_code] : substr($password,0,4).str_repeat('*',strlen($password)-4)).'</li>';
 	$content .= '</ul>';
+	$content .= '<p><a href="http://nhipsinhhoc.vn/member/'.$email.'/">'.$email_interfaces['go_to_your_profile'][$lang_code].'</a></p>';
+	$content .= '<p><a href="https://www.youtube.com/watch?v='.$email_interfaces['instruction_video_youtube_id'][$lang_code].'">'.$email_interfaces['instruction_video_text'][$lang_code].'</a></p>';
 	$content .= '<p>'.$email_interfaces['regards'][$lang_code].'</p>';
 	$content .= '<p>'.$span_interfaces['pham_tung'][$lang_code].'</p>';
+	$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$lang_code].'</p>';
+	$content .= '<p><em>'.$email_interfaces['definition'][$lang_code].'</em></p>';
+	$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$lang_code].'</p>';
 	$message = email_message($heading, $content);
-	send_mail($email,$email_interfaces['hi'][$lang_code].', '.$fullname.', '.$email_interfaces['edit_user_notify'][$lang_code],$message);
-	send_mail($my_email,$email_interfaces['hi'][$lang_code].', '.$fullname.', '.$email_interfaces['edit_user_notify'][$lang_code],$message);
+	send_mail($email,$email_interfaces['hi'][$lang_code].' '.$fullname.', '.$email_interfaces['edit_user_notify'][$lang_code],$message);
+	send_mail($my_email,$email_interfaces['hi'][$lang_code].' '.$fullname.', '.$email_interfaces['edit_user_notify'][$lang_code],$message);
 }
 function email_daily_suggestion() {
 	global $lang_code, $email_interfaces, $span_interfaces;
+	//$my_email = 'nhipsinhhoc@mail-tester.com';
 	$my_email = 'tung.42@gmail.com';
 	$emails = array();
 	$members = array();
@@ -1861,11 +1905,18 @@ function email_daily_suggestion() {
 		$content .= '<h1>'.$email_interfaces['hi'][$members[$i]['lang']].' '.$members[$i]['fullname'].'</h1>';
 		$content .= '<p class="lead">'.$email_interfaces['daily_suggestion'][$members[$i]['lang']].$email_interfaces['colon'][$members[$i]['lang']].'</p>';
 		$content .= '<p>'.$member_chart->get_infor().'</p>';
+		$content .= '<p class="lead">'.$email_interfaces['daily_values'][$members[$i]['lang']].$email_interfaces['colon'][$members[$i]['lang']].'</p>';
+		$content .= '<p>'.$member_chart->get_infor_values().'</p>';
 		$content .= '<p><a href="http://nhipsinhhoc.vn/member/'.$members[$i]['email'].'/">'.$email_interfaces['go_to_your_profile'][$members[$i]['lang']].'</a></p>';
+		$content .= '<p><a href="https://www.youtube.com/watch?v='.$email_interfaces['instruction_video_youtube_id'][$members[$i]['lang']].'">'.$email_interfaces['instruction_video_text'][$members[$i]['lang']].'</a></p>';
 		$content .= '<p>'.$email_interfaces['regards'][$members[$i]['lang']].'</p>';
 		$content .= '<p>'.$span_interfaces['pham_tung'][$members[$i]['lang']].'</p>';
+		$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$members[$i]['lang']].'</p>';
+		$content .= '<p><em>'.$email_interfaces['definition'][$members[$i]['lang']].'</em></p>';
+		$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$members[$i]['lang']].'</p>';
 		$message = email_message($heading, $content);
-		//send_mail($my_email,$email_interfaces['hi'][$members[$i]['lang']].', '.$members[$i]['fullname'].', '.$email_interfaces['daily_suggestion'][$members[$i]['lang']].' | '.date('Y-m-d'),$message);
-		send_mail($members[$i]['email'],$email_interfaces['hi'][$members[$i]['lang']].', '.$members[$i]['fullname'].', '.$email_interfaces['daily_suggestion'][$members[$i]['lang']].' | '.date('Y-m-d'),$message);
+		//send_mail($my_email,$email_interfaces['hi'][$members[$i]['lang']].' '.$members[$i]['fullname'].', '.$email_interfaces['daily_suggestion'][$members[$i]['lang']].' | '.date('Y-m-d'),$message);
+		send_mail($members[$i]['email'],$email_interfaces['hi'][$members[$i]['lang']].' '.$members[$i]['fullname'].', '.$email_interfaces['daily_suggestion'][$members[$i]['lang']].' | '.date('Y-m-d'),$message);
+		sleep(2);
 	}
 }
