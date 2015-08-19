@@ -587,8 +587,25 @@ function loadProverb(langCode) {
 			dataType: 'html',
 			success: function(data) {
 				$('#proverb').html(data);
-				if ($('body').hasClass('has_dob')) {
-					manipulateBirthday();
+				switch(langCode) {
+					case 'vi':
+						$.notify('Đổi thành ngữ');
+						break;
+					case 'en':
+						$.notify('Changed proverb');
+						break;
+					case 'ru':
+						$.notify('Изменен пословица');
+						break;
+					case 'es':
+						$.notify('Proverbio cambiado');
+						break;
+					case 'zh':
+						$.notify('更改谚语');
+						break;
+					case 'ja':
+						$.notify('変更されたことわざ');
+						break;
 				}
 			}
 		});

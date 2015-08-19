@@ -38,7 +38,7 @@ $show_sponsor = false;
 $show_addthis = false;
 $show_sumome = false;
 $clicktale = false;
-$credential_id = 4; //change this to 4 in DEMO
+$credential_id = 3; //change this to 4 in DEMO
 $number = calculate_life_path($dob);
 if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['partner_dob']) && isset($_GET['lang_code'])) {
 	$chart = new Chart($_GET['dob'],$_GET['diff'],$_GET['is_secondary'],$_GET['dt_change'],$_GET['partner_dob'],$_GET['lang_code']);
@@ -50,10 +50,10 @@ if (isset($_GET['ad'])) {
 	setcookie('NSH:show_ad',$_GET['ad']);
 }
 $email_credentials = array(
-	'username' => '',
-	'password' => ''
+	'username' => 'admin@nhipsinhhoc.vn',
+	'password' => '@DM!Nv0d0i'
 );
-$faroo_key = '';
+$faroo_key = 'kc5BZXhbMCj0@lx0TEVOiHNvSok_';
 $input_interfaces = array(
 	'search' => array(
 		'vi' => 'Tìm kiếm',
@@ -734,12 +734,20 @@ $email_interfaces = array(
 		'ja' => 'SJw7lMuKipc'
 	),
 	'keyboard_shortcuts' => array(
-		'vi' => 'Phím tắt: s/k -> Hôm nay, a/j -> Trước, d/l -> Sau, w/i -> Sinh nhật, r/p -> Thành ngữ',
-		'en' => 'Keyboard shortcuts: s/k -> Today, a/j -> Back, d/l -> Forward, w/i -> Birthday, r/p -> Proverb',
-		'ru' => 'Горячие клавиши: s/k -> Сегодня, a/j -> Назад, d/l -> Вперед, w/i -> День рождения, r/p -> Пословица',
-		'es' => 'Atajos de teclado: s/k -> Hoy, a/j -> Atrás, d/l -> Enviar, w/i -> Cumpleaños, r/p -> Proverbio',
-		'zh' => '快捷键： s/k -> 今天, a/j -> 回去, d/l -> 前进, w/i -> 生辰, r/p -> 谚语',
-		'ja' => 'キーボードショートカット： s/k -> 今日, a/j -> 戻る, d/l -> 前進する, w/i -> バースデー, r/p -> ことわざ'
+		'vi' => 'Phím tắt: S|K -> Hôm nay, A|J -> Trước, D|L -> Sau, W|I -> Sinh nhật, R|P -> Thành ngữ',
+		'en' => 'Keyboard shortcuts: S|K -> Today, A|J -> Back, D|L -> Forward, W|I -> Birthday, R|P -> Proverb',
+		'ru' => 'Горячие клавиши: S|K -> Сегодня, A|J -> Назад, D|L -> Вперед, W|I -> День рождения, R|P -> Пословица',
+		'es' => 'Atajos de teclado: S|K -> Hoy, A|J -> Atrás, D|L -> Enviar, W|I -> Cumpleaños, R|P -> Proverbio',
+		'zh' => '快捷键： S|K -> 今天, A|J -> 回去, D|L -> 前进, W|I -> 生辰, R|P -> 谚语',
+		'ja' => 'キーボードショートカット： S|K -> 今日, A|J -> 戻る, D|L -> 前進する, W|I -> バースデー, R|P -> ことわざ'
+	),
+	'unsubscribe' => array(
+		'vi' => 'Hủy đăng ký',
+		'en' => 'Unsubscribe',
+		'ru' => 'Отказаться',
+		'es' => 'Darse de baja',
+		'zh' => '退订',
+		'ja' => '退会'
 	)
 );
 $menu_interfaces = array(
@@ -1144,23 +1152,53 @@ $information_interfaces = array(
 
 // Edit with your own info :
 
-define('MAIL_RSA_PASSPHRASE', '');
+define('MAIL_RSA_PASSPHRASE', 'nhipsinhhoc');
 
 define('MAIL_RSA_PRIV',
 '-----BEGIN RSA PRIVATE KEY-----
-
+MIIEpQIBAAKCAQEA2FAIgMDFIe/HC3oQEeAFXglSzVNlWsEUW7YZmEEKT86Usdxh
+BxSpdWDBC6F6USmjV7QO22L+KLHh3o0CnPgKxKetdWNX72kATq/WYMF4jHMFPCi+
+yJ+j9+j5HyW+w4kARoRfzZcEf39SeO2YQnWVgjAn6vDfOGvU2R7jpEME7Q7iEwJz
+xhrFqnT4WqkH/iscAOgpP897vNLALKHlNTY8cM40jbQfeybu96i0nIGlbeH11nf0
+y3zmnMjdX5yY37443+9CjFjtotIo9GhciWN50+O9KtS7MZM19/z8HZzrIXqy4yJu
+JgC4JPq5SshO83Hzbipe0kUeqe625QUFkr+zyQIDAQABAoIBAQCEp7g/NXjvkfuQ
+R0AZpjfEbpVQBAfROz1/7NIPdDudq8O2u77pN7ugl0BsIJBBu/ZHL844rqHNVSF+
+eR2UI+1+opIWvmDMGqmsl9sxpRSHlXYtaZNut7A3tbEpb91oTtlTZZTXIPkKM4vh
+S1wnzbJtj5i7VRKfqEl1CaNzNgKMWYYtRyT43P/ZVx2zzruwWsnZm4D0EYaeXqsi
+dg9PYhqaDUKLW1uEgCR6/sC5WhxAwdaUczPlv+ZHoBMxZK3oANJwQCHOhtiZw81A
+LfEl0djhvhIf3YXtT1JN/NE6JXnGTBS1ykimxW7rCMD3lpi55y5gsonktUal9vMx
+Hnw72RIxAoGBAPiTq/GEweAdpDrUOBkTr36gp7lnG5Q5AMshnMtPyxNusjIo7jdO
+OOUWNiWnGxHrM9UH3Ln9RSDiDyabjvpD/mp8RFerJGSRq9q/lC7be1mnFiO3HcY+
+XaZLBAhBlCIt6VpMxwlcmoKAKf0BKhOpNpF70BRDpdN+FL6rR8h7IeKVAoGBAN7F
+tQGiWY+aY6Kr5dzqOZyfMZX4n8JkxeCTpXNXZ/M0D4IoP/l2pa/E7euDrd38CG8Z
+pDcI+OKhmF0rE2Ax4dElmuqvNmnj7ev8y1q+41mzi65yUm1Pj20BCZhNpoc7Q8VU
+aAc0VNDxreMyeuxI6f8i1qj1jBsuaiGnI46yf1NlAoGBANn/kATAu9KTzEq3gPcl
+F3yC4nUrorksALEkqkB3mw5Qv0BUOw4PsL/f6d69nXTqg8tpGL+YCX8cIdNnC04a
+QU4b60fDVKhKRKAT8Z3iaFwot7bcyeTpHvJOyZt//6y1/PdvbAKezvZx9eDnm4Ig
+nTWbktGivhQrd3/78Hk223G9AoGANOCw6kZjA9cdt0seMKXYLvkKiBKPuVC6N2hU
+aWBh6DR/SeHL7abgBSy1XKXQ61QbnGN1uyqCCSlaRSMoYjj05PQMJZCZVeEoZE+I
+5W1SAcTAbxPrxM6RuMn6QRCNaqQCniA+4Rbm2wHCyJ7+1n8oK8tVMJ24N+t4faxy
+oDh2SJECgYEAl4nSqxFO5cQlArum8qjfDFC/1qQp1Px/NfrG1QssvUYHuPoIuHk9
+G06bBta22pT+BxdX48b9tTdoz5szJNgFrAfnc6sJjELeyO/pOhNDwInPdO4VSQ0Z
+NWlfMw/pZZd3hmr2vzTJhylISVv4FArB+LzOo10YQesDE4ZCXrmdb44=
 -----END RSA PRIVATE KEY-----');
 
 define('MAIL_RSA_PUBL',
 '-----BEGIN PUBLIC KEY-----
-
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2FAIgMDFIe/HC3oQEeAF
+XglSzVNlWsEUW7YZmEEKT86UsdxhBxSpdWDBC6F6USmjV7QO22L+KLHh3o0CnPgK
+xKetdWNX72kATq/WYMF4jHMFPCi+yJ+j9+j5HyW+w4kARoRfzZcEf39SeO2YQnWV
+gjAn6vDfOGvU2R7jpEME7Q7iEwJzxhrFqnT4WqkH/iscAOgpP897vNLALKHlNTY8
+cM40jbQfeybu96i0nIGlbeH11nf0y3zmnMjdX5yY37443+9CjFjtotIo9GhciWN5
+0+O9KtS7MZM19/z8HZzrIXqy4yJuJgC4JPq5SshO83Hzbipe0kUeqe625QUFkr+z
+yQIDAQAB
 -----END PUBLIC KEY-----');
 
 // Domain or subdomain of the signing entity (i.e. the domain where the e-mail comes from)
-define('MAIL_DOMAIN', '');  
+define('MAIL_DOMAIN', 'mail.nhipsinhhoc.vn');  
 
 // Allowed user, defaults is "@<MAIL_DKIM_DOMAIN>", meaning anybody in the MAIL_DKIM_DOMAIN domain. Ex: 'admin@mydomain.tld'. You'll never have to use this unless you do not control the "From" value in the e-mails you send.
 define('MAIL_IDENTITY', NULL);
 
 // Selector used in your DKIM DNS record, e.g. : selector._domainkey.MAIL_DKIM_DOMAIN
-define('MAIL_SELECTOR', '');
+define('MAIL_SELECTOR', 'x');

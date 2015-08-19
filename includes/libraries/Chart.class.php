@@ -347,7 +347,7 @@ class Chart {
 	}
 	// Render stats
 	function render_stats() {
-		global $help_interfaces, $dob;
+		global $help_interfaces, $dob, $fullname;
 		echo '
 <section id="stats" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
 	<h5>'.$this->_statistics_h5.' - '.$dob.'</h5>
@@ -357,7 +357,8 @@ class Chart {
 	<p><strong><span class="translate" data-lang-ja="誕生日カウントダウン:" data-lang-zh="生日倒计时:" data-lang-es="Cuenta atrás cumpleaños:" data-lang-ru="День рождения отсчет:" data-lang-en="Birthday countdown:" data-lang-vi="Đếm ngược sinh nhật:"></span></strong> '.countdown_birthday($this->_dob, $this->_date).' <span class="translate" data-lang-ja="日" data-lang-zh="日" data-lang-es="'.pluralize(countdown_birthday($this->_dob, $this->_date),'día').'" data-lang-ru="дней" data-lang-en="'.pluralize(countdown_birthday($this->_dob, $this->_date),'day').'" data-lang-vi="ngày"></span></p>
 	<p><a id="life_path_link" target="_blank" href="'.$help_interfaces['life_path_number_prefix'][$this->_lang_code].calculate_life_path($this->_dob).$help_interfaces['life_path_number_suffix'][$this->_lang_code].'"><strong><span class="translate" data-lang-ja="ライフパス番号:" data-lang-zh="人生道路数量:" data-lang-es="Vida número de camino:" data-lang-ru="Число Жизненный путь:" data-lang-en="Life path number:" data-lang-vi="Con số cuộc đời:"></span></strong> '.calculate_life_path($this->_dob).'</a></p>
 	<p><strong><span class="translate" data-lang-ja="黄道帯の印:" data-lang-zh="星宮名稱:" data-lang-es="Signo del Zodíaco:" data-lang-ru="Знак зодиака:" data-lang-en="Zodiac sign:" data-lang-vi="Cung hoàng đạo:"></span></strong> <span class="translate" data-lang-ja="'.get_zodiac_from_dob($this->_dob,'ja').'" data-lang-zh="'.get_zodiac_from_dob($this->_dob,'zh').'" data-lang-es="'.get_zodiac_from_dob($this->_dob,'es').'" data-lang-ru="'.get_zodiac_from_dob($this->_dob,'ru').'" data-lang-en="'.get_zodiac_from_dob($this->_dob,'en').'" data-lang-vi="'.get_zodiac_from_dob($this->_dob,'vi').'"></span></p>
-	<textarea id="embed_box" rows="3" cols="420" onClick=select() ><embed src="http://nhipsinhhoc.vn/?embed=1&dob='.$this->_dob.'&lang='.$this->_lang_code.'" height="480" width="600"></textarea>
+	<textarea id="embed_box" rows="2" cols="420" onClick="select()">http://nhipsinhhoc.vn/'.$this->_lang_code.'/?'.((isset($_GET['fullname']) && $_GET['fullname'] != '') ? 'fullname='.str_replace(' ', '+', $_GET['fullname']).'&dob='.$dob : ((function_exists('get_member_fullname') && get_member_fullname() != '') ? 'fullname='.str_replace(' ', '+', get_member_fullname()).'&dob='.$dob : (($fullname != '') ? 'fullname='.str_replace(' ', '+', $fullname).'&dob='.$dob : 'dob='.$this->_dob))).'</textarea>
+	<div id="embed_box_share"></div>
 	<div id="embed_toggle" class="changeable"><i class="icon-eject icon-white"></i></div>
 </section>
 		';
@@ -456,12 +457,15 @@ class Chart {
 <script>
 function goToTodayExplanation() {
 	loadExplanationChartResults("'.$this->_dob.'","0","1","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['today'][$this->_lang_code].'");
 }
 function goToPrevExplanation() {
 	loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff-1).'","1","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['prev'][$this->_lang_code].'");
 }
 function goToNextExplanation() {
 	loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff+1).'","1","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['next'][$this->_lang_code].'");
 }
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
@@ -541,12 +545,15 @@ $("#lang_bar").off("click","**").on("click", "#vi_toggle", function(){
 <script>
 function goToTodayEmbed() {
 	loadEmbedChartResults("'.$this->_dob.'","0","0","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['today'][$this->_lang_code].'");
 }
 function goToPrevEmbed() {
 	loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff-1).'","0","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['prev'][$this->_lang_code].'");
 }
 function goToNextEmbed() {
 	loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff+1).'","0","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['next'][$this->_lang_code].'");
 }
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
@@ -648,15 +655,19 @@ $("input.translate").each(function(){
 });
 function goToTodayMain() {
 	loadResults("'.$this->_dob.'","0","'.$this->_is_secondary.'","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['today'][$this->_lang_code].'");
 }
 function goToPrevMain() {
 	loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['prev'][$this->_lang_code].'");
 }
 function goToNextMain() {
 	loadResults("'.$this->_dob.'","'.($this->_diff+1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['next'][$this->_lang_code].'");
 }
 function goToBirthdayMain() {
 	loadResults("'.$this->_dob.'","'.($this->_diff+countdown_birthday($this->_dob, $this->_date)).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+countdown_birthday($this->_dob, $this->_date))).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['next_birthday'][$this->_lang_code].'");
 }
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
@@ -756,6 +767,7 @@ $("#lang_bar").off("click","**").on("click", "#vi_toggle", function(){
 		loadResults("'.$this->_dob.'","'.$this->_diff.'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_partner_dob.'","ja");
 	}
 });
+manipulateEmbedBox();
 manipulateHelper("#news","'.$help_interfaces['news_box'][$this->_lang_code].'");
 manipulateHelper("#stats","'.$help_interfaces['stats_box'][$this->_lang_code].'");
 manipulateHelper("#lunar","'.$help_interfaces['lunar_box'][$this->_lang_code].'");

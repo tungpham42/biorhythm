@@ -12,8 +12,10 @@ function get_member_email() {
 	} else {
 		$url = $_SERVER['HTTP_REFERER'];
 		preg_match($pattern, $url, $matches);
-		if (filter_var($matches[1], FILTER_VALIDATE_EMAIL)) {
-			$email = $matches[1];
+		if (isset($matches[1])) {
+			if (filter_var($matches[1], FILTER_VALIDATE_EMAIL)) {
+				$email = $matches[1];
+			}
 		}
 	}
 	return $email;
@@ -83,12 +85,12 @@ require_once realpath(\$_SERVER['DOCUMENT_ROOT']).'/index.php';\r
 		echo 'ERROR: '.$e->getMessage();
 	}
 }
-function edit_member($email,$fullname,$password,$dob) {
+function edit_member($email,$fullname,$password,$dob,$lang) {
 	$hashed_password = ($password == load_member()['password']) ? $password: hash_pass($password);
 	$edited_time = date('Y-m-d h:i:s A');
 	$path = realpath($_SERVER['DOCUMENT_ROOT']).'/member/'.$email;
 	$db_path = $path.'/member.db';
-	$db_sql = 'UPDATE member SET password=:password,fullname=:fullname,dob=:dob,edited_at=:edited_at WHERE email=:email';
+	$db_sql = 'UPDATE member SET password=:password,fullname=:fullname,dob=:dob,lang=:lang,edited_at=:edited_at WHERE email=:email';
 	try {
 		$db = new PDO('sqlite:'.$db_path);
 		$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -96,6 +98,7 @@ function edit_member($email,$fullname,$password,$dob) {
 		$db_query->bindParam(':password', $hashed_password);
 		$db_query->bindParam(':fullname', $fullname);
 		$db_query->bindParam(':dob', $dob);
+		$db_query->bindParam(':lang', $lang);
 		$db_query->bindParam(':edited_at', $edited_time);
 		$db_query->bindParam(':email', $email);
 		$db_query->execute();

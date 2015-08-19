@@ -1842,6 +1842,7 @@ function email_create_member($email,$fullname,$password,$dob) {
 	$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$lang_code].'</p>';
 	$content .= '<p><em>'.$email_interfaces['definition'][$lang_code].'</em></p>';
 	$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$lang_code].'</p>';
+	$content .= '<p><a href="mailto:admin@nhipsinhhoc.vn?subject='.$email_interfaces['unsubscribe'][$lang_code].'&body='.$email_interfaces['unsubscribe'][$lang_code].' '.$email.'&cc=tung.42@gmail.com">'.$email_interfaces['unsubscribe'][$lang_code].'</a></p>';
 	$message = email_message($heading, $content);
 	send_mail($email,$email_interfaces['hi'][$lang_code].' '.$fullname.', '.$email_interfaces['create_user_thank'][$lang_code],$message);
 	send_mail($my_email,$email_interfaces['hi'][$lang_code].' '.$fullname.', '.$email_interfaces['create_user_thank'][$lang_code],$message);
@@ -1867,6 +1868,7 @@ function email_edit_member($email,$fullname,$password,$dob) {
 	$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$lang_code].'</p>';
 	$content .= '<p><em>'.$email_interfaces['definition'][$lang_code].'</em></p>';
 	$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$lang_code].'</p>';
+	$content .= '<p><a href="mailto:admin@nhipsinhhoc.vn?subject='.$email_interfaces['unsubscribe'][$lang_code].'&body='.$email_interfaces['unsubscribe'][$lang_code].' '.$email.'&cc=tung.42@gmail.com">'.$email_interfaces['unsubscribe'][$lang_code].'</a></p>';
 	$message = email_message($heading, $content);
 	send_mail($email,$email_interfaces['hi'][$lang_code].' '.$fullname.', '.$email_interfaces['edit_user_notify'][$lang_code],$message);
 	send_mail($my_email,$email_interfaces['hi'][$lang_code].' '.$fullname.', '.$email_interfaces['edit_user_notify'][$lang_code],$message);
@@ -1914,6 +1916,7 @@ function email_daily_suggestion() {
 		$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$members[$i]['lang']].'</p>';
 		$content .= '<p><em>'.$email_interfaces['definition'][$members[$i]['lang']].'</em></p>';
 		$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$members[$i]['lang']].'</p>';
+		$content .= '<p><a href="mailto:admin@nhipsinhhoc.vn?subject='.$email_interfaces['unsubscribe'][$members[$i]['lang']].'&body='.$email_interfaces['unsubscribe'][$members[$i]['lang']].' '.$members[$i]['email'].'&cc=tung.42@gmail.com">'.$email_interfaces['unsubscribe'][$members[$i]['lang']].'</a></p>';
 		$message = email_message($heading, $content);
 		//send_mail($my_email,$email_interfaces['hi'][$members[$i]['lang']].' '.$members[$i]['fullname'].', '.$email_interfaces['daily_suggestion'][$members[$i]['lang']].' | '.date('Y-m-d'),$message);
 		send_mail($members[$i]['email'],$email_interfaces['hi'][$members[$i]['lang']].' '.$members[$i]['fullname'].', '.$email_interfaces['daily_suggestion'][$members[$i]['lang']].' | '.date('Y-m-d'),$message);

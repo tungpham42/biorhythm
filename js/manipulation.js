@@ -268,6 +268,7 @@ function manipulateLangEvent(langCode) {
 		lang = langCode;
 		dobText = dobTexts[langCode];
 		fullnameText = fullnameTexts[langCode];
+		$.notify($('.lang_toggle.first').find('span.lang').text());
 	}
 }
 function manipulateLangText() {
@@ -490,4 +491,28 @@ function manipulateRegisterModal() {
 			$('#register_modal').dialog('open');
 		}, 8000);
 	}
+}
+function manipulateEmbedBox() {
+	if ($('#embed_box').css('display') == 'block') {
+		$('#embed_box_share').jsSocials({
+			url: $('#embed_box').val(),
+			showCount: false,
+			showLabel: false,
+			shares: ['facebook', 'twitter', 'googleplus', 'linkedin', 'pinterest', 'email']
+		});
+	} else if ($('#embed_box').css('display') == 'none') {
+		$('.jssocials-shares').remove();
+	}
+	$('#stats').on('click', '#embed_toggle', function() {
+		if ($('#embed_box').css('display') == 'block') {
+			$('#embed_box_share').jsSocials({
+				url: $('#embed_box').val(),
+				showCount: false,
+				showLabel: false,
+				shares: ['facebook', 'twitter', 'googleplus', 'linkedin', 'pinterest', 'email']
+			});
+		} else if ($('#embed_box').css('display') == 'none') {
+			$('.jssocials-shares').remove();
+		}
+	});
 }
