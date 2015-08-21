@@ -53,7 +53,7 @@ $email_credentials = array(
 	'username' => '',
 	'password' => ''
 );
-$faroo_key = 'kc5BZXhbMCj0@lx0TEVOiHNvSok_';
+$faroo_key = '';
 $input_interfaces = array(
 	'search' => array(
 		'vi' => 'Tìm kiếm',
