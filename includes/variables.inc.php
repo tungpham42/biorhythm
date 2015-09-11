@@ -360,6 +360,22 @@ $button_interfaces = array(
 		'es' => 'Editar',
 		'zh' => '编辑',
 		'ja' => '編集'
+	),
+	'profile' => array(
+		'vi' => 'Hồ sơ',
+		'en' => 'Profile',
+		'ru' => 'Профиль',
+		'es' => 'Perfil',
+		'zh' => '轮廓',
+		'ja' => 'プロフィール'
+	),
+	'sleep_now' => array(
+		'vi' => 'Ngủ ngay bây giờ!',
+		'en' => 'Sleep now!',
+		'ru' => 'Засыпай!',
+		'es' => '¡Duerme ahora!',
+		'zh' => '现在睡觉！',
+		'ja' => '今スリープ！'
 	)
 );
 $span_interfaces = array(
@@ -442,6 +458,70 @@ $span_interfaces = array(
 		'es' => 'Blog',
 		'zh' => '博客',
 		'ja' => 'ブログ'
+	),
+	'forum' => array(
+		'vi' => 'Diễn đàn',
+		'en' => 'Forum',
+		'ru' => 'Форум',
+		'es' => 'Forum',
+		'zh' => '论坛',
+		'ja' => 'フォーラム'
+	),
+	'sleep_time' => array(
+		'vi' => 'Nhịp sinh học ngủ',
+		'en' => 'Sleep rhythm',
+		'ru' => 'Ритм сна',
+		'es' => 'Ritmo del sueño',
+		'zh' => '睡眠节律',
+		'ja' => '睡眠リズム'
+	),
+	'hour' => array(
+		'vi' => 'Giờ',
+		'en' => 'Hour',
+		'ru' => 'Час',
+		'es' => 'Hora',
+		'zh' => '钟头',
+		'ja' => 'アワー'
+	),
+	'minute' => array(
+		'vi' => 'Phút',
+		'en' => 'Minute',
+		'ru' => 'Минут',
+		'es' => 'Minuto',
+		'zh' => '分钟',
+		'ja' => '一刻'
+	),
+	'sleep_time_head' => array(
+		'vi' => 'Nếu bạn dự định thức dậy lúc',
+		'en' => 'If you plan to get up at',
+		'ru' => 'Если вы встаете на',
+		'es' => 'Si te levantas a',
+		'zh' => '如果你起床',
+		'ja' => 'あなたは時に起きる場合'
+	),
+	'wake_up_time_head' => array(
+		'vi' => 'Hoặc nếu bạn muốn ngủ ngay bây giờ',
+		'en' => 'Or if you want to sleep right now',
+		'ru' => 'Или, если вы ложитесь спать прямо сейчас',
+		'es' => 'O si usted va a dormir en este momento',
+		'zh' => '或者，如果你去睡觉，现在',
+		'ja' => 'あるいは場合は、あなたは今すぐに眠りにつきます'
+	),
+	'sleep_time_results' => array(
+		'vi' => 'Bạn nên đi ngủ vào một trong những giờ sau:',
+		'en' => 'You should try to fall asleep at one of the following times:',
+		'ru' => 'Вы должны попытаться заснуть в одном из следующих времен:',
+		'es' => 'Usted debe tratar de conciliar el sueño en uno de los siguientes horarios:',
+		'zh' => '你应该尝试入睡的以下任一：',
+		'ja' => 'あなたは、以下のいずれかの時点で眠りに落ちるようにしてください：'
+	),
+	'wake_up_time_results' => array(
+		'vi' => 'Bạn nên thức dậy vào một trong những giờ sau:',
+		'en' => 'You should try to get up at one of the following times:',
+		'ru' => 'Вы должны попробовать, чтобы встать в один из следующих случаях:',
+		'es' => 'Usted debe tratar de levantarse a uno de los siguientes horarios:',
+		'zh' => '你应该尝试起床的以下任一：',
+		'ja' => 'あなたは、以下のいずれかの時点で、最大取得しようとする必要があります：'
 	),
 	'news' => array(
 		'vi' => 'Tin tức',
@@ -531,6 +611,22 @@ $span_interfaces = array(
 		'zh' => '登录',
 		'ja' => 'ログイン'
 	),
+	'not_yet_registered' => array(
+		'vi' => 'Chưa đăng ký?',
+		'en' => 'Not yet registered?',
+		'ru' => 'Еще не зарегистрированы?',
+		'es' => '¿Todavía no estás registrado?',
+		'zh' => '尚未注册？',
+		'ja' => 'まだ登録されていませんか？'
+	),
+	'already_registered' => array(
+		'vi' => 'Đã đăng ký?',
+		'en' => 'Already registered?',
+		'ru' => 'Уже зарегистрирован?',
+		'es' => '¿Ya registrado?',
+		'zh' => '已经注册？',
+		'ja' => '既に登録されています？'
+	),
 	'register_modal' => array(
 		'vi' => 'Hãy đăng ký ngay và khám phá thêm nhiều tính năng.',
 		'en' => 'Register now to explore more features.',
@@ -562,11 +658,115 @@ $span_interfaces = array(
 		'es' => 'año',
 		'zh' => '年',
 		'ja' => '年'
+	),
+	'keyboard_shortcuts' => array(
+		'vi' => 'Phím tắt',
+		'en' => 'Keyboard shortcuts',
+		'ru' => 'Горячие клавиши',
+		'es' => 'Atajos de teclado',
+		'zh' => '快捷键',
+		'ja' => 'キーボードショートカット'
+	),
+	'for_reference_only' => array(
+		'vi' => 'Chỉ mang tính tham khảo',
+		'en' => 'For reference only',
+		'ru' => 'Только для справки',
+		'es' => 'Solo por referencia',
+		'zh' => '仅供参考',
+		'ja' => '参考のためのみ'
+	),
+	'comments_head' => array(
+		'vi' => 'Mong nhận được ý kiến của các bạn. Hãy để lại bình luận dưới đây.',
+		'en' => 'Look forward to your comments. Put them down here.',
+		'ru' => 'Посмотрите ждем ваших комментариев. Положите их сюда.',
+		'es' => 'Esperamos sus comentarios. Póngalos aquí.',
+		'zh' => '期待您的意见。把它们放在这儿。',
+		'ja' => 'あなたのコメントを楽しみにしています。ここではそれらを置きます。'
+	),
+	'bmi_weight' => array(
+		'vi' => 'Cân nặng:',
+		'en' => 'Weight:',
+		'ru' => 'Вес:',
+		'es' => 'Peso:',
+		'zh' => '重量：',
+		'ja' => '重さ：'
+	),
+	'bmi_height' => array(
+		'vi' => 'Chiều cao:',
+		'en' => 'Height:',
+		'ru' => 'Высота:',
+		'es' => 'Altura:',
+		'zh' => '身高：',
+		'ja' => '身長：'
+	),
+	'bmi_weight_unit' => array(
+		'vi' => 'ký',
+		'en' => 'kg',
+		'ru' => 'кг',
+		'es' => 'kilo',
+		'zh' => '千克',
+		'ja' => 'キロ'
+	),
+	'bmi_height_unit' => array(
+		'vi' => 'mét',
+		'en' => 'metre',
+		'ru' => 'метр',
+		'es' => 'medidor',
+		'zh' => '计',
+		'ja' => 'メーター'
+	),
+	'bmi_value' => array(
+		'vi' => 'Chỉ số BMI:',
+		'en' => 'BMI value:',
+		'ru' => 'Значение ИМТ:',
+		'es' => 'Valor de IMC:',
+		'zh' => 'BMI值：',
+		'ja' => 'BMI値：'
+	),
+	'bmi_explanation' => array(
+		'vi' => 'Đánh giá:',
+		'en' => 'Explanation:',
+		'ru' => 'Объяснение:',
+		'es' => 'Explicación:',
+		'zh' => '说明：',
+		'ja' => '説明：'
+	),
+	'bmi_ideal_weight' => array(
+		'vi' => 'Cân nặng lý tưởng:',
+		'en' => 'Ideal weight:',
+		'ru' => 'Идеальный вес:',
+		'es' => 'Peso ideal:',
+		'zh' => '理想的体重：',
+		'ja' => '理想的な体重：'
+	),
+	'bmi_ideal_height' => array(
+		'vi' => 'Chiều cao lý tưởng:',
+		'en' => 'Ideal height:',
+		'ru' => 'Идеальная высота:',
+		'es' => 'Altura ideal:',
+		'zh' => '理想的身高：',
+		'ja' => '理想の高さ：'
+	),
+	'bmi_recommendation' => array(
+		'vi' => 'Lời khuyên:',
+		'en' => 'Recommendation:',
+		'ru' => 'Рекомендация:',
+		'es' => 'Recomendación:',
+		'zh' => '建议：',
+		'ja' => '推奨事項：'
+	),
+	'bmi' => array(
+		'vi' => 'Chỉ số khối cơ thể',
+		'en' => 'Body mass index',
+		'ru' => 'Индекс массы тела',
+		'es' => 'Índice de masa corporal',
+		'zh' => '身高體重指數',
+		'ja' => 'ボディマス指数'
 	)
 );
 $email_interfaces = array(
 	'hi' => array(
-		'vi' => 'Xin chào',
+		'vi' => 'Xin chào bạn',
 		'en' => 'Hi',
 		'ru' => 'Привет',
 		'es' => 'Hola',
@@ -613,6 +813,14 @@ $email_interfaces = array(
 		'zh' => '这是你的每日建议',
 		'ja' => 'これはあなたの毎日の提案です'
 	),
+	'daily_values' => array(
+		'vi' => 'Các chỉ số nhịp sinh học chính của bạn',
+		'en' => 'Your primary biorhythm values',
+		'ru' => 'Ваши первичные значения биоритмов',
+		'es' => 'Sus valores biorritmo primarias',
+		'zh' => '您的主要生物节律值',
+		'ja' => 'あなたの主なバイオリズム値'
+	),
 	'go_to_your_profile' => array(
 		'vi' => 'Đi đến hồ sơ của bạn',
 		'en' => 'Go to your profile',
@@ -629,6 +837,22 @@ $email_interfaces = array(
 		'zh' => '：',
 		'ja' => '：'
 	),
+	'going_up' => array(
+		'vi' => 'đang lên',
+		'en' => 'going up',
+		'ru' => 'подниматься',
+		'es' => 'subiendo',
+		'zh' => '上升',
+		'ja' => '上がっていく'
+	),
+	'going_down' => array(
+		'vi' => 'đang xuống',
+		'en' => 'going down',
+		'ru' => 'спускаться',
+		'es' => 'bajando',
+		'zh' => '下降',
+		'ja' => '下っていく'
+	),
 	'regards' => array(
 		'vi' => 'Trân trọng,',
 		'en' => 'Best regards,',
@@ -644,6 +868,54 @@ $email_interfaces = array(
 		'es' => 'Sin cambio',
 		'zh' => '没有改变',
 		'ja' => '変更されていません'
+	),
+	'not_mark_as_spam' => array(
+		'vi' => 'Đây không phải là thư rác. Vui lòng không đánh dấu thư rác.',
+		'en' => 'This is not a spam. Please do not mark it as spam.',
+		'ru' => 'Это не спам. Пожалуйста, не отметить его как спам.',
+		'es' => 'Esto no es un spam. Por favor, no marcarlo como spam.',
+		'zh' => '这不是一个垃圾邮件。请不要将其标记为垃圾邮件。',
+		'ja' => 'これはスパムではありません。スパムとしてそれをマークしないでください。'
+	),
+	'definition' => array(
+		'vi' => 'Nhịp sinh học (tiếng Anh: biorhythm) là một chu trình giả thiết về tình trạng khỏe mạnh hay năng lực sinh lý, cảm xúc, hoặc trí thông minh. Một nghiên cứu ở Nhật Bản trên công ty giao thông Ohmi Railway cũng đã lập các biểu đồ sinh học cho các tài xế lái xe của công ty để họ có sự cảnh giác và phòng tránh. Kết quả tai nạn của các tài xế đã giảm 50% từ năm 1969 đến 1970 tại Tokyo.',
+		'en' => 'A biorhythm (from Greek βίος - bios, "life" and ῥυθμός - rhuthmos, "any regular recurring motion, rhythm") is an attempt to predict various aspects of a person\'s life through simple mathematical cycles. Most scientists believe that the idea has no more predictive power than chance and consider the concept an example of pseudoscience.',
+		'ru' => 'Биоритм - (биоритмы) периодически повторяющиеся изменения характера и интенсивности биологических процессов и явлений. Они свойственны живой материи на всех уровнях ее организации — от молекулярных и субклеточных до биосферы. Являются фундаментальным процессом в живой природе. Одни биологические ритмы относительно самостоятельны (например, частота сокращений сердца, дыхания), другие связаны с приспособлением организмов к геофизическим циклам — суточным (например, колебания интенсивности деления клеток, обмена веществ, двигательной активности животных), приливным (например, открывание и закрывание раковин у морских моллюсков, связанные с уровнем морских приливов), годичным (изменение численности и активности животных, роста и развития растений и др.)',
+		'es' => 'Los biorritmos constituyen un intento de predecir aspectos diversos de la vida de un individuo recurriendo a ciclos matemáticos sencillos. La mayoría de los investigadores estima que esta idea no tendría más poder predictivo que el que podría atribuirse al propio azar, considerándola un caso claro de pseudociencia.',
+		'zh' => '生理节律是一種描述人類的身體、情感及智力的假想周期的理論。該概念与生物节律无关。在生物学和医学领域，这个词都是会被小心避免的，因為它被一些人認為是一种伪科学或是前科学。',
+		'ja' => 'バイオリズム（英: biorhythm）とは、「生命」を意味する bio-（バイオ）と「規則的な運動」を意味する rhythm（リズム）の合成語で、生命体の生理状態、感情、知性などは周期的パターンに沿って変化するという仮説、およびそれを図示したグラフである。'
+	),
+	'instruction_video_text' => array(
+		'vi' => 'Video hướng dẫn',
+		'en' => 'Instruction video',
+		'ru' => 'Видео инструкции',
+		'es' => 'Instrucción de vídeo',
+		'zh' => '教学视频',
+		'ja' => '教育ビデオ'
+	),
+	'instruction_video_youtube_id' => array(
+		'vi' => '0od3PsgixvQ',
+		'en' => '7dRGGRcvI0E',
+		'ru' => 'rp8_cTRP4ro',
+		'es' => 'sifJsC3v-Lw',
+		'zh' => 'TG2ngtokaVc',
+		'ja' => 'SJw7lMuKipc'
+	),
+	'keyboard_shortcuts' => array(
+		'vi' => 'Phím tắt: S, K -> Hôm nay; A, J -> Trước, D, L -> Sau; W, I -> Sinh nhật; E, O -> Nhịp sinh học phụ; R, P -> Thành ngữ',
+		'en' => 'Keyboard shortcuts: S, K -> Today; A, J -> Back; D, L -> Forward; W, I -> Birthday; E, O -> Secondary rhythm; R, P -> Proverb',
+		'ru' => 'Горячие клавиши: S, K -> Сегодня; A, J -> Назад; D, L -> Вперед; W, I -> День рождения; E, O -> Вторичный ритм; R, P -> Пословица',
+		'es' => 'Atajos de teclado: S, K -> Hoy; A, J -> Atrás; D, L -> Enviar; W, I -> Cumpleaños; E, O -> Ritmo secundaria; R, P -> Proverbio',
+		'zh' => '快捷键： S，K -> 今天; A，J -> 回去; D，L -> 前进; W，I -> 生辰; E，O -> 次要节奏; R，P -> 谚语',
+		'ja' => 'キーボードショートカット： S、K -> 今日; A、J -> 戻る; D、L -> 前進する; W、I -> バースデー; E、O -> セカンダリリズム; R、P -> ことわざ'
+	),
+	'unsubscribe' => array(
+		'vi' => 'Hủy đăng ký',
+		'en' => 'Unsubscribe',
+		'ru' => 'Отказаться',
+		'es' => 'Darse de baja',
+		'zh' => '退订',
+		'ja' => '退会'
 	)
 );
 $menu_interfaces = array(
@@ -706,20 +978,20 @@ $error_interfaces = array(
 		'ja' => '無効なメール'
 	),
 	'short_pass' => array(
-		'vi' => 'Mật khẩu quá ngắn (08)',
-		'en' => 'Password too short (08)',
-		'ru' => 'Пароль слишком короткий (08)',
-		'es' => 'Contraseña demasiado corta (08)',
-		'zh' => '密码太短 (08)',
-		'ja' => 'パスワードが短すぎます (08)'
-	),
+		'vi' => 'Mật khẩu quá ngắn (≥ 8)',
+		'en' => 'Password too short (≥ 8)',
+		'ru' => 'Пароль слишком короткий (≥ 8)',
+		'es' => 'Contraseña demasiado corta (≥ 8)',
+		'zh' => '密码太短 (≥= 8)',
+		'ja' => 'パスワードが短すぎます (≥ 8)'
+	), 
 	'long_pass' => array(
-		'vi' => 'Mật khẩu quá dài (20)',
-		'en' => 'Password too long (20)',
-		'ru' => 'Пароль слишком долго (20)',
-		'es' => 'Contraseña demasiado largo (20)',
-		'zh' => '密码太长 (20)',
-		'ja' => 'あまりにも長いパスワード (20)'
+		'vi' => 'Mật khẩu quá dài (≤ 20)',
+		'en' => 'Password too long (≤ 20)',
+		'ru' => 'Пароль слишком долго (≤ 20)',
+		'es' => 'Contraseña demasiado largo (≤ 20)',
+		'zh' => '密码太长 (≤ 20)',
+		'ja' => 'あまりにも長いパスワード (≤ 20)'
 	),
 	'no_number_pass' => array(
 		'vi' => 'Mật khẩu phải chứa ít nhất 1 chữ số',
@@ -788,12 +1060,12 @@ $help_interfaces = array(
 		'ja' => '命令'
 	),
 	'help_p' => array(
-		'vi' => 'Nhập thông tin ngày tháng năm sinh Dương lịch của bạn vào ô Ngày sinh. Sau đó, nhấn nút Chạy để hiển thị dự đoán Sức khỏe, Tình cảm, Trí tuệ.',
-		'en' => 'Type in your date of birth into the Date of birth field. Then click Run to know your physical, emotional, intellectual values.',
-		'ru' => 'Введите дату своего рождения в поле День Рождения. Затем нажмите кнопку Идти, чтобы узнать ваши физические, эмоциональные, интеллектуальные ценности.',
-		'es' => 'Escriba su fecha de nacimiento en el campo Fecha de nacimiento. Luego haga clic en Correr para conocer sus valores, físicas, intelectuales y emocionales.',
-		'zh' => '输入你的出生日期为出生场的日期。然后点击运行就知道你的身体，情绪，智力值。',
-		'ja' => '誕生フィールドの日にあなたの生年月日を入力します。 次に、あなたの物理的、感情的、知的な値を知るために実行]をクリックします。'
+		'vi' => 'Nhập thông tin ngày tháng năm sinh Dương lịch của bạn vào ô Ngày sinh. Sau đó, nhấn nút Chạy để hiển thị dự đoán Sức khỏe, Tình cảm, Trí tuệ. Nếu bạn chỉ quan tâm đến Nhịp sinh học ngủ, bạn không cần điền Họ tên và Ngày sinh.',
+		'en' => 'Type in your date of birth into the Date of birth field. Then click Run to know your physical, emotional, intellectual values. If you only care about Sleep Rhythm, you don\'t need to type in your Full name or Date of birth.',
+		'ru' => 'Введите дату своего рождения в поле День Рождения. Затем нажмите кнопку Идти, чтобы узнать ваши физические, эмоциональные, интеллектуальные ценности. Если вы только заботиться о Sleep ритм, вам не нужно вводить полное имя или дату рождения.',
+		'es' => 'Escriba su fecha de nacimiento en el campo Fecha de nacimiento. Luego haga clic en Correr para conocer sus valores, físicas, intelectuales y emocionales. Si sólo se preocupa por el sueño Ritmo, usted no tiene que escribir su nombre o fecha de nacimiento completa.',
+		'zh' => '输入你的出生日期为出生场的日期。然后点击运行就知道你的身体，情绪，智力值。如果你只在乎睡眠节律，你不需要输入您的姓名和出生日期。',
+		'ja' => '誕生フィールドの日にあなたの生年月日を入力します。 次に、あなたの物理的、感情的、知的な値を知るために実行]をクリックします。あなたが唯一の睡眠リズムに関心があるのであれば、あなたは自分のフルネームや生年月日を入力する必要はありません。'
 	),
 	'news_box' => array(
 		'vi' => 'Hiển thị các tin tức liên quan đến bạn.',
@@ -889,8 +1161,8 @@ $information_interfaces = array(
 		'vi' => array(
 			'excellent' => 'Ngày hiện tại của bạn rất tốt, bạn nên tận hưởng ngày này.',
 			'good' => 'Ngày hiện tại của bạn khá tốt, tuy nhiên bạn nên cẩn thận trong ngày này.',
-			'gray' => 'Ngày hiện tại của bạn khá xấu, bạn nên cẩn trọng hơn.',
-			'bad' => 'Ngày hiện tại của bạn rất xấu, bạn nên cực kỳ cẩn thận.'
+			'gray' => 'Ngày hiện tại của bạn hơi xấu, bạn nên cẩn trọng hơn.',
+			'bad' => 'Ngày hiện tại của bạn khá xấu, bạn nên cực kỳ cẩn thận.'
 		),
 		'en' => array(
 			'excellent' => 'Your current day is excellent, enjoy it.',
@@ -925,116 +1197,164 @@ $information_interfaces = array(
 	),
 	'physical' => array(
 		'vi' => array(
-			'excellent' => 'Sức khỏe hiện tại của bạn rất sung mãn, hãy tham gia vận động nhiều hơn.',
-			'good' => 'Sức khỏe hiện tại của bạn khá sung mãn, hãy vận động điều độ.',
-			'gray' => 'Sức khỏe hiện tại của bạn khá kém, hãy nghỉ ngơi một tí.',
-			'bad' => 'Sức khỏe hiện tại của bạn rất kém, hãy nghỉ ngơi nhiều hơn.'
+			'excellent' => 'Sức khỏe hiện tại của bạn rất sung mãn, hãy tham gia vận động nhiều hơn, như vận động thể dục, thể thao, tham gia các cuộc vui, để tận dụng năng lượng nhé.',
+			'good' => 'Sức khỏe hiện tại của bạn khá sung mãn, hãy vận động điều độ, như các hoạt động bơi lội, đi bộ, yoga hoặc các môn thể dục nhẹ nhàng khác nha bạn.',
+			'critical' => 'Sức khỏe hiện tại của bạn đang rơi vào giai đoạn chuyển tiếp, bạn nên nghỉ ngơi nhiều lên nhé, do thể lực bạn đang biến đổi khó lường.',
+			'gray' => 'Sức khỏe hiện tại của bạn hơi kém, hãy nghỉ ngơi một tí, do thể lực đã ở vào mức khá thấp, hãy tích trữ năng lượng để dành vào những lúc sung mãn nha.',
+			'bad' => 'Sức khỏe hiện tại của bạn khá kém, hãy nghỉ ngơi nhiều hơn, bạn đã hoạt động nhiều rồi, thời gian này nên dành để ngủ đông nhé.'
 		),
 		'en' => array(
 			'excellent' => 'Your current health is excellent, you should work out more.',
 			'good' => 'Your current health is quite good, you should work out with care.',
+			'critical' => 'Your current health is in critical period, you should be extremely careful.',
 			'gray' => 'Your current health is not good, take a little rest.',
 			'bad' => 'Your current health is bad, take more rest.'
 		),
 		'ru' => array(
 			'excellent' => 'Ваше текущее здоровье отличное, вы должны работать больше.',
 			'good' => 'Ваше текущее здоровье неплохое, вы должны работать с осторожностью.',
+			'critical' => 'Ваше текущее здоровье в критический период, вы должны быть очень осторожны.',
 			'gray' => 'Ваше текущее здоровье не хорошо, немного отдохнуть.',
 			'bad' => 'Ваше текущее здоровье плохо, взять больше отдыхать.'
 		),
 		'es' => array(
 			'excellent' => 'Su estado de salud actual es excelente, debe trabajar más.',
 			'good' => 'Su estado de salud actual es bastante bueno, usted debe hacer ejercicio con cuidado.',
+			'critical' => 'Su salud actual está en el período crítico , debe ser extremadamente cuidadoso.',
 			'gray' => 'Su estado de salud actual no es buena, tomar un poco de descanso.',
 			'bad' => 'Su estado de salud actual es mala, tener más descanso.'
 		),
 		'zh' => array(
 			'excellent' => '您当前的健康是优秀的，你应该更多。',
 			'good' => '您当前的健康是相当不错的，你应该制定出谨慎。',
+			'critical' => '您当前的健康是关键时期，你应该非常小心。',
 			'gray' => '你目前的身体不好，需要一点休息。',
 			'bad' => '您当前的健康是不好的，需要更多的休息。'
 		),
 		'ja' => array(
 			'excellent' => 'あなたの現在の健康状態が優れている、あなたはより多くを動作するはずです。',
 			'good' => 'あなたの現在の健康状態はかなり良いですが、あなたが注意して動作するはずです。',
+			'critical' => 'あなたの現在の健康状態は、臨界期に、あなたは非常に慎重であるべきです。',
 			'gray' => 'あなたの現在の健康状態が良くない、少し休憩を取る。',
 			'bad' => 'あなたの現在の健康状態が悪いと、より多くの休息を取る。'
 		)
 	),
 	'emotional' => array(
 		'vi' => array(
-			'excellent' => 'Tâm trạng hiện tại của bạn rất ổn, hãy tham gia gặp gỡ bạn bè nhiều hơn.',
-			'good' => 'Tâm trạng hiện tại của bạn khá ổn, hãy gặp gỡ bạn bè.',
-			'gray' => 'Tâm trạng hiện tại của bạn khá tệ, bạn hơi dễ cáu kỉnh.',
-			'bad' => 'Tâm trạng hiện tại của bạn rất tệ, bạn nên tránh các cuộc xung đột.'
+			'excellent' => 'Tâm trạng hiện tại của bạn rất ổn, hãy tham gia gặp gỡ bạn bè nhiều hơn, dành thời gian hẹn hò, đi chơi với những người thân yêu của mình để tận dụng lúc cảm xúc đang thăng hoa bạn nhé.',
+			'good' => 'Tâm trạng hiện tại của bạn khá ổn, hãy gặp gỡ bạn bè, người thân, nhưng cũng chú ý tránh những xung đột nhỏ để cho cuộc vui được trọn vẹn nha bạn.',
+			'critical' => 'Tâm trạng hiện tại của bạn đang rơi vào giai đoạn chuyển giao, hãy chú ý nhiều đến cảm xúc của mình, do đây là lúc cảm xúc thay đổi khó lường.',
+			'gray' => 'Tâm trạng hiện tại của bạn hơi tệ, bạn hơi dễ cáu kỉnh, dễ cãi nhau, vì thế, bạn nên tìm đến những góc nhỏ cho riêng mình, để tĩnh tâm lại bạn nhé.',
+			'bad' => 'Tâm trạng hiện tại của bạn khá tệ, bạn nên tránh các cuộc xung đột, cãi vã, vì lúc này điều đó rất dễ xảy ra. Bạn nên dành thời gian ở một mình, khoảng thời gian này sẽ qua mau thôi.'
 		),
 		'en' => array(
 			'excellent' => 'Your current mood is excellent, you meet more friends.',
 			'good' => 'Your current mood is quite good, you should meet some friends.',
+			'critical' => 'Your current mood is in critical period, you should pay more attention to your feelings.',
 			'gray' => 'Your current mood is not good, you are easily annoyed.',
 			'bad' => 'Your current mood is bad, avoid conflicts.'
 		),
 		'ru' => array(
 			'excellent' => 'Ваше текущее настроение отличное, вы встретите больше друзей.',
 			'good' => 'Ваше текущее настроение неплохое, вы должны встретиться с друзьями.',
+			'critical' => 'Ваше текущее настроение в критический период, вы должны уделять больше внимания на ваши чувства.',
 			'gray' => 'Ваше текущее настроение не очень хорошо, вы легко раздражаться.',
 			'bad' => 'Ваше текущее настроение плохое, во избежание конфликтов.'
 		),
 		'es' => array(
 			'excellent' => 'Su estado de ánimo actual es excelente, te encuentras con más amigos.',
 			'good' => 'Su estado de ánimo actual es bastante buena, usted debe cumplir con algunos amigos.',
+			'critical' => 'Su estado de ánimo actual está en el período crítico, se debe prestar más atención a sus sentimientos.',
 			'gray' => 'Su estado de ánimo actual no es bueno, ustedes son fácilmente molesto.',
 			'bad' => 'Su estado de ánimo actual es mala, evitar conflictos.'
 		),
 		'zh' => array(
 			'excellent' => '你现在的心情非常好，你认识更多的朋友。',
 			'good' => '你现在的心情是相当不错的，你应该满足一些朋友。',
+			'critical' => '您现在的心情是关键时期，你应该更加注意你的感受。',
 			'gray' => '你现在的心情不是很好，你很容易生气。',
 			'bad' => '你现在的心情不好，避免冲突。'
 		),
 		'ja' => array(
 			'excellent' => 'あなたの現在の気分が優れている、あなたはより多くの友人に会う。',
 			'good' => 'あなたの現在の気分はかなり良いですが、あなたは何人かの友人を満たしている必要があります。',
+			'critical' => 'あなたの現在の気分は、臨界期に、あなたはあなたの気持ちにもっと注意を払う必要があります。',
 			'gray' => 'あなたの現在の気分が良くない、あなたは簡単にイライラです。',
 			'bad' => 'あなたの現在の気分が悪い、競合を避ける。'
 		)
 	),
 	'intellectual' => array(
 		'vi' => array(
-			'excellent' => 'Trí tuệ hiện tại của bạn rất sáng suốt, bạn có thể đưa ra những quyết định đúng đắn.',
-			'good' => 'Trí tuệ hiện tại của bạn khá sáng suốt, bạn có thể đưa ra quyết định nhưng cần suy tính kỹ.',
-			'gray' => 'Trí tuệ hiện tại của bạn khá thiếu sáng suốt, bạn nên suy nghĩ kỹ trước khi ra quyết định.',
-			'bad' => 'Trí tuệ hiện tại của bạn rất thiếu sáng suốt, bạn không nên đưa ra quyết định lớn.'
+			'excellent' => 'Trí tuệ hiện tại của bạn rất sáng suốt, bạn có thể đưa ra những quyết định đúng đắn, có những suy nghĩ rất chính xác, hợp lý.',
+			'good' => 'Trí tuệ hiện tại của bạn khá sáng suốt, bạn có thể đưa ra quyết định nhưng cần suy tính kỹ, bởi vì suy nghĩ của bạn chưa đạt độ chính xác cao nhất có thể.',
+			'critical' => 'Trí tuệ hiện tại của bạn đang ở trong giai đoạn chuyển biến, bạn nên chú ý kỹ hơn đến suy nghĩ của mình, vì nó có thể dẫn đến những quyết định sai lầm.',
+			'gray' => 'Trí tuệ hiện tại của bạn hơi thiếu sáng suốt, bạn nên suy nghĩ kỹ trước khi ra quyết định. Nếu cần thiết, hãy hỏi thêm ý kiến của người thân, bạn bè, đồng nghiệp.',
+			'bad' => 'Trí tuệ hiện tại của bạn khá thiếu sáng suốt, bạn không nên đưa ra quyết định lớn. Nếu phải ra quyết định, bạn nhất định nên hỏi ý kiến người khác.'
 		),
 		'en' => array(
 			'excellent' => 'Your current intellect is excellent, you can make great decisions.',
 			'good' => 'Your current intellect is quite good, you can make decisions with a little care.',
+			'critical' => 'Your current intellect is in critical period, you should pay extra attention to your thoughts, as it may lead to wrong decisions.',
 			'gray' => 'Your current intellect is not good, you should think twice before making decisions.',
 			'bad' => 'Your current intellect is bad, you should not make big decisions.'
 		),
 		'ru' => array(
 			'excellent' => 'Ваше текущее интеллект отлично, вы можете сделать большие решения.',
 			'good' => 'Ваше текущее интеллект является достаточно хорошим, вы можете принимать решения с особого ухода.',
+			'critical' => 'Ваше текущее интеллект в критический период, следует обратить особое внимание на ваши мысли, так как это может привести к неправильным решениям.',
 			'gray' => 'Ваше текущее интеллект не является хорошим, вы должны подумать дважды, прежде чем принимать решения.',
 			'bad' => 'Ваше текущее интеллект плохо, вы не должны делать большие решения.'
 		),
 		'es' => array(
 			'excellent' => 'Su intelecto actual es excelente, puedes tomar grandes decisiones.',
 			'good' => 'Su intelecto actual es bastante buena, se puede tomar decisiones con un poco de cuidado.',
+			'critical' => 'Su intelecto actual está en período crítico, se debe prestar especial atención a sus pensamientos, ya que puede conducir a decisiones equivocadas.',
 			'gray' => 'Su intelecto actual no es buena, usted debe pensar dos veces antes de tomar decisiones.',
 			'bad' => 'Su intelecto actual es mala, no debe tomar decisiones importantes.'
 		),
 		'zh' => array(
 			'excellent' => '您当前的智力是优秀的，你可以做出伟大的决定。',
 			'good' => '您当前的智力是相当不错的，你可以用一点点小心做出决定。',
+			'critical' => '您当前的智力是关键时期，你要格外注意你的想法，因为这可能会导致错误的决策。',
 			'gray' => '您当前的智力不好，你做决策前，应三思而后行。',
 			'bad' => '您当前的智力是坏的，你不应该做出重大的决定。'
 		),
 		'ja' => array(
 			'excellent' => 'あなたの現在の知性は、あなたは偉大な決定を行うことができ、優れたものである。',
 			'good' => 'あなたの現在の知性はかなり良いですが、あなたは少し注意して意思決定を行うことができます。',
+			'critical' => 'それは間違った意思決定につながる可能性としてあなたの現在の知性は、臨界期に、あなたは、あなたの考えに特別な注意を払う必要がありますされています。',
 			'gray' => 'あなたの現在の知性はあなたが意思決定をする前に二度考える必要があり、良いではありません。',
 			'bad' => 'あなたの現在の知性は、あなたは大きな意思決定を行うべきではない、悪いです。'
 		)
 	)
 );
+// DKIM is used to sign e-mails. If you change your RSA key, apply modifications to the DNS DKIM record of the mailing (sub)domain too !
+// Disclaimer : the php openssl extension can be buggy with Windows, try with Linux first
+
+// To generate a new private key with Linux :
+// openssl genrsa -des3 -out private.pem 1024
+// Then get the public key
+// openssl rsa -in private.pem -out public.pem -outform PEM -pubout
+
+// Edit with your own info :
+
+define('MAIL_RSA_PASSPHRASE', 'nhipsinhhoc');
+
+define('MAIL_RSA_PRIV',
+'-----BEGIN RSA PRIVATE KEY-----
+
+-----END RSA PRIVATE KEY-----');
+
+define('MAIL_RSA_PUBL',
+'-----BEGIN PUBLIC KEY-----
+
+-----END PUBLIC KEY-----');
+
+// Domain or subdomain of the signing entity (i.e. the domain where the e-mail comes from)
+define('MAIL_DOMAIN', 'mail.nhipsinhhoc.vn');  
+
+// Allowed user, defaults is "@<MAIL_DKIM_DOMAIN>", meaning anybody in the MAIL_DKIM_DOMAIN domain. Ex: 'admin@mydomain.tld'. You'll never have to use this unless you do not control the "From" value in the e-mails you send.
+define('MAIL_IDENTITY', NULL);
+
+// Selector used in your DKIM DNS record, e.g. : selector._domainkey.MAIL_DKIM_DOMAIN
+define('MAIL_SELECTOR', 'x');

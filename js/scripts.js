@@ -132,24 +132,53 @@ function maskInput(input, textbox, location, delimiter) {
 function randomFromTo(from, to) {
 	return Math.floor(Math.random() * (to - from + 1) + from);
 }
+function retDate(dateObj) {
+	var formatted = '';
+	var pm = false;
+	formatted = dateObj.getHours();
+	if(dateObj.getMinutes() < 10) {
+		formatted = formatted + ":0" + dateObj.getMinutes();
+	} else {
+		formatted = formatted + ":" + dateObj.getMinutes();
+	}
+	return formatted;
+}
 function analogClock(){
 }
-analogClock.prototype.run = function() {
+analogClock.prototype.run = function(){
 	var date = new Date();
 	var second = date.getSeconds()*6;
 	var minute = date.getMinutes()*6+second/60;
 	var hour = ((date.getHours()%12)/12)*360+90+minute/12;
-	jQuery('#hour').css('transform','rotate('+hour+'deg)');
-	jQuery('#minute').css('transform','rotate('+minute+'deg)');
-	jQuery('#second').css('transform', 'rotate('+second+'deg)');
+	$('#hour').css('transform','rotate('+hour+'deg)');
+	$('#minute').css('transform','rotate('+minute+'deg)');
+	$('#second').css('transform', 'rotate('+second+'deg)');
 };
-$.fn.textWidth = function() {
+$.fn.textWidth = function(){
 	var htmlOrg = $(this).html();
 	var htmlCalc = '<span>'+htmlOrg+'</span>';
 	$(this).html(htmlCalc);
 	var width = $(this).find('span:first').width();
 	$(this).html(htmlOrg);
 	return width;
+};
+$.fn.longTap = function(options) {
+	options = $.extend({
+		delay: 1000,
+		onRelease: null
+	}, options);
+	var eventType = {
+		mousedown: 'ontouchstart' in window ? 'touchstart' : 'mousedown',
+		mouseup: 'ontouchend' in window ? 'touchend' : 'mouseup'
+	};
+	return this.each(function(){
+		$(this).on(eventType.mousedown + '.longtap', function(){
+			$(this).data('touchstart', +new Date);
+		}).on(eventType.mouseup + '.longtap', function(e) {
+			var now = +new Date, than = $(this).data('touchstart');
+			now - than >= options.delay && options.onRelease && options.onRelease.call(this, e);
+		});
+	});
 };
 // Highcharts plugin for displaying value information in the legend
 // Author: Torstein Hønsi
@@ -469,16 +498,16 @@ function updateInterfaceLanguage(langCode) {
 		updateExplanation(langCode);
 		$('#explanation').attr('data-lang', langCode);
 		$('#pham_tung > span.translate').attr('data-title',$('#pham_tung > span.translate').attr('data-lang-'+langCode));
-		$('span.translate').each(function() {
+		$('span.translate').each(function(){
 			$(this).text($(this).attr('data-lang-'+langCode));
 		});
-		$('input.translate').each(function() {
+		$('input.translate').each(function(){
 			$(this).text($(this).attr('data-lang-'+langCode)).attr('placeholder',$(this).attr('data-lang-'+langCode));
 		});
-		$('input[type="submit"].translate').each(function() {
+		$('input[type="submit"].translate').each(function(){
 			$(this).val($(this).attr('data-lang-'+langCode));
 		});
-		$('label.placeholder').each(function() {
+		$('label.placeholder').each(function(){
 			$(this).text($(this).next().attr('data-lang-'+langCode));
 		});
 		$.cookie('NSH:lang', langCode);
@@ -490,21 +519,30 @@ function updateInterfaceLanguage(langCode) {
 }
 function loadResults(dob,diff,isSecondary,dtChange,partnerDob,langCode) {
 	if ($('#results').length) {
+		ajaxData = {
+			dob: dob,
+			diff: diff,
+			is_secondary: isSecondary,
+			dt_change: dtChange,
+			partner_dob: partnerDob,
+			lang_code: langCode
+		};
+		if (isset(fullname)) {
+			ajaxData.fullname = fullname;
+		}
 		$.ajax({
 			url: '/triggers/results.php',
 			type: 'GET',
 			cache: false,
-			data: {
-				dob: dob,
-				diff: diff,
-				is_secondary: isSecondary,
-				dt_change: dtChange,
-				partner_dob: partnerDob,
-				lang_code: langCode
-			},
+			data: ajaxData,
 			dataType: 'html',
 			success: function(data) {
-				$('#results').html(data);
+				$('#results').html(data).promise().done(function(){
+					var date = new Date(dtChange);
+					var dateString = moment(date);
+					dateString.locale(langCode);
+					$.notify(dateString.format('LLLL'));
+				});
 				if ($('body').hasClass('has_dob') || $('body').hasClass('member')) {
 					manipulateBirthday();
 					updateHeadTitleBirthday(langCode,dtChange);
@@ -531,7 +569,12 @@ function loadExplanationChartResults(dob,diff,isSecondary,dtChange,partnerDob,la
 			},
 			dataType: 'html',
 			success: function(data) {
-				$('#explanation_chart_results').html(data);
+				$('#explanation_chart_results').html(data).promise().done(function(){
+					var date = new Date(dtChange);
+					var dateString = moment(date);
+					dateString.locale(langCode);
+					$.notify(dateString.format('LLLL'));
+				});
 			}
 		});
 	}
@@ -552,7 +595,12 @@ function loadEmbedChartResults(dob,diff,isSecondary,dtChange,partnerDob,langCode
 			},
 			dataType: 'html',
 			success: function(data) {
-				$('#embed_chart_results').html(data);
+				$('#embed_chart_results').html(data).promise().done(function(){
+					var date = new Date(dtChange);
+					var dateString = moment(date);
+					dateString.locale(langCode);
+					$.notify(dateString.format('LLLL'));
+				});
 			}
 		});
 	}
@@ -568,10 +616,28 @@ function loadProverb(langCode) {
 			},
 			dataType: 'html',
 			success: function(data) {
-				$('#proverb').html(data);
-				if ($('body').hasClass('has_dob')) {
-					manipulateBirthday();
-				}
+				$('#proverb').html(data).promise().done(function(){
+					switch (langCode) {
+						case 'vi':
+							$.notify('Thành ngữ mới');
+							break;
+						case 'en':
+							$.notify('New proverb');
+							break;
+						case 'ru':
+							$.notify('Новый пословица');
+							break;
+						case 'es':
+							$.notify('Nueva proverbio');
+							break;
+						case 'zh':
+							$.notify('新谚语');
+							break;
+						case 'ja':
+							$.notify('新しいことわざ');
+							break;
+					}
+				});;
 			}
 		});
 	}
@@ -582,12 +648,36 @@ function loadNews(langCode) {
 			url: '/triggers/news.php',
 			type: 'GET',
 			cache: false,
+			global: false,
 			data: {
 				lang_code: langCode
 			},
 			dataType: 'html',
 			success: function(data) {
 				$('#news ul').html(data);
+			}
+		});
+	}
+}
+function loadComments(langCode) {
+	if ($('#comments').length) {
+		if (window.FB) {
+			$('#facebook-jssdk, #fb-root').remove();
+			delete window.FB;
+		}
+		$.ajax({
+			url: '/triggers/comments.php',
+			type: 'GET',
+			cache: false,
+			global: false,
+			data: {
+				lang_code: langCode
+			},
+			dataType: 'html',
+			success: function(data) {
+				$('#comments').html(data).ajaxComplete(function(){
+					FB.XFBML.parse(document.body)
+				});
 			}
 		});
 	}
@@ -970,13 +1060,12 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 								default:
 									break;
 							}
-							console.log(this.x);
 						},
-						mouseOver: function() {
+						mouseOver: function(){
 							$('#rhythm_id_'+this.series.index).addClass('rhythm_hover');
 							$('#rhythm_id_'+this.series.index).find('td.value > span').css('color',this.series.color);
 						},
-						mouseOut: function() {
+						mouseOut: function(){
 							$('#rhythm_id_'+this.series.index).removeClass('rhythm_hover');
 							$('#rhythm_id_'+this.series.index).find('td.value > span').css('color','black');
 						}
@@ -1022,7 +1111,6 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'hide');
 				$(this).removeClass('icon-heart').addClass('icon-heart-empty');
 			}
-			console.log(id);
 		});
 		$('i.rhythm_toggle').on('click', function(){
 			id = $(this).attr('data-rhythm-id');
@@ -1031,12 +1119,10 @@ function renderChart(selector,titleText,percentageText,dateText,datesArray,today
 				series.show();
 				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'show');
 				$(this).removeClass('icon-heart-empty').addClass('icon-heart');
-				console.log(id);
 			} else if (series.visible) {
 				series.hide();
 				$.cookie('NSH:rhythm-'+type+'-id-'+id, 'hide');
 				$(this).removeClass('icon-heart').addClass('icon-heart-empty');
-				console.log(id);
 			}
 		});
 	}
@@ -1082,7 +1168,7 @@ function editPerson() {
 			cache: false,
 			data: ajaxData,
 			dataType: 'text',
-			success: function() {
+			success: function(){
 				$.ajax({
 					url: '/triggers/person_list.php',
 					type: 'GET',
@@ -1108,7 +1194,7 @@ function removePerson() {
 			cache: false,
 			data: ajaxData,
 			dataType: 'text',
-			success: function() {
+			success: function(){
 				$.ajax({
 					url: '/triggers/person_list.php',
 					type: 'GET',

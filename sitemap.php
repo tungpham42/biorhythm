@@ -1,5 +1,4 @@
 <?php
-header('Content-Disposition: attachment; filename=sitemap.xml');
 header('Content-type: application/xml');
 header('Pragma: public');
 header('Cache-Control: private');
@@ -7,7 +6,7 @@ header('Expires: -1');
 require realpath($_SERVER['DOCUMENT_ROOT']).'/includes/init_trigger.inc.php';
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/</loc>
 		<xhtml:link rel="alternate" hreflang="vi" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/','vi'); ?>"/>
@@ -18,6 +17,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 		<xhtml:link rel="alternate" hreflang="ja" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/','ja'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?lang=vi</loc>
@@ -29,6 +29,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 		<xhtml:link rel="alternate" hreflang="vi" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/','vi'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?lang=en</loc>
@@ -40,6 +41,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 		<xhtml:link rel="alternate" hreflang="en" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/','en'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?lang=ru</loc>
@@ -51,6 +53,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 		<xhtml:link rel="alternate" hreflang="ru" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/','ru'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?lang=es</loc>
@@ -62,6 +65,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 		<xhtml:link rel="alternate" hreflang="es" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/','es'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?lang=zh</loc>
@@ -73,6 +77,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 		<xhtml:link rel="alternate" hreflang="zh" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/','zh'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?lang=ja</loc>
@@ -84,46 +89,55 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 		<xhtml:link rel="alternate" hreflang="ja" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/','ja'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/bmi</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/xemngay</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/game</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/blog</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?p=bmi</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?p=lunar</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?p=pong</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo $_SERVER['SERVER_NAME']; ?>/?p=race</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 <?php
 $users = load_all_array('nsh_users');
@@ -141,6 +155,7 @@ for ($i = 0; $i < $count; ++$i):
 		<xhtml:link rel="alternate" hreflang="ja" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'ja'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'vi'); ?></loc>
@@ -152,6 +167,7 @@ for ($i = 0; $i < $count; ++$i):
 		<xhtml:link rel="alternate" hreflang="vi" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'vi'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'en'); ?></loc>
@@ -163,6 +179,7 @@ for ($i = 0; $i < $count; ++$i):
 		<xhtml:link rel="alternate" hreflang="en" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'en'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'ru'); ?></loc>
@@ -174,6 +191,7 @@ for ($i = 0; $i < $count; ++$i):
 		<xhtml:link rel="alternate" hreflang="ru" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'ru'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'es'); ?></loc>
@@ -196,6 +214,7 @@ for ($i = 0; $i < $count; ++$i):
 		<xhtml:link rel="alternate" hreflang="zh" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'zh'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 	<url>
 		<loc>http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'ja'); ?></loc>
@@ -207,6 +226,7 @@ for ($i = 0; $i < $count; ++$i):
 		<xhtml:link rel="alternate" hreflang="ja" href="http://<?php echo change_url_lang($_SERVER['SERVER_NAME'].'/?fullname='.str_replace(' ','+',$users[$i]['name']).'&dob='.$users[$i]['dob'],'ja'); ?>"/>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
+		<mobile:mobile/>
 	</url>
 <?php
 endfor;

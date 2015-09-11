@@ -1,9 +1,13 @@
 country_code,media_type,feed_type,style,s,p
-vn,apps,toppaidapplications,white,36,30
+vn,apps,topfreeapplications,white,36,27
+vn,books,topfreeebooks,white,38,42
+vn,books,toppaidebooks,white,38,43
 vn,music,topalbums,white,34,11
 vn,music,topsongs,white,34,1
 vn,movie,topmovies,white,33,15
-vn,apps,toppaidapplications,black,36,30
+vn,apps,topfreeapplications,black,36,27
+vn,books,topfreeebooks,black,38,42
+vn,books,toppaidebooks,black,38,43
 vn,music,topalbums,black,34,11
 vn,music,topsongs,black,34,1
 vn,movie,topmovies,black,33,15

@@ -1,6 +1,6 @@
 <?php
 class Chart {
-	protected $_dob, $_diff, $_date, $_is_secondary, $_dt_change, $_lang_code, $_partner_dob, $_rhythms_count,  $_dates_count, $_today_index, $_title_text, $_explanation_title_text, $_percentage_text, $_average_text, $_download_jpeg_text, $_download_pdf_text, $_download_png_text, $_download_svg_text, $_print_chart_text, $_reset_zoom_text, $_date_text, $_life_path_text, $_age, $_news_h5, $_info_h5, $_statistics_h5, $_compatibility_h5, $_lunar_h5, $_controls_h5, $_dates_json, $_rhythms_json;
+	protected $_dob, $_diff, $_date, $_is_secondary, $_dt_change, $_lang_code, $_partner_dob, $_rhythms_count,  $_dates_count, $_today_index, $_title_text, $_explanation_title_text, $_percentage_text, $_average_text, $_download_jpeg_text, $_download_pdf_text, $_download_png_text, $_download_svg_text, $_print_chart_text, $_reset_zoom_text, $_date_text, $_life_path_text, $_age, $_news_h5, $_info_h5, $_statistics_h5, $_compatibility_h5, $_lunar_h5, $_controls_h5, $_dates_json, $_rhythms_json, $_fullname;
 	protected $_rhythms = array();
 	protected $_days = array();
 	protected $_dates = array();
@@ -242,6 +242,9 @@ class Chart {
 				break;
 		}
 	}
+	function set_fullname($fullname) {
+		$this->_fullname = $fullname;
+	}
 	function serialize_chart_data() {
 		$chart_data = '[{name:"'.$this->_average_text.'",data:[';
 		for ($d = 0; $d < $this->_dates_count; ++$d) {
@@ -281,34 +284,132 @@ class Chart {
 		} else if ($average >= 0 && $average < 25) {
 			$average_text = $information_interfaces['average'][$this->_lang_code]['bad'];
 		}
-		if ($physical >= 75 && $physical <= 100) {
+		if ($physical >= 80 && $physical <= 100) {
 			$physical_text = $information_interfaces['physical'][$this->_lang_code]['excellent'];
-		} else if ($physical >= 50 && $physical < 75) {
+		} else if ($physical >= 60 && $physical < 80) {
 			$physical_text = $information_interfaces['physical'][$this->_lang_code]['good'];
-		} else if ($physical >= 25 && $physical < 50) {
+		} else if ($physical >= 40 && $physical < 60) {
+			$physical_text = $information_interfaces['physical'][$this->_lang_code]['critical'];
+		} else if ($physical >= 20 && $physical < 40) {
 			$physical_text = $information_interfaces['physical'][$this->_lang_code]['gray'];
-		} else if ($physical >= 0 && $physical < 25) {
+		} else if ($physical >= 0 && $physical < 20) {
 			$physical_text = $information_interfaces['physical'][$this->_lang_code]['bad'];
 		}
-		if ($emotional >= 75 && $emotional <= 100) {
+		if ($emotional >= 80 && $emotional <= 100) {
 			$emotional_text = $information_interfaces['emotional'][$this->_lang_code]['excellent'];
-		} else if ($emotional >= 50 && $emotional < 75) {
+		} else if ($emotional >= 60 && $emotional < 80) {
 			$emotional_text = $information_interfaces['emotional'][$this->_lang_code]['good'];
-		} else if ($emotional >= 25 && $emotional < 50) {
+		} else if ($emotional >= 40 && $emotional < 60) {
+			$emotional_text = $information_interfaces['emotional'][$this->_lang_code]['critical'];
+		} else if ($emotional >= 20 && $emotional < 40) {
 			$emotional_text = $information_interfaces['emotional'][$this->_lang_code]['gray'];
-		} else if ($emotional >= 0 && $emotional < 25) {
+		} else if ($emotional >= 0 && $emotional < 20) {
 			$emotional_text = $information_interfaces['emotional'][$this->_lang_code]['bad'];
 		}
-		if ($intellectual >= 75 && $intellectual <= 100) {
+		if ($intellectual >= 80 && $intellectual <= 100) {
 			$intellectual_text = $information_interfaces['intellectual'][$this->_lang_code]['excellent'];
-		} else if ($intellectual >= 50 && $intellectual < 75) {
+		} else if ($intellectual >= 60 && $intellectual < 80) {
 			$intellectual_text = $information_interfaces['intellectual'][$this->_lang_code]['good'];
-		} else if ($intellectual >= 25 && $intellectual < 50) {
+		} else if ($intellectual >= 40 && $intellectual < 60) {
+			$intellectual_text = $information_interfaces['intellectual'][$this->_lang_code]['critical'];
+		} else if ($intellectual >= 20 && $intellectual < 40) {
 			$intellectual_text = $information_interfaces['intellectual'][$this->_lang_code]['gray'];
-		} else if ($intellectual >= 0 && $intellectual < 25) {
+		} else if ($intellectual >= 0 && $intellectual < 20) {
 			$intellectual_text = $information_interfaces['intellectual'][$this->_lang_code]['bad'];
 		}
 		return $average_text.' '.$physical_text.' '.$emotional_text.' '.$intellectual_text;
+	}
+	function get_infor_details() {
+		global $information_interfaces;
+		$average = (float)average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms);
+		$physical = (float)bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),23);
+		$emotional = (float)bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),28);
+		$intellectual = (float)bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),33);
+		$average_text = '';
+		$physical_text = '';
+		$emotional_text = '';
+		$intellectual_text = '';
+		$plus = '<i class="icon-circle-plus"></i> ';
+		$minus = '<i class="icon-circle-minus"></i> ';
+		$mark = '<i class="icon-circle-exclamation-mark"></i> ';
+		$hand_right = ' <i class="icon-hand-right"></i>  ';
+		if ($average >= 75 && $average <= 100) {
+			$average_text = $plus.$plus.$hand_right.$information_interfaces['average'][$this->_lang_code]['excellent'];
+		} else if ($average >= 50 && $average < 75) {
+			$average_text = $plus.$hand_right.$information_interfaces['average'][$this->_lang_code]['good'];
+		} else if ($average >= 25 && $average < 50) {
+			$average_text = $minus.$hand_right.$information_interfaces['average'][$this->_lang_code]['gray'];
+		} else if ($average >= 0 && $average < 25) {
+			$average_text = $minus.$minus.$hand_right.$information_interfaces['average'][$this->_lang_code]['bad'];
+		}
+		if ($physical >= 80 && $physical <= 100) {
+			$physical_text = $plus.$plus.$hand_right.$information_interfaces['physical'][$this->_lang_code]['excellent'];
+		} else if ($physical >= 60 && $physical < 80) {
+			$physical_text = $plus.$hand_right.$information_interfaces['physical'][$this->_lang_code]['good'];
+		} else if ($physical >= 40 && $physical < 60) {
+			$physical_text = $mark.$hand_right.$information_interfaces['physical'][$this->_lang_code]['critical'];
+		} else if ($physical >= 20 && $physical < 40) {
+			$physical_text = $minus.$hand_right.$information_interfaces['physical'][$this->_lang_code]['gray'];
+		} else if ($physical >= 0 && $physical < 20) {
+			$physical_text = $minus.$minus.$hand_right.$information_interfaces['physical'][$this->_lang_code]['bad'];
+		}
+		if ($emotional >= 80 && $emotional <= 100) {
+			$emotional_text = $plus.$plus.$hand_right.$information_interfaces['emotional'][$this->_lang_code]['excellent'];
+		} else if ($emotional >= 60 && $emotional < 80) {
+			$emotional_text = $plus.$hand_right.$information_interfaces['emotional'][$this->_lang_code]['good'];
+		} else if ($emotional >= 40 && $emotional < 60) {
+			$emotional_text = $mark.$hand_right.$information_interfaces['emotional'][$this->_lang_code]['critical'];
+		} else if ($emotional >= 20 && $emotional < 40) {
+			$emotional_text = $minus.$hand_right.$information_interfaces['emotional'][$this->_lang_code]['gray'];
+		} else if ($emotional >= 0 && $emotional < 20) {
+			$emotional_text = $minus.$minus.$hand_right.$information_interfaces['emotional'][$this->_lang_code]['bad'];
+		}
+		if ($intellectual >= 80 && $intellectual <= 100) {
+			$intellectual_text = $plus.$plus.$hand_right.$information_interfaces['intellectual'][$this->_lang_code]['excellent'];
+		} else if ($intellectual >= 60 && $intellectual < 80) {
+			$intellectual_text = $plus.$hand_right.$information_interfaces['intellectual'][$this->_lang_code]['good'];
+		} else if ($intellectual >= 40 && $intellectual < 60) {
+			$intellectual_text = $mark.$hand_right.$information_interfaces['intellectual'][$this->_lang_code]['critical'];
+		} else if ($intellectual >= 20 && $intellectual < 40) {
+			$intellectual_text = $minus.$hand_right.$information_interfaces['intellectual'][$this->_lang_code]['gray'];
+		} else if ($intellectual >= 0 && $intellectual < 20) {
+			$intellectual_text = $minus.$minus.$hand_right.$information_interfaces['intellectual'][$this->_lang_code]['bad'];
+		}
+		return '<p>'.$average_text.'</p><p>'.$physical_text.'</p><p>'.$emotional_text.'</p><p>'.$intellectual_text.'</p>';
+	}
+	function get_birthday_countdown() {
+		$birthday_countdown = '';
+		switch ($this->_lang_code) {
+			case 'vi':
+				$birthday_countdown = 'Còn '.countdown_birthday($this->_dob, $this->_date).' ngày nữa là tới sinh nhật của bạn.';
+				break;
+			case 'en':
+				$birthday_countdown = countdown_birthday($this->_dob, $this->_date).' '.pluralize(countdown_birthday($this->_dob, $this->_date),'day').' until your birthday.';
+				break;
+			case 'ru':
+				$birthday_countdown = countdown_birthday($this->_dob, $this->_date).' дней до своего дня рождения.';
+				break;
+			case 'es':
+				$birthday_countdown = countdown_birthday($this->_dob, $this->_date).' '.pluralize(countdown_birthday($this->_dob, $this->_date),'día').' hasta su cumpleaños.';
+				break;
+			case 'zh':
+				$birthday_countdown = countdown_birthday($this->_dob, $this->_date).'天，直到你的生日。';
+				break;
+			case 'ja':
+				$birthday_countdown = 'あなたの誕生日まで'.countdown_birthday($this->_dob, $this->_date).'日。';
+				break;
+		}
+		return $birthday_countdown;
+	}
+	function get_infor_values() {
+		global $email_interfaces;
+		$infor_values = '<ul>';
+		$infor_values .= '<li>'.$this->_average_text.$email_interfaces['colon'][$this->_lang_code].' '.percent_average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms).' - '.((average_bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$this->_rhythms) < average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms)) ? $email_interfaces['going_up'][$this->_lang_code]: $email_interfaces['going_down'][$this->_lang_code]).'</li>';
+		foreach ($this->_rhythms as $rhythm) {
+			$infor_values .= '<li>'.$this->get_rhythm_name($rhythm).$email_interfaces['colon'][$this->_lang_code].' '.percent_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale']).' - '.((bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$rhythm['scale']) < bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale'])) ? $email_interfaces['going_up'][$this->_lang_code]: $email_interfaces['going_down'][$this->_lang_code]).'</li>';
+		}
+		$infor_values .= '</ul>';
+		return $infor_values;
 	}
 	function render_meta_description() {
 		$meta_description = (date('Y') - date('Y', strtotime($this->_dob))).' '.$this->_age;
@@ -324,7 +425,7 @@ class Chart {
 		echo '
 <section id="news" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
 	<h5>'.$this->_news_h5.'</h5>
-	<div class="helper changeable"><i class="icon-question-sign icon-white"></i></div>
+	<div class="helper changeable"><i class="icon-circle-question-mark icon-white"></i></div>
 	<ul>';
 		load_news_feed(get_zodiac_from_dob($this->_dob,$this->_lang_code).' '.date('Y'));
 		load_news_feed(get_zodiac_from_dob($this->_dob,$this->_lang_code));
@@ -337,17 +438,18 @@ class Chart {
 	}
 	// Render stats
 	function render_stats() {
-		global $help_interfaces, $dob;
+		global $help_interfaces, $dob, $fullname;
 		echo '
 <section id="stats" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
 	<h5>'.$this->_statistics_h5.' - '.$dob.'</h5>
-	<div class="helper changeable"><i class="icon-question-sign icon-white"></i></div>
+	<div class="helper changeable"><i class="icon-circle-question-mark icon-white"></i></div>
 	<p><strong><span class="translate" data-lang-ja="歳:" data-lang-zh="岁老:" data-lang-es="Años:" data-lang-ru="Лет:" data-lang-en="Years old:" data-lang-vi="Số năm tuổi:"></span></strong> '.(date('Y', time()+86400*$this->_diff) - date('Y', strtotime($this->_dob))).' <span class="translate" data-lang-ja="年々" data-lang-zh="岁" data-lang-es="año" data-lang-ru="лет" data-lang-en="'.pluralize(date('Y', time()+86400*$this->_diff) - date('Y', strtotime($this->_dob)),'year').'" data-lang-vi="năm"></span></p>
 	<p><strong><span class="translate" data-lang-ja="日古:" data-lang-zh="日老:" data-lang-es="Días:" data-lang-ru="Дней:" data-lang-en="Days old:" data-lang-vi="Số ngày tuổi:"></span></strong> '.differ_date($this->_dob, $this->_date).' <span class="translate" data-lang-ja="日" data-lang-zh="日" data-lang-es="'.pluralize(differ_date($this->_dob, $this->_date),'día').'" data-lang-ru="дней" data-lang-en="'.pluralize(differ_date($this->_dob, $this->_date),'day').'" data-lang-vi="ngày"></span></p>
 	<p><strong><span class="translate" data-lang-ja="誕生日カウントダウン:" data-lang-zh="生日倒计时:" data-lang-es="Cuenta atrás cumpleaños:" data-lang-ru="День рождения отсчет:" data-lang-en="Birthday countdown:" data-lang-vi="Đếm ngược sinh nhật:"></span></strong> '.countdown_birthday($this->_dob, $this->_date).' <span class="translate" data-lang-ja="日" data-lang-zh="日" data-lang-es="'.pluralize(countdown_birthday($this->_dob, $this->_date),'día').'" data-lang-ru="дней" data-lang-en="'.pluralize(countdown_birthday($this->_dob, $this->_date),'day').'" data-lang-vi="ngày"></span></p>
 	<p><a id="life_path_link" target="_blank" href="'.$help_interfaces['life_path_number_prefix'][$this->_lang_code].calculate_life_path($this->_dob).$help_interfaces['life_path_number_suffix'][$this->_lang_code].'"><strong><span class="translate" data-lang-ja="ライフパス番号:" data-lang-zh="人生道路数量:" data-lang-es="Vida número de camino:" data-lang-ru="Число Жизненный путь:" data-lang-en="Life path number:" data-lang-vi="Con số cuộc đời:"></span></strong> '.calculate_life_path($this->_dob).'</a></p>
 	<p><strong><span class="translate" data-lang-ja="黄道帯の印:" data-lang-zh="星宮名稱:" data-lang-es="Signo del Zodíaco:" data-lang-ru="Знак зодиака:" data-lang-en="Zodiac sign:" data-lang-vi="Cung hoàng đạo:"></span></strong> <span class="translate" data-lang-ja="'.get_zodiac_from_dob($this->_dob,'ja').'" data-lang-zh="'.get_zodiac_from_dob($this->_dob,'zh').'" data-lang-es="'.get_zodiac_from_dob($this->_dob,'es').'" data-lang-ru="'.get_zodiac_from_dob($this->_dob,'ru').'" data-lang-en="'.get_zodiac_from_dob($this->_dob,'en').'" data-lang-vi="'.get_zodiac_from_dob($this->_dob,'vi').'"></span></p>
-	<textarea id="embed_box" rows="3" cols="420" onClick=select() ><embed src="http://nhipsinhhoc.vn/?embed=1&dob='.$this->_dob.'&lang='.$this->_lang_code.'" height="480" width="600"></textarea>
+	<textarea id="embed_box" rows="2" cols="420" onClick="select()">http://nhipsinhhoc.vn/'.$this->_lang_code.'/?'.((isset($_GET['fullname']) && $_GET['fullname'] != '') ? 'fullname='.str_replace(' ', '+', $_GET['fullname']).'&dob='.$dob : ((function_exists('get_member_fullname') && get_member_fullname() != '') ? 'fullname='.str_replace(' ', '+', get_member_fullname()).'&dob='.$dob : (($fullname != '') ? 'fullname='.str_replace(' ', '+', $fullname).'&dob='.$dob : 'dob='.$this->_dob))).'</textarea>
+	<div id="embed_box_share"></div>
 	<div id="embed_toggle" class="changeable"><i class="icon-eject icon-white"></i></div>
 </section>
 		';
@@ -357,7 +459,7 @@ class Chart {
 		echo '
 <section id="lunar" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
 	<h5>'.$this->_lunar_h5.' - '.get_lunar_date($this->_dob,true).'</h5>
-	<div class="helper changeable"><i class="icon-question-sign icon-white"></i></div>
+	<div class="helper changeable"><i class="icon-circle-question-mark icon-white"></i></div>
 	<p><strong><span class="translate" data-lang-ja="歳:" data-lang-zh="岁老:" data-lang-es="Años:" data-lang-ru="Лет:" data-lang-en="Years old:" data-lang-vi="Số năm tuổi:"></span></strong> '.get_lunar_years_old($this->_dob,$this->_date).' <span class="translate" data-lang-ja="年々" data-lang-zh="岁" data-lang-es="año" data-lang-ru="лет" data-lang-en="'.pluralize(get_lunar_years_old($this->_dob,$this->_date),'year').'" data-lang-vi="năm"></span></p>
 	<p><strong><span class="translate" data-lang-ja="年:" data-lang-zh="年:" data-lang-es="Año:" data-lang-ru="Год:" data-lang-en="Year:" data-lang-vi="Năm:"></span></strong> <span class="translate" data-lang-ja="'.get_lunar_year($this->_dob,'ja').'" data-lang-zh="'.get_lunar_year($this->_dob,'zh').'" data-lang-es="'.get_lunar_year($this->_dob,'es').'" data-lang-ru="'.get_lunar_year($this->_dob,'ru').'" data-lang-en="'.get_lunar_year($this->_dob,'en').'" data-lang-vi="'.get_lunar_year($this->_dob,'vi').'"></span></p>
 	<p><strong><span class="translate" data-lang-ja="月:" data-lang-zh="月:" data-lang-es="Mes:" data-lang-ru="Месяц:" data-lang-en="Month:" data-lang-vi="Tháng:"></span></strong> <span class="translate" data-lang-ja="'.get_lunar_month($this->_dob,'ja').'" data-lang-zh="'.get_lunar_month($this->_dob,'zh').'" data-lang-es="'.get_lunar_month($this->_dob,'es').'" data-lang-ru="'.get_lunar_month($this->_dob,'ru').'" data-lang-en="'.get_lunar_month($this->_dob,'en').'" data-lang-vi="'.get_lunar_month($this->_dob,'vi').'"></span></p>
@@ -378,7 +480,7 @@ class Chart {
 		echo '
 <section id="compatibility" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
 	<h5>'.$this->_compatibility_h5.'</h5>
-	<div class="helper changeable"><i class="icon-question-sign icon-white"></i></div>
+	<div class="helper changeable"><i class="icon-circle-question-mark icon-white"></i></div>
 	<ul>
 		<li class="rhythm changeable"><span class="translate" data-lang-ja="平均する:" data-lang-zh="平均:" data-lang-es="Promedio:" data-lang-ru="Средний:" data-lang-en="Average:" data-lang-vi="Trung bình:"></span><span class="value">'.percent_average_compatible_count($this->_dob,$this->_partner_dob,$this->_rhythms).'</span></li>';
 		foreach ($this->_rhythms as $rhythm){
@@ -399,8 +501,8 @@ class Chart {
 		echo '
 <section id="info" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
 	<h5>'.$this->_info_h5.'</h5>
-	<div class="helper changeable"><i class="icon-question-sign icon-white"></i></div>
-	<p>'.$this->get_infor().'</p>
+	<div class="helper changeable"><i class="icon-circle-question-mark icon-white"></i></div>
+	'.$this->get_infor_details().'
 </section>
 		';
 	}
@@ -412,17 +514,18 @@ class Chart {
 		$h5 = '';
 		echo '
 <section id="controls" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'">
-	<h5>'.$this->_controls_h5.'</h5>
-	<div class="helper changeable"><i class="icon-question-sign icon-white"></i></div>
+	<h5>'.$this->_controls_h5.((date('m-d',time()+86400*$this->_diff) == date('m-d',strtotime($this->_dob))) ? ' <i class="icon-birthday-cake"></i>': '').'</h5>
+	<div class="helper changeable"><i class="icon-circle-question-mark icon-white"></i></div>
 	<ul>
-		<li class="rhythm changeable"><span class="translate" data-lang-ja="平均する:" data-lang-zh="平均:" data-lang-es="Promedio:" data-lang-ru="Средний:" data-lang-en="Average:" data-lang-vi="Trung bình:"></span><span class="value">'.percent_average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms).'</span><i class="icon-white icon-arrow-'.((average_bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$this->_rhythms) < average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms)) ? 'up': 'down').'"></i><i class="rhythm_toggle" data-rhythm-id="0" class="icon-white"></i></li>';
+		<li class="rhythm changeable"><span class="translate" data-lang-ja="平均する:" data-lang-zh="平均:" data-lang-es="Promedio:" data-lang-ru="Средний:" data-lang-en="Average:" data-lang-vi="Trung bình:"></span><span class="value">'.percent_average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms).'</span><i class="icon-white icon-'.((average_bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$this->_rhythms) < average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms)) ? 'up': 'down').'-arrow"></i><i class="rhythm_toggle" data-rhythm-id="0" class="icon-white"></i></li>';
 		foreach ($this->_rhythms as $rhythm){
-			echo '<li class="rhythm changeable'.(($rhythm['is_secondary'] == 1) ? ' secondary': '').'"><span class="translate" data-lang-ja="'.$rhythm['description_ja'].':" data-lang-zh="'.$rhythm['description_zh'].':" data-lang-es="'.$rhythm['description_es'].':" data-lang-ru="'.$rhythm['description_ru'].':" data-lang-en="'.$rhythm['description_en'].':" data-lang-vi="'.$rhythm['name'].':"></span><span class="value">'.percent_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale']).'</span><i class="icon-white icon-arrow-'.((bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$rhythm['scale']) < bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale'])) ? 'up': 'down').'"></i><i class="rhythm_toggle" data-rhythm-id="'.($rhythm['rid']).'" class="icon-white"></i></li>';
+			echo '<li class="rhythm changeable'.(($rhythm['is_secondary'] == 1) ? ' secondary': '').'"><span class="translate" data-lang-ja="'.$rhythm['description_ja'].':" data-lang-zh="'.$rhythm['description_zh'].':" data-lang-es="'.$rhythm['description_es'].':" data-lang-ru="'.$rhythm['description_ru'].':" data-lang-en="'.$rhythm['description_en'].':" data-lang-vi="'.$rhythm['name'].':"></span><span class="value">'.percent_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale']).'</span><i class="icon-white icon-'.((bio_count($this->_dob,date('Y-m-d',time()+86400*($this->_diff-1)),$rhythm['scale']) < bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$rhythm['scale'])) ? 'up': 'down').'-arrow"></i><i class="rhythm_toggle" data-rhythm-id="'.($rhythm['rid']).'" class="icon-white"></i></li>';
 		}
 		echo '
 	</ul>
 	<input type="hidden" id="dt_curr" value="'.date('Y-m-d',time()+86400*$this->_diff).'" />
 	<label class="m-checkbox m-wrap" for="is_secondary">
+		<i id="checkbox_icon" class="icon-'.(($this->_is_secondary == 1) ? 'check': 'unchecked').'"></i>
 		<span class="translate" data-lang-ja="表示セカンダリ・リズム" data-lang-zh="示第二性韵律" data-lang-es="Mostrar secundario ritmos" data-lang-ru="Показать вторичные ритмы" data-lang-en="Show secondary rhythms" data-lang-vi="Hiện nhịp sinh học phụ"></span>
 		<input class="m-wrap" type="checkbox" name="is_secondary" id="is_secondary" value="1" '.(($this->_is_secondary == 1) ? 'checked': '').' />
 	</label>
@@ -431,9 +534,9 @@ class Chart {
 		<input readonly data-lang-ja="'.$input_interfaces['dt_change']['ja'].'" data-lang-zh="'.$input_interfaces['dt_change']['zh'].'" data-lang-es="'.$input_interfaces['dt_change']['es'].'" data-lang-ru="'.$input_interfaces['dt_change']['ru'].'" data-lang-en="'.$input_interfaces['dt_change']['en'].'" data-lang-vi="'.$input_interfaces['dt_change']['vi'].'" class="m-wrap required" placeholder="'.$input_interfaces['dt_change'][$this->_lang_code].'" id="dt_change" type="text" name="dt_change" size="42" maxlength="128" value="'.(($this->_dt_change == date('Y-m-d')) ? 'YYYY-MM-DD': $this->_dt_change).'" />
 	</div>
 	<div class="m-btn-group">
-		<a class="m-btn green" id="today"><i class="icon-calendar icon-white"></i><span class="translate" data-lang-ja="'.$button_interfaces['today']['ja'].'" data-lang-zh="'.$button_interfaces['today']['zh'].'" data-lang-es="'.$button_interfaces['today']['es'].'" data-lang-ru="'.$button_interfaces['today']['ru'].'" data-lang-en="'.$button_interfaces['today']['en'].'" data-lang-vi="'.$button_interfaces['today']['vi'].'">'.$button_interfaces['today'][$this->_lang_code].'</span></a>
-		<a class="m-btn blue button_changeable" id="prev"><i class="icon-backward icon-white"></i><span class="translate" data-lang-ja="'.$button_interfaces['prev']['ja'].'" data-lang-zh="'.$button_interfaces['prev']['zh'].'" data-lang-es="'.$button_interfaces['prev']['es'].'" data-lang-ru="'.$button_interfaces['prev']['ru'].'" data-lang-en="'.$button_interfaces['prev']['en'].'" data-lang-vi="'.$button_interfaces['prev']['vi'].'">'.$button_interfaces['prev'][$this->_lang_code].'</span></a>
-		<a class="m-btn blue button_changeable" id="next"><span class="translate" data-lang-ja="'.$button_interfaces['next']['ja'].'" data-lang-zh="'.$button_interfaces['next']['zh'].'" data-lang-es="'.$button_interfaces['next']['es'].'" data-lang-ru="'.$button_interfaces['next']['ru'].'" data-lang-en="'.$button_interfaces['next']['en'].'" data-lang-vi="'.$button_interfaces['next']['vi'].'">'.$button_interfaces['next'][$this->_lang_code].'</span><i class="icon-forward icon-white"></i></a>
+		<a class="m-btn green" id="today" title="[S] | [K]"><i class="icon-calendar icon-white"></i><span class="translate" data-lang-ja="'.$button_interfaces['today']['ja'].'" data-lang-zh="'.$button_interfaces['today']['zh'].'" data-lang-es="'.$button_interfaces['today']['es'].'" data-lang-ru="'.$button_interfaces['today']['ru'].'" data-lang-en="'.$button_interfaces['today']['en'].'" data-lang-vi="'.$button_interfaces['today']['vi'].'">'.$button_interfaces['today'][$this->_lang_code].'</span></a>
+		<a class="m-btn blue button_changeable" id="prev" title="[A] | [J]"><i class="icon-backward icon-white"></i><span class="translate" data-lang-ja="'.$button_interfaces['prev']['ja'].'" data-lang-zh="'.$button_interfaces['prev']['zh'].'" data-lang-es="'.$button_interfaces['prev']['es'].'" data-lang-ru="'.$button_interfaces['prev']['ru'].'" data-lang-en="'.$button_interfaces['prev']['en'].'" data-lang-vi="'.$button_interfaces['prev']['vi'].'">'.$button_interfaces['prev'][$this->_lang_code].'</span></a>
+		<a class="m-btn blue button_changeable" id="next" title="[D] | [L]"><span class="translate" data-lang-ja="'.$button_interfaces['next']['ja'].'" data-lang-zh="'.$button_interfaces['next']['zh'].'" data-lang-es="'.$button_interfaces['next']['es'].'" data-lang-ru="'.$button_interfaces['next']['ru'].'" data-lang-en="'.$button_interfaces['next']['en'].'" data-lang-vi="'.$button_interfaces['next']['vi'].'">'.$button_interfaces['next'][$this->_lang_code].'</span><i class="icon-forward icon-white"></i></a>
 	</div>
 	<div class="clear"></div>
 </section>';
@@ -444,29 +547,49 @@ class Chart {
 		echo '
 <div id="explanation_chart" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'"></div>
 <script>
+function goToTodayExplanation() {
+	loadExplanationChartResults("'.$this->_dob.'","0","1","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+}
+function goToPrevExplanation() {
+	loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff-1).'","1","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+}
+function goToNextExplanation() {
+	loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff+1).'","1","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+}
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
 	items: {
 		"today": {
 			name: "'.$menu_interfaces['today'][$this->_lang_code].'",
-			callback: function(){
-				loadExplanationChartResults("'.$this->_dob.'","0","1","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToTodayExplanation
 		},
 		"prev": {
 			name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
-			callback: function(){
-				loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff-1).'","1","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToPrevExplanation
 		},
 		"next": {
 			name: "'.$menu_interfaces['next'][$this->_lang_code].'",
-			callback: function(){
-				loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff+1).'","1","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToNextExplanation
 		}
 	}
 });
+var pressed = false;
+$(document).on("keyup", jwerty.event("k/s", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToTodayExplanation();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("j/a", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToPrevExplanation();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("l/d", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToNextExplanation();
+		pressed = true;
+	}
+}));
 setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 renderChart("#explanation_chart","∞ '.$this->_explanation_title_text.' ∞","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"1","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"explanation");
 $("#lang_bar").off("click","**").on("click", "#vi_toggle", function(){
@@ -509,29 +632,49 @@ $("#lang_bar").off("click","**").on("click", "#vi_toggle", function(){
 		echo '
 <div id="embed_chart" class="context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'"></div>
 <script>
+function goToTodayEmbed() {
+	loadEmbedChartResults("'.$this->_dob.'","0","0","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+}
+function goToPrevEmbed() {
+	loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff-1).'","0","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+}
+function goToNextEmbed() {
+	loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff+1).'","0","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+}
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
 	items: {
 		"today": {
 			name: "'.$menu_interfaces['today'][$this->_lang_code].'",
-			callback: function(){
-				loadEmbedChartResults("'.$this->_dob.'","0","0","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToTodayEmbed
 		},
 		"prev": {
 			name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
-			callback: function(){
-				loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff-1).'","0","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToPrevEmbed
 		},
 		"next": {
 			name: "'.$menu_interfaces['next'][$this->_lang_code].'",
-			callback: function(){
-				loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff+1).'","0","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToNextEmbed
 		}
 	}
 });
+var pressed = false;
+$(document).on("keyup", jwerty.event("k/s", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToTodayEmbed();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("j/a", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToPrevEmbed();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("l/d", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToNextEmbed();
+		pressed = true;
+	}
+}));
 setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 renderChart("#embed_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"0","'.date('Y-m-d',time()+86400*$this->_diff).'",'.$this->serialize_chart_data().',"embed");
 </script>
@@ -596,35 +739,70 @@ $("span.translate").each(function(){
 $("input.translate").each(function(){
 	$(this).text($(this).attr("data-lang-"+lang)).attr("placeholder",$(this).attr("data-lang-"+lang));
 });
+function goToTodayMain() {
+	loadResults("'.$this->_dob.'","0","'.$this->_is_secondary.'","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+}
+function goToPrevMain() {
+	loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+}
+function goToNextMain() {
+	loadResults("'.$this->_dob.'","'.($this->_diff+1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+}
+function goToBirthdayMain() {
+	loadResults("'.$this->_dob.'","'.($this->_diff+countdown_birthday($this->_dob, $this->_date)).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+countdown_birthday($this->_dob, $this->_date))).'","'.$this->_partner_dob.'",lang);
+}
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
 	items: {
 		"today": {
 			name: "'.$menu_interfaces['today'][$this->_lang_code].'",
-			callback: function(){
-				loadResults("'.$this->_dob.'","0","'.$this->_is_secondary.'","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToTodayMain
 		},
 		"prev": {
 			name: "'.$menu_interfaces['prev'][$this->_lang_code].'",
-			callback: function(){
-				loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToPrevMain
 		},
 		"next": {
 			name: "'.$menu_interfaces['next'][$this->_lang_code].'",
-			callback: function(){
-				loadResults("'.$this->_dob.'","'.($this->_diff+1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToNextMain
 		},
 		"next_birthday": {
 			name: "'.$menu_interfaces['next_birthday'][$this->_lang_code].'",
-			callback: function(){
-				loadResults("'.$this->_dob.'","'.($this->_diff+countdown_birthday($this->_dob, $this->_date)).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+countdown_birthday($this->_dob, $this->_date))).'","'.$this->_partner_dob.'",lang);
-			}
+			callback: goToBirthdayMain
 		}
 	}
 });
+var pressed = false;
+$(document).on("keyup", jwerty.event("k/s", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToTodayMain();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("j/a", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToPrevMain();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("l/d", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToNextMain();
+		pressed = true;
+	}
+})).on("keyup", jwerty.event("i/w", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		goToBirthdayMain();
+		pressed = true;
+	}
+})).one("keyup", jwerty.event("e/o", function(e){
+	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
+		if ($("#is_secondary").prop("checked") == true) {
+			loadResults("'.$this->_dob.'","'.$this->_diff.'","0","'.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_partner_dob.'",lang);
+		} else if ($("#is_secondary").prop("checked") == false) {
+			loadResults("'.$this->_dob.'","'.$this->_diff.'","1","'.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_partner_dob.'",lang);
+		}
+		pressed = true;
+	}
+}));
 setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 if ($("#dt_change").val() != "YYYY-MM-DD") {
 	renderChart("#main_chart","'.$this->_title_text.$this->_dob.' | '.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_percentage_text.'","'.$this->_date_text.'",'.$this->_dates_json.',"'.$this->_today_index.'","'.$this->_dob.'",'.$this->_diff.',"'.$this->_is_secondary.'",$("#dt_change").val(),'.$this->serialize_chart_data().',"main");
@@ -638,13 +816,7 @@ $("#compatibility").on("change", "#partner_dob", function(){
 }).on("click", "#partner_dob_label", function(){
 	$("#partner_dob").datepicker("show");
 });
-$("#controls").on("click", "#today", function(){
-	loadResults("'.$this->_dob.'","0","'.$this->_is_secondary.'","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
-}).on("click", "#prev", function(){
-	loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
-}).on("click", "#next", function(){
-	loadResults("'.$this->_dob.'","'.($this->_diff+1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
-}).on("change", "#dt_change", function(){
+$("#controls").on("click", "#today", goToTodayMain).on("click", "#prev", goToPrevMain).on("click", "#next", goToNextMain).on("change", "#dt_change", function(){
 	loadResults("'.$this->_dob.'",'.$this->_diff.'+dateDiff(dt_curr,$("#dt_change").val()),"'.$this->_is_secondary.'",$("#dt_change").val(),"'.$this->_partner_dob.'",lang);
 }).on("change", "#is_secondary", function(){
 	if ($(this).prop("checked") == false) {
@@ -686,6 +858,7 @@ $("#lang_bar").off("click","**").on("click", "#vi_toggle", function(){
 		loadResults("'.$this->_dob.'","'.$this->_diff.'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*$this->_diff).'","'.$this->_partner_dob.'","ja");
 	}
 });
+manipulateEmbedBox();
 manipulateHelper("#news","'.$help_interfaces['news_box'][$this->_lang_code].'");
 manipulateHelper("#stats","'.$help_interfaces['stats_box'][$this->_lang_code].'");
 manipulateHelper("#lunar","'.$help_interfaces['lunar_box'][$this->_lang_code].'");

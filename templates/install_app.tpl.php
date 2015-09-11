@@ -1,5 +1,13 @@
+<?php
+$ad_position = rand(1,3);
+?>
 <div id="installation">
 	<h2 id="apps"><?php echo translate_span('apps'); ?></h2>
+<?php
+if ($ad_position == 1):
+	include template('banner_336x280');
+endif;
+?>
 	<section class="apps">
 		<h3 class="apps">Android</h3>
 		<section class="app">
@@ -24,10 +32,18 @@
 		<h3 class="apps">Windows Phone</h3>
 		<a target="_blank" id="windows_phone" href="http://www.windowsphone.com/s?appid=c1cbcc2d-0565-41dd-956e-28e48406e401"></a>
 	</section>
+<?php
+if ($ad_position == 2):
+	include template('banner_336x280');
+endif;
+?>
 	<button class="install-btn" onclick="chrome.webstore.install()" id="chrome_install"><?php echo translate_button('install_chrome'); ?></button>
 	<button class="install-btn" id="firefox_install"><?php echo translate_button('install_firefox'); ?></button>
 	<script src="/min/f=js/install.js&amp;7"></script>
 <?php
 include template('alexa');
+if ($ad_position == 3):
+	include template('banner_336x280');
+endif;
 ?>
 </div>

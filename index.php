@@ -1,5 +1,4 @@
 <?php
-ob_start();
 $basepath = realpath($_SERVER['DOCUMENT_ROOT']);
 $template_path = $basepath.'/templates/';
 require_once $basepath.'/includes/redirect.inc.php';
@@ -11,11 +10,12 @@ require_once $basepath.'/includes/template.inc.php';
 <head>
 <?php
 include template('head');
+include template('tag_manager');
+include template('fb_pixel');
 ?>
 </head>
 <body lang="<?php echo $lang_code; ?>" class="<?php echo $body_class.(has_one_lang() ? ' one_lang': ''); ?>">
 <?php
-include template('tag_manager');
 if (!isset($_GET['p']) || $_GET['p'] == 'home'):
 	include template('sitelinks_searchbox');
 endif;
@@ -24,7 +24,6 @@ include template('img_desc');
 if ($clicktale):
 	include template('clicktale_top');
 endif;
-include template('fb_root');
 if (isset($_SESSION['loggedin'])):
 	include template('toolbar');
 endif;
@@ -63,7 +62,9 @@ include template('footer');
 <?php
 include template('loading');
 include template('to_top');
-include template('register_modal');
+if (!isset($hide_nav)):
+	include template('register_modal');
+endif;
 if (!isset($_GET['p']) && $embed == 0 || in_array($p, $navs)):
 	if ($show_sumome):
 		include template('sumome');
@@ -82,6 +83,3 @@ include template('scripts_bottom');
 ?>
 </body>
 </html>
-<?php
-ob_end_flush();
-?>

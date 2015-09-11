@@ -107,3 +107,4 @@ endswitch;
 ?>
 	<div class="clear"></div>
 </div>
+<h3 id="for_reference_only"><?php echo translate_span('for_reference_only'); ?></h3>

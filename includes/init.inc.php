@@ -152,10 +152,12 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 	$h1 = $span_interfaces['register'][$lang_code];
 	$title = $span_interfaces['register'][$lang_code];
 	$body_class = 'member register';
+	$keywords = 'register, sign up, signup, đăng ký, dang ky, tham gia';
 } else if ($p == 'member/login') {
 	$h1 = $span_interfaces['login'][$lang_code];
 	$title = $span_interfaces['login'][$lang_code];
 	$body_class = 'member login';
+	$keywords = 'login, log in, sign in, signin, đăng nhập, dang nhap, tham gia';
 }  else if ($p == 'member/home') {
 	$h1 = can_wish() ? birthday_title() : home_title();
 	$title = can_wish() ? birthday_title() : home_title();
@@ -181,8 +183,8 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 	$body_class = 'game race';
 	$keywords = 'game, race';
 } else if ($p == 'bmi') {
-	$h1 = 'Tính BMI';
-	$title = 'Tính BMI | Tinh BMI';
+	$h1 = $span_interfaces['bmi'][$lang_code];
+	$title = $span_interfaces['bmi'][$lang_code];
 	$body_class = 'bmi';
 	$keywords = 'bmi, chỉ số khối cơ thể, sức khỏe, chiều cao, cân nặng';
 } else if ($p == 'lunar') {

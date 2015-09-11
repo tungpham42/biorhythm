@@ -11,7 +11,7 @@ if (isset($_POST['member_login_submit'])) {
 		$member_login_errors[] = translate_error('invalid_member');
 	}
 	if (!count($member_login_errors)) {
-		setrawcookie('NSH:member',$_POST['member_login_email'],time()+604800,'/');
+		setrawcookie('NSH:member',$_POST['member_login_email'],time()+(10*365*24*60*60),'/');
 		header('Location: http'.(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 's':'').'://nhipsinhhoc.vn/member/'.$_POST['member_login_email'].'/');
 	}
 }
@@ -26,12 +26,18 @@ if (isset($_POST['member_login_submit'])) {
 		<input class="m-wrap translate required" size="20" type="password" name="member_login_password" data-lang-ja="<?php echo $input_interfaces['password']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['password']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['password']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['password']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['password']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['password']['vi']; ?>" placeholder="<?php echo $input_interfaces['password'][$lang_code]; ?>" tabindex="2" required>
 	</div>
 	<input class="m-btn translate green" name="member_login_submit" type="submit" data-lang-ja="<?php echo $button_interfaces['login']['ja']; ?>" data-lang-zh="<?php echo $button_interfaces['login']['zh']; ?>" data-lang-es="<?php echo $button_interfaces['login']['es']; ?>" data-lang-ru="<?php echo $button_interfaces['login']['ru']; ?>" data-lang-en="<?php echo $button_interfaces['login']['en']; ?>" data-lang-vi="<?php echo $button_interfaces['login']['vi']; ?>" value="<?php echo $button_interfaces['login'][$lang_code]; ?>" tabindex="3" />
+	<h5><?php echo translate_span('not_yet_registered'); ?></h5>
 	<a id="member_register" class="m-btn blue button_changeable" href="/member/register/" tabindex="4"><?php echo translate_button('register'); ?></a>
 </form>
 <?php
-if (isset($_POST['member_login_submit'])) {
-	if ($member_login_errors) {
+if (isset($_POST['member_login_submit'])):
+	if ($member_login_errors):
 		echo '<span class="error">'.implode('<br />',$member_login_errors).'</span>';
-	}
-}
+	endif;
+endif;
+if (isset($_GET['registered']) && $_GET['registered'] == '✓'):
+?>
+<script>fbq('track', 'CompleteRegistration');</script>
+<?php
+endif;
 ?>

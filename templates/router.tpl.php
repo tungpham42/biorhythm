@@ -96,6 +96,7 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 } else if ($p == 'race/single') {
 	include template('race/single');
 } else if ($p == 'bmi') {
+	include template('lang_bar');
 	include template('bmi');
 } else if ($p == 'lunar') {
 	include template('lunar');

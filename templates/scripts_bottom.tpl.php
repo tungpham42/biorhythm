@@ -12,6 +12,7 @@ manipulateProverb();
 manipulateExplanation();
 manipulateClock();
 manipulateNews();
+manipulateSleepTime();
 $('#dob').datepicker({
 	dateFormat: 'yy-mm-dd',
 	changeYear: true,

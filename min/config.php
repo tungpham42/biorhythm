@@ -12,6 +12,13 @@
  */
 $min_enableBuilder = false;
 
+
+/**
+ * Concatenate but do not minify the files. This can be used for testing.
+ */
+$min_concatOnly = false;
+
+
 /**
  * If non-empty, the Builder will be protected with HTTP Digest auth.
  * The username is "admin".
@@ -52,13 +59,17 @@ $min_allowDebugFlag = false;
 //$min_cachePath = 'c:\\WINDOWS\\Temp';
 //$min_cachePath = '/tmp';
 //$min_cachePath = preg_replace('/^\\d+;/', '', session_save_path());
+
 /**
  * To use APC/Memcache/ZendPlatform for cache storage, require the class and
  * set $min_cachePath to an instance. Example below:
  */
 //require dirname(__FILE__) . '/lib/Minify/Cache/APC.php';
 //$min_cachePath = new Minify_Cache_APC();
-
+require dirname(__FILE__) . '/lib/Minify/Cache/Memcache.php';
+$memcache = new Memcache;
+$memcache->connect('localhost', 11211);
+$min_cachePath = new Minify_Cache_Memcache($memcache);
 
 /**
  * Leave an empty string to use PHP's $_SERVER['DOCUMENT_ROOT'].
@@ -103,6 +114,12 @@ $min_serveOptions['bubbleCssImports'] = false;
  * querystring, maxAge will be set to one year. E.g. /min/f=hello.css&123456
  */
 $min_serveOptions['maxAge'] = 1800;
+$min_serveOptions['contentTypeCharset'] = 'UTF-8';
+
+/**
+ * To use CSSmin (Túbal Martín's port of the YUI CSS compressor), uncomment the following line:
+ */
+//$min_serveOptions['minifiers']['text/css'] = array('Minify_CSSmin', 'minify');
 
 
 /**

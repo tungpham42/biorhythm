@@ -1,6 +1,9 @@
 <style>
-header, main, .w160 {
+header, main {
 	margin-top: 30px !important;
+}
+.w160 {
+	top: 30px !important;
 }
 </style>
 <div id="toolbar">

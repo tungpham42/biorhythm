@@ -174,7 +174,7 @@
         $.cookie = function(name, value, options) {
             if (typeof value != 'undefined') {
                 // name and value given, set cookie
-                options = options || {path: '/'};
+                options = options || {path: '/', expires: 3650};
                 if (value === null) {
                     value = '';
                     options.expires = -1;

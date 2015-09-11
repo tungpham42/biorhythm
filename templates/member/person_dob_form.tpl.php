@@ -9,7 +9,7 @@
 		</div>
 		<div class="m-btn-group" id="dob_control_bar">
 			<a tabindex="5" class="m-btn blue button_changeable" id="dob_list"><i class="icon-list icon-white"></i> <?php echo translate_button('dob_list'); ?></a>
-			<a tabindex="4" class="m-btn blue button_changeable" id="dob_remove"><i class="icon-remove icon-white"></i> <?php echo translate_button('dob_remove'); ?></a>
+			<a tabindex="4" class="m-btn blue button_changeable" id="dob_remove"><i class="icon-bin icon-white"></i> <?php echo translate_button('dob_remove'); ?></a>
 			<a tabindex="3" class="m-btn green" id="dob_edit"><i class="icon-edit icon-white"></i> <?php echo translate_button('dob_edit'); ?></a>
 		</div>
 	</form>

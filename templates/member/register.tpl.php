@@ -43,7 +43,7 @@ if (isset($_POST['member_register_submit'])) {
 	if (!count($member_register_errors)) {
 		create_member($_POST['member_register_email'], $_POST['member_register_fullname'], $_POST['member_register_password'], $_POST['member_register_dob'], $lang_code);
 		email_create_member($_POST['member_register_email'], $_POST['member_register_fullname'], $_POST['member_register_password'], $_POST['member_register_dob']);
-		header('Location: http'.(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 's':'').'://nhipsinhhoc.vn/member/login/');
+		header('Location: http'.(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 's':'').'://nhipsinhhoc.vn/member/login/?registered=✓');
 	}
 }
 ?>
@@ -57,18 +57,19 @@ if (isset($_POST['member_register_submit'])) {
 		<input class="m-wrap translate required" size="20" type="text" name="member_register_fullname" data-lang-ja="<?php echo $input_interfaces['fullname']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['fullname']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['fullname']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['fullname']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['fullname']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['fullname']['vi']; ?>" placeholder="<?php echo $input_interfaces['fullname'][$lang_code]; ?>" value="<?php echo $inputted_fullname; ?>" tabindex="2" required>
 	</div>
 	<div class="m-input-prepend">
+		<span class="add-on"><?php echo translate_span('dob'); ?></span>
+		<input id="member_register_dob" class="m-wrap required" size="20" type="text" name="member_register_dob" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" value="<?php echo $inputted_dob; ?>" tabindex="3" required>
+	</div>
+	<div class="m-input-prepend">
 		<span class="add-on"><?php echo translate_span('password'); ?></span>
-		<input class="m-wrap translate required" size="20" type="password" name="member_register_password" data-lang-ja="<?php echo $input_interfaces['password']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['password']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['password']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['password']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['password']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['password']['vi']; ?>" placeholder="<?php echo $input_interfaces['password'][$lang_code]; ?>" tabindex="3" required>
+		<input class="m-wrap translate required" size="20" type="password" name="member_register_password" data-lang-ja="<?php echo $input_interfaces['password']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['password']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['password']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['password']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['password']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['password']['vi']; ?>" placeholder="<?php echo $input_interfaces['password'][$lang_code]; ?>" tabindex="4" required>
 	</div>
 	<div class="m-input-prepend">
 		<span class="add-on"><?php echo translate_span('repeat_password'); ?></span>
-		<input class="m-wrap translate required" size="20" type="password" name="member_register_repeat_password" data-lang-ja="<?php echo $input_interfaces['repeat_password']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['repeat_password']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['repeat_password']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['repeat_password']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['repeat_password']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['repeat_password']['vi']; ?>" placeholder="<?php echo $input_interfaces['repeat_password'][$lang_code]; ?>" tabindex="4" required>
-	</div>
-	<div class="m-input-prepend">
-		<span class="add-on"><?php echo translate_span('dob'); ?></span>
-		<input id="member_register_dob" class="m-wrap translate required" size="20" type="text" name="member_register_dob" pattern="\d{4}-\d{2}-\d{2}" data-lang-ja="<?php echo $input_interfaces['dob']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['dob']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['dob']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['dob']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['dob']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['dob']['vi']; ?>" placeholder="<?php echo $input_interfaces['dob'][$lang_code]; ?>" value="<?php echo $inputted_dob; ?>" tabindex="5" required>
+		<input class="m-wrap translate required" size="20" type="password" name="member_register_repeat_password" data-lang-ja="<?php echo $input_interfaces['repeat_password']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['repeat_password']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['repeat_password']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['repeat_password']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['repeat_password']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['repeat_password']['vi']; ?>" placeholder="<?php echo $input_interfaces['repeat_password'][$lang_code]; ?>" tabindex="5" required>
 	</div>
 	<input class="m-btn translate green" name="member_register_submit" type="submit" data-lang-ja="<?php echo $button_interfaces['register']['ja']; ?>" data-lang-zh="<?php echo $button_interfaces['register']['zh']; ?>" data-lang-es="<?php echo $button_interfaces['register']['es']; ?>" data-lang-ru="<?php echo $button_interfaces['register']['ru']; ?>" data-lang-en="<?php echo $button_interfaces['register']['en']; ?>" data-lang-vi="<?php echo $button_interfaces['register']['vi']; ?>" value="<?php echo $button_interfaces['register'][$lang_code]; ?>" tabindex="6" />
+	<h5><?php echo translate_span('already_registered'); ?></h5>
 	<a id="member_login" class="m-btn blue button_changeable" href="/member/login/" tabindex="7"><?php echo translate_button('login'); ?></a>
 </form>
 <script>

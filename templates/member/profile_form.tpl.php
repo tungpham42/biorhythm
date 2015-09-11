@@ -39,10 +39,10 @@ if (isset($_POST['member_profile_submit'])) {
 	}
 	if (!count($member_profile_errors)) {
 		if ($_POST['member_profile_password']) {
-			edit_member($_POST['member_profile_email'], $_POST['member_profile_fullname'], $_POST['member_profile_password'], $_POST['member_profile_dob']);
+			edit_member($_POST['member_profile_email'], $_POST['member_profile_fullname'], $_POST['member_profile_password'], $_POST['member_profile_dob'], $lang_code);
 			email_edit_member($_POST['member_profile_email'], $_POST['member_profile_fullname'], $_POST['member_profile_password'], $_POST['member_profile_dob']);
 		} else {
-			edit_member($_POST['member_profile_email'], $_POST['member_profile_fullname'], load_member()['password'], $_POST['member_profile_dob']);
+			edit_member($_POST['member_profile_email'], $_POST['member_profile_fullname'], load_member()['password'], $_POST['member_profile_dob'], $lang_code);
 			email_edit_member($_POST['member_profile_email'], $_POST['member_profile_fullname'], $email_interfaces['not_changed'][$lang_code], $_POST['member_profile_dob']);
 		}
 		header('Location: '.$_SERVER['HTTP_REFERER'].'');
@@ -61,7 +61,7 @@ if (isset($_POST['member_profile_submit'])) {
 	</div>
 	<div class="m-input-prepend">
 		<span class="add-on"><?php echo translate_span('dob'); ?></span>
-		<input id="member_profile_dob" class="m-wrap translate required" size="20" type="text" name="member_profile_dob" pattern="\d{4}-\d{2}-\d{2}" data-lang-ja="<?php echo $input_interfaces['dob']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['dob']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['dob']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['dob']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['dob']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['dob']['vi']; ?>" placeholder="<?php echo $input_interfaces['dob'][$lang_code]; ?>" value="<?php echo $inputted_dob; ?>" required>
+		<input id="member_profile_dob" class="m-wrap required" size="20" type="text" name="member_profile_dob" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" value="<?php echo $inputted_dob; ?>" required>
 	</div>
 	<div class="m-input-prepend">
 		<span class="add-on"><?php echo translate_span('password'); ?></span>
@@ -72,7 +72,7 @@ if (isset($_POST['member_profile_submit'])) {
 		<input class="m-wrap translate" size="20" type="password" name="member_profile_repeat_password" data-lang-ja="<?php echo $input_interfaces['repeat_password']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['repeat_password']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['repeat_password']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['repeat_password']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['repeat_password']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['repeat_password']['vi']; ?>" placeholder="<?php echo $input_interfaces['repeat_password'][$lang_code]; ?>">
 	</div>
 	<input class="m-btn translate green" name="member_profile_submit" type="submit" data-lang-ja="<?php echo $button_interfaces['update']['ja']; ?>" data-lang-zh="<?php echo $button_interfaces['update']['zh']; ?>" data-lang-es="<?php echo $button_interfaces['update']['es']; ?>" data-lang-ru="<?php echo $button_interfaces['update']['ru']; ?>" data-lang-en="<?php echo $button_interfaces['update']['en']; ?>" data-lang-vi="<?php echo $button_interfaces['update']['vi']; ?>" value="<?php echo $button_interfaces['update'][$lang_code]; ?>" />
-	<a id="member_logout" class="m-btn blue button_changeable" href="/triggers/member_logout.php"><?php echo translate_button('logout'); ?></a>
+	<a id="member_logout" class="m-btn blue button_changeable" href="/triggers/member_logout.php"><i class="icon-log-out icon-white"></i> <?php echo translate_button('logout'); ?></a>
 <?php
 if (isset($_POST['member_profile_submit'])) {
 	if ($member_profile_errors) {
