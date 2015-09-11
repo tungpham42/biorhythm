@@ -6,7 +6,11 @@ $(document).ready(function() {
 			appId: '249403611864812',
 			cookie : true,
 			xfbml : true,
+<<<<<<< HEAD
 			version : 'v2.4'
+=======
+			version : 'v2.3'
+>>>>>>> origin/master
 		});
 	});
 });

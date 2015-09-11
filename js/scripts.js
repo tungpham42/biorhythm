@@ -171,8 +171,13 @@ $.fn.longTap = function(options) {
 		mousedown: 'ontouchstart' in window ? 'touchstart' : 'mousedown',
 		mouseup: 'ontouchend' in window ? 'touchend' : 'mouseup'
 	};
+<<<<<<< HEAD
 	return this.each(function(){
 		$(this).on(eventType.mousedown + '.longtap', function(){
+=======
+	return this.each(function() {
+		$(this).on(eventType.mousedown + '.longtap', function() {
+>>>>>>> origin/master
 			$(this).data('touchstart', +new Date);
 		}).on(eventType.mouseup + '.longtap', function(e) {
 			var now = +new Date, than = $(this).data('touchstart');
@@ -616,6 +621,7 @@ function loadProverb(langCode) {
 			},
 			dataType: 'html',
 			success: function(data) {
+<<<<<<< HEAD
 				$('#proverb').html(data).promise().done(function(){
 					switch (langCode) {
 						case 'vi':
@@ -638,6 +644,29 @@ function loadProverb(langCode) {
 							break;
 					}
 				});;
+=======
+				$('#proverb').html(data);
+				switch(langCode) {
+					case 'vi':
+						$.notify('Đổi thành ngữ');
+						break;
+					case 'en':
+						$.notify('Changed proverb');
+						break;
+					case 'ru':
+						$.notify('Изменен пословица');
+						break;
+					case 'es':
+						$.notify('Proverbio cambiado');
+						break;
+					case 'zh':
+						$.notify('更改谚语');
+						break;
+					case 'ja':
+						$.notify('変更されたことわざ');
+						break;
+				}
+>>>>>>> origin/master
 			}
 		});
 	}

@@ -5,7 +5,10 @@ if ((isset($_COOKIE['NSH:member']) && $_COOKIE['NSH:member'] == get_member_email
 		include template('member/person_dob_form');
 	} else {
 		include template('member/avatar');
+<<<<<<< HEAD
 		include template('scripts_top');
+=======
+>>>>>>> origin/master
 		include template('member/profile_form');
 		include template('member/dob_form');
 	}
@@ -17,6 +20,7 @@ if ((isset($_COOKIE['NSH:member']) && $_COOKIE['NSH:member'] == get_member_email
 	}
 	include template('keyboard');
 	echo list_persons();
+	include template('keyboard');
 	include template('explanation');
 	include template('feed_blog');
 	include template('feed_forum');

@@ -368,6 +368,7 @@ $button_interfaces = array(
 		'es' => 'Perfil',
 		'zh' => '轮廓',
 		'ja' => 'プロフィール'
+<<<<<<< HEAD
 	),
 	'sleep_now' => array(
 		'vi' => 'Ngủ ngay bây giờ!',
@@ -376,6 +377,8 @@ $button_interfaces = array(
 		'es' => '¡Duerme ahora!',
 		'zh' => '现在睡觉！',
 		'ja' => '今スリープ！'
+=======
+>>>>>>> origin/master
 	)
 );
 $span_interfaces = array(
@@ -666,6 +669,7 @@ $span_interfaces = array(
 		'es' => 'Atajos de teclado',
 		'zh' => '快捷键',
 		'ja' => 'キーボードショートカット'
+<<<<<<< HEAD
 	),
 	'for_reference_only' => array(
 		'vi' => 'Chỉ mang tính tham khảo',
@@ -762,6 +766,8 @@ $span_interfaces = array(
 		'es' => 'Índice de masa corporal',
 		'zh' => '身高體重指數',
 		'ja' => 'ボディマス指数'
+=======
+>>>>>>> origin/master
 	)
 );
 $email_interfaces = array(
@@ -902,12 +908,21 @@ $email_interfaces = array(
 		'ja' => 'SJw7lMuKipc'
 	),
 	'keyboard_shortcuts' => array(
+<<<<<<< HEAD
 		'vi' => 'Phím tắt: S, K -> Hôm nay; A, J -> Trước, D, L -> Sau; W, I -> Sinh nhật; E, O -> Nhịp sinh học phụ; R, P -> Thành ngữ',
 		'en' => 'Keyboard shortcuts: S, K -> Today; A, J -> Back; D, L -> Forward; W, I -> Birthday; E, O -> Secondary rhythm; R, P -> Proverb',
 		'ru' => 'Горячие клавиши: S, K -> Сегодня; A, J -> Назад; D, L -> Вперед; W, I -> День рождения; E, O -> Вторичный ритм; R, P -> Пословица',
 		'es' => 'Atajos de teclado: S, K -> Hoy; A, J -> Atrás; D, L -> Enviar; W, I -> Cumpleaños; E, O -> Ritmo secundaria; R, P -> Proverbio',
 		'zh' => '快捷键： S，K -> 今天; A，J -> 回去; D，L -> 前进; W，I -> 生辰; E，O -> 次要节奏; R，P -> 谚语',
 		'ja' => 'キーボードショートカット： S、K -> 今日; A、J -> 戻る; D、L -> 前進する; W、I -> バースデー; E、O -> セカンダリリズム; R、P -> ことわざ'
+=======
+		'vi' => 'Phím tắt: S|K -> Hôm nay, A|J -> Trước, D|L -> Sau, W|I -> Sinh nhật, R|P -> Thành ngữ',
+		'en' => 'Keyboard shortcuts: S|K -> Today, A|J -> Back, D|L -> Forward, W|I -> Birthday, R|P -> Proverb',
+		'ru' => 'Горячие клавиши: S|K -> Сегодня, A|J -> Назад, D|L -> Вперед, W|I -> День рождения, R|P -> Пословица',
+		'es' => 'Atajos de teclado: S|K -> Hoy, A|J -> Atrás, D|L -> Enviar, W|I -> Cumpleaños, R|P -> Proverbio',
+		'zh' => '快捷键： S|K -> 今天, A|J -> 回去, D|L -> 前进, W|I -> 生辰, R|P -> 谚语',
+		'ja' => 'キーボードショートカット： S|K -> 今日, A|J -> 戻る, D|L -> 前進する, W|I -> バースデー, R|P -> ことわざ'
+>>>>>>> origin/master
 	),
 	'unsubscribe' => array(
 		'vi' => 'Hủy đăng ký',
@@ -1197,11 +1212,18 @@ $information_interfaces = array(
 	),
 	'physical' => array(
 		'vi' => array(
+<<<<<<< HEAD
 			'excellent' => 'Sức khỏe hiện tại của bạn rất sung mãn, hãy tham gia vận động nhiều hơn, như vận động thể dục, thể thao, tham gia các cuộc vui, để tận dụng năng lượng nhé.',
 			'good' => 'Sức khỏe hiện tại của bạn khá sung mãn, hãy vận động điều độ, như các hoạt động bơi lội, đi bộ, yoga hoặc các môn thể dục nhẹ nhàng khác nha bạn.',
 			'critical' => 'Sức khỏe hiện tại của bạn đang rơi vào giai đoạn chuyển tiếp, bạn nên nghỉ ngơi nhiều lên nhé, do thể lực bạn đang biến đổi khó lường.',
 			'gray' => 'Sức khỏe hiện tại của bạn hơi kém, hãy nghỉ ngơi một tí, do thể lực đã ở vào mức khá thấp, hãy tích trữ năng lượng để dành vào những lúc sung mãn nha.',
 			'bad' => 'Sức khỏe hiện tại của bạn khá kém, hãy nghỉ ngơi nhiều hơn, bạn đã hoạt động nhiều rồi, thời gian này nên dành để ngủ đông nhé.'
+=======
+			'excellent' => 'Sức khỏe hiện tại của bạn rất sung mãn, hãy tham gia vận động nhiều hơn.',
+			'good' => 'Sức khỏe hiện tại của bạn khá sung mãn, hãy vận động điều độ.',
+			'gray' => 'Sức khỏe hiện tại của bạn hơi kém, hãy nghỉ ngơi một tí.',
+			'bad' => 'Sức khỏe hiện tại của bạn khá kém, hãy nghỉ ngơi nhiều hơn.'
+>>>>>>> origin/master
 		),
 		'en' => array(
 			'excellent' => 'Your current health is excellent, you should work out more.',
@@ -1241,11 +1263,18 @@ $information_interfaces = array(
 	),
 	'emotional' => array(
 		'vi' => array(
+<<<<<<< HEAD
 			'excellent' => 'Tâm trạng hiện tại của bạn rất ổn, hãy tham gia gặp gỡ bạn bè nhiều hơn, dành thời gian hẹn hò, đi chơi với những người thân yêu của mình để tận dụng lúc cảm xúc đang thăng hoa bạn nhé.',
 			'good' => 'Tâm trạng hiện tại của bạn khá ổn, hãy gặp gỡ bạn bè, người thân, nhưng cũng chú ý tránh những xung đột nhỏ để cho cuộc vui được trọn vẹn nha bạn.',
 			'critical' => 'Tâm trạng hiện tại của bạn đang rơi vào giai đoạn chuyển giao, hãy chú ý nhiều đến cảm xúc của mình, do đây là lúc cảm xúc thay đổi khó lường.',
 			'gray' => 'Tâm trạng hiện tại của bạn hơi tệ, bạn hơi dễ cáu kỉnh, dễ cãi nhau, vì thế, bạn nên tìm đến những góc nhỏ cho riêng mình, để tĩnh tâm lại bạn nhé.',
 			'bad' => 'Tâm trạng hiện tại của bạn khá tệ, bạn nên tránh các cuộc xung đột, cãi vã, vì lúc này điều đó rất dễ xảy ra. Bạn nên dành thời gian ở một mình, khoảng thời gian này sẽ qua mau thôi.'
+=======
+			'excellent' => 'Tâm trạng hiện tại của bạn rất ổn, hãy tham gia gặp gỡ bạn bè nhiều hơn.',
+			'good' => 'Tâm trạng hiện tại của bạn khá ổn, hãy gặp gỡ bạn bè.',
+			'gray' => 'Tâm trạng hiện tại của bạn hơi tệ, bạn hơi dễ cáu kỉnh.',
+			'bad' => 'Tâm trạng hiện tại của bạn khá tệ, bạn nên tránh các cuộc xung đột.'
+>>>>>>> origin/master
 		),
 		'en' => array(
 			'excellent' => 'Your current mood is excellent, you meet more friends.',
@@ -1285,11 +1314,18 @@ $information_interfaces = array(
 	),
 	'intellectual' => array(
 		'vi' => array(
+<<<<<<< HEAD
 			'excellent' => 'Trí tuệ hiện tại của bạn rất sáng suốt, bạn có thể đưa ra những quyết định đúng đắn, có những suy nghĩ rất chính xác, hợp lý.',
 			'good' => 'Trí tuệ hiện tại của bạn khá sáng suốt, bạn có thể đưa ra quyết định nhưng cần suy tính kỹ, bởi vì suy nghĩ của bạn chưa đạt độ chính xác cao nhất có thể.',
 			'critical' => 'Trí tuệ hiện tại của bạn đang ở trong giai đoạn chuyển biến, bạn nên chú ý kỹ hơn đến suy nghĩ của mình, vì nó có thể dẫn đến những quyết định sai lầm.',
 			'gray' => 'Trí tuệ hiện tại của bạn hơi thiếu sáng suốt, bạn nên suy nghĩ kỹ trước khi ra quyết định. Nếu cần thiết, hãy hỏi thêm ý kiến của người thân, bạn bè, đồng nghiệp.',
 			'bad' => 'Trí tuệ hiện tại của bạn khá thiếu sáng suốt, bạn không nên đưa ra quyết định lớn. Nếu phải ra quyết định, bạn nhất định nên hỏi ý kiến người khác.'
+=======
+			'excellent' => 'Trí tuệ hiện tại của bạn rất sáng suốt, bạn có thể đưa ra những quyết định đúng đắn.',
+			'good' => 'Trí tuệ hiện tại của bạn khá sáng suốt, bạn có thể đưa ra quyết định nhưng cần suy tính kỹ.',
+			'gray' => 'Trí tuệ hiện tại của bạn hơi thiếu sáng suốt, bạn nên suy nghĩ kỹ trước khi ra quyết định.',
+			'bad' => 'Trí tuệ hiện tại của bạn khá thiếu sáng suốt, bạn không nên đưa ra quyết định lớn.'
+>>>>>>> origin/master
 		),
 		'en' => array(
 			'excellent' => 'Your current intellect is excellent, you can make great decisions.',
@@ -1351,10 +1387,18 @@ define('MAIL_RSA_PUBL',
 -----END PUBLIC KEY-----');
 
 // Domain or subdomain of the signing entity (i.e. the domain where the e-mail comes from)
+<<<<<<< HEAD
 define('MAIL_DOMAIN', 'mail.nhipsinhhoc.vn');  
+=======
+define('MAIL_DOMAIN', '');  
+>>>>>>> origin/master
 
 // Allowed user, defaults is "@<MAIL_DKIM_DOMAIN>", meaning anybody in the MAIL_DKIM_DOMAIN domain. Ex: 'admin@mydomain.tld'. You'll never have to use this unless you do not control the "From" value in the e-mails you send.
 define('MAIL_IDENTITY', NULL);
 
 // Selector used in your DKIM DNS record, e.g. : selector._domainkey.MAIL_DKIM_DOMAIN
+<<<<<<< HEAD
 define('MAIL_SELECTOR', 'x');
+=======
+define('MAIL_SELECTOR', '');
+>>>>>>> origin/master

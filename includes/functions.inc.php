@@ -1847,7 +1847,10 @@ function email_create_member($email,$fullname,$password,$dob) {
 	$content .= '<p>'.$span_interfaces['pham_tung'][$lang_code].'</p>';
 	$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$lang_code].'</p>';
 	$content .= '<p><em>'.$email_interfaces['definition'][$lang_code].'</em></p>';
+<<<<<<< HEAD
 	$content .= '<p>'.$span_interfaces['for_reference_only'][$lang_code].'</p>';
+=======
+>>>>>>> origin/master
 	$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$lang_code].'</p>';
 	$content .= '<p><a href="mailto:admin@nhipsinhhoc.vn?subject='.$email_interfaces['unsubscribe'][$lang_code].'&body='.$email_interfaces['unsubscribe'][$lang_code].' '.$email.'&cc=tung.42@gmail.com">'.$email_interfaces['unsubscribe'][$lang_code].'</a></p>';
 	$message = email_message($heading, $content);
@@ -1874,7 +1877,10 @@ function email_edit_member($email,$fullname,$password,$dob) {
 	$content .= '<p>'.$span_interfaces['pham_tung'][$lang_code].'</p>';
 	$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$lang_code].'</p>';
 	$content .= '<p><em>'.$email_interfaces['definition'][$lang_code].'</em></p>';
+<<<<<<< HEAD
 	$content .= '<p>'.$span_interfaces['for_reference_only'][$lang_code].'</p>';
+=======
+>>>>>>> origin/master
 	$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$lang_code].'</p>';
 	$content .= '<p><a href="mailto:admin@nhipsinhhoc.vn?subject='.$email_interfaces['unsubscribe'][$lang_code].'&body='.$email_interfaces['unsubscribe'][$lang_code].' '.$email.'&cc=tung.42@gmail.com">'.$email_interfaces['unsubscribe'][$lang_code].'</a></p>';
 	$message = email_message($heading, $content);
@@ -1915,7 +1921,10 @@ function email_daily_suggestion() {
 		$content .= '<h1>'.$email_interfaces['hi'][$members[$i]['lang']].' '.$members[$i]['fullname'].'</h1>';
 		$content .= '<p class="lead">'.$email_interfaces['daily_suggestion'][$members[$i]['lang']].$email_interfaces['colon'][$members[$i]['lang']].'</p>';
 		$content .= '<p>'.$member_chart->get_infor().'</p>';
+<<<<<<< HEAD
 		$content .= '<p>'.$member_chart->get_birthday_countdown().'</p>';
+=======
+>>>>>>> origin/master
 		$content .= '<p class="lead">'.$email_interfaces['daily_values'][$members[$i]['lang']].$email_interfaces['colon'][$members[$i]['lang']].'</p>';
 		$content .= '<p>'.$member_chart->get_infor_values().'</p>';
 		$content .= '<p><a href="http://nhipsinhhoc.vn/member/'.$members[$i]['email'].'/">'.$email_interfaces['go_to_your_profile'][$members[$i]['lang']].'</a></p>';
@@ -1924,7 +1933,10 @@ function email_daily_suggestion() {
 		$content .= '<p>'.$span_interfaces['pham_tung'][$members[$i]['lang']].'</p>';
 		$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$members[$i]['lang']].'</p>';
 		$content .= '<p><em>'.$email_interfaces['definition'][$members[$i]['lang']].'</em></p>';
+<<<<<<< HEAD
 		$content .= '<p>'.$span_interfaces['for_reference_only'][$members[$i]['lang']].'</p>';
+=======
+>>>>>>> origin/master
 		$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$members[$i]['lang']].'</p>';
 		$content .= '<p><a href="mailto:admin@nhipsinhhoc.vn?subject='.$email_interfaces['unsubscribe'][$members[$i]['lang']].'&body='.$email_interfaces['unsubscribe'][$members[$i]['lang']].' '.$members[$i]['email'].'&cc=tung.42@gmail.com">'.$email_interfaces['unsubscribe'][$members[$i]['lang']].'</a></p>';
 		$message = email_message($heading, $content);

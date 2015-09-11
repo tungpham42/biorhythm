@@ -319,6 +319,7 @@ class Chart {
 		}
 		return $average_text.' '.$physical_text.' '.$emotional_text.' '.$intellectual_text;
 	}
+<<<<<<< HEAD
 	function get_infor_details() {
 		global $information_interfaces;
 		$average = (float)average_bio_count($this->_dob,date('Y-m-d',time()+86400*$this->_diff),$this->_rhythms);
@@ -401,6 +402,8 @@ class Chart {
 		}
 		return $birthday_countdown;
 	}
+=======
+>>>>>>> origin/master
 	function get_infor_values() {
 		global $email_interfaces;
 		$infor_values = '<ul>';
@@ -549,12 +552,24 @@ class Chart {
 <script>
 function goToTodayExplanation() {
 	loadExplanationChartResults("'.$this->_dob.'","0","1","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+<<<<<<< HEAD
 }
 function goToPrevExplanation() {
 	loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff-1).'","1","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
 }
 function goToNextExplanation() {
 	loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff+1).'","1","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+=======
+	$.notify("'.$menu_interfaces['today'][$this->_lang_code].'");
+}
+function goToPrevExplanation() {
+	loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff-1).'","1","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['prev'][$this->_lang_code].'");
+}
+function goToNextExplanation() {
+	loadExplanationChartResults("'.$this->_dob.'","'.($this->_diff+1).'","1","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['next'][$this->_lang_code].'");
+>>>>>>> origin/master
 }
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
@@ -634,12 +649,24 @@ $("#lang_bar").off("click","**").on("click", "#vi_toggle", function(){
 <script>
 function goToTodayEmbed() {
 	loadEmbedChartResults("'.$this->_dob.'","0","0","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+<<<<<<< HEAD
 }
 function goToPrevEmbed() {
 	loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff-1).'","0","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
 }
 function goToNextEmbed() {
 	loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff+1).'","0","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+=======
+	$.notify("'.$menu_interfaces['today'][$this->_lang_code].'");
+}
+function goToPrevEmbed() {
+	loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff-1).'","0","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['prev'][$this->_lang_code].'");
+}
+function goToNextEmbed() {
+	loadEmbedChartResults("'.$this->_dob.'","'.($this->_diff+1).'","0","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['next'][$this->_lang_code].'");
+>>>>>>> origin/master
 }
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
@@ -741,6 +768,7 @@ $("input.translate").each(function(){
 });
 function goToTodayMain() {
 	loadResults("'.$this->_dob.'","0","'.$this->_is_secondary.'","'.date('Y-m-d').'","'.$this->_partner_dob.'",lang);
+<<<<<<< HEAD
 }
 function goToPrevMain() {
 	loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
@@ -750,6 +778,21 @@ function goToNextMain() {
 }
 function goToBirthdayMain() {
 	loadResults("'.$this->_dob.'","'.($this->_diff+countdown_birthday($this->_dob, $this->_date)).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+countdown_birthday($this->_dob, $this->_date))).'","'.$this->_partner_dob.'",lang);
+=======
+	$.notify("'.$menu_interfaces['today'][$this->_lang_code].'");
+}
+function goToPrevMain() {
+	loadResults("'.$this->_dob.'","'.($this->_diff-1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff-1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['prev'][$this->_lang_code].'");
+}
+function goToNextMain() {
+	loadResults("'.$this->_dob.'","'.($this->_diff+1).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+1)).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['next'][$this->_lang_code].'");
+}
+function goToBirthdayMain() {
+	loadResults("'.$this->_dob.'","'.($this->_diff+countdown_birthday($this->_dob, $this->_date)).'","'.$this->_is_secondary.'","'.date('Y-m-d',time()+86400*($this->_diff+countdown_birthday($this->_dob, $this->_date))).'","'.$this->_partner_dob.'",lang);
+	$.notify("'.$menu_interfaces['next_birthday'][$this->_lang_code].'");
+>>>>>>> origin/master
 }
 $.contextMenu({
 	selector: ".context-menu-'.$this->_diff.'-'.$this->_is_secondary.'-'.$this->_partner_dob.'-'.$this->_lang_code.'",
@@ -793,6 +836,7 @@ $(document).on("keyup", jwerty.event("k/s", function(e){
 		goToBirthdayMain();
 		pressed = true;
 	}
+<<<<<<< HEAD
 })).one("keyup", jwerty.event("e/o", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		if ($("#is_secondary").prop("checked") == true) {
@@ -802,6 +846,8 @@ $(document).on("keyup", jwerty.event("k/s", function(e){
 		}
 		pressed = true;
 	}
+=======
+>>>>>>> origin/master
 }));
 setChartOptions("'.$this->_download_jpeg_text.'","'.$this->_download_pdf_text.'","'.$this->_download_png_text.'","'.$this->_download_svg_text.'","'.$this->_print_chart_text.'","'.$this->_reset_zoom_text.'");
 if ($("#dt_change").val() != "YYYY-MM-DD") {
