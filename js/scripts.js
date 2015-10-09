@@ -171,13 +171,8 @@ $.fn.longTap = function(options) {
 		mousedown: 'ontouchstart' in window ? 'touchstart' : 'mousedown',
 		mouseup: 'ontouchend' in window ? 'touchend' : 'mouseup'
 	};
-<<<<<<< HEAD
 	return this.each(function(){
 		$(this).on(eventType.mousedown + '.longtap', function(){
-=======
-	return this.each(function() {
-		$(this).on(eventType.mousedown + '.longtap', function() {
->>>>>>> origin/master
 			$(this).data('touchstart', +new Date);
 		}).on(eventType.mouseup + '.longtap', function(e) {
 			var now = +new Date, than = $(this).data('touchstart');
@@ -468,18 +463,36 @@ function updateChromeWebstoreItem(langCode) {
 	});
 }
 function updateExplanation(langCode) {
-	$.ajax({
-		url: '/triggers/explanation.php',
-		type: 'GET',
-		cache: false,
-		data: {
-			lang: langCode
-		},
-		dataType: 'html',
-		success: function(data) {
-			$('#explanation').html(data);
-		}
-	});
+	if ($('#explanation').length) {
+		$.ajax({
+			url: '/triggers/explanation.php',
+			type: 'GET',
+			cache: false,
+			data: {
+				lang: langCode
+			},
+			dataType: 'html',
+			success: function(data) {
+				$('#explanation').html(data);
+			}
+		});
+	}
+}
+function updateIntroduction(langCode) {
+	if ($('#introduction').length) {
+		$.ajax({
+			url: '/triggers/intro.php',
+			type: 'GET',
+			cache: false,
+			data: {
+				lang: langCode
+			},
+			dataType: 'html',
+			success: function(data) {
+				$('#introduction').html(data);
+			}
+		});
+	}
 }
 function updateInterfaceLanguage(langCode) {
 	var langCodes = ['vi', 'en', 'ru', 'es', 'zh', 'ja'];
@@ -501,6 +514,7 @@ function updateInterfaceLanguage(langCode) {
 		updateHeadDescription(langCode);
 		updateChromeWebstoreItem(langCode);
 		updateExplanation(langCode);
+		updateIntroduction(langCode);
 		$('#explanation').attr('data-lang', langCode);
 		$('#pham_tung > span.translate').attr('data-title',$('#pham_tung > span.translate').attr('data-lang-'+langCode));
 		$('span.translate').each(function(){
@@ -519,6 +533,9 @@ function updateInterfaceLanguage(langCode) {
 		$('html, body').attr('lang', langCode);
 		$(document).ready(function(){
 			$.datepicker.setDefaults($.datepicker.regional[langCode]);
+			$('.hasDatepicker').each(function(){
+				$(this).datepicker('hide');
+			});
 		});
 	}
 }
@@ -542,18 +559,18 @@ function loadResults(dob,diff,isSecondary,dtChange,partnerDob,langCode) {
 			data: ajaxData,
 			dataType: 'html',
 			success: function(data) {
+				if ($('body').hasClass('has_dob') || $('body').hasClass('member')) {
+					updateHeadingH1Birthday(langCode,dtChange);
+					updateHeadTitleBirthday(langCode,dtChange);
+					updateHeadDescriptionBirthday(langCode,dtChange);
+				}
 				$('#results').html(data).promise().done(function(){
+					manipulateBirthday();
 					var date = new Date(dtChange);
 					var dateString = moment(date);
 					dateString.locale(langCode);
 					$.notify(dateString.format('LLLL'));
 				});
-				if ($('body').hasClass('has_dob') || $('body').hasClass('member')) {
-					manipulateBirthday();
-					updateHeadTitleBirthday(langCode,dtChange);
-					updateHeadDescriptionBirthday(langCode,dtChange);
-					updateHeadingH1Birthday(langCode,dtChange);
-				}
 			}
 		});
 	}
@@ -621,7 +638,6 @@ function loadProverb(langCode) {
 			},
 			dataType: 'html',
 			success: function(data) {
-<<<<<<< HEAD
 				$('#proverb').html(data).promise().done(function(){
 					switch (langCode) {
 						case 'vi':
@@ -644,29 +660,6 @@ function loadProverb(langCode) {
 							break;
 					}
 				});;
-=======
-				$('#proverb').html(data);
-				switch(langCode) {
-					case 'vi':
-						$.notify('Đổi thành ngữ');
-						break;
-					case 'en':
-						$.notify('Changed proverb');
-						break;
-					case 'ru':
-						$.notify('Изменен пословица');
-						break;
-					case 'es':
-						$.notify('Proverbio cambiado');
-						break;
-					case 'zh':
-						$.notify('更改谚语');
-						break;
-					case 'ja':
-						$.notify('変更されたことわざ');
-						break;
-				}
->>>>>>> origin/master
 			}
 		});
 	}

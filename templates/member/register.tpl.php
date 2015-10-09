@@ -27,12 +27,14 @@ if (isset($_POST['member_register_submit'])) {
 		if (no_letter_pass($_POST['member_register_password'])) {
 			$member_register_errors[] = translate_error('no_letter_pass');
 		}
+		/*
 		if (no_caps_pass($_POST['member_register_password'])) {
 			$member_register_errors[] = translate_error('no_caps_pass');
 		}
 		if (no_symbol_pass($_POST['member_register_password'])) {
 			$member_register_errors[] = translate_error('no_symbol_pass');
 		}
+		*/
 		if (not_match_pass($_POST['member_register_password'], $_POST['member_register_repeat_password'])) {
 			$member_register_errors[] = translate_error('not_match_pass');
 		}
@@ -50,11 +52,11 @@ if (isset($_POST['member_register_submit'])) {
 <form id="register_form" method="POST" action="">
 	<div class="m-input-prepend">
 		<span class="add-on"><?php echo translate_span('email'); ?></span>
-		<input class="m-wrap translate required" size="20" type="text" name="member_register_email" data-lang-ja="<?php echo $input_interfaces['email']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['email']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['email']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['email']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['email']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['email']['vi']; ?>" placeholder="<?php echo $input_interfaces['email'][$lang_code]; ?>" value="<?php echo $inputted_email; ?>" tabindex="1" required>
+		<input class="m-wrap required" size="20" type="text" name="member_register_email" placeholder="john@example.com" value="<?php echo $inputted_email; ?>" tabindex="1" required>
 	</div>
 	<div class="m-input-prepend">
 		<span class="add-on"><?php echo translate_span('fullname'); ?></span>
-		<input class="m-wrap translate required" size="20" type="text" name="member_register_fullname" data-lang-ja="<?php echo $input_interfaces['fullname']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['fullname']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['fullname']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['fullname']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['fullname']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['fullname']['vi']; ?>" placeholder="<?php echo $input_interfaces['fullname'][$lang_code]; ?>" value="<?php echo $inputted_fullname; ?>" tabindex="2" required>
+		<input class="m-wrap required" size="20" type="text" name="member_register_fullname" placeholder="John Doe" value="<?php echo $inputted_fullname; ?>" tabindex="2" required>
 	</div>
 	<div class="m-input-prepend">
 		<span class="add-on"><?php echo translate_span('dob'); ?></span>

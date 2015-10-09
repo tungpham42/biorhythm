@@ -35,16 +35,16 @@
 		<input type="text" class="m-wrap panel" disabled value="{{lunarPeriodDate()}}">
 	</div>
 	<div class="m-input-prepend">
+		<span class="add-on label">Giờ tốt:</span>
+		<textarea class="m-wrap panel" disabled>{{lunarGoodHours()}}</textarea>
+	</div>
+	<div class="m-input-prepend">
 		<span class="add-on label">Sao tốt:</span>
 		<textarea class="m-wrap panel" disabled>{{lunarGoodStars()}}</textarea>
 	</div>
 	<div class="m-input-prepend">
 		<span class="add-on label">Sao xấu:</span>
 		<textarea class="m-wrap panel" disabled>{{lunarBadStars()}}</textarea>
-	</div>
-	<div class="m-input-prepend">
-		<span class="add-on label">Giờ tốt:</span>
-		<textarea class="m-wrap panel" disabled>{{lunarGoodHours()}}</textarea>
 	</div>
 </div>
 <script>

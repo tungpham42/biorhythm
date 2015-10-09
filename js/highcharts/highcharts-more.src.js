@@ -2,7 +2,7 @@
 // @compilation_level SIMPLE_OPTIMIZATIONS
 
 /**
- * @license Highcharts JS v4.1.6 (2015-06-12)
+ * @license Highcharts JS v4.1.9 (2015-10-07)
  *
  * (c) 2009-2014 Torstein Honsi
  *
@@ -60,11 +60,8 @@ extend(Pane.prototype, {
 		
 		pane.chart = chart;
 		
-		// Set options
-		if (chart.angular) { // gauges
-			defaultOptions.background = {}; // gets extended by this.defaultBackgroundOptions
-		}
-		pane.options = options = merge(defaultOptions, options);
+		// Set options. Angular charts have a default background (#3318)
+		pane.options = options = merge(defaultOptions, chart.angular ? { background: {} } : undefined, options);
 		
 		backgroundOption = options.background;
 		
@@ -81,7 +78,9 @@ extend(Pane.prototype, {
 				config.color = config.backgroundColor; // due to naming in plotBands
 				firstAxis.options.plotBands.unshift(config);
 				axisUserOptions.plotBands = axisUserOptions.plotBands || []; // #3176
-				axisUserOptions.plotBands.unshift(config);
+				if (axisUserOptions.plotBands !== firstAxis.options.plotBands) {
+					axisUserOptions.plotBands.unshift(config);
+				}
 			});
 		}
 	},
@@ -689,6 +688,7 @@ defaultPlotOptions.arearange = merge(defaultPlotOptions.area, {
 seriesTypes.arearange = extendClass(seriesTypes.area, {
 	type: 'arearange',
 	pointArrayMap: ['low', 'high'],
+	dataLabelCollections: ['dataLabel', 'dataLabelUpper'],
 	toYData: function (point) {
 		return [point.low, point.high];
 	},
@@ -831,6 +831,7 @@ seriesTypes.arearange = extendClass(seriesTypes.area, {
 			seriesProto = Series.prototype,
 			dataLabelOptions = this.options.dataLabels,
 			align = dataLabelOptions.align,
+			inside = dataLabelOptions.inside,
 			point,
 			up,
 			inverted = this.chart.inverted;
@@ -841,27 +842,29 @@ seriesTypes.arearange = extendClass(seriesTypes.area, {
 			i = length;
 			while (i--) {
 				point = data[i];
-				up = point.plotHigh > point.plotLow;
-				
-				// Set preliminary values
-				point.y = point.high;
-				point._plotY = point.plotY;
-				point.plotY = point.plotHigh;
-				
-				// Store original data labels and set preliminary label objects to be picked up 
-				// in the uber method
-				originalDataLabels[i] = point.dataLabel;
-				point.dataLabel = point.dataLabelUpper;
-				
-				// Set the default offset
-				point.below = up;
-				if (inverted) {
-					if (!align) {
-						dataLabelOptions.align = up ? 'right' : 'left';
+				if (point) {
+					up = inside ? point.plotHigh < point.plotLow : point.plotHigh > point.plotLow;
+					
+					// Set preliminary values
+					point.y = point.high;
+					point._plotY = point.plotY;
+					point.plotY = point.plotHigh;
+					
+					// Store original data labels and set preliminary label objects to be picked up 
+					// in the uber method
+					originalDataLabels[i] = point.dataLabel;
+					point.dataLabel = point.dataLabelUpper;
+					
+					// Set the default offset
+					point.below = up;
+					if (inverted) {
+						if (!align) {
+							dataLabelOptions.align = up ? 'right' : 'left';
+						}
+						dataLabelOptions.x = dataLabelOptions.xHigh;								
+					} else {
+						dataLabelOptions.y = dataLabelOptions.yHigh;
 					}
-					dataLabelOptions.x = dataLabelOptions.xHigh;								
-				} else {
-					dataLabelOptions.y = dataLabelOptions.yHigh;
 				}
 			}
 			
@@ -873,25 +876,27 @@ seriesTypes.arearange = extendClass(seriesTypes.area, {
 			i = length;
 			while (i--) {
 				point = data[i];
-				up = point.plotHigh > point.plotLow;
-				
-				// Move the generated labels from step 1, and reassign the original data labels
-				point.dataLabelUpper = point.dataLabel;
-				point.dataLabel = originalDataLabels[i];
-				
-				// Reset values
-				point.y = point.low;
-				point.plotY = point._plotY;
-				
-				// Set the default offset
-				point.below = !up;
-				if (inverted) {
-					if (!align) {
-						dataLabelOptions.align = up ? 'left' : 'right';
+				if (point) {
+					up = inside ? point.plotHigh < point.plotLow : point.plotHigh > point.plotLow;
+					
+					// Move the generated labels from step 1, and reassign the original data labels
+					point.dataLabelUpper = point.dataLabel;
+					point.dataLabel = originalDataLabels[i];
+					
+					// Reset values
+					point.y = point.low;
+					point.plotY = point._plotY;
+					
+					// Set the default offset
+					point.below = !up;
+					if (inverted) {
+						if (!align) {
+							dataLabelOptions.align = up ? 'left' : 'right';
+						}
+						dataLabelOptions.x = dataLabelOptions.xLow;
+					} else {
+						dataLabelOptions.y = dataLabelOptions.yLow;
 					}
-					dataLabelOptions.x = dataLabelOptions.xLow;
-				} else {
-					dataLabelOptions.y = dataLabelOptions.yLow;
 				}
 			}
 			if (seriesProto.drawDataLabels) {
@@ -988,6 +993,7 @@ seriesTypes.areasplinerange = extendClass(seriesTypes.arearange, {
 		directTouch: true,
 		trackerGroups: ['group', 'dataLabelsGroup'],
 		drawGraph: noop,
+		crispCol: colProto.crispCol,
 		pointAttrToOptions: colProto.pointAttrToOptions,
 		drawPoints: colProto.drawPoints,
 		drawTracker: colProto.drawTracker,
@@ -1345,7 +1351,8 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 			shapeArgs,
 			color,
 			doQuartiles = series.doQuartiles !== false, // error bar inherits this series type but doesn't do quartiles
-			whiskerLength = parseInt(series.options.whiskerLength, 10) / 100;
+			pointWiskerLength,
+			whiskerLength = series.options.whiskerLength;
 
 
 		each(points, function (point) {
@@ -1430,21 +1437,22 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 					crispCorr = (whiskersAttr['stroke-width'] % 2) / 2;
 					highPlot = highPlot + crispCorr;
 					lowPlot = lowPlot + crispCorr;
+					pointWiskerLength = (/%$/).test(whiskerLength) ? halfWidth * parseFloat(whiskerLength) / 100 : whiskerLength / 2;
 					whiskersPath = [
 						// High whisker
 						'M',
-						crispX - halfWidth * whiskerLength, 
+						crispX - pointWiskerLength, 
 						highPlot,
 						'L',
-						crispX + halfWidth * whiskerLength, 
+						crispX + pointWiskerLength, 
 						highPlot,
 						
 						// Low whisker
 						'M',
-						crispX - halfWidth * whiskerLength, 
+						crispX - pointWiskerLength, 
 						lowPlot,
 						'L',
-						crispX + halfWidth * whiskerLength, 
+						crispX + pointWiskerLength, 
 						lowPlot
 					];
 				}
@@ -1851,6 +1859,7 @@ defaultPlotOptions.bubble = merge(defaultPlotOptions.scatter, {
 	maxSize: '20%',
 	// negativeColor: null,
 	// sizeBy: 'area'
+	softThreshold: false,
 	states: {
 		hover: {
 			halo: {
@@ -1930,19 +1939,41 @@ seriesTypes.bubble = extendClass(seriesTypes.scatter, {
 			pos,
 			zData = this.zData,
 			radii = [],
-			sizeByArea = this.options.sizeBy !== 'width',
-			zRange;
-		
+			options = this.options,
+			sizeByArea = options.sizeBy !== 'width',
+			zThreshold = options.zThreshold,
+			zRange = zMax - zMin,
+			value,
+			radius;
+
 		// Set the shape type and arguments to be picked up in drawPoints
 		for (i = 0, len = zData.length; i < len; i++) {
-			zRange = zMax - zMin;
-			pos = zRange > 0 ? // relative size, a number between 0 and 1
-				(zData[i] - zMin) / (zMax - zMin) : 
-				0.5;
-			if (sizeByArea && pos >= 0) {
-				pos = Math.sqrt(pos);
+
+			value = zData[i];
+
+			// When sizing by threshold, the absolute value of z determines the size
+			// of the bubble.
+			if (options.sizeByAbsoluteValue) {
+				value = Math.abs(value - zThreshold);
+				zMax = Math.max(zMax - zThreshold, Math.abs(zMin - zThreshold));
+				zMin = 0;
 			}
-			radii.push(math.ceil(minSize + pos * (maxSize - minSize)) / 2);
+
+			if (value === null) {
+				radius = null;
+			// Issue #4419 - if value is less than zMin, push a radius that's always smaller than the minimum size
+			} else if (value < zMin) {
+				radius = minSize / 2 - 1;
+			} else {
+				// Relative size, a number between 0 and 1
+				pos = zRange > 0 ? (value - zMin) / zRange : 0.5; 
+
+				if (sizeByArea && pos >= 0) {
+					pos = Math.sqrt(pos);
+				}
+				radius = math.ceil(minSize + pos * (maxSize - minSize)) / 2;
+			}
+			radii.push(radius);
 		}
 		this.radii = radii;
 	},
@@ -1995,7 +2026,7 @@ seriesTypes.bubble = extendClass(seriesTypes.scatter, {
 			point = data[i];
 			radius = radii ? radii[i] : 0; // #1737
 			
-			if (radius >= this.minPxSize / 2) {
+			if (typeof radius === 'number' && radius >= this.minPxSize / 2) {
 				// Shape arguments
 				point.shapeType = 'circle';
 				point.shapeArgs = {
@@ -2011,7 +2042,7 @@ seriesTypes.bubble = extendClass(seriesTypes.scatter, {
 					width: 2 * radius,
 					height: 2 * radius
 				};
-			} else { // below zThreshold
+			} else { // below zThreshold or z = null
 				point.shapeArgs = point.plotY = point.dlBox = UNDEFINED; // #1691
 			}
 		}
@@ -2092,6 +2123,7 @@ Axis.prototype.beforePadding = function () {
 					
 				});
 				series.minPxSize = extremes.minSize;
+				series.maxPxSize = extremes.maxSize;
 				
 				// Find the min and max Z
 				zData = series.zData;
@@ -2116,7 +2148,7 @@ Axis.prototype.beforePadding = function () {
 			radius;
 
 		if (isXAxis) {
-			series.getRadii(zMin, zMax, extremes.minSize, extremes.maxSize);
+			series.getRadii(zMin, zMax, series.minPxSize, series.maxPxSize);
 		}
 		
 		if (range > 0) {
@@ -2130,11 +2162,15 @@ Axis.prototype.beforePadding = function () {
 		}
 	});
 	
-	if (activeSeries.length && range > 0 && pick(this.options.min, this.userMin) === UNDEFINED && pick(this.options.max, this.userMax) === UNDEFINED) {
+
+	if (activeSeries.length && range > 0 && !this.isLog) {
 		pxMax -= axisLength;
 		transA *= (axisLength + pxMin - pxMax) / axisLength;
-		this.min += pxMin / transA;
-		this.max += pxMax / transA;
+		each([['min', 'userMin', pxMin], ['max', 'userMax', pxMax]], function (keys) {
+			if (pick(axis.options[keys[0]], axis[keys[1]]) === UNDEFINED) {
+				axis[keys[0]] += keys[2] / transA; 
+			}
+		});
 	}
 };
 

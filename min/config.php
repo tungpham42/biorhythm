@@ -66,10 +66,10 @@ $min_allowDebugFlag = false;
  */
 //require dirname(__FILE__) . '/lib/Minify/Cache/APC.php';
 //$min_cachePath = new Minify_Cache_APC();
-require dirname(__FILE__) . '/lib/Minify/Cache/Memcache.php';
-$memcache = new Memcache;
-$memcache->connect('localhost', 11211);
-$min_cachePath = new Minify_Cache_Memcache($memcache);
+require dirname(__FILE__) . '/lib/Minify/Cache/Redis.php';
+$redis = new Redis;
+$redis->connect('localhost', 6379);
+$min_cachePath = new Minify_Cache_Redis($redis);
 
 /**
  * Leave an empty string to use PHP's $_SERVER['DOCUMENT_ROOT'].

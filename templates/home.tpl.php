@@ -23,10 +23,9 @@ if (has_dob()) {
 include template('keyboard');
 include template('explanation');
 include template('feed_blog');
-include template('feed_forum');
+//include template('feed_forum');
 include template('install_app');
 include template('comments');
-//include template('feed_blog');
 echo list_user_same_birthday_links('same-birthday-links');
 echo list_user_birthday_links('birthday-links');
 echo list_user_links('user-birthdates');

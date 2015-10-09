@@ -15,6 +15,7 @@ if (isset($_GET['q']) && $_GET['q'] != '') {
 		include template('embed');
 	}
 } else if ($p == 'intro') {
+	include template('lang_bar');
 	include template('intro');
 }  else if ($p == 'login') {
 	include template('login-page');

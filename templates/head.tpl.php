@@ -27,10 +27,5 @@
 <link rel="alternate" hreflang="zh" href="<?php echo current_url_lang('zh'); ?>" />
 <link rel="alternate" hreflang="ja" href="<?php echo current_url_lang('ja'); ?>" />
 <link rel="chrome-webstore-item" href="<?php echo chrome_webstore_item(); ?>" />
-<<<<<<< HEAD
-<link rel="stylesheet" href="/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,keys.css,jssocials.css,m-styles.css,default.css,ui-blue/jquery-ui.css,nprogress.css&amp;94" />
+<link rel="stylesheet" href="/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,keys.css,jssocials.css,m-styles.css,default.css,ui-blue/jquery-ui.css,nprogress.css&amp;105" />
 <link rel="stylesheet" href="/min/f=css/print.css&amp;2" media="print" />
-=======
-<link rel="stylesheet" href="/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,keys.css,jssocials.css,m-styles.css,default.css,ui-blue/jquery-ui.css,nprogress.css&amp;7" />
-<link rel="stylesheet" href="/min/f=css/print.css&amp;1" media="print" />
->>>>>>> origin/master

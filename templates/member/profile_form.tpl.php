@@ -26,12 +26,14 @@ if (isset($_POST['member_profile_submit'])) {
 			if (no_letter_pass($_POST['member_profile_password'])) {
 				$member_profile_errors[] = translate_error('no_letter_pass');
 			}
+			/*
 			if (no_caps_pass($_POST['member_profile_password'])) {
 				$member_profile_errors[] = translate_error('no_caps_pass');
 			}
 			if (no_symbol_pass($_POST['member_profile_password'])) {
 				$member_profile_errors[] = translate_error('no_symbol_pass');
 			}
+			*/
 			if (not_match_pass($_POST['member_profile_password'], $_POST['member_profile_repeat_password'])) {
 				$member_profile_errors[] = translate_error('not_match_pass');
 			}

@@ -19,7 +19,7 @@ function google_api_php_client_autoload($class_name) {
 spl_autoload_register('libraries_autoload');
 spl_autoload_register('google_api_php_client_autoload');
 function is_public_server() {
-	if (substr($_SERVER['REMOTE_ADDR'],0,7) == '173.252' || substr($_SERVER['REMOTE_ADDR'],0,10) == '64.233.172' || substr($_SERVER['REMOTE_ADDR'],0,6) == '69.171' || substr($_SERVER['REMOTE_ADDR'],0,8) == '66.102.6' || substr($_SERVER['REMOTE_ADDR'],0,9) == '66.249.83' || substr($_SERVER['REMOTE_ADDR'],0,6) == '66.249') {
+	if (substr($_SERVER['REMOTE_ADDR'],0,6) == '66.220' || substr($_SERVER['REMOTE_ADDR'],0,7) == '173.252' || substr($_SERVER['REMOTE_ADDR'],0,5) == '31.13' || substr($_SERVER['REMOTE_ADDR'],0,10) == '64.233.172' || substr($_SERVER['REMOTE_ADDR'],0,6) == '69.171' || substr($_SERVER['REMOTE_ADDR'],0,6) == '66.102' || substr($_SERVER['REMOTE_ADDR'],0,9) == '66.249.83' || substr($_SERVER['REMOTE_ADDR'],0,6) == '66.249') {
 		return true;
 	} else {
 		return false;
@@ -38,7 +38,7 @@ function prevent_xss($query_string) {
 function init_timezone() {
 	global $geoip_record;
 	if (is_public_server() || is_bot() || !isset($geoip_record)) {
-		date_default_timezone_set('Asia/Saigon');
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
 	} else if (!is_public_server() && !is_bot() && isset($geoip_record)) {
 		$timezone = get_time_zone($geoip_record->country_code,$geoip_record->region);
 		date_default_timezone_set($timezone);

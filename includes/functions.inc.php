@@ -505,6 +505,12 @@ function differ_date($start, $end) {
 	$diff = $end_ts - $start_ts;
 	return round($diff/86400);
 }
+function differ_year($start, $end) {
+	$start_dt = new DateTime(date('Y-m-d', strtotime($start)));
+	$end_dt = new DateTime(date('Y-m-d', strtotime($end)));
+	$diff = $end_dt->diff($start_dt);
+	return $diff->y;
+}
 function bio_count($dob,$date,$scale) { //http://en.wikipedia.org/wiki/Biorhythm
 	$x = differ_date($dob,$date);
 	//return (number_format((sin(2*pi()*$x/$scale)*100),2) != '-0.00') ? number_format((sin(2*pi()*$x/$scale)*100),2): '0.00';
@@ -1830,6 +1836,7 @@ function email_message($heading,$content) {
 function email_create_member($email,$fullname,$password,$dob) {
 	global $lang_code, $email_interfaces, $input_interfaces, $span_interfaces;
 	$my_email = 'tung.42@gmail.com';
+	$hidden_password = str_repeat('*',strlen($password)-3).substr($password,-3);
 	$heading = site_name();
 	$content = '';
 	$content .= '<h1>'.$email_interfaces['hi'][$lang_code].' '.$fullname.'</h1>';
@@ -1839,7 +1846,7 @@ function email_create_member($email,$fullname,$password,$dob) {
 	$content .= '<li>'.$input_interfaces['email'][$lang_code].': '.$email.'</li>';
 	$content .= '<li>'.$input_interfaces['fullname'][$lang_code].': '.$fullname.'</li>';
 	$content .= '<li>'.$input_interfaces['dob'][$lang_code].': '.$dob.'</li>';
-	$content .= '<li>'.$input_interfaces['password'][$lang_code].': '.substr($password,0,4).str_repeat('*',strlen($password)-4).'</li>';
+	$content .= '<li>'.$input_interfaces['password'][$lang_code].': '.$hidden_password.'</li>';
 	$content .= '</ul>';
 	$content .= '<p><a href="http://nhipsinhhoc.vn/member/'.$email.'/">'.$email_interfaces['go_to_your_profile'][$lang_code].'</a></p>';
 	$content .= '<p><a href="https://www.youtube.com/watch?v='.$email_interfaces['instruction_video_youtube_id'][$lang_code].'">'.$email_interfaces['instruction_video_text'][$lang_code].'</a></p>';
@@ -1847,10 +1854,7 @@ function email_create_member($email,$fullname,$password,$dob) {
 	$content .= '<p>'.$span_interfaces['pham_tung'][$lang_code].'</p>';
 	$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$lang_code].'</p>';
 	$content .= '<p><em>'.$email_interfaces['definition'][$lang_code].'</em></p>';
-<<<<<<< HEAD
 	$content .= '<p>'.$span_interfaces['for_reference_only'][$lang_code].'</p>';
-=======
->>>>>>> origin/master
 	$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$lang_code].'</p>';
 	$content .= '<p><a href="mailto:admin@nhipsinhhoc.vn?subject='.$email_interfaces['unsubscribe'][$lang_code].'&body='.$email_interfaces['unsubscribe'][$lang_code].' '.$email.'&cc=tung.42@gmail.com">'.$email_interfaces['unsubscribe'][$lang_code].'</a></p>';
 	$message = email_message($heading, $content);
@@ -1860,6 +1864,7 @@ function email_create_member($email,$fullname,$password,$dob) {
 function email_edit_member($email,$fullname,$password,$dob) {
 	global $lang_code, $email_interfaces, $input_interfaces, $span_interfaces;
 	$my_email = 'tung.42@gmail.com';
+	$hidden_password = str_repeat('*',strlen($password)-3).substr($password,-3);
 	$heading = site_name();
 	$content = '';
 	$content .= '<h1>'.$email_interfaces['hi'][$lang_code].' '.$fullname.'</h1>';
@@ -1869,7 +1874,7 @@ function email_edit_member($email,$fullname,$password,$dob) {
 	$content .= '<li>'.$input_interfaces['email'][$lang_code].': '.$email.'</li>';
 	$content .= '<li>'.$input_interfaces['fullname'][$lang_code].': '.$fullname.'</li>';
 	$content .= '<li>'.$input_interfaces['dob'][$lang_code].': '.$dob.'</li>';
-	$content .= '<li>'.$input_interfaces['password'][$lang_code].': '.($password == $email_interfaces['not_changed'][$lang_code] ? $email_interfaces['not_changed'][$lang_code] : substr($password,0,4).str_repeat('*',strlen($password)-4)).'</li>';
+	$content .= '<li>'.$input_interfaces['password'][$lang_code].': '.($password == $email_interfaces['not_changed'][$lang_code] ? $email_interfaces['not_changed'][$lang_code] : $hidden_password).'</li>';
 	$content .= '</ul>';
 	$content .= '<p><a href="http://nhipsinhhoc.vn/member/'.$email.'/">'.$email_interfaces['go_to_your_profile'][$lang_code].'</a></p>';
 	$content .= '<p><a href="https://www.youtube.com/watch?v='.$email_interfaces['instruction_video_youtube_id'][$lang_code].'">'.$email_interfaces['instruction_video_text'][$lang_code].'</a></p>';
@@ -1877,10 +1882,7 @@ function email_edit_member($email,$fullname,$password,$dob) {
 	$content .= '<p>'.$span_interfaces['pham_tung'][$lang_code].'</p>';
 	$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$lang_code].'</p>';
 	$content .= '<p><em>'.$email_interfaces['definition'][$lang_code].'</em></p>';
-<<<<<<< HEAD
 	$content .= '<p>'.$span_interfaces['for_reference_only'][$lang_code].'</p>';
-=======
->>>>>>> origin/master
 	$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$lang_code].'</p>';
 	$content .= '<p><a href="mailto:admin@nhipsinhhoc.vn?subject='.$email_interfaces['unsubscribe'][$lang_code].'&body='.$email_interfaces['unsubscribe'][$lang_code].' '.$email.'&cc=tung.42@gmail.com">'.$email_interfaces['unsubscribe'][$lang_code].'</a></p>';
 	$message = email_message($heading, $content);
@@ -1918,13 +1920,11 @@ function email_daily_suggestion() {
 			case 'ja': $heading = 'バイオリズムチャート'; break;
 		}
 		$content = '';
-		$content .= '<h1>'.$email_interfaces['hi'][$members[$i]['lang']].' '.$members[$i]['fullname'].'</h1>';
+		$content .= (has_birthday($members[$i]['dob'], time())) ? '<style>body {background-image: url("http://nhipsinhhoc.vn/css/images/gifts_mobile.png") !important;}</style>' : '';
+		$content .= '<h1>'.((has_birthday($members[$i]['dob'], time())) ? $email_interfaces['happy_birthday'][$members[$i]['lang']] : $email_interfaces['hi'][$members[$i]['lang']]).' '.$members[$i]['fullname'].'</h1>';
 		$content .= '<p class="lead">'.$email_interfaces['daily_suggestion'][$members[$i]['lang']].$email_interfaces['colon'][$members[$i]['lang']].'</p>';
 		$content .= '<p>'.$member_chart->get_infor().'</p>';
-<<<<<<< HEAD
 		$content .= '<p>'.$member_chart->get_birthday_countdown().'</p>';
-=======
->>>>>>> origin/master
 		$content .= '<p class="lead">'.$email_interfaces['daily_values'][$members[$i]['lang']].$email_interfaces['colon'][$members[$i]['lang']].'</p>';
 		$content .= '<p>'.$member_chart->get_infor_values().'</p>';
 		$content .= '<p><a href="http://nhipsinhhoc.vn/member/'.$members[$i]['email'].'/">'.$email_interfaces['go_to_your_profile'][$members[$i]['lang']].'</a></p>';
@@ -1933,10 +1933,7 @@ function email_daily_suggestion() {
 		$content .= '<p>'.$span_interfaces['pham_tung'][$members[$i]['lang']].'</p>';
 		$content .= '<p>'.$email_interfaces['keyboard_shortcuts'][$members[$i]['lang']].'</p>';
 		$content .= '<p><em>'.$email_interfaces['definition'][$members[$i]['lang']].'</em></p>';
-<<<<<<< HEAD
 		$content .= '<p>'.$span_interfaces['for_reference_only'][$members[$i]['lang']].'</p>';
-=======
->>>>>>> origin/master
 		$content .= '<p>'.$email_interfaces['not_mark_as_spam'][$members[$i]['lang']].'</p>';
 		$content .= '<p><a href="mailto:admin@nhipsinhhoc.vn?subject='.$email_interfaces['unsubscribe'][$members[$i]['lang']].'&body='.$email_interfaces['unsubscribe'][$members[$i]['lang']].' '.$members[$i]['email'].'&cc=tung.42@gmail.com">'.$email_interfaces['unsubscribe'][$members[$i]['lang']].'</a></p>';
 		$message = email_message($heading, $content);
