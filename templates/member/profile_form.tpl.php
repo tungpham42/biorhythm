@@ -65,11 +65,12 @@ if (isset($_POST['member_profile_submit'])) {
 		<span class="add-on"><?php echo translate_span('dob'); ?></span>
 		<input id="member_profile_dob" class="m-wrap required" size="20" type="text" name="member_profile_dob" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" value="<?php echo $inputted_dob; ?>" required>
 	</div>
-	<div class="m-input-prepend">
+	<a id="change_pass" href="javascript:void(0);"><?php echo translate_button('change_pass'); ?></a>
+	<div class="m-input-prepend hide pass">
 		<span class="add-on"><?php echo translate_span('password'); ?></span>
 		<input class="m-wrap translate" size="20" type="password" name="member_profile_password" data-lang-ja="<?php echo $input_interfaces['password']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['password']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['password']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['password']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['password']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['password']['vi']; ?>" placeholder="<?php echo $input_interfaces['password'][$lang_code]; ?>">
 	</div>
-	<div class="m-input-prepend">
+	<div class="m-input-prepend hide pass">
 		<span class="add-on"><?php echo translate_span('repeat_password'); ?></span>
 		<input class="m-wrap translate" size="20" type="password" name="member_profile_repeat_password" data-lang-ja="<?php echo $input_interfaces['repeat_password']['ja']; ?>" data-lang-zh="<?php echo $input_interfaces['repeat_password']['zh']; ?>" data-lang-es="<?php echo $input_interfaces['repeat_password']['es']; ?>" data-lang-ru="<?php echo $input_interfaces['repeat_password']['ru']; ?>" data-lang-en="<?php echo $input_interfaces['repeat_password']['en']; ?>" data-lang-vi="<?php echo $input_interfaces['repeat_password']['vi']; ?>" placeholder="<?php echo $input_interfaces['repeat_password'][$lang_code]; ?>">
 	</div>
@@ -86,6 +87,11 @@ if (isset($_POST['member_profile_submit'])) {
 <script>
 maskField('#member_profile_dob');
 disableHyphen('member_profile_dob');
+$('#profile_form').on('click', '#change_pass', function(){
+	$('.pass.hide').removeClass('hide');
+	$('#change_pass').remove();
+	animateScrollProverb();
+});
 $('#member_profile_dob').datepicker({
 	dateFormat: 'yy-mm-dd',
 	changeYear: true,

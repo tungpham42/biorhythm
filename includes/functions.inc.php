@@ -1563,7 +1563,7 @@ function load_rss_feed($rss_url) {
 	foreach($feed as $item) {
 		$result .= '<div class="feed_item">';
 		$result .= '<a target="_blank" class="item_title rotate" href="'.$item['link'].'"><span data-title="'.$item['title'].'">'.$item['title'].'</span></a>';
-		$result .= '<p class="item_date">'.$item['date'].'</p>';
+		$result .= '<p class="item_date">'.date('Y-m-d',strtotime($item['date'])).'</p>';
 		$result .= '<div class="item_desc">'.$item['description'].'</div>';
 		$result .= '</div>';
 	}
@@ -1789,7 +1789,7 @@ function send_mail($to,$subject,$message) {
 		$unsubscriber_emails[$i] = $unsubscribers->data[$i]['email'];
 	}
 	sort($unsubscriber_emails);
-	if (!in_array($to, $unsubscriber_emails)) {
+	if (!in_array(strtolower($to), $unsubscriber_emails)) {
 		$fullname = load_member_from_email($to)['fullname'];
 		$boundary = uniqid('np');
 		$headers = "";
@@ -1816,14 +1816,7 @@ function send_mail($to,$subject,$message) {
 		//Html body
 		$body .= $message['html'].PHP_EOL;
 		$body .= PHP_EOL.PHP_EOL."--".$boundary."--";
-		$signature = new mail_signature(
-			MAIL_RSA_PRIV,
-			MAIL_RSA_PASSPHRASE,
-			MAIL_DOMAIN,
-			MAIL_SELECTOR
-		);
-		$signed_headers = $signature->get_signed_headers("\"".$fullname."\" <".$to.">", $subject, $body, $headers);
-		mail("\"".$fullname."\" <".$to.">", '=?utf-8?B?'.base64_encode($subject).'?=', $body, $signed_headers.$headers);
+		mail("\"".$fullname."\" <".strtolower($to).">", '=?utf-8?B?'.base64_encode($subject).'?=', $body, $headers);
 	}
 }
 function email_message($heading,$content) {

@@ -1,4 +1,4 @@
-<script src="/min/b=js&amp;f=angular/angular.min.js,bmi.js&amp;16"></script>
+<script src="<?php echo $cdn_url; ?>/min/b=js&amp;f=angular/angular.min.js,bmi.js&amp;16"></script>
 <div id="bmi_app" data-ng-app="bmiApp" data-ng-controller="bmiController">
 	<input id="bmi_lang" type="hidden" data-ng-model="language" value="<?php echo $lang_code; ?>">
 	<div class="m-input-prepend m-input-append">

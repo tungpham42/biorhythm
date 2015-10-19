@@ -47,6 +47,8 @@ $show_addthis = false;
 $show_sumome = false;
 $clicktale = false;
 $credential_id = 4; //change this to 4 in DEMO
+//$cdn_url = 'http://nhipsinhhoc.cdn.vccloud.vn';
+$cdn_url = '';
 $number = calculate_life_path($dob);
 if (isset($_GET['dob']) && isset($_GET['diff']) && isset($_GET['is_secondary']) && isset($_GET['dt_change']) && isset($_GET['partner_dob']) && isset($_GET['lang_code'])) {
 	$chart = new Chart($_GET['dob'],$_GET['diff'],$_GET['is_secondary'],$_GET['dt_change'],$_GET['partner_dob'],$_GET['lang_code']);
@@ -360,6 +362,14 @@ $button_interfaces = array(
 		'es' => 'Cerrar Sesión',
 		'zh' => '登出',
 		'ja' => 'ログアウト'
+	),
+	'change_pass' => array(
+		'vi' => 'Đổi mật khẩu',
+		'en' => 'Change password',
+		'ru' => 'Изменить пароль',
+		'es' => 'Cambiar la contraseña',
+		'zh' => '更改密码',
+		'ja' => 'パスワードを変更する'
 	),
 	'edit' => array(
 		'vi' => 'Sửa',
@@ -918,12 +928,12 @@ $email_interfaces = array(
 		'ja' => 'SJw7lMuKipc'
 	),
 	'keyboard_shortcuts' => array(
-		'vi' => 'Phím tắt: S, K -> Hôm nay; A, J -> Trước, D, L -> Sau; W, I -> Sinh nhật; E, O -> Nhịp sinh học phụ; R, P -> Thành ngữ',
-		'en' => 'Keyboard shortcuts: S, K -> Today; A, J -> Back; D, L -> Forward; W, I -> Birthday; E, O -> Secondary rhythm; R, P -> Proverb',
-		'ru' => 'Горячие клавиши: S, K -> Сегодня; A, J -> Назад; D, L -> Вперед; W, I -> День рождения; E, O -> Вторичный ритм; R, P -> Пословица',
-		'es' => 'Atajos de teclado: S, K -> Hoy; A, J -> Atrás; D, L -> Enviar; W, I -> Cumpleaños; E, O -> Ritmo secundaria; R, P -> Proverbio',
-		'zh' => '快捷键： S，K -> 今天; A，J -> 回去; D，L -> 前进; W，I -> 生辰; E，O -> 次要节奏; R，P -> 谚语',
-		'ja' => 'キーボードショートカット： S、K -> 今日; A、J -> 戻る; D、L -> 前進する; W、I -> バースデー; E、O -> セカンダリリズム; R、P -> ことわざ'
+		'vi' => 'Phím tắt: S, K -> Hôm nay; A, J -> Trước, D, L -> Sau; W, I -> Sinh nhật; E, O -> Nhịp sinh học phụ; R, P -> Thành ngữ; 1 -> Tiếng Việt; 2 -> Tiếng Anh; 3 -> Tiếng Nga; 4 -> Tiếng Tây Ban Nha; 5 -> Tiếng Trung; 6 -> Tiếng Nhật',
+		'en' => 'Keyboard shortcuts: S, K -> Today; A, J -> Back; D, L -> Forward; W, I -> Birthday; E, O -> Secondary rhythm; R, P -> Proverb; 1 -> Vietnamese; 2 -> English; 3 -> Russian; 4 -> Spanish; 5 -> Chinese; 6 -> Japanese',
+		'ru' => 'Горячие клавиши: S, K -> Сегодня; A, J -> Назад; D, L -> Вперед; W, I -> День рождения; E, O -> Вторичный ритм; R, P -> Пословица; 1 -> Вьетнамский язык; 2 -> Английский язык; 3 -> Русский язык; 4 -> Испанский язык; 5 -> Китайский язык; 6 -> Японский язык',
+		'es' => 'Atajos de teclado: S, K -> Hoy; A, J -> Atrás; D, L -> Enviar; W, I -> Cumpleaños; E, O -> Ritmo secundaria; R, P -> Proverbio; 1 -> Idioma vietnamita; 2 -> Idioma Inglés; 3 -> Idioma Ruso; 4 -> Idioma Espanol; 5 -> Idioma Chino; 6 -> Idioma Japones',
+		'zh' => '快捷键： S，K -> 今天; A，J -> 回去; D，L -> 前进; W，I -> 生辰; E，O -> 次要节奏; R，P -> 谚语; 1 -> 越南语; 2 -> 英语; 3 -> 俄语语言; 4 -> 西班牙语; 5 -> 中文; 6 -> 日文',
+		'ja' => 'キーボードショートカット： S、K -> 今日; A、J -> 戻る; D、L -> 前進する; W、I -> バースデー; E、O -> セカンダリリズム; R、P -> ことわざ; 1 -> ベトナム語; 2 -> 英語; 3 -> ロシア語; 4 -> スペイン語; 5 -> チャン語; 6 -> 日本語'
 	),
 	'unsubscribe' => array(
 		'vi' => 'Hủy đăng ký',
@@ -1176,7 +1186,7 @@ $information_interfaces = array(
 	'average' => array(
 		'vi' => array(
 			'excellent' => 'Ngày hiện tại của bạn rất tốt, bạn nên tận hưởng ngày này.',
-			'good' => 'Ngày hiện tại của bạn khá tốt, tuy nhiên bạn nên cẩn thận trong ngày này.',
+			'good' => 'Ngày hiện tại của bạn khá tốt, tuy nhiên bạn không nên chủ quan trong ngày này.',
 			'gray' => 'Ngày hiện tại của bạn hơi xấu, bạn nên cẩn trọng hơn.',
 			'bad' => 'Ngày hiện tại của bạn khá xấu, bạn nên cực kỳ cẩn thận.'
 		),
@@ -1358,10 +1368,12 @@ define('MAIL_RSA_PASSPHRASE', 'nhipsinhhoc');
 
 define('MAIL_RSA_PRIV',
 '-----BEGIN RSA PRIVATE KEY-----
+
 -----END RSA PRIVATE KEY-----');
 
 define('MAIL_RSA_PUBL',
 '-----BEGIN PUBLIC KEY-----
+
 -----END PUBLIC KEY-----');
 
 // Domain or subdomain of the signing entity (i.e. the domain where the e-mail comes from)

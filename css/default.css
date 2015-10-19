@@ -3922,9 +3922,13 @@ body.birthday #proverb blockquote a {
 	animation: spin 1.8s linear 0s infinite;
 }
 body.loading a#logo > i {
+	text-shadow: 0 0 10px #ffffff;
 	-webkit-animation: spin 120ms linear 0s infinite;
 	-moz-animation: spin 120ms linear 0s infinite;
 	animation: spin 120ms linear 0s infinite;
+}
+body.loading.birthday a#logo > i {
+	text-shadow: 0 0 10px #E35604;
 }
 body.loading .lang_toggle.button, body.loading #proverb i#proverb_refresh, body.loading label[for="is_secondary"], body.loading #controls > .m-btn-group > .m-btn {
 	pointer-events: none !important;
@@ -6471,6 +6475,15 @@ body.member #profile_form input[type='submit'], body.member #profile_form #membe
 	font-size: 24px;
 	padding: 12px 24px;
 }
+body.member #change_pass {
+	font-size: 18px;
+	color: #555555;
+	font-style: italic;
+	text-align: center;
+	margin: 9px auto;
+	display: block;
+	text-decoration: underline;
+}
 body.member.register h5, body.member.login h5 {
 	text-align: center;
 	margin: 12px auto 6px;
@@ -6683,6 +6696,7 @@ body.member.person:lang(ja) #dob_control_bar > .m-btn {
 	#lang_bar {float: left;left: 12px;bottom: 4px;}
 	#lang_bar .lang_toggle.button {left: 0;}
 	.lang_toggle.button.first > span.lang {display: none;}
+	#bmi_app {clear: both;}
 }
 @media all and (max-width: 666px) {
 	.lang_toggle.button.first > span.lang {display: none !important;}

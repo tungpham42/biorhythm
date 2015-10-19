@@ -283,10 +283,9 @@ function updateHeadTitle(langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'text',
-		success: function(data) {
-			$('head').find('title').html(data);
-		}
+		dataType: 'text'
+	}).done(function(data) {
+		$('head').find('title').html(data);
 	});
 }
 function updateHeadTitleBirthday(langCode,time) {
@@ -308,10 +307,9 @@ function updateHeadTitleBirthday(langCode,time) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'text',
-		success: function(data) {
-			$('head').find('title').html(data);
-		}
+		dataType: 'text'
+	}).done(function(data) {
+		$('head').find('title').html(data);
 	});
 }
 function updateHeadingH1(langCode) {
@@ -335,10 +333,9 @@ function updateHeadingH1(langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'text',
-		success: function(data) {
-			$('h1#heading').html(data);
-		}
+		dataType: 'text'
+	}).done(function(data) {
+		$('h1#heading').html(data);
 	});
 }
 function updateHeadingH1Birthday(langCode,time) {
@@ -360,10 +357,9 @@ function updateHeadingH1Birthday(langCode,time) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'text',
-		success: function(data) {
-			$('h1#heading').html(data);
-		}
+		dataType: 'text'
+	}).done(function(data) {
+		$('h1#heading').html(data);
 	});
 }
 function updateHeadDescription(langCode) {
@@ -384,10 +380,9 @@ function updateHeadDescription(langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'text',
-		success: function(data) {
-			$('head').find('meta[name="description"]').attr('content', data);
-		}
+		dataType: 'text'
+	}).done(function(data) {
+		$('head').find('meta[name="description"]').attr('content', data);
 	});
 }
 function updateHeadDescriptionBirthday(langCode,time) {
@@ -409,10 +404,9 @@ function updateHeadDescriptionBirthday(langCode,time) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'text',
-		success: function(data) {
-			$('head').find('meta[name="description"]').attr('content', data);
-		}
+		dataType: 'text'
+	}).done(function(data) {
+		$('head').find('meta[name="description"]').attr('content', data);
 	});
 }
 function updateInputInterface(inputId,langCode) {
@@ -425,10 +419,9 @@ function updateInputInterface(inputId,langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'text',
-		success: function(data) {
-			$('input[id="'+inputId+'"].translate').attr('placeholder', data);
-		}
+		dataType: 'text'
+	}).done(function(data) {
+		$('input[id="'+inputId+'"].translate').attr('placeholder', data);
 	});
 }
 function updateButtonInterface(buttonId,langCode) {
@@ -441,10 +434,9 @@ function updateButtonInterface(buttonId,langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'text',
-		success: function(data) {
-			$('a[id="'+buttonId+'"].translate > span').html(data);
-		}
+		dataType: 'text'
+	}).done(function(data) {
+		$('a[id="'+buttonId+'"].translate > span').html(data);
 	});
 }
 function updateChromeWebstoreItem(langCode) {
@@ -456,10 +448,9 @@ function updateChromeWebstoreItem(langCode) {
 		type: 'GET',
 		cache: false,
 		data: ajaxData,
-		dataType: 'text',
-		success: function(data) {
-			$('link[rel="chrome-webstore-item"]').attr('href',data);
-		}
+		dataType: 'text'
+	}).done(function(data) {
+		$('link[rel="chrome-webstore-item"]').attr('href',data);
 	});
 }
 function updateExplanation(langCode) {
@@ -471,10 +462,9 @@ function updateExplanation(langCode) {
 			data: {
 				lang: langCode
 			},
-			dataType: 'html',
-			success: function(data) {
-				$('#explanation').html(data);
-			}
+			dataType: 'html'
+		}).done(function(data) {
+			$('#explanation').html(data);
 		});
 	}
 }
@@ -487,12 +477,103 @@ function updateIntroduction(langCode) {
 			data: {
 				lang: langCode
 			},
-			dataType: 'html',
-			success: function(data) {
-				$('#introduction').html(data);
-			}
+			dataType: 'html'
+		}).done(function(data) {
+			$('#introduction').html(data);
 		});
 	}
+}
+function updateTextInterface(langCode) {
+	ajaxData = {
+		lang: langCode
+	};
+	if (isset(q)) {
+		ajaxData.q = q;
+	}
+	if (isset(p)) {
+		ajaxData.p = p;
+	}
+	if (isset(dob)) {
+		ajaxData.dob = dob;
+	}
+	if (isset(fullname)) {
+		ajaxData.fullname = fullname;
+	}
+	var headTitleAjaxCall = $.ajax({
+			url: '/triggers/head_title.php',
+			type: 'GET',
+			cache: false,
+			data: ajaxData,
+			dataType: 'text'
+		}),
+		headingH1AjaxCall = $.ajax({
+			url: '/triggers/heading_h1.php',
+			type: 'GET',
+			cache: false,
+			data: ajaxData,
+			dataType: 'text'
+		}),
+		headDescriptionAjaxCall = $.ajax({
+			url: '/triggers/head_description.php',
+			type: 'GET',
+			cache: false,
+			data: ajaxData,
+			dataType: 'text'
+		}),
+		chromeWebstoreItemAjaxCall = $.ajax({
+			url: '/triggers/chrome_webstore_item.php',
+			type: 'GET',
+			cache: false,
+			data: ajaxData,
+			dataType: 'text'
+		});
+	$.when(headTitleAjaxCall, headingH1AjaxCall, headDescriptionAjaxCall, chromeWebstoreItemAjaxCall).done(function(headTitleAjaxResponse, headingH1AjaxResponse, headDescriptionAjaxResponse, chromeWebstoreItemAjaxResponse){
+		$('head').find('title').html(headTitleAjaxResponse[0]);
+		$('h1#heading').html(headingH1AjaxResponse[0]);
+		$('head').find('meta[name="description"]').attr('content', headDescriptionAjaxResponse[0]);
+		$('link[rel="chrome-webstore-item"]').attr('href', chromeWebstoreItemAjaxResponse[0]);
+	});
+}
+function updateBirthdayTextInterface(langCode,time) {
+	ajaxData = {
+		lang: langCode,
+		time: time
+	};
+	if (isset(q)) {
+		ajaxData.q = q;
+	}
+	if (isset(dob)) {
+		ajaxData.dob = dob;
+	}
+	if (isset(fullname)) {
+		ajaxData.fullname = fullname;
+	}
+	var headTitleBirthdayAjaxCall = $.ajax({
+			url: '/triggers/head_title_birthday.php',
+			type: 'GET',
+			cache: false,
+			data: ajaxData,
+			dataType: 'text'
+		}),
+		headingH1BirthdayAjaxCall = $.ajax({
+			url: '/triggers/heading_h1_birthday.php',
+			type: 'GET',
+			cache: false,
+			data: ajaxData,
+			dataType: 'text'
+		}),
+		headDescriptionBirthdayAjaxCall = $.ajax({
+			url: '/triggers/head_description_birthday.php',
+			type: 'GET',
+			cache: false,
+			data: ajaxData,
+			dataType: 'text'
+		});
+	$.when(headTitleBirthdayAjaxCall, headingH1BirthdayAjaxCall, headDescriptionBirthdayAjaxCall).done(function(headTitleBirthdayAjaxResponse, headingH1BirthdayAjaxResponse, headDescriptionBirthdayAjaxResponse){
+		$('head').find('title').html(headTitleBirthdayAjaxResponse[0]);
+		$('h1#heading').html(headingH1BirthdayAjaxResponse[0]);
+		$('head').find('meta[name="description"]').attr('content', headDescriptionBirthdayAjaxResponse[0]);
+	});
 }
 function updateInterfaceLanguage(langCode) {
 	var langCodes = ['vi', 'en', 'ru', 'es', 'zh', 'ja'];
@@ -509,10 +590,7 @@ function updateInterfaceLanguage(langCode) {
 		}
 		$('#'+langCode+'_toggle').addClass('clicked').addClass('disabled');
 		$(remainingLangCodeIds).removeClass('clicked').removeClass('disabled');
-		updateHeadTitle(langCode);
-		updateHeadingH1(langCode);
-		updateHeadDescription(langCode);
-		updateChromeWebstoreItem(langCode);
+		updateTextInterface(langCode);
 		updateExplanation(langCode);
 		updateIntroduction(langCode);
 		$('#explanation').attr('data-lang', langCode);
@@ -541,6 +619,9 @@ function updateInterfaceLanguage(langCode) {
 }
 function loadResults(dob,diff,isSecondary,dtChange,partnerDob,langCode) {
 	if ($('#results').length) {
+		if ($('body').hasClass('has_dob') || $('body').hasClass('member')) {
+			updateBirthdayTextInterface(langCode,dtChange);
+		}
 		ajaxData = {
 			dob: dob,
 			diff: diff,
@@ -557,21 +638,15 @@ function loadResults(dob,diff,isSecondary,dtChange,partnerDob,langCode) {
 			type: 'GET',
 			cache: false,
 			data: ajaxData,
-			dataType: 'html',
-			success: function(data) {
-				if ($('body').hasClass('has_dob') || $('body').hasClass('member')) {
-					updateHeadingH1Birthday(langCode,dtChange);
-					updateHeadTitleBirthday(langCode,dtChange);
-					updateHeadDescriptionBirthday(langCode,dtChange);
-				}
-				$('#results').html(data).promise().done(function(){
-					manipulateBirthday();
-					var date = new Date(dtChange);
-					var dateString = moment(date);
-					dateString.locale(langCode);
-					$.notify(dateString.format('LLLL'));
-				});
-			}
+			dataType: 'html'
+		}).done(function(data) {
+			var date = new Date(dtChange);
+			var dateString = moment(date);
+			dateString.locale(langCode);
+			$.notify(dateString.format('LLLL'));
+			$('#results').html(data).promise().done(function(){
+				manipulateBirthday();
+			});
 		});
 	}
 }
@@ -589,15 +664,13 @@ function loadExplanationChartResults(dob,diff,isSecondary,dtChange,partnerDob,la
 				partner_dob: partnerDob,
 				lang_code: langCode
 			},
-			dataType: 'html',
-			success: function(data) {
-				$('#explanation_chart_results').html(data).promise().done(function(){
-					var date = new Date(dtChange);
-					var dateString = moment(date);
-					dateString.locale(langCode);
-					$.notify(dateString.format('LLLL'));
-				});
-			}
+			dataType: 'html'
+		}).done(function(data) {
+			var date = new Date(dtChange);
+			var dateString = moment(date);
+			dateString.locale(langCode);
+			$.notify(dateString.format('LLLL'));
+			$('#explanation_chart_results').html(data);
 		});
 	}
 }
@@ -615,15 +688,13 @@ function loadEmbedChartResults(dob,diff,isSecondary,dtChange,partnerDob,langCode
 				partner_dob: partnerDob,
 				lang_code: langCode
 			},
-			dataType: 'html',
-			success: function(data) {
-				$('#embed_chart_results').html(data).promise().done(function(){
-					var date = new Date(dtChange);
-					var dateString = moment(date);
-					dateString.locale(langCode);
-					$.notify(dateString.format('LLLL'));
-				});
-			}
+			dataType: 'html'
+		}).done(function(data) {
+			var date = new Date(dtChange);
+			var dateString = moment(date);
+			dateString.locale(langCode);
+			$.notify(dateString.format('LLLL'));
+			$('#embed_chart_results').html(data);
 		});
 	}
 }
@@ -636,31 +707,29 @@ function loadProverb(langCode) {
 			data: {
 				lang_code: langCode
 			},
-			dataType: 'html',
-			success: function(data) {
-				$('#proverb').html(data).promise().done(function(){
-					switch (langCode) {
-						case 'vi':
-							$.notify('Thành ngữ mới');
-							break;
-						case 'en':
-							$.notify('New proverb');
-							break;
-						case 'ru':
-							$.notify('Новый пословица');
-							break;
-						case 'es':
-							$.notify('Nueva proverbio');
-							break;
-						case 'zh':
-							$.notify('新谚语');
-							break;
-						case 'ja':
-							$.notify('新しいことわざ');
-							break;
-					}
-				});;
+			dataType: 'html'
+		}).done(function(data) {
+			switch (langCode) {
+				case 'vi':
+					$.notify('Thành ngữ mới');
+					break;
+				case 'en':
+					$.notify('New proverb');
+					break;
+				case 'ru':
+					$.notify('Новый пословица');
+					break;
+				case 'es':
+					$.notify('Nueva proverbio');
+					break;
+				case 'zh':
+					$.notify('新谚语');
+					break;
+				case 'ja':
+					$.notify('新しいことわざ');
+					break;
 			}
+			$('#proverb').html(data);
 		});
 	}
 }
@@ -674,10 +743,9 @@ function loadNews(langCode) {
 			data: {
 				lang_code: langCode
 			},
-			dataType: 'html',
-			success: function(data) {
-				$('#news ul').html(data);
-			}
+			dataType: 'html'
+		}).done(function(data) {
+			$('#news ul').html(data);
 		});
 	}
 }
@@ -695,12 +763,9 @@ function loadComments(langCode) {
 			data: {
 				lang_code: langCode
 			},
-			dataType: 'html',
-			success: function(data) {
-				$('#comments').html(data).ajaxComplete(function(){
-					FB.XFBML.parse(document.body)
-				});
-			}
+			dataType: 'html'
+		}).done(function(data) {
+			$('#comments').html(data);
 		});
 	}
 }
@@ -713,10 +778,9 @@ function loadFeed(url,id) {
 			data: {
 				url: url
 			},
-			dataType: 'html',
-			success: function(data) {
-				$('#'+id).find('div.feed').html(data);
-			}
+			dataType: 'html'
+		}).done(function(data) {
+			$('#'+id).find('div.feed').html(data);
 		});
 	}
 }
@@ -728,10 +792,9 @@ function loadHash(password) {
 		data: {
 			unhashed: password
 		},
-		dataType: 'text',
-		success: function(data) {
-			$('#hashed').val(data);
-		}
+		dataType: 'text'
+	}).done(function(data) {
+		$('#hashed').val(data);
 	});
 }
 function searchBirthdates(keyword) {
@@ -743,10 +806,9 @@ function searchBirthdates(keyword) {
 			data: {
 				keyword: keyword
 			},
-			dataType: 'html',
-			success: function(data) {
-				$('#birthdates').html(data);
-			}
+			dataType: 'html'
+		}).done(function(data) {
+			$('#birthdates').html(data);
 		});
 	}
 }
@@ -756,12 +818,11 @@ function showBirthdates() {
 			url: '/triggers/birthdates.php',
 			type: 'GET',
 			cache: false,
-			dataType: 'html',
-			success: function(data) {
-				$('#birthdates').html(data).show();
-				if (!isEmpty('#user_birthdates_search')) {
-					searchBirthdates($('#user_birthdates_search').val());
-				}
+			dataType: 'html'
+		}).done(function(data) {
+			$('#birthdates').html(data).show();
+			if (!isEmpty('#user_birthdates_search')) {
+				searchBirthdates($('#user_birthdates_search').val());
 			}
 		});
 	}
@@ -1161,19 +1222,17 @@ function createPerson() {
 			type: 'POST',
 			cache: false,
 			data: ajaxData,
-			dataType: 'text',
-			success: function(lastId) {
-				$.ajax({
-					url: '/triggers/person_list.php',
-					type: 'GET',
-					cache: false,
-					dataType: 'html',
-					success: function(data) {
-						$('#persons_list').html(data);
-						window.location = $('#my_birthdate').attr('href')+'?pid='+lastId;
-					}
-				});
-			}
+			dataType: 'text'
+		}).done(function(lastId) {
+			$.ajax({
+				url: '/triggers/person_list.php',
+				type: 'GET',
+				cache: false,
+				dataType: 'html'
+			}).done(function(data) {
+				$('#persons_list').html(data);
+				window.location = $('#my_birthdate').attr('href')+'?pid='+lastId;
+			});
 		});
 	}
 }
@@ -1189,19 +1248,17 @@ function editPerson() {
 			type: 'POST',
 			cache: false,
 			data: ajaxData,
-			dataType: 'text',
-			success: function(){
-				$.ajax({
-					url: '/triggers/person_list.php',
-					type: 'GET',
-					cache: false,
-					dataType: 'html',
-					success: function(data) {
-						$('#persons_list').html(data);
-						window.location = $('#my_birthdate').attr('href')+'?pid='+decodeURIComponent(getUrlVars()['pid']);
-					}
-				});
-			}
+			dataType: 'text'
+		}).done(function(){
+			$.ajax({
+				url: '/triggers/person_list.php',
+				type: 'GET',
+				cache: false,
+				dataType: 'html'
+			}).done(function(data) {
+				$('#persons_list').html(data);
+				window.location = $('#my_birthdate').attr('href')+'?pid='+decodeURIComponent(getUrlVars()['pid']);
+			});
 		});
 	}
 }
@@ -1215,19 +1272,17 @@ function removePerson() {
 			type: 'POST',
 			cache: false,
 			data: ajaxData,
-			dataType: 'text',
-			success: function(){
-				$.ajax({
-					url: '/triggers/person_list.php',
-					type: 'GET',
-					cache: false,
-					dataType: 'html',
-					success: function(data) {
-						$('#persons_list').html(data);
-						window.location = $('#my_birthdate').attr('href');
-					}
-				});
-			}
+			dataType: 'text'
+		}).done(function(){
+			$.ajax({
+				url: '/triggers/person_list.php',
+				type: 'GET',
+				cache: false,
+				dataType: 'html'
+			}).done(function(data) {
+				$('#persons_list').html(data);
+				window.location = $('#my_birthdate').attr('href');
+			});
 		});
 	}
 }

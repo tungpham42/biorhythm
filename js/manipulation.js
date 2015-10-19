@@ -320,6 +320,31 @@ function manipulateLang() {
 				manipulateLangEvent('ja');
 			}
 		});
+		$(document).on('keyup', jwerty.event('1', function(e){
+			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#vi_toggle').hasClass('clicked') && !$('#vi_toggle').hasClass('disabled')) {
+				manipulateLangEvent('vi');
+			}
+		})).on('keyup', jwerty.event('2', function(e){
+			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#en_toggle').hasClass('clicked') && !$('#en_toggle').hasClass('disabled')) {
+				manipulateLangEvent('en');
+			}
+		})).on('keyup', jwerty.event('3', function(e){
+			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#ru_toggle').hasClass('clicked') && !$('#ru_toggle').hasClass('disabled')) {
+				manipulateLangEvent('ru');
+			}
+		})).on('keyup', jwerty.event('4', function(e){
+			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#es_toggle').hasClass('clicked') && !$('#es_toggle').hasClass('disabled')) {
+				manipulateLangEvent('es');
+			}
+		})).on('keyup', jwerty.event('5', function(e){
+			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#zh_toggle').hasClass('clicked') && !$('#zh_toggle').hasClass('disabled')) {
+				manipulateLangEvent('zh');
+			}
+		})).on('keyup', jwerty.event('6', function(e){
+			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#ja_toggle').hasClass('clicked') && !$('#ja_toggle').hasClass('disabled')) {
+				manipulateLangEvent('ja');
+			}
+		}));
 		if (isset(decodeURIComponent(getUrlVars()['lang'])) && (decodeURIComponent(getUrlVars()['lang']) == 'vi' || decodeURIComponent(getUrlVars()['lang']) == 'en' || decodeURIComponent(getUrlVars()['lang']) == 'ru' || decodeURIComponent(getUrlVars()['lang']) == 'es' || decodeURIComponent(getUrlVars()['lang']) == 'zh' || decodeURIComponent(getUrlVars()['lang']) == 'ja')) {
 			$('#'+decodeURIComponent(getUrlVars()['lang'])+'_toggle').trigger('click');
 		}
@@ -450,17 +475,16 @@ function manipulateNews() {
 	}
 }
 function manipulateAjax() {
-	$(document).on({
-		ajaxStart: function(){
-			NProgress.start();
+	$(document).ajaxStart(function(){
+		if (!$('body').hasClass('loading')) {
 			$('body').addClass('loading');
-		},
-		ajaxStop: function(){
-			NProgress.done();
+		}
+	}).ajaxStop(function(){
+		if ($('body').hasClass('loading')) {
 			$('body').removeClass('loading');
-			if ($('#proverb').length) {
-				animateScrollProverb();
-			}
+		}
+		if ($('#proverb').length) {
+			animateScrollProverb();
 		}
 	});
 }

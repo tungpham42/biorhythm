@@ -13,11 +13,11 @@
 <meta property="og:image" content="<?php echo 'http://nhipsinhhoc.vn/img/img_desc_'.((has_dob() && is_birthday()) ? 'birthday': 'logo').'.png'; ?>">
 <meta name="p:domain_verify" content="b30465bfdebc3906bbca8efaeda20ddf"/>
 <meta name="renderer" content="webkit">
-<link rel="icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" href="/app-icons/apple-touch-icon-iphone.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/app-icons/apple-touch-icon-ipad.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/app-icons/apple-touch-icon-iphone-retina.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/app-icons/apple-touch-icon-ipad-retina.png">
+<link rel="icon" href="<?php echo $cdn_url; ?>/favicon.ico" />
+<link rel="apple-touch-icon" href="<?php echo $cdn_url; ?>/app-icons/apple-touch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="76x76" href="<?php echo $cdn_url; ?>/app-icons/apple-touch-icon-ipad.png">
+<link rel="apple-touch-icon" sizes="120x120" href="<?php echo $cdn_url; ?>/app-icons/apple-touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="152x152" href="<?php echo $cdn_url; ?>/app-icons/apple-touch-icon-ipad-retina.png">
 <link rel="canonical" href="<?php echo str_replace('&', '&amp;', current_url()); ?>" />
 <link rel="alternate" hreflang="x-default" href="<?php echo current_default_url(); ?>" />
 <link rel="alternate" hreflang="vi" href="<?php echo current_url_lang('vi'); ?>" />
@@ -27,5 +27,5 @@
 <link rel="alternate" hreflang="zh" href="<?php echo current_url_lang('zh'); ?>" />
 <link rel="alternate" hreflang="ja" href="<?php echo current_url_lang('ja'); ?>" />
 <link rel="chrome-webstore-item" href="<?php echo chrome_webstore_item(); ?>" />
-<link rel="stylesheet" href="/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,keys.css,jssocials.css,m-styles.css,default.css,ui-blue/jquery-ui.css,nprogress.css&amp;105" />
-<link rel="stylesheet" href="/min/f=css/print.css&amp;2" media="print" />
+<link rel="stylesheet" href="<?php echo $cdn_url; ?>/min/b=css&amp;f=fonts.css,normalize.css,install-button.css,jquery.listnav.css,jquery.contextMenu.css,keys.css,jssocials.css,m-styles.css,default.css,ui-blue/jquery-ui.css&amp;2" />
+<link rel="stylesheet" href="<?php echo $cdn_url; ?>/min/f=css/print.css&amp;2" media="print" />
