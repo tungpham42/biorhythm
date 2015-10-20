@@ -1,5 +1,5 @@
 <?php
-ini_set('session.save_path','tcp://localhost:6379');
+//ini_set('session.save_path','tcp://localhost:6379');
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/database.inc.php';
 require_once realpath($_SERVER['DOCUMENT_ROOT']).'/includes/functions.inc.php';
 init_timezone();

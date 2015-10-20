@@ -155,11 +155,8 @@ find = function(elem, selector) {
 pluginOptions = {
   clickToHide: true,
   autoHide: true,
-<<<<<<< HEAD
   autoHideDelay: 2000,
-=======
   autoHideDelay: 2500,
->>>>>>> origin/master
   arrowShow: true,
   arrowSize: 5,
   breakNewLines: true,
@@ -558,7 +555,6 @@ $.notify.addStyle("bootstrap", {
   html: "<div>\n<span data-notify-text></span>\n</div>",
   classes: {
     base: {
-<<<<<<< HEAD
       "font-size": "16px",
       "font-style": "italic",
       "padding": "8px 16px",
@@ -567,8 +563,7 @@ $.notify.addStyle("bootstrap", {
       "color": "rgb(42,42,42)",
       "border": "none",
       "border-radius": "2px",
-      "white-space": "nowrap"
-=======
+      "white-space": "nowrap",
       "font-weight": "bold",
       "padding": "8px 15px 8px 14px",
       "text-shadow": "0 1px 0 rgba(255, 255, 255, 0.5)",
@@ -580,7 +575,6 @@ $.notify.addStyle("bootstrap", {
       "padding-left": "25px",
       "background-repeat": "no-repeat",
       "background-position": "3px 7px"
->>>>>>> origin/master
     },
     error: {
       "color": "#B94A48",
