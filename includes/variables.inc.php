@@ -928,12 +928,12 @@ $email_interfaces = array(
 		'ja' => 'SJw7lMuKipc'
 	),
 	'keyboard_shortcuts' => array(
-		'vi' => 'Phím tắt: S, K -> Hôm nay; A, J -> Trước, D, L -> Sau; W, I -> Sinh nhật; E, O -> Nhịp sinh học phụ; R, P -> Thành ngữ; 1 -> Tiếng Việt; 2 -> Tiếng Anh; 3 -> Tiếng Nga; 4 -> Tiếng Tây Ban Nha; 5 -> Tiếng Trung; 6 -> Tiếng Nhật',
-		'en' => 'Keyboard shortcuts: S, K -> Today; A, J -> Back; D, L -> Forward; W, I -> Birthday; E, O -> Secondary rhythm; R, P -> Proverb; 1 -> Vietnamese; 2 -> English; 3 -> Russian; 4 -> Spanish; 5 -> Chinese; 6 -> Japanese',
-		'ru' => 'Горячие клавиши: S, K -> Сегодня; A, J -> Назад; D, L -> Вперед; W, I -> День рождения; E, O -> Вторичный ритм; R, P -> Пословица; 1 -> Вьетнамский язык; 2 -> Английский язык; 3 -> Русский язык; 4 -> Испанский язык; 5 -> Китайский язык; 6 -> Японский язык',
-		'es' => 'Atajos de teclado: S, K -> Hoy; A, J -> Atrás; D, L -> Enviar; W, I -> Cumpleaños; E, O -> Ritmo secundaria; R, P -> Proverbio; 1 -> Idioma vietnamita; 2 -> Idioma Inglés; 3 -> Idioma Ruso; 4 -> Idioma Espanol; 5 -> Idioma Chino; 6 -> Idioma Japones',
-		'zh' => '快捷键： S，K -> 今天; A，J -> 回去; D，L -> 前进; W，I -> 生辰; E，O -> 次要节奏; R，P -> 谚语; 1 -> 越南语; 2 -> 英语; 3 -> 俄语语言; 4 -> 西班牙语; 5 -> 中文; 6 -> 日文',
-		'ja' => 'キーボードショートカット： S、K -> 今日; A、J -> 戻る; D、L -> 前進する; W、I -> バースデー; E、O -> セカンダリリズム; R、P -> ことわざ; 1 -> ベトナム語; 2 -> 英語; 3 -> ロシア語; 4 -> スペイン語; 5 -> チャン語; 6 -> 日本語'
+		'vi' => 'Phím tắt: S, G, K -> Hôm nay; A, F, J -> Trước, D, H, L -> Sau; W, T, I -> Sinh nhật; E, Y, O -> Nhịp sinh học phụ; R, U, P -> Thành ngữ; 1 -> Tiếng Việt; 2 -> Tiếng Anh; 3 -> Tiếng Nga; 4 -> Tiếng Tây Ban Nha; 5 -> Tiếng Trung; 6 -> Tiếng Nhật',
+		'en' => 'Keyboard shortcuts: S, G, K -> Today; A, F, J -> Back; D, H, L -> Forward; W, T, I -> Birthday; E, Y, O -> Secondary rhythm; R, U, P -> Proverb; 1 -> Vietnamese; 2 -> English; 3 -> Russian; 4 -> Spanish; 5 -> Chinese; 6 -> Japanese',
+		'ru' => 'Горячие клавиши: S, G, K -> Сегодня; A, F, J -> Назад; D, H, L -> Вперед; W, T, I -> День рождения; E, Y, O -> Вторичный ритм; R, U, P -> Пословица; 1 -> Вьетнамский язык; 2 -> Английский язык; 3 -> Русский язык; 4 -> Испанский язык; 5 -> Китайский язык; 6 -> Японский язык',
+		'es' => 'Atajos de teclado: S, G, K -> Hoy; A, F, J -> Atrás; D, H, L -> Enviar; W, T, I -> Cumpleaños; E, Y, O -> Ritmo secundaria; R, U, P -> Proverbio; 1 -> Idioma vietnamita; 2 -> Idioma Inglés; 3 -> Idioma Ruso; 4 -> Idioma Espanol; 5 -> Idioma Chino; 6 -> Idioma Japones',
+		'zh' => '快捷键： S，G，K -> 今天; A，F，J -> 回去; D，H，L -> 前进; W，T，I -> 生辰; E，Y，O -> 次要节奏; R，U，P -> 谚语; 1 -> 越南语; 2 -> 英语; 3 -> 俄语语言; 4 -> 西班牙语; 5 -> 中文; 6 -> 日文',
+		'ja' => 'キーボードショートカット： S、G、K -> 今日; A、F、J -> 戻る; D、H、L -> 前進する; W、T、I -> バースデー; E、Y、O -> セカンダリリズム; R、U、P -> ことわざ; 1 -> ベトナム語; 2 -> 英語; 3 -> ロシア語; 4 -> スペイン語; 5 -> チャン語; 6 -> 日本語'
 	),
 	'unsubscribe' => array(
 		'vi' => 'Hủy đăng ký',

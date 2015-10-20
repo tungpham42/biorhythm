@@ -8,5 +8,6 @@ if (!isset($hide_lang_bar)):
 endif;
 ?>
 	<p><span class="dark-keys"><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>W</kbd><kbd>E</kbd><kbd>R</kbd></span></p>
+	<p><span class="dark-keys"><kbd>F</kbd><kbd>G</kbd><kbd>H</kbd><kbd>T</kbd><kbd>Y</kbd><kbd>U</kbd></span></p>
 	<p><span class="dark-keys"><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd><kbd>I</kbd><kbd>O</kbd><kbd>P</kbd></span></p>
 </section>

@@ -225,7 +225,7 @@ function manipulateProverb() {
 	$('#proverb').on('click', 'i#proverb_refresh', function(){
 		loadProverb(lang);
 	});
-	$(document).on('keyup', jwerty.event('p/r', function(e){
+	$(document).on('keyup', jwerty.event('p/u/r', function(e){
 		if (!$(e.target).is('input') && !$(e.target).is('textarea')) {
 			loadProverb(lang);
 		}
@@ -320,27 +320,27 @@ function manipulateLang() {
 				manipulateLangEvent('ja');
 			}
 		});
-		$(document).on('keyup', jwerty.event('1', function(e){
+		$(document).on('keyup', jwerty.event('1/num-1', function(e){
 			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#vi_toggle').hasClass('clicked') && !$('#vi_toggle').hasClass('disabled')) {
 				manipulateLangEvent('vi');
 			}
-		})).on('keyup', jwerty.event('2', function(e){
+		})).on('keyup', jwerty.event('2/num-2', function(e){
 			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#en_toggle').hasClass('clicked') && !$('#en_toggle').hasClass('disabled')) {
 				manipulateLangEvent('en');
 			}
-		})).on('keyup', jwerty.event('3', function(e){
+		})).on('keyup', jwerty.event('3/num-3', function(e){
 			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#ru_toggle').hasClass('clicked') && !$('#ru_toggle').hasClass('disabled')) {
 				manipulateLangEvent('ru');
 			}
-		})).on('keyup', jwerty.event('4', function(e){
+		})).on('keyup', jwerty.event('4/num-4', function(e){
 			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#es_toggle').hasClass('clicked') && !$('#es_toggle').hasClass('disabled')) {
 				manipulateLangEvent('es');
 			}
-		})).on('keyup', jwerty.event('5', function(e){
+		})).on('keyup', jwerty.event('5/num-5', function(e){
 			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#zh_toggle').hasClass('clicked') && !$('#zh_toggle').hasClass('disabled')) {
 				manipulateLangEvent('zh');
 			}
-		})).on('keyup', jwerty.event('6', function(e){
+		})).on('keyup', jwerty.event('6/num-6', function(e){
 			if (!$(e.target).is('input') && !$(e.target).is('textarea') && !$('#ja_toggle').hasClass('clicked') && !$('#ja_toggle').hasClass('disabled')) {
 				manipulateLangEvent('ja');
 			}

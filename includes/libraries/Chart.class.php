@@ -577,17 +577,17 @@ $.contextMenu({
 	}
 });
 var pressed = false;
-$(document).on("keyup", jwerty.event("k/s", function(e){
+$(document).on("keyup", jwerty.event("k/g/s", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		goToTodayExplanation();
 		pressed = true;
 	}
-})).on("keyup", jwerty.event("j/a", function(e){
+})).on("keyup", jwerty.event("j/f/a", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		goToPrevExplanation();
 		pressed = true;
 	}
-})).on("keyup", jwerty.event("l/d", function(e){
+})).on("keyup", jwerty.event("l/h/d", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		goToNextExplanation();
 		pressed = true;
@@ -662,17 +662,17 @@ $.contextMenu({
 	}
 });
 var pressed = false;
-$(document).on("keyup", jwerty.event("k/s", function(e){
+$(document).on("keyup", jwerty.event("k/g/s", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		goToTodayEmbed();
 		pressed = true;
 	}
-})).on("keyup", jwerty.event("j/a", function(e){
+})).on("keyup", jwerty.event("j/f/a", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		goToPrevEmbed();
 		pressed = true;
 	}
-})).on("keyup", jwerty.event("l/d", function(e){
+})).on("keyup", jwerty.event("l/h/d", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		goToNextEmbed();
 		pressed = true;
@@ -795,27 +795,27 @@ if ($("#is_secondary").prop("checked") == true) {
 } else if ($("#is_secondary").prop("checked") == false) {
 	isChecked = "no";
 }
-$(document).off("keyup","**").on("keyup", jwerty.event("k/s", function(e){
+$(document).off("keyup","**").on("keyup", jwerty.event("k/g/s", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		goToTodayMain();
 		pressed = true;
 	}
-})).on("keyup", jwerty.event("j/a", function(e){
+})).on("keyup", jwerty.event("j/f/a", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		goToPrevMain();
 		pressed = true;
 	}
-})).on("keyup", jwerty.event("l/d", function(e){
+})).on("keyup", jwerty.event("l/h/d", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		goToNextMain();
 		pressed = true;
 	}
-})).on("keyup", jwerty.event("i/w", function(e){
+})).on("keyup", jwerty.event("i/t/w", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		goToBirthdayMain();
 		pressed = true;
 	}
-})).on("keyup", jwerty.event("e/o", function(e){
+})).on("keyup", jwerty.event("o/y/e", function(e){
 	if (!$(e.target).is("input") && !$(e.target).is("textarea") && !pressed) {
 		if (isChecked == "yes") {
 			toggleSecondaryRhythms("hide");
@@ -826,32 +826,32 @@ $(document).off("keyup","**").on("keyup", jwerty.event("k/s", function(e){
 		}
 		pressed = true;
 	}
-})).on("keyup", jwerty.event("1", function(e){
+})).on("keyup", jwerty.event("1/num-1", function(e){
 	if ($("#lang_bar").length && !$(e.target).is("input") && !$(e.target).is("textarea") && !$("#vi_toggle").hasClass("clicked") && !$("#vi_toggle").hasClass("disabled")) {
 		manipulateLangEvent("vi");
 		updateLanguageMain("vi");
 	}
-})).on("keyup", jwerty.event("2", function(e){
+})).on("keyup", jwerty.event("2/num-2", function(e){
 	if ($("#lang_bar").length && !$(e.target).is("input") && !$(e.target).is("textarea") && !$("#en_toggle").hasClass("clicked") && !$("#en_toggle").hasClass("disabled")) {
 		manipulateLangEvent("en");
 		updateLanguageMain("en");
 	}
-})).on("keyup", jwerty.event("3", function(e){
+})).on("keyup", jwerty.event("3/num-3", function(e){
 	if ($("#lang_bar").length && !$(e.target).is("input") && !$(e.target).is("textarea") && !$("#ru_toggle").hasClass("clicked") && !$("#ru_toggle").hasClass("disabled")) {
 		manipulateLangEvent("ru");
 		updateLanguageMain("ru");
 	}
-})).on("keyup", jwerty.event("4", function(e){
+})).on("keyup", jwerty.event("4/num-4", function(e){
 	if ($("#lang_bar").length && !$(e.target).is("input") && !$(e.target).is("textarea") && !$("#es_toggle").hasClass("clicked") && !$("#es_toggle").hasClass("disabled")) {
 		manipulateLangEvent("es");
 		updateLanguageMain("es");
 	}
-})).on("keyup", jwerty.event("5", function(e){
+})).on("keyup", jwerty.event("5/num-5", function(e){
 	if ($("#lang_bar").length && !$(e.target).is("input") && !$(e.target).is("textarea") && !$("#zh_toggle").hasClass("clicked") && !$("#zh_toggle").hasClass("disabled")) {
 		manipulateLangEvent("zh");
 		updateLanguageMain("zh");
 	}
-})).on("keyup", jwerty.event("6", function(e){
+})).on("keyup", jwerty.event("6/num-6", function(e){
 	if ($("#lang_bar").length && !$(e.target).is("input") && !$(e.target).is("textarea") && !$("#ja_toggle").hasClass("clicked") && !$("#ja_toggle").hasClass("disabled")) {
 		manipulateLangEvent("ja");
 		updateLanguageMain("ja");
